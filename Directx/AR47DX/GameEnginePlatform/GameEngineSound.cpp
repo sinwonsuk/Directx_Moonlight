@@ -3,7 +3,8 @@
 #include <GameEngineBase/GameEngineString.h>
 #include <GameEngineBase/GameEngineDebug.h>
 
-// lib를 가져다 사용하겠다는 전처리문입니다.
+// 
+// 를 가져다 사용하겠다는 전처리문입니다.
 // lib는 구현이다.
 #ifdef _DEBUG
 #pragma comment(lib, "..\\GameEnginePlatform\\ThirdParty\\FMOD\\lib\\x64\\fmodL_vc.lib")
@@ -107,7 +108,7 @@ GameEngineSound::~GameEngineSound()
 //	IsOnce = true;
 //}
 
-GameEngineSound* GameEngineSound::FindSound(const std::string_view& _Name)
+GameEngineSound* GameEngineSound::FindSound(std::string_view _Name)
 {
 	std::string UpperName = GameEngineString::ToUpperReturn(_Name);
 
@@ -121,7 +122,7 @@ GameEngineSound* GameEngineSound::FindSound(const std::string_view& _Name)
 	return FindIter->second;
 }
 
-void GameEngineSound::SoundLoad(const std::string_view& _Name, const std::string_view& _Path)
+void GameEngineSound::SoundLoad(std::string_view _Name, std::string_view _Path)
 {
 	std::string UpperName = GameEngineString::ToUpperReturn(_Name);
 
@@ -132,7 +133,7 @@ void GameEngineSound::SoundLoad(const std::string_view& _Name, const std::string
 	AllSound.insert(std::make_pair(UpperName, NewSound));
 }
 
-GameEngineSoundPlayer GameEngineSound::SoundPlay(const std::string_view& _Name, int _Loop)
+GameEngineSoundPlayer GameEngineSound::SoundPlay(std::string_view _Name, int _Loop)
 {
 	GameEngineSound* FindSoundPtr = FindSound(_Name);
 
@@ -171,7 +172,7 @@ void GameEngineSound::Release()
 
 
 
-void GameEngineSound::Load(const std::string_view& _Path)
+void GameEngineSound::Load(std::string_view _Path)
 {
 	// 멀티바이트 => UTF-8 인코딩으로 변환해줄 함수가 필요하다.
 

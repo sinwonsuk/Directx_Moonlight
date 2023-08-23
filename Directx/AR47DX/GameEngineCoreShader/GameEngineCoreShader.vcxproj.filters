@@ -3,8 +3,6 @@
   <ItemGroup>
     <FxCompile Include="ColorShader.fx" />
     <FxCompile Include="TextureShader.fx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="47기 쉐이더 규칙.txt" />
+    <FxCompile Include="Transform.fx" />
   </ItemGroup>
 </Project>
