@@ -44,6 +44,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{3F16BB9D-DBD7-43AA-9A4B-A6C9E1DB4BA3}"
 	ProjectSection(SolutionItems) = preProject
 		Doc\랜파.jpg = Doc\랜파.jpg
+		엔진기본구조.txt = 엔진기본구조.txt
+		할일.txt = 할일.txt
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameEngineCoreShader", "GameEngineCoreShader\GameEngineCoreShader.vcxproj", "{02B63468-E569-4E56-AAA3-D398473BAF95}"

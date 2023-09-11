@@ -3,8 +3,7 @@
 #include <GameEngineBase/GameEngineString.h>
 #include <GameEngineBase/GameEngineDebug.h>
 
-// 
-// 를 가져다 사용하겠다는 전처리문입니다.
+// lib를 가져다 사용하겠다는 전처리문입니다.
 // lib는 구현이다.
 #ifdef _DEBUG
 #pragma comment(lib, "..\\GameEnginePlatform\\ThirdParty\\FMOD\\lib\\x64\\fmodL_vc.lib")

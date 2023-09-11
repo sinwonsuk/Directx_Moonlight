@@ -1,7 +1,77 @@
 #pragma once
+#include <GameEngineBase/GameEngineMath.h>
+#include <list>
 
 // 기하구조를 표현하고
 // 부모자식관계를 처리한다.
+
+enum class ColType
+{
+	// 캡슐
+	// 2D에서의 충돌은 모두가 한축이 같아야 한다.
+	// 우리는 충돌이 2D가 더 느려요.
+	SPHERE2D, // z를 0으로 만들고 충돌 구 50 60개를 돌릴수가 있다.
+	AABBBOX2D, // z를 0으로 만들고 충돌 Axis-Aligned Bounding 회전하지 않은 박스
+	OBBBOX2D, // z를 0으로 만들고 충돌 Oriented Bounding Box 회전한 박스 <= 을 1번할 연산량으로
+	SPHERE3D,
+	AABBBOX3D,
+	OBBBOX3D,
+	MAX,
+};
+
+
+class CollisionData
+{
+public:
+	union
+	{
+		// 다이렉트 x에서 지원해주는 충돌용 도형
+		DirectX::BoundingSphere SPHERE;
+		DirectX::BoundingBox AABB;
+		DirectX::BoundingOrientedBox OBB;
+	};
+
+	CollisionData()
+		: OBB()
+	{
+
+	}
+};
+
+class GameEngineTransform;
+class CollisionParameter
+{
+public:
+	CollisionData& Left;
+	CollisionData& Right;
+	ColType LeftType = ColType::AABBBOX2D;
+	ColType RightType = ColType::AABBBOX2D;
+
+	inline int GetLeftTypeToInt() const
+	{
+		return static_cast<int>(LeftType);
+	}
+
+	inline int GetRightTypeToInt() const
+	{
+		return static_cast<int>(RightType);
+	}
+
+	CollisionParameter(
+		CollisionData& _Left,
+		CollisionData& _Right,
+		ColType _LeftType = ColType::AABBBOX2D,
+		ColType _RightType = ColType::AABBBOX2D
+	) 
+		: 
+		Left(_Left),
+		Right(_Right),
+		LeftType(_LeftType),
+		RightType(_RightType)
+	{
+
+	}
+};
 
 // 왜 굳이. 
 class TransformData 
@@ -11,14 +81,17 @@ public:
 
 	float4 Scale = float4::ONENULL;
 	float4 Rotation = float4::ZERONULL;
+	float4 Quaternion = float4::ZERO;
 	float4 Position = float4::ZERO;
 	
 	float4 LocalScale;
 	float4 LocalRotation;
+	float4 LocalQuaternion;
 	float4 LocalPosition;
 
 	float4 WorldScale;
 	float4 WorldRotation;
+	float4 WorldQuaternion;
 	float4 WorldPosition;
 
 	float4x4 ScaleMatrix; // 크
@@ -37,7 +110,7 @@ public:
 	float4x4 ViewPort;
 
 	// 로컬 => 월드 => 뷰 => 프로젝션 
-	float4x4 WorldViewPorjectionMatrix;
+	float4x4 WorldViewProjectionMatrix;
 
 	void LocalCalculation()
 	{
@@ -50,7 +123,7 @@ public:
 
 	void WorldViewProjectionCalculation()
 	{
-		WorldViewPorjectionMatrix = WorldMatrix * ViewMatrix * ProjectionMatrix;
+		WorldViewProjectionMatrix = WorldMatrix * ViewMatrix * ProjectionMatrix;
 	}
 };
 
@@ -94,12 +167,26 @@ public:
 		TransformUpdate();
 	}
 
+	void AddLocalScale(const float4& _Value)
+	{
+		TransData.Scale += _Value;
+		TransformUpdate();
+	}
+
+
+	void SetLocalRotation(const float4& _Value)
+	{
+		TransData.Rotation = _Value;
+		TransformUpdate();
+	}
+
 	void AddLocalRotation(const float4& _Value)
 	{
 		TransData.Rotation += _Value;
 		TransformUpdate();
 
 	}
+
 
 	void SetLocalPosition(const float4& _Value)
 	{
@@ -114,13 +201,17 @@ public:
 	}
 
 
-
-
 	// Get
 	float4 GetWorldPosition()
 	{
 		return TransData.WorldMatrix.ArrVector[3];
 	}
+
+	float4 GetLocalScale()
+	{
+		return TransData.LocalScale;
+	}
+
 
 	// 회전 그 자체로 한 오브젝트의 앞 위 오른쪽
 	// [1][0][0][0] 오른쪽
@@ -173,17 +264,24 @@ public:
 
 	void CalChilds();
 
-	float4x4 GetWorldViewPorjectionMatrix()
+	float4x4 GetWorldViewProjectionMatrix()
 	{
-		return TransData.WorldViewPorjectionMatrix;
+		return TransData.WorldViewProjectionMatrix;
 	}
 
+	// 트랜스폼은 충돌 타입이 정해져 있지 않는다.
+	//                    내가 사각형이고            날                           상대는 구               상대
+	static bool Collision(const CollisionParameter& _Data);
+
+	CollisionData ColData;
 protected:
 
 private:
+
 	GameEngineTransform* Parent = nullptr;
 	std::list<GameEngineTransform*> Childs;
 	TransformData TransData;
 
 };
+
 
