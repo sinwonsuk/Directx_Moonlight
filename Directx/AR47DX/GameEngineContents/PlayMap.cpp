@@ -32,12 +32,10 @@ void PlayMap::Start()
 
 		std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find("loadingBG.bmp");
 
-		float4 HScale = Tex->GetScale().Half();
-		HScale.Y *= -1.0f;
-
-
 		float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-		Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
+
+		Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
+
 		Renderer->SetImageScale({ 1280,720 });
 	}
 }
