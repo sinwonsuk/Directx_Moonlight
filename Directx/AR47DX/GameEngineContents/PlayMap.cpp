@@ -28,14 +28,17 @@ void PlayMap::Start()
 {
 	{
 		Renderer = CreateComponent<GameEngineSpriteRenderer>(0);
-		Renderer->SetSprite("TestMap.png");
+		Renderer->SetSprite("loadingBG.bmp");
 
-		std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find("TestMap.png");
+		std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find("loadingBG.bmp");
 
 		float4 HScale = Tex->GetScale().Half();
 		HScale.Y *= -1.0f;
 
-		Renderer->Transform.SetLocalPosition(HScale);
+
+		float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+		Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
+		Renderer->SetImageScale({ 1280,720 });
 	}
 }
 
@@ -45,7 +48,7 @@ GameEngineColor PlayMap::GetColor(float4 _Pos, GameEngineColor _DefaultColor)
 	// 이미지는 위에서부터 아래로 내려갈수록 +가 되기 때문이다.
 	_Pos.Y *= -1.0f;
 
-	std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find("TestMap.png");
+	std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find("loadingBG.bmp");
 
 
 	return Tex->GetColor(_Pos, _DefaultColor);

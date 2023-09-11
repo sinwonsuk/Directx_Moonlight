@@ -49,7 +49,7 @@ void PlayLevel::Start()
 		}
 
 		GameEngineSprite::CreateCut("TestPlayer.png", 6, 6);
-		GameEngineSprite::CreateSingle("TestMap.png");
+		GameEngineSprite::CreateSingle("loadingBG.bmp");
 	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
@@ -58,9 +58,9 @@ void PlayLevel::Start()
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
 
-	{
+	/*{
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
-	}
+	}*/
 
 	{
 		//GameEngineRandom NewRanadom;
