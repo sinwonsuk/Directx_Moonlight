@@ -20,10 +20,9 @@ void ContentsCore::Start()
 	//기본적으로 SpriteRenderer를 만들때 넣어줄 샘플러를 지정합니다.
 	GameEngineSpriteRenderer::SetDefaultSampler("POINT");
 
-	GameEngineCore::CreateLevel<PlayLevel>("PlayLevel");
-	GameEngineCore::CreateLevel<PlayLevel>("PlayLevel");
 	GameEngineCore::CreateLevel<TitleLevel>("TitleLevel");
-	GameEngineCore::ChangeLevel("PlayLevel");
+	GameEngineCore::CreateLevel<PlayLevel>("PlayLevel");
+	GameEngineCore::ChangeLevel("TitleLevel");
 
 	// 자기 텍스처 로드해야 한다.
 

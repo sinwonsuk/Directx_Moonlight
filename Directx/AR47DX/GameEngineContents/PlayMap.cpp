@@ -26,7 +26,7 @@ void PlayMap::Update(float _DeltaTime)
 
 void PlayMap::Start()
 {
-	{
+	/*{
 		Renderer = CreateComponent<GameEngineSpriteRenderer>(0);
 		Renderer->SetSprite("loadingBG.bmp");
 
@@ -37,17 +37,17 @@ void PlayMap::Start()
 		Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 
 		Renderer->SetImageScale({ 1280,720 });
-	}
+	}*/
 }
 
-GameEngineColor PlayMap::GetColor(float4 _Pos, GameEngineColor _DefaultColor)
-{
-	// 플레이어의 위치를 이미지의 좌표계로 변경한다.
-	// 이미지는 위에서부터 아래로 내려갈수록 +가 되기 때문이다.
-	_Pos.Y *= -1.0f;
-
-	std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find("loadingBG.bmp");
-
-
-	return Tex->GetColor(_Pos, _DefaultColor);
-}
+//GameEngineColor PlayMap::GetColor(float4 _Pos, GameEngineColor _DefaultColor)
+//{
+//	// 플레이어의 위치를 이미지의 좌표계로 변경한다.
+//	// 이미지는 위에서부터 아래로 내려갈수록 +가 되기 때문이다.
+//	_Pos.Y *= -1.0f;
+//
+//	std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find("loadingBG.bmp");
+//
+//
+//	return Tex->GetColor(_Pos, _DefaultColor);
+//}

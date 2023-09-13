@@ -14,6 +14,14 @@ enum class ContentsObjectType
 	Monster,
 };
 
+enum class TitleOrder
+{
+	Title,
+};
+
+
+
+
 enum class ContentsCollisionType
 {
 	Player,

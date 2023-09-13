@@ -49,7 +49,6 @@ void PlayLevel::Start()
 		}
 
 		GameEngineSprite::CreateCut("TestPlayer.png", 6, 6);
-		GameEngineSprite::CreateSingle("loadingBG.bmp");
 	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
