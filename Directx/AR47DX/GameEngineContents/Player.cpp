@@ -16,57 +16,58 @@ Player::~Player()
 {
 }
 
+void Player::AnimationCheck(const std::string_view& _AnimationName)
+{
+	player->ChangeAnimation(_AnimationName);
+}
+
 void Player::Start()
 {
 	{
 		// 줄줄이 사탕 식으로 만들려고.
-		TestCollision = CreateComponent<GameEngineComponent>(30);
-		TestCollision->Transform.SetLocalScale({ 30, 30, 1 });
+		player = CreateComponent<GameEngineSpriteRenderer>(100);
+	
+		//player->SetImageScale({ 100.0f, 100.0f });
 
-		MainSpriteRenderer = CreateComponent<GameEngineSpriteRenderer>(30);
-		MainSpriteRenderer->SetSprite("HoHoYee_AttackABC2");
-		MainSpriteRenderer->SetImageScale({ 100.0f, 100.0f });
-		// MainSpriteRenderer->Transform.SetLocalScale({30, 30, 1.0f});
+		player->CreateAnimation("Start", "PlayStart", 0.15f, -1, -1, false);
 
-		/*MainSpriteRenderer->CreateAnimation("Run", "HoHoYee_AttackABC2", 0.05f, -1, -1, true);
-		MainSpriteRenderer->ChangeAnimation("Run");
-		MainSpriteRenderer->SetSamplerState(SamplerOption::LINEAR);
-		MainSpriteRenderer->Transform.SetLocalPosition({ 100.0f, 0.0f, 0.0f });
+		player->CreateAnimation("UpIdle", "UpIdle", 0.1f, -1, -1, true);
+		player->CreateAnimation("LeftIdle", "LeftIdle", 0.1f, -1, -1, true);
+		player->CreateAnimation("DownIdle", "DownIdle", 0.1f, -1, -1, true);
+		player->CreateAnimation("RightIdle", "RightIdle", 0.1f, -1, -1, true);
+	
+		player->CreateAnimation("UpMove", "UpMove", 0.1f, -1, -1, true);
+		player->CreateAnimation("LeftMove", "LeftMove", 0.1f, -1, -1, true);
+		player->CreateAnimation("DownMove", "DownMove", 0.1f, -1, -1, true);
+		player->CreateAnimation("RightMove", "RightMove", 0.1f, -1, -1, true);
 
-		MainSpriteRenderer->SetEndEvent("Run", std::bind(&Player::TestEvent, this, std::placeholders::_1));*/
-
-		// MainSpriteRenderer->Transform.SetLocalScale({5, 5});
-		// MainSpriteRenderer->AutoSpriteSizeOn();
-		// MainSpriteRenderer->SetAutoScaleRatio(2.0f);
-		// MainSpriteRenderer->Transform.SetLocalScale({-100.0f, 100.0f, 1.0f});
+		player->AutoSpriteSizeOn();
+		player->SetAutoScaleRatio(1.5f);
+		player->ChangeAnimation("Start");
+		player->SetFrameEvent("Start", 34, std::bind(&Player::TestEvent, this, std::placeholders::_1));
+		
 	}
 
-	{
-		MainSpriteRenderer = CreateComponent<GameEngineSpriteRenderer>(30);
-		MainSpriteRenderer->SetSprite("HoHoYee_AttackABC2");
-		MainSpriteRenderer->Transform.SetLocalPosition({ 0, 70, 1.0f });
-		MainSpriteRenderer->SetImageScale({ 100.0f, 20.0f });
-		MainSpriteRenderer->SetPivotType(PivotType::Left);
-	}
-
+	
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Player);
 		Col->Transform.SetLocalScale({ -100.0f, 100.0f, 1.0f });
 	}
 
-	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
+	/*float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });*/
 
 }
 
 void Player::TestEvent(GameEngineRenderer* _Renderer)
 {
-	int a = 0;
+	ChangeState(PlayerState::Start_Stop);
 }
 
 void Player::Update(float _Delta)
 {
-	MainSpriteRenderer->AddImageScale(float4{-10.0f, 0.0f, 0.0f} *_Delta);
+	
+	//MainSpriteRenderer->AddImageScale(float4{-10.0f, 0.0f, 0.0f} *_Delta);
 
 	// 몬스터가 몬스터랑 충돌하고 싶으면?
 	// 내 미래의 위치
@@ -135,41 +136,9 @@ void Player::Update(float _Delta)
 
 	float Speed = 100.0f;
 
-	if (GameEngineInput::IsDown('A'))
-	{
-		MainSpriteRenderer->AnimationPauseSwitch();
-	}
+	
 
 
-	if (GameEngineInput::IsPress('A'))
-	{
-		Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-	}
-
-	if (GameEngineInput::IsPress('D'))
-	{
-		Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-	}
-
-	if (GameEngineInput::IsPress('W'))
-	{
-		Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-	}
-
-	if (GameEngineInput::IsPress('S'))
-	{
-		Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
-	}
-
-	if (GameEngineInput::IsPress('Q'))
-	{
-		Transform.AddLocalRotation({ 0.0f, 0.0f, 360.0f * _Delta });
-	}
-
-	if (GameEngineInput::IsPress('E'))
-	{
-		Transform.AddLocalRotation({ 0.0f, 0.0f, -360.0f * _Delta });
-	}
 
 	//GameEngineColor Color = PlayMap::MainMap->GetColor(Transform.GetWorldPosition(), GameEngineColor::RED);
 
@@ -186,4 +155,7 @@ void Player::Update(float _Delta)
 
 
 	// float4 Color = GetColor(Transform.GetWorldPosition());
+
+
+	UpdateState(_Delta);
 }

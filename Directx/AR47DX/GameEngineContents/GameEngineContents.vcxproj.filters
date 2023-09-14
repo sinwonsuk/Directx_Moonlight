@@ -19,6 +19,9 @@
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="TutorialLevel.cpp" />
+    <ClCompile Include="TutorialMap.cpp" />
+    <ClCompile Include="Player_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -42,6 +45,8 @@
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Title.h" />
+    <ClInclude Include="TutorialLevel.h" />
+    <ClInclude Include="TutorialMap.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

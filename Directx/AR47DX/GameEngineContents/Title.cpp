@@ -55,6 +55,7 @@ void Title::Start()
 		Title_Select_Effect_Left = CreateComponent<GameEngineSpriteRenderer>(0);
 		Title_Select_Effect_Left->SetAutoScaleRatio(1.1f);
 		Title_Select_Effect_Left->Transform.AddLocalPosition({ -75.0f,-50.0f });
+		Title_Select_Effect_Left->FlipOn();
 		Title_Select_Effect_Left->SetSprite("Title_Select_Effect", 0);
 	}
 

@@ -33,23 +33,6 @@ void PlayLevel::Start()
 		GameEngineSprite::CreateCut("TestPlayer.png", 6, 6);
 	}
 
-	{
-		GameEngineDirectory Dir;
-		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources");
-		Dir.MoveChild("FolderTexture");
-		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
-
-		for (size_t i = 0; i < Directorys.size(); i++)
-		{
-			// 구조적으로 잘 이해하고 있는지를 자신이 명확하게 인지하기 위해서
-			GameEngineDirectory& Dir = Directorys[i];
-
-			GameEngineSprite::CreateFolder(Dir.GetStringPath());
-		}
-
-		GameEngineSprite::CreateCut("TestPlayer.png", 6, 6);
-	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 

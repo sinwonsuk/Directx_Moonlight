@@ -175,6 +175,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Player_State.cpp" />
     <ClCompile Include="PlayLevel.cpp">
       <SubType>
       </SubType>
@@ -194,6 +195,8 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TutorialLevel.cpp" />
+    <ClCompile Include="TutorialMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -223,6 +226,8 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TutorialLevel.h" />
+    <ClInclude Include="TutorialMap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
