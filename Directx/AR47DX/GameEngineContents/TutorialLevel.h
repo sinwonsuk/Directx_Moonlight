@@ -14,7 +14,7 @@ public:
 	TutorialLevel(TutorialLevel&& _Other) noexcept = delete;
 	TutorialLevel& operator=(const TutorialLevel& _Other) = delete;
 	TutorialLevel& operator=(TutorialLevel&& _Other) noexcept = delete;
-
+	std::vector<GameEngineActor*> Maps; 
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -23,7 +23,7 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 private:
-
+	float Speed = 500.0f;
 
 };
 

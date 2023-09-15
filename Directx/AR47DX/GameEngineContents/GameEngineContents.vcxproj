@@ -197,6 +197,10 @@
     </ClCompile>
     <ClCompile Include="TutorialLevel.cpp" />
     <ClCompile Include="TutorialMap.cpp" />
+    <ClCompile Include="TutorialMap_02.cpp" />
+    <ClCompile Include="TutorialMap_03.cpp" />
+    <ClCompile Include="TutorialMap_04.cpp" />
+    <ClCompile Include="Tutorial_Map_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -228,6 +232,10 @@
     </ClInclude>
     <ClInclude Include="TutorialLevel.h" />
     <ClInclude Include="TutorialMap.h" />
+    <ClInclude Include="TutorialMap_02.h" />
+    <ClInclude Include="TutorialMap_03.h" />
+    <ClInclude Include="TutorialMap_04.h" />
+    <ClInclude Include="Tutorial_Map_Manager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

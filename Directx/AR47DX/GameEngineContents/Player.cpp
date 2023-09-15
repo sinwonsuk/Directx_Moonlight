@@ -6,6 +6,7 @@
 #include "PlayMap.h"
 #include "Monster.h"
 #include "ContentsEnum.h"
+Player* Player::this_Player; 
 
 Player::Player() 
 {
@@ -23,6 +24,8 @@ void Player::AnimationCheck(const std::string_view& _AnimationName)
 
 void Player::Start()
 {
+	
+	this_Player = this;
 	{
 		// 줄줄이 사탕 식으로 만들려고.
 		player = CreateComponent<GameEngineSpriteRenderer>(100);
@@ -41,6 +44,12 @@ void Player::Start()
 		player->CreateAnimation("DownMove", "DownMove", 0.1f, -1, -1, true);
 		player->CreateAnimation("RightMove", "RightMove", 0.1f, -1, -1, true);
 
+		player->CreateAnimation("Roll_Down", "Roll_Down", 0.1f, -1, -1, true);
+		player->CreateAnimation("Roll_Left", "Roll_Left", 0.1f, -1, -1, true);
+		player->CreateAnimation("Roll_Right", "Roll_Right", 0.1f, -1, -1, true);
+		player->CreateAnimation("Roll_Up", "Roll_Up", 0.1f, -1, -1, true);
+
+
 		player->AutoSpriteSizeOn();
 		player->SetAutoScaleRatio(1.5f);
 		player->ChangeAnimation("Start");
@@ -54,8 +63,8 @@ void Player::Start()
 		Col->Transform.SetLocalScale({ -100.0f, 100.0f, 1.0f });
 	}
 
-	/*float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });*/
+	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 
 }
 
@@ -72,36 +81,9 @@ void Player::Update(float _Delta)
 	// 몬스터가 몬스터랑 충돌하고 싶으면?
 	// 내 미래의 위치
 
-	EventParameter Event;
+	
 
-	Event.Enter = [](GameEngineCollision* Col)
-		{
-			Col->GetActor()->Death();
-			int a = 0;
-		};
-
-	Event.Stay = [](GameEngineCollision* Col)
-		{
-			int a = 0;
-		};
-
-
-	Event.Exit = [](GameEngineCollision* Col)
-		{
-			// 
-
-			int a = 0;
-		};
-
-	Col->CollisionEvent(ContentsCollisionType::Monster, Event);
-
-	//Col->Collision(ContentsCollisionType::Monster, {100.0f, 0.0f, 0.0f}, [](std::vector<std::shared_ptr<GameEngineCollision>>& _Collision)
-	//	{
-	//		for (size_t i = 0; i < _Collision.size(); i++)
-	//		{
-	//			_Collision[i]->GetActor()->Death();
-	//		}
-	//	});
+	//Col->Collision(ContentsCollisionType::Door, { 300.0f, 0.0f, 0.0f }, [](std::vector<std::shared_ptr<GameEngineCollision>>& _Collision){});
 
 	//if (xxxx 상황이 되면)
 	//{

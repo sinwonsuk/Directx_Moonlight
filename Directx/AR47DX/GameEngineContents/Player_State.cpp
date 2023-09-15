@@ -41,7 +41,18 @@ void Player::ChangeState(PlayerState _State)
 	case PlayerState::UpMove:
 		AnimationCheck("UpMove");
 		break;
-
+	case PlayerState::RollDown:
+		AnimationCheck("Roll_Down");
+		break;
+	case PlayerState::RollUp:
+		AnimationCheck("Roll_Up");
+		break;
+	case PlayerState::RollRight:
+		AnimationCheck("Roll_Right");
+		break;
+	case PlayerState::RollLeft:
+		AnimationCheck("Roll_Left");
+		break;
 
 
 	}
@@ -83,7 +94,18 @@ void Player::UpdateState(float _Time)
 	case PlayerState::UpMove:
 		UpMoveUpdate(_Time);
 		break;
-
+	case PlayerState::RollDown:
+	     Roll_DownUpdate(_Time);
+		break;
+	case PlayerState::RollUp:
+		Roll_UpUpdate(_Time);
+		break;
+	case PlayerState::RollRight:
+		Roll_RightUpdate(_Time);
+		break;
+	case PlayerState::RollLeft:
+		Roll_LeftUpdate(_Time);
+		break;
 
 
 
@@ -122,6 +144,13 @@ void Player::RightIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
+
+	if (GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(PlayerState::RollRight);
+		return;
+	}
+	
 }
 
 void Player::LeftIdleUpdate(float _Time)
@@ -149,6 +178,13 @@ void Player::LeftIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
+
+	if (GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(PlayerState::RollLeft);
+		return;
+	}
+
 }
 
 void Player::DownIdleUpdate(float _Time)
@@ -176,6 +212,13 @@ void Player::DownIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
+
+	if (GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(PlayerState::RollDown);
+		return;
+	}
+
 }
 
 void Player::UpIdleUpdate(float _Time)
@@ -203,15 +246,18 @@ void Player::UpIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
+
+	if (GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(PlayerState::RollUp);
+		return;
+	}
+
 }
 
 void Player::RightMoveUpdate(float _Time)
 {
 	Move(_Time);
-
-
-
-
 
 	if (GameEngineInput::IsUp('D'))
 	{
@@ -232,6 +278,11 @@ void Player::RightMoveUpdate(float _Time)
 	if (GameEngineInput::IsDown('A'))
 	{
 		ChangeState(PlayerState::LeftMove);
+		return;
+	}
+	if (GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(PlayerState::RollRight);
 		return;
 	}
 }
@@ -262,6 +313,11 @@ void Player::LeftMoveUpdate(float _Time)
 		ChangeState(PlayerState::LeftIdle);
 		return;
 	}
+	if (GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(PlayerState::RollLeft);
+		return;
+	}
 }
 
 void Player::DownMoveUpdate(float _Time)
@@ -270,7 +326,7 @@ void Player::DownMoveUpdate(float _Time)
 
 	if (GameEngineInput::IsDown('D'))
 	{
-		ChangeState(PlayerState::DownIdle);
+		ChangeState(PlayerState::RightMove);
 		return;
 	}
 	if (GameEngineInput::IsDown('W'))
@@ -280,12 +336,17 @@ void Player::DownMoveUpdate(float _Time)
 	}
 	if (GameEngineInput::IsUp('S'))
 	{
-		ChangeState(PlayerState::DownMove);
+		ChangeState(PlayerState::DownIdle);
 		return;
 	}
 	if (GameEngineInput::IsDown('A'))
 	{
 		ChangeState(PlayerState::LeftMove);
+		return;
+	}
+	if (GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(PlayerState::RollDown);
 		return;
 	}
 }
@@ -314,30 +375,101 @@ void Player::UpMoveUpdate(float _Time)
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
+
+	if (GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(PlayerState::RollUp);
+		return;
+	}
+
 }
+
+void Player::Roll_RightUpdate(float _Time)
+{
+	Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
+
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::RightIdle);
+		return; 
+	}
+
+}
+
+void Player::Roll_LeftUpdate(float _Time)
+{
+	Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::LeftIdle);
+		return;
+	}
+}
+
+void Player::Roll_DownUpdate(float _Time)
+{
+	Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::DownIdle);
+		return;
+	}
+}
+
+void Player::Roll_UpUpdate(float _Time)
+{
+	Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::UpIdle);
+		return;
+	}
+}
+
+
 
 void Player::Move(float _Delta)
 {
-
-	if (GameEngineInput::IsPress('A'))
+	if (MoveCheck == false)
 	{
-		Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-	}
+		if (GameEngineInput::IsPress('A'))
+		{
+			Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+		}
 
-	if (GameEngineInput::IsPress('D'))
-	{
-		Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-	}
+		if (GameEngineInput::IsPress('D'))
+		{
+			Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+		}
 
-	if (GameEngineInput::IsPress('W'))
-	{
-		Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-	}
+		if (GameEngineInput::IsPress('W'))
+		{
+			Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+		}
 
-	if (GameEngineInput::IsPress('S'))
-	{
-		Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+		if (GameEngineInput::IsPress('S'))
+		{
+			Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+		}
 	}
+}
+
+GameEngineColor Player::GetColor(float4 _Pos, GameEngineColor _DefaultColor)
+{
+
+	
+		// 플레이어의 위치를 이미지의 좌표계로 변경한다.
+		// 이미지는 위에서부터 아래로 내려갈수록 +가 되기 때문이다.
+		_Pos.Y *= -1.0f;
+
+		std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find("loadingBG.bmp");
+
+
+		return Tex->GetColor(_Pos, _DefaultColor);
+	
 }
 
 

@@ -12,12 +12,18 @@ enum class PlayerState
 	RightMove,
 	UpMove,
 	DownMove,
+	RollRight,
+	RollLeft,
+	RollUp,
+	RollDown, 
 };
 // Ό³Έν :
 class Player : public GameEngineActor
 {
 public:
 	// constrcuter destructer
+
+	static Player* this_Player;
 	Player();
 	~Player();
 
@@ -44,19 +50,34 @@ public:
 	void LeftMoveUpdate(float _Time);
 	void DownMoveUpdate(float _Time);
 	void UpMoveUpdate(float _Time);
+
+	void Roll_RightUpdate(float _Time);
+	void Roll_LeftUpdate(float _Time);
+	void Roll_DownUpdate(float _Time);
+	void Roll_UpUpdate(float _Time);
+
+
+
 	void Move(float _Delta);
+
+
+
+
+	bool MoveCheck = false;
+	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 });
+	std::shared_ptr<GameEngineCollision> Col;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 private:
 	float StartSpeed = 10.0f;
-	float Speed = 100.0f;
+	float Speed = 300.0f;
+	float Roll_Speed = 300.0f;
 	PlayerState StateValue = PlayerState::Start;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;
-	std::shared_ptr<class GameEngineComponent> TestCollision;
 	float4 GrivityForce = {0.0f, 0.0f, 0.0f, 1.0f};
 
-	std::shared_ptr<GameEngineCollision> Col;
+	//std::shared_ptr<GameEngineCollision> Col;
 };
 

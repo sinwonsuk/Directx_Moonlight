@@ -22,6 +22,10 @@
     <ClCompile Include="TutorialLevel.cpp" />
     <ClCompile Include="TutorialMap.cpp" />
     <ClCompile Include="Player_State.cpp" />
+    <ClCompile Include="Tutorial_Map_Manager.cpp" />
+    <ClCompile Include="TutorialMap_02.cpp" />
+    <ClCompile Include="TutorialMap_03.cpp" />
+    <ClCompile Include="TutorialMap_04.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -47,6 +51,10 @@
     <ClInclude Include="Title.h" />
     <ClInclude Include="TutorialLevel.h" />
     <ClInclude Include="TutorialMap.h" />
+    <ClInclude Include="Tutorial_Map_Manager.h" />
+    <ClInclude Include="TutorialMap_02.h" />
+    <ClInclude Include="TutorialMap_03.h" />
+    <ClInclude Include="TutorialMap_04.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
