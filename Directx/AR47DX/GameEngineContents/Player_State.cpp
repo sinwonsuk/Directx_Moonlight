@@ -1,6 +1,6 @@
 #include "PreCompile.h"
 #include "Player.h"
-
+#include "Big_Sword.h"
 
 void Player::ChangeState(PlayerState _State)
 {
@@ -53,8 +53,15 @@ void Player::ChangeState(PlayerState _State)
 	case PlayerState::RollLeft:
 		AnimationCheck("Roll_Left");
 		break;
-
-
+	case PlayerState::Down_Attack_01:
+		AnimationCheck("DownAttack_01");
+		break;
+	case PlayerState::Down_Attack_02:
+		AnimationCheck("DownAttack_02");
+		break;
+	case PlayerState::Down_Attack_03:
+		AnimationCheck("DownAttack_03");
+		break;
 	}
 
 }
@@ -106,7 +113,15 @@ void Player::UpdateState(float _Time)
 	case PlayerState::RollLeft:
 		Roll_LeftUpdate(_Time);
 		break;
-
+	case PlayerState::Down_Attack_01:
+		DownAttackUpdate_01(_Time);
+		break;
+	case PlayerState::Down_Attack_02:
+		DownAttackUpdate_02(_Time);
+		break;
+	case PlayerState::Down_Attack_03:
+		DownAttackUpdate_03(_Time);
+		break;
 
 
 	default:
@@ -142,6 +157,14 @@ void Player::RightIdleUpdate(float _Time)
 	if (GameEngineInput::IsPress('S'))
 	{
 		ChangeState(PlayerState::DownMove);
+		return;
+	}
+
+	if (GameEngineInput::IsPress('J'))
+	{
+		Sword = GetLevel()->CreateActor<Big_Sword>();
+		Sword->Off(); 
+		ChangeState(PlayerState::Down_Attack_01);
 		return;
 	}
 
@@ -429,6 +452,85 @@ void Player::Roll_UpUpdate(float _Time)
 	}
 }
 
+void Player::DownAttackUpdate_01(float _Time)
+{
+	if (player->GetCurIndex() > 0)
+	{
+		Sword->On(); 
+	}
+
+
+	if (player->GetCurIndex() > 4)
+	{
+		if (GameEngineInput::IsDown('J'))
+		{
+			AttackCheck = true;
+		}
+	}
+
+	
+	if (AttackCheck ==true && player->IsCurAnimationEnd())
+	{
+		Sword = GetLevel()->CreateActor<Big_Sword>();
+		Sword->ChangeState(Big_Sword_State::BigSword_Down_02);
+		//Sword->SetStateValue(Big_Sword_State::BigSword_Down_02);
+		Sword->Off();
+		AttackCheck = false;
+		ChangeState(PlayerState::Down_Attack_02);
+	}
+
+	else if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::DownIdle);
+		return;
+	}
+
+}
+
+void Player::DownAttackUpdate_02(float _Time)
+{
+	Sword->On(); 
+
+	if (player->GetCurIndex() > 4)
+	{
+		if (GameEngineInput::IsDown('J'))
+		{
+		
+			AttackCheck = true; 
+		}
+	}
+
+	if (AttackCheck == true && player->IsCurAnimationEnd())
+	{
+		Sword = GetLevel()->CreateActor<Big_Sword>();
+		Sword->ChangeState(Big_Sword_State::BigSword_Down_03);
+		
+		AttackCheck = false;
+		ChangeState(PlayerState::Down_Attack_03);
+	}
+
+	else if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::DownIdle);
+		return;
+	}
+
+	
+}
+
+void Player::DownAttackUpdate_03(float _Time)
+{
+	Sword->On();
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::DownIdle);
+		return;
+	}
+
+}
+
+
+
 
 
 void Player::Move(float _Delta)
@@ -457,20 +559,7 @@ void Player::Move(float _Delta)
 	}
 }
 
-GameEngineColor Player::GetColor(float4 _Pos, GameEngineColor _DefaultColor)
-{
 
-	
-		// 플레이어의 위치를 이미지의 좌표계로 변경한다.
-		// 이미지는 위에서부터 아래로 내려갈수록 +가 되기 때문이다.
-		_Pos.Y *= -1.0f;
-
-		std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find("loadingBG.bmp");
-
-
-		return Tex->GetColor(_Pos, _DefaultColor);
-	
-}
 
 
 void Player::StopUpdate(float _Time)

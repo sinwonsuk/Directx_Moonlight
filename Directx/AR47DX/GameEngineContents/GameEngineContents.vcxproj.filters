@@ -26,6 +26,11 @@
     <ClCompile Include="TutorialMap_02.cpp" />
     <ClCompile Include="TutorialMap_03.cpp" />
     <ClCompile Include="TutorialMap_04.cpp" />
+    <ClCompile Include="Object_jar.cpp" />
+    <ClCompile Include="Tutorial_Map_05.cpp" />
+    <ClCompile Include="Tutorial_Map_06.cpp" />
+    <ClCompile Include="Big_Sword.cpp" />
+    <ClCompile Include="BigSword_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -55,6 +60,10 @@
     <ClInclude Include="TutorialMap_02.h" />
     <ClInclude Include="TutorialMap_03.h" />
     <ClInclude Include="TutorialMap_04.h" />
+    <ClInclude Include="Object_jar.h" />
+    <ClInclude Include="Tutorial_Map_05.h" />
+    <ClInclude Include="Tutorial_Map_06.h" />
+    <ClInclude Include="Big_Sword.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

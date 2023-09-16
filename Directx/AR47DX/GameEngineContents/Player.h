@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "Big_Sword.h"
 enum class PlayerState
 {
 	Start,
@@ -16,6 +17,10 @@ enum class PlayerState
 	RollLeft,
 	RollUp,
 	RollDown, 
+	Down_Attack_01,
+	Down_Attack_02,
+	Down_Attack_03,
+
 };
 // Ό³Έν :
 class Player : public GameEngineActor
@@ -34,6 +39,9 @@ public:
 	Player& operator=(Player&& _Other) noexcept = delete;
 
 	void TestEvent(GameEngineRenderer* _Renderer);
+	void BigSword_Down_Start(GameEngineRenderer* _Renderer);
+
+
 
 	void ChangeState(PlayerState _State);
 	void UpdateState(float _Time);
@@ -56,7 +64,14 @@ public:
 	void Roll_DownUpdate(float _Time);
 	void Roll_UpUpdate(float _Time);
 
+	void DownAttackUpdate_01(float _Time);
+	void DownAttackUpdate_02(float _Time);
+	void DownAttackUpdate_03(float _Time);
 
+	PlayerState GetPlayerStateValue()
+	{
+		return StateValue;
+	}
 
 	void Move(float _Delta);
 
@@ -64,17 +79,21 @@ public:
 
 
 	bool MoveCheck = false;
-	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 });
+
 	std::shared_ptr<GameEngineCollision> Col;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 private:
+
+	bool AttackCheck = false;
+
 	float StartSpeed = 10.0f;
 	float Speed = 300.0f;
 	float Roll_Speed = 300.0f;
-	PlayerState StateValue = PlayerState::Start;
+	PlayerState StateValue = PlayerState::RightIdle;
+	std::shared_ptr<Big_Sword> Sword;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;
 	float4 GrivityForce = {0.0f, 0.0f, 0.0f, 1.0f};
 

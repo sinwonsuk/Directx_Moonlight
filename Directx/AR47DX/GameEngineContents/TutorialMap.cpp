@@ -7,6 +7,8 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include "TutorialLevel.h"
 #include "Player.h"
+#include "Object_jar.h"
+
 TutorialMap::TutorialMap()
 {
 }
@@ -19,9 +21,11 @@ TutorialMap::~TutorialMap()
 
 void TutorialMap::Start()
 {
+	/*{
+		std::shared_ptr<Object_jar> Object = GetLevel()->CreateActor<Object_jar>();
+	}*/
+
 	
-
-
 	{
 
 	    BackGround = CreateComponent<GameEngineSpriteRenderer>(0);

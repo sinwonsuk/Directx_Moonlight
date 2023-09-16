@@ -163,6 +163,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BigSword_State.cpp" />
+    <ClCompile Include="Big_Sword.cpp" />
     <ClCompile Include="ContentsCore.cpp">
       <SubType>
       </SubType>
@@ -171,6 +173,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Object_jar.cpp" />
     <ClCompile Include="Player.cpp">
       <SubType>
       </SubType>
@@ -200,9 +203,12 @@
     <ClCompile Include="TutorialMap_02.cpp" />
     <ClCompile Include="TutorialMap_03.cpp" />
     <ClCompile Include="TutorialMap_04.cpp" />
+    <ClCompile Include="Tutorial_Map_05.cpp" />
+    <ClCompile Include="Tutorial_Map_06.cpp" />
     <ClCompile Include="Tutorial_Map_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Big_Sword.h" />
     <ClInclude Include="ContentsCore.h">
       <SubType>
       </SubType>
@@ -212,6 +218,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Object_jar.h" />
     <ClInclude Include="Player.h">
       <SubType>
       </SubType>
@@ -235,6 +242,8 @@
     <ClInclude Include="TutorialMap_02.h" />
     <ClInclude Include="TutorialMap_03.h" />
     <ClInclude Include="TutorialMap_04.h" />
+    <ClInclude Include="Tutorial_Map_05.h" />
+    <ClInclude Include="Tutorial_Map_06.h" />
     <ClInclude Include="Tutorial_Map_Manager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

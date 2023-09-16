@@ -3,9 +3,11 @@
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
 #include <GameEngineCore/GameEngineCollision.h>
+#include <GameEngineCore/GameEngineLevel.h>
 #include "PlayMap.h"
 #include "Monster.h"
 #include "ContentsEnum.h"
+#include "Big_Sword.h"
 Player* Player::this_Player; 
 
 Player::Player() 
@@ -24,7 +26,8 @@ void Player::AnimationCheck(const std::string_view& _AnimationName)
 
 void Player::Start()
 {
-	
+	/*Sword = GetLevel()->CreateActor<Big_Sword>();
+	Sword->Off(); */
 	this_Player = this;
 	{
 		// 줄줄이 사탕 식으로 만들려고.
@@ -49,12 +52,16 @@ void Player::Start()
 		player->CreateAnimation("Roll_Right", "Roll_Right", 0.1f, -1, -1, true);
 		player->CreateAnimation("Roll_Up", "Roll_Up", 0.1f, -1, -1, true);
 
+		player->CreateAnimation("DownAttack_01", "DownAttack_01", 0.1f, -1, -1, false);
+		player->CreateAnimation("DownAttack_02", "DownAttack_02", 0.1f, -1, -1, false);
+		player->CreateAnimation("DownAttack_03", "DownAttack_03", 0.1f, -1, -1, false);
+
 
 		player->AutoSpriteSizeOn();
 		player->SetAutoScaleRatio(1.5f);
 		player->ChangeAnimation("Start");
 		player->SetFrameEvent("Start", 34, std::bind(&Player::TestEvent, this, std::placeholders::_1));
-		
+		//player->SetFrameEvent("DownAttack_01", 2, std::bind(&Player::BigSword_Down_Start, this, std::placeholders::_1));
 	}
 
 	
@@ -72,6 +79,14 @@ void Player::TestEvent(GameEngineRenderer* _Renderer)
 {
 	ChangeState(PlayerState::Start_Stop);
 }
+
+void Player::BigSword_Down_Start(GameEngineRenderer* _Renderer)
+{
+	std::shared_ptr<Big_Sword> object = GetLevel()->CreateActor<Big_Sword>(); 
+}
+
+
+
 
 void Player::Update(float _Delta)
 {

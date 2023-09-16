@@ -18,7 +18,7 @@ ContentsCore::~ContentsCore()
 void ContentsCore::Start()
 {
 	//기본적으로 SpriteRenderer를 만들때 넣어줄 샘플러를 지정합니다.
-	GameEngineSpriteRenderer::SetDefaultSampler("POINT");
+	GameEngineSpriteRenderer::SetDefaultSampler("LINEAR");
 
 	GameEngineCore::CreateLevel<TitleLevel>("TitleLevel");
 	GameEngineCore::CreateLevel<TutorialLevel>("TutorialLevel");

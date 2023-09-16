@@ -46,7 +46,9 @@ void TutorialMap_03::Start()
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 	Transform.AddLocalPosition({ 1280* Map_Number ,0.0f });
 
-	
+	Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
+	Collision_Door->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
+	Collision_Door->Transform.SetLocalScale({ 90.0f,120.0f,0.0f });
 }
 
 void TutorialMap_03::Update(float _Delta)
