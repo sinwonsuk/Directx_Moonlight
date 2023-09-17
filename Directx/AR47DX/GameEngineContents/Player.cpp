@@ -7,7 +7,7 @@
 #include "PlayMap.h"
 #include "Monster.h"
 #include "ContentsEnum.h"
-#include "Big_Sword.h"
+
 Player* Player::this_Player; 
 
 Player::Player() 
@@ -47,18 +47,31 @@ void Player::Start()
 		player->CreateAnimation("DownMove", "DownMove", 0.1f, -1, -1, true);
 		player->CreateAnimation("RightMove", "RightMove", 0.1f, -1, -1, true);
 
-		player->CreateAnimation("Roll_Down", "Roll_Down", 0.1f, -1, -1, true);
-		player->CreateAnimation("Roll_Left", "Roll_Left", 0.1f, -1, -1, true);
-		player->CreateAnimation("Roll_Right", "Roll_Right", 0.1f, -1, -1, true);
-		player->CreateAnimation("Roll_Up", "Roll_Up", 0.1f, -1, -1, true);
+		player->CreateAnimation("Roll_Down", "Roll_Down", 0.05f, -1, -1, true);
+		player->CreateAnimation("Roll_Left", "Roll_Left", 0.05f, -1, -1, true);
+		player->CreateAnimation("Roll_Right", "Roll_Right", 0.05f, -1, -1, true);
+		player->CreateAnimation("Roll_Up", "Roll_Up", 0.05f, -1, -1, true);
 
-		player->CreateAnimation("DownAttack_01", "DownAttack_01", 0.1f, -1, -1, false);
-		player->CreateAnimation("DownAttack_02", "DownAttack_02", 0.1f, -1, -1, false);
-		player->CreateAnimation("DownAttack_03", "DownAttack_03", 0.1f, -1, -1, false);
+		player->CreateAnimation("Spear_Down_Attack_01", "Spear_Down_Attack_01", 0.1f, -1, -1, false);
+		player->CreateAnimation("Spear_Down_Attack_02", "Spear_Down_Attack_02", 0.1f, -1, -1, false);
+		player->CreateAnimation("Spear_Down_Attack_03", "Spear_Down_Attack_03", 0.1f, -1, -1, false);
 
+		player->CreateAnimation("Spear_Left_Attack_01", "Spear_Left_Attack_01", 0.1f, -1, -1, false);
+		player->CreateAnimation("Spear_Left_Attack_02", "Spear_Left_Attack_02", 0.1f, -1, -1, false);
+		player->CreateAnimation("Spear_Left_Attack_03", "Spear_Left_Attack_03", 0.1f, -1, -1, false);
+
+		player->CreateAnimation("Spear_Right_Attack_01", "Spear_Right_Attack_01", 0.1f, -1, -1, false);
+		player->CreateAnimation("Spear_Right_Attack_02", "Spear_Right_Attack_02", 0.1f, -1, -1, false);
+		player->CreateAnimation("Spear_Right_Attack_03", "Spear_Right_Attack_03", 0.1f, -1, -1, false);
+
+		player->CreateAnimation("Spear_Up_Attack_01", "Spear_Up_Attack_01", 0.1f, -1, -1, false);
+		player->CreateAnimation("Spear_Up_Attack_02", "Spear_Up_Attack_02", 0.1f, -1, -1, false);
+		player->CreateAnimation("Spear_Up_Attack_03", "Spear_Up_Attack_03", 0.1f, -1, -1, false);
+
+		
 
 		player->AutoSpriteSizeOn();
-		player->SetAutoScaleRatio(1.5f);
+		player->SetAutoScaleRatio(2.0f);
 		player->ChangeAnimation("Start");
 		player->SetFrameEvent("Start", 34, std::bind(&Player::TestEvent, this, std::placeholders::_1));
 		//player->SetFrameEvent("DownAttack_01", 2, std::bind(&Player::BigSword_Down_Start, this, std::placeholders::_1));
@@ -80,10 +93,6 @@ void Player::TestEvent(GameEngineRenderer* _Renderer)
 	ChangeState(PlayerState::Start_Stop);
 }
 
-void Player::BigSword_Down_Start(GameEngineRenderer* _Renderer)
-{
-	std::shared_ptr<Big_Sword> object = GetLevel()->CreateActor<Big_Sword>(); 
-}
 
 
 

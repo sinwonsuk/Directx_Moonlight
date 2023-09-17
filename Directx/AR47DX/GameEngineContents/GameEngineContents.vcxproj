@@ -163,8 +163,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BigSword_State.cpp" />
-    <ClCompile Include="Big_Sword.cpp" />
+    <ClCompile Include="Spear_State.cpp" />
+    <ClCompile Include="Spear.cpp" />
     <ClCompile Include="ContentsCore.cpp">
       <SubType>
       </SubType>
@@ -208,7 +208,7 @@
     <ClCompile Include="Tutorial_Map_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Big_Sword.h" />
+    <ClInclude Include="Spear.h" />
     <ClInclude Include="ContentsCore.h">
       <SubType>
       </SubType>

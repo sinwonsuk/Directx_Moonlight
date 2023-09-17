@@ -1,6 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
-#include "Big_Sword.h"
+#include "Spear.h"
 enum class PlayerState
 {
 	Start,
@@ -17,9 +17,24 @@ enum class PlayerState
 	RollLeft,
 	RollUp,
 	RollDown, 
-	Down_Attack_01,
-	Down_Attack_02,
-	Down_Attack_03,
+
+	Spear_Down_Attack_01,
+	Spear_Down_Attack_02,
+	Spear_Down_Attack_03,
+
+	Spear_Up_Attack_01,
+	Spear_Up_Attack_02,
+	Spear_Up_Attack_03,
+
+	Spear_Left_Attack_01,
+	Spear_Left_Attack_02,
+	Spear_Left_Attack_03,
+
+	Spear_Right_Attack_01,
+	Spear_Right_Attack_02,
+	Spear_Right_Attack_03,
+
+	
 
 };
 // Ό³Έν :
@@ -39,7 +54,7 @@ public:
 	Player& operator=(Player&& _Other) noexcept = delete;
 
 	void TestEvent(GameEngineRenderer* _Renderer);
-	void BigSword_Down_Start(GameEngineRenderer* _Renderer);
+	
 
 
 
@@ -64,9 +79,24 @@ public:
 	void Roll_DownUpdate(float _Time);
 	void Roll_UpUpdate(float _Time);
 
-	void DownAttackUpdate_01(float _Time);
-	void DownAttackUpdate_02(float _Time);
-	void DownAttackUpdate_03(float _Time);
+	void Spear_Down_AttackUpdate_01(float _Time);
+	void Spear_Down_AttackUpdate_02(float _Time);
+	void Spear_Down_AttackUpdate_03(float _Time);
+
+	void Spear_Left_AttackUpdate_01(float _Time);
+	void Spear_Left_AttackUpdate_02(float _Time);
+	void Spear_Left_AttackUpdate_03(float _Time);
+
+	void Spear_Right_AttackUpdate_01(float _Time);
+	void Spear_Right_AttackUpdate_02(float _Time);
+	void Spear_Right_AttackUpdate_03(float _Time);
+
+	void Spear_Up_AttackUpdate_01(float _Time);
+	void Spear_Up_AttackUpdate_02(float _Time);
+	void Spear_Up_AttackUpdate_03(float _Time);
+
+	void WeaponManager(Spear_State _SpearState, PlayerState state, PlayerState _playstate);
+
 
 	PlayerState GetPlayerStateValue()
 	{
@@ -91,9 +121,9 @@ private:
 
 	float StartSpeed = 10.0f;
 	float Speed = 300.0f;
-	float Roll_Speed = 300.0f;
+	float Roll_Speed = 400.0f;
 	PlayerState StateValue = PlayerState::RightIdle;
-	std::shared_ptr<Big_Sword> Sword;
+	std::shared_ptr<Spear> spear;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;
 	float4 GrivityForce = {0.0f, 0.0f, 0.0f, 1.0f};
 

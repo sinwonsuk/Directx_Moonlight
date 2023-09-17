@@ -29,8 +29,8 @@
     <ClCompile Include="Object_jar.cpp" />
     <ClCompile Include="Tutorial_Map_05.cpp" />
     <ClCompile Include="Tutorial_Map_06.cpp" />
-    <ClCompile Include="Big_Sword.cpp" />
-    <ClCompile Include="BigSword_State.cpp" />
+    <ClCompile Include="Spear.cpp" />
+    <ClCompile Include="Spear_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -63,7 +63,7 @@
     <ClInclude Include="Object_jar.h" />
     <ClInclude Include="Tutorial_Map_05.h" />
     <ClInclude Include="Tutorial_Map_06.h" />
-    <ClInclude Include="Big_Sword.h" />
+    <ClInclude Include="Spear.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

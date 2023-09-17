@@ -1,6 +1,6 @@
 #include "PreCompile.h"
 #include "Player.h"
-#include "Big_Sword.h"
+#include "Spear.h"
 
 void Player::ChangeState(PlayerState _State)
 {
@@ -53,15 +53,44 @@ void Player::ChangeState(PlayerState _State)
 	case PlayerState::RollLeft:
 		AnimationCheck("Roll_Left");
 		break;
-	case PlayerState::Down_Attack_01:
-		AnimationCheck("DownAttack_01");
+	case PlayerState::Spear_Down_Attack_01:
+		AnimationCheck("Spear_Down_Attack_01");
 		break;
-	case PlayerState::Down_Attack_02:
-		AnimationCheck("DownAttack_02");
+	case PlayerState::Spear_Down_Attack_02:
+		AnimationCheck("Spear_Down_Attack_02");
 		break;
-	case PlayerState::Down_Attack_03:
-		AnimationCheck("DownAttack_03");
+	case PlayerState::Spear_Down_Attack_03:
+		AnimationCheck("Spear_Down_Attack_03");
 		break;
+	case PlayerState::Spear_Left_Attack_01:
+		AnimationCheck("Spear_Left_Attack_01");
+		break;
+	case PlayerState::Spear_Left_Attack_02:
+		AnimationCheck("Spear_Left_Attack_02");
+		break;
+	case PlayerState::Spear_Left_Attack_03:
+		AnimationCheck("Spear_Left_Attack_03");
+		break;
+	case PlayerState::Spear_Right_Attack_01:
+		AnimationCheck("Spear_Right_Attack_01");
+		break;
+	case PlayerState::Spear_Right_Attack_02:
+		AnimationCheck("Spear_Right_Attack_02");
+		break;
+	case PlayerState::Spear_Right_Attack_03:
+		AnimationCheck("Spear_Right_Attack_03");
+		break;
+	case PlayerState::Spear_Up_Attack_01:
+		AnimationCheck("Spear_Up_Attack_01");
+		break;
+	case PlayerState::Spear_Up_Attack_02:
+		AnimationCheck("Spear_Up_Attack_02");
+		break;
+	case PlayerState::Spear_Up_Attack_03:
+		AnimationCheck("Spear_Up_Attack_03");
+		break;
+
+
 	}
 
 }
@@ -113,16 +142,42 @@ void Player::UpdateState(float _Time)
 	case PlayerState::RollLeft:
 		Roll_LeftUpdate(_Time);
 		break;
-	case PlayerState::Down_Attack_01:
-		DownAttackUpdate_01(_Time);
+	case PlayerState::Spear_Down_Attack_01:
+		Spear_Down_AttackUpdate_01(_Time);
 		break;
-	case PlayerState::Down_Attack_02:
-		DownAttackUpdate_02(_Time);
+	case PlayerState::Spear_Down_Attack_02:
+		Spear_Down_AttackUpdate_02(_Time);
 		break;
-	case PlayerState::Down_Attack_03:
-		DownAttackUpdate_03(_Time);
+	case PlayerState::Spear_Down_Attack_03:
+		Spear_Down_AttackUpdate_03(_Time);
 		break;
-
+	case PlayerState::Spear_Left_Attack_01:
+		Spear_Left_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Spear_Left_Attack_02:
+		Spear_Left_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Spear_Left_Attack_03:
+		Spear_Left_AttackUpdate_03(_Time);
+		break;
+	case PlayerState::Spear_Right_Attack_01:
+		Spear_Right_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Spear_Right_Attack_02:
+		Spear_Right_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Spear_Right_Attack_03:
+		Spear_Right_AttackUpdate_03(_Time);
+		break;
+	case PlayerState::Spear_Up_Attack_01:
+		Spear_Up_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Spear_Up_Attack_02:
+		Spear_Up_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Spear_Up_Attack_03:
+		Spear_Up_AttackUpdate_03(_Time);
+		break;
 
 	default:
 		break;
@@ -162,9 +217,10 @@ void Player::RightIdleUpdate(float _Time)
 
 	if (GameEngineInput::IsPress('J'))
 	{
-		Sword = GetLevel()->CreateActor<Big_Sword>();
-		Sword->Off(); 
-		ChangeState(PlayerState::Down_Attack_01);
+		spear = GetLevel()->CreateActor<Spear>();
+		spear->Off(); 
+		spear->ChangeState(Spear_State::Spear_Right_01);
+		ChangeState(PlayerState::Spear_Right_Attack_01);
 		return;
 	}
 
@@ -202,6 +258,14 @@ void Player::LeftIdleUpdate(float _Time)
 		return;
 	}
 
+	if (GameEngineInput::IsPress('J'))
+	{
+		spear = GetLevel()->CreateActor<Spear>();
+		spear->Off();
+		spear->ChangeState(Spear_State::Spear_Left_01);
+		ChangeState(PlayerState::Spear_Left_Attack_01);
+		return;
+	}
 	if (GameEngineInput::IsDown(VK_SPACE))
 	{
 		ChangeState(PlayerState::RollLeft);
@@ -236,6 +300,13 @@ void Player::DownIdleUpdate(float _Time)
 		return;
 	}
 
+	if (GameEngineInput::IsDown('J'))
+	{
+		spear = GetLevel()->CreateActor<Spear>();
+		spear->Off();
+		ChangeState(PlayerState::Spear_Down_Attack_01);
+		return;
+	}
 	if (GameEngineInput::IsDown(VK_SPACE))
 	{
 		ChangeState(PlayerState::RollDown);
@@ -269,7 +340,14 @@ void Player::UpIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-
+	if (GameEngineInput::IsPress('J'))
+	{
+		spear = GetLevel()->CreateActor<Spear>();
+		spear->Off();
+		spear->ChangeState(Spear_State::Spear_Up_01);
+		ChangeState(PlayerState::Spear_Up_Attack_01);
+		return;
+	}
 	if (GameEngineInput::IsDown(VK_SPACE))
 	{
 		ChangeState(PlayerState::RollUp);
@@ -301,6 +379,15 @@ void Player::RightMoveUpdate(float _Time)
 	if (GameEngineInput::IsDown('A'))
 	{
 		ChangeState(PlayerState::LeftMove);
+		return;
+	}
+
+	if (GameEngineInput::IsPress('J'))
+	{
+		spear = GetLevel()->CreateActor<Spear>();
+		spear->Off();
+		spear->ChangeState(Spear_State::Spear_Right_01);
+		ChangeState(PlayerState::Spear_Right_Attack_01);
 		return;
 	}
 	if (GameEngineInput::IsDown(VK_SPACE))
@@ -336,6 +423,16 @@ void Player::LeftMoveUpdate(float _Time)
 		ChangeState(PlayerState::LeftIdle);
 		return;
 	}
+
+	if (GameEngineInput::IsPress('J'))
+	{
+		spear = GetLevel()->CreateActor<Spear>();
+		spear->Off();
+		spear->ChangeState(Spear_State::Spear_Left_01);
+		ChangeState(PlayerState::Spear_Left_Attack_01);
+		return;
+	}
+
 	if (GameEngineInput::IsDown(VK_SPACE))
 	{
 		ChangeState(PlayerState::RollLeft);
@@ -367,6 +464,15 @@ void Player::DownMoveUpdate(float _Time)
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
+
+	if (GameEngineInput::IsDown('J'))
+	{
+		spear = GetLevel()->CreateActor<Spear>();
+		spear->Off();
+		ChangeState(PlayerState::Spear_Down_Attack_01);
+		return;
+	}
+
 	if (GameEngineInput::IsDown(VK_SPACE))
 	{
 		ChangeState(PlayerState::RollDown);
@@ -399,6 +505,14 @@ void Player::UpMoveUpdate(float _Time)
 		return;
 	}
 
+	if (GameEngineInput::IsDown('J'))
+	{
+		spear = GetLevel()->CreateActor<Spear>();
+		spear->Off();
+		spear->ChangeState(Spear_State::Spear_Up_01);
+		ChangeState(PlayerState::Spear_Up_Attack_01);
+		return;
+	}
 	if (GameEngineInput::IsDown(VK_SPACE))
 	{
 		ChangeState(PlayerState::RollUp);
@@ -452,15 +566,106 @@ void Player::Roll_UpUpdate(float _Time)
 	}
 }
 
-void Player::DownAttackUpdate_01(float _Time)
+void Player::Spear_Down_AttackUpdate_01(float _Time)
 {
-	if (player->GetCurIndex() > 0)
+	WeaponManager(Spear_State::Spear_Down_02, PlayerState::Spear_Down_Attack_02, PlayerState::DownIdle); 
+}
+
+void Player::Spear_Down_AttackUpdate_02(float _Time)
+{
+	WeaponManager(Spear_State::Spear_Down_03, PlayerState::Spear_Down_Attack_03, PlayerState::DownIdle);	
+}
+
+void Player::Spear_Down_AttackUpdate_03(float _Time)
+{
+	spear->On();
+
+	if (player->IsCurAnimationEnd())
 	{
-		Sword->On(); 
+		ChangeState(PlayerState::DownIdle);
+		return;
+	}
+
+}
+
+void Player::Spear_Left_AttackUpdate_01(float _Time)
+{
+	WeaponManager(Spear_State::Spear_Left_02, PlayerState::Spear_Left_Attack_02, PlayerState::LeftIdle);
+
+}
+
+void Player::Spear_Left_AttackUpdate_02(float _Time)
+{
+	WeaponManager(Spear_State::Spear_Left_03, PlayerState::Spear_Left_Attack_03, PlayerState::LeftIdle);
+
+}
+
+void Player::Spear_Left_AttackUpdate_03(float _Time)
+{
+	spear->On();
+
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::LeftIdle);
+		return;
 	}
 
 
-	if (player->GetCurIndex() > 4)
+}
+
+void Player::Spear_Right_AttackUpdate_01(float _Time)
+{
+	WeaponManager(Spear_State::Spear_Right_02, PlayerState::Spear_Right_Attack_02, PlayerState::RightIdle);
+
+}
+
+void Player::Spear_Right_AttackUpdate_02(float _Time)
+{
+	WeaponManager(Spear_State::Spear_Right_03, PlayerState::Spear_Right_Attack_03, PlayerState::RightIdle);
+
+}
+
+void Player::Spear_Right_AttackUpdate_03(float _Time)
+{
+	spear->On();
+
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::RightIdle);
+		return;
+	}
+
+}
+
+void Player::Spear_Up_AttackUpdate_01(float _Time)
+{
+	WeaponManager(Spear_State::Spear_Up_02, PlayerState::Spear_Up_Attack_02, PlayerState::UpIdle);
+
+}
+
+void Player::Spear_Up_AttackUpdate_02(float _Time)
+{
+	WeaponManager(Spear_State::Spear_Up_03, PlayerState::Spear_Up_Attack_03, PlayerState::UpIdle);
+}
+
+void Player::Spear_Up_AttackUpdate_03(float _Time)
+{
+	spear->On();
+
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::UpIdle);
+		return;
+	}
+
+}
+
+void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerState _playstate)
+{
+	spear->On();
+
+
+	if (player->GetCurIndex() > 1)
 	{
 		if (GameEngineInput::IsDown('J'))
 		{
@@ -468,64 +673,23 @@ void Player::DownAttackUpdate_01(float _Time)
 		}
 	}
 
-	
-	if (AttackCheck ==true && player->IsCurAnimationEnd())
-	{
-		Sword = GetLevel()->CreateActor<Big_Sword>();
-		Sword->ChangeState(Big_Sword_State::BigSword_Down_02);
-		//Sword->SetStateValue(Big_Sword_State::BigSword_Down_02);
-		Sword->Off();
-		AttackCheck = false;
-		ChangeState(PlayerState::Down_Attack_02);
-	}
-
-	else if (player->IsCurAnimationEnd())
-	{
-		ChangeState(PlayerState::DownIdle);
-		return;
-	}
-
-}
-
-void Player::DownAttackUpdate_02(float _Time)
-{
-	Sword->On(); 
-
-	if (player->GetCurIndex() > 4)
-	{
-		if (GameEngineInput::IsDown('J'))
-		{
-		
-			AttackCheck = true; 
-		}
-	}
 
 	if (AttackCheck == true && player->IsCurAnimationEnd())
 	{
-		Sword = GetLevel()->CreateActor<Big_Sword>();
-		Sword->ChangeState(Big_Sword_State::BigSword_Down_03);
-		
+		spear = GetLevel()->CreateActor<Spear>();
+		spear->ChangeState(_SpearState);
+		spear->Off();
 		AttackCheck = false;
-		ChangeState(PlayerState::Down_Attack_03);
+		ChangeState(state);
+		return;
 	}
 
 	else if (player->IsCurAnimationEnd())
 	{
-		ChangeState(PlayerState::DownIdle);
+		ChangeState(_playstate);
 		return;
 	}
 
-	
-}
-
-void Player::DownAttackUpdate_03(float _Time)
-{
-	Sword->On();
-	if (player->IsCurAnimationEnd())
-	{
-		ChangeState(PlayerState::DownIdle);
-		return;
-	}
 
 }
 
