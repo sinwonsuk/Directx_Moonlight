@@ -26,8 +26,7 @@ void Player::AnimationCheck(const std::string_view& _AnimationName)
 
 void Player::Start()
 {
-	/*Sword = GetLevel()->CreateActor<Big_Sword>();
-	Sword->Off(); */
+	
 	this_Player = this;
 	{
 		// 줄줄이 사탕 식으로 만들려고.
@@ -74,7 +73,7 @@ void Player::Start()
 		player->SetAutoScaleRatio(2.0f);
 		player->ChangeAnimation("Start");
 		player->SetFrameEvent("Start", 34, std::bind(&Player::TestEvent, this, std::placeholders::_1));
-		//player->SetFrameEvent("DownAttack_01", 2, std::bind(&Player::BigSword_Down_Start, this, std::placeholders::_1));
+		
 	}
 
 	

@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Tutorial_Map_05.h"
-
+#include "BabySlime.h"
+#include <GameEngineCore/GameEngineLevel.h>
 TutorialMap_05::TutorialMap_05()
 {
 }
@@ -42,6 +43,10 @@ void TutorialMap_05::Start()
 		RightDoor->SetSprite("Door", 0);
 	}
 
+	
+
+	
+
 
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
@@ -59,6 +64,9 @@ void TutorialMap_05::Update(float _Delta)
 	{
 		return;
 	}
+
+	
+
 
 	DoorCollision(_Delta, Map_Number);
 }

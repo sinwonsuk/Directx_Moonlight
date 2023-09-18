@@ -163,6 +163,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BabySilme_State.cpp" />
+    <ClCompile Include="BabySlime.cpp" />
     <ClCompile Include="Spear_State.cpp" />
     <ClCompile Include="Spear.cpp" />
     <ClCompile Include="ContentsCore.cpp">
@@ -208,6 +210,7 @@
     <ClCompile Include="Tutorial_Map_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BabySlime.h" />
     <ClInclude Include="Spear.h" />
     <ClInclude Include="ContentsCore.h">
       <SubType>

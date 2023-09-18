@@ -119,10 +119,10 @@ private:
 
 	bool AttackCheck = false;
 
-	float StartSpeed = 10.0f;
+	float StartSpeed = 20.0f;
 	float Speed = 300.0f;
 	float Roll_Speed = 400.0f;
-	PlayerState StateValue = PlayerState::RightIdle;
+	PlayerState StateValue = PlayerState::Start;
 	std::shared_ptr<Spear> spear;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;
 	float4 GrivityForce = {0.0f, 0.0f, 0.0f, 1.0f};

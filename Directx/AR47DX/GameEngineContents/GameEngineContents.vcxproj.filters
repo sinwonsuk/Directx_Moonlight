@@ -31,6 +31,8 @@
     <ClCompile Include="Tutorial_Map_06.cpp" />
     <ClCompile Include="Spear.cpp" />
     <ClCompile Include="Spear_State.cpp" />
+    <ClCompile Include="BabySlime.cpp" />
+    <ClCompile Include="BabySilme_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -64,6 +66,7 @@
     <ClInclude Include="Tutorial_Map_05.h" />
     <ClInclude Include="Tutorial_Map_06.h" />
     <ClInclude Include="Spear.h" />
+    <ClInclude Include="BabySlime.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
