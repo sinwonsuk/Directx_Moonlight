@@ -1,4 +1,6 @@
 #pragma once
+#include <GameEngineCore/GameEngineActor.h>
+
 enum class BabySlime_State
 {
 	Walk,
@@ -40,23 +42,20 @@ public:
 		return StateValue;
 	}
 
-	void Move(float _Delta);
+	//void Move(float _Delta);
 
 	
-
-	std::shared_ptr<GameEngineCollision> Col;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 private:
-
 	float StartSpeed = 20.0f;
 	float Speed = 300.0f;
 	float Roll_Speed = 400.0f;
 	BabySlime_State StateValue = BabySlime_State::Walk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> babySlime; 
-	//std::shared_ptr<GameEngineCollision> Col;
+	std::shared_ptr<GameEngineCollision> Col;
 };
 

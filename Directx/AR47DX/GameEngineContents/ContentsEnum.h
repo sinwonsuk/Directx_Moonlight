@@ -27,4 +27,5 @@ enum class ContentsCollisionType
 	Player,
 	Monster,
 	Door, 
+	BabySlime,
 };

@@ -122,7 +122,7 @@ private:
 	float StartSpeed = 20.0f;
 	float Speed = 300.0f;
 	float Roll_Speed = 400.0f;
-	PlayerState StateValue = PlayerState::Start;
+	PlayerState StateValue = PlayerState::RightIdle;
 	std::shared_ptr<Spear> spear;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;
 	float4 GrivityForce = {0.0f, 0.0f, 0.0f, 1.0f};

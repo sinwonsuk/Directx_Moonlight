@@ -41,13 +41,21 @@ void BabySlime::Start()
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 
-	//babySlime->SetFrameEvent("Start", 34, std::bind(&Player::TestEvent, this, std::placeholders::_1));
+	
+
+	{
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::BabySlime);
+		Col->Transform.SetLocalScale({ 15.0f,15.0f });
+	}
+
 
 }
 
 
 void BabySlime::Update(float _Delta)
 {
+	
+		
 	UpdateState(_Delta); 
 }
 

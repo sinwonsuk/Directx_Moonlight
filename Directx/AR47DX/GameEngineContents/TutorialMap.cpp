@@ -8,7 +8,7 @@
 #include "TutorialLevel.h"
 #include "Player.h"
 #include "Object_jar.h"
-
+#include "BabySlime.h"
 TutorialMap::TutorialMap()
 {
 }
@@ -60,7 +60,49 @@ void TutorialMap::Start()
 		RightDoor->SetSprite("Door", 0);
 
 	}
-	
+
+	/*{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 300.0f,Transform.GetWorldPosition().Y + 100.0f });
+
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 250.0f,Transform.GetWorldPosition().Y + 70.0f });
+
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 320.0f,Transform.GetWorldPosition().Y - 30.0f });
+
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 280.0f,Transform.GetWorldPosition().Y + 200.0f });
+
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 320.0f,Transform.GetWorldPosition().Y - 100.0f });
+
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 300.0f,Transform.GetWorldPosition().Y - 70.0f });
+
+	}
+
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 340.0f,Transform.GetWorldPosition().Y - 200.0f });
+
+	}*/
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y});

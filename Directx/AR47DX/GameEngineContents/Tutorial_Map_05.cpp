@@ -46,12 +46,72 @@ void TutorialMap_05::Start()
 	
 
 	
+	/*{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+	}
 
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+	}*/
 
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 	Transform.AddLocalPosition({ 1280 * Map_Number ,0.0f });
+
+	
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X+300.0f,Transform.GetWorldPosition().Y+100.0f});
+	
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 250.0f,Transform.GetWorldPosition().Y + 70.0f });
+		
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 320.0f,Transform.GetWorldPosition().Y -30.0f });
+	
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 280.0f,Transform.GetWorldPosition().Y +200.0f });
+		
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 320.0f,Transform.GetWorldPosition().Y - 100.0f });
+	
+	}
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 300.0f,Transform.GetWorldPosition().Y - 70.0f });
+	
+	}
+
+
+	{
+		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 340.0f,Transform.GetWorldPosition().Y - 200.0f });
+	}
+
+
 
 	Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
 	Collision_Door->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
@@ -64,9 +124,12 @@ void TutorialMap_05::Update(float _Delta)
 	{
 		return;
 	}
-
 	
-
+	/*for (size_t i = 0; i < Slime.size(); i++)
+	{
+		Slime[i]->SetMove(true);
+	}
+*/
 
 	DoorCollision(_Delta, Map_Number);
 }

@@ -33,6 +33,10 @@
     <ClCompile Include="Spear_State.cpp" />
     <ClCompile Include="BabySlime.cpp" />
     <ClCompile Include="BabySilme_State.cpp" />
+    <ClCompile Include="golemturret.cpp" />
+    <ClCompile Include="golemturret_State.cpp" />
+    <ClCompile Include="golemturret_missile.cpp" />
+    <ClCompile Include="golemturret_missile_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -67,6 +71,8 @@
     <ClInclude Include="Tutorial_Map_06.h" />
     <ClInclude Include="Spear.h" />
     <ClInclude Include="BabySlime.h" />
+    <ClInclude Include="golemturret.h" />
+    <ClInclude Include="golemturret_missile.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

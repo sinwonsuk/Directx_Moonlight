@@ -141,7 +141,9 @@ void Player::Update(float _Delta)
 
 	float Speed = 100.0f;
 
-	
+	//GetLevel()->GetMainCamera()->Transform.SetLocalPosition(Transform.GetWorldPosition());
+	float4 WorldMousePos = GetLevel()->GetMainCamera()->GetWorldMousePos2D();
+	OutputDebugStringA(WorldMousePos.ToString("\n").c_str());
 
 
 
