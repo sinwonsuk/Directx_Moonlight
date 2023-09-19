@@ -50,12 +50,15 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	bool CollisionCheck = false;
 	float StartSpeed = 20.0f;
 	float Speed = 300.0f;
-	float Roll_Speed = 400.0f;
+	float Time = 0.0f;
 	BabySlime_State StateValue = BabySlime_State::Walk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> babySlime; 
+	std::shared_ptr<class GameEngineSpriteRenderer> Efffet;
 	std::shared_ptr<GameEngineCollision> Col;
+
 };
 

@@ -176,7 +176,10 @@ public:
 	{
 		return CurSprite;
 	}
-
+	inline unsigned int SetCurIndex(int _index)
+	{
+		return CurFrameAnimations->CurIndex = _index;
+	}
 	inline unsigned int GetCurIndex() const
 	{
 		return CurFrameAnimations->CurIndex;

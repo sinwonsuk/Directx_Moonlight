@@ -169,6 +169,7 @@
     <ClCompile Include="golemturret_missile.cpp" />
     <ClCompile Include="golemturret_missile_State.cpp" />
     <ClCompile Include="golemturret_State.cpp" />
+    <ClCompile Include="Monster_Manager.cpp" />
     <ClCompile Include="Spear_State.cpp" />
     <ClCompile Include="Spear.cpp" />
     <ClCompile Include="ContentsCore.cpp">
@@ -217,6 +218,7 @@
     <ClInclude Include="BabySlime.h" />
     <ClInclude Include="golemturret.h" />
     <ClInclude Include="golemturret_missile.h" />
+    <ClInclude Include="Monster_Manager.h" />
     <ClInclude Include="Spear.h" />
     <ClInclude Include="ContentsCore.h">
       <SubType>

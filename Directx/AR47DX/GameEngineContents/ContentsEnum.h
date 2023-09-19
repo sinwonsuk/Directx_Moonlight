@@ -12,6 +12,7 @@ enum class ContentsObjectType
 	BackGround,
 	Player,
 	Monster,
+	spear,
 };
 
 enum class TitleOrder
@@ -28,4 +29,5 @@ enum class ContentsCollisionType
 	Monster,
 	Door, 
 	BabySlime,
+	Spear, 
 };

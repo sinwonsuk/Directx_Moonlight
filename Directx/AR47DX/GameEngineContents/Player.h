@@ -107,8 +107,8 @@ public:
 
 
 
-
-	bool MoveCheck = false;
+	float Speed = 300.0f;
+	float Roll_Speed = 400.0f;
 
 	std::shared_ptr<GameEngineCollision> Col;
 protected:
@@ -120,8 +120,7 @@ private:
 	bool AttackCheck = false;
 
 	float StartSpeed = 20.0f;
-	float Speed = 300.0f;
-	float Roll_Speed = 400.0f;
+	
 	PlayerState StateValue = PlayerState::RightIdle;
 	std::shared_ptr<Spear> spear;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;

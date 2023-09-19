@@ -106,7 +106,7 @@ void Player::Update(float _Delta)
 
 	
 
-	//Col->Collision(ContentsCollisionType::Door, { 300.0f, 0.0f, 0.0f }, [](std::vector<std::shared_ptr<GameEngineCollision>>& _Collision){});
+	Col->Collision(ContentsCollisionType::Door, { 300.0f, 0.0f, 0.0f }, [](std::vector<std::shared_ptr<GameEngineCollision>>& _Collision){});
 
 	//if (xxxx 상황이 되면)
 	//{

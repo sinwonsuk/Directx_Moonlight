@@ -57,15 +57,16 @@ public:
 	void Up_Attack_Update_02(float _Time);
 	void Up_Attack_Update_03(float _Time);
 
-	void SetStateValue(const Spear_State& _StateValue)
+	Spear_State GetStateValue()
 	{
-		StateValue = _StateValue;
+		return StateValue;
 	}
 
 
 
 
 	bool tests = false;
+	std::shared_ptr<class GameEngineSpriteRenderer> spear;
 	std::shared_ptr<GameEngineCollision> Col;
 protected:
 	void Start() override;
@@ -76,7 +77,7 @@ private:
 	float Speed = 300.0f;
 	float Roll_Speed = 300.0f;
 	Spear_State StateValue = Spear_State::Spear_Down_01;
-	std::shared_ptr<class GameEngineSpriteRenderer> spear;
+	
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 
 	//std::shared_ptr<GameEngineCollision> Col;

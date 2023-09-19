@@ -16,7 +16,6 @@ void Player::ChangeState(PlayerState _State)
 		break;
 	case PlayerState::Start_Stop:
 		break;
-
 	case PlayerState::RightIdle:
 		AnimationCheck("RightIdle");
 		break;
@@ -557,7 +556,10 @@ void Player::Roll_DownUpdate(float _Time)
 
 void Player::Roll_UpUpdate(float _Time)
 {
-	Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+	
+		Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+	
+	
 
 	if (player->IsCurAnimationEnd())
 	{
@@ -699,8 +701,7 @@ void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerSt
 
 void Player::Move(float _Delta)
 {
-	if (MoveCheck == false)
-	{
+	
 		if (GameEngineInput::IsPress('A'))
 		{
 			Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
@@ -720,7 +721,7 @@ void Player::Move(float _Delta)
 		{
 			Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
 		}
-	}
+	
 }
 
 

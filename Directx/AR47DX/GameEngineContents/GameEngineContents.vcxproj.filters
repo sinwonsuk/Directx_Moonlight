@@ -37,6 +37,7 @@
     <ClCompile Include="golemturret_State.cpp" />
     <ClCompile Include="golemturret_missile.cpp" />
     <ClCompile Include="golemturret_missile_State.cpp" />
+    <ClCompile Include="Monster_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -73,6 +74,7 @@
     <ClInclude Include="BabySlime.h" />
     <ClInclude Include="golemturret.h" />
     <ClInclude Include="golemturret_missile.h" />
+    <ClInclude Include="Monster_Manager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
