@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Object_jar.h"
 #include "BabySlime.h"
+#include "golem_Wizard.h"
 TutorialMap::TutorialMap()
 {
 }
@@ -62,8 +63,7 @@ void TutorialMap::Start()
 	}
 
 	/*{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 300.0f,Transform.GetWorldPosition().Y + 100.0f });
+		
 
 	}
 
@@ -107,6 +107,8 @@ void TutorialMap::Start()
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y});
 
+	std::shared_ptr<golem_Wizard> Object = GetLevel()->CreateActor<golem_Wizard>();
+	Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y  });
 	
 	Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
 	Collision_Door->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });

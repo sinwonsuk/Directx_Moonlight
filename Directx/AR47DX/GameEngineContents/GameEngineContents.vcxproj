@@ -169,7 +169,9 @@
     <ClCompile Include="golemturret_missile.cpp" />
     <ClCompile Include="golemturret_missile_State.cpp" />
     <ClCompile Include="golemturret_State.cpp" />
+    <ClCompile Include="golem_Wizard.cpp" />
     <ClCompile Include="Monster_Manager.cpp" />
+    <ClCompile Include="Slime_Potal.cpp" />
     <ClCompile Include="Spear_State.cpp" />
     <ClCompile Include="Spear.cpp" />
     <ClCompile Include="ContentsCore.cpp">
@@ -213,12 +215,15 @@
     <ClCompile Include="Tutorial_Map_05.cpp" />
     <ClCompile Include="Tutorial_Map_06.cpp" />
     <ClCompile Include="Tutorial_Map_Manager.cpp" />
+    <ClCompile Include="Wizard_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BabySlime.h" />
     <ClInclude Include="golemturret.h" />
     <ClInclude Include="golemturret_missile.h" />
+    <ClInclude Include="golem_Wizard.h" />
     <ClInclude Include="Monster_Manager.h" />
+    <ClInclude Include="Slime_Potal.h" />
     <ClInclude Include="Spear.h" />
     <ClInclude Include="ContentsCore.h">
       <SubType>

@@ -72,7 +72,7 @@ void BabySlime::WalkUpdate(float _Time)
 		{
 			Transform.AddLocalPosition({ -Move.NormalizeReturn() * 150.0f * _Time });
 		}
-	 if (Col->Collision(ContentsCollisionType::BabySlime, { 5.0f,0.0f }))
+	  if (Col->Collision(ContentsCollisionType::BabySlime, { 5.0f,0.0f }))
 		{
 			Transform.AddLocalPosition({ -Move.NormalizeReturn() * 150.0f * _Time });
 		}

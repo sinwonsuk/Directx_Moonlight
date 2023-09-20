@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Tutorial_Map_06.h"
-
+#include "Slime_Potal.h"
+#include <GameEngineCore/GameEngineLevel.h>
+#include "Player.h"
 TutorialMap_06::TutorialMap_06()
 {
 }
@@ -12,6 +14,11 @@ TutorialMap_06::~TutorialMap_06()
 void TutorialMap_06::Start()
 {
 	Map_Number = 5;
+
+	
+
+
+
 
 	{
 
@@ -48,6 +55,20 @@ void TutorialMap_06::Start()
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 	Transform.AddLocalPosition({ 1280 * Map_Number ,0.0f });
 
+
+
+
+	/*{
+		std::shared_ptr<Slime_Potal> object = GetLevel()->CreateActor<Slime_Potal>();
+		object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 300.0f });
+	}
+
+	{
+		std::shared_ptr<Slime_Potal> object = GetLevel()->CreateActor<Slime_Potal>();
+		object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 300.0f });
+	}*/
+
+
 	Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
 	Collision_Door->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
 	Collision_Door->Transform.SetLocalScale({ 90.0f,120.0f,0.0f });
@@ -55,10 +76,19 @@ void TutorialMap_06::Start()
 
 void TutorialMap_06::Update(float _Delta)
 {
-	if (GetLevel()->GetCamera(0)->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number))
+	if (Player::this_Player->Transform.GetWorldPosition().X > 6500 && PlayerCheck ==false)
 	{
-		return;
+		{
+			std::shared_ptr<Slime_Potal> object = GetLevel()->CreateActor<Slime_Potal>();
+			object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 300.0f });
+		}
+
+		{
+			std::shared_ptr<Slime_Potal> object = GetLevel()->CreateActor<Slime_Potal>();
+			object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 300.0f });
+		}
+		PlayerCheck = true;
 	}
 
-	//DoorCollision(_Delta, Map_Number);
+	
 }

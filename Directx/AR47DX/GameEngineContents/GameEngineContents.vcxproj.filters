@@ -38,6 +38,9 @@
     <ClCompile Include="golemturret_missile.cpp" />
     <ClCompile Include="golemturret_missile_State.cpp" />
     <ClCompile Include="Monster_Manager.cpp" />
+    <ClCompile Include="Slime_Potal.cpp" />
+    <ClCompile Include="golem_Wizard.cpp" />
+    <ClCompile Include="Wizard_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -75,6 +78,8 @@
     <ClInclude Include="golemturret.h" />
     <ClInclude Include="golemturret_missile.h" />
     <ClInclude Include="Monster_Manager.h" />
+    <ClInclude Include="Slime_Potal.h" />
+    <ClInclude Include="golem_Wizard.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
