@@ -1,10 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
-#include <d3d11_4.h>
-#include <d3dcompiler.h>
-#include <DirectXPackedVector.h>
-#include <DirectXCollision.h>
 
 enum class golem_Wizard_State
 {

@@ -10,6 +10,7 @@
 #include "Object_jar.h"
 #include "BabySlime.h"
 #include "golem_Wizard.h"
+#include "golem_Solder.h"
 TutorialMap::TutorialMap()
 {
 }
@@ -106,7 +107,10 @@ void TutorialMap::Start()
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y});
-
+	{
+		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
+	}
 	std::shared_ptr<golem_Wizard> Object = GetLevel()->CreateActor<golem_Wizard>();
 	Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y  });
 	

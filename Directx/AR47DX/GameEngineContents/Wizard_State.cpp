@@ -193,7 +193,7 @@ void golem_Wizard::LeftMoveUpdate(float _Time)
 
 
 
-		if (300.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (200.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
 		{
 			ChangeState(golem_Wizard_State::LeftAttack);
 			return;
@@ -217,7 +217,7 @@ void golem_Wizard::RightMoveUpdate(float _Time)
 
 
 
-		if (300.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (200.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
 		{
 			ChangeState(golem_Wizard_State::RightAttack);
 			return;
@@ -242,7 +242,7 @@ void golem_Wizard::UpMoveUpdate(float _Time)
 
 
 
-		if (300.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (200.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
 		{
 			ChangeState(golem_Wizard_State::UpAttack);
 			return;
@@ -266,7 +266,7 @@ void golem_Wizard::DownMoveUpdate(float _Time)
 
 
 
-		if (300.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (200.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
 		{
 			ChangeState(golem_Wizard_State::DownAttack);
 			return;
@@ -277,14 +277,7 @@ void golem_Wizard::DownMoveUpdate(float _Time)
 
 void golem_Wizard::LeftAttackUpdate(float _Time)
 {
-	if (Wizard->GetCurIndex() > 4)
-	{
-		if (Wizard->GetCurIndex() < 8)
-		{
-			Transform.SetLocalPosition({ Transform.GetWorldPosition().X+1.0f , Transform.GetWorldPosition().Y});
-		}
-	}
-
+	
 
 	if (Wizard->IsCurAnimationEnd())
 	{
@@ -294,12 +287,7 @@ void golem_Wizard::LeftAttackUpdate(float _Time)
 		return; 
 
 		
-		/*else
-		{
-			Time = 0.0f;
-			Dir_Attack_Check_Update(_Time);
-
-		}*/
+	
 	}
 
 }
@@ -315,12 +303,6 @@ void golem_Wizard::RightAttackUpdate(float _Time)
 			return;
 		
 
-	/*	else
-		{
-			Time = 0.0f;
-			Dir_Attack_Check_Update(_Time);
-
-		}*/
 	}
 
 }
@@ -337,14 +319,8 @@ void golem_Wizard::UpAttackUpdate(float _Time)
 		
 			DirCheckUpdate(_Time);
 			return;
-		
-
-		/*else
-		{
-			Time = 0.0f;
-			Dir_Attack_Check_Update(_Time);
-
-		}*/
+	
+	
 	}
 
 }
@@ -360,12 +336,6 @@ void golem_Wizard::DownAttackUpdate(float _Time)
 			return;
 		
 
-		/*else
-		{
-			Time = 0.0f;
-			Dir_Attack_Check_Update(_Time);
-
-		}*/
 
 	}
 

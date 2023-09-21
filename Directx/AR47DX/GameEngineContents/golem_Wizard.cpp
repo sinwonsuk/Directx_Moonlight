@@ -1,12 +1,6 @@
 #include "PreCompile.h"
 #include "golem_Wizard.h"
 #include "Player.h"
-#include <math.h>
-
-#include <d3d11_4.h>
-#include <d3dcompiler.h>
-#include <DirectXPackedVector.h>
-#include <DirectXCollision.h>
 
 
 golem_Wizard::golem_Wizard()
@@ -29,7 +23,7 @@ void golem_Wizard::Start()
 	Wizard->CreateAnimation("golem_Wizard_Up_Attack", "golem_Wizard_Up_Attack", 0.1f, -1, -1, true);
 	Wizard->CreateAnimation("golem_Wizard_Up_Move", "golem_Wizard_Up_Move", 0.1f, -1, -1, true);
 
-	
+	Wizard->SetPivotType(PivotType::Bottom);
 
 	Wizard->AutoSpriteSizeOn();
 	Wizard->SetAutoScaleRatio(2.0f);
