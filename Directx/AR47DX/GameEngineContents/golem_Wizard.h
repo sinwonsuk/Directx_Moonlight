@@ -8,6 +8,7 @@
 
 enum class golem_Wizard_State
 {
+	Start,
 	LeftWalk,
 	RightWalk,
 	DownWalk,
@@ -54,6 +55,9 @@ public:
 	void UpAttackUpdate(float _Time);
 	void DownAttackUpdate(float _Time);
 
+	void DirCheckUpdate(float _Time);
+
+	void Dir_Attack_Check_Update(float _Time);
 	//void Move(float _Delta);
 
 
@@ -64,9 +68,9 @@ protected:
 
 private:
 	bool CollisionCheck = false;
-	float StartSpeed = 20.0f;
-	float Speed = 300.0f;
-	float Time = 0.0f;
+	float Speed = 100.0f;
+	float Time = 1.0f;
+	float degree = 0.0f;
 	golem_Wizard_State StateValue = golem_Wizard_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Wizard;
