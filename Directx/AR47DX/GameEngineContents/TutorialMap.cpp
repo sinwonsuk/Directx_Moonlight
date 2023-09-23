@@ -107,10 +107,10 @@ void TutorialMap::Start()
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y});
-	{
+	/*{
 		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
-	}
+	}*/
 	std::shared_ptr<golem_Wizard> Object = GetLevel()->CreateActor<golem_Wizard>();
 	Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y  });
 	

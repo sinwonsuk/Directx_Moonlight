@@ -13,7 +13,7 @@ enum class golem_Solder_State
 	RightAttack,
 	UpAttack,
 	LeftAttack,
-
+	AttackCheck, 
 
 };
 
@@ -63,10 +63,12 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	
 	bool CollisionCheck = false;
 	float Speed = 100.0f;
 	float Time = 1.0f;
 	float degree = 0.0f;
+	golem_Solder_State PrevStateValue;
 	golem_Solder_State StateValue = golem_Solder_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Solder;

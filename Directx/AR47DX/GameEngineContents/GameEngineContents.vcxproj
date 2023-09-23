@@ -171,6 +171,8 @@
     <ClCompile Include="golemturret_State.cpp" />
     <ClCompile Include="golem_Solder.cpp" />
     <ClCompile Include="Golem_Solder_State.cpp" />
+    <ClCompile Include="golem_Stone.cpp" />
+    <ClCompile Include="golem_Stone_State.cpp" />
     <ClCompile Include="golem_Wizard.cpp" />
     <ClCompile Include="Monster_Manager.cpp" />
     <ClCompile Include="Slime_Potal.cpp" />
@@ -224,6 +226,7 @@
     <ClInclude Include="golemturret.h" />
     <ClInclude Include="golemturret_missile.h" />
     <ClInclude Include="golem_Solder.h" />
+    <ClInclude Include="golem_Stone.h" />
     <ClInclude Include="golem_Wizard.h" />
     <ClInclude Include="Monster_Manager.h" />
     <ClInclude Include="Slime_Potal.h" />

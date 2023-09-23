@@ -39,7 +39,9 @@ void golem_Wizard::ChangeState(golem_Wizard_State _State)
 	case golem_Wizard_State::DownAttack:
 		AnimationCheck("golem_Wizard_Down_Attack");
 		break;
+	case golem_Wizard_State::AttackCheck:
 
+		break;
 	}
 
 }
@@ -76,7 +78,9 @@ void golem_Wizard::UpdateState(float _Time)
 	case golem_Wizard_State::DownAttack:
 		DownAttackUpdate(_Time);
 		break;
-
+	case golem_Wizard_State::AttackCheck:
+		Dir_Attack_Check_Update(_Time);
+		break;
 	default:
 		break;
 	}
@@ -137,7 +141,7 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree <= 45)
 		{
-			ChangeState(golem_Wizard_State::LeftAttack);
+			ChangeState(golem_Wizard_State::LeftWalk);
 			return;
 		}
 	}
@@ -145,7 +149,7 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree >= 315)
 		{
-			ChangeState(golem_Wizard_State::LeftAttack);
+			ChangeState(golem_Wizard_State::LeftWalk);
 			return;
 		}
 	}
@@ -153,7 +157,7 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 45)
 		{
-			ChangeState(golem_Wizard_State::UpAttack);
+			ChangeState(golem_Wizard_State::UpWalk);
 			return;
 		}
 	}
@@ -161,7 +165,7 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 135)
 		{
-			ChangeState(golem_Wizard_State::RightAttack);
+			ChangeState(golem_Wizard_State::RightWalk);
 			return;
 		}
 	}
@@ -169,7 +173,7 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 225)
 		{
-			ChangeState(golem_Wizard_State::DownAttack);
+			ChangeState(golem_Wizard_State::DownWalk);
 			return;
 		}
 	}
@@ -180,7 +184,7 @@ void golem_Wizard::LeftMoveUpdate(float _Time)
 {
 
 
-	DirCheckUpdate(_Time);
+
 
 
 	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -193,7 +197,7 @@ void golem_Wizard::LeftMoveUpdate(float _Time)
 
 
 
-		if (200.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (Col->Collision(ContentsCollisionType::Player))
 		{
 			ChangeState(golem_Wizard_State::LeftAttack);
 			return;
@@ -203,7 +207,7 @@ void golem_Wizard::LeftMoveUpdate(float _Time)
 
 void golem_Wizard::RightMoveUpdate(float _Time)
 {
-	DirCheckUpdate(_Time);
+	
 
 
 	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -217,7 +221,7 @@ void golem_Wizard::RightMoveUpdate(float _Time)
 
 
 
-		if (200.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (Col->Collision(ContentsCollisionType::Player))
 		{
 			ChangeState(golem_Wizard_State::RightAttack);
 			return;
@@ -228,8 +232,7 @@ void golem_Wizard::RightMoveUpdate(float _Time)
 void golem_Wizard::UpMoveUpdate(float _Time)
 {
 
-	DirCheckUpdate(_Time);
-
+	
 
 	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 	Move.Normalize();
@@ -242,7 +245,7 @@ void golem_Wizard::UpMoveUpdate(float _Time)
 
 
 
-		if (200.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (Col->Collision(ContentsCollisionType::Player))
 		{
 			ChangeState(golem_Wizard_State::UpAttack);
 			return;
@@ -252,7 +255,7 @@ void golem_Wizard::UpMoveUpdate(float _Time)
 
 void golem_Wizard::DownMoveUpdate(float _Time)
 {
-	DirCheckUpdate(_Time);
+	
 
 
 	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -266,7 +269,7 @@ void golem_Wizard::DownMoveUpdate(float _Time)
 
 
 
-		if (200.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (Col->Collision(ContentsCollisionType::Player))
 		{
 			ChangeState(golem_Wizard_State::DownAttack);
 			return;
@@ -283,7 +286,7 @@ void golem_Wizard::LeftAttackUpdate(float _Time)
 	{
 		Time = 0.0f;
 	
-		DirCheckUpdate(_Time);
+		ChangeState(golem_Wizard_State::AttackCheck);
 		return; 
 
 		
@@ -299,7 +302,7 @@ void golem_Wizard::RightAttackUpdate(float _Time)
 		Time = 0.0f;
 
 
-			DirCheckUpdate(_Time);
+		ChangeState(golem_Wizard_State::AttackCheck);
 			return;
 		
 
@@ -317,7 +320,7 @@ void golem_Wizard::UpAttackUpdate(float _Time)
 
 
 		
-			DirCheckUpdate(_Time);
+		ChangeState(golem_Wizard_State::AttackCheck);
 			return;
 	
 	
@@ -332,8 +335,8 @@ void golem_Wizard::DownAttackUpdate(float _Time)
 		Time = 0.0f;
 
 		
-			DirCheckUpdate(_Time);
-			return;
+		ChangeState(golem_Wizard_State::AttackCheck);
+		return;
 		
 
 

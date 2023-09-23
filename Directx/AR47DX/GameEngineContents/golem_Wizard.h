@@ -13,7 +13,7 @@ enum class golem_Wizard_State
 	RightAttack,
 	UpAttack,
 	LeftAttack, 
-
+	AttackCheck,
 
 };
 

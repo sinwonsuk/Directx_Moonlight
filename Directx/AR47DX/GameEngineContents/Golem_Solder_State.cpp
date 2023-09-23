@@ -2,7 +2,7 @@
 #include "PreCompile.h"
 #include "golem_Solder.h"
 #include "Player.h"
-
+	
 
 
 void golem_Solder::ChangeState(golem_Solder_State _State)
@@ -41,7 +41,9 @@ void golem_Solder::ChangeState(golem_Solder_State _State)
 	case golem_Solder_State::DownAttack:
 		AnimationCheck("GolemSolder_Attack_Down");
 		break;
-
+	case golem_Solder_State::AttackCheck:
+		
+		break;
 	}
 
 }
@@ -78,7 +80,9 @@ void golem_Solder::UpdateState(float _Time)
 	case golem_Solder_State::DownAttack:
 		DownAttackUpdate(_Time);
 		break;
-
+	case golem_Solder_State::AttackCheck:
+		Dir_Attack_Check_Update(_Time);
+		break;
 	default:
 		break;
 	}
@@ -86,6 +90,12 @@ void golem_Solder::UpdateState(float _Time)
 
 void golem_Solder::DirCheckUpdate(float _Time)
 {
+
+	
+
+
+	
+
 	if (degree >= 0)
 	{
 		if (degree <= 45)
@@ -106,6 +116,7 @@ void golem_Solder::DirCheckUpdate(float _Time)
 	{
 		if (degree > 45)
 		{
+
 			ChangeState(golem_Solder_State::UpWalk);
 			return;
 		}
@@ -139,7 +150,7 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree <= 45)
 		{
-			ChangeState(golem_Solder_State::LeftAttack);
+			ChangeState(golem_Solder_State::LeftWalk);
 			return;
 		}
 	}
@@ -147,7 +158,7 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree >= 315)
 		{
-			ChangeState(golem_Solder_State::LeftAttack);
+			ChangeState(golem_Solder_State::LeftWalk);
 			return;
 		}
 	}
@@ -155,7 +166,8 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 45)
 		{
-			ChangeState(golem_Solder_State::UpAttack);
+
+			ChangeState(golem_Solder_State::UpWalk);
 			return;
 		}
 	}
@@ -163,7 +175,7 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 135)
 		{
-			ChangeState(golem_Solder_State::RightAttack);
+			ChangeState(golem_Solder_State::RightWalk);
 			return;
 		}
 	}
@@ -171,10 +183,11 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 225)
 		{
-			ChangeState(golem_Solder_State::DownAttack);
+			ChangeState(golem_Solder_State::DownWalk);
 			return;
 		}
 	}
+
 
 }
 
@@ -182,7 +195,7 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 {
 
 
-	DirCheckUpdate(_Time);
+	
 
 
 	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -190,13 +203,15 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 
 	if (Time > 1.0f)
 	{
+
+		
+
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
 
-
-
-		if (50.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (Col->Collision(ContentsCollisionType::Player))
 		{
+			
 			ChangeState(golem_Solder_State::LeftAttack);
 			return;
 		}
@@ -205,7 +220,7 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 
 void golem_Solder::RightMoveUpdate(float _Time)
 {
-	DirCheckUpdate(_Time);
+	
 
 
 	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -214,12 +229,11 @@ void golem_Solder::RightMoveUpdate(float _Time)
 
 	if (Time > 1.0f)
 	{
+
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
 
-
-
-		if (50.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (Col->Collision(ContentsCollisionType::Player))
 		{
 			ChangeState(golem_Solder_State::RightAttack);
 			return;
@@ -230,21 +244,22 @@ void golem_Solder::RightMoveUpdate(float _Time)
 void golem_Solder::UpMoveUpdate(float _Time)
 {
 
-	DirCheckUpdate(_Time);
-
-
+	
 	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 	Move.Normalize();
 
 
 	if (Time > 1.0f)
 	{
+
+		
+
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
 
 
 
-		if (50.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (Col->Collision(ContentsCollisionType::Player))
 		{
 			ChangeState(golem_Solder_State::UpAttack);
 			return;
@@ -254,7 +269,7 @@ void golem_Solder::UpMoveUpdate(float _Time)
 
 void golem_Solder::DownMoveUpdate(float _Time)
 {
-	DirCheckUpdate(_Time);
+	
 
 
 	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -263,13 +278,15 @@ void golem_Solder::DownMoveUpdate(float _Time)
 
 	if (Time > 1.0f)
 	{
+		
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
 
 
 
-		if (50.0f > abs(Player::this_Player->Transform.GetWorldPosition().X - Transform.GetWorldPosition().X))
+		if (Col->Collision(ContentsCollisionType::Player))
 		{
+			
 			ChangeState(golem_Solder_State::DownAttack);
 			return;
 		}
@@ -279,17 +296,15 @@ void golem_Solder::DownMoveUpdate(float _Time)
 
 void golem_Solder::LeftAttackUpdate(float _Time)
 {
+	
 
 
 	if (Solder->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
-
-		DirCheckUpdate(_Time);
+	
+		ChangeState(golem_Solder_State::AttackCheck);
 		return;
-
-
-
 	}
 
 }
@@ -299,9 +314,8 @@ void golem_Solder::RightAttackUpdate(float _Time)
 	if (Solder->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
-
-
-		DirCheckUpdate(_Time);
+	
+		ChangeState(golem_Solder_State::AttackCheck);
 		return;
 
 
@@ -318,8 +332,7 @@ void golem_Solder::UpAttackUpdate(float _Time)
 		Time = 0.0f;
 
 
-
-		DirCheckUpdate(_Time);
+		ChangeState(golem_Solder_State::AttackCheck);
 		return;
 
 
@@ -333,8 +346,7 @@ void golem_Solder::DownAttackUpdate(float _Time)
 	{
 		Time = 0.0f;
 
-
-		DirCheckUpdate(_Time);
+		ChangeState(golem_Solder_State::AttackCheck);
 		return;
 
 

@@ -14,13 +14,13 @@ golem_Solder::~golem_Solder()
 void golem_Solder::Start()
 {
 	Solder = CreateComponent<GameEngineSpriteRenderer>(100);
-	Solder->CreateAnimation("GolemSolder_Attack_Down", "GolemSolder_Attack_Down", 0.1f, -1, -1, true);
+	Solder->CreateAnimation("GolemSolder_Attack_Down", "GolemSolder_Attack_Down", 0.1f, -1, -1, false);
 	Solder->CreateAnimation("GolemSoldier_Move_Down", "GolemSoldier_Move_Down", 0.1f, -1, -1, true);
-	Solder->CreateAnimation("GolemSolder_Attack_Left", "GolemSolder_Attack_Left", 0.1f, -1, -1, true);
+	Solder->CreateAnimation("GolemSolder_Attack_Left", "GolemSolder_Attack_Left", 0.1f, -1, -1, false);
 	Solder->CreateAnimation("GolemSoldier_Move_Left", "GolemSoldier_Move_Left", 0.1f, -1, -1, true);
-	Solder->CreateAnimation("GolemSolder_Attack_Right", "GolemSolder_Attack_Right", 0.1f, -1, -1, true);
+	Solder->CreateAnimation("GolemSolder_Attack_Right", "GolemSolder_Attack_Right", 0.1f, -1, -1, false);
 	Solder->CreateAnimation("GolemSoldier_Move_Right", "GolemSoldier_Move_Right", 0.1f, -1, -1, true);
-	Solder->CreateAnimation("GolemSolder_Attack_Up", "GolemSolder_Attack_Up", 1.0f, -1, -1, true);
+	Solder->CreateAnimation("GolemSolder_Attack_Up", "GolemSolder_Attack_Up", 0.1f, -1, -1, false);
 	Solder->CreateAnimation("GolemSoldier_Move_Up", "GolemSoldier_Move_Up", 0.1f, -1, -1, true);
 
 	//Solder->SetPivotType(PivotType::Bottom);
@@ -31,6 +31,13 @@ void golem_Solder::Start()
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
+	{
+		Col = CreateComponent<GameEngineCollision>();
+		Col->Transform.SetLocalScale({ 100.0f,100.0f }); 
+
+	}
+
+
 
 }
 
