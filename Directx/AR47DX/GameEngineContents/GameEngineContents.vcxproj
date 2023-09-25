@@ -176,6 +176,7 @@
     <ClCompile Include="golem_Wizard.cpp" />
     <ClCompile Include="Monster_Manager.cpp" />
     <ClCompile Include="Slime_Potal.cpp" />
+    <ClCompile Include="Spear_Effect.cpp" />
     <ClCompile Include="Spear_State.cpp" />
     <ClCompile Include="Spear.cpp" />
     <ClCompile Include="ContentsCore.cpp">
@@ -254,6 +255,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PreCompile.h" />
+    <ClInclude Include="Spear_Effect.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="TitleLevel.h">
       <SubType>

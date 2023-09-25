@@ -2,6 +2,7 @@
 #include "Spear.h"
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 #include "Player.h"
+
 Spear::Spear()
 {
 }
@@ -41,26 +42,36 @@ void Spear::Start()
 		//Sword->SetFrameEvent("BigSword_Down_01", 8, std::bind(&Big_Sword::TestEvent, this, std::placeholders::_1));
 	}
 	
-
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Spear);
-		Col->Transform.SetLocalScale({ 50.0f,50.0f });
+		Col->Transform.SetLocalScale({ 50.0f,20.0f });
 	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
+
+	/*{
+		ad = CreateComponent<GameEngineSpriteRenderer>(99);
+		ad->SetSprite("collision.png");
+		ad->AutoSpriteSizeOn();
+	}*/
+
+
 }
 
 
 void Spear::Update(float _Delta)
 {
 	
+	
+
+
 
 	UpdateState(_Delta);
 	
 	
 
-	//UpdateState(_Delta);
+	
 }
 
 void Spear::AnimationCheck(const std::string_view& _AnimationName)

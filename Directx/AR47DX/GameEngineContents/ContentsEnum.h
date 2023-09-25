@@ -29,5 +29,8 @@ enum class ContentsCollisionType
 	Monster,
 	Door, 
 	BabySlime,
+	GolemStone,
+	GolemSolder,
+	GolemWazard, 
 	Spear, 
 };

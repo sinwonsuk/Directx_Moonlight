@@ -1,7 +1,8 @@
 #include "PreCompile.h"
 #include "golem_Solder.h"
 #include "Player.h"
-
+#include <GameEngineCore/GameEngineLevel.h>
+#include "Spear_Effect.h"
 golem_Solder::golem_Solder()
 {
 
@@ -31,8 +32,9 @@ void golem_Solder::Start()
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
+
 	{
-		Col = CreateComponent<GameEngineCollision>();
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::GolemSolder);
 		Col->Transform.SetLocalScale({ 100.0f,100.0f }); 
 
 	}
@@ -43,6 +45,47 @@ void golem_Solder::Start()
 
 void golem_Solder::Update(float _Delta)
 {
+
+	EventParameter Event;
+
+	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		
+		/*test = true;
+		
+		a++;*/
+		
+	};
+
+	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		test = true;
+	};
+
+
+	Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		// 
+		//test = true;
+	
+	};
+
+	
+
+	
+	Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+
+	int b = a;
+	if (test == true)
+	{
+		std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
+		Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
+		test = false;
+	}
+
+
+
+
 	float4 Player = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 	float4 Monster = { -1,0,0 };
 	float Dot = float4::DotProduct3D(Player.NormalizeReturn(), Monster);

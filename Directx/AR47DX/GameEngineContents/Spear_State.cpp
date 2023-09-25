@@ -133,6 +133,12 @@ void Spear::Down_Attack_Update_01(float _Time)
 void Spear::Down_Attack_Update_02(float _Time)
 {
 
+
+	if (spear->IsCurAnimationEnd())
+	{
+		this->Death();
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 2.0f, Player::this_Player->Transform.GetWorldPosition().Y-20.0f });
@@ -145,16 +151,16 @@ void Spear::Down_Attack_Update_02(float _Time)
 
 
 
-
-	if (spear->IsCurAnimationEnd())
-	{
-		this->Death(); 
-	}
 }
 
 void Spear::Down_Attack_Update_03(float _Time)
 {
 	
+	if (spear->IsCurAnimationEnd())
+	{
+		this->Death();
+	}
+
 
 	if (spear->GetCurIndex() <= 1)
 	{
@@ -166,10 +172,7 @@ void Spear::Down_Attack_Update_03(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 2.0f, Player::this_Player->Transform.GetWorldPosition().Y - 70.0f });
 	}
 
-	if (spear->IsCurAnimationEnd())
-	{
-		this->Death();
-	}	
+	
 }
 
 void Spear::Left_Attack_Update_01(float _Time)
@@ -194,6 +197,11 @@ void Spear::Left_Attack_Update_01(float _Time)
 
 void Spear::Left_Attack_Update_02(float _Time)
 {
+	if (spear->IsCurAnimationEnd())
+	{
+		this->Death();
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
@@ -204,14 +212,18 @@ void Spear::Left_Attack_Update_02(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -60.0f, Player::this_Player->Transform.GetWorldPosition().Y });
 	}
 
-	if (spear->IsCurAnimationEnd())
-	{
-		this->Death();
-	}
+	
 }
 
 void Spear::Left_Attack_Update_03(float _Time)
 {
+
+
+	if (spear->IsCurAnimationEnd())
+	{
+		this->Death();
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
@@ -222,15 +234,16 @@ void Spear::Left_Attack_Update_03(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -70.0f, Player::this_Player->Transform.GetWorldPosition().Y  });
 	}
 
-
-	if (spear->IsCurAnimationEnd())
-	{
-		this->Death();
-	}
 }
 
 void Spear::Right_Attack_Update_01(float _Time)
 {
+
+	if (spear->IsCurAnimationEnd())
+	{
+		this->Death();
+
+	}
 	if (spear->GetCurIndex() <= 0)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
@@ -241,14 +254,16 @@ void Spear::Right_Attack_Update_01(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 60.0f, Player::this_Player->Transform.GetWorldPosition().Y });
 	}
 
-	if (spear->IsCurAnimationEnd())
-	{
-		this->Death();
-	}
+
 }
 
 void Spear::Right_Attack_Update_02(float _Time)
 {
+	if (spear->IsCurAnimationEnd())
+	{
+		this->Death();
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
@@ -259,14 +274,16 @@ void Spear::Right_Attack_Update_02(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 60.0f, Player::this_Player->Transform.GetWorldPosition().Y });
 	}
 
-	if (spear->IsCurAnimationEnd())
-	{
-		this->Death();
-	}
+
 }
 
 void Spear::Right_Attack_Update_03(float _Time)
 {
+	if (spear->IsCurAnimationEnd())
+	{
+		this->Death();
+
+	}
 	if (spear->GetCurIndex() <= 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
@@ -278,14 +295,16 @@ void Spear::Right_Attack_Update_03(float _Time)
 	}
 
 
-	if (spear->IsCurAnimationEnd())
-	{
-		this->Death();
-	}
+	
 }
 
 void Spear::Up_Attack_Update_01(float _Time)
 {
+	if (spear->IsCurAnimationEnd())
+	{
+		this->Death();
+
+	}
 	if (spear->GetCurIndex() <= 0)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 2.0f, Player::this_Player->Transform.GetWorldPosition().Y + 20.0f });
@@ -296,14 +315,16 @@ void Spear::Up_Attack_Update_01(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 2.0f, Player::this_Player->Transform.GetWorldPosition().Y + 60.0f });
 	}
 
-	if (spear->IsCurAnimationEnd())
-	{
-		this->Death();
-	}
+	
 }
 
 void Spear::Up_Attack_Update_02(float _Time)
 {
+	if (spear->IsCurAnimationEnd())
+	{
+		this->Death();
+
+	}
 	if (spear->GetCurIndex() <= 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 2.0f, Player::this_Player->Transform.GetWorldPosition().Y + 20.0f });
@@ -315,14 +336,15 @@ void Spear::Up_Attack_Update_02(float _Time)
 	}
 
 
-	if (spear->IsCurAnimationEnd())
-	{
-		this->Death();
-	}
 }
 
 void Spear::Up_Attack_Update_03(float _Time)
 {
+	if (spear->IsCurAnimationEnd())
+	{
+		this->Death();
+
+	}
 	if (spear->GetCurIndex() <= 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 2.0f, Player::this_Player->Transform.GetWorldPosition().Y + 20.0f });
@@ -332,8 +354,5 @@ void Spear::Up_Attack_Update_03(float _Time)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 2.0f, Player::this_Player->Transform.GetWorldPosition().Y + 70.0f });
 	}
-	if (spear->IsCurAnimationEnd())
-	{
-		this->Death();
-	}
+	
 }

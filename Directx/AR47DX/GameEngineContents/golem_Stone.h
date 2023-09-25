@@ -14,7 +14,10 @@ enum class golem_Stone_State
 	UpAttack,
 	LeftAttack,
 	AttackCheck,
-
+	LeftCollision, 
+	RightCollision,
+	UpCollision,
+	DownCollision,
 };
 
 class golem_Stone : public GameEngineActor
@@ -54,6 +57,14 @@ public:
 	void DirCheckUpdate(float _Time);
 
 	void Dir_Attack_Check_Update(float _Time);
+
+	void LeftCollisionUpdate(float _Time);
+	void RightCollisionUpdate(float _Time);
+	void DownCollisionUpdate(float _Time);
+	void UpCollisionUpdate(float _Time);
+
+	void CollisionStop(float _Delta, std::string_view _Name);
+	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 }, std::string_view _Name = {});
 	//void Move(float _Delta);
 
 

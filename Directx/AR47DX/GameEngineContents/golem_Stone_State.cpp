@@ -41,7 +41,19 @@ void golem_Stone::ChangeState(golem_Stone_State _State)
 		AnimationCheck("golemhead_cycle_down");
 		break;
 	case golem_Stone_State::AttackCheck:
-
+		
+		break;
+	case golem_Stone_State::LeftCollision:
+		AnimationCheck("golemhead_stunned_left");
+		break;
+	case golem_Stone_State::RightCollision:
+		AnimationCheck("golemhead_stunned_right");
+		break;
+	case golem_Stone_State::DownCollision:
+		AnimationCheck("golemhead_stunned_down");
+		break;
+	case golem_Stone_State::UpCollision:
+		AnimationCheck("golemhead_stunned_up");
 		break;
 	}
 
@@ -81,6 +93,18 @@ void golem_Stone::UpdateState(float _Time)
 		break;
 	case golem_Stone_State::AttackCheck:
 		Dir_Attack_Check_Update(_Time);
+		break;
+	case golem_Stone_State::LeftCollision:
+		LeftCollisionUpdate(_Time);
+		break;
+	case golem_Stone_State::RightCollision:
+		RightCollisionUpdate(_Time);
+		break;
+	case golem_Stone_State::DownCollision:
+		DownCollisionUpdate(_Time);
+		break;
+	case golem_Stone_State::UpCollision:
+		UpCollisionUpdate(_Time);
 		break;
 	default:
 		break;
@@ -189,6 +213,8 @@ void golem_Stone::Dir_Attack_Check_Update(float _Time)
 
 
 }
+
+
 
 void golem_Stone::LeftMoveUpdate(float _Time)
 {
@@ -328,6 +354,54 @@ void golem_Stone::DownAttackUpdate(float _Time)
 
 
 
+	if (Stone->IsCurAnimationEnd())
+	{
+		PlayerCheck = false;
+		Time = 0.0f;
+		ChangeState(golem_Stone_State::AttackCheck);
+		return;
+	}
+
+}
+
+
+void golem_Stone::LeftCollisionUpdate(float _Time)
+{
+	if (Stone->IsCurAnimationEnd())
+	{
+		PlayerCheck = false;
+		Time = 0.0f;
+		ChangeState(golem_Stone_State::AttackCheck);
+		return;
+	}
+
+
+}
+
+void golem_Stone::RightCollisionUpdate(float _Time)
+{
+	if (Stone->IsCurAnimationEnd())
+	{
+		PlayerCheck = false;
+		Time = 0.0f;
+		ChangeState(golem_Stone_State::AttackCheck);
+		return;
+	}
+}
+
+void golem_Stone::DownCollisionUpdate(float _Time)
+{
+	if (Stone->IsCurAnimationEnd())
+	{
+		PlayerCheck = false;
+		Time = 0.0f;
+		ChangeState(golem_Stone_State::AttackCheck);
+		return;
+	}
+}
+
+void golem_Stone::UpCollisionUpdate(float _Time)
+{
 	if (Stone->IsCurAnimationEnd())
 	{
 		PlayerCheck = false;

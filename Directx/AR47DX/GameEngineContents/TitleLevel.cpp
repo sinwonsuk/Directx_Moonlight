@@ -29,6 +29,7 @@ void TitleLevel::Start()
 
 		GameEngineSprite::CreateCut("TestPlayer.png", 6, 6);
 		GameEngineSprite::CreateCut("spearHitEffect_3.png", 3, 1);
+		GameEngineSprite::CreateSingle("collision.png");
 	}
 
 

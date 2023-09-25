@@ -194,6 +194,46 @@ void golem_Wizard::LeftMoveUpdate(float _Time)
 	{
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
+		if (degree >= 0)
+		{
+			if (degree <= 45)
+			{
+				ChangeState(golem_Wizard_State::LeftWalk);
+			
+			}
+		}
+		if (degree < 360)
+		{
+			if (degree >= 315)
+			{
+				ChangeState(golem_Wizard_State::LeftWalk);
+			
+			}
+		}
+		if (degree <= 135)
+		{
+			if (degree > 45)
+			{
+				ChangeState(golem_Wizard_State::UpWalk);
+			
+			}
+		}
+		if (degree <= 225)
+		{
+			if (degree > 135)
+			{
+				ChangeState(golem_Wizard_State::RightWalk);
+			
+			}
+		}
+		if (degree <= 315)
+		{
+			if (degree > 225)
+			{
+				ChangeState(golem_Wizard_State::DownWalk);
+			
+			}
+		}
 
 
 
@@ -219,7 +259,46 @@ void golem_Wizard::RightMoveUpdate(float _Time)
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
 
+		if (degree >= 0)
+		{
+			if (degree <= 45)
+			{
+				ChangeState(golem_Wizard_State::LeftWalk);
 
+			}
+		}
+		if (degree < 360)
+		{
+			if (degree >= 315)
+			{
+				ChangeState(golem_Wizard_State::LeftWalk);
+
+			}
+		}
+		if (degree <= 135)
+		{
+			if (degree > 45)
+			{
+				ChangeState(golem_Wizard_State::UpWalk);
+
+			}
+		}
+		if (degree <= 225)
+		{
+			if (degree > 135)
+			{
+				ChangeState(golem_Wizard_State::RightWalk);
+
+			}
+		}
+		if (degree <= 315)
+		{
+			if (degree > 225)
+			{
+				ChangeState(golem_Wizard_State::DownWalk);
+
+			}
+		}
 
 		if (Col->Collision(ContentsCollisionType::Player))
 		{
@@ -242,7 +321,46 @@ void golem_Wizard::UpMoveUpdate(float _Time)
 	{
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
+		if (degree >= 0)
+		{
+			if (degree <= 45)
+			{
+				ChangeState(golem_Wizard_State::LeftWalk);
 
+			}
+		}
+		if (degree < 360)
+		{
+			if (degree >= 315)
+			{
+				ChangeState(golem_Wizard_State::LeftWalk);
+
+			}
+		}
+		if (degree <= 135)
+		{
+			if (degree > 45)
+			{
+				ChangeState(golem_Wizard_State::UpWalk);
+
+			}
+		}
+		if (degree <= 225)
+		{
+			if (degree > 135)
+			{
+				ChangeState(golem_Wizard_State::RightWalk);
+
+			}
+		}
+		if (degree <= 315)
+		{
+			if (degree > 225)
+			{
+				ChangeState(golem_Wizard_State::DownWalk);
+
+			}
+		}
 
 
 		if (Col->Collision(ContentsCollisionType::Player))
@@ -266,7 +384,46 @@ void golem_Wizard::DownMoveUpdate(float _Time)
 	{
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
+		if (degree >= 0)
+		{
+			if (degree <= 45)
+			{
+				ChangeState(golem_Wizard_State::LeftWalk);
 
+			}
+		}
+		if (degree < 360)
+		{
+			if (degree >= 315)
+			{
+				ChangeState(golem_Wizard_State::LeftWalk);
+
+			}
+		}
+		if (degree <= 135)
+		{
+			if (degree > 45)
+			{
+				ChangeState(golem_Wizard_State::UpWalk);
+
+			}
+		}
+		if (degree <= 225)
+		{
+			if (degree > 135)
+			{
+				ChangeState(golem_Wizard_State::RightWalk);
+
+			}
+		}
+		if (degree <= 315)
+		{
+			if (degree > 225)
+			{
+				ChangeState(golem_Wizard_State::DownWalk);
+
+			}
+		}
 
 
 		if (Col->Collision(ContentsCollisionType::Player))

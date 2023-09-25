@@ -257,7 +257,7 @@ void Player::LeftIdleUpdate(float _Time)
 		return;
 	}
 
-	if (GameEngineInput::IsPress('J'))
+	if (GameEngineInput::IsDown('J'))
 	{
 		spear = GetLevel()->CreateActor<Spear>();
 		spear->Off();
@@ -339,7 +339,7 @@ void Player::UpIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-	if (GameEngineInput::IsPress('J'))
+	if (GameEngineInput::IsDown('J'))
 	{
 		spear = GetLevel()->CreateActor<Spear>();
 		spear->Off();
@@ -381,7 +381,7 @@ void Player::RightMoveUpdate(float _Time)
 		return;
 	}
 
-	if (GameEngineInput::IsPress('J'))
+	if (GameEngineInput::IsDown('J'))
 	{
 		spear = GetLevel()->CreateActor<Spear>();
 		spear->Off();
@@ -394,6 +394,8 @@ void Player::RightMoveUpdate(float _Time)
 		ChangeState(PlayerState::RollRight);
 		return;
 	}
+
+
 }
 
 void Player::LeftMoveUpdate(float _Time)
@@ -423,7 +425,7 @@ void Player::LeftMoveUpdate(float _Time)
 		return;
 	}
 
-	if (GameEngineInput::IsPress('J'))
+	if (GameEngineInput::IsDown('J'))
 	{
 		spear = GetLevel()->CreateActor<Spear>();
 		spear->Off();

@@ -45,6 +45,7 @@
     <ClCompile Include="Golem_Solder_State.cpp" />
     <ClCompile Include="golem_Stone.cpp" />
     <ClCompile Include="golem_Stone_State.cpp" />
+    <ClCompile Include="Spear_Effect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -86,6 +87,7 @@
     <ClInclude Include="golem_Wizard.h" />
     <ClInclude Include="golem_Solder.h" />
     <ClInclude Include="golem_Stone.h" />
+    <ClInclude Include="Spear_Effect.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

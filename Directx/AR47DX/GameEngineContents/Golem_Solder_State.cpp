@@ -202,7 +202,47 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 
 	if (Time > 1.0f)
 	{
+		if (degree >= 0)
+		{
+			if (degree <= 45)
+			{
+				ChangeState(golem_Solder_State::LeftWalk);
+			
+			}
+		}
+		if (degree < 360)
+		{
+			if (degree >= 315)
+			{
+				ChangeState(golem_Solder_State::LeftWalk);
+			
+			}
+		}
+		if (degree <= 135)
+		{
+			if (degree > 45)
+			{
 
+				ChangeState(golem_Solder_State::UpWalk);
+			
+			}
+		}
+		if (degree <= 225)
+		{
+			if (degree > 135)
+			{
+				ChangeState(golem_Solder_State::RightWalk);
+			
+			}
+		}
+		if (degree <= 315)
+		{
+			if (degree > 225)
+			{
+				ChangeState(golem_Solder_State::DownWalk);
+		
+			}
+		}
 		
 
 		Transform.AddLocalPosition(Move * Speed * _Time);
@@ -228,7 +268,47 @@ void golem_Solder::RightMoveUpdate(float _Time)
 
 	if (Time > 1.0f)
 	{
+		if (degree >= 0)
+		{
+			if (degree <= 45)
+			{
+				ChangeState(golem_Solder_State::LeftWalk);
 
+			}
+		}
+		if (degree < 360)
+		{
+			if (degree >= 315)
+			{
+				ChangeState(golem_Solder_State::LeftWalk);
+
+			}
+		}
+		if (degree <= 135)
+		{
+			if (degree > 45)
+			{
+
+				ChangeState(golem_Solder_State::UpWalk);
+
+			}
+		}
+		if (degree <= 225)
+		{
+			if (degree > 135)
+			{
+				ChangeState(golem_Solder_State::RightWalk);
+
+			}
+		}
+		if (degree <= 315)
+		{
+			if (degree > 225)
+			{
+				ChangeState(golem_Solder_State::DownWalk);
+
+			}
+		}
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
 
@@ -251,7 +331,47 @@ void golem_Solder::UpMoveUpdate(float _Time)
 	if (Time > 1.0f)
 	{
 
-		
+		if (degree >= 0)
+		{
+			if (degree <= 45)
+			{
+				ChangeState(golem_Solder_State::LeftWalk);
+
+			}
+		}
+		if (degree < 360)
+		{
+			if (degree >= 315)
+			{
+				ChangeState(golem_Solder_State::LeftWalk);
+
+			}
+		}
+		if (degree <= 135)
+		{
+			if (degree > 45)
+			{
+
+				ChangeState(golem_Solder_State::UpWalk);
+
+			}
+		}
+		if (degree <= 225)
+		{
+			if (degree > 135)
+			{
+				ChangeState(golem_Solder_State::RightWalk);
+
+			}
+		}
+		if (degree <= 315)
+		{
+			if (degree > 225)
+			{
+				ChangeState(golem_Solder_State::DownWalk);
+
+			}
+		}
 
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
@@ -277,7 +397,48 @@ void golem_Solder::DownMoveUpdate(float _Time)
 
 	if (Time > 1.0f)
 	{
-		
+		if (degree >= 0)
+		{
+			if (degree <= 45)
+			{
+				ChangeState(golem_Solder_State::LeftWalk);
+
+			}
+		}
+		if (degree < 360)
+		{
+			if (degree >= 315)
+			{
+				ChangeState(golem_Solder_State::LeftWalk);
+
+			}
+		}
+		if (degree <= 135)
+		{
+			if (degree > 45)
+			{
+
+				ChangeState(golem_Solder_State::UpWalk);
+
+			}
+		}
+		if (degree <= 225)
+		{
+			if (degree > 135)
+			{
+				ChangeState(golem_Solder_State::RightWalk);
+
+			}
+		}
+		if (degree <= 315)
+		{
+			if (degree > 225)
+			{
+				ChangeState(golem_Solder_State::DownWalk);
+
+			}
+		}
+
 		Transform.AddLocalPosition(Move * Speed * _Time);
 
 

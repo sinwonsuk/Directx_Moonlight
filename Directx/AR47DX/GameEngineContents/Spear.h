@@ -73,11 +73,13 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	std::shared_ptr<class GameEngineSpriteRenderer> ad;
 	float StartSpeed = 10.0f;
 	float Speed = 300.0f;
 	float Roll_Speed = 300.0f;
 	Spear_State StateValue = Spear_State::Spear_Down_01;
 	
+
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 
 	//std::shared_ptr<GameEngineCollision> Col;
