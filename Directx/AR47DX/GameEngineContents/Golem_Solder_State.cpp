@@ -1,4 +1,3 @@
-
 #include "PreCompile.h"
 #include "golem_Solder.h"
 #include "Player.h"

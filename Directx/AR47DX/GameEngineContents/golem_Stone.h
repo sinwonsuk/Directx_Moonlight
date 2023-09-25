@@ -63,10 +63,11 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-	bool CollisionCheck = false;
-	float Speed = 100.0f;
+	bool PlayerCheck = false;
+	float Speed = 500.0f;
 	float Time = 1.0f;
 	float degree = 0.0f;
+	float4 Dir = {};
 	golem_Stone_State StateValue = golem_Stone_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Stone;

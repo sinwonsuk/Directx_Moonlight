@@ -16,7 +16,7 @@ void golem_Stone::Start()
 	Stone->CreateAnimation("golemhead_cycle_left", "golemhead_cycle_left", 0.1f, -1, -1, true);
 	Stone->CreateAnimation("golemhead_cycle_right", "golemhead_cycle_right", 0.1f, -1, -1, true);
 	Stone->CreateAnimation("golemhead_cycle_up", "golemhead_cycle_up", 0.1f, -1, -1, true);
-	Stone->CreateAnimation("golemhead_prepare_down", "golemhead_prepare_down", 1.0f, -1, -1, true);
+	Stone->CreateAnimation("golemhead_prepare_down", "golemhead_prepare_down", 0.1f, -1, -1, true);
 	Stone->CreateAnimation("golemhead_prepare_left", "golemhead_prepare_left", 0.1f, -1, -1, true);
 	Stone->CreateAnimation("golemhead_prepare_right", "golemhead_prepare_right", 0.1f, -1, -1, true);
 	Stone->CreateAnimation("golemhead_prepare_up", "golemhead_prepare_up", 0.1f, -1, -1, true);
@@ -25,7 +25,7 @@ void golem_Stone::Start()
 
 	Stone->AutoSpriteSizeOn();
 	Stone->SetAutoScaleRatio(2.0f);
-	Stone->ChangeAnimation("golem_Wizard_Up_Move");
+	Stone->ChangeAnimation("golemhead_prepare_up");
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
