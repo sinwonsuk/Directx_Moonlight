@@ -25,13 +25,13 @@ void BabySlime::Start()
 	babySlime->SetAutoScaleRatio(2.0f);
 	babySlime->ChangeAnimation("babyslime_walk");
 
-	Efffet = CreateComponent<GameEngineSpriteRenderer>(100);
+	/*Efffet = CreateComponent<GameEngineSpriteRenderer>(100);
 
 	Efffet->CreateAnimation("spearHitEffect_3", "spearHitEffect_3.png", 0.1f, -1, -1, false);
 	Efffet->AutoSpriteSizeOn();
 	Efffet->SetAutoScaleRatio(0.7f);
 	Efffet->ChangeAnimation("spearHitEffect_3");
-	Efffet->Off(); 
+	Efffet->Off(); */
 
 	
 
@@ -56,7 +56,7 @@ void BabySlime::Update(float _Delta)
 	
 
 
-	Col->Collision(ContentsCollisionType::Spear, [this](std::vector<std::shared_ptr<GameEngineCollision>>& _Collision)
+	/*Col->Collision(ContentsCollisionType::Spear, [this](std::vector<std::shared_ptr<GameEngineCollision>>& _Collision)
 	{
 			
 				GameEngineActor* Object = _Collision[0]->GetActor();
@@ -116,7 +116,7 @@ void BabySlime::Update(float _Delta)
 				}
 			
 	});
-		
+		*/
 	
 
 

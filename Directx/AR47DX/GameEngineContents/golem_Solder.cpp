@@ -24,7 +24,7 @@ void golem_Solder::Start()
 	Solder->CreateAnimation("GolemSolder_Attack_Up", "GolemSolder_Attack_Up", 0.1f, -1, -1, false);
 	Solder->CreateAnimation("GolemSoldier_Move_Up", "GolemSoldier_Move_Up", 0.1f, -1, -1, true);
 
-	//Solder->SetPivotType(PivotType::Bottom);
+
 
 	Solder->AutoSpriteSizeOn();
 	Solder->SetAutoScaleRatio(2.0f);
@@ -39,43 +39,44 @@ void golem_Solder::Start()
 
 	}
 
-
-
-}
-
-void golem_Solder::Update(float _Delta)
-{
-
-	EventParameter Event;
-
+	
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
+		test = true;
+
+		GameEngineActor* Object = col->GetActor();
+		Spear* ptr = dynamic_cast<Spear*>(Object);
+		ptr->Col->Off();
 		
-		/*test = true;
 		
-		a++;*/
-		
+
+
 	};
 
 	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		test = true;
+		test = false;
 	};
 
 
 	Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 		// 
-		//test = true;
-	
+		test = false;
+
 	};
 
-	
+
+
 
 	
+
+}
+
+void golem_Solder::Update(float _Delta)
+{
 	Col->CollisionEvent(ContentsCollisionType::Spear, Event);
-
-	int b = a;
+	
 	if (test == true)
 	{
 		std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();

@@ -116,7 +116,7 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-
+	
 	bool AttackCheck = false;
 
 	float StartSpeed = 20.0f;

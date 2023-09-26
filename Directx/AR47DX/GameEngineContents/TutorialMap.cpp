@@ -132,9 +132,9 @@ void TutorialMap::Update(float _Delta)
 {
 	ObjectCollision(_Delta, "Tutorial_Map_Pixel.png");
 
-	if (GetLevel()->GetCamera(0)->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number))
+	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number))
 	{
-		return; 
+		return;
 	}
 
 

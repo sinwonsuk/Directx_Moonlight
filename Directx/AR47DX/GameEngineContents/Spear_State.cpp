@@ -110,6 +110,7 @@ void Spear::Down_Attack_Update_01(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 	}
 
@@ -136,6 +137,7 @@ void Spear::Down_Attack_Update_02(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 	}
 
@@ -158,6 +160,7 @@ void Spear::Down_Attack_Update_03(float _Time)
 	
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 	}
 
@@ -180,6 +183,7 @@ void Spear::Left_Attack_Update_01(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 	}
 
@@ -199,6 +203,7 @@ void Spear::Left_Attack_Update_02(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 	}
 
@@ -221,6 +226,7 @@ void Spear::Left_Attack_Update_03(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 	}
 
@@ -241,6 +247,7 @@ void Spear::Right_Attack_Update_01(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 
 	}
@@ -261,6 +268,7 @@ void Spear::Right_Attack_Update_02(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 	}
 
@@ -281,6 +289,7 @@ void Spear::Right_Attack_Update_03(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 
 	}
@@ -302,6 +311,7 @@ void Spear::Up_Attack_Update_01(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 
 	}
@@ -322,6 +332,7 @@ void Spear::Up_Attack_Update_02(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 
 	}
@@ -342,6 +353,7 @@ void Spear::Up_Attack_Update_03(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
+		Col = nullptr;
 		this->Death();
 
 	}

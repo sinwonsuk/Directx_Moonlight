@@ -82,7 +82,7 @@ void TutorialMap_04::Start()
 
 void TutorialMap_04::Update(float _Delta)
 {
-	if (GetLevel()->GetCamera(0)->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number))
+	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number))
 	{
 		return;
 	}

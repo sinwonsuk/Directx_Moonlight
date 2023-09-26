@@ -170,9 +170,9 @@ void Tutorial_Map_Manager::DoorCollision(float _Delta, float _MapNumber)
 	
 	float4 Camera_Move = float4::LerpClamp(0, 1280, _Delta); 
 
-	if (Player::this_Player->GetLevel()->GetCamera(0)->Transform.GetWorldPosition().X < 1280*(1.5 + _MapNumber) && Door_Collison_Check ==true)
+	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetWorldPosition().X < 1280*(1.5 + _MapNumber) && Door_Collison_Check ==true)
 	{
-		Player::this_Player->GetLevel()->GetCamera(0)->Transform.AddLocalPosition(Camera_Move);
+		Player::this_Player->GetLevel()->GetMainCamera()->Transform.AddLocalPosition(Camera_Move);
 	}
 
 }

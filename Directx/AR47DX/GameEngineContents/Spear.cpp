@@ -44,7 +44,7 @@ void Spear::Start()
 	
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Spear);
-		Col->Transform.SetLocalScale({ 50.0f,20.0f });
+		Col->Transform.SetWorldScale({ 50.0f,20.0f });
 	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();

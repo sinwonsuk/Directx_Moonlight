@@ -72,7 +72,7 @@ private:
 	golem_Solder_State StateValue = golem_Solder_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Solder;
-
+	EventParameter Event;
 	std::shared_ptr<GameEngineCollision> Col;
 
 };

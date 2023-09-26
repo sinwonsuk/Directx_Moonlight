@@ -214,7 +214,7 @@ void Player::RightIdleUpdate(float _Time)
 		return;
 	}
 
-	if (GameEngineInput::IsPress('J'))
+	if (GameEngineInput::IsDown('J'))
 	{
 		spear = GetLevel()->CreateActor<Spear>();
 		spear->Off(); 
