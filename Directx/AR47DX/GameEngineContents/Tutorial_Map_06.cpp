@@ -3,6 +3,9 @@
 #include "Slime_Potal.h"
 #include <GameEngineCore/GameEngineLevel.h>
 #include "Player.h"
+#include "golem_Wizard.h"
+#include "golem_Solder.h"
+#include "golem_Stone.h"
 TutorialMap_06::TutorialMap_06()
 {
 }
@@ -76,6 +79,23 @@ void TutorialMap_06::Start()
 
 void TutorialMap_06::Update(float _Delta)
 {
+	TimeCheck += _Delta; 
+
+
+	GameEngineRandom Random;
+
+    int Time = Random.RandomInt(1, 5);
+
+
+	int Monster = Random.RandomInt(0, 2);
+	
+	int MonsterMove = Random.RandomInt(0, 1);
+
+
+
+
+
+
 	if (Player::this_Player->Transform.GetWorldPosition().X > 6500 && PlayerCheck ==false)
 	{
 		{
@@ -91,4 +111,70 @@ void TutorialMap_06::Update(float _Delta)
 	}
 
 	
+
+		if (Time < TimeCheck && PlayerCheck ==true)
+		{
+
+			if (Monster == 0)
+			{
+				if (MonsterMove == 0)
+				{
+					std::shared_ptr<golem_Wizard> object = GetLevel()->CreateActor<golem_Wizard>();
+					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 250.0f });
+
+					TimeCheck = 0; 
+				}
+				if (MonsterMove == 1)
+				{
+					std::shared_ptr<golem_Wizard> object = GetLevel()->CreateActor<golem_Wizard>();
+					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 250.0f });
+
+					TimeCheck = 0;
+				}
+			}
+			if (Monster == 1)
+			{
+				if (MonsterMove == 0)
+				{
+					std::shared_ptr<golem_Solder> object = GetLevel()->CreateActor<golem_Solder>();
+					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 250.0f });
+
+					TimeCheck = 0;
+				}
+				if (MonsterMove == 1)
+				{
+					std::shared_ptr<golem_Solder> object = GetLevel()->CreateActor<golem_Solder>();
+					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 250.0f });
+
+					TimeCheck = 0;
+				}
+			}
+			if (Monster == 2)
+			{
+				if (MonsterMove == 0)
+				{
+					std::shared_ptr<golem_Stone> object = GetLevel()->CreateActor<golem_Stone>();
+					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 200.0f });
+
+					TimeCheck = 0;
+				}
+				if (MonsterMove == 1)
+				{
+					std::shared_ptr<golem_Stone> object = GetLevel()->CreateActor<golem_Stone>();
+					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 200.0f });
+
+					TimeCheck = 0;
+				}
+			}
+
+		}
+
+
+	
+
+
+
+
+
+
 }

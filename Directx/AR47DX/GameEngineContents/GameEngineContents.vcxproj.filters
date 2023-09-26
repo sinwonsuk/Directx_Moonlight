@@ -46,6 +46,9 @@
     <ClCompile Include="golem_Stone.cpp" />
     <ClCompile Include="golem_Stone_State.cpp" />
     <ClCompile Include="Spear_Effect.cpp" />
+    <ClCompile Include="Player_UI.cpp" />
+    <ClCompile Include="gloem_Wazard_Missile.cpp" />
+    <ClCompile Include="golem_Wazard_Missile_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -88,6 +91,8 @@
     <ClInclude Include="golem_Solder.h" />
     <ClInclude Include="golem_Stone.h" />
     <ClInclude Include="Spear_Effect.h" />
+    <ClInclude Include="Player_UI.h" />
+    <ClInclude Include="gloem_Wazard_Missile.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

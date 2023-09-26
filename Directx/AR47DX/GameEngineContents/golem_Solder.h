@@ -63,8 +63,7 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-	bool test = false;
-	bool CollisionCheck = false;
+	
 	float Speed = 100.0f;
 	float Time = 1.0f;
 	float degree = 0.0f;

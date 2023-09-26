@@ -1,11 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
-enum class Spear_Effect_State
-{
-	Effect
 
-};
 
 class Spear_Effect : public GameEngineActor
 {
@@ -25,10 +21,6 @@ public:
 
 
 
-	void ChangeState(Spear_Effect_State _State);
-	void UpdateState(float _Time);
-	void WalkUpdate(float _Time);
-	void AnimationCheck(const std::string_view& _AnimationName);
 
 
 	

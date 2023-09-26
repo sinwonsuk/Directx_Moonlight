@@ -1,7 +1,8 @@
 #include "PreCompile.h"
 #include "golem_Wizard.h"
 #include "Player.h"
-
+#include "gloem_Wazard_Missile.h"
+#include <GameEngineCore/GameEngineLevel.h>
 
 void golem_Wizard::ChangeState(golem_Wizard_State _State)
 {
@@ -92,6 +93,8 @@ void golem_Wizard::DirCheckUpdate(float _Time)
 	{
 		if (degree <= 45)
 		{
+
+
 			ChangeState(golem_Wizard_State::LeftWalk);
 			return; 
 		}
@@ -141,6 +144,10 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree <= 45)
 		{
+			std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
+			object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X - 30.0f,Transform.GetWorldPosition().Y });
+			object->Transform.SetLocalRotation({ 0.0f,0.0f,-90.0f });
+			object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 			ChangeState(golem_Wizard_State::LeftWalk);
 			return;
 		}
@@ -149,6 +156,10 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree >= 315)
 		{
+			std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
+			object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X - 30.0f,Transform.GetWorldPosition().Y });
+			object->Transform.SetLocalRotation({ 0.0f,0.0f,-90.0f });
+			object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 			ChangeState(golem_Wizard_State::LeftWalk);
 			return;
 		}
@@ -157,6 +168,11 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 45)
 		{
+			std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
+			object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 30.0f });
+			object->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
+			object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+
 			ChangeState(golem_Wizard_State::UpWalk);
 			return;
 		}
@@ -165,6 +181,11 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 135)
 		{
+			std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
+			object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 30.0f,Transform.GetWorldPosition().Y });
+			object->Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
+			object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+
 			ChangeState(golem_Wizard_State::RightWalk);
 			return;
 		}
@@ -173,6 +194,10 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 225)
 		{
+			std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
+			object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 30.0f });
+			object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+
 			ChangeState(golem_Wizard_State::DownWalk);
 			return;
 		}
@@ -441,6 +466,10 @@ void golem_Wizard::LeftAttackUpdate(float _Time)
 
 	if (Wizard->IsCurAnimationEnd())
 	{
+		/*std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
+		object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X-30.0f,Transform.GetWorldPosition().Y });
+		object->Transform.SetLocalRotation({0.0f,0.0f,-90.0f});
+		object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();*/
 		Time = 0.0f;
 	
 		ChangeState(golem_Wizard_State::AttackCheck);
@@ -458,7 +487,10 @@ void golem_Wizard::RightAttackUpdate(float _Time)
 	{
 		Time = 0.0f;
 
-
+		/*std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
+		object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 30.0f,Transform.GetWorldPosition().Y });
+		object->Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
+		object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();*/
 		ChangeState(golem_Wizard_State::AttackCheck);
 			return;
 		
@@ -472,7 +504,10 @@ void golem_Wizard::UpAttackUpdate(float _Time)
 	if (Wizard->IsCurAnimationEnd() )
 	{
 
-
+		/*std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
+		object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y+30.0f });
+		object->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
+		object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();*/
 		Time = 0.0f;
 
 
@@ -490,7 +525,9 @@ void golem_Wizard::DownAttackUpdate(float _Time)
 	if (Wizard->IsCurAnimationEnd() )
 	{
 		Time = 0.0f;
-
+		/*std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
+		object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 30.0f });
+		object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();*/
 		
 		ChangeState(golem_Wizard_State::AttackCheck);
 		return;

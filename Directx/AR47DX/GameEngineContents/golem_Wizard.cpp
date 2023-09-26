@@ -18,7 +18,7 @@ void golem_Wizard::Start()
 	Wizard->CreateAnimation("golem_Wizard_Down_Move", "golem_Wizard_Down_Move", 0.1f, -1, -1, true);
 	Wizard->CreateAnimation("golem_Wizard_Left_Attack", "golem_Wizard_Left_Attack", 0.1f, -1, -1, true);
 	Wizard->CreateAnimation("golem_Wizard_Left_Move", "golem_Wizard_Left_Move", 0.1f, -1, -1, true);
-	Wizard->CreateAnimation("golem_Wizard_Right_Attack", "golem_Wizard_Right_Attack", 1.0f, -1, -1, true);
+	Wizard->CreateAnimation("golem_Wizard_Right_Attack", "golem_Wizard_Right_Attack", 0.1f, -1, -1, true);
 	Wizard->CreateAnimation("golem_Wizard_Right_Move", "golem_Wizard_Right_Move", 0.1f, -1, -1, true);
 	Wizard->CreateAnimation("golem_Wizard_Up_Attack", "golem_Wizard_Up_Attack", 0.1f, -1, -1, true);
 	Wizard->CreateAnimation("golem_Wizard_Up_Move", "golem_Wizard_Up_Move", 0.1f, -1, -1, true);
@@ -36,7 +36,6 @@ void golem_Wizard::Start()
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::GolemWazard);
 		Col->Transform.SetLocalScale({ 300.0f,300.0f });
-
 	}
 
 

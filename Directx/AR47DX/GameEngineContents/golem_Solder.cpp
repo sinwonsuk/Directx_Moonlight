@@ -10,10 +10,12 @@ golem_Solder::golem_Solder()
 
 golem_Solder::~golem_Solder()
 {
+
 }
 
 void golem_Solder::Start()
 {
+
 	Solder = CreateComponent<GameEngineSpriteRenderer>(100);
 	Solder->CreateAnimation("GolemSolder_Attack_Down", "GolemSolder_Attack_Down", 0.1f, -1, -1, false);
 	Solder->CreateAnimation("GolemSoldier_Move_Down", "GolemSoldier_Move_Down", 0.1f, -1, -1, true);
@@ -42,10 +44,13 @@ void golem_Solder::Start()
 	
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		test = true;
+		{
+			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
+			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
+		}
 
-		GameEngineActor* Object = col->GetActor();
-		Spear* ptr = dynamic_cast<Spear*>(Object);
+		GameEngineActor* Actor = col->GetActor();
+		Spear* ptr = dynamic_cast<Spear*>(Actor);
 		ptr->Col->Off();
 		
 		
@@ -55,14 +60,14 @@ void golem_Solder::Start()
 
 	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		test = false;
+		
 	};
 
 
 	Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		// 
-		test = false;
+
+		
 
 	};
 
@@ -77,14 +82,6 @@ void golem_Solder::Update(float _Delta)
 {
 	Col->CollisionEvent(ContentsCollisionType::Spear, Event);
 	
-	if (test == true)
-	{
-		std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
-		Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
-		test = false;
-	}
-
-
 
 
 	float4 Player = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();

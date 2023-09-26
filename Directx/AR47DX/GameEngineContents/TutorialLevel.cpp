@@ -7,6 +7,7 @@
 #include "Tutorial_Map_05.h"
 #include "Tutorial_Map_06.h"
 #include "Player.h"
+#include "Player_UI.h"
 TutorialLevel::TutorialLevel()
 {
 
@@ -49,6 +50,10 @@ void TutorialLevel::Start()
 	{
 		std::shared_ptr<TutorialMap_06> Object = CreateActor<TutorialMap_06>();
 	}
+	{
+		std::shared_ptr<Player_UI> Object = CreateActor<Player_UI>();
+	}
+
 }
 
 void TutorialLevel::Update(float _Delta)

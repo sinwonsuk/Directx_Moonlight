@@ -2,6 +2,7 @@
 #include "Tutorial_Map_05.h"
 #include "BabySlime.h"
 #include <GameEngineCore/GameEngineLevel.h>
+
 TutorialMap_05::TutorialMap_05()
 {
 }
@@ -110,6 +111,13 @@ void TutorialMap_05::Start()
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 340.0f,Transform.GetWorldPosition().Y - 200.0f });
 	}
+
+
+
+
+
+
+
 
 
 
