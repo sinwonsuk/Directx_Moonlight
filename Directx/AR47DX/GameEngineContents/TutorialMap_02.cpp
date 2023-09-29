@@ -23,20 +23,12 @@ void TutorialMap_02::Start()
 		Scroll = CreateComponent<GameEngineSpriteRenderer>(0);
 		Scroll->SetSprite("Roll_Scroll.png");
 		Scroll->Transform.AddLocalPosition({ 0.0f,320.0f }); 
-		
-		//Scroll->SetAutoScaleRatio(2.0f);
-
-
-		//Scroll->SetImageScale({ 1380.0f,750.0f });
-
-
 	}
-	{
 
+	{
 		Map_floor_01 = CreateComponent<GameEngineSpriteRenderer>(0);
 		Map_floor_01->SetSprite("Tutorial_Floor_02", 0);
 		Map_floor_01->SetImageScale({ 1050.0f,552.0f });
-
 	}
 
 	{
