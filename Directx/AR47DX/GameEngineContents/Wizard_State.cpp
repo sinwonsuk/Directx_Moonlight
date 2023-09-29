@@ -148,6 +148,10 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 			object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X - 30.0f,Transform.GetWorldPosition().Y });
 			object->Transform.SetLocalRotation({ 0.0f,0.0f,-90.0f });
 			object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+
+
+
+
 			ChangeState(golem_Wizard_State::LeftWalk);
 			return;
 		}

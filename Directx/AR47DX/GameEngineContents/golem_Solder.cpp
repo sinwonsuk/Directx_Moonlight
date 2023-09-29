@@ -49,9 +49,9 @@ void golem_Solder::Start()
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 		}
 
-		GameEngineActor* Actor = col->GetActor();
+		/*GameEngineActor* Actor = col->GetActor();
 		Spear* ptr = dynamic_cast<Spear*>(Actor);
-		ptr->Col->Off();
+		ptr->Col->Off();*/
 		
 		
 
