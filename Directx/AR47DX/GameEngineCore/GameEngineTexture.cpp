@@ -9,7 +9,9 @@
 #endif
 
 const GameEngineColor GameEngineColor::RED = {255, 0, 0, 255 };
-
+const GameEngineColor GameEngineColor::AC = { 255, 0, 255, 255 };
+const GameEngineColor GameEngineColor::GREEN = { 0, 255, 0, 255 };
+const GameEngineColor GameEngineColor::BLUE = { 0, 0, 255, 255 };
 GameEngineTexture::GameEngineTexture() 
 {
 }
