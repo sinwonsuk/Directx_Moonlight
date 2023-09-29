@@ -27,7 +27,18 @@ void TutorialMap::Start()
 	/*{
 		std::shared_ptr<Object_jar> Object = GetLevel()->CreateActor<Object_jar>();
 	}*/
+	{
 
+		Scroll = CreateComponent<GameEngineSpriteRenderer>(100);
+		Scroll->CreateAnimation("Tutorial Scroll", "Tutorial Scroll", 0.1f, -1, -1, false);
+
+		Scroll->AutoSpriteSizeOn();
+		Scroll->SetAutoScaleRatio(2.0f);
+		Scroll->ChangeAnimation("Tutorial Scroll");
+
+		Scroll->AnimationPauseOn(); 
+		Scroll->Transform.AddLocalPosition({ 0.0f,320.0f });
+	}
 	
 	{
 
@@ -61,8 +72,11 @@ void TutorialMap::Start()
 		RightDoor->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
 		RightDoor->SetAutoScaleRatio(1.5f);
 		RightDoor->SetSprite("Door", 0);
-
 	}
+
+	
+
+
 
 	/*{
 		
@@ -112,10 +126,10 @@ void TutorialMap::Start()
 		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
 	}*/
-	{
+	/*{
 		std::shared_ptr<golem_Wizard> Object = GetLevel()->CreateActor<golem_Wizard>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
-	}
+	}*/
 	
 	//{
 	//	std::shared_ptr<golem_Stone> Object = GetLevel()->CreateActor<golem_Stone>();
@@ -130,6 +144,15 @@ void TutorialMap::Start()
 
 void TutorialMap::Update(float _Delta)
 {
+
+
+	if (Player::this_Player->GetPlayerStateValue() != PlayerState::Start)
+	{
+		Scroll->AnimationPauseOff();
+	}
+
+
+
 	ObjectCollision(_Delta, "Tutorial_Map_Pixel.png");
 
 	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number))

@@ -27,9 +27,9 @@ void TitleLevel::Start()
 			GameEngineTexture::Load(File.GetStringPath());
 		}
 
-		GameEngineSprite::CreateCut("TestPlayer.png", 6, 6);
+		
 		GameEngineSprite::CreateCut("spearHitEffect_3.png", 3, 1);
-		GameEngineSprite::CreateSingle("collision.png");
+	
 	}
 
 
@@ -48,22 +48,31 @@ void TitleLevel::Start()
 			GameEngineSprite::CreateFolder(Dir.GetStringPath());
 		}
 
-		GameEngineSprite::CreateSingle("Button_E.png");
-		GameEngineSprite::CreateSingle("Button_I.png");
-		GameEngineSprite::CreateSingle("Button_J.png");
-		GameEngineSprite::CreateSingle("Button_K.png");
-		GameEngineSprite::CreateSingle("Button_Space.png");
-		GameEngineSprite::CreateSingle("Button_Z.png");
-		GameEngineSprite::CreateSingle("Circle.png");
-		GameEngineSprite::CreateSingle("HealthBar_Base.png");
-		GameEngineSprite::CreateSingle("Heart.png");
-		GameEngineSprite::CreateSingle("Hp_Bar.png");
-		GameEngineSprite::CreateSingle("Pocket.png");
-		GameEngineSprite::CreateSingle("Bag.png");
-		GameEngineSprite::CreateSingle("Training_Spear.png");
-		GameEngineSprite::CreateSingle("MiniWill.png");
+		
+
 
 	}
+
+	GameEngineSprite::CreateSingle("Button_E.png");
+	GameEngineSprite::CreateSingle("Button_I.png");
+	GameEngineSprite::CreateSingle("Button_J.png");
+	GameEngineSprite::CreateSingle("Button_K.png");
+	GameEngineSprite::CreateSingle("Button_Space.png");
+	GameEngineSprite::CreateSingle("Button_Z.png");
+	GameEngineSprite::CreateSingle("Circle.png");
+	GameEngineSprite::CreateSingle("HealthBar_Base.png");
+	GameEngineSprite::CreateSingle("Heart.png");
+	GameEngineSprite::CreateSingle("Hp_Bar.png");
+	GameEngineSprite::CreateSingle("Pocket.png");
+	GameEngineSprite::CreateSingle("Bag.png");
+	GameEngineSprite::CreateSingle("Training_Spear.png");
+	GameEngineSprite::CreateSingle("MiniWill.png");
+
+	GameEngineSprite::CreateSingle("Attack_Roll_Scroll.png");
+	GameEngineSprite::CreateSingle("Cliff_Roll_Scroll.png");
+	GameEngineSprite::CreateSingle("Enemy_Roll_Scroll.png");
+	GameEngineSprite::CreateSingle("Portion_Roll_Scroll.png");
+	GameEngineSprite::CreateSingle("Roll_Scroll.png");
 
 
 
