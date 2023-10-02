@@ -66,7 +66,8 @@ public:
 	void CollisionStop(float _Delta, std::string_view _Name);
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 }, std::string_view _Name = {});
 	//void Move(float _Delta);
-
+	void MonsterPushUpdate(float _Delta);
+	void MonsterDir();
 
 protected:
 
@@ -78,13 +79,24 @@ private:
 	float Speed = 500.0f;
 	float Time = 1.0f;
 	float degree = 0.0f;
+
+
+	float PushSpeed = 300.0f;
+	float PushTime_Check = 0.0f;
+	float Hp = 100.0f;
+	bool Weapon_Collision_Check = false;
+
+
+
 	float4 Dir = {};
 	golem_Stone_State StateValue = golem_Stone_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Stone;
+	std::shared_ptr<class GameEngineSpriteRenderer> Monster_BaseBar;
+	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 
 	std::shared_ptr<GameEngineCollision> Col;
-
+	EventParameter Event;
 };
 
 

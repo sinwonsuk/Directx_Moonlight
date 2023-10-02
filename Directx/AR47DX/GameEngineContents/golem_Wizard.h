@@ -56,7 +56,8 @@ public:
 	void Dir_Attack_Check_Update(float _Time);
 	//void Move(float _Delta);
 
-
+	void MonsterPushUpdate(float _Delta);
+	void MonsterDir();
 protected:
 
 	void Start() override;
@@ -67,11 +68,21 @@ private:
 	float Speed = 100.0f;
 	float Time = 1.0f;
 	float degree = 0.0f;
+	float PushSpeed = 300.0f;
+
+	float4 MoveDir = {};
+	float PushTime_Check = 0.0f;
+	float Hp = 100.0f;
+	bool Weapon_Collision_Check = false;
+
 	golem_Wizard_State StateValue = golem_Wizard_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Wizard;
+	std::shared_ptr<class GameEngineSpriteRenderer> Monster_BaseBar;
+	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 
 	std::shared_ptr<GameEngineCollision> Col;
-
+	std::shared_ptr<GameEngineCollision> Body;
+	EventParameter Event;
 };
 

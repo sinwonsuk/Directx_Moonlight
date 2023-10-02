@@ -107,6 +107,7 @@ void Spear::UpdateState(float _Time)
 
 void Spear::Down_Attack_Update_01(float _Time)
 {
+	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
 	if (spear->IsCurAnimationEnd())
 	{
@@ -133,7 +134,7 @@ void Spear::Down_Attack_Update_01(float _Time)
 
 void Spear::Down_Attack_Update_02(float _Time)
 {
-
+	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
 	if (spear->IsCurAnimationEnd())
 	{
@@ -157,10 +158,11 @@ void Spear::Down_Attack_Update_02(float _Time)
 
 void Spear::Down_Attack_Update_03(float _Time)
 {
-	
+	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
+
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
+		
 		this->Death();
 	}
 
@@ -175,6 +177,10 @@ void Spear::Down_Attack_Update_03(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 2.0f, Player::this_Player->Transform.GetWorldPosition().Y - 70.0f });
 	}
 
+	if (spear->GetCurIndex() > 4)
+	{
+		Col->Off();
+	}
 	
 }
 
@@ -226,7 +232,6 @@ void Spear::Left_Attack_Update_03(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
 		this->Death();
 	}
 
@@ -238,6 +243,12 @@ void Spear::Left_Attack_Update_03(float _Time)
 	else if (spear->GetCurIndex() > 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -70.0f, Player::this_Player->Transform.GetWorldPosition().Y  });
+	}
+
+
+	if (spear->GetCurIndex() > 4)
+	{
+		Col->Off();
 	}
 
 }
@@ -289,7 +300,7 @@ void Spear::Right_Attack_Update_03(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
+		
 		this->Death();
 
 	}
@@ -303,8 +314,10 @@ void Spear::Right_Attack_Update_03(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 70.0f, Player::this_Player->Transform.GetWorldPosition().Y });
 	}
 
-
-	
+	if (spear->GetCurIndex() > 4)
+	{
+		Col->Off();
+	}
 }
 
 void Spear::Up_Attack_Update_01(float _Time)
@@ -353,7 +366,7 @@ void Spear::Up_Attack_Update_03(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
+		
 		this->Death();
 
 	}
@@ -367,4 +380,9 @@ void Spear::Up_Attack_Update_03(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 2.0f, Player::this_Player->Transform.GetWorldPosition().Y + 70.0f });
 	}
 	
+	if (spear->GetCurIndex() > 4)
+	{
+		Col->Off();
+	}
+
 }

@@ -26,9 +26,19 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Map_floor_01;
 	std::shared_ptr<class GameEngineSpriteRenderer> LeftDoor;
 	std::shared_ptr<class GameEngineSpriteRenderer> RightDoor;
+
+	std::shared_ptr<class GameEngineSpriteRenderer> OpenDoor;
+	std::shared_ptr<class GameEngineSpriteRenderer> CloseDoor;
+
+
+	std::shared_ptr<class GameEngineSpriteRenderer> Scroll_Attack;
+	std::shared_ptr<class GameEngineSpriteRenderer> Scroll_Portion;
 	std::shared_ptr<GameEngineCollision> Collision_Door;
+	std::vector<std::shared_ptr<class BabySlime>> Slimes;
 
-	std::vector<std::shared_ptr<class BabySlime>> Slime;
 
+	int Slime_Check = 0; 
+
+	//std::vector<std::shared_ptr<class BabySlime>> Slime;
 
 };

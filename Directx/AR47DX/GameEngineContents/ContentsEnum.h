@@ -32,5 +32,6 @@ enum class ContentsCollisionType
 	GolemStone,
 	GolemSolder,
 	GolemWazard, 
+	GolemWazard_Body,
 	Spear, 
 };

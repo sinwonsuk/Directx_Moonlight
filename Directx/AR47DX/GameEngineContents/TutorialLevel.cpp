@@ -28,7 +28,7 @@ void TutorialLevel::Start()
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
 	{
-		std::shared_ptr<Player> Object = CreateActor<Player>();
+		std::shared_ptr<Player> Object = CreateActor<Player>(-100);
 	}
 
 	{

@@ -42,22 +42,35 @@ public:
 		return StateValue;
 	}
 
+	float GetHp()
+	{
+		return Hp; 
+	}
+
 	//void Move(float _Delta);
 
-	
+	void MonsterPushUpdate(float _Delta);
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 private:
+	EventParameter Event;
 	bool CollisionCheck = false;
-	float StartSpeed = 20.0f;
 	float Speed = 300.0f;
-	float Time = 0.0f;
+	float Hp = 20.0f;
+
+	float PushTime_Check = 0.0f;
+	float PushSpeed = 300.0f;
+	bool Weapon_Collision_Check = false;
+
 	BabySlime_State StateValue = BabySlime_State::Walk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
+	std::shared_ptr<class GameEngineSpriteRenderer> Monster_BaseBar;
+	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
+
 	std::shared_ptr<class GameEngineSpriteRenderer> babySlime; 
-	std::shared_ptr<class GameEngineSpriteRenderer> Efffet;
 	std::shared_ptr<GameEngineCollision> Col;
 
 };

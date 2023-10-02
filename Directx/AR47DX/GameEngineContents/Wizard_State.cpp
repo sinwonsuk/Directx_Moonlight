@@ -209,6 +209,8 @@ void golem_Wizard::Dir_Attack_Check_Update(float _Time)
 
 }
 
+
+
 void golem_Wizard::LeftMoveUpdate(float _Time)
 {
 

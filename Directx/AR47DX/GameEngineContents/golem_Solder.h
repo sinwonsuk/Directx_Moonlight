@@ -54,8 +54,15 @@ public:
 	void DirCheckUpdate(float _Time);
 
 	void Dir_Attack_Check_Update(float _Time);
-	//void Move(float _Delta);
 
+	void MonsterPushUpdate(float _Delta);
+
+	float GetHp()
+	{
+		return Hp;
+	}
+	
+	void MonsterDir();
 
 protected:
 
@@ -63,15 +70,24 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-	
-	float Speed = 100.0f;
+	bool Collision_Check = false;
+	float Speed = 200.0f;
+	float PushSpeed = 300.0f;
+
 	float Time = 1.0f;
+	float PushTime_Check = 0.0f;
 	float degree = 0.0f;
-	int a = 0;
+	float Hp = 100.0f;
+	float4 MoveDir = {}; 
+
+	bool Weapon_Collision_Check = false;
+	
 	golem_Solder_State StateValue = golem_Solder_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Solder;
+	std::shared_ptr<class GameEngineSpriteRenderer> Monster_BaseBar;
+	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 	EventParameter Event;
 	std::shared_ptr<GameEngineCollision> Col;
-
+	
 };

@@ -21,6 +21,7 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	std::shared_ptr<class GameEngineSpriteRenderer> Scroll;
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;
 	std::shared_ptr<class GameEngineSpriteRenderer> Map_floor_01;
 	std::shared_ptr<class GameEngineSpriteRenderer> LeftDoor;

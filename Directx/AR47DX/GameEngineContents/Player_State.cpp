@@ -216,9 +216,8 @@ void Player::RightIdleUpdate(float _Time)
 
 	if (GameEngineInput::IsDown('J'))
 	{
-		spear = GetLevel()->CreateActor<Spear>();
-		spear->Off(); 
-		spear->ChangeState(Spear_State::Spear_Right_01);
+		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>(-100);
+		Object->ChangeState(Spear_State::Spear_Right_01);
 		ChangeState(PlayerState::Spear_Right_Attack_01);
 		return;
 	}
@@ -259,9 +258,8 @@ void Player::LeftIdleUpdate(float _Time)
 
 	if (GameEngineInput::IsDown('J'))
 	{
-		spear = GetLevel()->CreateActor<Spear>();
-		spear->Off();
-		spear->ChangeState(Spear_State::Spear_Left_01);
+		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
+		Object->ChangeState(Spear_State::Spear_Left_01);
 		ChangeState(PlayerState::Spear_Left_Attack_01);
 		return;
 	}
@@ -301,8 +299,7 @@ void Player::DownIdleUpdate(float _Time)
 
 	if (GameEngineInput::IsDown('J'))
 	{
-		spear = GetLevel()->CreateActor<Spear>();
-		spear->Off();
+		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		ChangeState(PlayerState::Spear_Down_Attack_01);
 		return;
 	}
@@ -341,9 +338,8 @@ void Player::UpIdleUpdate(float _Time)
 	}
 	if (GameEngineInput::IsDown('J'))
 	{
-		spear = GetLevel()->CreateActor<Spear>();
-		spear->Off();
-		spear->ChangeState(Spear_State::Spear_Up_01);
+		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
+		Object->ChangeState(Spear_State::Spear_Up_01);
 		ChangeState(PlayerState::Spear_Up_Attack_01);
 		return;
 	}
@@ -383,9 +379,8 @@ void Player::RightMoveUpdate(float _Time)
 
 	if (GameEngineInput::IsDown('J'))
 	{
-		spear = GetLevel()->CreateActor<Spear>();
-		spear->Off();
-		spear->ChangeState(Spear_State::Spear_Right_01);
+		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
+		Object->ChangeState(Spear_State::Spear_Right_01);
 		ChangeState(PlayerState::Spear_Right_Attack_01);
 		return;
 	}
@@ -427,9 +422,8 @@ void Player::LeftMoveUpdate(float _Time)
 
 	if (GameEngineInput::IsDown('J'))
 	{
-		spear = GetLevel()->CreateActor<Spear>();
-		spear->Off();
-		spear->ChangeState(Spear_State::Spear_Left_01);
+		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
+		Object->ChangeState(Spear_State::Spear_Left_01);
 		ChangeState(PlayerState::Spear_Left_Attack_01);
 		return;
 	}
@@ -468,8 +462,7 @@ void Player::DownMoveUpdate(float _Time)
 
 	if (GameEngineInput::IsDown('J'))
 	{
-		spear = GetLevel()->CreateActor<Spear>();
-		spear->Off();
+		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		ChangeState(PlayerState::Spear_Down_Attack_01);
 		return;
 	}
@@ -508,9 +501,8 @@ void Player::UpMoveUpdate(float _Time)
 
 	if (GameEngineInput::IsDown('J'))
 	{
-		spear = GetLevel()->CreateActor<Spear>();
-		spear->Off();
-		spear->ChangeState(Spear_State::Spear_Up_01);
+		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
+		Object->ChangeState(Spear_State::Spear_Up_01);
 		ChangeState(PlayerState::Spear_Up_Attack_01);
 		return;
 	}
@@ -582,7 +574,6 @@ void Player::Spear_Down_AttackUpdate_02(float _Time)
 
 void Player::Spear_Down_AttackUpdate_03(float _Time)
 {
-	spear->On();
 
 	if (player->IsCurAnimationEnd())
 	{
@@ -606,7 +597,6 @@ void Player::Spear_Left_AttackUpdate_02(float _Time)
 
 void Player::Spear_Left_AttackUpdate_03(float _Time)
 {
-	spear->On();
 
 	if (player->IsCurAnimationEnd())
 	{
@@ -631,7 +621,6 @@ void Player::Spear_Right_AttackUpdate_02(float _Time)
 
 void Player::Spear_Right_AttackUpdate_03(float _Time)
 {
-	spear->On();
 
 	if (player->IsCurAnimationEnd())
 	{
@@ -654,7 +643,6 @@ void Player::Spear_Up_AttackUpdate_02(float _Time)
 
 void Player::Spear_Up_AttackUpdate_03(float _Time)
 {
-	spear->On();
 
 	if (player->IsCurAnimationEnd())
 	{
@@ -666,7 +654,7 @@ void Player::Spear_Up_AttackUpdate_03(float _Time)
 
 void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerState _playstate)
 {
-	spear->On();
+	
 
 
 	if (player->GetCurIndex() > 1)
@@ -680,9 +668,8 @@ void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerSt
 
 	if (AttackCheck == true && player->IsCurAnimationEnd())
 	{
-		spear = GetLevel()->CreateActor<Spear>();
-		spear->ChangeState(_SpearState);
-		spear->Off();
+		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
+		Object->ChangeState(_SpearState);
 		AttackCheck = false;
 		ChangeState(state);
 		return;

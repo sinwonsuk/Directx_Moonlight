@@ -44,11 +44,11 @@ void Spear::Start()
 	
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Spear);
-		Col->Transform.SetWorldScale({ 50.0f,20.0f });
+		Col->Transform.SetWorldScale({ 100.0f,20.0f });
 	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
+	Transform.SetLocalPosition({ HalfWindowScale.X+10000.0f, -HalfWindowScale.Y, -500.0f });
 
 	/*{
 		ad = CreateComponent<GameEngineSpriteRenderer>(99);
@@ -64,7 +64,7 @@ void Spear::Update(float _Delta)
 {
 	
 	
-
+	Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X , Player::this_Player->Transform.GetWorldPosition().Y });
 
 
 	UpdateState(_Delta);

@@ -2,7 +2,7 @@
 #include "Tutorial_Map_05.h"
 #include "BabySlime.h"
 #include <GameEngineCore/GameEngineLevel.h>
-
+#include "Player.h"
 TutorialMap_05::TutorialMap_05()
 {
 }
@@ -42,27 +42,46 @@ void TutorialMap_05::Start()
 		RightDoor->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
 		RightDoor->SetAutoScaleRatio(1.5f);
 		RightDoor->SetSprite("Door", 0);
+		RightDoor->On(); 
+	}
+
+	{
+		CloseDoor = CreateComponent<GameEngineSpriteRenderer>(0);
+		CloseDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
+		CloseDoor->AutoSpriteSizeOn();
+		CloseDoor->SetAutoScaleRatio(1.4f);
+		CloseDoor->ChangeAnimation("Close_Door");
+		CloseDoor->Transform.AddLocalRotation({ 0.0f,0.0f,-90.0f });
+		CloseDoor->Transform.AddLocalPosition({ 535.0f,25.0f,0.0f });
+		CloseDoor->Off(); 
+	}
+
+	{
+		OpenDoor = CreateComponent<GameEngineSpriteRenderer>(0);
+		OpenDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
+		OpenDoor->AutoSpriteSizeOn();
+		OpenDoor->SetAutoScaleRatio(1.4f);
+		OpenDoor->ChangeAnimation("Open_Door");
+		OpenDoor->Transform.AddLocalRotation({ 0.0f,0.0f,-90.0f });
+		OpenDoor->Transform.AddLocalPosition({ 535.0f,25.0f,0.0f });
+		OpenDoor->Off();
+	}
+
+
+	
+	{
+		Scroll_Attack = CreateComponent<GameEngineSpriteRenderer>(0);
+		Scroll_Attack->SetSprite("Attack_Roll_Scroll.png");
+		Scroll_Attack->Transform.AddLocalPosition({ -200.0f,320.0f });
+	}
+	
+	{
+		Scroll_Portion = CreateComponent<GameEngineSpriteRenderer>(0);
+		Scroll_Portion->SetSprite("Portion_Roll_Scroll.png");
+		Scroll_Portion->Transform.AddLocalPosition({ 200.0f,320.0f });
 	}
 
 	
-
-	
-	/*{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-	}
-
-	{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-	}
-
-	{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-	}
-
-	{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-	}*/
-
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
@@ -71,38 +90,40 @@ void TutorialMap_05::Start()
 	
 
 	{
+		
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X+300.0f,Transform.GetWorldPosition().Y+100.0f});
-	
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X+300.0f,Transform.GetWorldPosition().Y+100.0f});	
+		Slimes.push_back(Object);
 	}
 
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 250.0f,Transform.GetWorldPosition().Y + 70.0f });
-		
+		Slimes.push_back(Object);
 	}
 
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 320.0f,Transform.GetWorldPosition().Y -30.0f });
-	
+		Slimes.push_back(Object);
 	}
 
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 280.0f,Transform.GetWorldPosition().Y +200.0f });
-		
+		Slimes.push_back(Object);
 	}
 
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 320.0f,Transform.GetWorldPosition().Y - 100.0f });
-	
+		Slimes.push_back(Object);
 	}
 
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 300.0f,Transform.GetWorldPosition().Y - 70.0f });
+		Slimes.push_back(Object);
 	
 	}
 
@@ -110,6 +131,7 @@ void TutorialMap_05::Start()
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 340.0f,Transform.GetWorldPosition().Y - 200.0f });
+		Slimes.push_back(Object);
 	}
 
 
@@ -124,10 +146,34 @@ void TutorialMap_05::Start()
 	Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
 	Collision_Door->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
 	Collision_Door->Transform.SetLocalScale({ 90.0f,120.0f,0.0f });
+	Collision_Door->Off(); 
 }
 
 void TutorialMap_05::Update(float _Delta)
 {
+
+	if (Player::this_Player->Transform.GetWorldPosition().X > 5550 )
+	{
+		CloseDoor->On(); 
+	}
+	for (size_t i = 0; i < Slimes.size(); i++)
+	{
+		if (Slimes[i]->GetHp() <= 0)
+		{
+			++Slime_Check; 
+		}
+	}
+
+	if (Slime_Check == 7)
+	{
+		OpenDoor->On();
+		CloseDoor->Off(); 
+		Collision_Door->On(); 
+	}
+
+	Slime_Check = 0; 
+
+
 	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number))
 	{
 		return;

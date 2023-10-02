@@ -18,7 +18,6 @@ void TutorialMap_04::Start()
 		BackGround = CreateComponent<GameEngineSpriteRenderer>(0);
 		BackGround->SetSprite("Tutorial_BackGround", 1);
 		BackGround->SetImageScale({ 1380.0f,750.0f });
-
 	}
 
 	{
@@ -26,6 +25,14 @@ void TutorialMap_04::Start()
 		Map_floor_01->SetSprite("Tutorial_Floor_04", 0);
 		Map_floor_01->SetImageScale({ 1050.0f,552.0f });
 	}
+
+	{
+		Scroll = CreateComponent<GameEngineSpriteRenderer>(0);
+		Scroll->SetSprite("Enemy_Roll_Scroll.png");
+		Scroll->Transform.AddLocalPosition({ 0.0f,320.0f }); 
+	}
+
+	
 
 	{
 		LeftDoor = CreateComponent<GameEngineSpriteRenderer>(0);
