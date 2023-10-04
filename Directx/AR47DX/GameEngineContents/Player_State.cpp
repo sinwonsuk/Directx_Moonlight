@@ -691,24 +691,75 @@ void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerSt
 void Player::Move(float _Delta)
 {
 	
-		if (GameEngineInput::IsPress('A'))
+		if (CameraCheck == false)
 		{
-			Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+			if (GameEngineInput::IsPress('A'))
+			{
+				Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+			}
+
+			if (GameEngineInput::IsPress('D'))
+			{
+				Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+			}
+
+			if (GameEngineInput::IsPress('W'))
+			{
+				Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+			}
+
+			if (GameEngineInput::IsPress('S'))
+			{
+				Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+			}
+
+
 		}
 
-		if (GameEngineInput::IsPress('D'))
+		if (CameraCheck == true)
 		{
-			Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-		}
 
-		if (GameEngineInput::IsPress('W'))
-		{
-			Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-		}
+			if (GameEngineInput::IsPress('A'))
+			{
+				Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
 
-		if (GameEngineInput::IsPress('S'))
-		{
-			Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+				if (Transform.GetLocalPosition().X > -15 && Transform.GetLocalPosition().X < 1294)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+				}
+			}
+
+			if (GameEngineInput::IsPress('D'))
+			{
+				Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+				if (Transform.GetLocalPosition().X < 1294 && Transform.GetLocalPosition().X > -15)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+				}
+			
+			}
+
+			if (GameEngineInput::IsPress('W'))
+			{
+				Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+
+				if (Transform.GetLocalPosition().Y < 346 && Transform.GetLocalPosition().Y > -1054)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+				}
+				
+			}
+
+			if (GameEngineInput::IsPress('S'))
+			{
+				Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+
+				if (Transform.GetLocalPosition().Y > -1054 && Transform.GetLocalPosition().Y < 346)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+				}		
+			}
+
 		}
 	
 }

@@ -4,7 +4,7 @@
 #include <GameEngineCore/GameEngineTexture.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineLevel.h>
-#include "PlayMap.h"
+#include "TownMap.h"
 #include "Monster.h"
 #include "ContentsEnum.h"
 
@@ -79,7 +79,7 @@ void Player::Start()
 	
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Player);
-		Col->Transform.SetLocalScale({ -100.0f, 100.0f, 1.0f });
+		Col->Transform.SetLocalScale({ 100.0f, 100.0f, 1.0f });
 	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
@@ -104,7 +104,7 @@ void Player::Update(float _Delta)
 	// 몬스터가 몬스터랑 충돌하고 싶으면?
 	// 내 미래의 위치
 
-	
+	TransformData date = Transform.GetConstTransformDataRef();
 
 	Col->Collision(ContentsCollisionType::Door, { 300.0f, 0.0f, 0.0f }, [](std::vector<std::shared_ptr<GameEngineCollision>>& _Collision){});
 

@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "PlayLevel.h"
 #include "Player.h"
-#include "PlayMap.h"
+#include "TownMap.h"
 #include "Monster.h"
 
 PlayLevel::PlayLevel() 
@@ -22,6 +22,8 @@ void PlayLevel::Start()
 	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f});
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
+	
+
 
 	/*{
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
@@ -41,15 +43,16 @@ void PlayLevel::Start()
 		//std::shared_ptr<PlayMap> Object3 = CreateActor<PlayMap>(ContentsObjectType::Monster);
 	}
 
-	{
+	/*{
 		std::shared_ptr<PlayMap> Object = CreateActor<PlayMap>(ContentsObjectType::BackGround);
 		Map = Object;
-	}
+	}*/
 
 }
 
 void PlayLevel::Update(float _Delta)
 {
+	Player::this_Player->CameraCheck = true;
 	//static float Time = 0.0f;
 	//Time += _Delta;
 

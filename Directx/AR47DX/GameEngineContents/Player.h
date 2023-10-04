@@ -106,11 +106,12 @@ public:
 	void Move(float _Delta);
 
 
-
+	// ¾ðÁ¨°£ ¹Ù²Û´Ù 
 	float Speed = 300.0f;
 	float Roll_Speed = 400.0f;
-
+	bool CameraCheck = false;
 	std::shared_ptr<GameEngineCollision> Col;
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;

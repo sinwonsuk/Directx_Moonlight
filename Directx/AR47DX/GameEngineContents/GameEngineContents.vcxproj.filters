@@ -12,7 +12,7 @@
     <ClCompile Include="TitleLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
-    <ClCompile Include="PlayMap.cpp">
+    <ClCompile Include="TownMap.cpp">
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
@@ -49,6 +49,9 @@
     <ClCompile Include="Player_UI.cpp" />
     <ClCompile Include="gloem_Wazard_Missile.cpp" />
     <ClCompile Include="golem_Wazard_Missile_State.cpp" />
+    <ClCompile Include="WorldLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -62,7 +65,7 @@
     <ClInclude Include="TitleLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
-    <ClInclude Include="PlayMap.h">
+    <ClInclude Include="TownMap.h">
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
@@ -93,6 +96,9 @@
     <ClInclude Include="Spear_Effect.h" />
     <ClInclude Include="Player_UI.h" />
     <ClInclude Include="gloem_Wazard_Missile.h" />
+    <ClInclude Include="WorldLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
