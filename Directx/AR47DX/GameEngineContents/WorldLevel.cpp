@@ -25,9 +25,9 @@ void WorldLevel::Start()
 	{
 		std::shared_ptr<TownMap> Object = CreateActor<TownMap>(ContentsObjectType::BackGround);
 	}
-	//{
-	//	std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
-	//}
+	/*{
+		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
+	}*/
 	/*{
 		std::shared_ptr<PlayMap> Object = CreateActor<PlayMap>(ContentsObjectType::BackGround);
 		Map = Object;

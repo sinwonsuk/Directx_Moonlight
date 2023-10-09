@@ -30,7 +30,7 @@ void Player::Start()
 	this_Player = this;
 	{
 		// 줄줄이 사탕 식으로 만들려고.
-		player = CreateComponent<GameEngineSpriteRenderer>(100);
+		player = CreateComponent<GameEngineSpriteRenderer>(-1);
 	
 		//player->SetImageScale({ 100.0f, 100.0f });
 
