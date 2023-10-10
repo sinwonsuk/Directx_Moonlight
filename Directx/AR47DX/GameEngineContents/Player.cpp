@@ -26,11 +26,12 @@ void Player::AnimationCheck(const std::string_view& _AnimationName)
 
 void Player::Start()
 {
-	
 	this_Player = this;
+	
+
 	{
 		// 줄줄이 사탕 식으로 만들려고.
-		player = CreateComponent<GameEngineSpriteRenderer>(-1);
+		player = CreateComponent<GameEngineSpriteRenderer>(-90);
 	
 		//player->SetImageScale({ 100.0f, 100.0f });
 
@@ -79,11 +80,110 @@ void Player::Start()
 	
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Player);
-		Col->Transform.SetLocalScale({ 100.0f, 100.0f, 1.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+		Col->Transform.SetLocalScale({ 50.0f, 50.0f, 1.0f });
 	}
+
+	{
+		Left_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::ObjectCollision);
+		Left_Col->SetCollisionType(ColType::AABBBOX2D);
+		Left_Col->Transform.AddLocalPosition({ -20.0f,0.0f }); 
+		Left_Col->Transform.SetLocalScale({ 5.0f, 30.0f, 1.0f });
+	}
+
+	{
+		Right_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::ObjectCollision);
+		Right_Col->SetCollisionType(ColType::AABBBOX2D);
+		Right_Col->Transform.AddLocalPosition({ 20.0f,0.0f });
+		Right_Col->Transform.SetLocalScale({ 5.0f, 30.0f, 1.0f });
+	}
+
+	{
+		Bottom_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::ObjectCollision);
+		Bottom_Col->SetCollisionType(ColType::AABBBOX2D);
+		Bottom_Col->Transform.AddLocalPosition({ 0.0f,-20.0f });
+		Bottom_Col->Transform.SetLocalScale({ 30.0f, 5.0f, 1.0f });
+	}
+
+	{
+		Top_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::ObjectCollision);
+		Top_Col->SetCollisionType(ColType::AABBBOX2D);
+		Top_Col->Transform.AddLocalPosition({ 0.0f,20.0f });
+		Top_Col->Transform.SetLocalScale({ 30.0f, 5.0f, 1.0f });
+	}
+
+
+
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
+
+	Left_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{	
+		LeftMove = false;
+	};
+
+	Left_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+
+	};
+
+	Left_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		LeftMove = true;
+	};
+	
+
+	Right_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		RightMove = false;
+	};
+
+	Right_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+
+	};
+
+
+	Right_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		RightMove = true;
+	};
+
+
+	Bottom_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		DownMove = false;
+	};
+
+	Bottom_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+
+	};
+
+
+	Bottom_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		DownMove = true;
+	};
+
+
+	Top_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		UpMove = false;
+	};
+
+	Top_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+
+	};
+
+
+	Top_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		UpMove = true;
+	};
+
 
 }
 
@@ -99,15 +199,21 @@ void Player::TestEvent(GameEngineRenderer* _Renderer)
 void Player::Update(float _Delta)
 {
 	
+	//Left_Col->CollisionEvent(ContentsCollisionType::Object, Left_Event);
+	//Right_Col->CollisionEvent(ContentsCollisionType::Object, Right_Event);
+	//Bottom_Col->CollisionEvent(ContentsCollisionType::Object, Bottom_Event);
+	//Top_Col->CollisionEvent(ContentsCollisionType::Object, Top_Event);
+
 	//MainSpriteRenderer->AddImageScale(float4{-10.0f, 0.0f, 0.0f} *_Delta);
 
 	// 몬스터가 몬스터랑 충돌하고 싶으면?
 	// 내 미래의 위치
 
-	TransformData date = Transform.GetConstTransformDataRef();
+	/*TransformData date = Transform.GetConstTransformDataRef();
+	float4 asdads = Player::this_Player->Transform.GetLocalPosition();
+	Col->Collision(ContentsCollisionType::Door, { 300.0f, 0.0f, 0.0f }, [](std::vector<std::shared_ptr<GameEngineCollision>>& _Collision){});*/
 
-	Col->Collision(ContentsCollisionType::Door, { 300.0f, 0.0f, 0.0f }, [](std::vector<std::shared_ptr<GameEngineCollision>>& _Collision){});
-
+	//this_Player->Transform.AddLocalPosition({ 0.5,0.0f });
 	//if (xxxx 상황이 되면)
 	//{
 	//	MainSpriteRenderer->Death();
@@ -142,8 +248,12 @@ void Player::Update(float _Delta)
 	float Speed = 100.0f;
 
 	//GetLevel()->GetMainCamera()->Transform.SetLocalPosition(Transform.GetWorldPosition());
-	float4 WorldMousePos = GetLevel()->GetMainCamera()->GetWorldMousePos2D();
-	OutputDebugStringA(WorldMousePos.ToString("\n").c_str());
+
+
+	float4 awdd = Transform.GetLocalPosition();
+
+	
+	OutputDebugStringA(awdd.ToString("\n").c_str());
 
 
 
@@ -165,4 +275,6 @@ void Player::Update(float _Delta)
 
 
 	UpdateState(_Delta);
+
+
 }

@@ -17,27 +17,27 @@ void TutorialMap_05::Start()
 
 	{
 
-		BackGround = CreateComponent<GameEngineSpriteRenderer>(0);
+		BackGround = CreateComponent<GameEngineSpriteRenderer>(-100);
 		BackGround->SetSprite("Tutorial_BackGround", 1);
 		BackGround->SetImageScale({ 1380.0f,750.0f });
 
 	}
 
 	{
-		Map_floor_01 = CreateComponent<GameEngineSpriteRenderer>(0);
+		Map_floor_01 = CreateComponent<GameEngineSpriteRenderer>(-100);
 		Map_floor_01->SetSprite("Tutorial_Floor_01", 0);
 		Map_floor_01->SetImageScale({ 1050.0f,552.0f });
 	}
 
 	{
-		LeftDoor = CreateComponent<GameEngineSpriteRenderer>(0);
+		LeftDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
 		LeftDoor->Transform.AddLocalRotation({ 0.0f,0.0f,90.0f });
 		LeftDoor->Transform.AddLocalPosition({ -550.0f,20.0f,0.0f });
 		LeftDoor->SetAutoScaleRatio(1.5f);
 		LeftDoor->SetSprite("Door", 1);
 	}
 	{
-		RightDoor = CreateComponent<GameEngineSpriteRenderer>(0);
+		RightDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
 		RightDoor->Transform.AddLocalRotation({ 0.0f,0.0f,-90.0f });
 		RightDoor->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
 		RightDoor->SetAutoScaleRatio(1.5f);
@@ -46,7 +46,7 @@ void TutorialMap_05::Start()
 	}
 
 	{
-		CloseDoor = CreateComponent<GameEngineSpriteRenderer>(0);
+		CloseDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
 		CloseDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
 		CloseDoor->AutoSpriteSizeOn();
 		CloseDoor->SetAutoScaleRatio(1.4f);
@@ -57,7 +57,7 @@ void TutorialMap_05::Start()
 	}
 
 	{
-		OpenDoor = CreateComponent<GameEngineSpriteRenderer>(0);
+		OpenDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
 		OpenDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
 		OpenDoor->AutoSpriteSizeOn();
 		OpenDoor->SetAutoScaleRatio(1.4f);
@@ -70,13 +70,13 @@ void TutorialMap_05::Start()
 
 	
 	{
-		Scroll_Attack = CreateComponent<GameEngineSpriteRenderer>(0);
+		Scroll_Attack = CreateComponent<GameEngineSpriteRenderer>(-100);
 		Scroll_Attack->SetSprite("Attack_Roll_Scroll.png");
 		Scroll_Attack->Transform.AddLocalPosition({ -200.0f,320.0f });
 	}
 	
 	{
-		Scroll_Portion = CreateComponent<GameEngineSpriteRenderer>(0);
+		Scroll_Portion = CreateComponent<GameEngineSpriteRenderer>(-100);
 		Scroll_Portion->SetSprite("Portion_Roll_Scroll.png");
 		Scroll_Portion->Transform.AddLocalPosition({ 200.0f,320.0f });
 	}

@@ -117,11 +117,27 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-	
+	float test = 0.0f;
+	bool LeftMove = true;
+	bool RightMove = true;
+	bool DownMove = true;
+	bool UpMove = true;
+
+
+
+	EventParameter Left_Event;
+	EventParameter Right_Event;
+	EventParameter Bottom_Event;
+	EventParameter Top_Event;
+
+	std::shared_ptr<GameEngineCollision> Left_Col;
+	std::shared_ptr<GameEngineCollision> Right_Col;
+	std::shared_ptr<GameEngineCollision> Bottom_Col;
+	std::shared_ptr<GameEngineCollision> Top_Col;
 	bool AttackCheck = false;
 
 	float StartSpeed = 20.0f;
-	
+	PlayerState PrevState;
 	PlayerState StateValue = PlayerState::LeftIdle;
 	//std::shared_ptr<Spear> spear;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;

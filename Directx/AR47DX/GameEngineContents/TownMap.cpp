@@ -17,21 +17,35 @@ void TownMap::Start()
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 
+
 	{
+		
+		//Col->Transform.SetLocalScale({ 100.0f, 100.0f, 1.0f });
+	}
+
+	{
+		
 		BackGround = CreateComponent<GameEngineSpriteRenderer>(-100);
 		BackGround->SetSprite("Village",0);
 		BackGround->AutoSpriteSizeOn();
-
 		BackGround->SetAutoScaleRatio(2.0f);
 	}
 
 
 	{
+		
+
 		Will_House = CreateComponent<GameEngineSpriteRenderer>(0);
 		Will_House->SetSprite("Village", 1);
 		Will_House->AutoSpriteSizeOn();
 		Will_House->SetAutoScaleRatio(2.0f);
 		Will_House->Transform.SetWorldPosition({ 951,352 });
+
+
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Will_House->GetCurSprite().Texture->GetScale()*1.8f});
+		Col->Transform.SetWorldPosition(Will_House->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 	{
@@ -41,6 +55,14 @@ void TownMap::Start()
 		Will_House_animation->SetAutoScaleRatio(2.0f);
 		Will_House_animation->Transform.SetWorldPosition({ 1316,240 });
 		Will_House_animation->ChangeAnimation("Village_WillsHome_animation");
+
+
+
+		
+
+
+
+
 	}
 	
 	{
@@ -49,31 +71,47 @@ void TownMap::Start()
 		Will_House_Object->AutoSpriteSizeOn();
 		Will_House_Object->SetAutoScaleRatio(1.0f);
 		Will_House_Object->Transform.SetWorldPosition({ 792,145 });
+
+
+
+		Col_02 = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col_02->Transform.SetLocalScale({ Will_House_Object->GetCurSprite().Texture->GetScale() * 0.8f });
+		Col_02->Transform.SetWorldPosition(Will_House_Object->Transform.GetWorldPosition());
+		Col_02->SetCollisionType(ColType::AABBBOX2D);
 	}
 	{
+
 		Will_House_OilLamp = CreateComponent<GameEngineSpriteRenderer>(0);
 		Will_House_OilLamp->SetSprite("Village_Object", 1);
 		Will_House_OilLamp->AutoSpriteSizeOn();
 		Will_House_OilLamp->SetAutoScaleRatio(2.0f);
 		Will_House_OilLamp->Transform.SetWorldPosition({ 930,158 });
+
+
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Will_House_OilLamp->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Will_House_OilLamp->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
-	{
-		Will_House_OilLamp = CreateComponent<GameEngineSpriteRenderer>(0);
-		Will_House_OilLamp->SetSprite("Village_Object", 1);
-		Will_House_OilLamp->AutoSpriteSizeOn();
-		Will_House_OilLamp->SetAutoScaleRatio(2.0f);
-		Will_House_OilLamp->Transform.SetWorldPosition({ 930,158 });
-
-
-
-	}
+	
 	{
 		Will_House_sign = CreateComponent<GameEngineSpriteRenderer>(0);
 		Will_House_sign->SetSprite("Village_Will_House_Object", 1);
 		Will_House_sign->AutoSpriteSizeOn();
 		Will_House_sign->SetAutoScaleRatio(1.0f);
 		Will_House_sign->Transform.SetWorldPosition({ 1112,118 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Will_House_sign->GetCurSprite().Texture->GetScale() * 1.0f });
+		Col->Transform.SetWorldPosition(Will_House_sign->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -82,6 +120,11 @@ void TownMap::Start()
 		Village_Down_Rival_Fence->AutoSpriteSizeOn();
 		Village_Down_Rival_Fence->SetAutoScaleRatio(2.0f);
 		Village_Down_Rival_Fence->Transform.SetWorldPosition({ 1380,214 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Down_Rival_Fence->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Down_Rival_Fence->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 	{
 		Village_Up_Rival_Fence = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -89,6 +132,13 @@ void TownMap::Start()
 		Village_Up_Rival_Fence->AutoSpriteSizeOn();
 		Village_Up_Rival_Fence->SetAutoScaleRatio(2.0f);	
 		Village_Up_Rival_Fence->Transform.SetWorldPosition({ 1380,407 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Up_Rival_Fence->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Up_Rival_Fence->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -97,6 +147,13 @@ void TownMap::Start()
 		Village_Left_Rival_Fence->AutoSpriteSizeOn();
 		Village_Left_Rival_Fence->SetAutoScaleRatio(2.0f);
 		Village_Left_Rival_Fence->Transform.SetWorldPosition({ 1215,299 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Left_Rival_Fence->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Left_Rival_Fence->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -105,15 +162,29 @@ void TownMap::Start()
 		Village_Right_Rival_Fence->AutoSpriteSizeOn();
 		Village_Right_Rival_Fence->SetAutoScaleRatio(2.0f);
 		Village_Right_Rival_Fence->Transform.SetWorldPosition({ 1538,299 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Right_Rival_Fence->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Right_Rival_Fence->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
-	{
+	/*{
 		Village_Right_Rival_Fence = CreateComponent<GameEngineSpriteRenderer>(0);
 		Village_Right_Rival_Fence->SetSprite("Village_Fance", 2);
 		Village_Right_Rival_Fence->AutoSpriteSizeOn();
 		Village_Right_Rival_Fence->SetAutoScaleRatio(2.0f);
 		Village_Right_Rival_Fence->Transform.SetWorldPosition({ 1538,299 });
-	}
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Right_Rival_Fence->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Right_Rival_Fence->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
+	}*/
 
 	{
 		Will_House_Big_Tree = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -122,11 +193,18 @@ void TownMap::Start()
 		Will_House_Big_Tree->SetAutoScaleRatio(2.0f);
 		Will_House_Big_Tree->Transform.SetWorldPosition({ 1670,396 });
 		Will_House_Big_Tree->ChangeAnimation("Village_BigTree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Will_House_Big_Tree->GetCurSprite().Texture->GetScale() * 0.3f });
+		Col->Transform.SetWorldPosition({ Will_House_Big_Tree->Transform.GetWorldPosition().X-30.0f,Will_House_Big_Tree->Transform.GetWorldPosition().Y-60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 	
 	
 
-
+	//////////////////
 	{
 		Will_House_Tree = CreateComponent<GameEngineSpriteRenderer>(0);
 		Will_House_Tree->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
@@ -134,6 +212,14 @@ void TownMap::Start()
 		Will_House_Tree->SetAutoScaleRatio(2.0f);
 		Will_House_Tree->Transform.SetWorldPosition({ 1845,322 });
 		Will_House_Tree->ChangeAnimation("Village_Tree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Will_House_Tree->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Will_House_Tree->Transform.GetWorldPosition().X - 30.0f,Will_House_Big_Tree->Transform.GetWorldPosition().Y - 130.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	
@@ -144,6 +230,13 @@ void TownMap::Start()
 		Dungeon->SetAutoScaleRatio(2.0f);
 		Dungeon->Transform.SetWorldPosition({ 1541,142 });
 		Dungeon->ChangeAnimation("Sign");
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Dungeon->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Dungeon->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 	{
 		tree_stump = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -151,6 +244,13 @@ void TownMap::Start()
 		tree_stump->AutoSpriteSizeOn();
 		tree_stump->SetAutoScaleRatio(1.0f);
 		tree_stump->Transform.SetWorldPosition({ 1647,133 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ tree_stump->GetCurSprite().Texture->GetScale() * 1.0f });
+		Col->Transform.SetWorldPosition(tree_stump->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -159,6 +259,14 @@ void TownMap::Start()
 		Wood_Box_Strong->AutoSpriteSizeOn();
 		Wood_Box_Strong->SetAutoScaleRatio(2.0f);
 		Wood_Box_Strong->Transform.SetWorldPosition({ 647,235 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Wood_Box_Strong->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Wood_Box_Strong->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -167,6 +275,15 @@ void TownMap::Start()
 		House_04->AutoSpriteSizeOn();
 		House_04->SetAutoScaleRatio(1.0f);
 		House_04->Transform.SetWorldPosition({ 437,335 });
+
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ House_04->GetCurSprite().Texture->GetScale() * 1.0f });
+		Col->Transform.SetWorldPosition(House_04->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -175,6 +292,12 @@ void TownMap::Start()
 		House_04_Tent->AutoSpriteSizeOn();
 		House_04_Tent->SetAutoScaleRatio(1.0f);
 		House_04_Tent->Transform.SetWorldPosition({ 227,293 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ House_04_Tent->GetCurSprite().Texture->GetScale() * 1.0f });
+		Col->Transform.SetWorldPosition(House_04_Tent->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 	{
@@ -184,6 +307,13 @@ void TownMap::Start()
 		Park_Right_Up_Tree->SetAutoScaleRatio(2.0f);
 		Park_Right_Up_Tree->Transform.SetWorldPosition({ 1144,-19 });
 		Park_Right_Up_Tree->ChangeAnimation("Village_Tree_02_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Right_Up_Tree->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Park_Right_Up_Tree->Transform.GetWorldPosition().X - 40.0f,Park_Right_Up_Tree->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 
@@ -193,6 +323,15 @@ void TownMap::Start()
 		Park_Middle_Up_Bench->AutoSpriteSizeOn();
 		Park_Middle_Up_Bench->SetAutoScaleRatio(2.0f);
 		Park_Middle_Up_Bench->Transform.SetWorldPosition({ 405,-84 });
+
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Middle_Up_Bench->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Park_Middle_Up_Bench->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 
@@ -204,6 +343,12 @@ void TownMap::Start()
 		Park_Middle_Up_Tree->SetAutoScaleRatio(2.0f);
 		Park_Middle_Up_Tree->Transform.SetWorldPosition({ 539,-30 });
 		Park_Middle_Up_Tree->ChangeAnimation("Village_Tree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Middle_Up_Tree->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Park_Middle_Up_Tree->Transform.GetWorldPosition().X - 30.0f,Park_Middle_Up_Tree->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 	{
@@ -213,6 +358,12 @@ void TownMap::Start()
 		Park_Middle_Up_OilLamp->SetAutoScaleRatio(2.0f);
 		Park_Middle_Up_OilLamp->Transform.SetLocalRotation({ 0.0f,180.0f,0.0f });
 		Park_Middle_Up_OilLamp->Transform.SetWorldPosition({ 319,-50 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Middle_Up_OilLamp->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Park_Middle_Up_OilLamp->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 
@@ -223,6 +374,14 @@ void TownMap::Start()
 		Park_Left_Up_Bench->SetAutoScaleRatio(2.0f);
 		Park_Left_Up_Bench->Transform.SetLocalRotation({ 0.0f,180.0f,0.0f });
 		Park_Left_Up_Bench->Transform.SetWorldPosition({ 228,-147 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalRotation({ 0.0f,0.0f,45.0f });
+		Col->Transform.SetLocalScale({100.0f,40.0f});
+		Col->Transform.SetWorldPosition(Park_Left_Up_Bench->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::OBBBOX2D);
+
 	}
 
 	{
@@ -232,6 +391,14 @@ void TownMap::Start()
 		Park_Left_Middle_Tree->SetAutoScaleRatio(2.0f);
 		Park_Left_Middle_Tree->Transform.SetWorldPosition({ 228,-170 });
 		Park_Left_Middle_Tree->ChangeAnimation("Village_Tree_02_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Left_Middle_Tree->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Park_Left_Middle_Tree->Transform.GetWorldPosition().X - 40.0f,Park_Left_Middle_Tree->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -241,6 +408,15 @@ void TownMap::Start()
 		Park_Left_Bottom_Tree->SetAutoScaleRatio(2.0f);
 		Park_Left_Bottom_Tree->Transform.SetWorldPosition({ 228,-357 });
 		Park_Left_Bottom_Tree->ChangeAnimation("Village_Tree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Left_Bottom_Tree->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Park_Left_Bottom_Tree->Transform.GetWorldPosition().X - 40.0f,Park_Left_Bottom_Tree->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
+
 	}
 	{
 		Park_Middle_Left_Bench = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -248,6 +424,14 @@ void TownMap::Start()
 		Park_Middle_Left_Bench->AutoSpriteSizeOn();
 		Park_Middle_Left_Bench->SetAutoScaleRatio(2.0f);
 		Park_Middle_Left_Bench->Transform.SetWorldPosition({ 253,-476 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalRotation({ 0.0f,0.0f,-45.0f });
+		Col->Transform.SetLocalScale({ 100.0f,40.0f });
+		Col->Transform.SetWorldPosition(Park_Middle_Left_Bench->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::OBBBOX2D);
+
 	}
 
 	{
@@ -257,6 +441,12 @@ void TownMap::Start()
 		Park_Left_Bottom_OilLamp->SetAutoScaleRatio(2.0f);
 		Park_Left_Bottom_OilLamp->Transform.SetLocalRotation({ 0.0f,180.0f,0.0f });
 		Park_Left_Bottom_OilLamp->Transform.SetWorldPosition({ 319,-483 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Left_Bottom_OilLamp->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Park_Left_Bottom_OilLamp->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -265,6 +455,13 @@ void TownMap::Start()
 		Park_Left_Bottom_Bench->AutoSpriteSizeOn();
 		Park_Left_Bottom_Bench->SetAutoScaleRatio(2.0f);
 		Park_Left_Bottom_Bench->Transform.SetWorldPosition({ 405,-549 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Left_Bottom_Bench->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Park_Left_Bottom_Bench->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -274,6 +471,14 @@ void TownMap::Start()
 		Park_Middle_Bottom_Tree->SetAutoScaleRatio(2.0f);
 		Park_Middle_Bottom_Tree->Transform.SetWorldPosition({ 546,-486 });
 		Park_Middle_Bottom_Tree->ChangeAnimation("Village_Tree_02_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Middle_Bottom_Tree->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Park_Middle_Bottom_Tree->Transform.GetWorldPosition().X - 40.0f,Park_Middle_Bottom_Tree->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -283,6 +488,14 @@ void TownMap::Start()
 		Park_Right_Bottom_Tree->SetAutoScaleRatio(2.0f);
 		Park_Right_Bottom_Tree->Transform.SetWorldPosition({ 1144,-494 });
 		Park_Right_Bottom_Tree->ChangeAnimation("Village_Tree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Right_Bottom_Tree->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Park_Right_Bottom_Tree->Transform.GetWorldPosition().X - 40.0f,Park_Right_Bottom_Tree->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 
@@ -292,6 +505,13 @@ void TownMap::Start()
 		Park_Barrel->AutoSpriteSizeOn();
 		Park_Barrel->SetAutoScaleRatio(2.0f);
 		Park_Barrel->Transform.SetWorldPosition({ 154,-83 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Park_Barrel->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Park_Barrel->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 	{
 		Village_Board = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -299,6 +519,14 @@ void TownMap::Start()
 		Village_Board->AutoSpriteSizeOn();
 		Village_Board->SetAutoScaleRatio(2.0f);
 		Village_Board->Transform.SetWorldPosition({ 793,-280 });
+
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Board->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Board->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -307,6 +535,13 @@ void TownMap::Start()
 		Boxs->AutoSpriteSizeOn();
 		Boxs->SetAutoScaleRatio(1.0f);
 		Boxs->Transform.SetWorldPosition({ 502,653 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Boxs->GetCurSprite().Texture->GetScale() * 1.0f });
+		Col->Transform.SetWorldPosition(Boxs->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -316,6 +551,13 @@ void TownMap::Start()
 		Up_Tree_01->SetAutoScaleRatio(2.0f);
 		Up_Tree_01->Transform.SetWorldPosition({ 704,685 });
 		Up_Tree_01->ChangeAnimation("Village_Tree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Up_Tree_01->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Up_Tree_01->Transform.GetWorldPosition().X - 35.0f,Up_Tree_01->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -325,6 +567,13 @@ void TownMap::Start()
 		Up_Tree_02->SetAutoScaleRatio(2.0f);
 		Up_Tree_02->Transform.SetWorldPosition({ 906,680 });
 		Up_Tree_02->ChangeAnimation("Village_Tree_animation");
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Up_Tree_02->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Up_Tree_02->Transform.GetWorldPosition().X - 35.0f,Up_Tree_02->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -333,6 +582,13 @@ void TownMap::Start()
 		Road_Up_Object->AutoSpriteSizeOn();
 		Road_Up_Object->SetAutoScaleRatio(1.0f);
 		Road_Up_Object->Transform.SetWorldPosition({ 130,605 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Road_Up_Object->GetCurSprite().Texture->GetScale() * 1.0f });
+		Col->Transform.SetWorldPosition(Road_Up_Object->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -342,6 +598,11 @@ void TownMap::Start()
 		Up_Tree_03->SetAutoScaleRatio(2.0f);
 		Up_Tree_03->Transform.SetWorldPosition({ 274,629 });
 		Up_Tree_03->ChangeAnimation("Village_Tree_animation");
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Up_Tree_03->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Up_Tree_03->Transform.GetWorldPosition().X - 35.0f,Up_Tree_03->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 	{
@@ -351,6 +612,13 @@ void TownMap::Start()
 		Up_Tree_04->SetAutoScaleRatio(2.0f);
 		Up_Tree_04->Transform.SetWorldPosition({ -139,581 });
 		Up_Tree_04->ChangeAnimation("Village_Tree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Up_Tree_04->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Up_Tree_04->Transform.GetWorldPosition().X - 35.0f,Up_Tree_04->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -359,6 +627,13 @@ void TownMap::Start()
 		Village_Rival_House->AutoSpriteSizeOn();
 		Village_Rival_House->SetAutoScaleRatio(2.0f);
 		Village_Rival_House->Transform.SetWorldPosition({ -378,266 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ 300.0f,320.0f });
+		Col->Transform.SetWorldPosition({ Village_Rival_House->Transform.GetWorldPosition().X+100.0f, Village_Rival_House->Transform.GetWorldPosition().Y+30.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 	{
 		Village_Rival_House_Roof = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -366,6 +641,12 @@ void TownMap::Start()
 		Village_Rival_House_Roof->AutoSpriteSizeOn();
 		Village_Rival_House_Roof->SetAutoScaleRatio(2.0f);
 		Village_Rival_House_Roof->Transform.SetWorldPosition({ -252,330 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ 300.0f,250.0f });
+		Col->Transform.SetWorldPosition({ Village_Rival_House->Transform.GetWorldPosition().X - 180.0f, Village_Rival_House->Transform.GetWorldPosition().Y + 30.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -375,6 +656,15 @@ void TownMap::Start()
 		Big_Up_Tree_01->SetAutoScaleRatio(2.0f);
 		Big_Up_Tree_01->Transform.SetWorldPosition({ -327,549 });
 		Big_Up_Tree_01->ChangeAnimation("Village_BigTree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Big_Up_Tree_01->GetCurSprite().Texture->GetScale() * 0.3f });
+		Col->Transform.SetWorldPosition({ Big_Up_Tree_01->Transform.GetWorldPosition().X - 30.0f,Big_Up_Tree_01->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
+
 	}
 	{
 		Village_Rival_Desk = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -382,6 +672,15 @@ void TownMap::Start()
 		Village_Rival_Desk->AutoSpriteSizeOn();
 		Village_Rival_Desk->SetAutoScaleRatio(2.0f);
 		Village_Rival_Desk->Transform.SetWorldPosition({ -257,28 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ 250.0f,70.0f });
+		Col->Transform.SetWorldPosition(Village_Rival_Desk->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
+
 	}
 	{
 		Village_Rival_Flowerpot_01 = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -389,6 +688,13 @@ void TownMap::Start()
 		Village_Rival_Flowerpot_01->AutoSpriteSizeOn();
 		Village_Rival_Flowerpot_01->SetAutoScaleRatio(2.0f);
 		Village_Rival_Flowerpot_01->Transform.SetWorldPosition({ -125,150 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Rival_Flowerpot_01->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Rival_Flowerpot_01->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 	{
 		Village_Rival_OilLamp = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -396,6 +702,14 @@ void TownMap::Start()
 		Village_Rival_OilLamp->AutoSpriteSizeOn();
 		Village_Rival_OilLamp->SetAutoScaleRatio(2.0f);
 		Village_Rival_OilLamp->Transform.SetWorldPosition({ -68,9 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Rival_OilLamp->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Rival_OilLamp->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 	{
 		Village_Rival_Flowerpot_02 = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -403,6 +717,12 @@ void TownMap::Start()
 		Village_Rival_Flowerpot_02->AutoSpriteSizeOn();
 		Village_Rival_Flowerpot_02->SetAutoScaleRatio(2.0f);
 		Village_Rival_Flowerpot_02->Transform.SetWorldPosition({ -79,-67 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Rival_Flowerpot_02->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Rival_Flowerpot_02->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 	{
@@ -411,6 +731,14 @@ void TownMap::Start()
 		Village_Rival_Flowerpot_03->AutoSpriteSizeOn();
 		Village_Rival_Flowerpot_03->SetAutoScaleRatio(2.0f);
 		Village_Rival_Flowerpot_03->Transform.SetWorldPosition({ -79,-201 });
+
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Rival_Flowerpot_03->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Rival_Flowerpot_03->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 	{
 		Village_Rival_Fountain = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -419,6 +747,13 @@ void TownMap::Start()
 		Village_Rival_Fountain->SetAutoScaleRatio(2.0f);
 		Village_Rival_Fountain->Transform.SetWorldPosition({ -256,-91 });
 		Village_Rival_Fountain->ChangeAnimation("Village_Rival_Fountain");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Rival_Fountain->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Rival_Fountain->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 
@@ -429,6 +764,13 @@ void TownMap::Start()
 		Middle_Tree_01->SetAutoScaleRatio(2.0f);
 		Middle_Tree_01->Transform.SetWorldPosition({ -469,-114 });
 		Middle_Tree_01->ChangeAnimation("Village_Tree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Middle_Tree_01->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Middle_Tree_01->Transform.GetWorldPosition().X - 35.0f,Middle_Tree_01->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -438,6 +780,14 @@ void TownMap::Start()
 		Middle_Tree_02->SetAutoScaleRatio(2.0f);
 		Middle_Tree_02->Transform.SetWorldPosition({ -550,59 });
 		Middle_Tree_02->ChangeAnimation("Village_Tree_02_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Middle_Tree_02->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Middle_Tree_02->Transform.GetWorldPosition().X - 40.0f,Middle_Tree_02->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -446,6 +796,14 @@ void TownMap::Start()
 		Village_BigStone->AutoSpriteSizeOn();
 		Village_BigStone->SetAutoScaleRatio(2.0f);
 		Village_BigStone->Transform.SetWorldPosition({ -564,-251 });
+
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_BigStone->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_BigStone->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -454,6 +812,12 @@ void TownMap::Start()
 		Middle_Box_01->AutoSpriteSizeOn();
 		Middle_Box_01->SetAutoScaleRatio(2.0f);
 		Middle_Box_01->Transform.SetWorldPosition({ -300,-331 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Middle_Box_01->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Middle_Box_01->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -462,6 +826,13 @@ void TownMap::Start()
 		Middle_Box_02->AutoSpriteSizeOn();
 		Middle_Box_02->SetAutoScaleRatio(2.0f);
 		Middle_Box_02->Transform.SetWorldPosition({ -374,-438 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Middle_Box_02->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Middle_Box_02->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -470,6 +841,11 @@ void TownMap::Start()
 		Middle_Box_03->AutoSpriteSizeOn();
 		Middle_Box_03->SetAutoScaleRatio(2.0f);
 		Middle_Box_03->Transform.SetWorldPosition({ -219,-467 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Middle_Box_03->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Middle_Box_03->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 
@@ -481,6 +857,14 @@ void TownMap::Start()
 		Big_Middle_Tree_01->SetAutoScaleRatio(2.0f);
 		Big_Middle_Tree_01->Transform.SetWorldPosition({ -565,-614 });
 		Big_Middle_Tree_01->ChangeAnimation("Village_BigTree_animation");
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Big_Middle_Tree_01->GetCurSprite().Texture->GetScale() * 0.3f });
+		Col->Transform.SetWorldPosition({ Big_Middle_Tree_01->Transform.GetWorldPosition().X - 30.0f,Big_Middle_Tree_01->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
+
 	}
 
 	{
@@ -489,6 +873,13 @@ void TownMap::Start()
 		Village_WitchHome->AutoSpriteSizeOn();
 		Village_WitchHome->SetAutoScaleRatio(1.0f);
 		Village_WitchHome->Transform.SetWorldPosition({ -542,-801 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_WitchHome->GetCurSprite().Texture->GetScale() * 1.0f });
+		Col->Transform.SetWorldPosition(Village_WitchHome->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 
@@ -499,6 +890,13 @@ void TownMap::Start()
 		Village_Witch_Roof_old->AutoSpriteSizeOn();
 		Village_Witch_Roof_old->SetAutoScaleRatio(2.0f);
 		Village_Witch_Roof_old->Transform.SetWorldPosition({ -286,-668 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ 300,400.0f });
+		Col->Transform.SetWorldPosition({ Village_Witch_Roof_old->Transform.GetWorldPosition().X,Village_Witch_Roof_old->Transform.GetWorldPosition().Y - 200.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 	{
 		Village_Witch_House_old = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -506,6 +904,9 @@ void TownMap::Start()
 		Village_Witch_House_old->AutoSpriteSizeOn();
 		Village_Witch_House_old->SetAutoScaleRatio(2.0f);
 		Village_Witch_House_old->Transform.SetWorldPosition({ -283,-808 });
+
+
+
 	}
 
 	{
@@ -514,6 +915,13 @@ void TownMap::Start()
 		Village_Witch_Table_old->AutoSpriteSizeOn();
 		Village_Witch_Table_old->SetAutoScaleRatio(2.0f);
 		Village_Witch_Table_old->Transform.SetWorldPosition({ -283,-976 });
+
+
+		/*std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_WitchHome->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_WitchHome->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);*/
+
 	}
 	{
 		Village_Witch_Storage_old = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -521,6 +929,11 @@ void TownMap::Start()
 		Village_Witch_Storage_old->AutoSpriteSizeOn();
 		Village_Witch_Storage_old->SetAutoScaleRatio(2.0f);
 		Village_Witch_Storage_old->Transform.SetWorldPosition({ -544,-987 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Witch_Storage_old->GetCurSprite().Texture->GetScale() * 1.0f });
+		Col->Transform.SetWorldPosition(Village_Witch_Storage_old->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 	{
 		Village_Witch_OilLamp = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -528,6 +941,14 @@ void TownMap::Start()
 		Village_Witch_OilLamp->AutoSpriteSizeOn();
 		Village_Witch_OilLamp->SetAutoScaleRatio(2.0f);
 		Village_Witch_OilLamp->Transform.SetWorldPosition({ -397,-1077 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Witch_OilLamp->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Witch_OilLamp->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -536,6 +957,12 @@ void TownMap::Start()
 		Bottom_Box_01->AutoSpriteSizeOn();
 		Bottom_Box_01->SetAutoScaleRatio(2.0f);
 		Bottom_Box_01->Transform.SetWorldPosition({ -589,-1121 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Box_01->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Bottom_Box_01->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 	
 	{
@@ -544,6 +971,12 @@ void TownMap::Start()
 		Bottom_Box_02->AutoSpriteSizeOn();
 		Bottom_Box_02->SetAutoScaleRatio(2.0f);
 		Bottom_Box_02->Transform.SetWorldPosition({ -561,-1207 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Box_02->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Bottom_Box_02->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -552,6 +985,12 @@ void TownMap::Start()
 		Bottom_Box_03->AutoSpriteSizeOn();
 		Bottom_Box_03->SetAutoScaleRatio(2.0f);
 		Bottom_Box_03->Transform.SetWorldPosition({ -495,-1138 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Box_03->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Bottom_Box_03->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 
@@ -562,6 +1001,14 @@ void TownMap::Start()
 		Bottom_Tree_01->SetAutoScaleRatio(2.0f);
 		Bottom_Tree_01->Transform.SetWorldPosition({ -404,-1222 });
 		Bottom_Tree_01->ChangeAnimation("Village_Tree_02_animation");
+
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Tree_01->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Bottom_Tree_01->Transform.GetWorldPosition().X - 40.0f,Bottom_Tree_01->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 	{
 		Bottom_Tree_02 = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -570,6 +1017,14 @@ void TownMap::Start()
 		Bottom_Tree_02->SetAutoScaleRatio(2.0f);
 		Bottom_Tree_02->Transform.SetWorldPosition({ 23,-1311 });
 		Bottom_Tree_02->ChangeAnimation("Village_Tree_02_animation");
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Tree_02->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Bottom_Tree_02->Transform.GetWorldPosition().X - 40.0f,Bottom_Tree_02->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
+
 	}
 	{
 		Bottom_Tree_03 = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -578,6 +1033,13 @@ void TownMap::Start()
 		Bottom_Tree_03->SetAutoScaleRatio(2.0f);
 		Bottom_Tree_03->Transform.SetWorldPosition({ 151,-1248 });
 		Bottom_Tree_03->ChangeAnimation("Village_Tree_animation");
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Tree_03->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Bottom_Tree_03->Transform.GetWorldPosition().X - 35.0f,Bottom_Tree_03->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -587,6 +1049,11 @@ void TownMap::Start()
 		Bottom_Tree_04->SetAutoScaleRatio(2.0f);
 		Bottom_Tree_04->Transform.SetWorldPosition({ 305,-1169 });
 		Bottom_Tree_04->ChangeAnimation("Village_Tree_animation");
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Tree_04->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Bottom_Tree_04->Transform.GetWorldPosition().X - 35.0f,Bottom_Tree_04->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 	{
@@ -596,6 +1063,12 @@ void TownMap::Start()
 		Bottom_Tree_05->SetAutoScaleRatio(2.0f);
 		Bottom_Tree_05->Transform.SetWorldPosition({ 446,-1243 });
 		Bottom_Tree_05->ChangeAnimation("Village_Tree_animation");
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Tree_05->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Bottom_Tree_05->Transform.GetWorldPosition().X - 35.0f,Bottom_Tree_05->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -605,6 +1078,14 @@ void TownMap::Start()
 		Village_House_05->SetAutoScaleRatio(2.0f);
 		Village_House_05->Transform.SetWorldPosition({ 177,-892 });
 		Village_House_05->ChangeAnimation("Village_House_05_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({300.0f,300.0f });
+		Col->Transform.SetWorldPosition({ Village_House_05->Transform.GetWorldPosition().X + 60.0f,Village_House_05->Transform.GetWorldPosition().Y });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -613,6 +1094,13 @@ void TownMap::Start()
 		Village_BigStone_02->AutoSpriteSizeOn();
 		Village_BigStone_02->SetAutoScaleRatio(2.0f);
 		Village_BigStone_02->Transform.SetWorldPosition({ -15,-796 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_BigStone_02->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_BigStone_02->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -621,6 +1109,13 @@ void TownMap::Start()
 		Village_House_06->AutoSpriteSizeOn();
 		Village_House_06->SetAutoScaleRatio(2.0f);
 		Village_House_06->Transform.SetWorldPosition({ 983,-804 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({300.0f,260.0f});
+		Col->Transform.SetWorldPosition({ Village_House_06->Transform.GetWorldPosition().X, Village_House_06->Transform.GetWorldPosition().Y-30.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 	{
 		Village_House_06_OilLamp = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -628,6 +1123,14 @@ void TownMap::Start()
 		Village_House_06_OilLamp->AutoSpriteSizeOn();
 		Village_House_06_OilLamp->SetAutoScaleRatio(2.0f);
 		Village_House_06_OilLamp->Transform.SetWorldPosition({ 1265,-933 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_House_06_OilLamp->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_House_06_OilLamp->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 	
 
@@ -640,6 +1143,13 @@ void TownMap::Start()
 		Bottom_Box_04->AutoSpriteSizeOn();
 		Bottom_Box_04->SetAutoScaleRatio(2.0f);
 		Bottom_Box_04->Transform.SetWorldPosition({ 817,-833 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Box_04->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Bottom_Box_04->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -648,6 +1158,12 @@ void TownMap::Start()
 		Bottom_Box_05->AutoSpriteSizeOn();
 		Bottom_Box_05->SetAutoScaleRatio(2.0f);
 		Bottom_Box_05->Transform.SetWorldPosition({ 826,-988 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Box_05->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Bottom_Box_05->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 	{
@@ -656,6 +1172,13 @@ void TownMap::Start()
 		Bottom_Box_06->AutoSpriteSizeOn();
 		Bottom_Box_06->SetAutoScaleRatio(2.0f);
 		Bottom_Box_06->Transform.SetWorldPosition({ 1163,-847 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Box_06->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Bottom_Box_06->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -665,6 +1188,13 @@ void TownMap::Start()
 		Bottom_Tree_06->SetAutoScaleRatio(2.0f);
 		Bottom_Tree_06->Transform.SetWorldPosition({ 1310,-778 });
 		Bottom_Tree_06->ChangeAnimation("Village_Tree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Tree_06->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Bottom_Tree_06->Transform.GetWorldPosition().X - 35.0f,Bottom_Tree_06->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -674,6 +1204,12 @@ void TownMap::Start()
 		Bottom_Tree_07->SetAutoScaleRatio(2.0f);
 		Bottom_Tree_07->Transform.SetWorldPosition({ 1388,-1276 });
 		Bottom_Tree_07->ChangeAnimation("Village_Tree_animation");
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Tree_07->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Bottom_Tree_07->Transform.GetWorldPosition().X - 35.0f,Bottom_Tree_07->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -683,6 +1219,14 @@ void TownMap::Start()
 		Bottom_Tree_08->SetAutoScaleRatio(2.0f);
 		Bottom_Tree_08->Transform.SetWorldPosition({ 878,-1188 });
 		Bottom_Tree_08->ChangeAnimation("Village_Tree_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Tree_08->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Bottom_Tree_08->Transform.GetWorldPosition().X - 35.0f,Bottom_Tree_08->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -692,6 +1236,15 @@ void TownMap::Start()
 		Village_Well_animation->SetAutoScaleRatio(2.0f);
 		Village_Well_animation->Transform.SetWorldPosition({ 1463,-1067 });
 		Village_Well_animation->ChangeAnimation("Village_Well_animation");
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Well_animation->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition({ Village_Well_animation->Transform.GetWorldPosition().X,Village_Well_animation->Transform.GetWorldPosition().Y+20.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
+
 	}
 
 	{
@@ -701,6 +1254,14 @@ void TownMap::Start()
 		Bottom_Tree_09->SetAutoScaleRatio(2.0f);
 		Bottom_Tree_09->Transform.SetWorldPosition({ 1656,-1155 });
 		Bottom_Tree_09->ChangeAnimation("Village_Tree_02_animation");
+
+
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Tree_09->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Bottom_Tree_09->Transform.GetWorldPosition().X - 40.0f,Bottom_Tree_09->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 	{
@@ -709,6 +1270,14 @@ void TownMap::Start()
 		Village_House_04->AutoSpriteSizeOn();
 		Village_House_04->SetAutoScaleRatio(2.0f);
 		Village_House_04->Transform.SetWorldPosition({ 1596,-753});
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_House_04->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_House_04->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 
 	{
@@ -718,6 +1287,13 @@ void TownMap::Start()
 		Bottom_Tree_10->SetAutoScaleRatio(2.0f);
 		Bottom_Tree_10->Transform.SetWorldPosition({ 1897,-482 });
 		Bottom_Tree_10->ChangeAnimation("Village_Tree_02_animation");
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Bottom_Tree_10->GetCurSprite().Texture->GetScale() * 0.5f });
+		Col->Transform.SetWorldPosition({ Bottom_Tree_10->Transform.GetWorldPosition().X - 40.0f,Bottom_Tree_10->Transform.GetWorldPosition().Y - 60.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
+
 	}
 	{
 		Village_Blacksmith_Fence = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -725,6 +1301,10 @@ void TownMap::Start()
 		Village_Blacksmith_Fence->AutoSpriteSizeOn();
 		Village_Blacksmith_Fence->SetAutoScaleRatio(2.0f);
 		Village_Blacksmith_Fence->Transform.SetWorldPosition({ 1470,-105 });		
+
+
+
+
 	}
 	{
 		Village_Blacksmith_Stand2_old = CreateComponent<GameEngineSpriteRenderer>(0);
@@ -732,6 +1312,15 @@ void TownMap::Start()
 		Village_Blacksmith_Stand2_old->AutoSpriteSizeOn();
 		Village_Blacksmith_Stand2_old->SetAutoScaleRatio(2.0f);
 		Village_Blacksmith_Stand2_old->Transform.SetWorldPosition({ 1390,-181 });
+
+
+
+	/*	std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Blacksmith_Stand2_old->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Blacksmith_Stand2_old->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D);*/
+
+
 	}
 	
 	{
@@ -740,6 +1329,12 @@ void TownMap::Start()
 		Village_Blacksmith_Stand1_old->AutoSpriteSizeOn();
 		Village_Blacksmith_Stand1_old->SetAutoScaleRatio(2.0f);
 		Village_Blacksmith_Stand1_old->Transform.SetWorldPosition({ 1477,-269 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Blacksmith_Stand1_old->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition({ Village_Blacksmith_Stand1_old->Transform.GetWorldPosition().X, Village_Blacksmith_Stand1_old->Transform.GetWorldPosition().Y+90.0f });
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
 
 	{
@@ -748,6 +1343,13 @@ void TownMap::Start()
 		Village_Blacksmith_House->AutoSpriteSizeOn();
 		Village_Blacksmith_House->SetAutoScaleRatio(2.0f);
 		Village_Blacksmith_House->Transform.SetWorldPosition({ 1741,-313 });
+
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Blacksmith_House->GetCurSprite().Texture->GetScale() * 2.0f });
+		Col->Transform.SetWorldPosition(Village_Blacksmith_House->Transform.GetWorldPosition());
+		Col->SetCollisionType(ColType::AABBBOX2D); 
+
 	}
 
 
@@ -757,7 +1359,16 @@ void TownMap::Start()
 		Village_Blacksmith_Roof_old->AutoSpriteSizeOn();
 		Village_Blacksmith_Roof_old->SetAutoScaleRatio(2.0f);
 		Village_Blacksmith_Roof_old->Transform.SetWorldPosition({ 1717,-154 });
+
+		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		Col->Transform.SetLocalScale({ Village_Blacksmith_Roof_old->GetCurSprite().Texture->GetScale() * 1.0f });
+		Col->Transform.SetWorldPosition({ Village_Blacksmith_Roof_old->Transform.GetWorldPosition().X,Village_Blacksmith_Roof_old->Transform.GetWorldPosition().Y+10.0f});
+		Col->SetCollisionType(ColType::AABBBOX2D);
+
 	}
+
+
+
 	/*{
 		Will_House_Barrel3 = CreateComponent<GameEngineSpriteRenderer>(0);
 		Will_House_Barrel3->SetSprite("Village_Object", 0);
@@ -775,18 +1386,23 @@ void TownMap::Start()
 	}*/
 
 
+	
+	
 
-	{
-		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Player);
-		Col->Transform.SetLocalScale({ 100.0f, 100.0f, 1.0f });
-	}
+	//Transform.AddLocalScale({ 0.1f,0.1f });
+
 
 
 }
 
 void TownMap::Update(float _DeltaTime)
 {
-	std::shared_ptr<class GameEngineSpriteRenderer> AD  = Village_Blacksmith_Roof_old;
+
+
+
+
+
+	/*std::shared_ptr<class GameEngineSpriteRenderer> AD  = Village_Blacksmith_House;
 
 	
 	if (GameEngineInput::IsDown('1') && check == false)
@@ -850,7 +1466,7 @@ void TownMap::Update(float _DeltaTime)
 			AD->Transform.AddWorldPosition(float4::DOWN);
 			return;
 		}
-	}
+	}*/
 
 	//if (GameEngineInput::IsPress('Q'))
 	//{
@@ -863,14 +1479,14 @@ void TownMap::Update(float _DeltaTime)
 	//	return;
 	//}
 
-	TransformData date = AD->Transform.GetConstTransformDataRef();
+	//TransformData date = AD->Transform.GetConstTransformDataRef();
 
-	/*date.LocalPosition
+	///*date.LocalPosition
 
-	float4 WorldMousePos*/
+	//float4 WorldMousePos*/
 
-	float4 WorldMousePos = date.WorldPosition;
-	OutputDebugStringA(WorldMousePos.ToString("\n").c_str());
+	//float4 WorldMousePos = date.WorldPosition;
+	//OutputDebugStringA(WorldMousePos.ToString("\n").c_str());
 
 
 

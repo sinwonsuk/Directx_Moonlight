@@ -24,6 +24,8 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+
+	EventParameter Event;
 	bool check = false;
 	// ¸Ê 
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;
@@ -158,6 +160,13 @@ private:
 
 
 	std::shared_ptr<GameEngineCollision> Col;
+	std::shared_ptr<GameEngineCollision> Col_02;
+	std::shared_ptr<GameEngineCollision> Col_03;
+	std::shared_ptr<GameEngineCollision> Col_04;
+
+
+
+
 
 	
 };

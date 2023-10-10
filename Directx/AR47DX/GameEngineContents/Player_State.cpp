@@ -693,22 +693,22 @@ void Player::Move(float _Delta)
 	
 		if (CameraCheck == false)
 		{
-			if (GameEngineInput::IsPress('A'))
+			if (GameEngineInput::IsPress('A') &&LeftMove ==true)
 			{
 				Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
 			}
 
-			if (GameEngineInput::IsPress('D'))
+			if (GameEngineInput::IsPress('D') && RightMove == true)
 			{
 				Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
 			}
 
-			if (GameEngineInput::IsPress('W'))
+			if (GameEngineInput::IsPress('W') && UpMove == true)
 			{
 				Transform.AddLocalPosition(float4::UP * _Delta * Speed);
 			}
 
-			if (GameEngineInput::IsPress('S'))
+			if (GameEngineInput::IsPress('S') && DownMove == true)
 			{
 				Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
 			}
@@ -718,43 +718,45 @@ void Player::Move(float _Delta)
 
 		if (CameraCheck == true)
 		{
+			
 
-			if (GameEngineInput::IsPress('A'))
+			if (GameEngineInput::IsPress('A') && LeftMove == true)
 			{
 				Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
 
-				if (Transform.GetLocalPosition().X > -15 && Transform.GetLocalPosition().X < 1294)
+				if (Transform.GetLocalPosition().X >= -15 && Transform.GetLocalPosition().X < 1294)
 				{
 					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
 				}
 			}
 
-			if (GameEngineInput::IsPress('D'))
+			if (GameEngineInput::IsPress('D') && RightMove == true)
 			{
 				Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-				if (Transform.GetLocalPosition().X < 1294 && Transform.GetLocalPosition().X > -15)
+
+				if (Transform.GetLocalPosition().X <= 1294 && Transform.GetLocalPosition().X > -15)
 				{
 					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
 				}
 			
 			}
 
-			if (GameEngineInput::IsPress('W'))
+			if (GameEngineInput::IsPress('W') && UpMove == true)
 			{
 				Transform.AddLocalPosition(float4::UP * _Delta * Speed);
 
-				if (Transform.GetLocalPosition().Y < 346 && Transform.GetLocalPosition().Y > -1054)
+				if (Transform.GetLocalPosition().Y <= 346 && Transform.GetLocalPosition().Y > -1053)
 				{
 					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
 				}
 				
 			}
 
-			if (GameEngineInput::IsPress('S'))
+			if (GameEngineInput::IsPress('S') && DownMove == true)
 			{
 				Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
 
-				if (Transform.GetLocalPosition().Y > -1054 && Transform.GetLocalPosition().Y < 346)
+				if (Transform.GetLocalPosition().Y >= -1053 && Transform.GetLocalPosition().Y < 346)
 				{
 					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
 				}		

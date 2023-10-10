@@ -28,7 +28,7 @@ void TutorialLevel::Start()
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
 	{
-		std::shared_ptr<Player> Object = CreateActor<Player>(-100);
+		std::shared_ptr<Player> Object = CreateActor<Player>();
 	}
 
 	{
@@ -58,6 +58,11 @@ void TutorialLevel::Start()
 
 void TutorialLevel::Update(float _Delta)
 {
+	if (GameEngineInput::IsPress('1'))
+	{
+		GameEngineCore::ChangeLevel("WorldLevel");
+	}
+
 	/*if (GameEngineInput::IsPress('A'))
 	{
 		GetCamera(0)->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
@@ -87,5 +92,7 @@ void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-
+	Player::this_Player->Death();
+	Player::this_Player = nullptr;
+	
 }
