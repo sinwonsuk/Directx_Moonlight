@@ -52,6 +52,7 @@
     <ClCompile Include="WorldLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
+    <ClCompile Include="Shop_House.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -99,6 +100,7 @@
     <ClInclude Include="WorldLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="Shop_House.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

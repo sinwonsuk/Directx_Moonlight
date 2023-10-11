@@ -178,6 +178,7 @@
     <ClCompile Include="golem_Wizard.cpp" />
     <ClCompile Include="Monster_Manager.cpp" />
     <ClCompile Include="Player_UI.cpp" />
+    <ClCompile Include="Shop_House.cpp" />
     <ClCompile Include="Slime_Potal.cpp" />
     <ClCompile Include="Spear_Effect.cpp" />
     <ClCompile Include="Spear_State.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="golem_Wizard.h" />
     <ClInclude Include="Monster_Manager.h" />
     <ClInclude Include="Player_UI.h" />
+    <ClInclude Include="Shop_House.h" />
     <ClInclude Include="Slime_Potal.h" />
     <ClInclude Include="Spear.h" />
     <ClInclude Include="ContentsCore.h">

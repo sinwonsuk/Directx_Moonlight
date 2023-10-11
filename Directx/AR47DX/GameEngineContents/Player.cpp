@@ -125,7 +125,7 @@ void Player::Start()
 
 	Left_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-
+		LeftMove = false;
 	};
 
 	Left_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
@@ -141,7 +141,7 @@ void Player::Start()
 
 	Right_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-
+		RightMove = false;
 	};
 
 
@@ -158,7 +158,7 @@ void Player::Start()
 
 	Bottom_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-
+		DownMove = false;
 	};
 
 
@@ -175,10 +175,10 @@ void Player::Start()
 
 	Top_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-
+		UpMove = false;
 	};
 
-
+	
 	Top_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 		UpMove = true;
@@ -199,11 +199,7 @@ void Player::TestEvent(GameEngineRenderer* _Renderer)
 void Player::Update(float _Delta)
 {
 	
-	//Left_Col->CollisionEvent(ContentsCollisionType::Object, Left_Event);
-	//Right_Col->CollisionEvent(ContentsCollisionType::Object, Right_Event);
-	//Bottom_Col->CollisionEvent(ContentsCollisionType::Object, Bottom_Event);
-	//Top_Col->CollisionEvent(ContentsCollisionType::Object, Top_Event);
-
+	
 	//MainSpriteRenderer->AddImageScale(float4{-10.0f, 0.0f, 0.0f} *_Delta);
 
 	// 몬스터가 몬스터랑 충돌하고 싶으면?
@@ -273,8 +269,13 @@ void Player::Update(float _Delta)
 
 	// float4 Color = GetColor(Transform.GetWorldPosition());
 
+	Left_Col->CollisionEvent(ContentsCollisionType::Object, Left_Event);
+	Right_Col->CollisionEvent(ContentsCollisionType::Object, Right_Event);
+	Bottom_Col->CollisionEvent(ContentsCollisionType::Object, Bottom_Event);
+	Top_Col->CollisionEvent(ContentsCollisionType::Object, Top_Event);
 
 	UpdateState(_Delta);
 
+	
 
 }

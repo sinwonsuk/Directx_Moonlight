@@ -35,5 +35,6 @@ enum class ContentsCollisionType
 	GolemWazard_Body,
 	Spear, 
 	Object,
-	ObjectCollision
+	ObjectCollision,
+	ShopDoor, 
 };
