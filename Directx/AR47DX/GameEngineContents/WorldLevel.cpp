@@ -34,6 +34,7 @@ void WorldLevel::Start()
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
 	
+
 	{
 		std::shared_ptr<Shop_House> Object = CreateActor<Shop_House>();
 		Object->Transform.SetLocalPosition({ 0.0f,0.0f,-150.0f });
@@ -41,7 +42,7 @@ void WorldLevel::Start()
 
 	{
 		std::shared_ptr<Player> Object = CreateActor<Player>();
-		Object->Transform.SetLocalPosition({ 0.0f,0.0f,-100.0f });
+		Object->Transform.SetLocalPosition({ 0.0f,0.0f,-200.0f });
 	}
 
 
