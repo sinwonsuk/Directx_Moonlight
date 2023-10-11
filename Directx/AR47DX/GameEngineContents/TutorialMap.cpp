@@ -27,6 +27,9 @@ void TutorialMap::Start()
 	/*{
 		std::shared_ptr<Object_jar> Object = GetLevel()->CreateActor<Object_jar>();
 	}*/
+
+	Transform.SetLocalPosition({ 0.0f,0.0f,-5.0f });
+
 	{
 
 		Scroll = CreateComponent<GameEngineSpriteRenderer>(100);

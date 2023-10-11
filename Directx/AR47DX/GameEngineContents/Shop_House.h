@@ -27,7 +27,7 @@ private:
 
 	EventParameter Event;
 
-	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;
+	std::shared_ptr<class GameEngineSpriteRenderer> Shop;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> Black;
 

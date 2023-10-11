@@ -31,9 +31,9 @@ void Player::Start()
 
 	{
 		// 줄줄이 사탕 식으로 만들려고.
-		player = CreateComponent<GameEngineSpriteRenderer>(-90);
+		player = CreateComponent<GameEngineSpriteRenderer>();
 	
-		//player->SetImageScale({ 100.0f, 100.0f });
+		
 
 		player->CreateAnimation("Start", "PlayStart", 0.15f, -1, -1, false);
 
@@ -74,6 +74,9 @@ void Player::Start()
 		player->SetAutoScaleRatio(2.0f);
 		player->ChangeAnimation("Start");
 		player->SetFrameEvent("Start", 34, std::bind(&Player::TestEvent, this, std::placeholders::_1));
+
+
+		//player->Transform.SetLocalPosition({ 0.0f,0.0f,-500.0f });
 		
 	}
 
@@ -115,8 +118,8 @@ void Player::Start()
 
 
 
-	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
+	/*float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });*/
 
 	Left_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{	
