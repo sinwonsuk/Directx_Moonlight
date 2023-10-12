@@ -31,7 +31,7 @@ void Player::Start()
 
 	{
 		// 줄줄이 사탕 식으로 만들려고.
-		player = CreateComponent<GameEngineSpriteRenderer>();
+		player = CreateComponent<GameEngineSpriteRenderer>(-50);
 	
 		
 

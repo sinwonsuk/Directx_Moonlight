@@ -35,7 +35,7 @@ void TownMap::Start()
 	{
 		
 
-		Will_House = CreateComponent<GameEngineSpriteRenderer>(0);
+		Will_House = CreateComponent<GameEngineSpriteRenderer>();
 		Will_House->SetSprite("Village", 1);
 		Will_House->AutoSpriteSizeOn();
 		Will_House->SetAutoScaleRatio(2.0f);
