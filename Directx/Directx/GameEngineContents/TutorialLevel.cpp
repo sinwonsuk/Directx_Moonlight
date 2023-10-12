@@ -50,6 +50,7 @@ void TutorialLevel::Start()
 	{
 		std::shared_ptr<TutorialMap_06> Object = CreateActor<TutorialMap_06>();
 	}
+
 	{
 		std::shared_ptr<Player_UI> Object = CreateActor<Player_UI>();
 	}
