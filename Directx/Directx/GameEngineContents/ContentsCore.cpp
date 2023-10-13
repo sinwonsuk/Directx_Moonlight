@@ -8,6 +8,7 @@
 #include "TitleLevel.h"
 #include "WorldLevel.h"
 #include "TutorialLevel.h"
+#include "ShopLevel.h"
 ContentsCore::ContentsCore() 
 {
 }
@@ -24,6 +25,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<TitleLevel>("TitleLevel");
 	GameEngineCore::CreateLevel<TutorialLevel>("TutorialLevel");
 	GameEngineCore::CreateLevel<WorldLevel>("WorldLevel");
+	GameEngineCore::CreateLevel<ShopLevel>("ShopLevel");
 	GameEngineCore::ChangeLevel("TutorialLevel");
 
 	// 자기 텍스처 로드해야 한다.

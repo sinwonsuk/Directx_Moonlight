@@ -165,9 +165,9 @@ private:
 	std::shared_ptr<GameEngineCollision> Col_04;
 
 
+	std::shared_ptr<GameEngineCollision> House_Col;
 
 
-
-	
+	//EventParameter Event;
 };
 

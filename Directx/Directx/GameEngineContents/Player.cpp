@@ -32,7 +32,7 @@ void Player::Start()
 	{
 		// 줄줄이 사탕 식으로 만들려고.
 		player = CreateComponent<GameEngineSpriteRenderer>(-50);
-	
+		player->Transform.AddLocalPosition({ 0.0f,0.0f,50.0f });
 		
 
 		player->CreateAnimation("Start", "PlayStart", 0.15f, -1, -1, false);
@@ -84,34 +84,35 @@ void Player::Start()
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Player);
 		Col->SetCollisionType(ColType::AABBBOX2D);
-		Col->Transform.SetLocalScale({ 50.0f, 50.0f, 1.0f });
+		//Col->Transform.SetLocalPosition({ 0.0f,0.0f,1.0f });
+		Col->Transform.SetLocalScale({ 50.0f, 50.0f });
 	}
 
 	{
 		Left_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::ObjectCollision);
 		Left_Col->SetCollisionType(ColType::AABBBOX2D);
-		Left_Col->Transform.AddLocalPosition({ -20.0f,0.0f }); 
+		Left_Col->Transform.SetLocalPosition({ -20.0f,0.0f,10.0f });
 		Left_Col->Transform.SetLocalScale({ 5.0f, 30.0f, 1.0f });
 	}
 
 	{
 		Right_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::ObjectCollision);
 		Right_Col->SetCollisionType(ColType::AABBBOX2D);
-		Right_Col->Transform.AddLocalPosition({ 20.0f,0.0f });
+		Right_Col->Transform.SetLocalPosition({ 20.0f,0.0f,10.0f });
 		Right_Col->Transform.SetLocalScale({ 5.0f, 30.0f, 1.0f });
 	}
 
 	{
 		Bottom_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::ObjectCollision);
 		Bottom_Col->SetCollisionType(ColType::AABBBOX2D);
-		Bottom_Col->Transform.AddLocalPosition({ 0.0f,-20.0f });
+		Bottom_Col->Transform.SetLocalPosition({ 0.0f,-20.0f,10.0f });
 		Bottom_Col->Transform.SetLocalScale({ 30.0f, 5.0f, 1.0f });
 	}
 
 	{
 		Top_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::ObjectCollision);
 		Top_Col->SetCollisionType(ColType::AABBBOX2D);
-		Top_Col->Transform.AddLocalPosition({ 0.0f,20.0f });
+		Top_Col->Transform.SetLocalPosition({ 0.0f,20.0f,10.0f });
 		Top_Col->Transform.SetLocalScale({ 30.0f, 5.0f, 1.0f });
 	}
 
@@ -119,7 +120,7 @@ void Player::Start()
 
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
+	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y,0.0f });
 
 	Left_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{	
@@ -271,6 +272,10 @@ void Player::Update(float _Delta)
 
 
 	// float4 Color = GetColor(Transform.GetWorldPosition());
+	if (Col->Collision(ContentsCollisionType::House))
+	{
+		int a = 0;
+	}
 
 	Left_Col->CollisionEvent(ContentsCollisionType::Object, Left_Event);
 	Right_Col->CollisionEvent(ContentsCollisionType::Object, Right_Event);

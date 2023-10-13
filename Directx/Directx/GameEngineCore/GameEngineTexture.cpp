@@ -240,7 +240,7 @@ GameEngineColor GameEngineTexture::GetColor(unsigned int _X, unsigned int _Y, Ga
 	// 첫번째 주소를 1바이트 자료형으로 줬다.
 	unsigned char* Ptr = Image.GetPixels();
 
-	switch (Fmt)
+ 	switch (Fmt)
 	{
 	case DXGI_FORMAT_B8G8R8A8_UNORM:
 	{

@@ -19,7 +19,6 @@
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Title.cpp" />
-    <ClCompile Include="TutorialLevel.cpp" />
     <ClCompile Include="TutorialMap.cpp" />
     <ClCompile Include="Player_State.cpp" />
     <ClCompile Include="Tutorial_Map_Manager.cpp" />
@@ -53,6 +52,10 @@
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="Shop_House.cpp" />
+    <ClCompile Include="ShopLevel.cpp" />
+    <ClCompile Include="TutorialLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -76,7 +79,6 @@
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Title.h" />
-    <ClInclude Include="TutorialLevel.h" />
     <ClInclude Include="TutorialMap.h" />
     <ClInclude Include="Tutorial_Map_Manager.h" />
     <ClInclude Include="TutorialMap_02.h" />
@@ -101,6 +103,10 @@
       <Filter>Level</Filter>
     </ClInclude>
     <ClInclude Include="Shop_House.h" />
+    <ClInclude Include="ShopLevel.h" />
+    <ClInclude Include="TutorialLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

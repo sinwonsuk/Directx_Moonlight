@@ -37,4 +37,6 @@ enum class ContentsCollisionType
 	Object,
 	ObjectCollision,
 	ShopDoor, 
+	House,
+	adddd
 };
