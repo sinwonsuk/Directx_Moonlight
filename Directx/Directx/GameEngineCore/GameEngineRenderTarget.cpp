@@ -45,6 +45,12 @@ void GameEngineRenderTarget::Setting()
 	}
 
 	GameEngineCore::GetContext()->OMSetRenderTargets(static_cast<UINT>(RTV.size()), &RTV[0], DSV);
+
+
+	
+	
+
+
 }
 
 
