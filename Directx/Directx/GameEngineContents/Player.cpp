@@ -27,7 +27,7 @@ void Player::AnimationCheck(const std::string_view& _AnimationName)
 void Player::Start()
 {
 	this_Player = this;
-	
+	GameEngineInput::AddInputObject(this);
 
 	{
 		// 줄줄이 사탕 식으로 만들려고.
@@ -204,6 +204,7 @@ void Player::Update(float _Delta)
 {
 	
 	
+
 	//MainSpriteRenderer->AddImageScale(float4{-10.0f, 0.0f, 0.0f} *_Delta);
 
 	// 몬스터가 몬스터랑 충돌하고 싶으면?
@@ -250,10 +251,10 @@ void Player::Update(float _Delta)
 	//GetLevel()->GetMainCamera()->Transform.SetLocalPosition(Transform.GetWorldPosition());
 
 
-	float4 awdd = Transform.GetLocalPosition();
+	//float4 awdd = Transform.GetLocalPosition();
 
-	
-	OutputDebugStringA(awdd.ToString("\n").c_str());
+	//
+	//OutputDebugStringA(awdd.ToString("\n").c_str());
 
 
 

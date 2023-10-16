@@ -12,67 +12,67 @@ TitleLevel::~TitleLevel()
 void TitleLevel::Start()
 {
 
-	{
-		// 엔진용 쉐이더를 전부다 전부다 로드하는 코드를 친다.
-		GameEngineDirectory Dir;
-		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources");
-		Dir.MoveChild("Texture");
-		std::vector<GameEngineFile> Files = Dir.GetAllFile();
+	//{
+	//	// 엔진용 쉐이더를 전부다 전부다 로드하는 코드를 친다.
+	//	GameEngineDirectory Dir;
+	//	Dir.MoveParentToExistsChild("GameEngineResources");
+	//	Dir.MoveChild("ContentsResources");
+	//	Dir.MoveChild("Texture");
+	//	std::vector<GameEngineFile> Files = Dir.GetAllFile();
 
-		for (size_t i = 0; i < Files.size(); i++)
-		{
-			// 구조적으로 잘 이해하고 있는지를 자신이 명확하게 인지하기 위해서
-			GameEngineFile& File = Files[i];
-			GameEngineTexture::Load(File.GetStringPath());
-		}
-
-		
-		GameEngineSprite::CreateCut("spearHitEffect_3.png", 3, 1);
-	
-	}
+	//	for (size_t i = 0; i < Files.size(); i++)
+	//	{
+	//		// 구조적으로 잘 이해하고 있는지를 자신이 명확하게 인지하기 위해서
+	//		GameEngineFile& File = Files[i];
+	//		GameEngineTexture::Load(File.GetStringPath());
+	//	}
 
 
-	{
-		GameEngineDirectory Dir;
-		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources");
-		Dir.MoveChild("FolderTexture");
-		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
+	//	GameEngineSprite::CreateCut("spearHitEffect_3.png", 3, 1);
 
-		for (size_t i = 0; i < Directorys.size(); i++)
-		{
-			// 구조적으로 잘 이해하고 있는지를 자신이 명확하게 인지하기 위해서
-			GameEngineDirectory& Dir = Directorys[i];
-
-			GameEngineSprite::CreateFolder(Dir.GetStringPath());
-		}
-
-		
+	//}
 
 
-	}
+	//{
+	//	GameEngineDirectory Dir;
+	//	Dir.MoveParentToExistsChild("GameEngineResources");
+	//	Dir.MoveChild("ContentsResources");
+	//	Dir.MoveChild("FolderTexture");
+	//	std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
 
-	GameEngineSprite::CreateSingle("Button_E.png");
-	GameEngineSprite::CreateSingle("Button_I.png");
-	GameEngineSprite::CreateSingle("Button_J.png");
-	GameEngineSprite::CreateSingle("Button_K.png");
-	GameEngineSprite::CreateSingle("Button_Space.png");
-	GameEngineSprite::CreateSingle("Button_Z.png");
-	GameEngineSprite::CreateSingle("Circle.png");
-	GameEngineSprite::CreateSingle("HealthBar_Base.png");
-	GameEngineSprite::CreateSingle("Heart.png");
-	GameEngineSprite::CreateSingle("Hp_Bar.png");
-	GameEngineSprite::CreateSingle("Pocket.png");
-	GameEngineSprite::CreateSingle("Bag.png");
-	GameEngineSprite::CreateSingle("Training_Spear.png");
-	GameEngineSprite::CreateSingle("MiniWill.png");
+	//	for (size_t i = 0; i < Directorys.size(); i++)
+	//	{
+	//		// 구조적으로 잘 이해하고 있는지를 자신이 명확하게 인지하기 위해서
+	//		GameEngineDirectory& Dir = Directorys[i];
 
-	GameEngineSprite::CreateSingle("Attack_Roll_Scroll.png");
-	GameEngineSprite::CreateSingle("Cliff_Roll_Scroll.png");
-	GameEngineSprite::CreateSingle("Enemy_Roll_Scroll.png");
-	GameEngineSprite::CreateSingle("Portion_Roll_Scroll.png");
-	GameEngineSprite::CreateSingle("Roll_Scroll.png");
+	//		GameEngineSprite::CreateFolder(Dir.GetStringPath());
+	//	}
+
+
+
+
+	//}
+
+	//GameEngineSprite::CreateSingle("Button_E.png");
+	//GameEngineSprite::CreateSingle("Button_I.png");
+	//GameEngineSprite::CreateSingle("Button_J.png");
+	//GameEngineSprite::CreateSingle("Button_K.png");
+	//GameEngineSprite::CreateSingle("Button_Space.png");
+	//GameEngineSprite::CreateSingle("Button_Z.png");
+	//GameEngineSprite::CreateSingle("Circle.png");
+	//GameEngineSprite::CreateSingle("HealthBar_Base.png");
+	//GameEngineSprite::CreateSingle("Heart.png");
+	//GameEngineSprite::CreateSingle("Hp_Bar.png");
+	//GameEngineSprite::CreateSingle("Pocket.png");
+	//GameEngineSprite::CreateSingle("Bag.png");
+	//GameEngineSprite::CreateSingle("Training_Spear.png");
+	//GameEngineSprite::CreateSingle("MiniWill.png");
+
+	//GameEngineSprite::CreateSingle("Attack_Roll_Scroll.png");
+	//GameEngineSprite::CreateSingle("Cliff_Roll_Scroll.png");
+	//GameEngineSprite::CreateSingle("Enemy_Roll_Scroll.png");
+	//GameEngineSprite::CreateSingle("Portion_Roll_Scroll.png");
+	//GameEngineSprite::CreateSingle("Roll_Scroll.png");
 
 
 
@@ -90,7 +90,7 @@ void TitleLevel::Start()
 
 void TitleLevel::Update(float _Delta)
 {
-	if (GameEngineInput::IsPress('P'))
+	if (GameEngineInput::IsPress('P', this))
 	{
 		GameEngineCore::ChangeLevel("TutorialLevel");
 	}
