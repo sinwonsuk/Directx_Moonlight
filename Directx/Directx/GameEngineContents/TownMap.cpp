@@ -1373,8 +1373,13 @@ void TownMap::Start()
 	House_Col->Transform.SetWorldPosition({1026,161 });
 	House_Col->SetCollisionType(ColType::AABBBOX2D);
 
+	Dungeon_Entrance = CreateComponent<GameEngineCollision>(ContentsCollisionType::Dungeon_Entrance);
+	Dungeon_Entrance->Transform.SetLocalScale({ 100.0f,10.0f });
+	Dungeon_Entrance->Transform.SetWorldPosition({ 15,702 });
+	Dungeon_Entrance->SetCollisionType(ColType::AABBBOX2D);
+
 	
-	
+
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
@@ -1411,85 +1416,99 @@ void TownMap::Update(float _DeltaTime)
 			GameEngineCore::ChangeLevel("ShopLevel");
 		}
 	}
+	if (Dungeon_Entrance->Collision(ContentsCollisionType::Player))
+	{
+		int a = 0;
+
+
+		if (GameEngineInput::IsDown('J'))
+		{
+			GameEngineCore::ChangeLevel("Dungeon_Entrance_Level");
+		}
+	}
+
+
+
+	
 
 	House_Col->CollisionEvent(ContentsCollisionType::Player, Event);
 
-	/*std::shared_ptr<class GameEngineSpriteRenderer> AD  = Village_Blacksmith_House;
+	//std::shared_ptr<class GameEngineCollision> AD  = Dungeon_Entrance;
 
-	
-	if (GameEngineInput::IsDown('1') && check == false)
-	{
-		check = true;
-	}
-	else if (GameEngineInput::IsDown('1') && check == true)
-	{
-		check = false;
-	}
-
-
-	if (check == true)
-	{
-		if (GameEngineInput::IsPress('A'))
-		{
-			GetLevel()->GetMainCamera()->Transform.AddWorldPosition({ 5.0f,0.0f });
-		}
-
-		if (GameEngineInput::IsPress('D'))
-		{
-			GetLevel()->GetMainCamera()->Transform.AddWorldPosition({ -5.0f,0.0f });
-			return;
-		}
-
-		if (GameEngineInput::IsPress('W'))
-		{
-			GetLevel()->GetMainCamera()->Transform.AddWorldPosition(float4::UP *5);
-			return;
-		}
-
-		if (GameEngineInput::IsPress('S'))
-		{
-			GetLevel()->GetMainCamera()->Transform.AddWorldPosition(float4::DOWN* 5);
-			return;
-		}
-	}
-	if (check == false)
-	{
-
-
-		if (GameEngineInput::IsPress('A'))
-		{
-			AD->Transform.AddWorldPosition({ 1.0f,0.0f });
-		}
-
-		if (GameEngineInput::IsPress('D'))
-		{
-			AD->Transform.AddWorldPosition({ -1.0f,0.0f });
-			return;
-		}
-
-		if (GameEngineInput::IsPress('W'))
-		{
-			AD->Transform.AddWorldPosition(float4::UP);
-			return;
-		}
-
-		if (GameEngineInput::IsPress('S'))
-		{
-			AD->Transform.AddWorldPosition(float4::DOWN);
-			return;
-		}
-	}*/
-
-	//if (GameEngineInput::IsPress('Q'))
+	//
+	//if (GameEngineInput::IsDown('1') && check == false)
 	//{
-	//	AD->Transform.AddWorldRotation({0.0f,1.0f* _DeltaTime,0.0f});
-	//	return;
+	//	check = true;
 	//}
-	//if (GameEngineInput::IsPress('E'))
+	//else if (GameEngineInput::IsDown('1') && check == true)
 	//{
-	//	AD->Transform.AddWorldRotation({ 0.0f,-1.0f* _DeltaTime,0.0f });
-	//	return;
+	//	check = false;
 	//}
+
+
+	//if (check == true)
+	//{
+	//	if (GameEngineInput::IsPress('A'))
+	//	{
+	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition({ 5.0f,0.0f });
+	//	}
+
+	//	if (GameEngineInput::IsPress('D'))
+	//	{
+	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition({ -5.0f,0.0f });
+	//		return;
+	//	}
+
+	//	if (GameEngineInput::IsPress('W'))
+	//	{
+	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition(float4::UP *5);
+	//		return;
+	//	}
+
+	//	if (GameEngineInput::IsPress('S'))
+	//	{
+	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition(float4::DOWN* 5);
+	//		return;
+	//	}
+	//}
+	//if (check == false)
+	//{
+
+
+	//	if (GameEngineInput::IsPress('A'))
+	//	{
+	//		AD->Transform.AddWorldPosition({ 1.0f,0.0f });
+	//	}
+
+	//	if (GameEngineInput::IsPress('D'))
+	//	{
+	//		AD->Transform.AddWorldPosition({ -1.0f,0.0f });
+	//		return;
+	//	}
+
+	//	if (GameEngineInput::IsPress('W'))
+	//	{
+	//		AD->Transform.AddWorldPosition(float4::UP);
+	//		return;
+	//	}
+
+	//	if (GameEngineInput::IsPress('S'))
+	//	{
+	//		AD->Transform.AddWorldPosition(float4::DOWN);
+	//		return;
+	//	}
+	//}
+
+	////if (GameEngineInput::IsPress('Q'))
+	////{
+	////	AD->Transform.AddWorldRotation({0.0f,1.0f* _DeltaTime,0.0f});
+	////	return;
+	////}
+	////if (GameEngineInput::IsPress('E'))
+	////{
+	////	AD->Transform.AddWorldRotation({ 0.0f,-1.0f* _DeltaTime,0.0f });
+	////	return;
+	////}
 
 	//TransformData date = AD->Transform.GetConstTransformDataRef();
 
@@ -1502,14 +1521,7 @@ void TownMap::Update(float _DeltaTime)
 
 
 
-	//static float Time = 5.0f;
-	//Time -= _DeltaTime;
-
-	//if (nullptr != Renderer && Time <= 0.0f)
-	//{
-	//	Renderer->Death();
-	//	Renderer = nullptr;
-	//}
+	
 }
 
 

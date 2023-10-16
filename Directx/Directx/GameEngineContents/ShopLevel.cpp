@@ -52,4 +52,8 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 void ShopLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
+	Player::LevelType = Leveltype::Town;
+	Player::this_Player->Death();
+	Player::this_Player = nullptr;
+
 }

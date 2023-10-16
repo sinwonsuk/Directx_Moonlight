@@ -66,15 +66,35 @@ void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);	
 	}
 
-	Player::this_Player->CameraCheck = true;
-	Player::this_Player->Transform.AddLocalPosition({ 400.0f,400.0f,-100.0f });
+	Player::this_Player->Camera = CameraType::Town;
 
-	GetMainCamera()->Transform.AddLocalPosition({ 400.0f,400.0f });
+	if (Player::LevelType == Leveltype::Dungeon_Entrance)
+	{
+		Player::this_Player->Transform.SetWorldPosition({ 15,682 });
+		GetMainCamera()->Transform.SetWorldPosition({ 15,300 });
+	}
+
+	
+	else if (Player::LevelType == Leveltype::Town)
+	{
+		Player::this_Player->Transform.SetWorldPosition({ 1040.0f,40.0f,-100.0f });
+		GetMainCamera()->Transform.SetWorldPosition({ 1040.0f,40.0f });
+	}
+
+
+	
+	
+
+
+
+	//TransformData Date = GetMainCamera()->Transform.GetConstTransformDataRef(); 
 	int a = 0;
 }
 
 void WorldLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 
-	int a = 0;
+
+	Player::this_Player->Death();
+	Player::this_Player = nullptr;
 }

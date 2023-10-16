@@ -9,7 +9,7 @@
 #include "ContentsEnum.h"
 
 Player* Player::this_Player; 
-
+Leveltype Player::LevelType = Leveltype::Town;
 Player::Player() 
 {
 	
@@ -31,7 +31,7 @@ void Player::Start()
 
 	{
 		// 줄줄이 사탕 식으로 만들려고.
-		player = CreateComponent<GameEngineSpriteRenderer>(-50);
+		player = CreateComponent<GameEngineSpriteRenderer>(-48);
 		player->Transform.AddLocalPosition({ 0.0f,0.0f,50.0f });
 		
 
@@ -285,5 +285,13 @@ void Player::Update(float _Delta)
 	UpdateState(_Delta);
 
 	
+	if (Col->Collision(ContentsCollisionType::ShopDoor))
+	{
+		player->Off();
+	}
 
+	else if (Col->Collision(ContentsCollisionType::Player) == false)
+	{
+		player->On();
+	}
 }

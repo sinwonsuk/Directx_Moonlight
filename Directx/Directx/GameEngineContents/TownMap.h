@@ -167,7 +167,7 @@ private:
 
 	std::shared_ptr<GameEngineCollision> House_Col;
 
-
+	std::shared_ptr<GameEngineCollision> Dungeon_Entrance;
 	//EventParameter Event;
 };
 

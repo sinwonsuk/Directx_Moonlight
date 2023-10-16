@@ -27,6 +27,9 @@ protected:
 
 private:
 	bool check = false;
+
+	bool test = false;
+
 	EventParameter Up_Event;
 	EventParameter Down_Event;
 	std::shared_ptr<class GameEngineSpriteRenderer> Shop;
@@ -37,7 +40,14 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Shop_Stove;
 	std::shared_ptr<class GameEngineSpriteRenderer> shop_stove_Fire;
 	std::shared_ptr<class GameEngineSpriteRenderer> shop_cauldron;
-	std::shared_ptr<class GameEngineSpriteRenderer> sdsdsds;
+	std::shared_ptr<class GameEngineSpriteRenderer> shop_Desk;
+	std::shared_ptr<class GameEngineSpriteRenderer> shop_Box;
+	std::shared_ptr<class GameEngineSpriteRenderer> shop_Bed;
+	std::shared_ptr<class GameEngineSpriteRenderer> bed_carpet;
+	std::shared_ptr<class GameEngineSpriteRenderer> Room_Stove_Fire;
+	std::shared_ptr<class GameEngineSpriteRenderer> Room_Stove;
+	std::shared_ptr<class GameEngineSpriteRenderer> Shop_door;
+	std::shared_ptr<class GameEngineSpriteRenderer> Pixel;
 	std::shared_ptr<class GameEngineSpriteRenderer> Black;
 
 
@@ -45,7 +55,7 @@ private:
 	std::shared_ptr<GameEngineCollision> Up_Col;
 
 	std::shared_ptr<GameEngineCollision> Col;
-
+	std::shared_ptr<GameEngineCollision> Change_Town;
 	bool CameraMove = false;
 
 	bool Up_CameraMove = false;

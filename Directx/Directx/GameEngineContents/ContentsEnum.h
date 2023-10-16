@@ -20,7 +20,19 @@ enum class TitleOrder
 	Title,
 };
 
+enum class CameraType
+{
+	None,
+	Town,
+	Dungeon_Entrance
+};
 
+enum class Leveltype
+{
+	None,
+	Town,
+	Dungeon_Entrance,
+};
 
 
 enum class ContentsCollisionType
@@ -38,5 +50,6 @@ enum class ContentsCollisionType
 	ObjectCollision,
 	ShopDoor, 
 	House,
-	adddd
+	Town,
+	Dungeon_Entrance
 };

@@ -42,7 +42,7 @@ class Player : public GameEngineActor
 {
 public:
 	// constrcuter destructer
-
+	static Leveltype LevelType;
 	static Player* this_Player;
 	Player();
 	~Player();
@@ -109,20 +109,22 @@ public:
 	// ¾ðÁ¨°£ ¹Ù²Û´Ù 
 	float Speed = 300.0f;
 	float Roll_Speed = 400.0f;
-	bool CameraCheck = false;
 	std::shared_ptr<GameEngineCollision> Col;
 
+	bool LeftMove = true;
+	bool RightMove = true;
+	bool DownMove = true;
+	bool UpMove = true;
+	CameraType Camera = CameraType::None;
+	//Leveltype LevelType = Leveltype::None;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 private:
 	float test = 0.0f;
-	bool LeftMove = true;
-	bool RightMove = true;
-	bool DownMove = true;
-	bool UpMove = true;
-
+	
+	
 
 
 	EventParameter Left_Event;

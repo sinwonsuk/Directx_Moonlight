@@ -52,7 +52,7 @@ void PlayLevel::Start()
 
 void PlayLevel::Update(float _Delta)
 {
-	Player::this_Player->CameraCheck = true;
+	//Player::this_Player->CameraCheck = true;
 	//static float Time = 0.0f;
 	//Time += _Delta;
 
