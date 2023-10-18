@@ -133,6 +133,7 @@ void Shop_House::Start()
 	{
 	Pixel = CreateComponent<GameEngineSpriteRenderer>(-49);
 	Pixel->SetSprite("Shop_Pixel", 0);
+	Pixel->Off();
 
 	
 	///Shop->Transform.AddLocalPosition({ 0.01f,0.0f,-150 });
@@ -420,70 +421,70 @@ void Shop_House::Update(float _DeltaTime)
 	PixelCollision(_DeltaTime);
 
 
-	//std::shared_ptr<class GameEngineCollision> AD = Change_Town;
+	std::shared_ptr<class GameEngineCollision> AD = Change_Town;
 
-	//
-	///*if (Col->Collision(ContentsCollisionType::Player))
-	//{
-	//	Shop_02->On();
-	//	Shop->Off(); 
-	//}
+	
+	/*if (Col->Collision(ContentsCollisionType::Player))
+	{
+		Shop_02->On();
+		Shop->Off(); 
+	}
 
-	//if (Col->Collision(ContentsCollisionType::Player) == false)
-	//{
-	//	Shop_02->Off();
-	//	Shop->On();
-	//}*/
-
-
-
-	//float4 Camera_Move = float4::LerpClamp(0, 300, _DeltaTime);
-
-	////
-
-	//Down_Col->CollisionEvent(ContentsCollisionType::Player, Down_Event);
-	//Up_Col->CollisionEvent(ContentsCollisionType::Player, Up_Event);
+	if (Col->Collision(ContentsCollisionType::Player) == false)
+	{
+		Shop_02->Off();
+		Shop->On();
+	}*/
 
 
-	///*if (Down_Col->Collision(ContentsCollisionType::Player) && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -5150)
-	//{
-	//	CameraMove = true; 
-	//	Down_CameraMove = false;
-	//}
 
-	//if (Up_Col->Collision(ContentsCollisionType::Player) && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -4793)
-	//{
-	//	Down_CameraMove = true;
-	//	CameraMove = false;
-	//}*/
+	float4 Camera_Move = float4::LerpClamp(0, 300, _DeltaTime);
 
 	//
 
-	//
-
-	//if (CameraMove == true && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y < -118 && Up_CameraMove ==false)
-	//{
-	//     GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ 0.0f,Camera_Move.X });
-	//}
-	//if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -118)
-	//{
-	//	CameraMove = false;
-	//}
+	Down_Col->CollisionEvent(ContentsCollisionType::Player, Down_Event);
+	Up_Col->CollisionEvent(ContentsCollisionType::Player, Up_Event);
 
 
-	//if (Up_CameraMove == true && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -500 )
-	//{
-	//	GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ 0.0f,-Camera_Move.X });
-	//}
+	/*if (Down_Col->Collision(ContentsCollisionType::Player) && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -5150)
+	{
+		CameraMove = true; 
+		Down_CameraMove = false;
+	}
 
-	//if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y < -500)
-	//{
-	//	Up_CameraMove = false;
-	//}
+	if (Up_Col->Collision(ContentsCollisionType::Player) && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -4793)
+	{
+		Down_CameraMove = true;
+		CameraMove = false;
+	}*/
+
+	
+
+	
+
+	if (CameraMove == true && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y < -118 && Up_CameraMove ==false)
+	{
+	     GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ 0.0f,Camera_Move.X });
+	}
+	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -118)
+	{
+		CameraMove = false;
+	}
+
+
+	if (Up_CameraMove == true && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -500 )
+	{
+		GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ 0.0f,-Camera_Move.X });
+	}
+
+	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y < -500)
+	{
+		Up_CameraMove = false;
+	}
 
 
 
-	//
+	
 
 
 	//if (GameEngineInput::IsDown('1') && check == false)

@@ -77,14 +77,7 @@ void golem_Solder::Start()
 		Monster_BaseBar->On();
 		Monster_HpBar->On();
 
-		//Hp -= 10.0f;
 		
-		
-
-
-		/*GameEngineActor* Actor = col->GetActor();
-		Spear* ptr = dynamic_cast<Spear*>(Actor);
-		ptr->Col->Off();*/
 	};
 
 	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
@@ -97,8 +90,7 @@ void golem_Solder::Start()
 
 	Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		/*Monster_BaseBar->Off();
-		Monster_HpBar->Off();*/
+		
 	};
 
 

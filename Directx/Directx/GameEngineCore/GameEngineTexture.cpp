@@ -19,12 +19,6 @@ GameEngineTexture::GameEngineTexture()
 
 GameEngineTexture::~GameEngineTexture() 
 {
-	if (nullptr != DSV)
-	{
-		DSV->Release();
-		DSV = nullptr;
-	}
-
 	if (nullptr != SRV)
 	{
 		SRV->Release();
@@ -112,14 +106,12 @@ void GameEngineTexture::CreateDepthStencilView()
 	// 이미지를 수정할수 있는 권한을 '만든다'
 
 	HRESULT Result = GameEngineCore::GetDevice()->CreateDepthStencilView(Texture2D, nullptr, &DSV);
+
 	if (S_OK != Result)
 	{
 		MsgBoxAssert("쉐이더 리소스 뷰 생성에 실패했습니다.");
 		return;
 	}
-
-
-
 }
 
 void GameEngineTexture::ResLoad(std::string_view _Path)
@@ -248,7 +240,7 @@ GameEngineColor GameEngineTexture::GetColor(unsigned int _X, unsigned int _Y, Ga
 	// 첫번째 주소를 1바이트 자료형으로 줬다.
 	unsigned char* Ptr = Image.GetPixels();
 
-	switch (Fmt)
+ 	switch (Fmt)
 	{
 	case DXGI_FORMAT_B8G8R8A8_UNORM:
 	{

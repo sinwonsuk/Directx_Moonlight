@@ -31,17 +31,23 @@ private:
 	
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;
 	std::shared_ptr<class GameEngineSpriteRenderer> DungeonsEntrance_Top;
-	std::shared_ptr<class GameEngineSpriteRenderer> Shop_Table;
-	std::shared_ptr<class GameEngineSpriteRenderer> Shop_Counter;
-	std::shared_ptr<class GameEngineSpriteRenderer> Shop_Carpet;
-	std::shared_ptr<class GameEngineSpriteRenderer> Shop_Stove;
+	std::shared_ptr<class GameEngineSpriteRenderer> Dungeon_Door;
+	std::shared_ptr<class GameEngineSpriteRenderer> Dungeon_Door_02;
+	std::shared_ptr<class GameEngineSpriteRenderer> Dungeon_Door_03;
+	std::shared_ptr<class GameEngineSpriteRenderer> Dungeon_Door_04;
 	std::shared_ptr<class GameEngineSpriteRenderer> Dungeon_Entrance_Pixel;
-
+	std::shared_ptr<class GameEngineSpriteRenderer> Dungeon_Open;
+	std::shared_ptr<class GameEngineSpriteRenderer> Dungeon_Close;
 	bool check = false;
+
+	bool CollisionCheck = false;
 	
 
 	std::shared_ptr<GameEngineCollision> Change_Dungeon;
 	std::shared_ptr<GameEngineCollision> Change_Town;
+	std::shared_ptr<GameEngineCollision> Dungeon_Near;
+
+
 
 
 

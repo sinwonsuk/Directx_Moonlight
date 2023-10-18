@@ -51,5 +51,6 @@ enum class ContentsCollisionType
 	ShopDoor, 
 	House,
 	Town,
-	Dungeon_Entrance
+	Dungeon_Entrance,
+	Dungeon_Near, 
 };

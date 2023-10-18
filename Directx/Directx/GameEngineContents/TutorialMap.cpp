@@ -30,7 +30,7 @@ void TutorialMap::Start()
 
 	Transform.SetLocalPosition({ 0.0f,0.0f,-5.0f });
 
-	/*{
+	{
 
 		Scroll = CreateComponent<GameEngineSpriteRenderer>(100);
 		Scroll->CreateAnimation("Tutorial Scroll", "Tutorial Scroll", 0.1f, -1, -1, false);
@@ -41,41 +41,41 @@ void TutorialMap::Start()
 
 		Scroll->AnimationPauseOn(); 
 		Scroll->Transform.AddLocalPosition({ 0.0f,320.0f });
-	}*/
+	}
 	
 	{
 
-	    BackGround = CreateComponent<GameEngineSpriteRenderer>(0);
+	    BackGround = CreateComponent<GameEngineSpriteRenderer>(-100);
 	    BackGround->SetSprite("Tutorial_BackGround", 1);
-	    BackGround->SetImageScale({ 1380.0f,750.0f});
+	    BackGround->SetImageScale({ 1380.0f,750.0f });
 
 	}
 
-	//{
+	{
 
-	//	Map_floor_01 = CreateComponent<GameEngineSpriteRenderer>(-100);
-	//	Map_floor_01->SetSprite("Tutorial_Floor_01", 0);
-	////	Map_floor_01->SetImageScale({ 1050.0f,552.0f });
+		Map_floor_01 = CreateComponent<GameEngineSpriteRenderer>(-100);
+		Map_floor_01->SetSprite("Tutorial_Floor_01", 0);
+	//	Map_floor_01->SetImageScale({ 1050.0f,552.0f });
 
-	//}
+	}
 
-	//{
+	{
 
-	//	LeftDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
-	//	LeftDoor->Transform.AddLocalRotation({ 0.0f,0.0f,90.0f });
-	//	LeftDoor->Transform.AddLocalPosition({ -550.0f,20.0f,0.0f });
-	//	LeftDoor->SetAutoScaleRatio(1.5f);
-	//	LeftDoor->SetSprite("Door", 1);
-	//	
-	//}
-	//{
+		LeftDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
+		LeftDoor->Transform.AddLocalRotation({ 0.0f,0.0f,90.0f });
+		LeftDoor->Transform.AddLocalPosition({ -550.0f,20.0f,0.0f });
+		LeftDoor->SetAutoScaleRatio(1.5f);
+		LeftDoor->SetSprite("Door", 1);
+		
+	}
+	{
 
-	//	RightDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
-	//	RightDoor->Transform.AddLocalRotation({ 0.0f,0.0f,-90.0f });
-	//	RightDoor->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
-	//	RightDoor->SetAutoScaleRatio(1.5f);
-	//	RightDoor->SetSprite("Door", 0);
-	//}
+		RightDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
+		RightDoor->Transform.AddLocalRotation({ 0.0f,0.0f,-90.0f });
+		RightDoor->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
+		RightDoor->SetAutoScaleRatio(1.5f);
+		RightDoor->SetSprite("Door", 0);
+	}
 
 	
 	
@@ -124,10 +124,10 @@ void TutorialMap::Start()
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y});
-	/*{
+	{
 		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
-	}*/
+	}
 	/*{
 		std::shared_ptr<golem_Wizard> Object = GetLevel()->CreateActor<golem_Wizard>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
@@ -139,16 +139,16 @@ void TutorialMap::Start()
 	//}
 	
 
-	/*Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
+	Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
 	Collision_Door->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
-	Collision_Door->Transform.SetLocalScale({90.0f,120.0f,0.0f });*/
+	Collision_Door->Transform.SetLocalScale({90.0f,120.0f,0.0f });
 }
 
 void TutorialMap::Update(float _Delta)
 {
 
 
-	/*if (Player::this_Player->GetPlayerStateValue() != PlayerState::Start)
+	if (Player::this_Player->GetPlayerStateValue() != PlayerState::Start)
 	{
 		Scroll->AnimationPauseOff();
 	}
@@ -163,6 +163,6 @@ void TutorialMap::Update(float _Delta)
 	}
 
 
-	DoorCollision(_Delta, Map_Number);*/
+	DoorCollision(_Delta, Map_Number);
 	
 }

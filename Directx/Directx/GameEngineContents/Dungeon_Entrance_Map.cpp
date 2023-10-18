@@ -108,6 +108,52 @@ void Dungeon_Entrance_Map::Start()
 		DungeonsEntrance_Top->Transform.SetWorldPosition({ 1216.0f,-1102.0f });
 		//DungeonsEntrance_Top->Transform.SetWorldPosition({ 624.0f,-1262.0f });
 	}
+	{
+		Dungeon_Door = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Dungeon_Door->SetSprite("Dungeon1_Door", 0);
+		Dungeon_Door->AutoSpriteSizeOn();
+		Dungeon_Door->SetAutoScaleRatio(2.0f);
+		Dungeon_Door->Transform.SetWorldPosition({ 699.0f,-892.0f });	
+	}
+	{
+		Dungeon_Door_02 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Dungeon_Door_02->SetSprite("Dungeon_Door", 0);
+		Dungeon_Door_02->AutoSpriteSizeOn();
+		Dungeon_Door_02->SetAutoScaleRatio(2.0f);
+		Dungeon_Door_02->Transform.SetWorldPosition({ 1711,-907.0f });
+	}
+
+	{
+		Dungeon_Door_03 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Dungeon_Door_03->SetSprite("Dungeon_Door", 0);
+		Dungeon_Door_03->AutoSpriteSizeOn();
+		Dungeon_Door_03->SetAutoScaleRatio(2.0f);
+		Dungeon_Door_03->Transform.SetWorldPosition({ 1481.0f,-624.0f });
+	}
+
+	{
+		Dungeon_Door_04 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Dungeon_Door_04->SetSprite("Dungeon_Door", 0);
+		Dungeon_Door_04->AutoSpriteSizeOn();
+		Dungeon_Door_04->SetAutoScaleRatio(2.0f);
+		Dungeon_Door_04->Transform.SetWorldPosition({ 942.0f,-624.0f });
+	}
+
+	{
+		Dungeon_Open = CreateComponent<GameEngineSpriteRenderer>(0);
+		Dungeon_Open->CreateAnimation("Dungeon_Open", "Dungeon_Open", 0.1f, -1, -1, false);
+		Dungeon_Open->CreateAnimation("Dungeon_Close", "Dungeon_Close", 0.1f, -1, -1, false);
+		Dungeon_Open->Off(); 
+
+
+		Dungeon_Open->AutoSpriteSizeOn();
+		Dungeon_Open->SetAutoScaleRatio(2.0f);
+		Dungeon_Open->Transform.SetWorldPosition({ 699.0f,-892.0f });
+		Dungeon_Open->ChangeAnimation("Dungeon_Open");
+
+	}
+	
+
 
 
 	/*{
@@ -125,6 +171,13 @@ void Dungeon_Entrance_Map::Start()
 	Change_Town->SetCollisionType(ColType::AABBBOX2D);
 
 
+	Dungeon_Near = CreateComponent<GameEngineCollision>(ContentsCollisionType::Dungeon_Near);
+	Dungeon_Near->Transform.SetLocalScale({ 250.0f,220.0f });
+	Dungeon_Near->Transform.SetWorldPosition({ 733.0f,-1037.0f });
+	Dungeon_Near->SetCollisionType(ColType::AABBBOX2D);
+
+
+
 }
 
 
@@ -133,20 +186,45 @@ void Dungeon_Entrance_Map::Start()
 
 void Dungeon_Entrance_Map::Update(float _DeltaTime)
 {
-	std::shared_ptr<class GameEngineCollision> AD  = Change_Town;
-
-	if (Change_Town->Collision(ContentsCollisionType::Player))
+	if (Dungeon_Near->Collision(ContentsCollisionType::Player))
 	{
-		int a = 0;
 
-
-		if (GameEngineInput::IsDown('J'))
-		{
-			GameEngineCore::ChangeLevel("WorldLevel");
-		}
+		CollisionCheck = true; 
+		Dungeon_Open->On(); 
+		Dungeon_Door->Off(); 
 	}
 
-	 PixelCollision(_DeltaTime);
+	if (Dungeon_Near->Collision(ContentsCollisionType::Player) ==false && CollisionCheck ==true)
+	{
+		Dungeon_Open->ChangeAnimation("Dungeon_Close"); 
+	
+		if (Dungeon_Open->IsCurAnimationEnd())
+		{
+			Dungeon_Door->On(); 
+			Dungeon_Open->ChangeAnimation("Dungeon_Open");
+			Dungeon_Open->Off();
+			CollisionCheck = false;
+		}
+
+	}
+
+
+
+	PixelCollision(_DeltaTime);
+	//std::shared_ptr<class GameEngineSpriteRenderer> AD  = Dungeon_Door;
+
+	//if (Change_Town->Collision(ContentsCollisionType::Player))
+	//{
+	//	int a = 0;
+
+
+	//	if (GameEngineInput::IsDown('J'))
+	//	{
+	//		GameEngineCore::ChangeLevel("WorldLevel");
+	//	}
+	//}
+
+	//
 	//if (GameEngineInput::IsDown('1') && check == false)
 	//{
 	//	check = true;

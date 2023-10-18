@@ -14,6 +14,7 @@ GameEngineCollision::~GameEngineCollision()
 
 void GameEngineCollision::Start()
 {
+
 	GetActor()->GetLevel()->PushCollision(GetDynamic_Cast_This<GameEngineCollision>());
 }
 

@@ -20,7 +20,7 @@ void WorldLevel::Start()
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 
-	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y});
+	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
 
@@ -29,7 +29,11 @@ void WorldLevel::Start()
 
 
 
+	{
+		std::shared_ptr<TownMap> Object = CreateActor<TownMap>(ContentsObjectType::BackGround);
 
+	}
+	
 	/*GetMainCamera()->Transform.SetLocalPosition({ 0.0f,0.0f, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);*/
 
@@ -57,12 +61,8 @@ void WorldLevel::Update(float _Delta)
 
 void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+
 	{
-		std::shared_ptr<TownMap> Object = CreateActor<TownMap>(ContentsObjectType::BackGround);
-
-	}
-
-	/*{
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);	
 	}
 
@@ -71,7 +71,7 @@ void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	if (Player::LevelType == Leveltype::Dungeon_Entrance)
 	{
 		Player::this_Player->Transform.SetWorldPosition({ 15,682 });
-		GetMainCamera()->Transform.SetWorldPosition({ 15,300 });
+		GetMainCamera()->Transform.SetWorldPosition({ 15,310 });
 	}
 
 	
