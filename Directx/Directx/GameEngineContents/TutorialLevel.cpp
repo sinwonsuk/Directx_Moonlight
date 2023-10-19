@@ -28,9 +28,9 @@ void TutorialLevel::Start()
 	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
-	{
+	/*{
 		std::shared_ptr<Player> Object = CreateActor<Player>();
-	}
+	}*/
 
 	{
 		std::shared_ptr<TutorialMap> Object = CreateActor<TutorialMap>();
@@ -89,7 +89,9 @@ void TutorialLevel::Update(float _Delta)
 
 void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-
+	{
+		std::shared_ptr<Player> Object = CreateActor<Player>();
+	}
 }
 
 void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)

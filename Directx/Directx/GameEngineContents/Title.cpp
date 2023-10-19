@@ -21,7 +21,6 @@ void Title::Start()
 		Title_BG_Back->CreateAnimation("Title", "Title", 0.1f, -1, -1);
 		Title_BG_Back->ChangeAnimation("Title");
 		Title_BG_Back->SetImageScale({ 1280.0f,720.0f });
-
 	}
 	{
 		Title_BG_Front = CreateComponent<GameEngineSpriteRenderer>(100);
