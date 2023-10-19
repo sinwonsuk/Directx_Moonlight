@@ -528,7 +528,11 @@ void Player::Roll_RightUpdate(float _Time)
 
 void Player::Roll_LeftUpdate(float _Time)
 {
-	Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+	if (LeftMove == false)
+	{
+		Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+	}
+	
 
 	if (player->IsCurAnimationEnd())
 	{
@@ -539,7 +543,11 @@ void Player::Roll_LeftUpdate(float _Time)
 
 void Player::Roll_DownUpdate(float _Time)
 {
-	Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+	if (DownMove == false)
+	{
+		Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+	}
+	
 
 	if (player->IsCurAnimationEnd())
 	{
@@ -550,8 +558,11 @@ void Player::Roll_DownUpdate(float _Time)
 
 void Player::Roll_UpUpdate(float _Time)
 {
-	
+	if (UpMove == false)
+	{
 		Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+	}
+	
 	
 	
 

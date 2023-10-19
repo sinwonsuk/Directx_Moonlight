@@ -65,7 +65,7 @@ void Title::Start()
 		Title_Select_Effect_Right->SetSprite("Title_Select_Effect", 0);
 	}
 
-
+	int a = 0;
 
 }
 

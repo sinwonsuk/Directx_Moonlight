@@ -88,6 +88,9 @@ void Dungeon_Entrance_Map::PixelCollision(float _Delta)
 }
 void Dungeon_Entrance_Map::Start()
 {
+
+	GameEngineInput::AddInputObject(this);
+
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ 1204, -1028 });
 
@@ -213,18 +216,18 @@ void Dungeon_Entrance_Map::Update(float _DeltaTime)
 	PixelCollision(_DeltaTime);
 	//std::shared_ptr<class GameEngineSpriteRenderer> AD  = Dungeon_Door;
 
-	//if (Change_Town->Collision(ContentsCollisionType::Player))
-	//{
-	//	int a = 0;
-
-
-	//	if (GameEngineInput::IsDown('J'))
-	//	{
-	//		GameEngineCore::ChangeLevel("WorldLevel");
-	//	}
-	//}
-
-	//
+	if (Change_Town->Collision(ContentsCollisionType::Player))
+	{
+		int a = 0;
+	
+	
+		if (GameEngineInput::IsDown('J',this))
+		{
+			GameEngineCore::ChangeLevel("WorldLevel");
+		}
+	}
+	
+	
 	//if (GameEngineInput::IsDown('1') && check == false)
 	//{
 	//	check = true;

@@ -8,6 +8,7 @@
 #include "Tutorial_Map_06.h"
 #include "Player.h"
 #include "Player_UI.h"
+#include "TileMap.h"
 TutorialLevel::TutorialLevel()
 {
 
@@ -21,7 +22,7 @@ TutorialLevel::~TutorialLevel()
 void TutorialLevel::Start()
 {
 	GameEngineInput::AddInputObject(this);
-	
+
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 
@@ -34,6 +35,7 @@ void TutorialLevel::Start()
 
 	{
 		std::shared_ptr<TutorialMap> Object = CreateActor<TutorialMap>();
+
 	}
 
 	{
@@ -56,6 +58,62 @@ void TutorialLevel::Start()
 		std::shared_ptr<Player_UI> Object = CreateActor<Player_UI>();
 	}
 
+	{
+		Tile = CreateActor<TileMap>(ContentsObjectType::BackGround);
+
+		size_t TileX = 192;
+		size_t TileY = 18;
+
+		Tile->TileRenderer->CreateTileMap({ TileX, TileY, {40, 40}, "Button_E.png" });
+
+		for (size_t x = 0; x < TileX; x++)
+		{
+			for (size_t y = 0; y < TileY; y++)
+			{
+				Tile->TileRenderer->SetTileIndex({ x, y });
+			}
+		}
+
+		for (size_t x = 0; x < TileX; x++)
+		{
+			test.push_back(testbool);
+			for (size_t y = 0; y < TileY; y++)
+			{
+				bool a = true;
+				test[x].push_back(a); 
+			}
+		}
+		
+		for (size_t x = 0; x < TileX; x++)
+		{
+			for (size_t y = 0; y < TileY; y++)
+			{
+				if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Tutorial_Map_Pixel_04.png"))
+				{
+					test[x][y] = false;
+				}
+			}
+		}
+		int a = 0;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Tile->TileRenderer->Transform.AddLocalPosition({ 0.0f,0.0f,-100.0f });
+
+
+	//
+	
 }
 
 void TutorialLevel::Update(float _Delta)
@@ -64,6 +122,24 @@ void TutorialLevel::Update(float _Delta)
 	{
 		GameEngineCore::ChangeLevel("WorldLevel");
 	}
+
+	if (GameEngineInput::IsPress('E', this))
+	{
+		Tile->TileRenderer->Transform.AddLocalPosition({ 0.0f,0.0f,1.0f });
+		
+	}
+
+	if (GameEngineInput::IsPress('Q', this))
+	{
+		Tile->TileRenderer->Transform.AddLocalPosition({ 0.0f,0.0f,-1.0f });
+		
+	}
+	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+
+	size_t TileX = 192;
+	size_t TileY = 18;
+	
+
 
 	/*if (GameEngineInput::IsPress('A'))
 	{
@@ -99,4 +175,12 @@ void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;
 	
+}
+GameEngineColor TutorialLevel::GetColor(float4 _Pos, GameEngineColor _DefaultColor, std::string_view _Name)
+{
+	//_Pos.Y *= -1.0f;
+
+	std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find(_Name);
+
+	return Tex->GetColor(_Pos, _DefaultColor);
 }

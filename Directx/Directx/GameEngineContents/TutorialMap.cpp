@@ -5,6 +5,7 @@
 #include <GameEngineCore/GameEngineTexture.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineTileMap.h>
 #include "TutorialLevel.h"
 #include "Player.h"
 #include "Object_jar.h"
@@ -45,7 +46,7 @@ void TutorialMap::Start()
 	
 	{
 
-	    BackGround = CreateComponent<GameEngineSpriteRenderer>(-100);
+	    BackGround = CreateComponent<GameEngineSpriteRenderer>(100);
 	    BackGround->SetSprite("Tutorial_BackGround", 1);
 	    BackGround->SetImageScale({ 1380.0f,750.0f });
 
@@ -76,7 +77,6 @@ void TutorialMap::Start()
 		RightDoor->SetAutoScaleRatio(1.5f);
 		RightDoor->SetSprite("Door", 0);
 	}
-
 
 
 	/*{

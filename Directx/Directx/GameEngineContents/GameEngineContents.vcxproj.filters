@@ -61,6 +61,7 @@
     </ClCompile>
     <ClCompile Include="Dungeon_Entrance_Map.cpp" />
     <ClCompile Include="ContentsControlWindow.cpp" />
+    <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -117,6 +118,7 @@
     </ClInclude>
     <ClInclude Include="Dungeon_Entrance_Map.h" />
     <ClInclude Include="ContentsControlWindow.h" />
+    <ClInclude Include="TileMap.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
