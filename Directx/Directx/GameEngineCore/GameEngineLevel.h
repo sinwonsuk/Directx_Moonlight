@@ -1,6 +1,6 @@
 #pragma once
 #include "GameEngineObject.h"
-
+#include "GameEngineActor.h"
 // 설명 :
 // class GameEngineActor; 이래도되고
 class GameEngineLevel : public GameEngineObject
@@ -39,9 +39,10 @@ public:
 	}
 
 	template<typename ObjectType>
-	std::shared_ptr<ObjectType> CreateActor(int _Order = 0)
+	std::shared_ptr<ObjectType> CreateActor(int _Order = 0, std::string_view _Name = "")
 	{
 		std::shared_ptr<class GameEngineActor> NewChild = std::make_shared<ObjectType>();
+		NewChild->SetName(_Name);
 
 		ActorInit(NewChild, _Order);
 

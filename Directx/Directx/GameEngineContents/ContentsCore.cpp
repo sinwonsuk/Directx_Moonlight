@@ -10,6 +10,8 @@
 #include "TutorialLevel.h"
 #include "ShopLevel.h"
 #include "Dungeon_Entrance_Level.h"
+#include "ContentsControlWindow.h"
+
 ContentsCore::ContentsCore() 
 {
 }
@@ -20,7 +22,7 @@ ContentsCore::~ContentsCore()
 
 void ContentsCore::Start()
 {
-
+	GameEngineGUI::CreateGUIWindow<ContentsControlWindow>("ContentsControlWindow");
 
 	GameEngineCore::CreateLevel<TitleLevel>("TitleLevel");
 	GameEngineCore::CreateLevel<TutorialLevel>("TutorialLevel");

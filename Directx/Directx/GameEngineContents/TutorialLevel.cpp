@@ -20,6 +20,7 @@ TutorialLevel::~TutorialLevel()
 
 void TutorialLevel::Start()
 {
+	GameEngineInput::AddInputObject(this);
 	
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
@@ -59,7 +60,7 @@ void TutorialLevel::Start()
 
 void TutorialLevel::Update(float _Delta)
 {
-	if (GameEngineInput::IsPress('1'))
+	if (GameEngineInput::IsPress('1', this))
 	{
 		GameEngineCore::ChangeLevel("WorldLevel");
 	}

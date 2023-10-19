@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "TitleLevel.h"
 #include "Title.h"
+
 TitleLevel::TitleLevel() 
 {
 }
@@ -11,6 +12,7 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Start()
 {
+	GameEngineInput::AddInputObject(this);
 
 	{
 		// 엔진용 쉐이더를 전부다 전부다 로드하는 코드를 친다.
@@ -90,7 +92,7 @@ void TitleLevel::Start()
 
 void TitleLevel::Update(float _Delta)
 {
-	if (GameEngineInput::IsPress('P'))
+	if (GameEngineInput::IsPress('P', this))
 	{
 		GameEngineCore::ChangeLevel("TutorialLevel");
 	}

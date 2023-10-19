@@ -25,7 +25,7 @@ void Shop_House::PixelCollision(float _Delta)
 	float4 Up_Player_Pos = { Player::this_Player->Transform.GetWorldPosition().X,Player::this_Player->Transform.GetWorldPosition().Y + 20.0f };
 	float4 Down_Player_Pos = { Player::this_Player->Transform.GetWorldPosition().X ,Player::this_Player->Transform.GetWorldPosition().Y - 20.0f };
 
-	if (GameEngineColor::AC == GetColor({ Left_Player_Pos }, { 255,0,0,255 }))
+	if (GameEngineColor::MAGENTA == GetColor({ Left_Player_Pos }, { 255,0,0,255 }))
 	{
 		Player::this_Player->LeftMove = false;
 	}
@@ -37,7 +37,7 @@ void Shop_House::PixelCollision(float _Delta)
 
 
 
-	if (GameEngineColor::AC == GetColor({ Right_Player_Pos }, { 255,0,0,255 }))
+	if (GameEngineColor::MAGENTA == GetColor({ Right_Player_Pos }, { 255,0,0,255 }))
 	{
 		Player::this_Player->RightMove = false;
 	}
@@ -47,7 +47,7 @@ void Shop_House::PixelCollision(float _Delta)
 	}
 
 
-	if (GameEngineColor::AC == GetColor({ Up_Player_Pos }, { 255, 0, 0, 255 }))
+	if (GameEngineColor::MAGENTA == GetColor({ Up_Player_Pos }, { 255, 0, 0, 255 }))
 	{
 		Player::this_Player->UpMove = false;
 	}
@@ -58,7 +58,7 @@ void Shop_House::PixelCollision(float _Delta)
 
 
 
-	 if (GameEngineColor::AC == GetColor({ Down_Player_Pos }, { 255, 0, 0, 255 }))
+	 if (GameEngineColor::MAGENTA == GetColor({ Down_Player_Pos }, { 255, 0, 0, 255 }))
 	{
 		Player::this_Player->DownMove = false;
 	}
@@ -89,7 +89,7 @@ void Shop_House::PixelCollision(float _Delta)
 
 void Shop_House::Start()
 {
-	
+	GameEngineInput::AddInputObject(this);
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
@@ -101,6 +101,7 @@ void Shop_House::Start()
 		Black->AutoSpriteSizeOn();
 		Black->SetAutoScaleRatio(2.0f);
 		Black->Transform.AddLocalPosition({ 0.0f,0.0f,-200 });
+
 	}
 
 	{
@@ -397,13 +398,13 @@ void Shop_House::Start()
 
 void Shop_House::Update(float _DeltaTime)
 {
-	if (GameEngineInput::IsDown('4') && test == true)
+	if (GameEngineInput::IsDown('4',this) && test == true)
 	{
 		Pixel->Off();
 		test = false;
 	}
 
-	else if (GameEngineInput::IsDown('4') && test == false)
+	else if (GameEngineInput::IsDown('4', this) && test == false)
 	{
 		Pixel->On();
 		test = true;
@@ -411,7 +412,7 @@ void Shop_House::Update(float _DeltaTime)
 
 	if (Change_Town->Collision(ContentsCollisionType::Player))
 	{
-		if (GameEngineInput::IsDown('J'))
+		if (GameEngineInput::IsDown('J', this))
 		{
 			GameEngineCore::ChangeLevel("WorldLevel");
 		}

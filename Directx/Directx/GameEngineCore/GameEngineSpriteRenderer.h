@@ -6,6 +6,7 @@ class GameEngineFrameAnimation
 {
 	friend class GameEngineSpriteRenderer;
 
+public:
 	GameEngineSpriteRenderer* Parent = nullptr;
 
 	std::string AnimationName;
@@ -59,6 +60,12 @@ struct SpriteRendererInfo
 	int FlipUp = 0;
 	float Temp1;
 	float Temp2;
+};
+
+struct ColorData 
+{
+	float4 PlusColor = float4::ZERONULL; // 최종색상에 더한다.
+	float4 MulColor = float4::ONE; // 최종색상에 곱한다.
 };
 
 // 설명 :
@@ -165,6 +172,11 @@ public:
 	{
 		Pivot = _Value;
 	}
+	float4 GetPivotValue()
+	{
+		return Pivot;
+	}
+
 	void SetPivotType(PivotType _Type);
 	void SetImageScale(const float4& _Scale);
 	void AddImageScale(const float4& _Scale);
@@ -184,16 +196,28 @@ public:
 		return CurFrameAnimations->CurIndex;
 	}
 
+	std::shared_ptr<GameEngineFrameAnimation> CurAnimation()
+	{
+		return CurFrameAnimations;
+	}
+
 	inline GameEngineTransform& GetImageTransform()
 	{
 		return ImageTransform;
 	}
 
+	inline ColorData& GetColorData()
+	{
+		return ColorDataValue;
+	}
+
+	void SetMaskTexture(std::string_view _Texture);
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 	void Render(GameEngineCamera* _Camera, float _Delta) override;
-	void SetMaterialEvent(std::string_view _Name, int _Index);
+	void SetMaterialEvent(std::string_view _Name, int _Index) override;
 
 	int Index = 0;
 
@@ -215,6 +239,8 @@ private:
 	bool IsPause = false;
 
 	float4 Pivot = {0.5f, 0.5f};
+
+	ColorData ColorDataValue;
 
 	GameEngineTransform ImageTransform;
 };

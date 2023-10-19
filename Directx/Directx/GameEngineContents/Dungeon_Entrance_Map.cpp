@@ -25,7 +25,7 @@ void Dungeon_Entrance_Map::PixelCollision(float _Delta)
 	float4 Up_Player_Pos = { Player::this_Player->Transform.GetWorldPosition().X,Player::this_Player->Transform.GetWorldPosition().Y + 20.0f };
 	float4 Down_Player_Pos = { Player::this_Player->Transform.GetWorldPosition().X ,Player::this_Player->Transform.GetWorldPosition().Y - 20.0f };
 
-	if (GameEngineColor::AC == GetColor({ Left_Player_Pos }, { 255,0,0,255 }))
+	if (GameEngineColor::MAGENTA == GetColor({ Left_Player_Pos }, { 255,0,0,255 }))
 	{
 		Player::this_Player->LeftMove = false;
 	}
@@ -37,7 +37,7 @@ void Dungeon_Entrance_Map::PixelCollision(float _Delta)
 
 
 
-	if (GameEngineColor::AC == GetColor({ Right_Player_Pos }, { 255,0,0,255 }))
+	if (GameEngineColor::MAGENTA == GetColor({ Right_Player_Pos }, { 255,0,0,255 }))
 	{
 		Player::this_Player->RightMove = false;
 	}
@@ -47,7 +47,7 @@ void Dungeon_Entrance_Map::PixelCollision(float _Delta)
 	}
 
 
-	if (GameEngineColor::AC == GetColor({ Up_Player_Pos }, { 255, 0, 0, 255 }))
+	if (GameEngineColor::MAGENTA == GetColor({ Up_Player_Pos }, { 255, 0, 0, 255 }))
 	{
 		Player::this_Player->UpMove = false;
 	}
@@ -58,7 +58,7 @@ void Dungeon_Entrance_Map::PixelCollision(float _Delta)
 
 
 
-	if (GameEngineColor::AC == GetColor({ Down_Player_Pos }, { 255, 0, 0, 255 }))
+	if (GameEngineColor::MAGENTA == GetColor({ Down_Player_Pos }, { 255, 0, 0, 255 }))
 	{
 		Player::this_Player->DownMove = false;
 	}

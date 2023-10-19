@@ -190,31 +190,31 @@ void Player::StartUpdate(float _Time)
 
 void Player::RightIdleUpdate(float _Time)
 {
-	if (GameEngineInput::IsPress('A'))
+	if (GameEngineInput::IsPress('A', this))
 	{
 		ChangeState(PlayerState::LeftMove);
 		return; 
 	}
 
-	if (GameEngineInput::IsPress('D'))
+	if (GameEngineInput::IsPress('D', this))
 	{
 		ChangeState(PlayerState::RightMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('W'))
+	if (GameEngineInput::IsPress('W', this))
 	{
 		ChangeState(PlayerState::UpMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('S'))
+	if (GameEngineInput::IsPress('S', this))
 	{
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
 
-	if (GameEngineInput::IsDown('J'))
+	if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>(-100);
 		Object->ChangeState(Spear_State::Spear_Right_01);
@@ -222,7 +222,7 @@ void Player::RightIdleUpdate(float _Time)
 		return;
 	}
 
-	if (GameEngineInput::IsDown(VK_SPACE))
+	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollRight);
 		return;
@@ -232,38 +232,38 @@ void Player::RightIdleUpdate(float _Time)
 
 void Player::LeftIdleUpdate(float _Time)
 {
-	if (GameEngineInput::IsPress('A'))
+	if (GameEngineInput::IsPress('A', this))
 	{
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('D'))
+	if (GameEngineInput::IsPress('D', this))
 	{
 		ChangeState(PlayerState::RightMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('W'))
+	if (GameEngineInput::IsPress('W', this))
 	{
 		ChangeState(PlayerState::UpMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('S'))
+	if (GameEngineInput::IsPress('S', this))
 	{
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
 
-	if (GameEngineInput::IsDown('J'))
+	if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Left_01);
 		ChangeState(PlayerState::Spear_Left_Attack_01);
 		return;
 	}
-	if (GameEngineInput::IsDown(VK_SPACE))
+	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollLeft);
 		return;
@@ -273,37 +273,37 @@ void Player::LeftIdleUpdate(float _Time)
 
 void Player::DownIdleUpdate(float _Time)
 {
-	if (GameEngineInput::IsPress('A'))
+	if (GameEngineInput::IsPress('A', this))
 	{
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('D'))
+	if (GameEngineInput::IsPress('D', this))
 	{
 		ChangeState(PlayerState::RightMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('W'))
+	if (GameEngineInput::IsPress('W', this))
 	{
 		ChangeState(PlayerState::UpMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('S'))
+	if (GameEngineInput::IsPress('S', this))
 	{
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
 
-	if (GameEngineInput::IsDown('J'))
+	if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		ChangeState(PlayerState::Spear_Down_Attack_01);
 		return;
 	}
-	if (GameEngineInput::IsDown(VK_SPACE))
+	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollDown);
 		return;
@@ -313,37 +313,37 @@ void Player::DownIdleUpdate(float _Time)
 
 void Player::UpIdleUpdate(float _Time)
 {
-	if (GameEngineInput::IsPress('A'))
+	if (GameEngineInput::IsPress('A', this))
 	{
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('D'))
+	if (GameEngineInput::IsPress('D', this))
 	{
 		ChangeState(PlayerState::RightMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('W'))
+	if (GameEngineInput::IsPress('W', this))
 	{
 		ChangeState(PlayerState::UpMove);
 		return;
 	}
 
-	if (GameEngineInput::IsPress('S'))
+	if (GameEngineInput::IsPress('S', this))
 	{
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-	if (GameEngineInput::IsDown('J'))
+	if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Up_01);
 		ChangeState(PlayerState::Spear_Up_Attack_01);
 		return;
 	}
-	if (GameEngineInput::IsDown(VK_SPACE))
+	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollUp);
 		return;
@@ -355,36 +355,36 @@ void Player::RightMoveUpdate(float _Time)
 {
 	Move(_Time);
 
-	if (GameEngineInput::IsUp('D'))
+	if (GameEngineInput::IsUp('D', this))
 	{
 		ChangeState(PlayerState::RightIdle);
 		return; 
 	}
 
-	if (GameEngineInput::IsDown('W'))
+	if (GameEngineInput::IsDown('W', this))
 	{
 		ChangeState(PlayerState::UpMove);
 		return;
 	}
-	if (GameEngineInput::IsDown('S'))
+	if (GameEngineInput::IsDown('S', this))
 	{
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-	if (GameEngineInput::IsDown('A'))
+	if (GameEngineInput::IsDown('A', this))
 	{
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
 
-	if (GameEngineInput::IsDown('J'))
+	if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Right_01);
 		ChangeState(PlayerState::Spear_Right_Attack_01);
 		return;
 	}
-	if (GameEngineInput::IsDown(VK_SPACE))
+	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollRight);
 		return;
@@ -399,28 +399,28 @@ void Player::LeftMoveUpdate(float _Time)
 
 	Move(_Time);
 
-	if (GameEngineInput::IsDown('D'))
+	if (GameEngineInput::IsDown('D', this))
 	{
 		ChangeState(PlayerState::RightMove);
 		return;
 	}
-	if (GameEngineInput::IsDown('W'))
+	if (GameEngineInput::IsDown('W', this))
 	{
 		ChangeState(PlayerState::UpMove);
 		return;
 	}
-	if (GameEngineInput::IsDown('S'))
+	if (GameEngineInput::IsDown('S', this))
 	{
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-	if (GameEngineInput::IsUp('A'))
+	if (GameEngineInput::IsUp('A', this))
 	{
 		ChangeState(PlayerState::LeftIdle);
 		return;
 	}
 
-	if (GameEngineInput::IsDown('J'))
+	if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Left_01);
@@ -428,7 +428,7 @@ void Player::LeftMoveUpdate(float _Time)
 		return;
 	}
 
-	if (GameEngineInput::IsDown(VK_SPACE))
+	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollLeft);
 		return;
@@ -439,35 +439,35 @@ void Player::DownMoveUpdate(float _Time)
 {
 	Move(_Time);
 
-	if (GameEngineInput::IsDown('D'))
+	if (GameEngineInput::IsDown('D', this))
 	{
 		ChangeState(PlayerState::RightMove);
 		return;
 	}
-	if (GameEngineInput::IsDown('W'))
+	if (GameEngineInput::IsDown('W', this))
 	{
 		ChangeState(PlayerState::UpMove);
 		return;
 	}
-	if (GameEngineInput::IsUp('S'))
+	if (GameEngineInput::IsUp('S', this))
 	{
 		ChangeState(PlayerState::DownIdle);
 		return;
 	}
-	if (GameEngineInput::IsDown('A'))
+	if (GameEngineInput::IsDown('A', this))
 	{
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
 
-	if (GameEngineInput::IsDown('J'))
+	if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		ChangeState(PlayerState::Spear_Down_Attack_01);
 		return;
 	}
 
-	if (GameEngineInput::IsDown(VK_SPACE))
+	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollDown);
 		return;
@@ -478,35 +478,35 @@ void Player::UpMoveUpdate(float _Time)
 {
 	Move(_Time); 
 
-	if (GameEngineInput::IsDown('D'))
+	if (GameEngineInput::IsDown('D', this))
 	{
 		ChangeState(PlayerState::DownIdle);
 		return;
 	}
-	if (GameEngineInput::IsUp('W'))
+	if (GameEngineInput::IsUp('W', this))
 	{
 		ChangeState(PlayerState::UpIdle);
 		return;
 	}
-	if (GameEngineInput::IsDown('S'))
+	if (GameEngineInput::IsDown('S', this))
 	{
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-	if (GameEngineInput::IsDown('A'))
+	if (GameEngineInput::IsDown('A', this))
 	{
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
 
-	if (GameEngineInput::IsDown('J'))
+	if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Up_01);
 		ChangeState(PlayerState::Spear_Up_Attack_01);
 		return;
 	}
-	if (GameEngineInput::IsDown(VK_SPACE))
+	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollUp);
 		return;
@@ -659,7 +659,7 @@ void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerSt
 
 	if (player->GetCurIndex() > 1)
 	{
-		if (GameEngineInput::IsDown('J'))
+		if (GameEngineInput::IsDown('J', this))
 		{
 			AttackCheck = true;
 		}
@@ -694,22 +694,22 @@ void Player::Move(float _Delta)
 	{
 	case CameraType::None:
 
-		if (GameEngineInput::IsPress('A') && LeftMove == true)
+		if (GameEngineInput::IsPress('A', this) && LeftMove == true)
 		{
 			Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
 		}
 
-		if (GameEngineInput::IsPress('D') && RightMove == true)
+		if (GameEngineInput::IsPress('D', this) && RightMove == true)
 		{
 			Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
 		}
 
-		if (GameEngineInput::IsPress('W') && UpMove == true)
+		if (GameEngineInput::IsPress('W', this) && UpMove == true)
 		{
 			Transform.AddLocalPosition(float4::UP * _Delta * Speed);
 		}
 
-		if (GameEngineInput::IsPress('S') && DownMove == true)
+		if (GameEngineInput::IsPress('S', this) && DownMove == true)
 		{
 			Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
 		}
@@ -717,7 +717,7 @@ void Player::Move(float _Delta)
 
 	case CameraType::Town:
 
-		if (GameEngineInput::IsPress('A') && LeftMove == true)
+		if (GameEngineInput::IsPress('A', this) && LeftMove == true)
 		{
 			Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
 
@@ -727,7 +727,7 @@ void Player::Move(float _Delta)
 			}
 		}
 
-		if (GameEngineInput::IsPress('D') && RightMove == true)
+		if (GameEngineInput::IsPress('D', this) && RightMove == true)
 		{
 			Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
 
@@ -738,7 +738,7 @@ void Player::Move(float _Delta)
 
 		}
 
-		if (GameEngineInput::IsPress('W') && UpMove == true)
+		if (GameEngineInput::IsPress('W', this) && UpMove == true)
 		{
 			Transform.AddLocalPosition(float4::UP * _Delta * Speed);
 
@@ -749,7 +749,7 @@ void Player::Move(float _Delta)
 
 		}
 
-		if (GameEngineInput::IsPress('S') && DownMove == true)
+		if (GameEngineInput::IsPress('S', this) && DownMove == true)
 		{
 			Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
 
@@ -765,7 +765,7 @@ void Player::Move(float _Delta)
 		break;
 	case CameraType::Dungeon_Entrance:
 	{
-		if (GameEngineInput::IsPress('A') && LeftMove == true)
+		if (GameEngineInput::IsPress('A', this) && LeftMove == true)
 		{
 			Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
 
@@ -776,7 +776,7 @@ void Player::Move(float _Delta)
 			}
 		}
 
-		if (GameEngineInput::IsPress('D') && RightMove == true)
+		if (GameEngineInput::IsPress('D', this) && RightMove == true)
 		{
 			Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
 
@@ -789,7 +789,7 @@ void Player::Move(float _Delta)
 
 		}
 
-		if (GameEngineInput::IsPress('W') && UpMove == true)
+		if (GameEngineInput::IsPress('W', this) && UpMove == true)
 		{
 			Transform.AddLocalPosition(float4::UP * _Delta * Speed);
 
@@ -802,7 +802,7 @@ void Player::Move(float _Delta)
 
 		}
 
-		if (GameEngineInput::IsPress('S') && DownMove == true)
+		if (GameEngineInput::IsPress('S', this) && DownMove == true)
 		{
 			Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
 			//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);

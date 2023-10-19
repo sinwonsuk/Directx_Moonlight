@@ -77,8 +77,15 @@ void TutorialMap::Start()
 		RightDoor->SetSprite("Door", 0);
 	}
 
-	
-	
+	{
+
+		asdad = CreateComponent<GameEngineSpriteRenderer>(-100);
+		asdad->Transform.AddLocalRotation({ 0.0f,0.0f,-90.0f });
+		asdad->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
+		asdad->SetAutoScaleRatio(1.5f);
+		asdad->SetSprite("TitleLoge");
+	}
+
 
 	/*{
 		

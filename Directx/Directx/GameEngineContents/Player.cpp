@@ -27,7 +27,7 @@ void Player::AnimationCheck(const std::string_view& _AnimationName)
 void Player::Start()
 {
 	this_Player = this;
-	
+	GameEngineInput::AddInputObject(this);
 
 	{
 		// 줄줄이 사탕 식으로 만들려고.

@@ -30,5 +30,5 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Title_Select_Effect_Right;
 	std::shared_ptr<class GameEngineSpriteRenderer> Title_Logo;
 
-
+	std::shared_ptr<class GameEngineSpriteRenderer> sdsd;
 };

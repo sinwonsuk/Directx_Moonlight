@@ -118,5 +118,5 @@ void Player_UI::Start()
 void Player_UI::Update(float _Delta)
 {
 
-
+	Button_E->GetSprite()->GetSpriteData(0).Texture = nullptr;
 }

@@ -81,32 +81,25 @@ void GameEngineSpriteRenderer::Start()
 {
 	GameEngineRenderer::Start();
 
-	// DataTransform = &ImageTransform;
-
 	ImageTransform.SetParent(Transform);
 
 	GameEngineRenderer::SetMesh("Rect");
 	GameEngineRenderer::SetMaterial("2DTexture");
-
-	//std::shared_ptr<GameEngineConstantBuffer> Buffer = GameEngineConstantBuffer::CreateAndFind(sizeof(float4), "SpriteData");
-	//if (nullptr != Buffer)
-	//{
-	//	Buffer->ChangeData(CurSprite.SpritePivot);
-	//	Buffer->Setting(1);
-	//}
-	// CurSprite.Texture->PSSetting(0);
-
 }
 
+// Update Order에 영향을 받는다.
 void GameEngineSpriteRenderer::Update(float _Delta)
 {
 	if (nullptr != CurFrameAnimations)
 	{
+		Sprite = CurFrameAnimations->Sprite;
 		CurSprite = CurFrameAnimations->Update(_Delta);
 	}
 
+
 	if (true == IsImageSize)
 	{
+
 		float4 Scale = float4(CurSprite.GetScale());
 		Scale.Z = 1.0f;
 		Scale.W = 0.0f;
@@ -155,9 +148,9 @@ void GameEngineSpriteRenderer::Render(GameEngineCamera* _Camera, float _Delta)
 void GameEngineSpriteRenderer::SetSprite(std::string_view _Name, unsigned int index /*= 0*/)
 {
 	CurFrameAnimations = nullptr;
-
+	Sprite = nullptr;
 	Sprite = GameEngineSprite::Find(_Name);
-
+	int a = Sprite.use_count(); 
 	if (nullptr == Sprite)
 	{
 		MsgBoxAssert("존재하지 않는 스프라이트를 사용하려고 했습니다.");
@@ -257,6 +250,7 @@ void GameEngineSpriteRenderer::ChangeAnimation(std::string_view _AnimationName, 
 	CurFrameAnimations = FrameAnimations[UpperName];
 	CurFrameAnimations->Reset();
 	CurFrameAnimations->CurIndex = _FrameIndex;
+	Sprite = CurFrameAnimations->Sprite;
 	CurSprite = CurFrameAnimations->Sprite->GetSpriteData(CurFrameAnimations->CurIndex);
 }
 
@@ -374,8 +368,23 @@ void GameEngineSpriteRenderer::SetMaterialEvent(std::string_view _Name, int _Ind
 	const TransformData& Data = ImageTransform.GetConstTransformDataRef();
 	GetShaderResHelper().SetConstantBufferLink("TransformData", Data);
 	GetShaderResHelper().SetConstantBufferLink("SpriteData", CurSprite.SpritePivot);
-	// ShaderResHelper.SetTexture("DiffuseTex", "NSet.Png");
 	GetShaderResHelper().SetConstantBufferLink("SpriteRendererInfo", SpriteRendererInfoValue);
-
+	GetShaderResHelper().SetConstantBufferLink("ColorData", ColorDataValue);
 	SetSprite("NSet.png");
+}
+
+
+void GameEngineSpriteRenderer::SetMaskTexture(std::string_view _Texture)
+{
+	// 바뀌기 전에 
+	// 스프라이트 이름이나 애니메이션이나 이런것들을 저장했다가
+	
+	// 이녀석한테 있는
+	GameEngineRenderer::SetMaterial("2DTextureMask");
+
+	// 다시 세팅해주면 
+	// SetSprite("NSet.png");
+
+
+	GetShaderResHelper().SetTexture("MaskTex", _Texture);
 }

@@ -60,6 +60,7 @@
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="Dungeon_Entrance_Map.cpp" />
+    <ClCompile Include="ContentsControlWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -115,6 +116,7 @@
       <Filter>Level</Filter>
     </ClInclude>
     <ClInclude Include="Dungeon_Entrance_Map.h" />
+    <ClInclude Include="ContentsControlWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

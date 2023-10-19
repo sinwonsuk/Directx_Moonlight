@@ -144,25 +144,25 @@ void golem_Stone::CollisionStop(float _Delta, std::string_view _Name)
 	float4 Down_Stone_Pos = { Transform.GetWorldPosition().X ,Transform.GetWorldPosition().Y - 20.0f };
 
 
-	if (GameEngineColor::AC == GetColor({ Left_Stone_Pos }, { 255,0,0,255 }, _Name))
+	if (GameEngineColor::MAGENTA == GetColor({ Left_Stone_Pos }, { 255,0,0,255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::RIGHT * _Delta * 10.0f });
 		ChangeState(golem_Stone_State::LeftCollision);
 		return; 
 	}
-	else if (GameEngineColor::AC == GetColor({ Right_Stone_Pos }, { 255,0,0,255 }, _Name))
+	else if (GameEngineColor::MAGENTA == GetColor({ Right_Stone_Pos }, { 255,0,0,255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::LEFT * _Delta * 10.0f });
 		ChangeState(golem_Stone_State::RightCollision);
 		return;
 	}
-	else if (GameEngineColor::AC == GetColor({ Up_Stone_Pos }, { 255, 0, 0, 255 }, _Name))
+	else if (GameEngineColor::MAGENTA == GetColor({ Up_Stone_Pos }, { 255, 0, 0, 255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::DOWN * _Delta * 10.0f });
 		ChangeState(golem_Stone_State::UpCollision);
 		return;
 	}
-	else if (GameEngineColor::AC == GetColor({ Down_Stone_Pos }, { 255, 0, 0, 255 }, _Name))
+	else if (GameEngineColor::MAGENTA == GetColor({ Down_Stone_Pos }, { 255, 0, 0, 255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::UP * _Delta * 10.0f });
 		ChangeState(golem_Stone_State::DownCollision);

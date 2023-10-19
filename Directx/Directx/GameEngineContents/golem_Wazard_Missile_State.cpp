@@ -54,22 +54,22 @@ void gloem_Wazard_Missile::AttackUpdate(float _Time)
 	float4 Up_Stone_Pos = { Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 20.0f };
 	float4 Down_Stone_Pos = { Transform.GetWorldPosition().X ,Transform.GetWorldPosition().Y - 20.0f };
 
-	if (GameEngineColor::AC == GetColor({ Left_Stone_Pos }, { 255,0,0,255 }, "Tutorial_Map_Pixel.png"))
+	if (GameEngineColor::MAGENTA == GetColor({ Left_Stone_Pos }, { 255,0,0,255 }, "Tutorial_Map_Pixel.png"))
 	{
 		ChangeState(golem_Wazard_missile_State::Finish);
 		return;
 	}
-	else if (GameEngineColor::AC == GetColor({ Right_Stone_Pos }, { 255,0,0,255 }, "Tutorial_Map_Pixel.png"))
+	else if (GameEngineColor::MAGENTA == GetColor({ Right_Stone_Pos }, { 255,0,0,255 }, "Tutorial_Map_Pixel.png"))
 	{
 		ChangeState(golem_Wazard_missile_State::Finish);
 		return;
 	}
-	else if (GameEngineColor::AC == GetColor({ Up_Stone_Pos }, { 255, 0, 0, 255 }, "Tutorial_Map_Pixel.png"))
+	else if (GameEngineColor::MAGENTA == GetColor({ Up_Stone_Pos }, { 255, 0, 0, 255 }, "Tutorial_Map_Pixel.png"))
 	{
 		ChangeState(golem_Wazard_missile_State::Finish);
 		return;
 	}
-	else if (GameEngineColor::AC == GetColor({ Down_Stone_Pos }, { 255, 0, 0, 255 }, "Tutorial_Map_Pixel.png"))
+	else if (GameEngineColor::MAGENTA == GetColor({ Down_Stone_Pos }, { 255, 0, 0, 255 }, "Tutorial_Map_Pixel.png"))
 	{
 		ChangeState(golem_Wazard_missile_State::Finish);
 		return;

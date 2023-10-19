@@ -64,7 +64,7 @@ void Tutorial_Map_Manager::ObjectCollision(float _Delta, std::string_view _Name)
 		Player::this_Player->Transform.AddLocalPosition(dir * 20.0f * _Delta);
 	}*/
 
-	if (GameEngineColor::AC == GetColor({ Left_Player_Pos }, { 255,0,0,255 }, _Name))
+	if (GameEngineColor::MAGENTA == GetColor({ Left_Player_Pos }, { 255,0,0,255 }, _Name))
 	{
 		Player::this_Player->Roll_Speed = 0.0f;
 		Player::this_Player->Speed = 0.0f;
@@ -72,19 +72,19 @@ void Tutorial_Map_Manager::ObjectCollision(float _Delta, std::string_view _Name)
 
 		
 	}
-	else if (GameEngineColor::AC == GetColor({ Right_Player_Pos }, { 255,0,0,255 }, _Name))
+	else if (GameEngineColor::MAGENTA == GetColor({ Right_Player_Pos }, { 255,0,0,255 }, _Name))
 	{
 		Player::this_Player->Roll_Speed = 0.0f;
 		Player::this_Player->Speed = 0.0f;
 		Player::this_Player->Transform.AddLocalPosition(float4::LEFT * 20.0f * _Delta);
 	}
-	else if (GameEngineColor::AC == GetColor({ Up_Player_Pos }, { 255, 0, 0, 255 }, _Name))
+	else if (GameEngineColor::MAGENTA == GetColor({ Up_Player_Pos }, { 255, 0, 0, 255 }, _Name))
 	{
 		Player::this_Player->Roll_Speed = 0.0f;
 		Player::this_Player->Speed = 0.0f;
 		Player::this_Player->Transform.AddLocalPosition(float4::DOWN * 20.0f * _Delta);
 	}
-	else if (GameEngineColor::AC == GetColor({ Down_Player_Pos }, { 255, 0, 0, 255 }, _Name))
+	else if (GameEngineColor::MAGENTA == GetColor({ Down_Player_Pos }, { 255, 0, 0, 255 }, _Name))
 	{
 		Player::this_Player->Roll_Speed = 0.0f;
 		Player::this_Player->Speed = 0.0f;

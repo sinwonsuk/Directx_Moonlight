@@ -17,6 +17,7 @@ void TownMap::Start()
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 
+	GameEngineInput::AddInputObject(this);
 
 	{
 		
@@ -1411,7 +1412,7 @@ void TownMap::Update(float _DeltaTime)
 		int a = 0;
 
 
-		if (GameEngineInput::IsDown('J'))
+		if (GameEngineInput::IsDown('J', this))
 		{	
 			GameEngineCore::ChangeLevel("ShopLevel");
 		}
@@ -1421,7 +1422,7 @@ void TownMap::Update(float _DeltaTime)
 		int a = 0;
 
 
-		if (GameEngineInput::IsDown('J'))
+		if (GameEngineInput::IsDown('J', this))
 		{
 			GameEngineCore::ChangeLevel("Dungeon_Entrance_Level");
 		}

@@ -29,6 +29,7 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> LeftDoor;
 	std::shared_ptr<class GameEngineSpriteRenderer> RightDoor;
 	std::shared_ptr<class GameEngineSpriteRenderer> Scroll;
+	std::shared_ptr<class GameEngineSpriteRenderer> asdad;
 	std::shared_ptr<GameEngineCollision> Collision_Door;
 	
 };
