@@ -62,6 +62,17 @@
     <ClCompile Include="Dungeon_Entrance_Map.cpp" />
     <ClCompile Include="ContentsControlWindow.cpp" />
     <ClCompile Include="TileMap.cpp" />
+    <ClCompile Include="Dungeon_Map_01.cpp" />
+    <ClCompile Include="Map_Manager.cpp" />
+    <ClCompile Include="Dungeon_Map_02.cpp" />
+    <ClCompile Include="Dungeon_Map_03.cpp" />
+    <ClCompile Include="Dungeon_Map_04.cpp" />
+    <ClCompile Include="Dungeon_Map_05.cpp" />
+    <ClCompile Include="Dungeon_Map_06.cpp" />
+    <ClCompile Include="Dungeon_Map_07.cpp" />
+    <ClCompile Include="Dungeon_Map_08.cpp" />
+    <ClCompile Include="Dungeon_Map_09.cpp" />
+    <ClCompile Include="Dungeon_Map_10.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -119,6 +130,17 @@
     <ClInclude Include="Dungeon_Entrance_Map.h" />
     <ClInclude Include="ContentsControlWindow.h" />
     <ClInclude Include="TileMap.h" />
+    <ClInclude Include="Dungeon_Map_01.h" />
+    <ClInclude Include="Map_Manager.h" />
+    <ClInclude Include="Dungeon_Map_02.h" />
+    <ClInclude Include="Dungeon_Map_03.h" />
+    <ClInclude Include="Dungeon_Map_04.h" />
+    <ClInclude Include="Dungeon_Map_05.h" />
+    <ClInclude Include="Dungeon_Map_06.h" />
+    <ClInclude Include="Dungeon_Map_07.h" />
+    <ClInclude Include="Dungeon_Map_08.h" />
+    <ClInclude Include="Dungeon_Map_09.h" />
+    <ClInclude Include="Dungeon_Map_10.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

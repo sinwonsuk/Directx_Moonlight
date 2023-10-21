@@ -59,12 +59,19 @@ void TutorialLevel::Start()
 	}
 
 	{
-		Tile = CreateActor<TileMap>(ContentsObjectType::BackGround);
+		//Tile = CreateActor<TileMap>(ContentsObjectType::BackGround);
 
-		size_t TileX = 192;
-		size_t TileY = 18;
+		/*size_t TileX = 192;
+		size_t TileY = 18;*/
 
-		Tile->TileRenderer->CreateTileMap({ TileX, TileY, {40, 40}, "Button_E.png" });
+
+		size_t TileX = 768;
+		size_t TileY = 72;
+
+
+
+
+		/*Tile->TileRenderer->CreateTileMap({ TileX, TileY, {10, 10}, "Button_E.png" });
 
 		for (size_t x = 0; x < TileX; x++)
 		{
@@ -72,8 +79,8 @@ void TutorialLevel::Start()
 			{
 				Tile->TileRenderer->SetTileIndex({ x, y });
 			}
-		}
-
+		}*/
+		test.reserve(5000);
 		for (size_t x = 0; x < TileX; x++)
 		{
 			test.push_back(testbool);
@@ -88,7 +95,7 @@ void TutorialLevel::Start()
 		{
 			for (size_t y = 0; y < TileY; y++)
 			{
-				if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Tutorial_Map_Pixel_04.png"))
+				if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Tutorial_Map_Pixel_05.png"))
 				{
 					test[x][y] = false;
 				}
@@ -99,17 +106,6 @@ void TutorialLevel::Start()
 
 
 
-
-
-
-
-
-
-
-
-
-
-	Tile->TileRenderer->Transform.AddLocalPosition({ 0.0f,0.0f,-100.0f });
 
 
 	//

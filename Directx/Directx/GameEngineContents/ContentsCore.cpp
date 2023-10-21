@@ -26,11 +26,12 @@ void ContentsCore::Start()
 
 	GameEngineCore::CreateLevel<TitleLevel>("TitleLevel");
 	GameEngineCore::CreateLevel<TutorialLevel>("TutorialLevel");
+	GameEngineCore::CreateLevel<PlayLevel>("PlayLevel");
 	GameEngineCore::CreateLevel<WorldLevel>("WorldLevel");
 	GameEngineCore::CreateLevel<ShopLevel>("ShopLevel");
 	GameEngineCore::CreateLevel<Dungeon_Entrance_Level>("Dungeon_Entrance_Level");
 
-	GameEngineCore::ChangeLevel("TitleLevel");
+	GameEngineCore::ChangeLevel("PlayLevel");
 
 
 
