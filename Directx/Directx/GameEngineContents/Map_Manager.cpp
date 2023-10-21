@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Map_Manager.h"
 #include "Player.h"
+#include <GameEngineCore/GameEngineLevel.h>
 Map_Manager::Map_Manager()
 {
 }
@@ -17,6 +18,7 @@ GameEngineColor Map_Manager::GetColor(float4 _Pos, GameEngineColor _DefaultColor
 
 	return Tex->GetColor(_Pos, _DefaultColor);
 }
+
 
 void Map_Manager::ObjectCollision(float _Delta, std::string_view _Name)
 {

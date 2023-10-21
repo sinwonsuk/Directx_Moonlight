@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "TownMap.h"
 #include "Monster.h"
+#include "Random_Room.h"
 #include "Dungeon_Map_01.h"
 #include "Dungeon_Map_02.h"
 #include "Dungeon_Map_03.h"
@@ -32,57 +33,52 @@ void PlayLevel::Start()
 	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f});
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
-	
-	for (size_t i = 0; i < 9; i++)
-	{
-		{
-			std::shared_ptr<Dungeon_Map_01> Object = CreateActor<Dungeon_Map_01>(ContentsObjectType::Player);
-
-	
-
-
-
-
-
-
-
-
-	}
 
 	{
-		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
+		std::shared_ptr<Random_Room> Object = CreateActor<Random_Room>(ContentsObjectType::Player);
 	}
 
 	{
 		std::shared_ptr<Dungeon_Map_01> Object = CreateActor<Dungeon_Map_01>(ContentsObjectType::Player);
 	}
 	{
-		std::shared_ptr<Dungeon_Map_02> Object = CreateActor<Dungeon_Map_02>(ContentsObjectType::Player);
+		std::shared_ptr<Dungeon_Map_01> Object = CreateActor<Dungeon_Map_01>(ContentsObjectType::Player);
 	}
+	
+
 	{
-		std::shared_ptr<Dungeon_Map_03> Object = CreateActor<Dungeon_Map_03>(ContentsObjectType::Player);
+		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
 	}
-	{
-		std::shared_ptr<Dungeon_Map_04> Object = CreateActor<Dungeon_Map_04>(ContentsObjectType::Player);
-	}
-	{
-		std::shared_ptr<Dungeon_Map_05> Object = CreateActor<Dungeon_Map_05>(ContentsObjectType::Player);
-	}
-	{
-		std::shared_ptr<Dungeon_Map_06> Object = CreateActor<Dungeon_Map_06>(ContentsObjectType::Player);
-	}
-	{
-		std::shared_ptr<Dungeon_Map_07> Object = CreateActor<Dungeon_Map_07>(ContentsObjectType::Player);
-	}
-	{
-		std::shared_ptr<Dungeon_Map_08> Object = CreateActor<Dungeon_Map_08>(ContentsObjectType::Player);
-	}
-	{
-		std::shared_ptr<Dungeon_Map_09> Object = CreateActor<Dungeon_Map_09>(ContentsObjectType::Player);
-	}
-	{
-		std::shared_ptr<Dungeon_Map_10> Object = CreateActor<Dungeon_Map_10>(ContentsObjectType::Player);
-	}
+
+	
+	
+	//{
+	//	std::shared_ptr<Dungeon_Map_02> Object = CreateActor<Dungeon_Map_02>(ContentsObjectType::Player);
+	//}
+	//{
+	//	std::shared_ptr<Dungeon_Map_03> Object = CreateActor<Dungeon_Map_03>(ContentsObjectType::Player);
+	//}
+	//{
+	//	std::shared_ptr<Dungeon_Map_04> Object = CreateActor<Dungeon_Map_04>(ContentsObjectType::Player);
+	//}
+	//{
+	//	std::shared_ptr<Dungeon_Map_05> Object = CreateActor<Dungeon_Map_05>(ContentsObjectType::Player);
+	//}
+	//{
+	//	std::shared_ptr<Dungeon_Map_06> Object = CreateActor<Dungeon_Map_06>(ContentsObjectType::Player);
+	//}
+	//{
+	//	std::shared_ptr<Dungeon_Map_07> Object = CreateActor<Dungeon_Map_07>(ContentsObjectType::Player);
+	//}
+	//{
+	//	std::shared_ptr<Dungeon_Map_08> Object = CreateActor<Dungeon_Map_08>(ContentsObjectType::Player);
+	//}
+	//{
+	//	std::shared_ptr<Dungeon_Map_09> Object = CreateActor<Dungeon_Map_09>(ContentsObjectType::Player);
+	//}
+	//{
+	//	std::shared_ptr<Dungeon_Map_10> Object = CreateActor<Dungeon_Map_10>(ContentsObjectType::Player);
+	//}
 
 
 

@@ -192,6 +192,7 @@
     <ClCompile Include="Map_Manager.cpp" />
     <ClCompile Include="Monster_Manager.cpp" />
     <ClCompile Include="Player_UI.cpp" />
+    <ClCompile Include="Random_Room.cpp" />
     <ClCompile Include="ShopLevel.cpp" />
     <ClCompile Include="Shop_House.cpp" />
     <ClCompile Include="Slime_Potal.cpp" />
@@ -267,6 +268,7 @@
     <ClInclude Include="Map_Manager.h" />
     <ClInclude Include="Monster_Manager.h" />
     <ClInclude Include="Player_UI.h" />
+    <ClInclude Include="Random_Room.h" />
     <ClInclude Include="ShopLevel.h" />
     <ClInclude Include="Shop_House.h" />
     <ClInclude Include="Slime_Potal.h" />

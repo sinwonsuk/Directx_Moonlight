@@ -13,6 +13,7 @@ public:
 	Map_Manager& operator=(Map_Manager&& _Other) noexcept = delete;
 
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 }, std::string_view _Name = {});
+	Map_Manager* Arr[4] = {};
 
 	void ObjectCollision(float _Delta, std::string_view _Name);
 	void DoorCollision(float _Delta, float _MapNumber);

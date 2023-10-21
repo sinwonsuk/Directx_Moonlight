@@ -15,7 +15,7 @@ public:
 	Dungeon_Map_01& operator=(const Dungeon_Map_01& _Other) = delete;
 	Dungeon_Map_01& operator=(Dungeon_Map_01&& _Other) noexcept = delete;
 
-	Dungeon_Map_01* Arr[4] = {};
+	
 
 
 protected:
