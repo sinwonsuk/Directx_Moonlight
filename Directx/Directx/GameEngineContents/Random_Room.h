@@ -2,7 +2,16 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
-
+#include "Dungeon_Map_01.h"
+#include "Dungeon_Map_02.h"
+#include "Dungeon_Map_03.h"
+#include "Dungeon_Map_04.h"
+#include "Dungeon_Map_05.h"
+#include "Dungeon_Map_06.h"
+#include "Dungeon_Map_07.h"
+#include "Dungeon_Map_08.h"
+#include "Dungeon_Map_09.h"
+#include "Dungeon_Map_10.h"
 enum class RandomDir
 {
 	Left,
@@ -13,6 +22,7 @@ enum class RandomDir
 
 enum class RandomMap
 {
+	Map,
 	Map_01,
 	Map_02,
 	Map_03,
@@ -33,7 +43,7 @@ public:
 
 
 	Room_State* Arr[4] = {}; 
-
+	float4 Pos = {640,-360,0.0f,1.0f};
 };
 
 
@@ -72,7 +82,15 @@ private:
 	std::shared_ptr<class Dungeon_Map_09> Map_09;
 	std::shared_ptr<class Dungeon_Map_10> Map_10;
 	std::shared_ptr<class Dungeon_Map_01> Map_01;
+	std::shared_ptr<class Dungeon_Map_01> base_Map;
+
 	float Map_Number = 0.0f;
+	
+	int Random_Map_Arr[10] = {0}; 
+	int Map_Order = 0;
 	int RandomCheck = 0; 
-	float4 int_Check[30] = {};
+	float4 int_Check[30] = {0};
+
+	bool check = false;
+
 };

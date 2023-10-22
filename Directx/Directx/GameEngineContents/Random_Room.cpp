@@ -12,6 +12,7 @@
 #include "Dungeon_Map_08.h"
 #include "Dungeon_Map_09.h"
 #include "Dungeon_Map_10.h"
+
 Random_Room::Random_Room()
 {
 }
@@ -22,113 +23,132 @@ Random_Room::~Random_Room()
 
 void Random_Room::Start()
 {
+	
 	Room_State state;
+
+	// 9x9 벡터 만듬 
 	for (size_t x = 0; x < 9; x++)
 	{
-		
+		Rooms.reserve(9);
 		Rooms.push_back(Room_state);
+
 
 	    for (size_t y = 0; y< 9; y++)
 		{
+			Rooms[x].reserve(9); 
 			Rooms[x].push_back(state);
 		}
 	}
-
-	Rooms[0][8].RoomCheck = true; 
-
-
 	
+	// 배열마다 transform 값 넣어주는중 
+	for (size_t x = 0; x < 9; x++)
+	{
+
+		for (size_t y = 1; y < 9; y++)
+		{
+			
+			Rooms[x][y].Pos.Y += -720*static_cast<float>(y);
+			
+			if (x >= 1)
+			{
+				Rooms[x][y].Pos.X += 1280* static_cast<float>(x);
+			}
+			
+
+		}
+	}
+
+	// 오류 있어서 땜방함 
+	for (size_t x = 0; x < 9; x++)
+	{
+		Rooms[x][0].Pos.X += 1280 * static_cast<float>(x);
+	}
+
+	// 기본 시작맵 위치 
+	base_Map = GetLevel()->CreateActor<Dungeon_Map_01>();
+	base_Map->Transform.SetLocalPosition({ 4480,-6120 }); 
+	Rooms[3][8].RoomCheck = true; 
+
+
+	// nullptr 감지를 위한 check 
 	Room_State* check = new Room_State(); 
 
 
-
-	for (size_t i = 0; i < 9; i++)
+	//  중복없는 랜덤값 생성 맵 중복없게 하기 위함 
 	{
-		// 일단 랜덤으로 맵 굴리기 
-		
-			GameEngineRandom random;
-			int d = random.RandomInt(0, 9);
-			Map = static_cast<RandomMap>(0);
-			switch (Map)
+		int i, j;
+		srand((unsigned)time(NULL));
+
+		for (i = 0; i < 10; i++) 
+		{	
+			Random_Map_Arr[i] = (rand() % 10) + 1;
+
+			for (j = 0; j < i; j++)
 			{
-			case RandomMap::Map_01:
-			{
-				Map_01 = GetLevel()->CreateActor<Dungeon_Map_01>(); 
-				break;
+				if (Random_Map_Arr[i] == Random_Map_Arr[j])
+				{
+					i--;
+				}
 			}
-			case RandomMap::Map_02:
-				Map_02 = GetLevel()->CreateActor<Dungeon_Map_02>();
-				break;
-			case RandomMap::Map_03:
-				Map_03 = GetLevel()->CreateActor<Dungeon_Map_03>();
-				break;
-			case RandomMap::Map_04:
-				Map_04 = GetLevel()->CreateActor<Dungeon_Map_04>();
-				break;
-			case RandomMap::Map_05:
-				Map_05 = GetLevel()->CreateActor<Dungeon_Map_05>();
-				break;
-			case RandomMap::Map_06:
-				Map_06 = GetLevel()->CreateActor<Dungeon_Map_06>();
-				break;
-			case RandomMap::Map_07:
-				Map_07 = GetLevel()->CreateActor<Dungeon_Map_07>();
-				break;
-			case RandomMap::Map_08:
-				Map_08 = GetLevel()->CreateActor<Dungeon_Map_08>();
-				break;
-			case RandomMap::Map_09:
-				Map_09 = GetLevel()->CreateActor<Dungeon_Map_09>();
-				break;
-			case RandomMap::Map_10:
-				Map_10 = GetLevel()->CreateActor<Dungeon_Map_10>();
-				break;
-			default:
-				break;
-			}
-		
+		}
+	}
+
+
+
+
+
+
+
+	// 9개 만들기 
+	for (size_t i = 0; i < 9; i++)
+	{		
+
+		// map 랜덤값 가져옴 
+		Map = static_cast<RandomMap>(Random_Map_Arr[Map_Order]);
+
+
 
 		// 방과 방끼리 붙어있는것들 전부 체크함 
-		for (size_t i = 0; i < Rooms.size(); i++)
-		{	
-			
+		// 첫시작은 기본맵 한개를 기준으로 시작함 Rooms[3][8].RoomCheck = true; 이거 기준
 
-			for (size_t j = 0; j < Rooms[i].size(); j++)
+		for (size_t x = 0; x < Rooms.size(); x++)
+		{	
+			for (size_t y = 0; y < Rooms[x].size(); y++)
 			{
-				if (Rooms[i][j].RoomCheck == true)
+				if (Rooms[x][y].RoomCheck == true) // 기준점 
 				{
-					if (i >= 1 )
+					if (x >= 1 ) // 배열 벗어나지 않게 하기 위한 조건문 
 					{
-						if (Rooms[i - 1][j].RoomCheck == true)
+						if (Rooms[x - 1][y].RoomCheck == true) //왼쪽방과 오른쪽방 둘다 있다면 연결해줌 
 						{
-							Rooms[i][j].Arr[static_cast<int>(RandomDir::Left)] = check;
-							Rooms[i - 1][j].Arr[static_cast<int>(RandomDir::Right)] = check;
+							Rooms[x][y].Arr[static_cast<int>(RandomDir::Left)] = check;
+							Rooms[x - 1][y].Arr[static_cast<int>(RandomDir::Right)] = check;
 						}
 					}
-					if (i <= Rooms.size()-2)
+					if (x <= Rooms.size()-2) //배열 벗어나지 않게 하기 조건문 
 					{
-						if (Rooms[i + 1][j].RoomCheck == true)
+						if (Rooms[x + 1][y].RoomCheck == true) //왼쪽방과 오른쪽방 둘다 있다면 연결해줌 
 						{
-							Rooms[i][j].Arr[static_cast<int>(RandomDir::Right)] = check;
-							Rooms[i + 1][j].Arr[static_cast<int>(RandomDir::Left)] = check;
+							Rooms[x][y].Arr[static_cast<int>(RandomDir::Right)] = check;
+							Rooms[x + 1][y].Arr[static_cast<int>(RandomDir::Left)] = check;
 						}
 					}
 						
 					
-					if (j <= Rooms.size() - 2)
+					if (y <= Rooms.size() - 2)
 					{
-						if (Rooms[i][j + 1].RoomCheck == true)
+						if (Rooms[x][y + 1].RoomCheck == true)
 						{
-							Rooms[i][j].Arr[static_cast<int>(RandomDir::Bottom)] = check;
-							Rooms[i][j + 1].Arr[static_cast<int>(RandomDir::Top)] = check;
+							Rooms[x][y].Arr[static_cast<int>(RandomDir::Bottom)] = check;
+							Rooms[x][y + 1].Arr[static_cast<int>(RandomDir::Top)] = check;
 						}
 					}
-					if(j >= 1)
+					if(y >= 1)
 					{	
-						if (Rooms[i][j - 1].RoomCheck == true)
+						if (Rooms[x][y - 1].RoomCheck == true)
 						{
-							Rooms[i][j].Arr[static_cast<int>(RandomDir::Top)] = check;
-							Rooms[i][j - 1].Arr[static_cast<int>(RandomDir::Bottom)] = check;
+							Rooms[x][y].Arr[static_cast<int>(RandomDir::Top)] = check;
+							Rooms[x][y - 1].Arr[static_cast<int>(RandomDir::Bottom)] = check;
 						}
 					}
 				}
@@ -136,20 +156,21 @@ void Random_Room::Start()
 			}
 		}
 
-		// 방중 붙어있는거 찾는중 
-		// 그래야 붙어있는 방중에 빈방 알수 있음 
+		// 방 찾은후에 nullptr 을 이용해서 
+		// 빈방 찾기 
+
 		for (size_t i = 0; i < Rooms.size(); i++)
 		{
 			for (size_t j = 0; j < Rooms[i].size(); j++)
 			{
-				if (Rooms[i][j].RoomCheck == true)
+				if (Rooms[i][j].RoomCheck == true) // 모든 배열의 방이 있는곳 찾기 
 				{
 					
-					if (Rooms[i][j].Arr[0] == nullptr)
+					if (Rooms[i][j].Arr[0] == nullptr) // 방을 기준으로 4방향 nullptr 체크 
 					{
-						if (i >= 1)
+						if (i >= 1) // 배열 벗어나지 않기 위한 조건문 
 						{
-							if (Rooms[i - 1][j].RoomCheck == false)
+							if (Rooms[i - 1][j].RoomCheck == false) // 방이 없을떄만 nullptr 체크를 함 
 							{
 								Rooms[i - 1][j].Null_Check = true;
 							}
@@ -197,12 +218,11 @@ void Random_Room::Start()
 
 		for (size_t i = 0; i < Rooms.size(); i++)
 		{
-
 			for (size_t j = 0; j < Rooms[i].size(); j++)
 			{
 				if (Rooms[i][j].Null_Check == true)
 				{
-					if (Rooms[i][j].RoomCheck == false)
+					if (Rooms[i][j].RoomCheck == false) // 혹시 몰라서 다시 방 체크 
 					{
 						int_Check[RandomCheck] = { static_cast<float>(i) , static_cast<float>(j) };
 						RandomCheck++;
@@ -210,28 +230,94 @@ void Random_Room::Start()
 				}
 			}
 		}
-		// 붙어있는방 객수 구했으니 이제 랜덤 돌림 
-		GameEngineRandom Random_Map; 
-
-		int Random = Random_Map.RandomInt(0, RandomCheck-1);
-
-		RandomCheck = 0;
-
-		// 배열의 값 한개 구함 
-		float4 Arr = int_Check[Random]; 
-
-		Rooms[Arr.X][Arr.Y].RoomCheck = true; 
+		// 빈방 객수 구했으니 이제 빈방 중에서 랜덤 돌림 
 		
-		// 9x9 배열에서 랜덤으로 잘나옴 이제 9x9 배열에서 transform의 값을 구해줌 
-
+		GameEngineRandom Random_Map; 
+		int Random = Random_Map.RandomInt(0, RandomCheck-1);
+		RandomCheck = 0;
+		
 	
+	   // 방 한개 구함 
+		float4 Arr = int_Check[Random]; 
+		Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].RoomCheck = true;
+		
+		
+
+		if (Map == RandomMap::Map_01)
+		{
+			Map_01 = GetLevel()->CreateActor<Dungeon_Map_01>();
+			Map_01->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+		}
+		else if (Map == RandomMap::Map_02)
+		{
+			Map_02 = GetLevel()->CreateActor<Dungeon_Map_02>();
+			Map_02->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+		}
+		else if (Map == RandomMap::Map_03)
+		{
+			Map_03 = GetLevel()->CreateActor<Dungeon_Map_03>();
+			Map_03->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+		}
+		else if (Map == RandomMap::Map_04)
+		{
+			Map_04 = GetLevel()->CreateActor<Dungeon_Map_04>();
+			Map_04->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+		}
+
+		else if (Map == RandomMap::Map_05)
+		{
+			Map_05 = GetLevel()->CreateActor<Dungeon_Map_05>();
+			Map_05->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+		}
+		else if (Map == RandomMap::Map_06)
+		{
+			Map_06 = GetLevel()->CreateActor<Dungeon_Map_06>();
+			Map_06->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+		}
+
+		else if (Map == RandomMap::Map_07)
+		{
+			Map_07 = GetLevel()->CreateActor<Dungeon_Map_07>();
+			Map_07->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+			
+		}
+		else if (Map == RandomMap::Map_08)
+		{
+			Map_08 = GetLevel()->CreateActor<Dungeon_Map_08>();
+			Map_08->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+		
+		}
+		else if (Map == RandomMap::Map_09)
+		{
+			Map_09 = GetLevel()->CreateActor<Dungeon_Map_09>();
+			Map_09->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+	
+		}
+
+		else if (Map == RandomMap::Map_10)
+		{
+			Map_10 = GetLevel()->CreateActor<Dungeon_Map_10>();
+			Map_10->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+		
+		}	
+		// 다른맵 가져오기 위해서 
+		Map_Order++;
 
 	}
 
 	delete check;
-	int a = 0;
+
 }
 
 void Random_Room::Update(float _Delta)
 {
+	//for (size_t x = 0; x < 9; x++)
+	//{
+
+	//	for (size_t y = 1; y < 9; y++)
+	//	{
+	//		//Rooms[x][y];
+	//	}
+	//}
+	//int a = 0; 
 }

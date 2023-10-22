@@ -30,24 +30,20 @@ void PlayLevel::Start()
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 
-	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f});
+	GetMainCamera()->Transform.SetLocalPosition({ 4480,-6120, -500.0f});
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
 
 	{
-		std::shared_ptr<Random_Room> Object = CreateActor<Random_Room>(ContentsObjectType::Player);
+		std::shared_ptr<Random_Room> Object = CreateActor<Random_Room>();
 	}
 
-	{
-		std::shared_ptr<Dungeon_Map_01> Object = CreateActor<Dungeon_Map_01>(ContentsObjectType::Player);
-	}
-	{
-		std::shared_ptr<Dungeon_Map_01> Object = CreateActor<Dungeon_Map_01>(ContentsObjectType::Player);
-	}
 	
 
 	{
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
+		Object->Transform.SetLocalPosition({ 4480,-6120 });
+
 	}
 
 	
