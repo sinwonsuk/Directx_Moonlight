@@ -1,26 +1,26 @@
 #include "PreCompile.h"
-#include "Dungeon_Map_01.h"
+#include "Dungeon_Map_00.h"
 #include "Player.h"
 
-Dungeon_Map_01::Dungeon_Map_01()
+Dungeon_Map_00::Dungeon_Map_00()
 {
 }
 
-Dungeon_Map_01::~Dungeon_Map_01()
+Dungeon_Map_00::~Dungeon_Map_00()
 {
 }
 
 
 
-void Dungeon_Map_01::Start()
+void Dungeon_Map_00::Start()
 {
 	/*{
 		std::shared_ptr<Object_jar> Object = GetLevel()->CreateActor<Object_jar>();
 	}*/
 
-	
 
-	
+
+
 
 	{
 		BackGround = CreateComponent<GameEngineSpriteRenderer>(100);
@@ -30,9 +30,10 @@ void Dungeon_Map_01::Start()
 	}
 
 	{
-		Map_floor = CreateComponent<GameEngineSpriteRenderer>(-100);
-		Map_floor->SetSprite("Floor_01", 0);
-	
+
+		Map_floor_01 = CreateComponent<GameEngineSpriteRenderer>(-100);
+		Map_floor_01->SetSprite("Floor_00", 0);
+
 	}
 
 	/*{
@@ -56,7 +57,7 @@ void Dungeon_Map_01::Start()
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
-	
+
 
 
 	Right_Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
@@ -68,11 +69,10 @@ void Dungeon_Map_01::Start()
 
 }
 
-void Dungeon_Map_01::Update(float _Delta)
+void Dungeon_Map_00::Update(float _Delta)
 {
 
-
-	
-	
-
 }
+
+
+

@@ -2,16 +2,9 @@
 #include "Random_Room.h"
 #include "Map_Manager.h"
 
+
 #include "Dungeon_Map_01.h"
-#include "Dungeon_Map_02.h"
-#include "Dungeon_Map_03.h"
-#include "Dungeon_Map_04.h"
-#include "Dungeon_Map_05.h"
-#include "Dungeon_Map_06.h"
-#include "Dungeon_Map_07.h"
-#include "Dungeon_Map_08.h"
-#include "Dungeon_Map_09.h"
-#include "Dungeon_Map_10.h"
+
 
 Random_Room::Random_Room()
 {
@@ -65,8 +58,10 @@ void Random_Room::Start()
 	}
 
 	// 기본 시작맵 위치 
-	base_Map = GetLevel()->CreateActor<Dungeon_Map_01>();
-	base_Map->Transform.SetLocalPosition({ 4480,-6120 }); 
+	Map = GetLevel()->CreateActor<Dungeon_Map_01>();
+	Map->Map_floor->SetSprite("Floor_01", 0); 
+	Map->Transform.SetLocalPosition({ 4480,-6120 });
+
 	Rooms[3][8].RoomCheck = true; 
 
 
@@ -99,12 +94,12 @@ void Random_Room::Start()
 
 
 
-	// 9개 만들기 
-	for (size_t i = 0; i < 9; i++)
+	// 10개 만들기 
+	for (size_t i = 0; i < 10; i++)
 	{		
 
 		// map 랜덤값 가져옴 
-		Map = static_cast<RandomMap>(Random_Map_Arr[Map_Order]);
+		Number = Random_Map_Arr[Map_Order];
 
 
 
@@ -241,65 +236,13 @@ void Random_Room::Start()
 		float4 Arr = int_Check[Random]; 
 		Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].RoomCheck = true;
 		
-		
+		Map = GetLevel()->CreateActor<Dungeon_Map_01>();
+		Map->Map_floor->SetSprite("Floor_01", Number);
+		Map->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
 
-		if (Map == RandomMap::Map_01)
-		{
-			Map_01 = GetLevel()->CreateActor<Dungeon_Map_01>();
-			Map_01->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
-		}
-		else if (Map == RandomMap::Map_02)
-		{
-			Map_02 = GetLevel()->CreateActor<Dungeon_Map_02>();
-			Map_02->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
-		}
-		else if (Map == RandomMap::Map_03)
-		{
-			Map_03 = GetLevel()->CreateActor<Dungeon_Map_03>();
-			Map_03->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
-		}
-		else if (Map == RandomMap::Map_04)
-		{
-			Map_04 = GetLevel()->CreateActor<Dungeon_Map_04>();
-			Map_04->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
-		}
 
-		else if (Map == RandomMap::Map_05)
-		{
-			Map_05 = GetLevel()->CreateActor<Dungeon_Map_05>();
-			Map_05->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
-		}
-		else if (Map == RandomMap::Map_06)
-		{
-			Map_06 = GetLevel()->CreateActor<Dungeon_Map_06>();
-			Map_06->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
-		}
 
-		else if (Map == RandomMap::Map_07)
-		{
-			Map_07 = GetLevel()->CreateActor<Dungeon_Map_07>();
-			Map_07->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
-			
-		}
-		else if (Map == RandomMap::Map_08)
-		{
-			Map_08 = GetLevel()->CreateActor<Dungeon_Map_08>();
-			Map_08->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
-		
-		}
-		else if (Map == RandomMap::Map_09)
-		{
-			Map_09 = GetLevel()->CreateActor<Dungeon_Map_09>();
-			Map_09->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
 	
-		}
-
-		else if (Map == RandomMap::Map_10)
-		{
-			Map_10 = GetLevel()->CreateActor<Dungeon_Map_10>();
-			Map_10->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
-		
-		}	
 		// 다른맵 가져오기 위해서 
 		Map_Order++;
 

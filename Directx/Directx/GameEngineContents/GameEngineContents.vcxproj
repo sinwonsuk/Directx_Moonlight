@@ -166,6 +166,7 @@
     <ClCompile Include="BabySilme_State.cpp" />
     <ClCompile Include="BabySlime.cpp" />
     <ClCompile Include="ContentsControlWindow.cpp" />
+    <ClCompile Include="Dungeon_Map_00.cpp" />
     <ClCompile Include="Dungeon_Map_03.cpp" />
     <ClCompile Include="Dungeon_Entrance_Level.cpp" />
     <ClCompile Include="Dungeon_Entrance_Map.cpp" />
@@ -247,6 +248,7 @@
   <ItemGroup>
     <ClInclude Include="BabySlime.h" />
     <ClInclude Include="ContentsControlWindow.h" />
+    <ClInclude Include="Dungeon_Map_00.h" />
     <ClInclude Include="Dungeon_Map_03.h" />
     <ClInclude Include="Dungeon_Entrance_Level.h" />
     <ClInclude Include="Dungeon_Entrance_Map.h" />

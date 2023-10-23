@@ -74,6 +74,7 @@
     <ClCompile Include="Dungeon_Map_09.cpp" />
     <ClCompile Include="Dungeon_Map_10.cpp" />
     <ClCompile Include="Random_Room.cpp" />
+    <ClCompile Include="Dungeon_Map_00.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -143,6 +144,7 @@
     <ClInclude Include="Dungeon_Map_09.h" />
     <ClInclude Include="Dungeon_Map_10.h" />
     <ClInclude Include="Random_Room.h" />
+    <ClInclude Include="Dungeon_Map_00.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
