@@ -24,7 +24,7 @@ public:
 	}
 
 	std::shared_ptr<class GameEngineSpriteRenderer> Map_floor;
-	std::string_view Pixel_Name = {};
+	std::string Pixel_Name = {};
     float4 Pixel_Fasten;
 	float Map_Number = 0.0f;
 protected:
@@ -42,7 +42,7 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> RightDoor;
 	std::shared_ptr<class GameEngineSpriteRenderer> UpDoor;
 	std::shared_ptr<class GameEngineSpriteRenderer> DownDoor;
-
+	std::shared_ptr<class GameEngineSpriteRenderer> Pixel;
 
 	std::shared_ptr<GameEngineCollision> Right_Collision_Door;
 	std::shared_ptr<GameEngineCollision> Left_Collision_Door;

@@ -24,7 +24,8 @@ public:
 	bool Door_Right_Collison_Check = false;
 	bool Door_Top_Collison_Check = false;
 	bool Door_Bottom_Collison_Check = false;
-
+	bool test = false;
+	bool ReturnCheck = false;
 
 protected:
 

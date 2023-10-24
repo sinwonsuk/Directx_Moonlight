@@ -22,18 +22,24 @@ void Dungeon_Map_01::Start()
 
 	
 
-	/*{
+    {
 		BackGround = CreateComponent<GameEngineSpriteRenderer>(100);
 		BackGround->SetSprite("BackGround", 1);
 		BackGround->SetImageScale({ 1380.0f,740.0f });
 		BackGround->Transform.AddLocalPosition({ 0.0f,0.0f });
-	}*/
+	}
 
 	{
 		Map_floor = CreateComponent<GameEngineSpriteRenderer>(-100);
 		Map_floor->SetSprite("Floor_01", 0);
-	
+
 	}
+
+	/*{
+		Pixel = CreateComponent<GameEngineSpriteRenderer>(100);
+		Pixel->SetSprite("Pixel_Floor", 0);
+
+	}*/
 
 	{
 		LeftDoor = CreateComponent<GameEngineSpriteRenderer>(100);
@@ -104,6 +110,8 @@ void Dungeon_Map_01::Start()
 
 void Dungeon_Map_01::Update(float _Delta)
 {
+	
+
 	if (Check == false)
 	{
 
@@ -145,11 +153,19 @@ void Dungeon_Map_01::Update(float _Delta)
 	}
 
 
+	if (ReturnCheck == true)
+	{
+		return;
+	}
 
-	DoorCollision(_Delta, GetLevel()->GetMainCamera()->Transform.GetLocalPosition());
+	if (ReturnCheck == false)
+	{
+		DoorCollision(_Delta, GetLevel()->GetMainCamera()->Transform.GetLocalPosition());
+		ObjectCollision(_Delta, Pixel_Name.c_str(), Random_Room::Rooms[Arr.X][Arr.Y].Pos);
+	}
+
 
 	
-	ObjectCollision(_Delta, Pixel_Name, Random_Room::Rooms[Arr.X][Arr.Y].Pos);
 		
 	
 

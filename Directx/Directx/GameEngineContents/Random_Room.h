@@ -62,6 +62,6 @@ private:
 	float4 check = false;
 	bool One_Check = false;
 
-	
+	std::string result; 
 
 };

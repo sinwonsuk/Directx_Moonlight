@@ -25,7 +25,7 @@ PlayLevel::~PlayLevel()
 
 void PlayLevel::Start()
 {
-
+	GameEngineCore::GetBackBufferRenderTarget()->SetClearColor({ 0, 0, 0, 1 });
 	
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();

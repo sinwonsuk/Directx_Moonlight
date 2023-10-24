@@ -299,7 +299,13 @@ void Random_Room::Start()
 		{
 			Map = GetLevel()->CreateActor<Dungeon_Map_01>();
 			Map->Map_floor->SetSprite("Floor_01", Number);
-			Map->Pixel_Name = "Dungeon_Map_Pixel_00.png";
+
+			std::string numberStr = std::to_string(Number);
+			result = "Dungeon_Map_Pixel_0" + numberStr + ".png";
+
+			result.c_str();
+			 
+			Map->Pixel_Name = result.c_str();
 			Map->Map_Number += 1;
 			Map->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
 			Map->SetArr({Arr.X,Arr.Y});
@@ -319,36 +325,80 @@ void Random_Room::Start()
 
 	delete check;
 
-	for (size_t i = Map_Manager::Map_Check; i < Maps.size(); i++)
+	for (size_t i =1; i < Maps.size(); i++)
 	{
-		Maps[i]->Off();
+		Maps[i]->ReturnCheck = true;
 	}
 
 }
 
 void Random_Room::Update(float _Delta)
 {
-
+	
 
 	
 	for (size_t i = 0; i < Maps.size(); i++)
 	{
 		if (Maps[i]->Door_Left_Collison_Check == true)
-		{
-			
+		{		
 			for (size_t j = 0; j < Maps.size(); j++)
 			{
 				if (Maps[j]->GetArr().X == Maps[i]->GetArr().X - 1)
 				{
 					if (Maps[j]->GetArr().Y == Maps[i]->GetArr().Y)
 					{
-						Maps[j]->On();
+						Maps[j]->test = false;
+					
+						Maps[j]->ReturnCheck = false;
 					}
 				}
 			}
 		}
 
+		if (Maps[i]->Door_Right_Collison_Check == true)
+		{
+			for (size_t j = 0; j < Maps.size(); j++)
+			{
+				if (Maps[i]->GetArr().X + 1 == Maps[j]->GetArr().X && Maps[i]->GetArr().Y == Maps[j]->GetArr().Y)
+				{
+					Maps[j]->test = false;
+		
+					Maps[j]->ReturnCheck = false;
+				}
+			}
+		}
 
+		if (Maps[i]->Door_Top_Collison_Check == true)
+		{
+			for (size_t j = 0; j < Maps.size(); j++)
+			{
+				if (Maps[j]->GetArr().Y == Maps[i]->GetArr().Y -1)
+				{
+					if (Maps[j]->GetArr().X == Maps[i]->GetArr().X)
+					{
+						Maps[j]->test = false;
+
+						Maps[j]->ReturnCheck = false;
+					}
+				}
+			}
+		}
+
+		if (Maps[i]->Door_Bottom_Collison_Check == true)
+		{
+			for (size_t j = 0; j < Maps.size(); j++)
+			{
+				if (Maps[j]->GetArr().Y == Maps[i]->GetArr().Y + 1)
+				{
+					if (Maps[j]->GetArr().X == Maps[i]->GetArr().X)
+					{
+						Maps[j]->test = false;
+		
+						Maps[j]->ReturnCheck = false;
+					}
+				}
+			}
+		}
 		
 	}
 
