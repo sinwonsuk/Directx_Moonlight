@@ -304,7 +304,7 @@ void GameEngineDevice::ResourcesInit()
 		//D3D11_DEPTH_STENCILOP_DESC FrontFace;
 		//D3D11_DEPTH_STENCILOP_DESC BackFace;
 
-		Desc.DepthEnable = false;
+		Desc.DepthEnable = true;
 		// 깊이 테스트만 하고 안쓸수도 있다.
 		// Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK::D3D11_DEPTH_WRITE_MASK_ZERO;
 		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK::D3D11_DEPTH_WRITE_MASK_ALL;
@@ -476,13 +476,6 @@ void GameEngineDevice::ResourcesInit()
 		Mat->SetVertexShader("TextureShader_VS");
 		Mat->SetPixelShader("TextureShader_PS");
 	}
-
-	{
-		std::shared_ptr<GameEngineMaterial> Mat = GameEngineMaterial::Create("2DTextureMask");
-		Mat->SetVertexShader("TextureShaderMask_VS");
-		Mat->SetPixelShader("TextureShaderMask_PS");
-	}
-
 
 	{
 		std::shared_ptr<GameEngineMaterial> Mat = GameEngineMaterial::Create("2DTextureWire");

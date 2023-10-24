@@ -96,15 +96,16 @@ void GameEngineSpriteRenderer::Update(float _Delta)
 		CurSprite = CurFrameAnimations->Update(_Delta);
 	}
 
-
 	if (true == IsImageSize)
 	{
-
 		float4 Scale = float4(CurSprite.GetScale());
 		Scale.Z = 1.0f;
 		Scale.W = 0.0f;
 		SetImageScale(Scale * AutoScaleRatio);
 	}
+
+	RenderBaseInfoValue.RenderScreenScale = CurSprite.GetScale();
+	// 
 }
 
 void GameEngineSpriteRenderer::SetImageScale(const float4& _Scale)
@@ -148,9 +149,9 @@ void GameEngineSpriteRenderer::Render(GameEngineCamera* _Camera, float _Delta)
 void GameEngineSpriteRenderer::SetSprite(std::string_view _Name, unsigned int index /*= 0*/)
 {
 	CurFrameAnimations = nullptr;
-	Sprite = nullptr;
+
 	Sprite = GameEngineSprite::Find(_Name);
-	int a = Sprite.use_count(); 
+
 	if (nullptr == Sprite)
 	{
 		MsgBoxAssert("존재하지 않는 스프라이트를 사용하려고 했습니다.");
@@ -374,17 +375,28 @@ void GameEngineSpriteRenderer::SetMaterialEvent(std::string_view _Name, int _Ind
 }
 
 
-void GameEngineSpriteRenderer::SetMaskTexture(std::string_view _Texture)
+void GameEngineSpriteRenderer::SetMaskTexture(std::string_view _Texture, MaskMode _Mask)
 {
-	// 바뀌기 전에 
-	// 스프라이트 이름이나 애니메이션이나 이런것들을 저장했다가
-	
-	// 이녀석한테 있는
-	GameEngineRenderer::SetMaterial("2DTextureMask");
+	//std::shared_ptr<GameEngineFrameAnimation> TempCurFrameAnimation = CurFrameAnimations;
+	//std::shared_ptr<GameEngineSprite> TempSprite = Sprite;
+	//SpriteData TempCurSprite = CurSprite;
 
-	// 다시 세팅해주면 
-	// SetSprite("NSet.png");
+	//GameEngineRenderer::SetMaterial("2DTextureMask");
 
+	//if (CurFrameAnimations != TempCurFrameAnimation)
+	//{
+	//	CurFrameAnimations = TempCurFrameAnimation;
+	//}
 
+	//if (Sprite != TempSprite)
+	//{
+	//	Sprite = TempSprite;
+	//	CurSprite = TempCurSprite;
+	//}
+
+	RenderBaseInfoValue.IsMask = 1;
+	RenderBaseInfoValue.MaskMode = static_cast<int>(_Mask);
 	GetShaderResHelper().SetTexture("MaskTex", _Texture);
+	std::shared_ptr<GameEngineTexture> Ptr = GameEngineTexture::Find(_Texture);
+	RenderBaseInfoValue.MaskScreeneScale = Ptr->GetScale();
 }
