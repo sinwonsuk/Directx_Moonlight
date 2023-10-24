@@ -5,16 +5,8 @@
 #include "Monster.h"
 #include "Random_Room.h"
 #include "Dungeon_Map_01.h"
-#include "Dungeon_Map_02.h"
-#include "Dungeon_Map_03.h"
-#include "Dungeon_Map_04.h"
-#include "Dungeon_Map_05.h"
-#include "Dungeon_Map_06.h"
-#include "Dungeon_Map_07.h"
-#include "Dungeon_Map_08.h"
-#include "Dungeon_Map_09.h"
-#include "Dungeon_Map_10.h"
-
+#include "SlimeHermit.h"
+#include "MiniBoss.h"
 PlayLevel::PlayLevel() 
 {
 }
@@ -25,7 +17,7 @@ PlayLevel::~PlayLevel()
 
 void PlayLevel::Start()
 {
-	GameEngineCore::GetBackBufferRenderTarget()->SetClearColor({ 0, 0, 0, 1 });
+	//GameEngineCore::GetBackBufferRenderTarget()->SetClearColor({ 0, 0, 0, 1 });
 	
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
@@ -36,10 +28,17 @@ void PlayLevel::Start()
 	{
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
 	}
-
 	{
-		std::shared_ptr<Random_Room> Object = CreateActor<Random_Room>();
+		//std::shared_ptr<SlimeHermit> Object = CreateActor<SlimeHermit>(ContentsObjectType::Player);
 	}
+	{
+		std::shared_ptr<MiniBoss> Object = CreateActor<MiniBoss>(ContentsObjectType::Player);
+	}
+
+
+	/*{
+		std::shared_ptr<Random_Room> Object = CreateActor<Random_Room>();
+	}*/
 
 	
 

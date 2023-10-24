@@ -75,6 +75,10 @@
     <ClCompile Include="Dungeon_Map_10.cpp" />
     <ClCompile Include="Random_Room.cpp" />
     <ClCompile Include="Dungeon_Map_00.cpp" />
+    <ClCompile Include="SlimeHermit.cpp" />
+    <ClCompile Include="SlimeHermit_State.cpp" />
+    <ClCompile Include="MiniBoss_State.cpp" />
+    <ClCompile Include="MiniBoss.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -145,6 +149,8 @@
     <ClInclude Include="Dungeon_Map_10.h" />
     <ClInclude Include="Random_Room.h" />
     <ClInclude Include="Dungeon_Map_00.h" />
+    <ClInclude Include="SlimeHermit.h" />
+    <ClInclude Include="MiniBoss.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
