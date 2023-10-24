@@ -7,7 +7,7 @@
 #include "GameEngineShader.h"
 #include "GameEngineVertexShader.h"
 #include "GameEnginePixelShader.h"
-#include "GameEngineRenderer.H"
+#include "GameEngineRenderer.h"
 
 GameEngineRenderUnit::GameEngineRenderUnit() 
 {

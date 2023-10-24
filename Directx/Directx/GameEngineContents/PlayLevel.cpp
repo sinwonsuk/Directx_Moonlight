@@ -30,9 +30,12 @@ void PlayLevel::Start()
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 
-	GetMainCamera()->Transform.SetLocalPosition({ 4480,-6120, -500.0f});
+	
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
+	{
+		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
+	}
 
 	{
 		std::shared_ptr<Random_Room> Object = CreateActor<Random_Room>();
@@ -40,11 +43,7 @@ void PlayLevel::Start()
 
 	
 
-	{
-		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
-		Object->Transform.SetLocalPosition({ 4480,-6120 });
-
-	}
+	
 
 	
 	
@@ -128,6 +127,8 @@ void PlayLevel::Update(float _Delta)
 
 void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	
+
 	int a = 0;
 }
 

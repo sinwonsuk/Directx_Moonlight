@@ -15,14 +15,22 @@ public:
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 }, std::string_view _Name = {});
 	Map_Manager* Arr[4] = {};
 
-	void ObjectCollision(float _Delta, std::string_view _Name);
-	void DoorCollision(float _Delta, float _MapNumber);
-	static int Map_Check;
-protected:
+	void ObjectCollision(float _Delta, std::string_view _Name, float4 _Transform);
+	void DoorCollision(float _Delta, float4 _PrevMainCamera);
 	float Map_Number = 0.0f;
+	static int Map_Check;
+
+	bool Door_Left_Collison_Check = false;
+	bool Door_Right_Collison_Check = false;
+	bool Door_Top_Collison_Check = false;
+	bool Door_Bottom_Collison_Check = false;
+
+
+protected:
+
 
 private:
-	bool Door_Collison_Check = false;
-
+	
+	float A = 0;
 
 };

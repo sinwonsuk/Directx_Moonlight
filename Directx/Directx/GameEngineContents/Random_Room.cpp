@@ -2,9 +2,10 @@
 #include "Random_Room.h"
 #include "Map_Manager.h"
 
-
+#include "Player.h"
 #include "Dungeon_Map_01.h"
 
+std::vector<std::vector<Room_State>> Random_Room::Rooms;
 
 Random_Room::Random_Room()
 {
@@ -17,7 +18,9 @@ Random_Room::~Random_Room()
 void Random_Room::Start()
 {
 	
+
 	Room_State state;
+
 
 	// 9x9 벡터 만듬 
 	for (size_t x = 0; x < 9; x++)
@@ -45,6 +48,7 @@ void Random_Room::Start()
 			if (x >= 1)
 			{
 				Rooms[x][y].Pos.X += 1280* static_cast<float>(x);
+				Rooms[x][y].Room_Number = {static_cast<float>(x),static_cast<float>(y)};
 			}
 			
 
@@ -55,14 +59,47 @@ void Random_Room::Start()
 	for (size_t x = 0; x < 9; x++)
 	{
 		Rooms[x][0].Pos.X += 1280 * static_cast<float>(x);
+		Rooms[x][0].Room_Number = { static_cast<float>(x),static_cast<float>(0) };
 	}
 
-	// 기본 시작맵 위치 
-	Map = GetLevel()->CreateActor<Dungeon_Map_01>();
-	Map->Map_floor->SetSprite("Floor_01", 0); 
-	Map->Transform.SetLocalPosition({ 4480,-6120 });
 
-	Rooms[3][8].RoomCheck = true; 
+	
+
+
+
+
+	GameEngineRandom Start_Random;
+
+	Start_Random.SetSeed(5000);
+	srand((unsigned)time(NULL));
+
+	//int Start = Start_Random.RandomInt(0, 8); 
+	int Start = (rand() % 9);
+
+
+	//srand((unsigned)time(NULL));
+	GameEngineRandom End_Random;
+	End_Random.SetSeed(1000);
+	//int End = End_Random.RandomInt(0, 8);
+	int End = (rand() % 9);
+
+	Rooms[Start][End].RoomCheck = true;
+
+
+
+
+	Player::this_Player->Transform.SetLocalPosition({ Rooms[Start][End].Pos.X,Rooms[Start][End].Pos.Y });
+	GetLevel()->GetMainCamera()->Transform.SetLocalPosition({ Rooms[Start][End].Pos.X,Rooms[Start][End].Pos.Y,-1000.0f });
+
+
+	//아예 시작 위치 마저 바꾼다? 
+	/*Map = GetLevel()->CreateActor<Dungeon_Map_01>();
+	Map->Map_floor->SetSprite("Floor_01", 0);
+	Rooms[3][Start].RoomCheck = true;
+	Map->Transform.SetLocalPosition({ Rooms[3][Start].Pos.X,Rooms[3][Start].Pos.Y });
+	Player::this_Player->Transform.SetLocalPosition({ Rooms[3][Start].Pos.X,Rooms[3][Start].Pos.Y });
+	GetLevel()->GetMainCamera()->Transform.SetLocalPosition({ Rooms[3][Start].Pos.X,Rooms[3][Start].Pos.Y,-1000.0f });*/
+
 
 
 	// nullptr 감지를 위한 check 
@@ -228,7 +265,13 @@ void Random_Room::Start()
 		// 빈방 객수 구했으니 이제 빈방 중에서 랜덤 돌림 
 		
 		GameEngineRandom Random_Map; 
-		int Random = Random_Map.RandomInt(0, RandomCheck-1);
+		Start_Random.SetSeed(time(nullptr));
+
+
+		srand((unsigned)time(NULL));
+
+		int Random = (rand() % RandomCheck );
+		//int Random = Random_Map.RandomInt(0, RandomCheck-1);
 		RandomCheck = 0;
 		
 	
@@ -236,9 +279,35 @@ void Random_Room::Start()
 		float4 Arr = int_Check[Random]; 
 		Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].RoomCheck = true;
 		
-		Map = GetLevel()->CreateActor<Dungeon_Map_01>();
-		Map->Map_floor->SetSprite("Floor_01", Number);
-		Map->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+		// 기준이 되는 맵 
+		if (One_Check == false)
+		{
+			Map = GetLevel()->CreateActor<Dungeon_Map_01>();
+			Map->Map_floor->SetSprite("Floor_01", 0);
+			Map->Transform.SetLocalPosition({ Rooms[Start][End].Pos.X,Rooms[Start][End].Pos.Y });
+			Map->Pixel_Name = "Dungeon_Map_Pixel_00.png";
+			Map->SetArr({static_cast<float>(Start),static_cast<float>(End)});
+			Maps.push_back(Map);
+			One_Check = true;
+		}
+	
+
+
+
+
+		
+		{
+			Map = GetLevel()->CreateActor<Dungeon_Map_01>();
+			Map->Map_floor->SetSprite("Floor_01", Number);
+			Map->Pixel_Name = "Dungeon_Map_Pixel_00.png";
+			Map->Map_Number += 1;
+			Map->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
+			Map->SetArr({Arr.X,Arr.Y});
+
+
+			Maps.push_back(Map);
+		}
+		
 
 
 
@@ -250,17 +319,55 @@ void Random_Room::Start()
 
 	delete check;
 
+	for (size_t i = Map_Manager::Map_Check; i < Maps.size(); i++)
+	{
+		Maps[i]->Off();
+	}
+
 }
 
 void Random_Room::Update(float _Delta)
 {
-	//for (size_t x = 0; x < 9; x++)
-	//{
 
-	//	for (size_t y = 1; y < 9; y++)
-	//	{
-	//		//Rooms[x][y];
-	//	}
-	//}
-	//int a = 0; 
+
+	
+	for (size_t i = 0; i < Maps.size(); i++)
+	{
+		if (Maps[i]->Door_Left_Collison_Check == true)
+		{
+			
+			for (size_t j = 0; j < Maps.size(); j++)
+			{
+				if (Maps[j]->GetArr().X == Maps[i]->GetArr().X - 1)
+				{
+					if (Maps[j]->GetArr().Y == Maps[i]->GetArr().Y)
+					{
+						Maps[j]->On();
+					}
+				}
+			}
+		}
+
+
+		
+	}
+
+
+
+
+
+
+
+
+
+
+	for (size_t x = 0; x < 9; x++)
+	{
+
+		for (size_t y = 1; y < 9; y++)
+		{
+			Rooms[x][y];
+		}
+	}
+	int a = 0; 
 }

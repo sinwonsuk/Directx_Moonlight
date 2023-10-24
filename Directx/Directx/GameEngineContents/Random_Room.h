@@ -1,5 +1,5 @@
 #pragma once
-#pragma once
+
 #include <GameEngineCore/GameEngineActor.h>
 enum class RandomDir
 {
@@ -14,10 +14,11 @@ enum class RandomDir
 class Room_State
 {
 public:
+	static Room_State* Room_state;
 	bool RoomCheck = false;
 	bool Null_Check = false;
 
-
+	float4 Room_Number = {};
 	Room_State* Arr[4] = {}; 
 	float4 Pos = {640,-360,0.0f,1.0f};
 };
@@ -40,7 +41,7 @@ public:
 
 
 
-	std::vector<std::vector<Room_State>> Rooms;
+	static std::vector<std::vector<Room_State>> Rooms;
 
 	std::vector<Room_State> Room_state;
 protected:
@@ -50,7 +51,7 @@ protected:
 private:
 
 	std::shared_ptr<class Dungeon_Map_01> Map;
-
+	std::vector<std::shared_ptr<class Dungeon_Map_01>> Maps;
 	int Number = 0;
 	float Map_Number = 0.0f;
 
@@ -58,7 +59,9 @@ private:
 	int Map_Order = 0;
 	int RandomCheck = 0; 
 	float4 int_Check[30] = {};
+	float4 check = false;
+	bool One_Check = false;
 
-	bool check = false;
+	
 
 };

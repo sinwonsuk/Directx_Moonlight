@@ -53,4 +53,10 @@ enum class ContentsCollisionType
 	Town,
 	Dungeon_Entrance,
 	Dungeon_Near, 
+
+	LeftDoor,
+	RightDoor,
+	TopDoor,
+	BottomDoor, 
+
 };
