@@ -14,7 +14,7 @@ void CameraCollision::Start()
 
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::CameraCollision);
-		Col->Transform.SetLocalScale({ 1280.0f,720.0f });
+		Col->Transform.SetLocalScale({ 1000.0f,550.0f });
 		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 

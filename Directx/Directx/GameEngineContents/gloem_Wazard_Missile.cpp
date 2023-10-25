@@ -11,12 +11,12 @@ gloem_Wazard_Missile::~gloem_Wazard_Missile()
 
 void gloem_Wazard_Missile::Start()
 {
-	Missile = CreateComponent<GameEngineSpriteRenderer>(100);
+	Missile = CreateComponent<GameEngineSpriteRenderer>(200);
 	Missile->CreateAnimation("golemturret_Attack", "golemturret_Attack", 0.1f, -1, -1, true);
 	Missile->CreateAnimation("golemturret_Attack_Finish", "golemturret_Attack_Finish", 0.1f, -1, -1, false);
 
 	Missile->AutoSpriteSizeOn();
-	Missile->SetAutoScaleRatio(3.0f);
+	Missile->SetAutoScaleRatio(3.5f);
 	Missile->ChangeAnimation("golemturret_Attack");
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();

@@ -54,7 +54,22 @@ void gloem_Wazard_Missile::AttackUpdate(float _Time)
 	float4 Up_Stone_Pos = { Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 20.0f };
 	float4 Down_Stone_Pos = { Transform.GetWorldPosition().X ,Transform.GetWorldPosition().Y - 20.0f };
 
-	if (GameEngineColor::MAGENTA == GetColor({ Left_Stone_Pos }, { 255,0,0,255 }, "Tutorial_Map_Pixel.png"))
+
+	if (Col->Collision(ContentsCollisionType::CameraCollision) == false)
+	{
+		ChangeState(golem_Wazard_missile_State::Finish);
+	}
+
+
+
+
+
+
+
+
+
+
+	/*if (GameEngineColor::MAGENTA == GetColor({ Left_Stone_Pos }, { 255,0,0,255 }, "Tutorial_Map_Pixel.png"))
 	{
 		ChangeState(golem_Wazard_missile_State::Finish);
 		return;
@@ -94,7 +109,7 @@ void gloem_Wazard_Missile::AttackUpdate(float _Time)
 	{		
 		ChangeState(golem_Wazard_missile_State::Finish);
 		return;
-	}
+	}*/
 
 
 

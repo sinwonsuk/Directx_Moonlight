@@ -53,21 +53,31 @@ void Monster_Place::Monsters(float4 _Pos)
 	for (size_t i = 0; i <= Random_number; i++)
 	{
 		srand((unsigned)time(NULL));
-
+		Random_Monster = rand() % 5;
 		
 
 	
 
-		GameEngineRandom Random;
-		Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom);
+		
+		//Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom);
 		//Random.SetSeed(Random_A++);
 
-		switch (Random_Monster)
+		//GameEngineRandom Random_Mon;
+		int A = Random2.RandomInt(0, 4);
+
+	
+
+		//Random.SetSeed(Random_B++);
+
+		switch (A)
 		{
 		case 0:
 		{
 			std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 			Object->Transform.SetLocalPosition(Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom));
+			Random.SetSeed(Random_A++);
+
+
 			/*std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 			Object->Transform.SetLocalPosition(Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom));*/
 			break;
@@ -76,12 +86,14 @@ void Monster_Place::Monsters(float4 _Pos)
 		{
 			std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 			Object->Transform.SetLocalPosition(Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom));
+			Random.SetSeed(Random_A++);
 			break;
 		}
 		case 2:
 		{
 			std::shared_ptr<golem_Stone> Object = GetLevel()->CreateActor<golem_Stone>();
 			Object->Transform.SetLocalPosition(Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom));
+			Random.SetSeed(Random_A++);
 
 			/*std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 			Object->Transform.SetLocalPosition(Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom));*/
@@ -91,6 +103,7 @@ void Monster_Place::Monsters(float4 _Pos)
 		{
 			std::shared_ptr<golem_Wizard> Object = GetLevel()->CreateActor<golem_Wizard>();
 			Object->Transform.SetLocalPosition(Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom));
+			Random.SetSeed(Random_A++);
 
 			/*std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 			Object->Transform.SetLocalPosition(Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom));*/
@@ -100,6 +113,7 @@ void Monster_Place::Monsters(float4 _Pos)
 		{
 			std::shared_ptr<SlimeHermit> Object = GetLevel()->CreateActor<SlimeHermit>();
 			Object->Transform.SetLocalPosition(Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom));
+			Random.SetSeed(Random_A++);
 
 			/*std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 			Object->Transform.SetLocalPosition(Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom));*/

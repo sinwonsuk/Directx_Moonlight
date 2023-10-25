@@ -25,7 +25,10 @@ protected:
 private:
 	bool test = false;
 	int Random_A = 0;
+	int Random_B = 100;
 	float Map_Number = 0.0f;
 	int Random_number = 0;
 	int Random_Monster = 0;
+	GameEngineRandom Random;
+	GameEngineRandom Random2;
 };
