@@ -110,24 +110,27 @@ void golem_Stone::Update(float _Delta)
 {
 	Time += _Delta;
 
-	MonsterDir(); 
+	
 
 	if (Hp <= 0)
 	{
 		this->Death(); 
 	}
+	if (Col->Collision(ContentsCollisionType::CameraCollision))
+	{
+		MonsterDir();
 
-	
-	MonsterPushUpdate(_Delta);
-
-	
-
-	CollisionStop(_Delta, "Tutorial_Map_Pixel.png");
+		MonsterPushUpdate(_Delta);
 
 
-	Col->CollisionEvent(ContentsCollisionType::Spear, Event);
 
-	UpdateState(_Delta);
+		CollisionStop(_Delta, "Tutorial_Map_Pixel.png");
+
+
+		Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+
+		UpdateState(_Delta);
+	}
 
 }
 void golem_Stone::AnimationCheck(const std::string_view& _AnimationName)

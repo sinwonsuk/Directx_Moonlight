@@ -61,6 +61,8 @@ void golem_Solder::Start()
 	}
 
 	
+
+	
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 	
@@ -105,16 +107,22 @@ void golem_Solder::Update(float _Delta)
 		return;
 	}
 
-	Time += _Delta;
 
-	MonsterDir(); 
+	if (Col->Collision(ContentsCollisionType::CameraCollision))
+	{
+		    Time += _Delta;
+			MonsterDir();
+			MonsterPushUpdate(_Delta);
+			UpdateState(_Delta);
+			Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+	}
+		
+	
+
 	
 
 
-	MonsterPushUpdate(_Delta);
-	UpdateState(_Delta);
-
-	Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+	
 }
 
 

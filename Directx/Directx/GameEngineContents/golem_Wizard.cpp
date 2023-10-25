@@ -110,18 +110,20 @@ void golem_Wizard::Update(float _Delta)
 		return; 
 	}
 
+	if (Col->Collision(ContentsCollisionType::CameraCollision))
+	{
+		Time += _Delta;
 
-	Time += _Delta;
+		MonsterDir();
 
-	MonsterDir(); 
-	
-	MonsterPushUpdate(_Delta);
+		MonsterPushUpdate(_Delta);
 
-	
 
-	UpdateState(_Delta); 
 
-	Body->CollisionEvent(ContentsCollisionType::Spear, Event);
+		UpdateState(_Delta);
+
+		Body->CollisionEvent(ContentsCollisionType::Spear, Event);
+	}
 
 }
 void golem_Wizard::MonsterPushUpdate(float _Delta)

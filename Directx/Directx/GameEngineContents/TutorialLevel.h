@@ -17,7 +17,7 @@ public:
 	std::vector<GameEngineActor*> Maps; 
 
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 }, std::string_view _Name = {});
-
+	GameEngineColor Player_GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 }, std::string_view _Name = {});
 protected:
 	void Start() override;
 	void Update(float _Delta) override;

@@ -48,5 +48,8 @@ void golemturret::Start()
 
 void golemturret::Update(float _Delta)
 {
-	UpdateState(_Delta);
+	if (Col->Collision(ContentsCollisionType::CameraCollision))
+	{
+		UpdateState(_Delta);
+	}
 }

@@ -97,7 +97,7 @@ public:
 
 	void WeaponManager(Spear_State _SpearState, PlayerState state, PlayerState _playstate);
 
-
+	void Test(float _Time);
 	PlayerState GetPlayerStateValue()
 	{
 		return StateValue;
@@ -117,15 +117,17 @@ public:
 	bool UpMove = true;
 	CameraType Camera = CameraType::None;
 	//Leveltype LevelType = Leveltype::None;
+
+	float4 Test_Move = {};
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 private:
-	float test = 0.0f;
 	
 	
-
+	
+	
 
 	EventParameter Left_Event;
 	EventParameter Right_Event;

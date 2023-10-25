@@ -79,6 +79,8 @@
     <ClCompile Include="SlimeHermit_State.cpp" />
     <ClCompile Include="MiniBoss_State.cpp" />
     <ClCompile Include="MiniBoss.cpp" />
+    <ClCompile Include="Monster_Place.cpp" />
+    <ClCompile Include="CameraCollision.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -151,6 +153,8 @@
     <ClInclude Include="Dungeon_Map_00.h" />
     <ClInclude Include="SlimeHermit.h" />
     <ClInclude Include="MiniBoss.h" />
+    <ClInclude Include="Monster_Place.h" />
+    <ClInclude Include="CameraCollision.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

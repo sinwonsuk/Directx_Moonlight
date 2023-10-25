@@ -46,7 +46,7 @@ void TutorialMap::Start()
 	
 	{
 
-	    BackGround = CreateComponent<GameEngineSpriteRenderer>(100);
+	    BackGround = CreateComponent<GameEngineSpriteRenderer>(-100);
 	    BackGround->SetSprite("Tutorial_BackGround", 1);
 	    BackGround->SetImageScale({ 1380.0f,750.0f });
 

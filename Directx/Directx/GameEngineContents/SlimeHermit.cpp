@@ -106,17 +106,20 @@ void SlimeHermit::Update(float _Delta)
 		this->Off();
 		return;
 	}
-
-	Time += _Delta;
-
-	MonsterDir(); 
 	
+	if (Col->Collision(ContentsCollisionType::CameraCollision))
+	{
+		Time += _Delta;
+
+		MonsterDir();
 
 
-	MonsterPushUpdate(_Delta);
-	UpdateState(_Delta);
 
-	Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+		MonsterPushUpdate(_Delta);
+		UpdateState(_Delta);
+
+		Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+	}
 }
 
 

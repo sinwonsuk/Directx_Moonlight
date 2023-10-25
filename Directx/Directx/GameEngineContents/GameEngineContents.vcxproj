@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClCompile Include="BabySilme_State.cpp" />
     <ClCompile Include="BabySlime.cpp" />
+    <ClCompile Include="CameraCollision.cpp" />
     <ClCompile Include="ContentsControlWindow.cpp" />
     <ClCompile Include="Dungeon_Map_00.cpp" />
     <ClCompile Include="Dungeon_Map_03.cpp" />
@@ -194,6 +195,7 @@
     <ClCompile Include="MiniBoss.cpp" />
     <ClCompile Include="MiniBoss_State.cpp" />
     <ClCompile Include="Monster_Manager.cpp" />
+    <ClCompile Include="Monster_Place.cpp" />
     <ClCompile Include="Player_UI.cpp" />
     <ClCompile Include="Random_Room.cpp" />
     <ClCompile Include="ShopLevel.cpp" />
@@ -251,6 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BabySlime.h" />
+    <ClInclude Include="CameraCollision.h" />
     <ClInclude Include="ContentsControlWindow.h" />
     <ClInclude Include="Dungeon_Map_00.h" />
     <ClInclude Include="Dungeon_Map_03.h" />
@@ -274,6 +277,7 @@
     <ClInclude Include="Map_Manager.h" />
     <ClInclude Include="MiniBoss.h" />
     <ClInclude Include="Monster_Manager.h" />
+    <ClInclude Include="Monster_Place.h" />
     <ClInclude Include="Player_UI.h" />
     <ClInclude Include="Random_Room.h" />
     <ClInclude Include="ShopLevel.h" />

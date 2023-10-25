@@ -107,9 +107,13 @@ void BabySlime::Update(float _Delta)
 	{
 		this->Off();
 	}
-	MonsterPushUpdate(_Delta);
 
-	UpdateState(_Delta); 
+	if (Col->Collision(ContentsCollisionType::CameraCollision))
+	{
+		MonsterPushUpdate(_Delta);
+
+		UpdateState(_Delta);
+	}
 }
 
 void BabySlime::MonsterPushUpdate(float _Delta)

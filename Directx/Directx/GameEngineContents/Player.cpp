@@ -188,7 +188,7 @@ void Player::Start()
 		UpMove = true;
 	};
 
-
+	Test_Move = Transform.GetWorldPosition(); 
 }
 
 void Player::TestEvent(GameEngineRenderer* _Renderer)
@@ -247,7 +247,7 @@ void Player::Update(float _Delta)
 
 	float Speed = 100.0f;
 
-	//GetLevel()->GetMainCamera()->Transform.SetLocalPosition(Transform.GetWorldPosition());
+	
 
 
 	float4 awdd = Transform.GetLocalPosition();
@@ -256,26 +256,37 @@ void Player::Update(float _Delta)
 	OutputDebugStringA(awdd.ToString("\n").c_str());
 
 
+	
+	
 
-	//GameEngineColor Color = PlayMap::MainMap->GetColor(Transform.GetWorldPosition(), GameEngineColor::RED);
-
-	//if (GameEngineColor::RED != Color)
-	//{
-	//	GrivityForce.Y -= _Delta * 100.0f;
-	//	Transform.AddLocalPosition(GrivityForce * _Delta);
-	//}
-	//else 
-	//{
-	//	GrivityForce = 0.0f;
-	//}
-	// 땅에 딱붙게하고 싶다면 while돌려서 올려주세요.
+	
 
 
-	// float4 Color = GetColor(Transform.GetWorldPosition());
-	if (Col->Collision(ContentsCollisionType::House))
+
+	if (GameEngineInput::IsPress('A', this))
 	{
-		int a = 0;
+		Test_Move += {float4::LEFT* _Delta* Speed};		
 	}
+
+	if (GameEngineInput::IsPress('D', this))
+	{
+		Test_Move += {float4::RIGHT* _Delta* Speed};
+	}
+
+	if (GameEngineInput::IsPress('W', this))
+	{
+		Test_Move += {float4::UP* _Delta* Speed};	
+	}
+
+	if (GameEngineInput::IsPress('S', this))
+	{
+		Test_Move += {float4::DOWN* _Delta* Speed};
+	}
+
+
+
+
+
 
 	Left_Col->CollisionEvent(ContentsCollisionType::Object, Left_Event);
 	Right_Col->CollisionEvent(ContentsCollisionType::Object, Right_Event);

@@ -4,6 +4,16 @@
 
 #include "Player.h"
 #include "Dungeon_Map_01.h"
+#include "Monster_Place.h"
+
+
+
+
+
+
+
+
+
 
 std::vector<std::vector<Room_State>> Random_Room::Rooms;
 
@@ -13,6 +23,11 @@ Random_Room::Random_Room()
 
 Random_Room::~Random_Room()
 {
+}
+
+void Random_Room::Monsers()
+{
+
 }
 
 void Random_Room::Start()
@@ -311,6 +326,12 @@ void Random_Room::Start()
 			Map->SetArr({Arr.X,Arr.Y});
 
 
+			float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+			GameEngineRandom NewRanadom;
+
+			std::shared_ptr<Monster_Place> Object = GetLevel()->CreateActor<Monster_Place>(ContentsObjectType::Monster);
+			Object->sd = { Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos };
+
 			Maps.push_back(Map);
 		}
 		
@@ -347,8 +368,19 @@ void Random_Room::Update(float _Delta)
 				{
 					if (Maps[j]->GetArr().Y == Maps[i]->GetArr().Y)
 					{
-						Maps[j]->test = false;
-					
+						float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+
+						
+						GameEngineRandom NewRanadom;
+	
+						if(A == false)
+						for (size_t i = 0; i < 10; i++)
+						{
+						
+							A = true;
+						}	
+						
+						
 						Maps[j]->ReturnCheck = false;
 					}
 				}
@@ -361,8 +393,7 @@ void Random_Room::Update(float _Delta)
 			{
 				if (Maps[i]->GetArr().X + 1 == Maps[j]->GetArr().X && Maps[i]->GetArr().Y == Maps[j]->GetArr().Y)
 				{
-					Maps[j]->test = false;
-		
+	
 					Maps[j]->ReturnCheck = false;
 				}
 			}
@@ -376,7 +407,7 @@ void Random_Room::Update(float _Delta)
 				{
 					if (Maps[j]->GetArr().X == Maps[i]->GetArr().X)
 					{
-						Maps[j]->test = false;
+					
 
 						Maps[j]->ReturnCheck = false;
 					}
@@ -392,7 +423,7 @@ void Random_Room::Update(float _Delta)
 				{
 					if (Maps[j]->GetArr().X == Maps[i]->GetArr().X)
 					{
-						Maps[j]->test = false;
+					
 		
 						Maps[j]->ReturnCheck = false;
 					}

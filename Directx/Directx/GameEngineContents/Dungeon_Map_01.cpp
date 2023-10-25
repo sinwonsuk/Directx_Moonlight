@@ -23,7 +23,7 @@ void Dungeon_Map_01::Start()
 	
 
     {
-		BackGround = CreateComponent<GameEngineSpriteRenderer>(100);
+		BackGround = CreateComponent<GameEngineSpriteRenderer>(-99);
 		BackGround->SetSprite("BackGround", 1);
 		BackGround->SetImageScale({ 1380.0f,740.0f });
 		BackGround->Transform.AddLocalPosition({ 0.0f,0.0f });

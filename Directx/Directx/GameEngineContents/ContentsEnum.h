@@ -58,5 +58,5 @@ enum class ContentsCollisionType
 	RightDoor,
 	TopDoor,
 	BottomDoor, 
-
+	CameraCollision
 };

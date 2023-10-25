@@ -516,8 +516,11 @@ void Player::UpMoveUpdate(float _Time)
 
 void Player::Roll_RightUpdate(float _Time)
 {
-	Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
-
+	if (RightMove == true)
+	{
+		Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
+	}
+	
 	if (player->IsCurAnimationEnd())
 	{
 		ChangeState(PlayerState::RightIdle);
@@ -528,7 +531,7 @@ void Player::Roll_RightUpdate(float _Time)
 
 void Player::Roll_LeftUpdate(float _Time)
 {
-	if (LeftMove == false)
+	if (LeftMove == true)
 	{
 		Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
 	}
@@ -543,7 +546,7 @@ void Player::Roll_LeftUpdate(float _Time)
 
 void Player::Roll_DownUpdate(float _Time)
 {
-	if (DownMove == false)
+	if (DownMove == true)
 	{
 		Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
 	}
@@ -558,7 +561,7 @@ void Player::Roll_DownUpdate(float _Time)
 
 void Player::Roll_UpUpdate(float _Time)
 {
-	if (UpMove == false)
+	if (UpMove == true)
 	{
 		Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
 	}
@@ -770,8 +773,6 @@ void Player::Move(float _Delta)
 			   GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
 			}	
 		}
-
-
 
 		break;
 	case CameraType::Dungeon_Entrance:

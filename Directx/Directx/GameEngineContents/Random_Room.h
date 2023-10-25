@@ -44,6 +44,10 @@ public:
 	static std::vector<std::vector<Room_State>> Rooms;
 
 	std::vector<Room_State> Room_state;
+	std::vector<std::shared_ptr<class Dungeon_Map_01>> Maps;
+
+	void Monsers();
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -51,10 +55,10 @@ protected:
 private:
 
 	std::shared_ptr<class Dungeon_Map_01> Map;
-	std::vector<std::shared_ptr<class Dungeon_Map_01>> Maps;
+
 	int Number = 0;
 	float Map_Number = 0.0f;
-
+	bool A = false;
 	int Random_Map_Arr[10] = {}; 
 	int Map_Order = 0;
 	int RandomCheck = 0; 

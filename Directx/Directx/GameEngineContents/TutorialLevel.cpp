@@ -29,9 +29,7 @@ void TutorialLevel::Start()
 	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
-	/*{
-		std::shared_ptr<Player> Object = CreateActor<Player>();
-	}*/
+	
 
 	{
 		std::shared_ptr<TutorialMap> Object = CreateActor<TutorialMap>();
@@ -57,51 +55,46 @@ void TutorialLevel::Start()
 	{
 		std::shared_ptr<Player_UI> Object = CreateActor<Player_UI>();
 	}
+	{
+		std::shared_ptr<TileMap> Object = CreateActor<TileMap>();
+	}
+
+
+
+
 
 	{
-		//Tile = CreateActor<TileMap>(ContentsObjectType::BackGround);
-
-		/*size_t TileX = 192;
-		size_t TileY = 18;*/
-
-
-		size_t TileX = 768;
-		size_t TileY = 72;
-
-
-
-
-		/*Tile->TileRenderer->CreateTileMap({ TileX, TileY, {10, 10}, "Button_E.png" });
-
-		for (size_t x = 0; x < TileX; x++)
-		{
-			for (size_t y = 0; y < TileY; y++)
-			{
-				Tile->TileRenderer->SetTileIndex({ x, y });
-			}
-		}*/
-		test.reserve(5000);
-		for (size_t x = 0; x < TileX; x++)
-		{
-			test.push_back(testbool);
-			for (size_t y = 0; y < TileY; y++)
-			{
-				bool a = true;
-				test[x].push_back(a); 
-			}
-		}
 		
-		for (size_t x = 0; x < TileX; x++)
-		{
-			for (size_t y = 0; y < TileY; y++)
-			{
-				if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Tutorial_Map_Pixel_05.png"))
-				{
-					test[x][y] = false;
-				}
-			}
-		}
-		int a = 0;
+
+		//size_t TileX = 768;
+		//size_t TileY = 72;
+
+
+
+
+	
+		//test.reserve(5000);
+		//for (size_t x = 0; x < TileX; x++)
+		//{
+		//	test.push_back(testbool);
+		//	for (size_t y = 0; y < TileY; y++)
+		//	{
+		//		bool a = true;
+		//		test[x].push_back(a); 
+		//	}
+		//}
+		//
+		//for (size_t x = 0; x < TileX; x++)
+		//{
+		//	for (size_t y = 0; y < TileY; y++)
+		//	{
+		//		if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Tutorial_Map_Pixel_05.png"))
+		//		{
+		//			test[x][y] = false;
+		//		}
+		//	}
+		//}
+		//int a = 0;
 	}
 
 
@@ -119,43 +112,14 @@ void TutorialLevel::Update(float _Delta)
 		GameEngineCore::ChangeLevel("WorldLevel");
 	}
 
-	if (GameEngineInput::IsPress('E', this))
-	{
-		Tile->TileRenderer->Transform.AddLocalPosition({ 0.0f,0.0f,1.0f });
-		
-	}
+	
+	
 
-	if (GameEngineInput::IsPress('Q', this))
-	{
-		Tile->TileRenderer->Transform.AddLocalPosition({ 0.0f,0.0f,-1.0f });
-		
-	}
-	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-
-	size_t TileX = 192;
-	size_t TileY = 18;
 	
 
 
-	/*if (GameEngineInput::IsPress('A'))
-	{
-		GetCamera(0)->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-	}
 
-	if (GameEngineInput::IsPress('D'))
-	{
-		GetCamera(0)->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-	}
-
-	if (GameEngineInput::IsPress('W'))
-	{
-		GetCamera(0)->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-	}
-
-	if (GameEngineInput::IsPress('S'))
-	{
-		GetCamera(0)->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
-	}*/
+	
 
 }
 
@@ -175,6 +139,16 @@ void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)
 GameEngineColor TutorialLevel::GetColor(float4 _Pos, GameEngineColor _DefaultColor, std::string_view _Name)
 {
 	//_Pos.Y *= -1.0f;
+
+	std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find(_Name);
+
+	return Tex->GetColor(_Pos, _DefaultColor);
+}
+
+
+GameEngineColor TutorialLevel::Player_GetColor(float4 _Pos, GameEngineColor _DefaultColor, std::string_view _Name)
+{
+	_Pos.Y *= -1.0f;
 
 	std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Find(_Name);
 

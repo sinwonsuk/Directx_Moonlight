@@ -31,7 +31,6 @@ void WorldLevel::Start()
 
 	{
 		std::shared_ptr<TownMap> Object = CreateActor<TownMap>(ContentsObjectType::BackGround);
-
 	}
 	
 	/*GetMainCamera()->Transform.SetLocalPosition({ 0.0f,0.0f, -500.0f });
@@ -68,12 +67,14 @@ void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	Player::this_Player->Camera = CameraType::Town;
 
+
+
+
 	if (Player::LevelType == Leveltype::Dungeon_Entrance)
 	{
 		Player::this_Player->Transform.SetWorldPosition({ 15,682 });
 		GetMainCamera()->Transform.SetWorldPosition({ 15,310 });
 	}
-
 	
 	else if (Player::LevelType == Leveltype::Town)
 	{

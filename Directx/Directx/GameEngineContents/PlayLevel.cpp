@@ -7,6 +7,9 @@
 #include "Dungeon_Map_01.h"
 #include "SlimeHermit.h"
 #include "MiniBoss.h"
+#include "Player_UI.h"
+#include "Monster_place.h"
+#include "CameraCollision.h"
 PlayLevel::PlayLevel() 
 {
 }
@@ -17,6 +20,7 @@ PlayLevel::~PlayLevel()
 
 void PlayLevel::Start()
 {
+	//GameEngineLevel::IsDebug = false;
 	//GameEngineCore::GetBackBufferRenderTarget()->SetClearColor({ 0, 0, 0, 1 });
 	
 
@@ -25,88 +29,30 @@ void PlayLevel::Start()
 	
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
+
 	{
-		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
+		std::shared_ptr<CameraCollision> Object = CreateActor<CameraCollision>();
 	}
+
+
+	
+
+
 	{
 		//std::shared_ptr<SlimeHermit> Object = CreateActor<SlimeHermit>(ContentsObjectType::Player);
 	}
 	{
-		std::shared_ptr<MiniBoss> Object = CreateActor<MiniBoss>(ContentsObjectType::Player);
+		//std::shared_ptr<MiniBoss> Object = CreateActor<MiniBoss>(ContentsObjectType::Player);
 	}
 
 
-	/*{
-		std::shared_ptr<Random_Room> Object = CreateActor<Random_Room>();
-	}*/
-
-	
-
-	
-
-	
-	
-	//{
-	//	std::shared_ptr<Dungeon_Map_02> Object = CreateActor<Dungeon_Map_02>(ContentsObjectType::Player);
-	//}
-	//{
-	//	std::shared_ptr<Dungeon_Map_03> Object = CreateActor<Dungeon_Map_03>(ContentsObjectType::Player);
-	//}
-	//{
-	//	std::shared_ptr<Dungeon_Map_04> Object = CreateActor<Dungeon_Map_04>(ContentsObjectType::Player);
-	//}
-	//{
-	//	std::shared_ptr<Dungeon_Map_05> Object = CreateActor<Dungeon_Map_05>(ContentsObjectType::Player);
-	//}
-	//{
-	//	std::shared_ptr<Dungeon_Map_06> Object = CreateActor<Dungeon_Map_06>(ContentsObjectType::Player);
-	//}
-	//{
-	//	std::shared_ptr<Dungeon_Map_07> Object = CreateActor<Dungeon_Map_07>(ContentsObjectType::Player);
-	//}
-	//{
-	//	std::shared_ptr<Dungeon_Map_08> Object = CreateActor<Dungeon_Map_08>(ContentsObjectType::Player);
-	//}
-	//{
-	//	std::shared_ptr<Dungeon_Map_09> Object = CreateActor<Dungeon_Map_09>(ContentsObjectType::Player);
-	//}
-	//{
-	//	std::shared_ptr<Dungeon_Map_10> Object = CreateActor<Dungeon_Map_10>(ContentsObjectType::Player);
-	//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	//std::shared_ptr<Monster_Place> Object = CreateActor<Monster_Place>();
 	{
-		//GameEngineRandom NewRanadom;
-		//for (size_t i = 0; i < 10; i++)
-		//{
-		//	std::shared_ptr<Monster> Object = CreateActor<Monster>(ContentsObjectType::Monster);
-		//	Object->Transform.SetLocalPosition(NewRanadom.RandomVectorBox2D(0, 1280, 0, -720));
-		//}
-
-		//std::shared_ptr<PlayMap> Object0 = CreateActor<PlayMap>(ContentsObjectType::Monster);
-		//std::shared_ptr<PlayMap> Object1 = CreateActor<PlayMap>(ContentsObjectType::Monster);
-		//std::shared_ptr<PlayMap> Object2 = CreateActor<PlayMap>(ContentsObjectType::Monster);
-		//std::shared_ptr<PlayMap> Object3 = CreateActor<PlayMap>(ContentsObjectType::Monster);
+		std::shared_ptr<Player_UI> Object = CreateActor<Player_UI>(ContentsObjectType::Player);
 	}
+	
 
-	/*{
-		std::shared_ptr<PlayMap> Object = CreateActor<PlayMap>(ContentsObjectType::BackGround);
-		Map = Object;
-	}*/
+	
 
 }
 
@@ -126,12 +72,37 @@ void PlayLevel::Update(float _Delta)
 
 void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	{
+		player = CreateActor<Player>(ContentsObjectType::Player);
+	}
 	
+	{
+		Map = CreateActor<Random_Room>();
+	}
+
 
 	int a = 0;
 }
 
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-	int a = 0;
+
+	player->Death(); 
+
+	for (size_t i = 0; i < Map->Maps.size(); i++)
+	{
+		Map->Maps[i]->Death();
+	}
+
+
+	Map->Rooms.clear();
+
+	Map->Maps.clear(); 
+
+
+
+	Map->Death(); 
+	Player::this_Player->Death();
+	Player::this_Player = nullptr;
+
 }
