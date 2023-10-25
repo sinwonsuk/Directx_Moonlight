@@ -1,4 +1,6 @@
 #include "PreCompile.h"
+#include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineCollision.h>
 #include "gloem_Wazard_Missile.h"
 #include "Player.h"
 
@@ -55,10 +57,12 @@ void gloem_Wazard_Missile::AttackUpdate(float _Time)
 	float4 Down_Stone_Pos = { Transform.GetWorldPosition().X ,Transform.GetWorldPosition().Y - 20.0f };
 
 
-	if (Col->Collision(ContentsCollisionType::CameraCollision) == false)
+	if (Col->Collision(ContentsCollisionType::CameraCollision) ==false)
 	{
 		ChangeState(golem_Wazard_missile_State::Finish);
+		return;
 	}
+
 
 
 

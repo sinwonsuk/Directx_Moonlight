@@ -22,10 +22,15 @@ void gloem_Wazard_Missile::Start()
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 
+	{
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::GolemStone);
+		Col->Transform.SetLocalScale({ 20.0f,20.0f });
+	}
 }
 
 void gloem_Wazard_Missile::Update(float _Delta)
 {
+	
 	UpdateState(_Delta);
 }
 void gloem_Wazard_Missile::AnimationCheck(const std::string_view& _AnimationName)

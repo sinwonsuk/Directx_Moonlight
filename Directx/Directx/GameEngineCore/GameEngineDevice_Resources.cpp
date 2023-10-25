@@ -16,9 +16,12 @@
 #include "GameEngineMesh.h"
 #include "GameEngineDepthStencil.h"
 #include "GameEngineMaterial.h"
+#include "GameEngineFont.h"
 
 void GameEngineDevice::ResourcesInit()
 {
+	GameEngineFont::Load("돋움");
+
 	{
 		// 엔진용 쉐이더를 전부다 전부다 로드하는 코드를 친다.
 		GameEngineDirectory Dir;
@@ -328,7 +331,7 @@ void GameEngineDevice::ResourcesInit()
 		//D3D11_DEPTH_STENCILOP_DESC FrontFace;
 		//D3D11_DEPTH_STENCILOP_DESC BackFace;
 
-		Desc.DepthEnable = true;
+		Desc.DepthEnable = false;
 		// 깊이 테스트만 하고 안쓸수도 있다.
 		// Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK::D3D11_DEPTH_WRITE_MASK_ZERO;
 		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK::D3D11_DEPTH_WRITE_MASK_ALL;
