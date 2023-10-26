@@ -31,4 +31,5 @@ private:
 	int Random_Monster = 0;
 	GameEngineRandom Random;
 	GameEngineRandom Random2;
+	GameEngineRandom Random3;
 };

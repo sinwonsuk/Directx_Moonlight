@@ -1,8 +1,9 @@
 #pragma once
+
 class CameraCollision : public GameEngineActor
 {
 public:
-
+	static CameraCollision* CameraCol;
 	// constrcuter destructer
 	CameraCollision();
 	~CameraCollision();
@@ -14,7 +15,7 @@ public:
 	CameraCollision& operator=(CameraCollision&& _Other) noexcept = delete;
 
 
-
+	std::shared_ptr<GameEngineCollision> Col;
 
 protected:
 	void Start() override;
@@ -23,7 +24,7 @@ protected:
 private:
 	float Map_Number = 0.0f;
 	
-	std::shared_ptr<GameEngineCollision> Col;
+	
 
 };
 

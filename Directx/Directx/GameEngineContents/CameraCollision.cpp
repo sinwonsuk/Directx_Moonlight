@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "CameraCollision.h"
 
+CameraCollision* CameraCollision::CameraCol; 
 CameraCollision::CameraCollision()
 {
 }
@@ -12,9 +13,11 @@ CameraCollision::~CameraCollision()
 void CameraCollision::Start()
 {
 
+	CameraCol = this;
+
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::CameraCollision);
-		Col->Transform.SetLocalScale({ 1000.0f,550.0f });
+		Col->Transform.SetLocalScale({ 1100.0f,550.0f });
 		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 

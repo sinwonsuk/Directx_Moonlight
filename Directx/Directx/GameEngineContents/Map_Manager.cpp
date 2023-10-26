@@ -3,6 +3,7 @@
 #include "Player.h"
 #include <GameEngineCore/GameEngineLevel.h>
 #include "Random_Room.h"
+#include "CameraCollision.h"
 int Map_Manager::Map_Check = 1;
 Map_Manager::Map_Manager()
 {
@@ -207,6 +208,7 @@ void Map_Manager::DoorCollision(float _Delta,float4 _PrevMainCamera)
 	 
 	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().X < A +1280  && Door_Right_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->Col->Off();
 		Player::this_Player->GetLevel()->GetMainCamera()->Transform.AddLocalPosition(X_Camera_Move);
 	}
 	else if(Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().X >= A + 1280 && Door_Right_Collison_Check == true)
@@ -219,20 +221,24 @@ void Map_Manager::DoorCollision(float _Delta,float4 _PrevMainCamera)
 
 	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().X > A - 1280 && Door_Left_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->Col->Off();
 		Player::this_Player->GetLevel()->GetMainCamera()->Transform.AddLocalPosition(-X_Camera_Move);
 	}
 	else if(Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().X <= A - 1280 && Door_Left_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->Col->On(); 
 		Door_Left_Collison_Check = false;
 		ReturnCheck = true;
 	}
 
 	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().Y < A + 720 && Door_Top_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->Col->Off();
 		Player::this_Player->GetLevel()->GetMainCamera()->Transform.AddLocalPosition({0.0f,Y_Camera_Move.X });
 	}
 	else if(Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().Y >= A + 720 && Door_Top_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->Col->On();
 		Door_Top_Collison_Check = false;
 		ReturnCheck = true;
 	}
@@ -241,10 +247,12 @@ void Map_Manager::DoorCollision(float _Delta,float4 _PrevMainCamera)
 
 	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().Y > A - 720 && Door_Bottom_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->Col->Off();
 		Player::this_Player->GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ 0.0f,-Y_Camera_Move.X });
 	}
 	else if(Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().Y <= A - 720 && Door_Bottom_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->Col->On();
 		Door_Bottom_Collison_Check = false;
 		ReturnCheck = true;
 	}

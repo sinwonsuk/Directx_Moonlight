@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Player_UI.h"
 #include "TileMap.h"
+#include "CameraCollision.h"
 TutorialLevel::TutorialLevel()
 {
 
@@ -29,6 +30,9 @@ void TutorialLevel::Start()
 	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
+	{
+		std::shared_ptr<CameraCollision> object = CreateActor<CameraCollision>();
+	}
 	
 
 	{

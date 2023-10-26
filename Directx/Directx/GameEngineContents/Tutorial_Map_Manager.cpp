@@ -2,6 +2,7 @@
 #include "Tutorial_Map_Manager.h"
 #include "Player.h"
 #include <GameEngineCore/GameEngineCollisionGroup.h>
+#include "CameraCollision.h"
 int Tutorial_Map_Manager::Map_Check = 0; 
 Tutorial_Map_Manager::Tutorial_Map_Manager()
 {
@@ -165,6 +166,7 @@ void Tutorial_Map_Manager::DoorCollision(float _Delta, float _MapNumber)
 
 	if(Player::this_Player->Col->Collision(ContentsCollisionType::Door))
 	{
+		CameraCollision::CameraCol->Col->Off();
 		Door_Collison_Check = true;
 		Player::this_Player->Transform.AddLocalPosition(300.0f);
 				
@@ -175,6 +177,7 @@ void Tutorial_Map_Manager::DoorCollision(float _Delta, float _MapNumber)
 
 	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetWorldPosition().X < 1280*(1.5 + _MapNumber) && Door_Collison_Check ==true)
 	{
+		CameraCollision::CameraCol->Col->On();
 		Player::this_Player->GetLevel()->GetMainCamera()->Transform.AddLocalPosition(Camera_Move);
 	}
 
