@@ -196,7 +196,11 @@ void MiniBoss::LeftMoveUpdate(float _Time)
 {
 
 
-	
+	if (Mini_Col->Collision(ContentsCollisionType::Monster))
+	{
+		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * _Time });
+		//MoveDir
+	}
 
 
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -265,6 +269,11 @@ void MiniBoss::LeftMoveUpdate(float _Time)
 void MiniBoss::RightMoveUpdate(float _Time)
 {
 	
+	if (Mini_Col->Collision(ContentsCollisionType::Monster))
+	{
+		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * _Time });
+		//MoveDir
+	}
 
 
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -331,7 +340,12 @@ void MiniBoss::RightMoveUpdate(float _Time)
 void MiniBoss::UpMoveUpdate(float _Time)
 {
 
-	
+	if (Mini_Col->Collision(ContentsCollisionType::Monster))
+	{
+		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * _Time });
+		//MoveDir
+	}
+
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 	MoveDir.Normalize();
 
@@ -399,7 +413,12 @@ void MiniBoss::UpMoveUpdate(float _Time)
 
 void MiniBoss::DownMoveUpdate(float _Time)
 {
-	
+	if (Mini_Col->Collision(ContentsCollisionType::Monster))
+	{
+		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * _Time });
+		//MoveDir
+	}
+
 
 
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();

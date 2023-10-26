@@ -17,7 +17,7 @@ MiniBoss::~MiniBoss()
 void MiniBoss::Start()
 {
 
-	Solder = CreateComponent<GameEngineSpriteRenderer>(100);
+	Solder = CreateComponent<GameEngineSpriteRenderer>(99);
 	Solder->CreateAnimation("Mini_Boss_Attack_Down", "Mini_Boss_Attack_Down", 0.1f, -1, -1, false);
 	Solder->CreateAnimation("Mini_Boss_Move_Down", "Mini_Boss_Move_Down", 0.1f, -1, -1, true);
 	Solder->CreateAnimation("Mini_Boss_Attack_Left", "Mini_Boss_Attack_Left", 0.1f, -1, -1, false);
@@ -28,7 +28,7 @@ void MiniBoss::Start()
 	Solder->CreateAnimation("Mini_Boss_Move_Up", "Mini_Boss_Move_Up", 0.1f, -1, -1, true);
 
 	{
-		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(101);
+		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(99);
 		Monster_BaseBar->SetSprite("MonsterUI", 0);
 		Monster_BaseBar->SetPivotType(PivotType::Left);
 		Monster_BaseBar->Transform.AddLocalPosition({ -30.0f,60.0f });
@@ -36,7 +36,7 @@ void MiniBoss::Start()
 	}
 
 	{
-		Monster_HpBar = CreateComponent<GameEngineSpriteRenderer>(101);
+		Monster_HpBar = CreateComponent<GameEngineSpriteRenderer>(99);
 		Monster_HpBar->SetSprite("MonsterUI", 1);
 		Monster_HpBar->SetPivotType(PivotType::Left);
 		Monster_HpBar->Transform.AddLocalPosition({ -30.0f,60.0f });
@@ -60,7 +60,11 @@ void MiniBoss::Start()
 		Col->Transform.SetLocalScale({ 100.0f,100.0f }); 
 	}
 
-	
+	{
+		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::MiniCol);
+		Mini_Col->Transform.SetLocalScale({ 30.0f,30.0f });
+	}
+
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 	
@@ -98,23 +102,30 @@ void MiniBoss::Start()
 
 void MiniBoss::Update(float _Delta)
 {
+	
+
+
+
+
+
 
 	if (Hp <= 0)
 	{
 		this->Off();
 		return;
 	}
+	if (Col->Collision(ContentsCollisionType::CameraCollision))
+	{
+		Time += _Delta;
+		MonsterDir();
+		MonsterPushUpdate(_Delta);
+		UpdateState(_Delta);
 
-	Time += _Delta;
-
-	MonsterDir(); 
+		Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+	}
 	
 
-
-	MonsterPushUpdate(_Delta);
-	UpdateState(_Delta);
-
-	Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+	
 }
 
 

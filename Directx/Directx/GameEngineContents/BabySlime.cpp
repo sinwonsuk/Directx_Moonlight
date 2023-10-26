@@ -53,7 +53,7 @@ void BabySlime::Start()
 	
 	
 	{
-		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::BabySlime);
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
 		Col->Transform.SetLocalScale({ 15.0f,15.0f });
 	}
 

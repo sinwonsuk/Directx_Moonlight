@@ -194,8 +194,7 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 
 void golem_Solder::LeftMoveUpdate(float _Time)
 {
-
-
+	
 	
 
 
@@ -246,11 +245,17 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 			}
 		}
 		
-		if (Weapon_Collision_Check == false)
+		if (Weapon_Collision_Check == false && Mini_Col->Collision(ContentsCollisionType::MiniCol) == false)
 		{
 			Transform.AddLocalPosition(MoveDir * Speed * _Time);
 		}
 		
+		if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
+		{
+			Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * 1.1 * _Time });
+			//MoveDir
+		}
+
 
 
 		if (Col->Collision(ContentsCollisionType::Player))
@@ -264,7 +269,11 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 
 void golem_Solder::RightMoveUpdate(float _Time)
 {
-	
+	if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
+	{
+		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * 1.1 * _Time });
+		//MoveDir
+	}
 
 
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -330,7 +339,11 @@ void golem_Solder::RightMoveUpdate(float _Time)
 
 void golem_Solder::UpMoveUpdate(float _Time)
 {
-
+	if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
+	{
+		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * 1.1 * _Time });
+		//MoveDir
+	}
 	
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 	MoveDir.Normalize();
@@ -399,7 +412,11 @@ void golem_Solder::UpMoveUpdate(float _Time)
 
 void golem_Solder::DownMoveUpdate(float _Time)
 {
-	
+	if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
+	{
+		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * 1.1 * _Time });
+		//MoveDir
+	}
 
 
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();

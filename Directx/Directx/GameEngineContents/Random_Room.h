@@ -56,6 +56,7 @@ private:
 
 	std::shared_ptr<class Dungeon_Map_01> Map;
 
+	int Monser_Seed = 0; 
 	int Number = 0;
 	float Map_Number = 0.0f;
 	bool A = false;

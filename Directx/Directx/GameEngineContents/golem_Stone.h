@@ -63,11 +63,26 @@ public:
 	void DownCollisionUpdate(float _Time);
 	void UpCollisionUpdate(float _Time);
 
-	void CollisionStop(float _Delta, std::string_view _Name);
+	void CollisionStop(float _Delta, std::string_view _Name = { "Tutorial_Map_Pixel.png" }, float4 _Transform = {} , float4 __Transform = {});
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 }, std::string_view _Name = {});
 	//void Move(float _Delta);
 	void MonsterPushUpdate(float _Delta);
 	void MonsterDir();
+
+
+
+	void SetName(std::string_view _Name)
+	{
+		Name = _Name;
+	}
+	void SetPos(const float4&_Pos)
+	{
+		Pos = _Pos;
+	}
+	void Set_Basic_Pos(const float4& _Basic_Pos)
+	{
+		Basic_Pos = _Basic_Pos;
+	}
 
 protected:
 
@@ -75,6 +90,10 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	float4 Pos = {};
+	float4 Basic_Pos = {};
+
+	std::string Name = { "Tutorial_Map_Pixel.png" };
 	bool PlayerCheck = false;
 	float Speed = 500.0f;
 	float Time = 1.0f;

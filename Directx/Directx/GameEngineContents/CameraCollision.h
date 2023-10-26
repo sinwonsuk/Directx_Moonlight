@@ -14,7 +14,7 @@ public:
 	CameraCollision& operator=(const CameraCollision& _Other) = delete;
 	CameraCollision& operator=(CameraCollision&& _Other) noexcept = delete;
 
-
+	bool test = true;
 	std::shared_ptr<GameEngineCollision> Col;
 
 protected:

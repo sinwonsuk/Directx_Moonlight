@@ -26,16 +26,6 @@ GameEngineColor Map_Manager::GetColor(float4 _Pos, GameEngineColor _DefaultColor
 void Map_Manager::ObjectCollision(float _Delta, std::string_view _Name, float4 _Transform)
 {
 	
-
-
-
-
-
-
-
-
-
-
 	float4 Left_Player_Pos = { Player::this_Player->Transform.GetWorldPosition().X - 20.0f,Player::this_Player->Transform.GetWorldPosition().Y };
 	float4 Right_Player_Pos = { Player::this_Player->Transform.GetWorldPosition().X + 20.0f,Player::this_Player->Transform.GetWorldPosition().Y };
 	float4 Up_Player_Pos = { Player::this_Player->Transform.GetWorldPosition().X,Player::this_Player->Transform.GetWorldPosition().Y + 20.0f };
@@ -208,11 +198,14 @@ void Map_Manager::DoorCollision(float _Delta,float4 _PrevMainCamera)
 	 
 	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().X < A +1280  && Door_Right_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->test = false;
 		CameraCollision::CameraCol->Col->Off();
 		Player::this_Player->GetLevel()->GetMainCamera()->Transform.AddLocalPosition(X_Camera_Move);
 	}
 	else if(Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().X >= A + 1280 && Door_Right_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->test = true;
+		CameraCollision::CameraCol->Col->On();
 		Door_Right_Collison_Check = false;
 		ReturnCheck = true; 
 	}
@@ -221,11 +214,13 @@ void Map_Manager::DoorCollision(float _Delta,float4 _PrevMainCamera)
 
 	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().X > A - 1280 && Door_Left_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->test = false;
 		CameraCollision::CameraCol->Col->Off();
 		Player::this_Player->GetLevel()->GetMainCamera()->Transform.AddLocalPosition(-X_Camera_Move);
 	}
 	else if(Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().X <= A - 1280 && Door_Left_Collison_Check == true)
 	{
+		CameraCollision::CameraCol->test = true;
 		CameraCollision::CameraCol->Col->On(); 
 		Door_Left_Collison_Check = false;
 		ReturnCheck = true;

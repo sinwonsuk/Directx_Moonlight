@@ -17,7 +17,7 @@ golem_Solder::~golem_Solder()
 void golem_Solder::Start()
 {
 
-	Solder = CreateComponent<GameEngineSpriteRenderer>(100);
+	Solder = CreateComponent<GameEngineSpriteRenderer>(130);
 	Solder->CreateAnimation("GolemSolder_Attack_Down", "GolemSolder_Attack_Down", 0.1f, -1, -1, false);
 	Solder->CreateAnimation("GolemSoldier_Move_Down", "GolemSoldier_Move_Down", 0.1f, -1, -1, true);
 	Solder->CreateAnimation("GolemSolder_Attack_Left", "GolemSolder_Attack_Left", 0.1f, -1, -1, false);
@@ -28,7 +28,7 @@ void golem_Solder::Start()
 	Solder->CreateAnimation("GolemSoldier_Move_Up", "GolemSoldier_Move_Up", 0.1f, -1, -1, true);
 
 	{
-		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(101);
+		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(130);
 		Monster_BaseBar->SetSprite("MonsterUI", 0);
 		Monster_BaseBar->SetPivotType(PivotType::Left);
 		Monster_BaseBar->Transform.AddLocalPosition({ -30.0f,60.0f });
@@ -36,7 +36,7 @@ void golem_Solder::Start()
 	}
 
 	{
-		Monster_HpBar = CreateComponent<GameEngineSpriteRenderer>(101);
+		Monster_HpBar = CreateComponent<GameEngineSpriteRenderer>(130);
 		Monster_HpBar->SetSprite("MonsterUI", 1);
 		Monster_HpBar->SetPivotType(PivotType::Left);
 		Monster_HpBar->Transform.AddLocalPosition({ -30.0f,60.0f });
@@ -56,12 +56,15 @@ void golem_Solder::Start()
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 
 	{
-		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::GolemSolder);
-		Col->Transform.SetLocalScale({ 100.0f,100.0f }); 
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
+		Col->Transform.SetLocalScale({ 120.0f,120.0f }); 
 	}
 
 	
-
+	{
+		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::MiniCol);
+		Mini_Col->Transform.SetLocalScale({ 20.0f,20.0f });
+	}
 	
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
@@ -119,7 +122,8 @@ void golem_Solder::Update(float _Delta)
 		
 	
 
-	
+
+
 
 
 	

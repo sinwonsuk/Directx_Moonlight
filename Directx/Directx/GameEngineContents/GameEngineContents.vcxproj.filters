@@ -30,24 +30,12 @@
     <ClCompile Include="Tutorial_Map_06.cpp" />
     <ClCompile Include="Spear.cpp" />
     <ClCompile Include="Spear_State.cpp" />
-    <ClCompile Include="BabySlime.cpp" />
-    <ClCompile Include="BabySilme_State.cpp" />
-    <ClCompile Include="golemturret.cpp" />
-    <ClCompile Include="golemturret_State.cpp" />
-    <ClCompile Include="golemturret_missile.cpp" />
-    <ClCompile Include="golemturret_missile_State.cpp" />
     <ClCompile Include="Monster_Manager.cpp" />
     <ClCompile Include="Slime_Potal.cpp" />
-    <ClCompile Include="golem_Wizard.cpp" />
     <ClCompile Include="Wizard_State.cpp" />
-    <ClCompile Include="golem_Solder.cpp" />
-    <ClCompile Include="Golem_Solder_State.cpp" />
-    <ClCompile Include="golem_Stone.cpp" />
-    <ClCompile Include="golem_Stone_State.cpp" />
     <ClCompile Include="Spear_Effect.cpp" />
     <ClCompile Include="Player_UI.cpp" />
     <ClCompile Include="gloem_Wazard_Missile.cpp" />
-    <ClCompile Include="golem_Wazard_Missile_State.cpp" />
     <ClCompile Include="WorldLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
@@ -75,12 +63,56 @@
     <ClCompile Include="Dungeon_Map_10.cpp" />
     <ClCompile Include="Random_Room.cpp" />
     <ClCompile Include="Dungeon_Map_00.cpp" />
-    <ClCompile Include="SlimeHermit.cpp" />
-    <ClCompile Include="SlimeHermit_State.cpp" />
-    <ClCompile Include="MiniBoss_State.cpp" />
-    <ClCompile Include="MiniBoss.cpp" />
     <ClCompile Include="Monster_Place.cpp" />
     <ClCompile Include="CameraCollision.cpp" />
+    <ClCompile Include="BabySilme_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="BabySlime.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="golem_Solder.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Golem_Solder_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="golem_Stone.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="golem_Stone_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="golem_Wazard_Missile_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="golem_Wizard.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="golemturret.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="golemturret_missile.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="golemturret_missile_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="golemturret_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SlimeHermit.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SlimeHermit_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniBoss_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniBoss.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -113,14 +145,8 @@
     <ClInclude Include="Tutorial_Map_05.h" />
     <ClInclude Include="Tutorial_Map_06.h" />
     <ClInclude Include="Spear.h" />
-    <ClInclude Include="BabySlime.h" />
-    <ClInclude Include="golemturret.h" />
-    <ClInclude Include="golemturret_missile.h" />
     <ClInclude Include="Monster_Manager.h" />
     <ClInclude Include="Slime_Potal.h" />
-    <ClInclude Include="golem_Wizard.h" />
-    <ClInclude Include="golem_Solder.h" />
-    <ClInclude Include="golem_Stone.h" />
     <ClInclude Include="Spear_Effect.h" />
     <ClInclude Include="Player_UI.h" />
     <ClInclude Include="gloem_Wazard_Missile.h" />
@@ -151,10 +177,32 @@
     <ClInclude Include="Dungeon_Map_10.h" />
     <ClInclude Include="Random_Room.h" />
     <ClInclude Include="Dungeon_Map_00.h" />
-    <ClInclude Include="SlimeHermit.h" />
-    <ClInclude Include="MiniBoss.h" />
     <ClInclude Include="Monster_Place.h" />
     <ClInclude Include="CameraCollision.h" />
+    <ClInclude Include="BabySlime.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="golem_Solder.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="golem_Stone.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="golem_Wizard.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="golemturret.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="golemturret_missile.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="SlimeHermit.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniBoss.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
@@ -165,6 +213,9 @@
     </Filter>
     <Filter Include="Global">
       <UniqueIdentifier>{ca09bba4-fac2-48d7-bd82-8680ddecfb32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster">
+      <UniqueIdentifier>{69535fab-9904-4b1b-a41e-16cfd8cfbb3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

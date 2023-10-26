@@ -89,5 +89,5 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 	EventParameter Event;
 	std::shared_ptr<GameEngineCollision> Col;
-	
+	std::shared_ptr<GameEngineCollision> Mini_Col;
 };

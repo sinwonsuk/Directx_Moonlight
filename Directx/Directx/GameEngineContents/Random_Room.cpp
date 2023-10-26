@@ -107,15 +107,7 @@ void Random_Room::Start()
 	GetLevel()->GetMainCamera()->Transform.SetLocalPosition({ Rooms[Start][End].Pos.X,Rooms[Start][End].Pos.Y,-1000.0f });
 
 
-	//아예 시작 위치 마저 바꾼다? 
-	/*Map = GetLevel()->CreateActor<Dungeon_Map_01>();
-	Map->Map_floor->SetSprite("Floor_01", 0);
-	Rooms[3][Start].RoomCheck = true;
-	Map->Transform.SetLocalPosition({ Rooms[3][Start].Pos.X,Rooms[3][Start].Pos.Y });
-	Player::this_Player->Transform.SetLocalPosition({ Rooms[3][Start].Pos.X,Rooms[3][Start].Pos.Y });
-	GetLevel()->GetMainCamera()->Transform.SetLocalPosition({ Rooms[3][Start].Pos.X,Rooms[3][Start].Pos.Y,-1000.0f });*/
-
-
+	
 
 	// nullptr 감지를 위한 check 
 	Room_State* check = new Room_State(); 
@@ -153,6 +145,10 @@ void Random_Room::Start()
 		// map 랜덤값 가져옴 
 		Number = Random_Map_Arr[Map_Order];
 
+		/*if (Map_Order == 10)
+		{
+			Map_Order = 0;
+		}*/
 
 
 		// 방과 방끼리 붙어있는것들 전부 체크함 
@@ -318,7 +314,7 @@ void Random_Room::Start()
 			std::string numberStr = std::to_string(Number);
 			result = "Dungeon_Map_Pixel_0" + numberStr + ".png";
 
-			result.c_str();
+			
 			 
 			Map->Pixel_Name = result.c_str();
 			Map->Map_Number += 1;
@@ -331,7 +327,12 @@ void Random_Room::Start()
 
 			std::shared_ptr<Monster_Place> Object = GetLevel()->CreateActor<Monster_Place>(ContentsObjectType::Monster);
 			Object->sd = { Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos };
+			Object->Name = result.c_str();
+			Monser_Seed += 1; 
 
+			Object->Random_A = Monser_Seed;
+			Object->Random_B = Monser_Seed;
+			Object->Random_C = Monser_Seed;
 			Maps.push_back(Map);
 		}
 		

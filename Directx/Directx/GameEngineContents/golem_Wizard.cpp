@@ -96,7 +96,7 @@ void golem_Wizard::Start()
 		Col->Transform.SetLocalScale({ 300.0f,300.0f });
 	}
 	{
-		Body = CreateComponent<GameEngineCollision>(ContentsCollisionType::GolemWazard_Body);
+		Body = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
 		Body->Transform.SetLocalScale({ 100.0f,100.0f });
 	}
 

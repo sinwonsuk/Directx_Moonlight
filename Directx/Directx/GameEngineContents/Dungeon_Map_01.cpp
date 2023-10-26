@@ -2,6 +2,7 @@
 #include "Dungeon_Map_01.h"
 #include "Player.h"
 #include "Random_Room.h"
+#include "CameraCollision.h"
 Dungeon_Map_01::Dungeon_Map_01()
 {
 }
@@ -46,7 +47,7 @@ void Dungeon_Map_01::Start()
 		LeftDoor->Transform.AddLocalRotation({ 0.0f,0.0f,90.0f });
 		LeftDoor->Transform.AddLocalPosition({ -550.0f,20.0f,0.0f });
 		LeftDoor->SetAutoScaleRatio(1.5f);
-		LeftDoor->SetSprite("Door", 1);
+		LeftDoor->SetSprite("Door", 0);
 		LeftDoor->Off(); 
 	}
 
@@ -110,7 +111,7 @@ void Dungeon_Map_01::Start()
 
 void Dungeon_Map_01::Update(float _Delta)
 {
-	
+	LeftDoor->Off();
 
 	if (Check == false)
 	{
@@ -164,7 +165,15 @@ void Dungeon_Map_01::Update(float _Delta)
 		ObjectCollision(_Delta, Pixel_Name.c_str(), Random_Room::Rooms[Arr.X][Arr.Y].Pos);
 	}
 
+ //   if (CameraCollision::CameraCol->Col->Collision(ContentsCollisionType::Monster) == false && CameraCollision::CameraCol->test ==true)
+	//{
+	//
+	//	//Left_Collision_Door->On();
+	//    Right_Collision_Door->On();
+	//	Top_Collision_Door->On();
+	//	Bottom_Collision_Door->On();
 
+	//}
 	
 		
 	
