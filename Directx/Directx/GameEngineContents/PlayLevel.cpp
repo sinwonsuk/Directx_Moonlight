@@ -20,7 +20,7 @@ PlayLevel::~PlayLevel()
 
 void PlayLevel::Start()
 {
-	//GameEngineLevel::IsDebug = false;
+	GameEngineLevel::IsDebug = false;
 	//GameEngineCore::GetBackBufferRenderTarget()->SetClearColor({ 0, 0, 0, 1 });
 	
 
