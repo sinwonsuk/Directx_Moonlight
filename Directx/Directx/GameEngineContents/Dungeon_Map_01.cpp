@@ -111,7 +111,7 @@ void Dungeon_Map_01::Start()
 
 void Dungeon_Map_01::Update(float _Delta)
 {
-	LeftDoor->Off();
+	
 
 	if (Check == false)
 	{
