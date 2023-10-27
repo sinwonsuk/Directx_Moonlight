@@ -57,15 +57,39 @@ void golem_Solder::Start()
 
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
-		Col->Transform.SetLocalScale({ 120.0f,120.0f }); 
+		Col->Transform.SetLocalScale({ 50.0f,50.0f }); 
+		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
 	
-	{
+	/*{
 		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::MiniCol);
 		Mini_Col->Transform.SetLocalScale({ 20.0f,20.0f });
-	}
+		Mini_Col->SetCollisionType(ColType::AABBBOX2D);
+	}*/
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 	
@@ -99,10 +123,38 @@ void golem_Solder::Start()
 	};
 
 
+
+
+	Mini_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+
+	};
+
+	Mini_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+			/*Transform.AddLocalPosition({ -MoveDir * Speed * DeltaTime });
+			Collision_Right_drop();
+			Transform.AddLocalPosition(AD* 50.0f* DeltaTime);
+*/
+
+
+
+
+
+
+
+	};
+
+
+	Mini_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		
+	};
 }
 
 void golem_Solder::Update(float _Delta)
 {
+	DeltaTime = _Delta; 
 
 	if (Hp <= 0)
 	{
@@ -118,6 +170,7 @@ void golem_Solder::Update(float _Delta)
 			MonsterPushUpdate(_Delta);
 			UpdateState(_Delta);
 			Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+			//Mini_Col->CollisionEvent(ContentsCollisionType::MiniCol, Mini_Event);
 	}
 		
 	
@@ -138,6 +191,8 @@ void golem_Solder::MonsterDir()
 	float radian = atan2(Player.Y, Player.X) - atan2(Monster.Y, Monster.X);
 	degree = abs(radian * (180.0 / 3.141592));
 }
+
+
 
 
 

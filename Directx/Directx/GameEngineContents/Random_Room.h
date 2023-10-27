@@ -13,8 +13,9 @@ enum class RandomDir
 
 class Room_State
 {
+	
 public:
-	static Room_State* Room_state;
+
 	bool RoomCheck = false;
 	bool Null_Check = false;
 

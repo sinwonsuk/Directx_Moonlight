@@ -492,7 +492,7 @@ void MiniBoss::LeftAttackUpdate(float _Time)
 	
 
 
-	if (Solder->IsCurAnimationEnd())
+	if (Mini_Boss->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
 	
@@ -504,7 +504,7 @@ void MiniBoss::LeftAttackUpdate(float _Time)
 
 void MiniBoss::RightAttackUpdate(float _Time)
 {
-	if (Solder->IsCurAnimationEnd())
+	if (Mini_Boss->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
 	
@@ -518,7 +518,7 @@ void MiniBoss::RightAttackUpdate(float _Time)
 
 void MiniBoss::UpAttackUpdate(float _Time)
 {
-	if (Solder->IsCurAnimationEnd())
+	if (Mini_Boss->IsCurAnimationEnd())
 	{
 
 
@@ -535,7 +535,7 @@ void MiniBoss::UpAttackUpdate(float _Time)
 
 void MiniBoss::DownAttackUpdate(float _Time)
 {
-	if (Solder->IsCurAnimationEnd())
+	if (Mini_Boss->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
 

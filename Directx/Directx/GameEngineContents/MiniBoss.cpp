@@ -17,15 +17,15 @@ MiniBoss::~MiniBoss()
 void MiniBoss::Start()
 {
 
-	Solder = CreateComponent<GameEngineSpriteRenderer>(99);
-	Solder->CreateAnimation("Mini_Boss_Attack_Down", "Mini_Boss_Attack_Down", 0.1f, -1, -1, false);
-	Solder->CreateAnimation("Mini_Boss_Move_Down", "Mini_Boss_Move_Down", 0.1f, -1, -1, true);
-	Solder->CreateAnimation("Mini_Boss_Attack_Left", "Mini_Boss_Attack_Left", 0.1f, -1, -1, false);
-	Solder->CreateAnimation("Mini_Boss_Move_Left", "Mini_Boss_Move_Left", 0.1f, -1, -1, true);
-	Solder->CreateAnimation("Mini_Boss_Attack_Right", "Mini_Boss_Attack_Right", 0.1f, -1, -1, false);
-	Solder->CreateAnimation("Mini_Boss_Move_Right", "Mini_Boss_Move_Right", 0.1f, -1, -1, true);
-	Solder->CreateAnimation("Mini_Boss_Attack_Up", "Mini_Boss_Attack_Up", 0.1f, -1, -1, false);
-	Solder->CreateAnimation("Mini_Boss_Move_Up", "Mini_Boss_Move_Up", 0.1f, -1, -1, true);
+	Mini_Boss = CreateComponent<GameEngineSpriteRenderer>(99);
+	Mini_Boss->CreateAnimation("Mini_Boss_Attack_Down", "Mini_Boss_Attack_Down", 0.1f, -1, -1, false);
+	Mini_Boss->CreateAnimation("Mini_Boss_Move_Down", "Mini_Boss_Move_Down", 0.1f, -1, -1, true);
+	Mini_Boss->CreateAnimation("Mini_Boss_Attack_Left", "Mini_Boss_Attack_Left", 0.1f, -1, -1, false);
+	Mini_Boss->CreateAnimation("Mini_Boss_Move_Left", "Mini_Boss_Move_Left", 0.1f, -1, -1, true);
+	Mini_Boss->CreateAnimation("Mini_Boss_Attack_Right", "Mini_Boss_Attack_Right", 0.1f, -1, -1, false);
+	Mini_Boss->CreateAnimation("Mini_Boss_Move_Right", "Mini_Boss_Move_Right", 0.1f, -1, -1, true);
+	Mini_Boss->CreateAnimation("Mini_Boss_Attack_Up", "Mini_Boss_Attack_Up", 0.1f, -1, -1, false);
+	Mini_Boss->CreateAnimation("Mini_Boss_Move_Up", "Mini_Boss_Move_Up", 0.1f, -1, -1, true);
 
 	{
 		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(99);
@@ -45,9 +45,9 @@ void MiniBoss::Start()
 
 
 
-	Solder->AutoSpriteSizeOn();
-	Solder->SetAutoScaleRatio(2.0f);
-	Solder->ChangeAnimation("Mini_Boss_Move_Down");
+	Mini_Boss->AutoSpriteSizeOn();
+	Mini_Boss->SetAutoScaleRatio(2.0f);
+	Mini_Boss->ChangeAnimation("Mini_Boss_Move_Down");
 
 
 
@@ -218,5 +218,5 @@ void MiniBoss::MonsterPushUpdate(float _Delta)
 }
 void MiniBoss::AnimationCheck(const std::string_view& _AnimationName)
 {
-	Solder->ChangeAnimation(_AnimationName);
+	Mini_Boss->ChangeAnimation(_AnimationName);
 }

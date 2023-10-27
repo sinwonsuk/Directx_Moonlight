@@ -23,6 +23,9 @@ Random_Room::Random_Room()
 
 Random_Room::~Random_Room()
 {
+	
+
+
 }
 
 void Random_Room::Monsers()
@@ -330,9 +333,9 @@ void Random_Room::Start()
 			Object->Name = result.c_str();
 			Monser_Seed += 1; 
 
-			Object->Random_A = Monser_Seed;
+		/*	Object->Random_A = Monser_Seed;
 			Object->Random_B = Monser_Seed;
-			Object->Random_C = Monser_Seed;
+			Object->Random_C = Monser_Seed;*/
 			Maps.push_back(Map);
 		}
 		
@@ -347,10 +350,19 @@ void Random_Room::Start()
 
 	delete check;
 
+	
+
 	for (size_t i =1; i < Maps.size(); i++)
 	{
 		Maps[i]->ReturnCheck = true;
 	}
+
+
+	
+
+
+
+
 
 }
 
@@ -369,19 +381,10 @@ void Random_Room::Update(float _Delta)
 				{
 					if (Maps[j]->GetArr().Y == Maps[i]->GetArr().Y)
 					{
-						float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+						
 
 						
-						GameEngineRandom NewRanadom;
-	
-						if(A == false)
-						for (size_t i = 0; i < 10; i++)
-						{
-						
-							A = true;
-						}	
-						
-						
+
 						Maps[j]->ReturnCheck = false;
 					}
 				}
@@ -424,8 +427,6 @@ void Random_Room::Update(float _Delta)
 				{
 					if (Maps[j]->GetArr().X == Maps[i]->GetArr().X)
 					{
-					
-		
 						Maps[j]->ReturnCheck = false;
 					}
 				}
@@ -453,3 +454,4 @@ void Random_Room::Update(float _Delta)
 	}
 	int a = 0; 
 }
+

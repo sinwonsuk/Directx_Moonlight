@@ -93,6 +93,7 @@ void golem_Solder::DirCheckUpdate(float _Time)
 	{
 		if (degree <= 45)
 		{
+			//Collision_Left_drop();
 			ChangeState(golem_Solder_State::LeftWalk);
 			return;
 		}
@@ -101,6 +102,7 @@ void golem_Solder::DirCheckUpdate(float _Time)
 	{
 		if (degree >= 315)
 		{
+			//Collision_Left_drop();
 			ChangeState(golem_Solder_State::LeftWalk);
 			return;
 		}
@@ -109,7 +111,7 @@ void golem_Solder::DirCheckUpdate(float _Time)
 	{
 		if (degree > 45)
 		{
-
+			//Collision_Up_drop(); 
 			ChangeState(golem_Solder_State::UpWalk);
 			return;
 		}
@@ -118,6 +120,7 @@ void golem_Solder::DirCheckUpdate(float _Time)
 	{
 		if (degree > 135)
 		{
+			//Collision_Right_drop();
 			ChangeState(golem_Solder_State::RightWalk);
 			return;
 		}
@@ -126,6 +129,7 @@ void golem_Solder::DirCheckUpdate(float _Time)
 	{
 		if (degree > 225)
 		{
+			//Collision_Down_drop();
 			ChangeState(golem_Solder_State::DownWalk);
 			return;
 		}
@@ -143,6 +147,7 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree <= 45)
 		{
+			//Collision_Left_drop();
 			ChangeState(golem_Solder_State::LeftWalk);
 			return;
 		}
@@ -151,6 +156,7 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree >= 315)
 		{
+			//Collision_Left_drop();
 			ChangeState(golem_Solder_State::LeftWalk);
 			return;
 		}
@@ -159,6 +165,7 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 45)
 		{
+			//Collision_Up_drop();
 
 			ChangeState(golem_Solder_State::UpWalk);
 			return;
@@ -168,6 +175,7 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 135)
 		{
+			//Collision_Right_drop();
 			ChangeState(golem_Solder_State::RightWalk);
 			return;
 		}
@@ -176,6 +184,7 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 	{
 		if (degree > 225)
 		{
+			//Collision_Down_drop();
 			ChangeState(golem_Solder_State::DownWalk);
 			return;
 		}
@@ -193,15 +202,28 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 	MoveDir.Normalize();
 
+	
+
+	
+
+
 	if (Weapon_Collision_Check == false)
 	{
 		Transform.AddLocalPosition(MoveDir * Speed * _Time);
 	}
 
-	if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
-	{
-		Transform.AddLocalPosition({ -MoveDir * Speed * _Time });
-	}
+	//if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
+	//{
+	//	//Transform.AddLocalPosition({ -MoveDir * Speed * _Time });
+	//
+
+	//	//Transform.AddLocalPosition({ AD * Speed * _Time });
+
+
+
+
+
+	//}
 
 
 
@@ -218,6 +240,7 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 		{
 			if (degree <= 45)
 			{
+				//Collision_Left_drop();
 				ChangeState(golem_Solder_State::LeftWalk);
 				return;
 			}
@@ -226,6 +249,7 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 		{
 			if (degree >= 315)
 			{
+				//Collision_Left_drop();
 				ChangeState(golem_Solder_State::LeftWalk);
 				return;
 			}
@@ -234,7 +258,7 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 		{
 			if (degree > 45)
 			{
-
+				//Collision_Up_drop();
 				ChangeState(golem_Solder_State::UpWalk);
 				return;
 			}
@@ -243,6 +267,7 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 		{
 			if (degree > 135)
 			{
+				//Collision_Right_drop();
 				ChangeState(golem_Solder_State::RightWalk);
 				return;
 			}
@@ -251,6 +276,7 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 		{
 			if (degree > 225)
 			{
+				//Collision_Down_drop();
 				ChangeState(golem_Solder_State::DownWalk);
 				return;
 			}
@@ -268,14 +294,21 @@ void golem_Solder::RightMoveUpdate(float _Time)
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 	MoveDir.Normalize();
 
+	
+	
+
+
 	if (Weapon_Collision_Check == false)
 	{
 		Transform.AddLocalPosition(MoveDir * Speed * _Time);
 	}
-	if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
-	{
-		Transform.AddLocalPosition({ -MoveDir * Speed * _Time });
-	}
+	//if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
+	//{
+	//	//Transform.AddLocalPosition({ -MoveDir * Speed * _Time });
+
+	////	Transform.AddLocalPosition({ AD * Speed * _Time });
+
+	//}
 
 
 	if (Col->Collision(ContentsCollisionType::Player))
@@ -290,6 +323,7 @@ void golem_Solder::RightMoveUpdate(float _Time)
 		{
 			if (degree <= 45)
 			{
+				//Collision_Left_drop();
 				ChangeState(golem_Solder_State::LeftWalk);
 				return;
 			}
@@ -298,6 +332,7 @@ void golem_Solder::RightMoveUpdate(float _Time)
 		{
 			if (degree >= 315)
 			{
+				//Collision_Left_drop();
 				ChangeState(golem_Solder_State::LeftWalk);
 				return;
 			}
@@ -306,7 +341,7 @@ void golem_Solder::RightMoveUpdate(float _Time)
 		{
 			if (degree > 45)
 			{
-
+				//Collision_Up_drop();
 				ChangeState(golem_Solder_State::UpWalk);
 				return;
 			}
@@ -315,6 +350,7 @@ void golem_Solder::RightMoveUpdate(float _Time)
 		{
 			if (degree > 135)
 			{
+				//Collision_Right_drop();
 				ChangeState(golem_Solder_State::RightWalk);
 				return;
 			}
@@ -323,11 +359,11 @@ void golem_Solder::RightMoveUpdate(float _Time)
 		{
 			if (degree > 225)
 			{
+				//Collision_Down_drop();
 				ChangeState(golem_Solder_State::DownWalk);
 				return;
 			}
 		}
-		
 	}
 }
 
@@ -338,15 +374,20 @@ void golem_Solder::UpMoveUpdate(float _Time)
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 	MoveDir.Normalize();
 
+
+
+
 	if (Weapon_Collision_Check == false)
 	{
 		Transform.AddLocalPosition(MoveDir * Speed * _Time);
 	}
 
-	if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
-	{
-		Transform.AddLocalPosition({ -MoveDir * Speed * _Time });
-	}
+	//if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
+	//{
+	//	//Transform.AddLocalPosition({ -MoveDir * Speed * _Time });
+
+	//	//Transform.AddLocalPosition({ AD * Speed * _Time });
+	//}
 
 	if (Col->Collision(ContentsCollisionType::Player))
 	{
@@ -357,11 +398,11 @@ void golem_Solder::UpMoveUpdate(float _Time)
 
 	if (Time > 1.0f)
 	{
-
 		if (degree >= 0)
 		{
 			if (degree <= 45)
 			{
+				//Collision_Left_drop();
 				ChangeState(golem_Solder_State::LeftWalk);
 				return;
 			}
@@ -370,6 +411,7 @@ void golem_Solder::UpMoveUpdate(float _Time)
 		{
 			if (degree >= 315)
 			{
+				//Collision_Left_drop();
 				ChangeState(golem_Solder_State::LeftWalk);
 				return;
 			}
@@ -378,7 +420,7 @@ void golem_Solder::UpMoveUpdate(float _Time)
 		{
 			if (degree > 45)
 			{
-
+				//Collision_Up_drop();
 				ChangeState(golem_Solder_State::UpWalk);
 				return;
 			}
@@ -387,6 +429,7 @@ void golem_Solder::UpMoveUpdate(float _Time)
 		{
 			if (degree > 135)
 			{
+				//Collision_Right_drop();
 				ChangeState(golem_Solder_State::RightWalk);
 				return;
 			}
@@ -395,12 +438,11 @@ void golem_Solder::UpMoveUpdate(float _Time)
 		{
 			if (degree > 225)
 			{
+				//Collision_Down_drop();
 				ChangeState(golem_Solder_State::DownWalk);
 				return;
 			}
 		}
-
-		
 	}
 }
 
@@ -413,14 +455,18 @@ void golem_Solder::DownMoveUpdate(float _Time)
 	MoveDir.Normalize();
 
 
+
 	if (Weapon_Collision_Check == false)
 	{
 		Transform.AddLocalPosition(MoveDir * Speed * _Time);
 	}
-	if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
-	{
-		Transform.AddLocalPosition({ -MoveDir * Speed * _Time });
-	}
+	//if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
+	//{
+	//	//Transform.AddLocalPosition({ -MoveDir * Speed * _Time });
+
+	//	//Transform.AddLocalPosition({ AD * Speed * _Time });
+
+	//}
 
 
 
@@ -430,6 +476,7 @@ void golem_Solder::DownMoveUpdate(float _Time)
 		{
 			if (degree <= 45)
 			{
+				//Collision_Left_drop();
 				ChangeState(golem_Solder_State::LeftWalk);
 				return;
 			}
@@ -438,6 +485,7 @@ void golem_Solder::DownMoveUpdate(float _Time)
 		{
 			if (degree >= 315)
 			{
+				//Collision_Left_drop();
 				ChangeState(golem_Solder_State::LeftWalk);
 				return;
 			}
@@ -446,7 +494,7 @@ void golem_Solder::DownMoveUpdate(float _Time)
 		{
 			if (degree > 45)
 			{
-
+				//Collision_Up_drop();
 				ChangeState(golem_Solder_State::UpWalk);
 				return;
 			}
@@ -455,6 +503,7 @@ void golem_Solder::DownMoveUpdate(float _Time)
 		{
 			if (degree > 135)
 			{
+				//Collision_Right_drop();
 				ChangeState(golem_Solder_State::RightWalk);
 				return;
 			}
@@ -463,21 +512,12 @@ void golem_Solder::DownMoveUpdate(float _Time)
 		{
 			if (degree > 225)
 			{
+				//Collision_Down_drop();
 				ChangeState(golem_Solder_State::DownWalk);
 				return;
 			}
 		}
-
-
-
-		if (Col->Collision(ContentsCollisionType::Player))
-		{
-			
-			ChangeState(golem_Solder_State::DownAttack);
-			return;
-		}
 	}
-
 }
 
 void golem_Solder::LeftAttackUpdate(float _Time)
@@ -487,6 +527,7 @@ void golem_Solder::LeftAttackUpdate(float _Time)
 
 	if (Solder->IsCurAnimationEnd())
 	{
+	
 		Time = 0.0f;
 	
 		ChangeState(golem_Solder_State::AttackCheck);
@@ -497,8 +538,11 @@ void golem_Solder::LeftAttackUpdate(float _Time)
 
 void golem_Solder::RightAttackUpdate(float _Time)
 {
+
+	
 	if (Solder->IsCurAnimationEnd())
 	{
+	
 		Time = 0.0f;
 	
 		ChangeState(golem_Solder_State::AttackCheck);
@@ -511,9 +555,11 @@ void golem_Solder::RightAttackUpdate(float _Time)
 
 void golem_Solder::UpAttackUpdate(float _Time)
 {
+
+
 	if (Solder->IsCurAnimationEnd())
 	{
-
+		
 
 		Time = 0.0f;
 
@@ -528,8 +574,12 @@ void golem_Solder::UpAttackUpdate(float _Time)
 
 void golem_Solder::DownAttackUpdate(float _Time)
 {
+
+
+
 	if (Solder->IsCurAnimationEnd())
 	{
+	
 		Time = 0.0f;
 
 		ChangeState(golem_Solder_State::AttackCheck);
@@ -540,3 +590,128 @@ void golem_Solder::DownAttackUpdate(float _Time)
 	}
 
 }
+
+
+void golem_Solder::Collision_Right_drop()
+{
+	int A = Random.RandomInt(0, 3);
+
+
+	switch (A)
+	{
+	case 0:
+	{
+		AD = { 1,-1 };
+		AD.Normalize();
+	}
+	break;
+
+	case 1:
+	{
+		AD = { -1,1 };
+		AD.Normalize();
+	}
+	break;
+	case 2:
+	{
+		AD = { 1,1 };
+		AD.Normalize();
+	}
+	break;
+
+	case 3:
+	{
+		AD = { -1,-1 };
+		AD.Normalize();
+	}
+	break;
+
+	default:
+		break;
+	}
+}
+
+//void golem_Solder::Collision_Left_drop()
+//{
+//	int A = Random.RandomInt(0, 3);
+//
+//
+//	switch (A)
+//	{
+//	case 0:
+//	{
+//		AD = { -1,1 };
+//		AD.Normalize();
+//	}
+//	break;
+//
+//	case 1:
+//	{
+//		AD = { -1,-1 };
+//		AD.Normalize();
+//	}
+//
+//	break;
+//
+//
+//	default:
+//		break;
+//	}
+//}
+
+//void golem_Solder::Collision_Up_drop()
+//{
+//	int A = Random.RandomInt(0, 3);
+//
+//
+//	switch (A)
+//	{
+//	case 0:
+//	{
+//		AD = { -1,1 };
+//		AD.Normalize();
+//	}
+//	break;
+//
+//	case 1:
+//	{
+//		AD = { 1,1 };
+//		AD.Normalize();
+//	}
+//
+//	break;
+//
+//
+//	default:
+//		break;
+//	}
+//}
+
+//void golem_Solder::Collision_Down_drop()
+//{
+//	int A = Random.RandomInt(0, 3);
+//
+//
+//	switch (A)
+//	{
+//	case 0:
+//	{
+//		AD = { -1,1 };
+//		AD.Normalize();
+//	}
+//	break;
+//
+//	case 1:
+//	{
+//		AD = { 1,-1 };
+//		AD.Normalize();
+//	}
+//
+//
+//	break;
+//
+//
+//	default:
+//		break;
+//	}
+//}

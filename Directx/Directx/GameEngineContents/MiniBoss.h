@@ -84,7 +84,7 @@ private:
 	
 	MiniBoss_State StateValue = MiniBoss_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
-	std::shared_ptr<class GameEngineSpriteRenderer> Solder;
+	std::shared_ptr<class GameEngineSpriteRenderer> Mini_Boss;
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_BaseBar;
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 	EventParameter Event;

@@ -10,14 +10,16 @@
 #include "Player_UI.h"
 #include "Monster_place.h"
 #include "CameraCollision.h"
+#include "golem_Solder.h"
 PlayLevel::PlayLevel() 
 {
+
 }
 
 PlayLevel::~PlayLevel() 
 {
-}
 
+}
 void PlayLevel::Start()
 {
 	GameEngineLevel::IsDebug = false;
@@ -34,6 +36,25 @@ void PlayLevel::Start()
 		std::shared_ptr<CameraCollision> Object = CreateActor<CameraCollision>();
 	}
 
+	//{
+	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
+	//}
+	//{
+	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
+	//}
+	//{
+	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
+	//}
+	//{
+	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
+	//}
+	//{
+	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
+	//}
+
+	//{
+	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
+	//}
 
 	
 

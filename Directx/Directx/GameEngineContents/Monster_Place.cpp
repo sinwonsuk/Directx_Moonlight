@@ -42,11 +42,11 @@ void Monster_Place::Monsters(float4 _Pos)
 
 	Random_B += 1;
 
-	Random3.SetSeed(Random_B);
-	Random2.SetSeed(Random_C);
-	Random.SetSeed(Random_A);
+	Random3->SetSeed(Random_B);
+	Random2->SetSeed(Random_C);
+	Random->SetSeed(Random_A);
 
-	int a = Random3.RandomInt(4, 8);
+	int a = Random3->RandomInt(7, 15);
 
 
 	
@@ -54,24 +54,20 @@ void Monster_Place::Monsters(float4 _Pos)
 	for (size_t i = 0; i <= a; i++)
 	{
 		
-		//Random.RandomVectorBox2D(Left_Top, Right_Top, Bottom_Bottom, Top_Bottom);
-		//Random.SetSeed(Random_A++);
-
-		//GameEngineRandom Random_Mon;
-		//Random2.SetSeed(Random_B++);
-
-		int A = Random2.RandomInt(0, 5); 
 		
 
-		//Random.SetSeed(Random_B++);
+		int A = Random2->RandomInt(0, 5); 
+		
 
-		switch (A)
+		
+
+		switch (1)
 		{
 		case 0:
 		{
-			/*while (true)
+			while (true)
 			{
-				Monster_Pos = Random.RandomVectorBox2D(0, 1280, 0, 720);
+				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
@@ -87,18 +83,19 @@ void Monster_Place::Monsters(float4 _Pos)
 				}
 			}
 			
-			break;*/
+			break;
 		}
 		case 1:
 		{
 			while (true)
 			{
-				Monster_Pos = Random.RandomVectorBox2D(0, 1280, 0, 720);
+				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
+				
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
-					std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
-					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X ,  sd.Y + 360 - Monster_Pos.Y });
+					Solder = GetLevel()->CreateActor<golem_Solder>();
+					Solder->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X ,  sd.Y + 360 - Monster_Pos.Y });
 					break;
 				}
 
@@ -111,9 +108,9 @@ void Monster_Place::Monsters(float4 _Pos)
 		}
 		case 2:
 		{
-			/*while (true)
+			while (true)
 			{
-				Monster_Pos = Random.RandomVectorBox2D(0, 1280, 0, 720);
+				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
@@ -127,13 +124,13 @@ void Monster_Place::Monsters(float4 _Pos)
 					continue;
 				}
 			}
-			break;*/
+			break;
 		}
 		case 3:
 		{
-			/*while (true)
+			while (true)
 			{
-				Monster_Pos = Random.RandomVectorBox2D(0, 1280, 0, 720);
+				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
@@ -151,13 +148,13 @@ void Monster_Place::Monsters(float4 _Pos)
 					continue;
 				}
 			}
-			break;*/
+			break;
 		}
 		case 4:
 		{
-			/*while (true)
+			while (true)
 			{
-				Monster_Pos = Random.RandomVectorBox2D(0, 1280, 0, 720);
+				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
@@ -171,13 +168,13 @@ void Monster_Place::Monsters(float4 _Pos)
 					continue;
 				}
 			}
-			break;*/
+			break;
 		}
 		case 5:
 		{
-			/*while (true)
+			while (true)
 			{
-				Monster_Pos = Random.RandomVectorBox2D(0, 1280, 0, 720);
+				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
@@ -191,7 +188,7 @@ void Monster_Place::Monsters(float4 _Pos)
 					continue;
 				}
 			}
-			break;*/
+			break;
 		}
 		default:
 			break;

@@ -250,11 +250,11 @@ void Player::Update(float _Delta)
 	
 
 
-	float4 awdd = Transform.GetLocalPosition();
+	/*float4 awdd = Transform.GetLocalPosition();
 
 	
 	OutputDebugStringA(awdd.ToString("\n").c_str());
-
+*/
 
 	
 	

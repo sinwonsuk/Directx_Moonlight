@@ -35,8 +35,9 @@ private:
 	float Map_Number = 0.0f;
 	int Random_number = 0;
 	int Random_Monster = 0;
-	GameEngineRandom Random;
-	GameEngineRandom Random2;
-	GameEngineRandom Random3;
+	std::shared_ptr<GameEngineRandom> Random = std::make_shared<GameEngineRandom>();
+	std::shared_ptr<GameEngineRandom> Random2 = std::make_shared<GameEngineRandom>();
+	std::shared_ptr<GameEngineRandom> Random3 = std::make_shared<GameEngineRandom>();
+	std::shared_ptr<class golem_Solder> Solder;
 
 };

@@ -162,23 +162,7 @@ void Dungeon_Map_01::Update(float _Delta)
 	if (ReturnCheck == false)
 	{
 		DoorCollision(_Delta, GetLevel()->GetMainCamera()->Transform.GetLocalPosition());
-		ObjectCollision(_Delta, Pixel_Name.c_str(), Random_Room::Rooms[Arr.X][Arr.Y].Pos);
+		//ObjectCollision(_Delta, Pixel_Name.c_str(), Random_Room::Rooms[Arr.X][Arr.Y].Pos);
 	}
-
- //   if (CameraCollision::CameraCol->Col->Collision(ContentsCollisionType::Monster) == false && CameraCollision::CameraCol->test ==true)
-	//{
-	//
-	//	//Left_Collision_Door->On();
-	//    Right_Collision_Door->On();
-	//	Top_Collision_Door->On();
-	//	Bottom_Collision_Door->On();
-
-	//}
-	
-		
-	
-
-	
-	
 
 }

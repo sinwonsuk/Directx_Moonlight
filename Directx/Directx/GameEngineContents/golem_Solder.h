@@ -64,6 +64,14 @@ public:
 	
 	void MonsterDir();
 
+
+	void Collision_Right_drop(); 
+	void Collision_Left_drop();
+	void Collision_Up_drop();
+	void Collision_Down_drop();
+
+
+
 protected:
 
 	void Start() override;
@@ -71,23 +79,32 @@ protected:
 
 private:
 	bool Collision_Check = false;
-	float Speed = 200.0f;
+	float Speed = 100.0f;
 	float PushSpeed = 300.0f;
 
 	float Time = 1.0f;
 	float PushTime_Check = 0.0f;
 	float degree = 0.0f;
 	float Hp = 100.0f;
-	float4 MoveDir = {}; 
+	float DeltaTime = 0;
 
+
+	float4 MoveDir = {}; 
+	float4 AD = {}; 
 	bool Weapon_Collision_Check = false;
 	
+
+
+
 	golem_Solder_State StateValue = golem_Solder_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Solder;
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_BaseBar;
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 	EventParameter Event;
+	EventParameter Mini_Event;
 	std::shared_ptr<GameEngineCollision> Col;
-	std::shared_ptr<GameEngineCollision> Mini_Col;
+	//std::shared_ptr<GameEngineCollision> Mini_Col;
+
+	GameEngineRandom Random; 
 };
