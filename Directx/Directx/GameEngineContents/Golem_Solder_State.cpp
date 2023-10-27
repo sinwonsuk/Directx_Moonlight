@@ -189,13 +189,11 @@ void golem_Solder::Dir_Attack_Check_Update(float _Time)
 void golem_Solder::LeftMoveUpdate(float _Time)
 {
 	
-	
-
 
 	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 	MoveDir.Normalize();
 
-	if (Weapon_Collision_Check == false && Mini_Col->Collision(ContentsCollisionType::MiniCol) == false)
+	if (Weapon_Collision_Check == false)
 	{
 		Transform.AddLocalPosition(MoveDir * Speed * _Time);
 	}
