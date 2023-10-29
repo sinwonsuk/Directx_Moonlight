@@ -48,7 +48,7 @@ public:
 		return Hp;
 	}
 
-	//void Move(float _Delta);
+
 
 	
 protected:
@@ -57,16 +57,15 @@ protected:
 
 private:
 	EventParameter Event;
-	bool CollisionCheck = false;
-	float Speed = 300.0f;
+	
+	
 	float Hp = 20.0f;
 
-	float PushTime_Check = 0.0f;
-	float PushSpeed = 300.0f;
-	bool Weapon_Collision_Check = false;
+	float Time = 0.0f;
+	float Speed = 200.0f;
+	//bool Weapon_Collision_Check = false;
 
 	Boss_Monster_State StateValue = Boss_Monster_State::Idle;
-	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Boss;
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 
