@@ -66,47 +66,6 @@ void TutorialLevel::Start()
 
 
 
-
-	{
-		
-
-		//size_t TileX = 768;
-		//size_t TileY = 72;
-
-
-
-
-	
-		//test.reserve(5000);
-		//for (size_t x = 0; x < TileX; x++)
-		//{
-		//	test.push_back(testbool);
-		//	for (size_t y = 0; y < TileY; y++)
-		//	{
-		//		bool a = true;
-		//		test[x].push_back(a); 
-		//	}
-		//}
-		//
-		//for (size_t x = 0; x < TileX; x++)
-		//{
-		//	for (size_t y = 0; y < TileY; y++)
-		//	{
-		//		if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Tutorial_Map_Pixel_05.png"))
-		//		{
-		//			test[x][y] = false;
-		//		}
-		//	}
-		//}
-		//int a = 0;
-	}
-
-
-
-
-
-	//
-	
 }
 
 void TutorialLevel::Update(float _Delta)

@@ -113,6 +113,9 @@
     <ClCompile Include="MiniBoss.cpp">
       <Filter>Monster</Filter>
     </ClCompile>
+    <ClCompile Include="Boss_Monster.cpp" />
+    <ClCompile Include="Boss_Monster_State.cpp" />
+    <ClCompile Include="Boss_Map.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -203,6 +206,8 @@
     <ClInclude Include="MiniBoss.h">
       <Filter>Monster</Filter>
     </ClInclude>
+    <ClInclude Include="Boss_Monster.h" />
+    <ClInclude Include="Boss_Map.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

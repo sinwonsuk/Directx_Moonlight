@@ -138,6 +138,15 @@ void TutorialMap::Start()
 	//}
 	
 
+	{
+		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
+	}
+
+	{
+		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
+	}
 	Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
 	Collision_Door->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
 	Collision_Door->Transform.SetLocalScale({90.0f,120.0f,0.0f });

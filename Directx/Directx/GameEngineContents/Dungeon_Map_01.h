@@ -24,6 +24,8 @@ public:
 	}
 
 	std::shared_ptr<class GameEngineSpriteRenderer> Map_floor;
+	std::shared_ptr<class GameEngineSpriteRenderer> Boss_Door;
+
 	std::string Pixel_Name = {};
     float4 Pixel_Fasten;
 	float Map_Number = 0.0f;
@@ -33,7 +35,8 @@ protected:
 
 private:
 	bool Check = false;
-	
+	bool Boss_Door_Check = false;
+	bool test = false;
 	float4 Arr = {}; 
 	
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;
@@ -43,9 +46,13 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> UpDoor;
 	std::shared_ptr<class GameEngineSpriteRenderer> DownDoor;
 	std::shared_ptr<class GameEngineSpriteRenderer> Pixel;
+	
 
 	std::shared_ptr<GameEngineCollision> Right_Collision_Door;
 	std::shared_ptr<GameEngineCollision> Left_Collision_Door;
 	std::shared_ptr<GameEngineCollision> Top_Collision_Door;
 	std::shared_ptr<GameEngineCollision> Bottom_Collision_Door;
+	std::shared_ptr<GameEngineCollision> Boss_Collison_Door;
+
+	EventParameter Event;
 };

@@ -11,6 +11,8 @@
 #include "Monster_place.h"
 #include "CameraCollision.h"
 #include "golem_Solder.h"
+#include "Boss_Monster.h"
+#include "Boss_Map.h"
 PlayLevel::PlayLevel() 
 {
 
@@ -36,35 +38,20 @@ void PlayLevel::Start()
 		std::shared_ptr<CameraCollision> Object = CreateActor<CameraCollision>();
 	}
 
-	//{
-	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
-	//}
-	//{
-	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
-	//}
-	//{
-	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
-	//}
-	//{
-	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
-	//}
-	//{
-	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
-	//}
-
-	//{
-	//	std::shared_ptr<golem_Solder> Object = CreateActor<golem_Solder>();
-	//}
-
-	
-
-
-	{
-		//std::shared_ptr<SlimeHermit> Object = CreateActor<SlimeHermit>(ContentsObjectType::Player);
-	}
 	{
 		//std::shared_ptr<MiniBoss> Object = CreateActor<MiniBoss>(ContentsObjectType::Player);
 	}
+	
+	{
+		//std::shared_ptr<SlimeHermit> Object = CreateActor<SlimeHermit>(ContentsObjectType::Player);
+	}
+
+	
+
+	//{
+	//	std::shared_ptr<Boss_Map> Object = CreateActor<Boss_Map>(ContentsObjectType::Player);
+	//	//Object->Transform.AddLocalPosition({ 0.0f,800.0f });
+	//}
 
 
 	//std::shared_ptr<Monster_Place> Object = CreateActor<Monster_Place>();
@@ -95,6 +82,7 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	{
 		player = CreateActor<Player>(ContentsObjectType::Player);
+		//player->Camera = CameraType::BossMap;
 	}
 	
 	{

@@ -62,12 +62,6 @@ void golem_Solder::Start()
 	}
 
 	
-	/*{
-		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::MiniCol);
-		Mini_Col->Transform.SetLocalScale({ 20.0f,20.0f });
-		Mini_Col->SetCollisionType(ColType::AABBBOX2D);
-	}*/
-	
 
 
 
@@ -132,17 +126,9 @@ void golem_Solder::Start()
 
 	Mini_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-			/*Transform.AddLocalPosition({ -MoveDir * Speed * DeltaTime });
+			Transform.AddLocalPosition({ -MoveDir * Speed * DeltaTime });
 			Collision_Right_drop();
 			Transform.AddLocalPosition(AD* 50.0f* DeltaTime);
-*/
-
-
-
-
-
-
-
 	};
 
 
@@ -165,15 +151,21 @@ void golem_Solder::Update(float _Delta)
 
 	if (Col->Collision(ContentsCollisionType::CameraCollision))
 	{
-		    Time += _Delta;
-			MonsterDir();
-			MonsterPushUpdate(_Delta);
-			UpdateState(_Delta);
-			Col->CollisionEvent(ContentsCollisionType::Spear, Event);
-			//Mini_Col->CollisionEvent(ContentsCollisionType::MiniCol, Mini_Event);
+	    Time += _Delta;
+	   MonsterDir();
+	   MonsterPushUpdate(_Delta);
+	   UpdateState(_Delta);
+	   Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+	 
 	}
 		
-	
+	/*if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
+	{
+		Transform.AddLocalPosition({ -MoveDir * Speed * DeltaTime });
+		Collision_Right_drop();
+		Transform.AddLocalPosition(AD* 50.0f* DeltaTime);
+
+	}*/
 
 
 

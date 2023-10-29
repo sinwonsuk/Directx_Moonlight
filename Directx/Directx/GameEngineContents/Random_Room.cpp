@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "Dungeon_Map_01.h"
 #include "Monster_Place.h"
-
+#include "Boss_Map.h"
 
 
 
@@ -143,7 +143,7 @@ void Random_Room::Start()
 
 	// 10개 만들기 
 	for (size_t i = 0; i < 10; i++)
-	{		
+	{
 
 		// map 랜덤값 가져옴 
 		Number = Random_Map_Arr[Map_Order];
@@ -158,12 +158,12 @@ void Random_Room::Start()
 		// 첫시작은 기본맵 한개를 기준으로 시작함 Rooms[3][8].RoomCheck = true; 이거 기준
 
 		for (size_t x = 0; x < Rooms.size(); x++)
-		{	
+		{
 			for (size_t y = 0; y < Rooms[x].size(); y++)
 			{
 				if (Rooms[x][y].RoomCheck == true) // 기준점 
 				{
-					if (x >= 1 ) // 배열 벗어나지 않게 하기 위한 조건문 
+					if (x >= 1) // 배열 벗어나지 않게 하기 위한 조건문 
 					{
 						if (Rooms[x - 1][y].RoomCheck == true) //왼쪽방과 오른쪽방 둘다 있다면 연결해줌 
 						{
@@ -171,7 +171,7 @@ void Random_Room::Start()
 							Rooms[x - 1][y].Arr[static_cast<int>(RandomDir::Right)] = check;
 						}
 					}
-					if (x <= Rooms.size()-2) //배열 벗어나지 않게 하기 조건문 
+					if (x <= Rooms.size() - 2) //배열 벗어나지 않게 하기 조건문 
 					{
 						if (Rooms[x + 1][y].RoomCheck == true) //왼쪽방과 오른쪽방 둘다 있다면 연결해줌 
 						{
@@ -179,8 +179,8 @@ void Random_Room::Start()
 							Rooms[x + 1][y].Arr[static_cast<int>(RandomDir::Left)] = check;
 						}
 					}
-						
-					
+
+
 					if (y <= Rooms.size() - 2)
 					{
 						if (Rooms[x][y + 1].RoomCheck == true)
@@ -189,8 +189,8 @@ void Random_Room::Start()
 							Rooms[x][y + 1].Arr[static_cast<int>(RandomDir::Top)] = check;
 						}
 					}
-					if(y >= 1)
-					{	
+					if (y >= 1)
+					{
 						if (Rooms[x][y - 1].RoomCheck == true)
 						{
 							Rooms[x][y].Arr[static_cast<int>(RandomDir::Top)] = check;
@@ -198,7 +198,7 @@ void Random_Room::Start()
 						}
 					}
 				}
-			
+
 			}
 		}
 
@@ -211,7 +211,7 @@ void Random_Room::Start()
 			{
 				if (Rooms[i][j].RoomCheck == true) // 모든 배열의 방이 있는곳 찾기 
 				{
-					
+
 					if (Rooms[i][j].Arr[0] == nullptr) // 방을 기준으로 4방향 nullptr 체크 
 					{
 						if (i >= 1) // 배열 벗어나지 않기 위한 조건문 
@@ -221,7 +221,7 @@ void Random_Room::Start()
 								Rooms[i - 1][j].Null_Check = true;
 							}
 						}
-					
+
 					}
 					if (Rooms[i][j].Arr[1] == nullptr)
 					{
@@ -232,7 +232,7 @@ void Random_Room::Start()
 								Rooms[i + 1][j].Null_Check = true;
 							}
 						}
-						
+
 					}
 					if (Rooms[i][j].Arr[2] == nullptr)
 					{
@@ -243,7 +243,7 @@ void Random_Room::Start()
 								Rooms[i][j - 1].Null_Check = true;
 							}
 						}
-						
+
 					}
 					if (Rooms[i][j].Arr[3] == nullptr)
 					{
@@ -254,8 +254,8 @@ void Random_Room::Start()
 								Rooms[i][j + 1].Null_Check = true;
 							}
 						}
-						
-					}			
+
+					}
 				}
 			}
 		}
@@ -277,22 +277,22 @@ void Random_Room::Start()
 			}
 		}
 		// 빈방 객수 구했으니 이제 빈방 중에서 랜덤 돌림 
-		
-		GameEngineRandom Random_Map; 
+
+		GameEngineRandom Random_Map;
 		Start_Random.SetSeed(time(nullptr));
 
 
 		srand((unsigned)time(NULL));
 
-		int Random = (rand() % RandomCheck );
+		int Random = (rand() % RandomCheck);
 		//int Random = Random_Map.RandomInt(0, RandomCheck-1);
 		RandomCheck = 0;
-		
-	
-	   // 방 한개 구함 
-		float4 Arr = int_Check[Random]; 
+
+
+		// 방 한개 구함 
+		float4 Arr = int_Check[Random];
 		Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].RoomCheck = true;
-		
+
 		// 기준이 되는 맵 
 		if (One_Check == false)
 		{
@@ -300,16 +300,16 @@ void Random_Room::Start()
 			Map->Map_floor->SetSprite("Floor_01", 0);
 			Map->Transform.SetLocalPosition({ Rooms[Start][End].Pos.X,Rooms[Start][End].Pos.Y });
 			Map->Pixel_Name = "Dungeon_Map_Pixel_00.png";
-			Map->SetArr({static_cast<float>(Start),static_cast<float>(End)});
+			Map->SetArr({ static_cast<float>(Start),static_cast<float>(End) });
 			Maps.push_back(Map);
 			One_Check = true;
 		}
-	
 
 
 
 
-		
+
+
 		{
 			Map = GetLevel()->CreateActor<Dungeon_Map_01>();
 			Map->Map_floor->SetSprite("Floor_01", Number);
@@ -317,12 +317,12 @@ void Random_Room::Start()
 			std::string numberStr = std::to_string(Number);
 			result = "Dungeon_Map_Pixel_0" + numberStr + ".png";
 
-			
-			 
+
+
 			Map->Pixel_Name = result.c_str();
 			Map->Map_Number += 1;
 			Map->Transform.SetLocalPosition(Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos);
-			Map->SetArr({Arr.X,Arr.Y});
+			Map->SetArr({ Arr.X,Arr.Y });
 
 
 			float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
@@ -331,39 +331,47 @@ void Random_Room::Start()
 			std::shared_ptr<Monster_Place> Object = GetLevel()->CreateActor<Monster_Place>(ContentsObjectType::Monster);
 			Object->sd = { Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos };
 			Object->Name = result.c_str();
-			Monser_Seed += 1; 
+			Monser_Seed += 1;
 
-		/*	Object->Random_A = Monser_Seed;
-			Object->Random_B = Monser_Seed;
-			Object->Random_C = Monser_Seed;*/
+			/*	Object->Random_A = Monser_Seed;
+				Object->Random_B = Monser_Seed;
+				Object->Random_C = Monser_Seed;*/
 			Maps.push_back(Map);
 		}
-		
 
 
 
-	
+
+
 		// 다른맵 가져오기 위해서 
 		Map_Order++;
-
 	}
 
-	delete check;
 
-	
-
-	for (size_t i =1; i < Maps.size(); i++)
+	for (size_t i = 1; i < Maps.size(); i++)
 	{
 		Maps[i]->ReturnCheck = true;
 	}
 
+	delete check;
+
+	for (size_t x = 0; x < 9; x++)
+	{
+		for (size_t y = 0; y < 9; y++)
+		{
+			if (Rooms[y][x].RoomCheck == true)
+			{
+				std::shared_ptr<Boss_Map> Object = GetLevel()->CreateActor<Boss_Map>(ContentsObjectType::Monster);
+				Object->Transform.SetLocalPosition({ Rooms[y][x].Pos.X, Rooms[y][x].Pos.Y+1143 });
+				return;
+			}
+			
+		}
+	}
 
 	
 
-
-
-
-
+	
 }
 
 void Random_Room::Update(float _Delta)
@@ -381,10 +389,6 @@ void Random_Room::Update(float _Delta)
 				{
 					if (Maps[j]->GetArr().Y == Maps[i]->GetArr().Y)
 					{
-						
-
-						
-
 						Maps[j]->ReturnCheck = false;
 					}
 				}

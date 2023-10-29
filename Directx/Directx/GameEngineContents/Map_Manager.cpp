@@ -179,6 +179,7 @@ void Map_Manager::DoorCollision(float _Delta,float4 _PrevMainCamera)
 		Player::this_Player->Transform.AddLocalPosition({0.0f, 300.0f });
 	}
 
+	
 	else if (Player::this_Player->Col->Collision(ContentsCollisionType::BottomDoor))
 	{
 		Map_Check += 1;
@@ -193,7 +194,7 @@ void Map_Manager::DoorCollision(float _Delta,float4 _PrevMainCamera)
 
 	float4 X_Camera_Move = float4::LerpClamp(0, 1280, _Delta);
 
-	 float4 Y_Camera_Move = float4::LerpClamp(0, 650, _Delta);
+	 float4 Y_Camera_Move = float4::LerpClamp(0, 720, _Delta);
 
 	 
 	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().X < A +1280  && Door_Right_Collison_Check == true)

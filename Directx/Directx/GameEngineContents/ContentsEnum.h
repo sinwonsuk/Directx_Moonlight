@@ -24,7 +24,8 @@ enum class CameraType
 {
 	None,
 	Town,
-	Dungeon_Entrance
+	Dungeon_Entrance,
+	BossMap, 
 };
 
 enum class Leveltype
@@ -60,4 +61,5 @@ enum class ContentsCollisionType
 	BottomDoor, 
 	CameraCollision,
 	MiniCol,
+	BossDoor,
 };

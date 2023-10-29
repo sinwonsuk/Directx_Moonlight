@@ -41,42 +41,85 @@ void Dungeon_Map_01::Start()
 		Pixel->SetSprite("Pixel_Floor", 0);
 
 	}*/
+	/*{
+		CloseDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
+		CloseDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
+		CloseDoor->AutoSpriteSizeOn();
+		CloseDoor->SetAutoScaleRatio(1.4f);
+		CloseDoor->ChangeAnimation("Close_Door");
+		CloseDoor->Transform.AddLocalRotation({ 0.0f,0.0f,-90.0f });
+		CloseDoor->Transform.AddLocalPosition({ 535.0f,25.0f,0.0f });
+		CloseDoor->Off();
+	}
+
+	{
+		OpenDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
+		OpenDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
+		OpenDoor->AutoSpriteSizeOn();
+		OpenDoor->SetAutoScaleRatio(1.4f);
+		OpenDoor->ChangeAnimation("Open_Door");
+		OpenDoor->Transform.AddLocalRotation({ 0.0f,0.0f,-90.0f });
+		OpenDoor->Transform.AddLocalPosition({ 535.0f,25.0f,0.0f });
+		OpenDoor->Off();
+	}*/
 
 	{
 		LeftDoor = CreateComponent<GameEngineSpriteRenderer>(100);
+		LeftDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
+		LeftDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
+		LeftDoor->AutoSpriteSizeOn();
+		LeftDoor->SetAutoScaleRatio(1.4f);
+		LeftDoor->ChangeAnimation("Open_Door");
 		LeftDoor->Transform.AddLocalRotation({ 0.0f,0.0f,90.0f });
 		LeftDoor->Transform.AddLocalPosition({ -550.0f,20.0f,0.0f });
-		LeftDoor->SetAutoScaleRatio(1.5f);
-		LeftDoor->SetSprite("Door", 0);
-		LeftDoor->Off(); 
+		LeftDoor->Off();
 	}
 
 	{
 		RightDoor = CreateComponent<GameEngineSpriteRenderer>(100);
+		RightDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
+		RightDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
+		RightDoor->AutoSpriteSizeOn();
+		RightDoor->SetAutoScaleRatio(1.4f);
+		RightDoor->ChangeAnimation("Open_Door");
 		RightDoor->Transform.AddLocalRotation({ 0.0f,0.0f,-90.0f });
 		RightDoor->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
-		RightDoor->SetAutoScaleRatio(1.5f);
-		RightDoor->SetSprite("Door", 0);
 		RightDoor->Off();
+
 	}
 	{
+
 		UpDoor = CreateComponent<GameEngineSpriteRenderer>(100);
+		UpDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
+		UpDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
+		UpDoor->AutoSpriteSizeOn();
+		UpDoor->SetAutoScaleRatio(1.4f);
+		UpDoor->ChangeAnimation("Open_Door");
 		UpDoor->Transform.AddLocalPosition({ 0.0f,300.0f,0.0f });
-		UpDoor->SetAutoScaleRatio(1.5f);
-		UpDoor->SetSprite("Door", 0);
 		UpDoor->Off();
 	}
 
 	{
 		DownDoor = CreateComponent<GameEngineSpriteRenderer>(100);
+		DownDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
+		DownDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
+		DownDoor->AutoSpriteSizeOn();
+		DownDoor->SetAutoScaleRatio(1.4f);
+		DownDoor->ChangeAnimation("Open_Door");
 		DownDoor->Transform.AddLocalRotation({ 0.0f,0.0f,180.0f });
 		DownDoor->Transform.AddLocalPosition({ 0.0f,-300.0f,0.0f });
-		DownDoor->SetAutoScaleRatio(1.5f);
-		DownDoor->SetSprite("Door", 0);
 		DownDoor->Off();
+
 	}
-
-
+	{
+		Boss_Door = CreateComponent<GameEngineSpriteRenderer>(130);
+		Boss_Door->CreateAnimation("Boss_Door_Open", "Boss_Door_Open", 0.1f, -1, -1, false);
+		Boss_Door->CreateAnimation("Boss_Door_Close", "Boss_Door_Close", 0.1f, -1, -1, false);
+		Boss_Door->AutoSpriteSizeOn();
+		Boss_Door->SetAutoScaleRatio(2.0f);
+		Boss_Door->ChangeAnimation("Boss_Door_Close"); 
+		Boss_Door->Off();
+	}
 
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
@@ -104,6 +147,47 @@ void Dungeon_Map_01::Start()
 	Bottom_Collision_Door->Transform.AddLocalPosition({ 0.0f,-300.0f,0.0f });
 	Bottom_Collision_Door->Transform.SetLocalScale({ 50.0f,120.0f,0.0f });
 	Bottom_Collision_Door->Off(); 
+
+
+	Boss_Collison_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::BossDoor);
+	Boss_Collison_Door->Transform.SetLocalScale({ 200.0f,200.0f,0.0f });
+	Boss_Collison_Door->On();
+
+	
+
+	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		DownDoor->ChangeAnimation("Close_Door");
+		UpDoor->ChangeAnimation("Close_Door");
+		RightDoor->ChangeAnimation("Close_Door");
+		LeftDoor->ChangeAnimation("Close_Door");
+		Boss_Door->ChangeAnimation("Boss_Door_Close");
+	};
+
+	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		DownDoor->ChangeAnimation("Close_Door");
+		UpDoor->ChangeAnimation("Close_Door");
+		RightDoor->ChangeAnimation("Close_Door");
+		LeftDoor->ChangeAnimation("Close_Door");
+		Boss_Door->ChangeAnimation("Boss_Door_Close");
+	};
+
+
+	Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+
+		
+
+		
+	};
+
+
+
+
+
+
+
 
 
 
@@ -149,20 +233,75 @@ void Dungeon_Map_01::Update(float _Delta)
 			}
 		}
 
-		Check = true;
-		return;
+
+		for (size_t x = 0; x < 9; x++)
+		{
+			for (size_t y = 0; y < 9; y++)
+			{
+				if (Random_Room::Rooms[y][x].RoomCheck == true)
+				{
+					Boss_Door->Transform.SetWorldPosition({ Random_Room::Rooms[y][x].Pos.X, Random_Room::Rooms[y][x].Pos.Y + 300 });
+					Boss_Collison_Door->Transform.SetWorldPosition({ Random_Room::Rooms[y][x].Pos.X, Random_Room::Rooms[y][x].Pos.Y + 300 });
+					Boss_Door->On();
+					Check = true;
+					return;
+				}
+			}
+		}
 	}
 
+	CameraCollision::CameraCol->Col->CollisionEvent(ContentsCollisionType::Monster, Event);
 
 	if (ReturnCheck == true)
 	{
+		Boss_Door->Off();
+		Boss_Collison_Door->Off();
 		return;
 	}
 
 	if (ReturnCheck == false)
 	{
+		Boss_Door->On();
+		Boss_Collison_Door->On();
 		DoorCollision(_Delta, GetLevel()->GetMainCamera()->Transform.GetLocalPosition());
-		//ObjectCollision(_Delta, Pixel_Name.c_str(), Random_Room::Rooms[Arr.X][Arr.Y].Pos);
+		ObjectCollision(_Delta, Pixel_Name.c_str(), Random_Room::Rooms[Arr.X][Arr.Y].Pos);
 	}
+
+	
+
+	if(CameraCollision::CameraCol->Col->Collision(ContentsCollisionType::Monster) ==false && Boss_Door_Check ==false)
+	{
+		DownDoor->ChangeAnimation("Open_Door");
+		UpDoor->ChangeAnimation("Open_Door");
+		RightDoor->ChangeAnimation("Open_Door");
+		LeftDoor->ChangeAnimation("Open_Door");
+		Boss_Door->ChangeAnimation("Boss_Door_Open");
+	}
+
+	if (Boss_Collison_Door->Collision(ContentsCollisionType::Player()) && Boss_Door_Check == false)
+	{
+		CameraCollision::CameraCol->Col->Off(); 
+		Player::this_Player->Transform.AddLocalPosition({ 0.0f, 300.0f });
+		Boss_Door_Check = true;
+		Boss_Door->ChangeAnimation("Boss_Door_Close");
+	}
+	
+
+	float4 Y_Camera_Move = float4::LerpClamp(0, 720, _Delta);
+
+	if (Boss_Door_Check == true)
+	{
+		if (Boss_Door->IsCurAnimationEnd())
+		{
+			test = true; 
+		}
+	}
+
+	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().Y < Random_Room::Rooms[Arr.X][Arr.Y].Pos.Y + 720 && test==true)
+	{
+		CameraCollision::CameraCol->Col->Off();
+		Player::this_Player->GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ 0.0f,Y_Camera_Move.X });
+	}
+
 
 }

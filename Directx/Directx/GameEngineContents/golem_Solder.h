@@ -104,7 +104,6 @@ private:
 	EventParameter Event;
 	EventParameter Mini_Event;
 	std::shared_ptr<GameEngineCollision> Col;
-	//std::shared_ptr<GameEngineCollision> Mini_Col;
 
 	GameEngineRandom Random; 
 };
