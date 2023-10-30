@@ -20,7 +20,7 @@ void Boss_Arm::Start()
 	Boss_arm->AutoSpriteSizeOn();
 	Boss_arm->SetAutoScaleRatio(2.0f);
 	Boss_arm->ChangeAnimation("Boss1_Punch_1");
-	Boss_arm->AnimationPauseOn();
+	//Boss_arm->AnimationPauseOn();
 	Boss_arm->Off(); 
 
 	Boss_arm_Texture = CreateComponent<GameEngineSpriteRenderer>(100);

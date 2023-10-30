@@ -59,7 +59,7 @@ void Boss_Monster::UpdateState(float _Time)
 		LaunchArm_Update(_Time);
 		break;
 	case Boss_Monster_State::IdleNoArm:
-		LaunchArm_Update(_Time);
+		Idle_NoArm_Update(_Time);
 		break;
 	default:
 		break;
@@ -131,12 +131,8 @@ void Boss_Monster::LaunchArm_Update(float _Time)
 	
 	
 	if (Boss->IsCurAnimationEnd())
-	{
-
-		
-		std::shared_ptr<Boss_Arm> object = GetLevel()->CreateActor<Boss_Arm>();
-		
-
+	{	
+		Arm = GetLevel()->CreateActor<Boss_Arm>();
 		ChangeState(Boss_Monster_State::IdleNoArm);
 		return; 
 	}
@@ -145,7 +141,15 @@ void Boss_Monster::LaunchArm_Update(float _Time)
 
 void Boss_Monster::Idle_NoArm_Update(float _Time)
 {
-
-
+	if (Arm->GetFinishCheck() == true)
+	{
+		Arm->Death();
+		Arm = GetLevel()->CreateActor<Boss_Arm>();
+		ArmCheck++;
+	}
+	if (ArmCheck == 3)
+	{
+		int a = 0;
+	}
 
 }

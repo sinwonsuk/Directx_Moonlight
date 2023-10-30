@@ -168,6 +168,7 @@
     <ClCompile Include="BabySlime.cpp" />
     <ClCompile Include="Boss_Arm.cpp" />
     <ClCompile Include="Boss_Arm_State.cpp" />
+    <ClCompile Include="Boss_Brick.cpp" />
     <ClCompile Include="Boss_Map.cpp" />
     <ClCompile Include="Boss_Monster.cpp" />
     <ClCompile Include="Boss_Monster_State.cpp" />
@@ -262,6 +263,7 @@
     <ClInclude Include="Arm_Shadow.h" />
     <ClInclude Include="BabySlime.h" />
     <ClInclude Include="Boss_Arm.h" />
+    <ClInclude Include="Boss_Brick.h" />
     <ClInclude Include="Boss_Map.h" />
     <ClInclude Include="Boss_Monster.h" />
     <ClInclude Include="CameraCollision.h" />
