@@ -119,23 +119,29 @@ void golem_Solder::Start()
 
 
 
-	Mini_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	/*Mini_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 
 	};
 
 	Mini_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-			Transform.AddLocalPosition({ -MoveDir * Speed * DeltaTime });
-			Collision_Right_drop();
-			Transform.AddLocalPosition(AD* 50.0f* DeltaTime);
+			float4 Monster = Col->GetActor()->Transform.GetLocalPosition(); 
+			Monster.Normalize(); 
+
+			float4 Other_Monster = col->GetActor()->Transform.GetLocalPosition();
+			Other_Monster.Normalize();
+
+			Col->GetActor()->Transform.AddLocalPosition(Other_Monster - Monster * DeltaTime);
+
+
 	};
 
 
 	Mini_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 		
-	};
+	};*/
 }
 
 void golem_Solder::Update(float _Delta)
@@ -159,16 +165,21 @@ void golem_Solder::Update(float _Delta)
 	 
 	}
 		
-	/*if (Mini_Col->Collision(ContentsCollisionType::MiniCol))
+	//Col->CollisionEvent(ContentsCollisionType::Monster, Mini_Event);
+
+
+
+	Col->CollisionEvent(ContentsCollisionType::Monster, { .Stay = [&](class GameEngineCollision* _This,class GameEngineCollision* _collisions)
 	{
-		Transform.AddLocalPosition({ -MoveDir * Speed * DeltaTime });
-		Collision_Right_drop();
-		Transform.AddLocalPosition(AD* 50.0f* DeltaTime);
+			float4 Monster = _This->GetActor()->Transform.GetLocalPosition();
+		
 
-	}*/
+			float4 Other_Monster = _collisions->GetActor()->Transform.GetLocalPosition();
+		
+			float4 Dir = Monster - Other_Monster;
 
-
-
+			_This->GetActor()->Transform.AddLocalPosition(Dir * DeltaTime);
+	} });
 
 
 	
@@ -252,9 +263,6 @@ void golem_Solder::MonsterPushUpdate(float _Delta)
 		{
 			Transform.AddLocalPosition({ float4::RIGHT * PushSpeed * _Delta });
 		}
-
-
-
 	}
 
 	if (PushTime_Check > 0.55)

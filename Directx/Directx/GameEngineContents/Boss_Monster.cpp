@@ -15,6 +15,8 @@ void Boss_Monster::Start()
 	Boss->CreateAnimation("Wake_Up", "Wake_Up", 0.1f, -1, -1, false);
 	Boss->CreateAnimation("Idle", "Idle", 0.1f, -1, -1, true);
 	Boss->CreateAnimation("Death", "Death", 0.1f, -1, -1, true);	
+	Boss->CreateAnimation("Boss1_LaunchArm", "Boss1_LaunchArm", 0.1f, -1, -1, false);
+	Boss->CreateAnimation("Boss1_IdleNoArm", "Boss1_IdleNoArm", 0.1f, -1, -1, true);
 	Boss->AutoSpriteSizeOn();
 	Boss->SetAutoScaleRatio(2.0f);
 	Boss->ChangeAnimation("Wake_Up");
@@ -27,18 +29,18 @@ void Boss_Monster::Start()
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		float4 AD = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+		CameraCheck = true;
+		/*float4 AD = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 		AD.Normalize(); 
-
-		GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ AD * Time * Speed });
+		GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ AD * Time * Speed });*/
 	};
 
 	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		float4 AD = Transform.GetWorldPosition() - Player::this_Player->Transform.GetWorldPosition();
-		AD.Normalize();
 
-		GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ AD * Time * Speed });
+		/*float4 AD = Transform.GetWorldPosition() - Player::this_Player->Transform.GetWorldPosition();
+		AD.Normalize();
+		GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ AD * Time * Speed });*/
 	};
 
 
@@ -52,7 +54,14 @@ void Boss_Monster::Start()
 void Boss_Monster::Update(float _Delta)
 {
 	Time = _Delta; 
+
+
+
+
+
 	Col->CollisionEvent(ContentsCollisionType::Player, Event);
+	UpdateState(_Delta);
+
 }
 
 void Boss_Monster::AnimationCheck(const std::string_view& _AnimationName)

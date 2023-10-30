@@ -31,7 +31,7 @@ void Boss_Map::Update(float _Delta)
 	if(BossCheck ==false)
 	{
 		std::shared_ptr<Boss_Monster> Object = GetLevel()->CreateActor<Boss_Monster>(3);
-		Object->Transform.SetLocalPosition({ Transform.GetLocalPosition().X,Transform.GetLocalPosition().Y + 200.0f });
+		Object->Transform.SetLocalPosition({ Transform.GetLocalPosition().X,Transform.GetLocalPosition().Y + 300.0f });
 		BossCheck = true;
 	}
 }

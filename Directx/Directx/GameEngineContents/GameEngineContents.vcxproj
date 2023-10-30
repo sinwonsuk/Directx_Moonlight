@@ -163,8 +163,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Arm_Shadow.cpp" />
     <ClCompile Include="BabySilme_State.cpp" />
     <ClCompile Include="BabySlime.cpp" />
+    <ClCompile Include="Boss_Arm.cpp" />
+    <ClCompile Include="Boss_Arm_State.cpp" />
     <ClCompile Include="Boss_Map.cpp" />
     <ClCompile Include="Boss_Monster.cpp" />
     <ClCompile Include="Boss_Monster_State.cpp" />
@@ -256,7 +259,9 @@
     <ClCompile Include="WorldLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arm_Shadow.h" />
     <ClInclude Include="BabySlime.h" />
+    <ClInclude Include="Boss_Arm.h" />
     <ClInclude Include="Boss_Map.h" />
     <ClInclude Include="Boss_Monster.h" />
     <ClInclude Include="CameraCollision.h" />

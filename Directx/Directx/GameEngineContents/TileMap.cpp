@@ -1,19 +1,31 @@
 #include "PreCompile.h"
 #include "TileMap.h"
 #include "Player.h"
+
+TileMap* TileMap::Map;
+
 TileMap::TileMap()
 {
+
 }
 
 TileMap::~TileMap()
 {
+
 }
 
 void TileMap::Start()
 {
 
+	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y,0.0f });
 
-	size_t TileX = 768;
+     Map = this;
+
+	
+
+
+	size_t TileX = 128;
 	size_t TileY = 72;
 
 
@@ -33,18 +45,18 @@ void TileMap::Start()
 	{
 		for (size_t y = 0; y < TileY; y++)
 		{
-			if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Tutorial_Map_Pixel_05.png"))
+			if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 			{
-				Tile_Maps[x][y] = false;
+				Tile_Maps[int(x)][int(y)] = false;
 			}
-			if (GameEngineColor::GREEN == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Tutorial_Map_Pixel_05.png"))
+			if (GameEngineColor::GREEN == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 			{
-				Tile_Maps[x][y] = false;
+				Tile_Maps[int(x)][int(y)] = false;
 			}
 
-			if (GameEngineColor::BLUE == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Tutorial_Map_Pixel_05.png"))
+			if (GameEngineColor::BLUE == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 			{
-				Tile_Maps[x][y] = false;
+				Tile_Maps[int(x)][int(y)] = false;
 			}
 		}
 	}
@@ -54,7 +66,19 @@ void TileMap::Update(float _Delta)
 {
 	float4 Player_Pos = { Player::this_Player->Transform.GetWorldPosition()};
 	
-	IsBlock(Player_Pos);
+	if(IsBlock(Player_Pos))
+	{
+		int a = 0; 
+	}
+
+	if (IsBlock(Player_Pos)==false)
+	{
+		int a = 0;
+	}
+
+
+
+
 	
 }
 
@@ -81,7 +105,7 @@ bool TileMap::IsBlock(float4 _Pos)
 {
 	
 
-	if (GameEngineColor::MAGENTA == Player_GetColor({ _Pos / 10 }, { 255,0,0,255 }, "Tutorial_Map_Pixel_05.png"))
+	if (GameEngineColor::MAGENTA == Player_GetColor({ _Pos / 10 }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 	{
 		if (_Pos.Y < 0)
 		{
@@ -89,49 +113,51 @@ bool TileMap::IsBlock(float4 _Pos)
 		}
 
 
-		if (Tile_Maps[_Pos.X / 10][_Pos.Y / 10] != false)
+		if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] != false)
 		{
 			return true;
 		}
 
-		else if (Tile_Maps[_Pos.X / 10][_Pos.Y / 10] == false)
+		else if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] == false)
 		{
 			return false;
 		}
 	}
 
 
-	if (GameEngineColor::GREEN == Player_GetColor({ _Pos / 10 }, { 255,0,0,255 }, "Tutorial_Map_Pixel_05.png"))
+	if (GameEngineColor::GREEN == Player_GetColor({ _Pos / 10 }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 	{
 		if (_Pos.Y < 0)
 		{
 			_Pos.Y *= -1;
 		}
-		if (Tile_Maps[_Pos.X / 10][_Pos.Y / 10] != false)
+		if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] != false)
 		{
 			return true;
 		}
 
-		else if (Tile_Maps[_Pos.X / 10][_Pos.Y / 10] == false)
+		else if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] == false)
 		{
 			return false;
 		}
 	}
-	if (GameEngineColor::BLUE == Player_GetColor({ _Pos / 10 }, { 255,0,0,255 }, "Tutorial_Map_Pixel_05.png"))
+	if (GameEngineColor::BLUE == Player_GetColor({ _Pos / 10 }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 	{
 		if (_Pos.Y < 0)
 		{
 			_Pos.Y *= -1;
 		}
 
-		if (Tile_Maps[_Pos.X / 10][_Pos.Y / 10] != false)
+		if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] != false)
 		{
 			return true;
 		}
 
-		else if (Tile_Maps[_Pos.X / 10][_Pos.Y / 10] == false)
+		else if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] == false)
 		{
 			return false;
 		}
 	}
+
+	return true;
 }

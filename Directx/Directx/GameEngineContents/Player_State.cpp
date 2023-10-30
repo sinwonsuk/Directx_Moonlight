@@ -704,184 +704,180 @@ void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerSt
 
 void Player::Move(float _Delta)
 {
-	switch (Camera)
+	if (Not_Move == true)
 	{
-	case CameraType::None:
-
-		if (GameEngineInput::IsPress('A', this) && LeftMove == true)
+		switch (Camera)
 		{
-			Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-		}
+		case CameraType::None:
 
-		if (GameEngineInput::IsPress('D', this) && RightMove == true)
-		{
-			Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-		}
-
-		if (GameEngineInput::IsPress('W', this) && UpMove == true)
-		{
-			Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-		}
-
-		if (GameEngineInput::IsPress('S', this) && DownMove == true)
-		{
-			Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
-		}
-		break;
-
-	case CameraType::Town:
-
-		if (GameEngineInput::IsPress('A', this) && LeftMove == true)
-		{
-			Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-
-			if (Transform.GetLocalPosition().X >= 0 && Transform.GetLocalPosition().X <= 1280)
+			if (GameEngineInput::IsPress('A', this) && LeftMove == true)
 			{
+				Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+			}
+
+			if (GameEngineInput::IsPress('D', this) && RightMove == true)
+			{
+				Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+			}
+
+			if (GameEngineInput::IsPress('W', this) && UpMove == true)
+			{
+				Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+			}
+
+			if (GameEngineInput::IsPress('S', this) && DownMove == true)
+			{
+				Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+			}
+			break;
+
+		case CameraType::Town:
+
+			if (GameEngineInput::IsPress('A', this) && LeftMove == true)
+			{
+				Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+
+				if (Transform.GetLocalPosition().X >= 0 && Transform.GetLocalPosition().X <= 1280)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+				}
+			}
+
+			if (GameEngineInput::IsPress('D', this) && RightMove == true)
+			{
+				Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+
+				if (Transform.GetLocalPosition().X <= 1280 && Transform.GetLocalPosition().X >= 0)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+				}
+
+			}
+
+			if (GameEngineInput::IsPress('W', this) && UpMove == true)
+			{
+				Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+
+				if (Transform.GetLocalPosition().Y <= 330 && Transform.GetLocalPosition().Y >= -1043)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+				}
+
+			}
+
+			if (GameEngineInput::IsPress('S', this) && DownMove == true)
+			{
+				Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+
+
+				if (Transform.GetLocalPosition().Y >= -1043 && Transform.GetLocalPosition().Y <= 330)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+				}
+			}
+
+			break;
+		case CameraType::Dungeon_Entrance:
+		{
+			if (GameEngineInput::IsPress('A', this) && LeftMove == true)
+			{
+				Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+
+				//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+				if (Transform.GetLocalPosition().X >= 649 && Transform.GetLocalPosition().X <= 1745)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+				}
+			}
+
+			if (GameEngineInput::IsPress('D', this) && RightMove == true)
+			{
+				Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+
+				//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+
+				if (Transform.GetLocalPosition().X <= 1745 && Transform.GetLocalPosition().X >= 649)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+				}
+
+			}
+
+			if (GameEngineInput::IsPress('W', this) && UpMove == true)
+			{
+				Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+
+				//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+
+				if (Transform.GetLocalPosition().Y <= -485 && Transform.GetLocalPosition().Y >= -1599)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+				}
+
+			}
+
+			if (GameEngineInput::IsPress('S', this) && DownMove == true)
+			{
+				Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+				//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+				if (Transform.GetLocalPosition().Y >= -1599 && Transform.GetLocalPosition().Y <= -485)
+				{
+					GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+				}
+			}
+		}
+
+		case CameraType::BossMap:
+		{
+			if (GameEngineInput::IsPress('A', this) && LeftMove == true)
+			{
+				Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+
+				//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+
 				GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-			}
-		}
 
-		if (GameEngineInput::IsPress('D', this) && RightMove == true)
-		{
-			Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-
-			   if (Transform.GetLocalPosition().X <= 1280 && Transform.GetLocalPosition().X >= 0)
-			   {
-			   	GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-			   }
-
-		}
-
-		if (GameEngineInput::IsPress('W', this) && UpMove == true)
-		{
-			Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-
-			if (Transform.GetLocalPosition().Y <= 330 && Transform.GetLocalPosition().Y >= -1043)
-			{
-				GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
 			}
 
-		}
-
-		if (GameEngineInput::IsPress('S', this) && DownMove == true)
-		{
-			Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
-
-			
-			if (Transform.GetLocalPosition().Y >= -1043 && Transform.GetLocalPosition().Y <= 330)
+			if (GameEngineInput::IsPress('D', this) && RightMove == true)
 			{
-			   GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
-			}	
-		}
+				Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
 
-		break;
-	case CameraType::Dungeon_Entrance:
-	{
-		if (GameEngineInput::IsPress('A', this) && LeftMove == true)
-		{
-			Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+				//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
 
-			//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-			if (Transform.GetLocalPosition().X >= 649 && Transform.GetLocalPosition().X <= 1745)
-			{
-				GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-			}
-		}
 
-		if (GameEngineInput::IsPress('D', this) && RightMove == true)
-		{
-			Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-
-			//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-
-			if (Transform.GetLocalPosition().X <= 1745 && Transform.GetLocalPosition().X >= 649)
-			{
 				GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+
+
 			}
 
-		}
-
-		if (GameEngineInput::IsPress('W', this) && UpMove == true)
-		{
-			Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-
-			//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-
-			if (Transform.GetLocalPosition().Y <= -485 && Transform.GetLocalPosition().Y >= -1599)
+			if (GameEngineInput::IsPress('W', this) && UpMove == true)
 			{
+				Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+
+				//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+
+
 				GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+
+
 			}
 
-		}
-
-		if (GameEngineInput::IsPress('S', this) && DownMove == true)
-		{
-			Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
-			//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
-			if (Transform.GetLocalPosition().Y >= -1599 && Transform.GetLocalPosition().Y <= -485)
+			if (GameEngineInput::IsPress('S', this) && DownMove == true)
 			{
+				Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+				//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+
 				GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+
 			}
 		}
-	}
-
-	case CameraType::BossMap:
-	{
-		if (GameEngineInput::IsPress('A', this) && LeftMove == true)
-		{
-			Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-
-			//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-			
-			  GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-			
-		}
-
-		if (GameEngineInput::IsPress('D', this) && RightMove == true)
-		{
-			Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-
-			//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-
-			
-			GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
-			
-
-		}
-
-		if (GameEngineInput::IsPress('W', this) && UpMove == true)
-		{
-			Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-
-			//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-
-			
-			GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::UP * _Delta * Speed);
-			
-
-		}
-
-		if (GameEngineInput::IsPress('S', this) && DownMove == true)
-		{
-			Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
-			//GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
-			
-			GetLevel()->GetMainCamera()->Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
-			
-		}
-	}
-
-
-
-
-
-
 		break;
-	default:
-		break;
-	}
-		
+		default:
+			break;
+		}
 
+	}
 		
 	
 }

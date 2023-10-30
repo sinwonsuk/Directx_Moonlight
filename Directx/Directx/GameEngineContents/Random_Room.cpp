@@ -366,7 +366,7 @@ void Random_Room::Start()
 				//Player::this_Player->Transform({ Rooms[y][x].Pos.X, Rooms[y][x].Pos.Y + 1143 });
 				Player::this_Player->Transform.SetLocalPosition({ Rooms[y][x].Pos.X, Rooms[y][x].Pos.Y + 200 });
 				Player::this_Player->Camera = CameraType::BossMap;
-				GetLevel()->GetMainCamera()->Transform.SetLocalPosition({ Rooms[y][x].Pos.X, Rooms[y][x].Pos.Y + 200});
+				GetLevel()->GetMainCamera()->Transform.SetLocalPosition({ Rooms[y][x].Pos.X, Rooms[y][x].Pos.Y + 500});
 				return;
 			}
 			

@@ -3,13 +3,12 @@
 
 enum class Boss_Monster_State
 {
+	Start,
 	WakeUp,
+	Start2,
 	Idle,
-	LeftAttack,
-	RightAttack,
-	DownAttack,
-	UpAttack,
-
+	LaunchArm,
+	IdleNoArm,
 };
 
 class Boss_Monster : public GameEngineActor
@@ -33,8 +32,13 @@ public:
 
 
 	void ChangeState(Boss_Monster_State _State);
+	void StartUpdate(float _Time);
+	void Start2Update(float _Time);
 	void UpdateState(float _Time);
+	void IdleUpdate(float _Time);
 	void Wake_Up_Update(float _Time);
+	void LaunchArm_Update(float _Time);
+	void Idle_NoArm_Update(float _Time);
 	void AnimationCheck(const std::string_view& _AnimationName);
 
 
@@ -57,18 +61,19 @@ protected:
 
 private:
 	EventParameter Event;
-	
-	
+	bool CameraCheck = false;
+	bool AD = false;
 	float Hp = 20.0f;
 
 	float Time = 0.0f;
-	float Speed = 200.0f;
+	float Speed = 600.0f;
 	//bool Weapon_Collision_Check = false;
 
-	Boss_Monster_State StateValue = Boss_Monster_State::Idle;
+	Boss_Monster_State StateValue = Boss_Monster_State::Start;
+
 	std::shared_ptr<class GameEngineSpriteRenderer> Boss;
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
-
+	
 	
 	std::shared_ptr<GameEngineCollision> Col;
 

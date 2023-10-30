@@ -18,52 +18,16 @@
     <ClCompile Include="Monster.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp" />
-    <ClCompile Include="TutorialMap.cpp" />
-    <ClCompile Include="Player_State.cpp" />
-    <ClCompile Include="Tutorial_Map_Manager.cpp" />
-    <ClCompile Include="TutorialMap_02.cpp" />
-    <ClCompile Include="TutorialMap_03.cpp" />
-    <ClCompile Include="TutorialMap_04.cpp" />
     <ClCompile Include="Object_jar.cpp" />
-    <ClCompile Include="Tutorial_Map_05.cpp" />
-    <ClCompile Include="Tutorial_Map_06.cpp" />
-    <ClCompile Include="Spear.cpp" />
-    <ClCompile Include="Spear_State.cpp" />
-    <ClCompile Include="Monster_Manager.cpp" />
-    <ClCompile Include="Slime_Potal.cpp" />
-    <ClCompile Include="Wizard_State.cpp" />
-    <ClCompile Include="Spear_Effect.cpp" />
-    <ClCompile Include="Player_UI.cpp" />
-    <ClCompile Include="gloem_Wazard_Missile.cpp" />
     <ClCompile Include="WorldLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
-    <ClCompile Include="Shop_House.cpp" />
-    <ClCompile Include="ShopLevel.cpp" />
     <ClCompile Include="TutorialLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="Dungeon_Entrance_Level.cpp">
       <Filter>Level</Filter>
     </ClCompile>
-    <ClCompile Include="Dungeon_Entrance_Map.cpp" />
-    <ClCompile Include="ContentsControlWindow.cpp" />
-    <ClCompile Include="TileMap.cpp" />
-    <ClCompile Include="Dungeon_Map_01.cpp" />
-    <ClCompile Include="Map_Manager.cpp" />
-    <ClCompile Include="Dungeon_Map_02.cpp" />
-    <ClCompile Include="Dungeon_Map_03.cpp" />
-    <ClCompile Include="Dungeon_Map_04.cpp" />
-    <ClCompile Include="Dungeon_Map_05.cpp" />
-    <ClCompile Include="Dungeon_Map_06.cpp" />
-    <ClCompile Include="Dungeon_Map_07.cpp" />
-    <ClCompile Include="Dungeon_Map_08.cpp" />
-    <ClCompile Include="Dungeon_Map_09.cpp" />
-    <ClCompile Include="Dungeon_Map_10.cpp" />
-    <ClCompile Include="Random_Room.cpp" />
-    <ClCompile Include="Dungeon_Map_00.cpp" />
-    <ClCompile Include="Monster_Place.cpp" />
     <ClCompile Include="CameraCollision.cpp" />
     <ClCompile Include="BabySilme_State.cpp">
       <Filter>Monster</Filter>
@@ -113,10 +77,129 @@
     <ClCompile Include="MiniBoss.cpp">
       <Filter>Monster</Filter>
     </ClCompile>
-    <ClCompile Include="Boss_Monster.cpp" />
-    <ClCompile Include="Boss_Monster_State.cpp" />
-    <ClCompile Include="Boss_Map.cpp" />
-    <ClCompile Include="Path_Finder_Level.cpp" />
+    <ClCompile Include="Tutorial_Map_05.cpp">
+      <Filter>Tutorial_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial_Map_06.cpp">
+      <Filter>Tutorial_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Tutorial_Map_Manager.cpp">
+      <Filter>Tutorial_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialMap.cpp">
+      <Filter>Tutorial_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialMap_02.cpp">
+      <Filter>Tutorial_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialMap_03.cpp">
+      <Filter>Tutorial_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialMap_04.cpp">
+      <Filter>Tutorial_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_00.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_01.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_02.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_03.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_04.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_05.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_06.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_07.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_08.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_09.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Map_10.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Map.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Monster.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Monster_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsControlWindow.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster_Manager.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="gloem_Wazard_Missile.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster_Place.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Map_Manager.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_State.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_UI.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Spear.cpp">
+      <Filter>Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Spear_Effect.cpp">
+      <Filter>Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Spear_State.cpp">
+      <Filter>Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon_Entrance_Map.cpp">
+      <Filter>Dungeon_Entrance</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime_Potal.cpp">
+      <Filter>Tutorial_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Random_Room.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop_House.cpp">
+      <Filter>Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopLevel.cpp">
+      <Filter>Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="Path_Finder_Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>Dungeon_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Wizard_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Arm.cpp" />
+    <ClCompile Include="Boss_Arm_State.cpp" />
+    <ClCompile Include="Arm_Shadow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -139,49 +222,16 @@
     <ClInclude Include="ContentsEnum.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="Title.h" />
-    <ClInclude Include="TutorialMap.h" />
-    <ClInclude Include="Tutorial_Map_Manager.h" />
-    <ClInclude Include="TutorialMap_02.h" />
-    <ClInclude Include="TutorialMap_03.h" />
-    <ClInclude Include="TutorialMap_04.h" />
     <ClInclude Include="Object_jar.h" />
-    <ClInclude Include="Tutorial_Map_05.h" />
-    <ClInclude Include="Tutorial_Map_06.h" />
-    <ClInclude Include="Spear.h" />
-    <ClInclude Include="Monster_Manager.h" />
-    <ClInclude Include="Slime_Potal.h" />
-    <ClInclude Include="Spear_Effect.h" />
-    <ClInclude Include="Player_UI.h" />
-    <ClInclude Include="gloem_Wazard_Missile.h" />
     <ClInclude Include="WorldLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
-    <ClInclude Include="Shop_House.h" />
-    <ClInclude Include="ShopLevel.h" />
     <ClInclude Include="TutorialLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
     <ClInclude Include="Dungeon_Entrance_Level.h">
       <Filter>Level</Filter>
     </ClInclude>
-    <ClInclude Include="Dungeon_Entrance_Map.h" />
-    <ClInclude Include="ContentsControlWindow.h" />
-    <ClInclude Include="TileMap.h" />
-    <ClInclude Include="Dungeon_Map_01.h" />
-    <ClInclude Include="Map_Manager.h" />
-    <ClInclude Include="Dungeon_Map_02.h" />
-    <ClInclude Include="Dungeon_Map_03.h" />
-    <ClInclude Include="Dungeon_Map_04.h" />
-    <ClInclude Include="Dungeon_Map_05.h" />
-    <ClInclude Include="Dungeon_Map_06.h" />
-    <ClInclude Include="Dungeon_Map_07.h" />
-    <ClInclude Include="Dungeon_Map_08.h" />
-    <ClInclude Include="Dungeon_Map_09.h" />
-    <ClInclude Include="Dungeon_Map_10.h" />
-    <ClInclude Include="Random_Room.h" />
-    <ClInclude Include="Dungeon_Map_00.h" />
-    <ClInclude Include="Monster_Place.h" />
     <ClInclude Include="CameraCollision.h" />
     <ClInclude Include="BabySlime.h">
       <Filter>Monster</Filter>
@@ -207,9 +257,116 @@
     <ClInclude Include="MiniBoss.h">
       <Filter>Monster</Filter>
     </ClInclude>
-    <ClInclude Include="Boss_Monster.h" />
-    <ClInclude Include="Boss_Map.h" />
-    <ClInclude Include="Path_Finder_Level.h" />
+    <ClInclude Include="Tutorial_Map_05.h">
+      <Filter>Tutorial_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial_Map_06.h">
+      <Filter>Tutorial_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial_Map_Manager.h">
+      <Filter>Tutorial_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialMap.h">
+      <Filter>Tutorial_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialMap_02.h">
+      <Filter>Tutorial_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialMap_03.h">
+      <Filter>Tutorial_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialMap_04.h">
+      <Filter>Tutorial_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_00.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_01.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_02.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_03.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_04.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_05.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_06.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_07.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_08.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_09.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Map_10.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_Map.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_Monster.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsControlWindow.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster_Manager.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="gloem_Wazard_Missile.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster_Place.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Map_Manager.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_UI.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Spear.h">
+      <Filter>Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Spear_Effect.h">
+      <Filter>Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon_Entrance_Map.h">
+      <Filter>Dungeon_Entrance</Filter>
+    </ClInclude>
+    <ClInclude Include="Slime_Potal.h">
+      <Filter>Tutorial_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Random_Room.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop_House.h">
+      <Filter>Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopLevel.h">
+      <Filter>Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="Path_Finder_Level.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>Dungeon_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_Arm.h" />
+    <ClInclude Include="Arm_Shadow.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
@@ -223,6 +380,27 @@
     </Filter>
     <Filter Include="Monster">
       <UniqueIdentifier>{69535fab-9904-4b1b-a41e-16cfd8cfbb3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tutorial_Map">
+      <UniqueIdentifier>{2fbda321-0aa5-4d4a-9f30-d35615614ca5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dungeon_Map">
+      <UniqueIdentifier>{7c601af6-12ca-4678-b04d-7a93df5c2677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui">
+      <UniqueIdentifier>{e64a9cb5-5e95-4d94-97b1-b89447be37a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{aa7be64f-ed90-4aa7-bd37-a5c41b818de0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weapon">
+      <UniqueIdentifier>{091c1074-3091-4a8e-8f73-fecbf5d8971e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dungeon_Entrance">
+      <UniqueIdentifier>{31c56c9b-c99b-46a5-9257-651e16d0549d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shop">
+      <UniqueIdentifier>{018e0b83-63e8-4780-afc3-47ca33ff6c7f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

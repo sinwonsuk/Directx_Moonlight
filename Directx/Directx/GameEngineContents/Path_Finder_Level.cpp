@@ -60,4 +60,5 @@ void Path_Finder_Level::LevelStart(GameEngineLevel* _PrevLevel)
 
 void Path_Finder_Level::LevelEnd(GameEngineLevel* _NextLevel)
 {
+	Player::this_Player = nullptr;
 }
