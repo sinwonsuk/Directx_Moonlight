@@ -31,7 +31,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<ShopLevel>("ShopLevel");
 	GameEngineCore::CreateLevel<Dungeon_Entrance_Level>("Dungeon_Entrance_Level");
 
-	GameEngineCore::ChangeLevel("PlayLevel");
+	GameEngineCore::ChangeLevel("TutorialLevel");
 
 
 

@@ -21,7 +21,7 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 private:
-	// 필요하다면 스태틱으로 
+	
 
 	std::vector<std::vector<bool>> Tile_Maps;
 	std::vector<bool> Tile_Map;
