@@ -59,9 +59,9 @@ void TutorialLevel::Start()
 	{
 		std::shared_ptr<Player_UI> Object = CreateActor<Player_UI>();
 	}
-	{
+	/*{
 		std::shared_ptr<TileMap> Object = CreateActor<TileMap>();
-	}
+	}*/
 
 
 

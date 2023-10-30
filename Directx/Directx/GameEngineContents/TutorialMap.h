@@ -30,5 +30,6 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> RightDoor;
 	std::shared_ptr<class GameEngineSpriteRenderer> Scroll;
 	std::shared_ptr<GameEngineCollision> Collision_Door;
-	
+	std::shared_ptr<GameEngineSpriteRenderer> Pixel;
+	bool check = false;
 };

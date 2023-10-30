@@ -11,7 +11,7 @@
 #include "ShopLevel.h"
 #include "Dungeon_Entrance_Level.h"
 #include "ContentsControlWindow.h"
-
+#include "Path_Finder_Level.h"
 ContentsCore::ContentsCore() 
 {
 }
@@ -30,7 +30,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<WorldLevel>("WorldLevel");
 	GameEngineCore::CreateLevel<ShopLevel>("ShopLevel");
 	GameEngineCore::CreateLevel<Dungeon_Entrance_Level>("Dungeon_Entrance_Level");
-
+	GameEngineCore::CreateLevel<Path_Finder_Level>("Path_Finder_Level");
 	GameEngineCore::ChangeLevel("TutorialLevel");
 
 

@@ -25,6 +25,8 @@ TutorialMap::~TutorialMap()
 
 void TutorialMap::Start()
 {
+	GameEngineInput::AddInputObject(this);
+
 	/*{
 		std::shared_ptr<Object_jar> Object = GetLevel()->CreateActor<Object_jar>();
 	}*/
@@ -60,6 +62,13 @@ void TutorialMap::Start()
 
 	}
 
+	{
+
+		Pixel = CreateComponent<GameEngineSpriteRenderer>(-100);
+		Pixel->SetSprite("Pixel", 0);
+
+		Pixel->Off(); 
+	}
 	{
 
 		LeftDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
@@ -159,6 +168,17 @@ void TutorialMap::Update(float _Delta)
 	if (Player::this_Player->GetPlayerStateValue() != PlayerState::Start)
 	{
 		Scroll->AnimationPauseOff();
+	}
+
+	if (GameEngineInput::IsDown('2', this) && check == false)
+	{
+		Pixel->On();
+		check = true;
+	}
+	else if (GameEngineInput::IsDown('2', this) && check == true)
+	{
+		Pixel->Off();
+		check = false;
 	}
 
 

@@ -32,7 +32,7 @@ void Dungeon_Map_10::Start()
 	{
 
 		Map_floor_01 = CreateComponent<GameEngineSpriteRenderer>(-100);
-		Map_floor_01->SetSprite("Floor_10", 0);
+		Map_floor_01->SetSprite("Floor_01", 10);
 
 	}
 
