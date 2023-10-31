@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "MonsterTest.h"
 #include "Player.h"
+#include "TileMap.h"
+
 MonsterTest::MonsterTest()
 {
 
@@ -29,11 +31,13 @@ void MonsterTest::Start()
 void MonsterTest::Update(float _Delta)
 {
 
-	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+	TileMap::Map->IsBlock(0, 1);
+
+	TileMap::Map->GetPath(Transform.GetWorldPosition(), Player::this_Player->Transform.GetWorldPosition());
 
 
-
-	Transform.AddLocalPosition({ Move.NormalizeReturn() * 150.0f * _Delta });
+	//float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+	//Transform.AddLocalPosition({ Move.NormalizeReturn() * 150.0f * _Delta });
 	
 
 

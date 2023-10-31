@@ -2,6 +2,39 @@
 #include "TileMap.h"
 #include "Player.h"
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 TileMap* TileMap::Map;
 
 TileMap::TileMap()
@@ -101,62 +134,99 @@ GameEngineColor TileMap::Player_GetColor(float4 _Pos, GameEngineColor _DefaultCo
 	return Tex->GetColor(_Pos, _DefaultColor);
 }
 
+float4 TileMap::ConvertWorldPosToTilePoint(float4 _Pos)
+{
+	float4 Index = _Pos / 10;
+	return Index;
+}
+
 bool TileMap::IsBlock(float4 _Pos)
 {
-	
+	float4 Index = _Pos / 10;
 
-	if (GameEngineColor::MAGENTA == Player_GetColor({ _Pos / 10 }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+	return IsBlock(Index.iX(), Index.iY());
+}
+
+bool TileMap::IsBlock(int X, int Y)
+{
+	float4 Index;
+	Index.X = X;
+	Index.Y = Y;
+
+	if (GameEngineColor::MAGENTA == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 	{
-		if (_Pos.Y < 0)
+		if (Y < 0)
 		{
-			_Pos.Y *= -1; 
+			Y *= -1;
 		}
 
 
-		if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] != false)
+		if (Tile_Maps[X][Y] != false)
 		{
 			return true;
 		}
 
-		else if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] == false)
+		else if (Tile_Maps[X][Y] == false)
 		{
 			return false;
 		}
 	}
 
 
-	if (GameEngineColor::GREEN == Player_GetColor({ _Pos / 10 }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+	if (GameEngineColor::GREEN == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 	{
-		if (_Pos.Y < 0)
+		if (Y < 0)
 		{
-			_Pos.Y *= -1;
+			Y *= -1;
 		}
-		if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] != false)
+		if (Tile_Maps[X][Y] != false)
 		{
 			return true;
 		}
 
-		else if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] == false)
+		else if (Tile_Maps[X][Y] == false)
 		{
 			return false;
 		}
 	}
-	if (GameEngineColor::BLUE == Player_GetColor({ _Pos / 10 }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+	if (GameEngineColor::BLUE == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 	{
-		if (_Pos.Y < 0)
+		if (Y < 0)
 		{
-			_Pos.Y *= -1;
+			Y *= -1;
 		}
 
-		if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] != false)
+		if (Tile_Maps[X][Y] != false)
 		{
 			return true;
 		}
 
-		else if (Tile_Maps[int(_Pos.X / 10)][int(_Pos.Y / 10)] == false)
+		else if (Tile_Maps[X][Y] == false)
 		{
 			return false;
 		}
 	}
 	return true;
+}
+
+std::vector<float4> TileMap::GetPath(const float4& Start, const float4& End)
+{
+	float4 StartIndex = ConvertWorldPosToTilePoint(Start);
+	StartIndex.Y *= -1;
+	float4 EndIndex = ConvertWorldPosToTilePoint(End);
+	EndIndex.Y *= -1;
+
+	return GetPath(StartIndex.iX(), StartIndex.iY(), EndIndex.iX(), EndIndex.iY());
+}
+
+std::vector<float4> TileMap::GetPath(int _StartX, int _StartY, int _EndX, int _EndY)
+{
+	PathFind.IsBlockCallBack = [=](PathPoint _Point)
+		{
+			return !IsBlock(_Point.X, _Point.Y);
+		};
+
+	PathFind.PathFind({ _StartX, _StartY }, { _EndX, _EndY });
+
+	return std::vector<float4>();
 }

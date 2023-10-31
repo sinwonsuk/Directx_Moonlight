@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Player.h"
 #include "Spear.h"
+#include "TileMap.h"
 
 void Player::ChangeState(PlayerState _State)
 {
@@ -712,22 +713,38 @@ void Player::Move(float _Delta)
 
 			if (GameEngineInput::IsPress('A', this) && LeftMove == true)
 			{
-				Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
-			}
+				float4 Move = float4::LEFT * _Delta * Speed;
+				if (true == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
+				{
+					Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
+				}
+			} 
 
 			if (GameEngineInput::IsPress('D', this) && RightMove == true)
 			{
-				Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+				float4 Move = float4::RIGHT* _Delta* Speed;
+				if (true == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
+				{
+					Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
+				}
 			}
 
 			if (GameEngineInput::IsPress('W', this) && UpMove == true)
 			{
-				Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+				float4 Move = float4::UP * _Delta * Speed;
+				if (true == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
+				{
+					Transform.AddLocalPosition(float4::UP * _Delta * Speed);
+				}
 			}
 
 			if (GameEngineInput::IsPress('S', this) && DownMove == true)
 			{
-				Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+				float4 Move = float4::DOWN * _Delta * Speed;
+				if (true == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
+				{
+					Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
+				}
 			}
 			break;
 
