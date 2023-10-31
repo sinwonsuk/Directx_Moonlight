@@ -200,6 +200,7 @@
     <ClCompile Include="Boss_Arm.cpp" />
     <ClCompile Include="Boss_Arm_State.cpp" />
     <ClCompile Include="Arm_Shadow.cpp" />
+    <ClCompile Include="Boss_Brick.cpp" />
     <ClCompile Include="MonsterTest.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -368,6 +369,7 @@
     </ClInclude>
     <ClInclude Include="Boss_Arm.h" />
     <ClInclude Include="Arm_Shadow.h" />
+    <ClInclude Include="Boss_Brick.h" />
     <ClInclude Include="MonsterTest.h" />
   </ItemGroup>
   <ItemGroup>

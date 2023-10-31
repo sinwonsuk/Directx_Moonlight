@@ -52,7 +52,10 @@ public:
 		return Hp;
 	}
 
-
+	bool GetFinishCheck()
+	{
+		return FinishCheck;
+	}
 
 
 protected:
@@ -62,14 +65,14 @@ protected:
 private:
 	EventParameter Event;
 	bool CameraCheck = false;
-
+	bool FinishCheck = false;
 	float Hp = 20.0f;
 
 	float Time = 0.0f;
-	float Speed = 2000.0f;
+	float Speed = 1000.0f;
 	float ArmScale = 0.0f;
 	float4 Prev_Player_Pos = {};
-	//bool Weapon_Collision_Check = false;
+	
 
 	Boss_Arm_State StateValue = Boss_Arm_State::Start;
 

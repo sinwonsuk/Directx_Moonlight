@@ -69,8 +69,10 @@ private:
 	float Speed = 600.0f;
 	//bool Weapon_Collision_Check = false;
 
-	Boss_Monster_State StateValue = Boss_Monster_State::Start;
+	int ArmCheck = 0; 
 
+	Boss_Monster_State StateValue = Boss_Monster_State::Start;
+	std::shared_ptr<class Boss_Arm> Arm;
 	std::shared_ptr<class GameEngineSpriteRenderer> Boss;
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 	
