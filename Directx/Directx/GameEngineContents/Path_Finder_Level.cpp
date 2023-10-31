@@ -5,6 +5,7 @@
 #include "Dungeon_Map_10.h"
 #include "CameraCollision.h"
 #include "TileMap.h"
+#include "MonsterTest.h"
 Path_Finder_Level::Path_Finder_Level()
 {
 }
@@ -24,13 +25,10 @@ void Path_Finder_Level::Start()
 	
 
 	
-	{
-		std::shared_ptr<CameraCollision> object = CreateActor<CameraCollision>();
 	
-	}
 
 	{
-		std::shared_ptr<golem_Solder> Object =CreateActor<golem_Solder>();
+		std::shared_ptr<MonsterTest> Object =CreateActor<MonsterTest>();
 		Object->Transform.AddLocalPosition({ 500.0f,0.0f });
 	}
 

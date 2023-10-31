@@ -18,16 +18,16 @@ void Dungeon_Map_10::Start()
 		std::shared_ptr<Object_jar> Object = GetLevel()->CreateActor<Object_jar>();
 	}*/
 
+	GameEngineInput::AddInputObject(this);
 
 
 
-
-	{
+	/*{
 		BackGround = CreateComponent<GameEngineSpriteRenderer>(100);
 		BackGround->SetSprite("BackGround", 1);
 		BackGround->SetImageScale({ 1380.0f,740.0f });
 		BackGround->Transform.AddLocalPosition({ 0.0f,0.0f });
-	}
+	}*/
 
 
 	{
@@ -41,8 +41,6 @@ void Dungeon_Map_10::Start()
 	{
 		Pixel = CreateComponent<GameEngineSpriteRenderer>(-100);
 		Pixel->SetSprite("Pixel_Floor", 2);
-		//Pixel->SetImageScale({ 1380.0f,740.0f });
-		Pixel->Transform.AddLocalPosition({ 0.0f,0.0f });
 	}
 
 	/*{

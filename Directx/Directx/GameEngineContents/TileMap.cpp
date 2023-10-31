@@ -158,6 +158,5 @@ bool TileMap::IsBlock(float4 _Pos)
 			return false;
 		}
 	}
-
 	return true;
 }
