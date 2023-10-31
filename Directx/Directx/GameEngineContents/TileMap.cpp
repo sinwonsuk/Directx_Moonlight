@@ -58,8 +58,8 @@ void TileMap::Start()
 	
 
 
-	size_t TileX = 128;
-	size_t TileY = 72;
+	size_t TileX = 16;
+	size_t TileY = 9;
 
 
 	Tile_Maps.reserve(TileX* TileY);
@@ -78,16 +78,16 @@ void TileMap::Start()
 	{
 		for (size_t y = 0; y < TileY; y++)
 		{
-			if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+			if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_test_Pixel.png"))
 			{
 				Tile_Maps[int(x)][int(y)] = false;
 			}
-			if (GameEngineColor::GREEN == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+			if (GameEngineColor::GREEN == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_test_Pixel.png"))
 			{
 				Tile_Maps[int(x)][int(y)] = false;
 			}
 
-			if (GameEngineColor::BLUE == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+			if (GameEngineColor::BLUE == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_test_Pixel.png"))
 			{
 				Tile_Maps[int(x)][int(y)] = false;
 			}
@@ -99,7 +99,7 @@ void TileMap::Update(float _Delta)
 {
 	float4 Player_Pos = { Player::this_Player->Transform.GetWorldPosition()};
 	
-	if(IsBlock(Player_Pos))
+	if(IsBlock(Player_Pos) == true)
 	{
 		int a = 0; 
 	}
@@ -136,13 +136,13 @@ GameEngineColor TileMap::Player_GetColor(float4 _Pos, GameEngineColor _DefaultCo
 
 float4 TileMap::ConvertWorldPosToTilePoint(float4 _Pos)
 {
-	float4 Index = _Pos / 10;
+	float4 Index = _Pos / 80;
 	return Index;
 }
 
 bool TileMap::IsBlock(float4 _Pos)
 {
-	float4 Index = _Pos / 10;
+	float4 Index = _Pos / 80;
 
 	return IsBlock(Index.iX(), Index.iY());
 }
@@ -153,60 +153,30 @@ bool TileMap::IsBlock(int X, int Y)
 	Index.X = X;
 	Index.Y = Y;
 
-	if (GameEngineColor::MAGENTA == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+
+	if (Y < 0)
 	{
-		if (Y < 0)
-		{
-			Y *= -1;
-		}
+		Y *= -1;
+	}
 
-
-		if (Tile_Maps[X][Y] != false)
-		{
-			return true;
-		}
-
-		else if (Tile_Maps[X][Y] == false)
-		{
-			return false;
-		}
+	if (GameEngineColor::MAGENTA == Player_GetColor(Index, { 255,0,0,255 }, "Mini_test_Pixel.png"))
+	{
+		return true;
 	}
 
 
-	if (GameEngineColor::GREEN == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+	if (GameEngineColor::GREEN == Player_GetColor(Index, { 255,0,0,255 }, "Mini_test_Pixel.png"))
 	{
-		if (Y < 0)
-		{
-			Y *= -1;
-		}
-		if (Tile_Maps[X][Y] != false)
-		{
-			return true;
-		}
-
-		else if (Tile_Maps[X][Y] == false)
-		{
-			return false;
-		}
+		
+		return true;
 	}
-	if (GameEngineColor::BLUE == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+	if (GameEngineColor::BLUE == Player_GetColor(Index, { 255,0,0,255 }, "Mini_test_Pixel.png"))
 	{
-		if (Y < 0)
-		{
-			Y *= -1;
-		}
+		
 
-		if (Tile_Maps[X][Y] != false)
-		{
-			return true;
-		}
-
-		else if (Tile_Maps[X][Y] == false)
-		{
-			return false;
-		}
+		return true;
 	}
-	return true;
+	return false;
 }
 
 std::vector<float4> TileMap::GetPath(const float4& Start, const float4& End)

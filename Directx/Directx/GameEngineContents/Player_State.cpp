@@ -714,7 +714,7 @@ void Player::Move(float _Delta)
 			if (GameEngineInput::IsPress('A', this) && LeftMove == true)
 			{
 				float4 Move = float4::LEFT * _Delta * Speed;
-				if (true == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
+				if (false == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
 				{
 					Transform.AddLocalPosition(float4::LEFT * _Delta * Speed);
 				}
@@ -723,7 +723,8 @@ void Player::Move(float _Delta)
 			if (GameEngineInput::IsPress('D', this) && RightMove == true)
 			{
 				float4 Move = float4::RIGHT* _Delta* Speed;
-				if (true == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
+
+				if (false == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
 				{
 					Transform.AddLocalPosition(float4::RIGHT * _Delta * Speed);
 				}
@@ -732,7 +733,7 @@ void Player::Move(float _Delta)
 			if (GameEngineInput::IsPress('W', this) && UpMove == true)
 			{
 				float4 Move = float4::UP * _Delta * Speed;
-				if (true == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
+				if (false == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
 				{
 					Transform.AddLocalPosition(float4::UP * _Delta * Speed);
 				}
@@ -741,7 +742,7 @@ void Player::Move(float _Delta)
 			if (GameEngineInput::IsPress('S', this) && DownMove == true)
 			{
 				float4 Move = float4::DOWN * _Delta * Speed;
-				if (true == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
+				if (false == TileMap::Map->IsBlock(Transform.GetWorldPosition() + Move))
 				{
 					Transform.AddLocalPosition(float4::DOWN * _Delta * Speed);
 				}
@@ -843,6 +844,7 @@ void Player::Move(float _Delta)
 				}
 			}
 		}
+		break;
 
 		case CameraType::BossMap:
 		{
@@ -890,6 +892,7 @@ void Player::Move(float _Delta)
 			}
 		}
 		break;
+
 		default:
 			break;
 		}

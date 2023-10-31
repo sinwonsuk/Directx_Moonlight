@@ -96,7 +96,10 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 
-	player->Death(); 
+	/*player->Death(); 
+
+	Map->Rooms.clear();
+	Map->Maps.clear();
 
 	for (size_t i = 0; i < Map->Maps.size(); i++)
 	{
@@ -104,13 +107,13 @@ void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 	}
 
 
-	Map->Rooms.clear();
+	
 
-	Map->Maps.clear(); 
+	*/
 
 
 
-	Map->Death(); 
+	//Map->Death(); 
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;
 

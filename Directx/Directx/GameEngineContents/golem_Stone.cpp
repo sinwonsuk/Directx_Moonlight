@@ -318,5 +318,5 @@ void golem_Stone::MonsterDir()
 	float4 Monster = { -1,0,0 };
 	float Dot = float4::DotProduct3D(Player.NormalizeReturn(), Monster);
 	float radian = atan2(Player.Y, Player.X) - atan2(Monster.Y, Monster.X);
-	degree = abs(radian * (180.0 / 3.141592));
+	degree = float(abs(radian * (180.0 / 3.141592)));
 }

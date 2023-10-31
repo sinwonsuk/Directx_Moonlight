@@ -97,7 +97,7 @@ public:
 
 	void WeaponManager(Spear_State _SpearState, PlayerState state, PlayerState _playstate);
 
-	void Test(float _Time);
+	
 	PlayerState GetPlayerStateValue()
 	{
 		return StateValue;
@@ -141,7 +141,7 @@ private:
 	bool AttackCheck = false;
 
 	float StartSpeed = 20.0f;
-	PlayerState PrevState;
+	
 	PlayerState StateValue = PlayerState::LeftIdle;
 	//std::shared_ptr<Spear> spear;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;

@@ -202,7 +202,7 @@ void Dungeon_Map_01::Update(float _Delta)
 
 		if (Arr.X >= 1) // 배열 벗어나지 않기 위한 조건문 
 		{
-			if (Random_Room::Rooms[Arr.X - 1][Arr.Y].RoomCheck == true)
+			if (Random_Room::Rooms[static_cast<unsigned int>(Arr.X-1)][static_cast<unsigned int>(Arr.Y)].RoomCheck == true)
 			{
 				LeftDoor->On();
 				Left_Collision_Door->On(); 
@@ -210,7 +210,7 @@ void Dungeon_Map_01::Update(float _Delta)
 		}
 		if (Arr.X <= 7) // 배열 벗어나지 않기 위한 조건문 
 		{
-			if (Random_Room::Rooms[Arr.X + 1][Arr.Y].RoomCheck == true)
+			if (Random_Room::Rooms[static_cast<unsigned int>(Arr.X+1)][static_cast<unsigned int>(Arr.Y)].RoomCheck == true)
 			{
 				RightDoor->On();
 				Right_Collision_Door->On();
@@ -218,7 +218,7 @@ void Dungeon_Map_01::Update(float _Delta)
 		}
 		if (Arr.Y >= 1) // 배열 벗어나지 않기 위한 조건문 
 		{
-			if (Random_Room::Rooms[Arr.X][Arr.Y-1].RoomCheck == true)
+			if (Random_Room::Rooms[static_cast<unsigned int>(Arr.X)][static_cast<unsigned int>(Arr.Y-1)].RoomCheck == true)
 			{
 				UpDoor->On();
 				Top_Collision_Door->On();
@@ -226,7 +226,7 @@ void Dungeon_Map_01::Update(float _Delta)
 		}
 		if (Arr.Y <= 7) // 배열 벗어나지 않기 위한 조건문 
 		{
-			if (Random_Room::Rooms[Arr.X ][Arr.Y+1].RoomCheck == true)
+			if (Random_Room::Rooms[static_cast<unsigned int>(Arr.X)][static_cast<unsigned int>(Arr.Y+1)].RoomCheck == true)
 			{
 				DownDoor->On();
 				Bottom_Collision_Door->On();
@@ -264,7 +264,7 @@ void Dungeon_Map_01::Update(float _Delta)
 		Boss_Door->On();
 		Boss_Collison_Door->On();
 		DoorCollision(_Delta, GetLevel()->GetMainCamera()->Transform.GetLocalPosition());
-		ObjectCollision(_Delta, Pixel_Name.c_str(), Random_Room::Rooms[Arr.X][Arr.Y].Pos);
+		ObjectCollision(_Delta, Pixel_Name.c_str(), Random_Room::Rooms[static_cast<unsigned int>(Arr.X)][static_cast<unsigned int>(Arr.Y)].Pos);
 	}
 
 	
@@ -278,7 +278,7 @@ void Dungeon_Map_01::Update(float _Delta)
 		Boss_Door->ChangeAnimation("Boss_Door_Open");
 	}
 
-	if (Boss_Collison_Door->Collision(ContentsCollisionType::Player()) && Boss_Door_Check == false)
+	if (Boss_Collison_Door->Collision(ContentsCollisionType::Player) && Boss_Door_Check == false)
 	{
 		CameraCollision::CameraCol->Col->Off(); 
 		Player::this_Player->Transform.AddLocalPosition({ 0.0f, 300.0f });
@@ -297,7 +297,7 @@ void Dungeon_Map_01::Update(float _Delta)
 		}
 	}
 
-	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().Y < Random_Room::Rooms[Arr.X][Arr.Y].Pos.Y + 720 && test==true)
+	if (Player::this_Player->GetLevel()->GetMainCamera()->Transform.GetLocalPosition().Y < Random_Room::Rooms[static_cast<unsigned int>(Arr.X)][static_cast<unsigned int>(Arr.Y)].Pos.Y + 720.0f && test==true)
 	{
 		CameraCollision::CameraCol->Col->Off();
 		Player::this_Player->GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ 0.0f,Y_Camera_Move.X });

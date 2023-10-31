@@ -37,7 +37,6 @@ public:
 	Random_Room(Random_Room&& _Other) noexcept = delete;
 	Random_Room& operator=(const Random_Room& _Other) = delete;
 	Random_Room& operator=(Random_Room&& _Other) noexcept = delete;
-	RandomDir Dir;
 
 
 

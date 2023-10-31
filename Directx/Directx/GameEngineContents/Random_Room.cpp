@@ -35,7 +35,7 @@ void Random_Room::Monsers()
 
 void Random_Room::Start()
 {
-	
+	Rooms = Rooms;
 
 	Room_State state;
 
@@ -452,14 +452,6 @@ void Random_Room::Update(float _Delta)
 
 
 
-	for (size_t x = 0; x < 9; x++)
-	{
-
-		for (size_t y = 1; y < 9; y++)
-		{
-			Rooms[x][y];
-		}
-	}
-	int a = 0; 
+	
 }
 

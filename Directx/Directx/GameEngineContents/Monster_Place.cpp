@@ -233,6 +233,9 @@ bool Monster_Place::ObjectCollision(std::string_view _Name, float4 _Transform)
 	{
 		return false;
 	}
+
+
+	return false;
 }
 void Monster_Place::Update(float _Delta)
 {

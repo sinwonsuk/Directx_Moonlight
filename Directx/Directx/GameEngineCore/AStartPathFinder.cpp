@@ -39,7 +39,7 @@ std::shared_ptr<PathFindNode> AStartPathFinder::CreateNode(PathFindNode* _Parent
 
 std::vector<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End)
 {
-	return std::vector<PathPoint>();
+	//return std::vector<PathPoint>();
 	// 오픈 리스트에 채워졌다.
 	CreateNode(nullptr, _Start, _End);
 

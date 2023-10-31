@@ -27,20 +27,20 @@ void Dungeon_Map_10::Start()
 		BackGround->SetSprite("BackGround", 1);
 		BackGround->SetImageScale({ 1380.0f,740.0f });
 		BackGround->Transform.AddLocalPosition({ 0.0f,0.0f });
-	}*/
+	}
+*/
 
-
-	{
+	/*{
 
 		Map_floor_01 = CreateComponent<GameEngineSpriteRenderer>(-100);
 		Map_floor_01->SetSprite("Floor_01", 10);
 
-	}
+	}*/
 
 
 	{
 		Pixel = CreateComponent<GameEngineSpriteRenderer>(-100);
-		Pixel->SetSprite("Pixel_Floor", 2);
+		Pixel->SetSprite("test_Pixel", 0);
 	}
 
 	/*{
@@ -50,10 +50,8 @@ void Dungeon_Map_10::Start()
 		LeftDoor->Transform.AddLocalPosition({ -550.0f,20.0f,0.0f });
 		LeftDoor->SetAutoScaleRatio(1.5f);
 		LeftDoor->SetSprite("Door", 1);
-
 	}
 	{
-
 		RightDoor = CreateComponent<GameEngineSpriteRenderer>(-100);
 		RightDoor->Transform.AddLocalRotation({ 0.0f,0.0f,-90.0f });
 		RightDoor->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
@@ -78,7 +76,7 @@ void Dungeon_Map_10::Start()
 
 void Dungeon_Map_10::Update(float _Delta)
 {
-	if (GameEngineInput::IsDown('2', this) && check == false)
+	/*if (GameEngineInput::IsDown('2', this) && check == false)
 	{
 		Pixel->On();
 		check = true;
@@ -87,6 +85,6 @@ void Dungeon_Map_10::Update(float _Delta)
 	{
 		Pixel->Off();
 		check = false;
-	}
+	}*/
 
 }

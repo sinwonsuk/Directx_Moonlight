@@ -48,7 +48,7 @@ public:
 	}
 
 	//void Move(float _Delta);
-	Dir dir;
+	Dir dir = Dir::Down;
 
 protected:
 	void Start() override;
