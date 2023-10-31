@@ -17,6 +17,8 @@ void Boss_Monster::Start()
 	Boss->CreateAnimation("Death", "Death", 0.1f, -1, -1, true);	
 	Boss->CreateAnimation("Boss1_LaunchArm", "Boss1_LaunchArm", 0.1f, -1, -1, false);
 	Boss->CreateAnimation("Boss1_IdleNoArm", "Boss1_IdleNoArm", 0.1f, -1, -1, true);
+	Boss->CreateAnimation("Boss1_RecoverArm", "Boss1_RecoverArm", 0.1f, -1, -1, false);
+	Boss->CreateAnimation("Boss1_Rocks_Spawn_Attack", "Boss1_Rocks_Spawn_Attack", 0.1f, -1, -1, false);
 	Boss->AutoSpriteSizeOn();
 	Boss->SetAutoScaleRatio(2.0f);
 	Boss->ChangeAnimation("Wake_Up");
@@ -56,9 +58,6 @@ void Boss_Monster::Update(float _Delta)
 	Time = _Delta; 
 
 
-
-
-
 	Col->CollisionEvent(ContentsCollisionType::Player, Event);
 	UpdateState(_Delta);
 
@@ -68,3 +67,4 @@ void Boss_Monster::AnimationCheck(const std::string_view& _AnimationName)
 {
 	Boss->ChangeAnimation(_AnimationName);
 }
+

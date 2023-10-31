@@ -202,6 +202,8 @@
     <ClCompile Include="Arm_Shadow.cpp" />
     <ClCompile Include="Boss_Brick.cpp" />
     <ClCompile Include="MonsterTest.cpp" />
+    <ClCompile Include="Boss_Rock_Shadow.cpp" />
+    <ClCompile Include="Boss_Rock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -371,6 +373,8 @@
     <ClInclude Include="Arm_Shadow.h" />
     <ClInclude Include="Boss_Brick.h" />
     <ClInclude Include="MonsterTest.h" />
+    <ClInclude Include="Boss_Rock_Shadow.h" />
+    <ClInclude Include="Boss_Rock.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

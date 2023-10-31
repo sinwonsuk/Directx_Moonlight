@@ -172,6 +172,8 @@
     <ClCompile Include="Boss_Map.cpp" />
     <ClCompile Include="Boss_Monster.cpp" />
     <ClCompile Include="Boss_Monster_State.cpp" />
+    <ClCompile Include="Boss_Rock.cpp" />
+    <ClCompile Include="Boss_Rock_Shadow.cpp" />
     <ClCompile Include="CameraCollision.cpp" />
     <ClCompile Include="ContentsControlWindow.cpp" />
     <ClCompile Include="Dungeon_Map_00.cpp" />
@@ -267,6 +269,8 @@
     <ClInclude Include="Boss_Brick.h" />
     <ClInclude Include="Boss_Map.h" />
     <ClInclude Include="Boss_Monster.h" />
+    <ClInclude Include="Boss_Rock.h" />
+    <ClInclude Include="Boss_Rock_Shadow.h" />
     <ClInclude Include="CameraCollision.h" />
     <ClInclude Include="ContentsControlWindow.h" />
     <ClInclude Include="Dungeon_Map_00.h" />

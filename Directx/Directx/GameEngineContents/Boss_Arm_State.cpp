@@ -79,7 +79,7 @@ void Boss_Arm::DownUpdate(float _Time)
 void Boss_Arm::UpUpdate(float _Time)
 {
 	Shadow->size = Shadow_Size::Small;
-	Shadow->Transform.SetWorldPosition(Prev_Player_Pos);
+	//Shadow->Transform.SetWorldPosition(Prev_Player_Pos);
 	Transform.AddLocalPosition(float4::UP * _Time * Speed);
 
 	if (Player::this_Player->Transform.GetWorldPosition().Y <= Transform.GetWorldPosition().Y - 600)

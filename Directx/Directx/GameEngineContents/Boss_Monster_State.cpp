@@ -2,7 +2,7 @@
 #include "Boss_Monster.h"
 #include "Player.h"
 #include "Boss_Arm.h"
-
+#include "Boss_Rock_Shadow.h"
 
 void Boss_Monster::ChangeState(Boss_Monster_State _State)
 {
@@ -30,6 +30,12 @@ void Boss_Monster::ChangeState(Boss_Monster_State _State)
 		break;
 	case Boss_Monster_State::IdleNoArm:
 		AnimationCheck("Boss1_IdleNoArm");
+		break;
+	case Boss_Monster_State::RecoveryArm:
+		AnimationCheck("Boss1_RecoverArm");
+		break;
+	case Boss_Monster_State::Rocks_Spawn_Attack:
+		AnimationCheck("Boss1_Rocks_Spawn_Attack");
 		break;
 	}
 	
@@ -61,6 +67,13 @@ void Boss_Monster::UpdateState(float _Time)
 	case Boss_Monster_State::IdleNoArm:
 		Idle_NoArm_Update(_Time);
 		break;
+	case Boss_Monster_State::RecoveryArm:
+		RecoveryArmUpdate(_Time);
+		break;
+	case Boss_Monster_State::Rocks_Spawn_Attack:
+		Rocks_Spawn_Attack_Update(_Time);
+		break;
+
 	default:
 		break;
 	}
@@ -70,7 +83,7 @@ void Boss_Monster::IdleUpdate(float _Time)
 {
 	if (Time > 0 && Boss->IsCurAnimationEnd())
 	{
-		ChangeState(Boss_Monster_State::LaunchArm);
+		ChangeState(Boss_Monster_State::Rocks_Spawn_Attack);
 		return;
 	}
 
@@ -145,11 +158,49 @@ void Boss_Monster::Idle_NoArm_Update(float _Time)
 	{
 		Arm->Death();
 		Arm = GetLevel()->CreateActor<Boss_Arm>();
-		ArmCheck++;
+		++ArmCheck;
 	}
 	if (ArmCheck == 3)
 	{
-		int a = 0;
+		Arm->Death();
+		ArmCheck = 0; 
+		ChangeState(Boss_Monster_State::RecoveryArm);
+		return;
+	}
+
+}
+
+void Boss_Monster::RecoveryArmUpdate(float _Time)
+{
+	if (Boss->IsCurAnimationEnd())
+	{
+		ChangeState(Boss_Monster_State::Idle);
+		return; 
+	}
+
+}
+
+void Boss_Monster::Rocks_Spawn_Attack_Update(float _Time)
+{
+	if (Boss->IsCurAnimationEnd())
+	{
+		while (true)
+		{
+			std::shared_ptr<Boss_Rock_Shadow> Object = GetLevel()->CreateActor<Boss_Rock_Shadow>();
+			Object->Transform.AddLocalPosition({ Transform.GetWorldPosition().X+600 - ssss,Transform.GetWorldPosition().Y-300});
+
+			ssss -= 80;
+
+
+			++ASSS;
+			if (ASSS > 50)
+			{
+				break;
+			}
+
+		}
+
+
 	}
 
 }

@@ -3,9 +3,6 @@
 class MonsterTest : public GameEngineActor
 {
 public:
-
-
-
 	MonsterTest();
 	~MonsterTest();
 
@@ -14,17 +11,6 @@ public:
 	MonsterTest(MonsterTest&& _Other) noexcept = delete;
 	MonsterTest& operator=(const MonsterTest& _Other) = delete;
 	MonsterTest& operator=(MonsterTest&& _Other) noexcept = delete;
-
-	
-
-
-
-
-	
-	
-
-
-	
 
 
 protected:

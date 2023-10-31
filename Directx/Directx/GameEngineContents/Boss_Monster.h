@@ -9,6 +9,9 @@ enum class Boss_Monster_State
 	Idle,
 	LaunchArm,
 	IdleNoArm,
+	RecoveryArm, 
+	Rocks_Spawn_Attack,
+
 };
 
 class Boss_Monster : public GameEngineActor
@@ -40,8 +43,10 @@ public:
 	void LaunchArm_Update(float _Time);
 	void Idle_NoArm_Update(float _Time);
 	void AnimationCheck(const std::string_view& _AnimationName);
+	void RecoveryArmUpdate(float _Time);
+	void Rocks_Spawn_Attack_Update(float _Time);
 
-
+	//void RecoveryArmUpdate(float _Time);
 	Boss_Monster_State GetBossStateValue()
 	{
 		return StateValue;
@@ -62,9 +67,10 @@ protected:
 private:
 	EventParameter Event;
 	bool CameraCheck = false;
+	int ssss = 0;
 	bool AD = false;
 	float Hp = 20.0f;
-
+	float ASSS = 0.0f;
 	float Time = 0.0f;
 	float Speed = 600.0f;
 	//bool Weapon_Collision_Check = false;
