@@ -37,8 +37,10 @@ std::shared_ptr<PathFindNode> AStartPathFinder::CreateNode(PathFindNode* _Parent
 	return NewNode;
 }
 
-std::vector<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End)
+std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End)
 {
+	// 하기전에 행야한다.
+
 	//return std::vector<PathPoint>();
 	// 오픈 리스트에 채워졌다.
 	CreateNode(nullptr, _Start, _End);
@@ -56,6 +58,8 @@ std::vector<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _E
 		{1, 1},
 		{-1, -1},
 	};
+
+	std::shared_ptr<PathFindNode> ResultNode = nullptr;
 
 	while (OpenList.size())
 	{
@@ -88,13 +92,28 @@ std::vector<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _E
 
 			std::shared_ptr<PathFindNode> Node = CreateNode(FindNode.get(), FindIndex, _End);
 
-			if (FindIndex.Key == _End.Key)
+			if (nullptr != Node && Node->Index.Key == _End.Key)
 			{
+				ResultNode = Node;
 				break;
 			}
 		}
+
+		if (nullptr != ResultNode)
+		{
+			break;
+		}
 	}
 
+	std::list<PathPoint> Result;
 
-	return std::vector<PathPoint>();
+	PathFindNode* CurNode = ResultNode.get();
+
+	while (nullptr != CurNode)
+	{
+		Result.push_front(CurNode->Index);
+		CurNode = CurNode->Parent;
+	}
+
+	return Result;
 }

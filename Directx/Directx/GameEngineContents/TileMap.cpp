@@ -136,13 +136,21 @@ GameEngineColor TileMap::Player_GetColor(float4 _Pos, GameEngineColor _DefaultCo
 
 float4 TileMap::ConvertWorldPosToTilePoint(float4 _Pos)
 {
+	_Pos.Y *= -1.f;
 	float4 Index = _Pos / 80;
 	return Index;
 }
 
+float4 TileMap::ConvertTilePointToWorldPos(PathPoint _Point)
+{
+	// 타일 절반 크기를 + 해줘
+	float4 WorldPos = float4{ _Point.X * 80.0f, _Point.Y * 80.0f };
+	return WorldPos;
+}
+
 bool TileMap::IsBlock(float4 _Pos)
 {
-	float4 Index = _Pos / 80;
+	float4 Index = ConvertWorldPosToTilePoint(_Pos);
 
 	return IsBlock(Index.iX(), Index.iY());
 }
@@ -179,7 +187,7 @@ bool TileMap::IsBlock(int X, int Y)
 	return false;
 }
 
-std::vector<float4> TileMap::GetPath(const float4& Start, const float4& End)
+std::list<float4> TileMap::GetPath(const float4& Start, const float4& End)
 {
 	float4 StartIndex = ConvertWorldPosToTilePoint(Start);
 	StartIndex.Y *= -1;
@@ -189,14 +197,23 @@ std::vector<float4> TileMap::GetPath(const float4& Start, const float4& End)
 	return GetPath(StartIndex.iX(), StartIndex.iY(), EndIndex.iX(), EndIndex.iY());
 }
 
-std::vector<float4> TileMap::GetPath(int _StartX, int _StartY, int _EndX, int _EndY)
+std::list<float4> TileMap::GetPath(int _StartX, int _StartY, int _EndX, int _EndY)
 {
 	PathFind.IsBlockCallBack = [=](PathPoint _Point)
 		{
-			return !IsBlock(_Point.X, _Point.Y);
+			return IsBlock(_Point.X, _Point.Y);
 		};
 
-	PathFind.PathFind({ _StartX, _StartY }, { _EndX, _EndY });
+	// 스타트 포인트와 앤드 포인트가 블록이면 
 
-	return std::vector<float4>();
+	std::list<PathPoint> Points = PathFind.PathFind({ _StartX, _StartY }, { _EndX, _EndY });
+
+	std::list<float4> Result;
+
+	for (PathPoint& Point : Points)
+	{
+		Result.push_back(ConvertTilePointToWorldPos(Point));
+	}
+
+	return Result;
 }

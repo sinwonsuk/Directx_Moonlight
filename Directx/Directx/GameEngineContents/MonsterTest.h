@@ -22,5 +22,9 @@ private:
 
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster;
 
+	std::list<float4> PathPos;
+
+	float PathTime = 0.0f;
+
 
 };

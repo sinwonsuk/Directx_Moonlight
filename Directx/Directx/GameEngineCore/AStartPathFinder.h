@@ -68,7 +68,7 @@ public:
 	AStartPathFinder& operator=(const AStartPathFinder& _Other) = delete;
 	AStartPathFinder& operator=(AStartPathFinder&& _Other) noexcept = delete;
 
-	std::vector<PathPoint> PathFind(PathPoint _Start, PathPoint _End);
+	std::list<PathPoint> PathFind(PathPoint _Start, PathPoint _End);
 
 protected:
 	// std::map<

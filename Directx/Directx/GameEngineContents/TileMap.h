@@ -21,13 +21,15 @@ public:
 
 	float4 ConvertWorldPosToTilePoint(float4 _Pos);
 
+	float4 ConvertTilePointToWorldPos(PathPoint _Point);
+
      bool IsBlock(float4 _Pos);
 
 	 bool IsBlock(int X, int Y);
 
-	std::vector<float4> GetPath(const float4& Start, const float4& End);
+	 std::list<float4> GetPath(const float4& Start, const float4& End);
 
-	std::vector<float4> GetPath(int _StartX, int _StartY, int _EndX, int _EndY);
+	std::list<float4> GetPath(int _StartX, int _StartY, int _EndX, int _EndY);
 
 protected:
 	void Start() override;
