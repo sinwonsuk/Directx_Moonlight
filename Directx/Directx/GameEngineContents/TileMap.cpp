@@ -155,6 +155,31 @@ bool TileMap::IsBlock(float4 _Pos)
 	return IsBlock(Index.iX(), Index.iY());
 }
 
+bool TileMap::test(int X, int Y)
+{
+	size_t TileX = 16;
+	size_t TileY = 9;
+
+	Y *= -1;
+
+	if (X < 16)
+	{
+		if (X >= 0)
+		{
+			if (Y < 9)
+			{
+				if (Y >= 0)
+				{
+					return true;
+				}
+			}
+		}
+	}
+
+
+	return false;
+}
+
 bool TileMap::IsBlock(int X, int Y)
 {
 	float4 Index;
@@ -203,6 +228,16 @@ std::list<float4> TileMap::GetPath(int _StartX, int _StartY, int _EndX, int _End
 		{
 			return IsBlock(_Point.X, _Point.Y);
 		};
+
+	PathFind.SizeOver = [=](PathPoint _Point)
+		{
+			return test(_Point.X, _Point.Y);
+		};
+
+
+
+
+
 
 	// 스타트 포인트와 앤드 포인트가 블록이면 
 

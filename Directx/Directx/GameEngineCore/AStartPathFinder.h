@@ -56,7 +56,7 @@ class AStartPathFinder
 {
 public:
 	std::function<bool(PathPoint)> IsBlockCallBack;
-
+	std::function<bool(PathPoint)> SizeOver;
 	
 public:
 	AStartPathFinder();

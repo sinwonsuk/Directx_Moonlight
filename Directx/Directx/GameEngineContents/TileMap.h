@@ -24,7 +24,7 @@ public:
 	float4 ConvertTilePointToWorldPos(PathPoint _Point);
 
      bool IsBlock(float4 _Pos);
-
+	 bool test(int X, int Y);
 	 bool IsBlock(int X, int Y);
 
 	 std::list<float4> GetPath(const float4& Start, const float4& End);

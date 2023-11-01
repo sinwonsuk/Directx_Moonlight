@@ -33,14 +33,18 @@ std::shared_ptr<PathFindNode> AStartPathFinder::CreateNode(PathFindNode* _Parent
 	NewNode->Index = _Start;
 	OpenIndex.insert(NewNode->Index.Key);
 
+	
+
 	OpenList.insert(std::make_pair(NewNode->F,NewNode));
 	return NewNode;
 }
 
 std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End)
 {
+	CloseIndex.clear();
+	
+	
 	// 하기전에 행야한다.
-
 	//return std::vector<PathPoint>();
 	// 오픈 리스트에 채워졌다.
 	CreateNode(nullptr, _Start, _End);
@@ -48,6 +52,7 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 	// 찾는 횟수를 제한할거냐.
 	int Count = 0;
 
+	
 	PathPoint ArrDir[8] = {
 		{0, 1},
 		{1, 0},
@@ -63,6 +68,10 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 
 	while (OpenList.size())
 	{
+
+
+
+
 		std::multimap<float, std::shared_ptr<PathFindNode>>::iterator FindNodeIter;
 		FindNodeIter = OpenList.begin();
 		std::shared_ptr<PathFindNode> FindNode = FindNodeIter->second;
@@ -80,6 +89,8 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 				MsgBoxAssert("길찾기 판단용 콜백을 넣어주지 않았습니다");
 			}
 
+			
+
 			if (true == IsBlockCallBack(FindIndex))
 			{
 				continue;
@@ -90,6 +101,12 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 				continue;
 			}
 
+			if (false == SizeOver(FindIndex))
+			{
+				continue;
+			}
+
+
 			std::shared_ptr<PathFindNode> Node = CreateNode(FindNode.get(), FindIndex, _End);
 
 			if (nullptr != Node && Node->Index.Key == _End.Key)
@@ -97,7 +114,12 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 				ResultNode = Node;
 				break;
 			}
+
+			
+
 		}
+
+		
 
 		if (nullptr != ResultNode)
 		{
@@ -114,6 +136,9 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 		Result.push_front(CurNode->Index);
 		CurNode = CurNode->Parent;
 	}
+
+
+
 
 	return Result;
 }
