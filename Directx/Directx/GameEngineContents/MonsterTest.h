@@ -1,4 +1,16 @@
 #pragma once
+enum class DirCheck
+{
+	LeftUp,
+	RightUp,
+	LeftDown,
+	RightDown,
+	Left,
+	Right,
+	Up,
+	Down, 
+
+};
 
 class MonsterTest : public GameEngineActor
 {
@@ -23,7 +35,7 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster;
 
 	std::list<float4> PathPos;
-
+	float4 thisPos = {};
 	float PathTime = 0.0f;
 
 

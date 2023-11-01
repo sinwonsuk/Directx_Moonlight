@@ -39,19 +39,163 @@ void MonsterTest::Update(float _Delta)
 	if (0 == PathPos.size())
 	{
 		PathPos = TileMap::Map->GetPath(Transform.GetWorldPosition(), Player::this_Player->Transform.GetWorldPosition());
+		thisPos = Transform.GetWorldPosition();
 	} 
-	else
+	
+		
+	else if( PathPos.size() > 0)
 	{
-		PathTime -= _Delta;
 
-		if (PathTime <= 0.0f)
-		{
+
+
 			float4 Pos = PathPos.front();
-			Transform.SetLocalPosition(Pos);
-			PathPos.pop_front();
-			PathTime = 0.1f;
+
+			float4 AD = Pos - Transform.GetWorldPosition();
+
+
+
+			Transform.AddWorldPosition(AD.NormalizeReturn() * _Delta * 500.0f);
+
+
+
+
+
+
+
+
+
+
+
+			if (AD.Y > 0)
+			{
+				if (AD.X > 0)
+				{
+					if (Pos.Y < Transform.GetWorldPosition().Y)
+					{
+						if (Pos.X < Transform.GetWorldPosition().X)
+						{
+							thisPos = Transform.GetWorldPosition();
+							PathPos.pop_front();
+							return;
+						}
+					}
+
+				}
+			}
+
+			if (AD.Y > 0)
+			{
+				if (AD.X < 0)
+				{
+					if (Pos.Y < Transform.GetWorldPosition().Y)
+					{
+						if (Pos.X > Transform.GetWorldPosition().X)
+						{
+							thisPos = Transform.GetWorldPosition();
+							PathPos.pop_front();
+							return;
+						}
+					}
+
+				}
+			}
+
+			 if (AD.Y < 0)
+			{
+				if (AD.X < 0)
+				{
+					if (Pos.Y > Transform.GetWorldPosition().Y)
+					{
+						if (Pos.X > Transform.GetWorldPosition().X)
+						{
+							thisPos = Transform.GetWorldPosition();
+							PathPos.pop_front();
+							return;
+						}
+					}
+
+				}
+			}
+
+
+			 if (AD.Y < 0)
+			{
+				if (AD.X > 0)
+				{
+					if (Pos.Y > Transform.GetWorldPosition().Y)
+					{
+						if (Pos.X < Transform.GetWorldPosition().X)
+						{
+							thisPos = Transform.GetWorldPosition();
+							PathPos.pop_front();
+							return;
+						}
+					}
+
+				}
+			}
+
+			 if (AD.X > 0)
+			 {
+				 if (Pos.X < Transform.GetWorldPosition().X)
+				 {
+					 thisPos = Transform.GetWorldPosition();
+					 PathPos.pop_front();
+					 return;
+				 }
+			 }
+
+			 else if (AD.X < 0)
+			 {
+				 if (Pos.X > Transform.GetWorldPosition().X)
+				 {
+					 thisPos = Transform.GetWorldPosition();
+					 PathPos.pop_front();
+					 return;
+				 }
+			 }
+			else if (AD.Y > 0)
+			{
+				if (Pos.Y < Transform.GetWorldPosition().Y)
+				{
+					thisPos = Transform.GetWorldPosition();
+					PathPos.pop_front();
+					return;
+				}
+			}
+
+			else if (AD.Y < 0)
+			{
+
+				if (Pos.Y> Transform.GetWorldPosition().Y)
+				{
+					thisPos = Transform.GetWorldPosition();
+					PathPos.pop_front();
+					return;
+				}
+			}
+
+			
+
+                PathTime -= _Delta; 
+
+               //if (PathTime <= 0.0f)
+               //{
+               //	float4 Pos = PathPos.front();
+               //	Transform.SetLocalPosition(Pos);
+               //	PathPos.pop_front();
+               //	PathTime = 0.1f;
+               //}
+ 
+		
+
 		}
-	}
+
+
+
+		
+
+		
 
 	
 

@@ -42,8 +42,9 @@ std::shared_ptr<PathFindNode> AStartPathFinder::CreateNode(PathFindNode* _Parent
 std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End)
 {
 	CloseIndex.clear();
-	
-	
+	OpenList.clear(); 
+	OpenIndex.clear();
+	CloseList.clear();
 	// 하기전에 행야한다.
 	//return std::vector<PathPoint>();
 	// 오픈 리스트에 채워졌다.
