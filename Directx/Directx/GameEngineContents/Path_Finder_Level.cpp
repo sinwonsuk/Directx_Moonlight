@@ -29,8 +29,10 @@ void Path_Finder_Level::Start()
 
 	{
 		std::shared_ptr<MonsterTest> Object =CreateActor<MonsterTest>();
-		Object->Transform.AddLocalPosition({ 500.0f,0.0f });
+		Object->Transform.SetLocalPosition({ 840.0f,-440.0f });
 	}
+
+	
 
 	{
 		std::shared_ptr<Dungeon_Map_10> Object = CreateActor<Dungeon_Map_10>();

@@ -97,7 +97,7 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 				continue;
 			}
 
-			if (true == CloseIndex.contains(FindIndex.Key) || true == OpenList.contains(FindIndex.Key))
+			if (true == CloseIndex.contains(FindIndex.Key) || true == OpenIndex.contains(FindIndex.Key))
 			{
 				continue;
 			}
@@ -138,7 +138,7 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 		CurNode = CurNode->Parent;
 	}
 
-
+	
 
 
 	return Result;

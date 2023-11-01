@@ -38,5 +38,5 @@ private:
 	float4 thisPos = {};
 	float PathTime = 0.0f;
 
-
+	float4 Brick_Size = 0.0f;
 };

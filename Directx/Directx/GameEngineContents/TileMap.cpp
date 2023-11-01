@@ -58,8 +58,8 @@ void TileMap::Start()
 	
 
 
-	size_t TileX = 16;
-	size_t TileY = 9;
+	size_t TileX = 32;
+	size_t TileY = 18;
 
 
 	Tile_Maps.reserve(TileX* TileY);
@@ -78,16 +78,16 @@ void TileMap::Start()
 	{
 		for (size_t y = 0; y < TileY; y++)
 		{
-			if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_test_Pixel.png"))
+			if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 			{
 				Tile_Maps[int(x)][int(y)] = false;
 			}
-			if (GameEngineColor::GREEN == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_test_Pixel.png"))
+			if (GameEngineColor::GREEN == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 			{
 				Tile_Maps[int(x)][int(y)] = false;
 			}
 
-			if (GameEngineColor::BLUE == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_test_Pixel.png"))
+			if (GameEngineColor::BLUE == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 			{
 				Tile_Maps[int(x)][int(y)] = false;
 			}
@@ -137,14 +137,14 @@ GameEngineColor TileMap::Player_GetColor(float4 _Pos, GameEngineColor _DefaultCo
 float4 TileMap::ConvertWorldPosToTilePoint(float4 _Pos)
 {
 	_Pos.Y *= -1.f;
-	float4 Index = _Pos / 80;
+	float4 Index = _Pos / 40;
 	return Index;
 }
 
 float4 TileMap::ConvertTilePointToWorldPos(PathPoint _Point)
 {
 	// 타일 절반 크기를 + 해줘
-	float4 WorldPos = float4{ _Point.X * 80.0f, _Point.Y * 80.0f };
+	float4 WorldPos = float4{ _Point.X * 40.0f, _Point.Y * 40.0f};
 	return WorldPos;
 }
 
@@ -157,16 +157,16 @@ bool TileMap::IsBlock(float4 _Pos)
 
 bool TileMap::test(int X, int Y)
 {
-	size_t TileX = 16;
-	size_t TileY = 9;
+	size_t TileX = 32;
+	size_t TileY = 18;
 
 	Y *= -1;
 
-	if (X < 16)
+	if (X < 32)
 	{
 		if (X >= 0)
 		{
-			if (Y < 9)
+			if (Y < 18)
 			{
 				if (Y >= 0)
 				{
@@ -192,18 +192,18 @@ bool TileMap::IsBlock(int X, int Y)
 		Y *= -1;
 	}
 
-	if (GameEngineColor::MAGENTA == Player_GetColor(Index, { 255,0,0,255 }, "Mini_test_Pixel.png"))
+	if (GameEngineColor::MAGENTA == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 	{
 		return true;
 	}
 
 
-	if (GameEngineColor::GREEN == Player_GetColor(Index, { 255,0,0,255 }, "Mini_test_Pixel.png"))
+	if (GameEngineColor::GREEN == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 	{
 		
 		return true;
 	}
-	if (GameEngineColor::BLUE == Player_GetColor(Index, { 255,0,0,255 }, "Mini_test_Pixel.png"))
+	if (GameEngineColor::BLUE == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
 	{
 		
 

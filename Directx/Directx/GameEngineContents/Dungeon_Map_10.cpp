@@ -30,18 +30,18 @@ void Dungeon_Map_10::Start()
 	}
 */
 
-	/*{
+	{
 
 		Map_floor_01 = CreateComponent<GameEngineSpriteRenderer>(-100);
 		Map_floor_01->SetSprite("Floor_01", 10);
 
-	}*/
-
-
-	{
-		Pixel = CreateComponent<GameEngineSpriteRenderer>(-100);
-		Pixel->SetSprite("test_Pixel", 0);
 	}
+
+
+	//{
+	//	Pixel = CreateComponent<GameEngineSpriteRenderer>(-100);
+	//	Pixel->SetSprite("Pixel_Floor", 2);
+	//}
 
 	/*{
 
