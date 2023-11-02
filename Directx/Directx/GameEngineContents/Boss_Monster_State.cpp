@@ -102,7 +102,7 @@ void Boss_Monster::StartUpdate(float _Time)
 
 	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y >= Transform.GetWorldPosition().Y)
 	{
-		ChangeState(Boss_Monster_State::WakeUp)
+		ChangeState(Boss_Monster_State::WakeUp);
 		return;
 	}
 

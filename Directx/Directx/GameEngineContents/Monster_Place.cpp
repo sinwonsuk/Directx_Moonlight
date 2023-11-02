@@ -61,7 +61,7 @@ void Monster_Place::Monsters(float4 _Pos)
 
 		
 
-		switch (1)
+		switch (A)
 		{
 		case 0:
 		{

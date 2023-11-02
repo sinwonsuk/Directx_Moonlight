@@ -144,7 +144,7 @@ float4 TileMap::ConvertWorldPosToTilePoint(float4 _Pos)
 float4 TileMap::ConvertTilePointToWorldPos(PathPoint _Point)
 {
 	// 타일 절반 크기를 + 해줘
-	float4 WorldPos = float4{ _Point.X * 40.0f, _Point.Y * 40.0f};
+	float4 WorldPos = float4{ _Point.X * 40.0f, _Point.Y * 40.0f+20.0f};
 	return WorldPos;
 }
 
