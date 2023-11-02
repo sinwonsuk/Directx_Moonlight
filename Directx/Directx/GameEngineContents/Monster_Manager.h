@@ -14,7 +14,7 @@ public:
 
 
 	void MonsterCollision(float _Delta, std::string_view _Name);
-	
+	void Monster_Move(float _Delta, std::string_view _Name);
 	static int Map_Check;
 protected:
 	std::shared_ptr<class GameEngineCollision> Monster;

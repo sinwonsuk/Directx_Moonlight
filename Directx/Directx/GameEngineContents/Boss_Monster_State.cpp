@@ -83,7 +83,7 @@ void Boss_Monster::IdleUpdate(float _Time)
 {
 	if (Time > 0 && Boss->IsCurAnimationEnd())
 	{
-		ChangeState(Boss_Monster_State::Rocks_Spawn_Attack);
+		ChangeState(Boss_Monster_State::LaunchArm);
 		return;
 	}
 
@@ -102,7 +102,7 @@ void Boss_Monster::StartUpdate(float _Time)
 
 	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y >= Transform.GetWorldPosition().Y)
 	{
-		ChangeState(Boss_Monster_State::WakeUp);
+		ChangeState(Boss_Monster_State::WakeUp)
 		return;
 	}
 
