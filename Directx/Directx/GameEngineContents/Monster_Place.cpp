@@ -46,7 +46,7 @@ void Monster_Place::Monsters(float4 _Pos)
 	Random2->SetSeed(Random_C);
 	Random->SetSeed(Random_A);
 
-	int a = Random3->RandomInt(7, 15);
+	int a = Random3->RandomInt(3, 7);
 
 
 	
@@ -61,19 +61,19 @@ void Monster_Place::Monsters(float4 _Pos)
 
 		
 
-		switch (A)
+		switch (1)
 		{
 		case 0:
 		{
 			while (true)
 			{
-				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
+				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 24);
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 
 					std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X ,  sd.Y + 360 - Monster_Pos.Y });
+					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X* 40 ,  sd.Y + 360 - Monster_Pos.Y*32 });
 					break;
 				}
 
@@ -89,13 +89,15 @@ void Monster_Place::Monsters(float4 _Pos)
 		{
 			while (true)
 			{
-				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
+				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 24);
 				
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 					Solder = GetLevel()->CreateActor<golem_Solder>();
-					Solder->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X ,  sd.Y + 360 - Monster_Pos.Y });
+					Solder->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 40 ,  sd.Y + 360 - Monster_Pos.Y * 32 });
+					Solder->Set_MapName(Name);
+					Solder->Set_Dir({ sd.X - 640 ,sd.Y + 360 });
 					break;
 				}
 

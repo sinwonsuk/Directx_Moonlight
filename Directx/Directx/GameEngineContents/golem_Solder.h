@@ -1,6 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
-
+#include "Monster_Manager.h"
 
 enum class golem_Solder_State
 {
@@ -17,7 +17,7 @@ enum class golem_Solder_State
 
 };
 
-class golem_Solder : public GameEngineActor
+class golem_Solder : public GameEngineActor , public Monster_Manager
 {
 public:
 	// constrcuter destructer

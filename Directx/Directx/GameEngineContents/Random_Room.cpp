@@ -329,7 +329,8 @@ void Random_Room::Start()
 			GameEngineRandom NewRanadom;
 
 			std::shared_ptr<Monster_Place> Object = GetLevel()->CreateActor<Monster_Place>(ContentsObjectType::Monster);
-			Object->sd = { Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos };
+			Object->sd = { Rooms[static_cast<int>(Arr.X)][static_cast<int>(Arr.Y)].Pos};
+
 			Object->Name = result.c_str();
 			Monser_Seed += 1;
 

@@ -1,4 +1,5 @@
 #pragma once
+#include "Monster_Manager.h"
 enum class DirCheck
 {
 	LeftUp,
@@ -12,7 +13,7 @@ enum class DirCheck
 
 };
 
-class MonsterTest : public GameEngineActor
+class MonsterTest : public GameEngineActor , public Monster_Manager
 {
 public:
 	MonsterTest();
@@ -35,8 +36,8 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster;
 
 	std::list<float4> PathPos;
-	float4 thisPos = {};
+	
 	float PathTime = 0.0f;
 
-	float4 Brick_Size = 0.0f;
+	
 };

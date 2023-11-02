@@ -39,7 +39,7 @@ std::shared_ptr<PathFindNode> AStartPathFinder::CreateNode(PathFindNode* _Parent
 	return NewNode;
 }
 
-std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End)
+std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End, std::string_view _Name)
 {
 	CloseIndex.clear();
 	OpenList.clear(); 
@@ -69,10 +69,6 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 
 	while (OpenList.size())
 	{
-
-
-
-
 		std::multimap<float, std::shared_ptr<PathFindNode>>::iterator FindNodeIter;
 		FindNodeIter = OpenList.begin();
 		std::shared_ptr<PathFindNode> FindNode = FindNodeIter->second;
@@ -92,7 +88,7 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 
 			
 
-			if (true == IsBlockCallBack(FindIndex))
+			if (true == IsBlockCallBack(FindIndex ,_Name))
 			{
 				continue;
 			}

@@ -59,7 +59,7 @@ void TileMap::Start()
 
 
 	size_t TileX = 32;
-	size_t TileY = 18;
+	size_t TileY = 24;
 
 
 	Tile_Maps.reserve(TileX* TileY);
@@ -78,16 +78,16 @@ void TileMap::Start()
 	{
 		for (size_t y = 0; y < TileY; y++)
 		{
-			if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+			if (GameEngineColor::MAGENTA == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Dungeon_Map_Pixel_013.png"))
 			{
 				Tile_Maps[int(x)][int(y)] = false;
 			}
-			if (GameEngineColor::GREEN == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+			if (GameEngineColor::GREEN == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Dungeon_Map_Pixel_013.png"))
 			{
 				Tile_Maps[int(x)][int(y)] = false;
 			}
 
-			if (GameEngineColor::BLUE == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+			if (GameEngineColor::BLUE == GetColor({ float(x),float(y) }, { 255,0,0,255 }, "Dungeon_Map_Pixel_013.png"))
 			{
 				Tile_Maps[int(x)][int(y)] = false;
 			}
@@ -99,15 +99,7 @@ void TileMap::Update(float _Delta)
 {
 	float4 Player_Pos = { Player::this_Player->Transform.GetWorldPosition()};
 	
-	if(IsBlock(Player_Pos) == true)
-	{
-		int a = 0; 
-	}
-
-	if (IsBlock(Player_Pos)==false)
-	{
-		int a = 0;
-	}
+	
 
 
 
@@ -137,28 +129,28 @@ GameEngineColor TileMap::Player_GetColor(float4 _Pos, GameEngineColor _DefaultCo
 float4 TileMap::ConvertWorldPosToTilePoint(float4 _Pos)
 {
 	_Pos.Y *= -1.f;
-	float4 Index = _Pos / 40;
+	float4 Index = float4{ _Pos.X / 40,_Pos.Y / 30 };
 	return Index;
 }
 
 float4 TileMap::ConvertTilePointToWorldPos(PathPoint _Point)
 {
 	// 타일 절반 크기를 + 해줘
-	float4 WorldPos = float4{ _Point.X * 40.0f, _Point.Y * 40.0f+20.0f};
+	float4 WorldPos = float4{ _Point.X * 40.0f, _Point.Y * 30.0f+20.0f};
 	return WorldPos;
 }
 
-bool TileMap::IsBlock(float4 _Pos)
+bool TileMap::IsBlock(float4 _Pos, std::string_view _Name)
 {
 	float4 Index = ConvertWorldPosToTilePoint(_Pos);
 
-	return IsBlock(Index.iX(), Index.iY());
+	return IsBlock(Index.iX(), Index.iY(), _Name);
 }
 
 bool TileMap::test(int X, int Y)
 {
 	size_t TileX = 32;
-	size_t TileY = 18;
+	size_t TileY = 24;
 
 	Y *= -1;
 
@@ -166,7 +158,7 @@ bool TileMap::test(int X, int Y)
 	{
 		if (X >= 0)
 		{
-			if (Y < 18)
+			if (Y < 24)
 			{
 				if (Y >= 0)
 				{
@@ -180,7 +172,7 @@ bool TileMap::test(int X, int Y)
 	return false;
 }
 
-bool TileMap::IsBlock(int X, int Y)
+bool TileMap::IsBlock(int X, int Y, std::string_view _Name)
 {
 	float4 Index;
 	Index.X = X;
@@ -192,18 +184,18 @@ bool TileMap::IsBlock(int X, int Y)
 		Y *= -1;
 	}
 
-	if (GameEngineColor::MAGENTA == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+	if (GameEngineColor::MAGENTA == Player_GetColor(Index, { 255,0,0,255 }, _Name))
 	{
 		return true;
 	}
 
 
-	if (GameEngineColor::GREEN == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+	if (GameEngineColor::GREEN == Player_GetColor(Index, { 255,0,0,255 }, _Name))
 	{
 		
 		return true;
 	}
-	if (GameEngineColor::BLUE == Player_GetColor(Index, { 255,0,0,255 }, "Mini_Dungeon_Map_Pixel_010.png"))
+	if (GameEngineColor::BLUE == Player_GetColor(Index, { 255,0,0,255 }, _Name))
 	{
 		
 
@@ -212,21 +204,21 @@ bool TileMap::IsBlock(int X, int Y)
 	return false;
 }
 
-std::list<float4> TileMap::GetPath(const float4& Start, const float4& End)
+std::list<float4> TileMap::GetPath(const float4& Start, const float4& End, std::string_view _Name)
 {
 	float4 StartIndex = ConvertWorldPosToTilePoint(Start);
 	StartIndex.Y *= -1;
 	float4 EndIndex = ConvertWorldPosToTilePoint(End);
 	EndIndex.Y *= -1;
 
-	return GetPath(StartIndex.iX(), StartIndex.iY(), EndIndex.iX(), EndIndex.iY());
+	return GetPath(StartIndex.iX(), StartIndex.iY(), EndIndex.iX(), EndIndex.iY(), _Name);
 }
 
-std::list<float4> TileMap::GetPath(int _StartX, int _StartY, int _EndX, int _EndY)
+std::list<float4> TileMap::GetPath(int _StartX, int _StartY, int _EndX, int _EndY, std::string_view _Name)
 {
-	PathFind.IsBlockCallBack = [=](PathPoint _Point)
+	PathFind.IsBlockCallBack = [=](PathPoint _Point, std::string_view _Name)
 		{
-			return IsBlock(_Point.X, _Point.Y);
+			return IsBlock(_Point.X, _Point.Y,_Name);
 		};
 
 	PathFind.SizeOver = [=](PathPoint _Point)
@@ -236,14 +228,19 @@ std::list<float4> TileMap::GetPath(int _StartX, int _StartY, int _EndX, int _End
 
 
 
+	std::list<float4> Result;
 
+	if (_StartX == _EndX && _StartY == _EndY)
+	{
+		return  Result;
+	}
 
 
 	// 스타트 포인트와 앤드 포인트가 블록이면 
 
-	std::list<PathPoint> Points = PathFind.PathFind({ _StartX, _StartY }, { _EndX, _EndY });
+	std::list<PathPoint> Points = PathFind.PathFind({ _StartX, _StartY }, { _EndX, _EndY }, _Name);
 
-	std::list<float4> Result;
+	
 
 	for (PathPoint& Point : Points)
 	{
