@@ -334,9 +334,9 @@ void Random_Room::Start()
 			Object->Name = result.c_str();
 			Monser_Seed += 1;
 
-			/*	Object->Random_A = Monser_Seed;
-				Object->Random_B = Monser_Seed;
-				Object->Random_C = Monser_Seed;*/
+			Object->Random_A = Monser_Seed;
+			Object->Random_B = Monser_Seed;
+			Object->Random_C = Monser_Seed;
 			Maps.push_back(Map);
 		}
 

@@ -218,12 +218,10 @@ void golem_Wizard::LeftMoveUpdate(float _Time)
 
 
 
-	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-	Move.Normalize(); 
-
+	
 	if (Time > 1.0f)
 	{
-		Transform.AddLocalPosition(Move * Speed * _Time);
+		Transform.AddLocalPosition(Manager_Speed);
 
 		if (degree >= 0)
 		{
@@ -281,13 +279,12 @@ void golem_Wizard::RightMoveUpdate(float _Time)
 	
 
 
-	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-	Move.Normalize();
+	
 
 
 	if (Time > 1.0f)
 	{
-		Transform.AddLocalPosition(Move * Speed * _Time);
+		Transform.AddLocalPosition(Manager_Speed);
 
 
 		if (degree >= 0)
@@ -344,13 +341,11 @@ void golem_Wizard::UpMoveUpdate(float _Time)
 
 	
 
-	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-	Move.Normalize();
 
 
 	if (Time > 1.0f)
 	{
-		Transform.AddLocalPosition(Move * Speed * _Time);
+		Transform.AddLocalPosition(Manager_Speed);
 
 		if (degree >= 0)
 		{
@@ -407,13 +402,12 @@ void golem_Wizard::DownMoveUpdate(float _Time)
 	
 
 
-	float4 Move = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-	Move.Normalize();
+	
 
 
 	if (Time > 1.0f)
 	{
-		Transform.AddLocalPosition(Move * Speed * _Time);
+		Transform.AddLocalPosition(Manager_Speed);
 
 		if (degree >= 0)
 		{

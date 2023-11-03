@@ -1,6 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
-
+#include "Monster_Manager.h"
 
 enum class MiniBoss_State
 {
@@ -17,7 +17,7 @@ enum class MiniBoss_State
 
 };
 
-class MiniBoss : public GameEngineActor
+class MiniBoss : public GameEngineActor , public Monster_Manager
 {
 public:
 	// constrcuter destructer
@@ -89,5 +89,5 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 	EventParameter Event;
 	std::shared_ptr<GameEngineCollision> Col;
-	std::shared_ptr<GameEngineCollision> Mini_Col;
+
 };

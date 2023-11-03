@@ -96,6 +96,12 @@ void SlimeHermit::Start()
 	};
 
 
+	{
+		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
+		Mini_Col->Transform.SetLocalScale({ 20.0f,20.0f });
+		Mini_Col->SetCollisionType(ColType::AABBBOX2D);
+	}
+
 }
 
 void SlimeHermit::Update(float _Delta)
@@ -113,7 +119,7 @@ void SlimeHermit::Update(float _Delta)
 
 		MonsterDir();
 
-
+		Manager_Speed = Monster_Move(_Delta, Transform.GetWorldPosition(), MapName, Dir);
 
 		MonsterPushUpdate(_Delta);
 		UpdateState(_Delta);
@@ -142,7 +148,7 @@ void SlimeHermit::MonsterPushUpdate(float _Delta)
 	}
 
 
-	if (Weapon_Collision_Check == true && PushTime_Check <= 0.15)
+	if (Weapon_Collision_Check == true && PushTime_Check <= 0.15 && ObjectCollision(_Delta, Transform.GetWorldPosition(), MapName, Dir) == true)
 	{
 
 

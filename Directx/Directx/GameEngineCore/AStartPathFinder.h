@@ -80,6 +80,7 @@ protected:
 	std::set<__int64> CloseIndex;
 
 private:
+	int test = 0;
 	std::shared_ptr<PathFindNode> CreateNode(PathFindNode* _Parent, PathPoint _Start, PathPoint _End);
 
 

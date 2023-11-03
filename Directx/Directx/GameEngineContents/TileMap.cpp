@@ -3,38 +3,6 @@
 #include "Player.h"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 TileMap* TileMap::Map;
 
 TileMap::TileMap()
@@ -58,8 +26,8 @@ void TileMap::Start()
 	
 
 
-	size_t TileX = 64;
-	size_t TileY = 36;
+	size_t TileX = 32;
+	size_t TileY = 18;
 
 
 	Tile_Maps.reserve(TileX* TileY);
@@ -129,14 +97,14 @@ GameEngineColor TileMap::Player_GetColor(float4 _Pos, GameEngineColor _DefaultCo
 float4 TileMap::ConvertWorldPosToTilePoint(float4 _Pos)
 {
 	_Pos.Y *= -1.f;
-	float4 Index = float4{ _Pos.X / 20,_Pos.Y / 20 };
+	float4 Index = float4{ _Pos.X / 40,_Pos.Y / 40 };
 	return Index;
 }
 
 float4 TileMap::ConvertTilePointToWorldPos(PathPoint _Point)
 {
 	// 타일 절반 크기를 + 해줘
-	float4 WorldPos = float4{ _Point.X * 20.0f, _Point.Y * 20.0f};
+	float4 WorldPos = float4{ _Point.X * 40.0f, _Point.Y * 40.0f};
 	return WorldPos;
 }
 
@@ -154,11 +122,11 @@ bool TileMap::test(int X, int Y)
 
 	Y *= -1;
 
-	if (X < 64)
+	if (X < 32)
 	{
 		if (X >= 0)
 		{
-			if (Y < 36)
+			if (Y < 18)
 			{
 				if (Y >= 0)
 				{

@@ -1,6 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
-
+#include "Monster_Manager.h"
 enum class BabySlime_State
 {
 	Walk,
@@ -11,7 +11,7 @@ enum class BabySlime_State
 
 };
 
-class BabySlime : public GameEngineActor
+class BabySlime : public GameEngineActor , public Monster_Manager
 {
 public:
 	// constrcuter destructer
@@ -72,6 +72,5 @@ private:
 
 	std::shared_ptr<class GameEngineSpriteRenderer> babySlime; 
 	std::shared_ptr<GameEngineCollision> Col;
-
 };
 

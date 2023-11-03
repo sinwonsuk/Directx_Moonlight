@@ -69,6 +69,7 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 
 	while (OpenList.size())
 	{
+		test = 0;
 		std::multimap<float, std::shared_ptr<PathFindNode>>::iterator FindNodeIter;
 		FindNodeIter = OpenList.begin();
 		std::shared_ptr<PathFindNode> FindNode = FindNodeIter->second;
@@ -86,7 +87,11 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 				MsgBoxAssert("길찾기 판단용 콜백을 넣어주지 않았습니다");
 			}
 
-			
+			if (false == IsBlockCallBack(FindIndex, _Name))
+			{
+				test++; 
+			}
+
 
 			if (true == IsBlockCallBack(FindIndex ,_Name))
 			{
@@ -105,6 +110,13 @@ std::list<PathPoint> AStartPathFinder::PathFind(PathPoint _Start, PathPoint _End
 
 
 			std::shared_ptr<PathFindNode> Node = CreateNode(FindNode.get(), FindIndex, _End);
+
+			/*if (test == 8 && nullptr != Node)
+			{
+				ResultNode = Node;
+				break;
+			}*/
+
 
 			if (nullptr != Node && Node->Index.Key == _End.Key)
 			{

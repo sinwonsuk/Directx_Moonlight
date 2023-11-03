@@ -282,12 +282,12 @@ void golem_Stone::LeftAttackUpdate(float _Time)
 {
 	if (PlayerCheck == false)
 	{
-		Dir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-		Dir.Normalize();
+		MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+		MoveDir.Normalize();
 		PlayerCheck = true;
 	}
 
-	Transform.AddLocalPosition({ Dir * _Time * Speed });
+	Transform.AddLocalPosition({ MoveDir * _Time * Speed });
 
 	if (Stone->IsCurAnimationEnd())
 	{
@@ -304,12 +304,12 @@ void golem_Stone::RightAttackUpdate(float _Time)
 
 	if (PlayerCheck == false)
 	{
-		Dir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-		Dir.Normalize();
+		MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+		MoveDir.Normalize();
 		PlayerCheck = true;
 	}
 
-	Transform.AddLocalPosition({ Dir * _Time * Speed });
+	Transform.AddLocalPosition({ MoveDir * _Time * Speed });
 
 
 	if (Stone->IsCurAnimationEnd())
@@ -327,12 +327,12 @@ void golem_Stone::UpAttackUpdate(float _Time)
 
 	if (PlayerCheck == false)
 	{
-		Dir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-		Dir.Normalize();
+		MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+		MoveDir.Normalize();
 		PlayerCheck = true;
 	}
 
-	Transform.AddLocalPosition({ Dir * _Time * Speed });
+	Transform.AddLocalPosition({ MoveDir * _Time * Speed });
 
 	if (Stone->IsCurAnimationEnd())
 	{
@@ -349,12 +349,12 @@ void golem_Stone::DownAttackUpdate(float _Time)
 
 	if (PlayerCheck == false)
 	{
-		Dir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-		Dir.Normalize();
+		MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
+		MoveDir.Normalize();
 		PlayerCheck = true;
 	}
 
-	Transform.AddLocalPosition({ Dir * _Time * Speed });
+	Transform.AddLocalPosition({ MoveDir * _Time * Speed });
 
 
 

@@ -90,7 +90,11 @@ void golem_Wizard::Start()
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 
-
+	{
+		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
+		Mini_Col->Transform.SetLocalScale({ 0.0f,0.0f });
+		Mini_Col->SetCollisionType(ColType::AABBBOX2D);
+	}
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::GolemWazard);
 		Col->Transform.SetLocalScale({ 300.0f,300.0f });
@@ -118,13 +122,13 @@ void golem_Wizard::Update(float _Delta)
 
 		MonsterPushUpdate(_Delta);
 
-
+		Manager_Speed = Monster_Move(_Delta, Transform.GetWorldPosition(), MapName, Dir);
 
 		UpdateState(_Delta);
 
 		Body->CollisionEvent(ContentsCollisionType::Spear, Event);
 	}
-
+	Monster_Collsision(_Delta);
 }
 void golem_Wizard::MonsterPushUpdate(float _Delta)
 {
@@ -134,7 +138,7 @@ void golem_Wizard::MonsterPushUpdate(float _Delta)
 	}
 
 
-	if (Weapon_Collision_Check == true && PushTime_Check <= 0.15)
+	if (Weapon_Collision_Check == true && PushTime_Check <= 0.15 && ObjectCollision(_Delta, Transform.GetWorldPosition(), MapName, Dir) == true)
 	{
 
 

@@ -61,6 +61,7 @@ void golem_Solder::Start()
 		Col->Transform.SetLocalScale({ 50.0f,50.0f }); 
 		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
+
 	{
 		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
 		Mini_Col->Transform.SetLocalScale({ 20.0f,20.0f });
@@ -127,6 +128,9 @@ void golem_Solder::Start()
 
 void golem_Solder::Update(float _Delta)
 {
+	
+
+
 	DeltaTime = _Delta; 
 
 	if (Hp <= 0)
@@ -151,17 +155,7 @@ void golem_Solder::Update(float _Delta)
 
 
 
-	Mini_Col->CollisionEvent(ContentsCollisionType::Monster, { .Stay = [&](class GameEngineCollision* _This,class GameEngineCollision* _collisions)
-	{
-			float4 Monster = _This->GetActor()->Transform.GetLocalPosition();
-		
-			float4 Other_Monster = _collisions->GetActor()->Transform.GetLocalPosition();
-		
-			float4 Dir = Monster - Other_Monster;
-
-			_This->GetActor()->Transform.AddLocalPosition(Dir * DeltaTime);
-	} });
-
+	Monster_Collsision(_Delta);
 
 	
 }

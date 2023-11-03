@@ -1,4 +1,5 @@
 #pragma once
+#include <GameEngineCore/GameEngineLevel.h>
 
 class Monster_Manager
 {
@@ -13,7 +14,6 @@ public:
 	Monster_Manager& operator=(Monster_Manager&& _Other) noexcept = delete;
 
 
-	void MonsterCollision(float _Delta, std::string_view _Name);
 	float4 Monster_Move(float _Delta, float4 _GetWorldTransform, std::string_view _Name, float4 _distance_fixation);
 	static int Map_Check;
 	bool ObjectCollision(float _Delta, float4 _GetWorldTransform, std::string_view _Name, float4 _distance_fixation);
@@ -27,8 +27,10 @@ public:
 	{
 		Dir = _Dir;
 	}
+	void Monster_Collsision(float4 _Delta);
 
 protected:
+	float PathTime = 0.0f;
 	//std::shared_ptr<class GameEngineCollision> Monster;
 	float4 thisPos = {};
 	float4 Brick_Size = 0.0f;
@@ -36,9 +38,11 @@ protected:
 	std::list<float4> PathPos;
 	int test = 0;
 	float4 Dir = {};
+
 	float4 Manager_Speed = {};
 	float4 distance_fixation = {};
 	bool MoveCheck = false;
+	std::shared_ptr<GameEngineCollision> Mini_Col;
 private:
 	bool Door_Collison_Check = false;
 

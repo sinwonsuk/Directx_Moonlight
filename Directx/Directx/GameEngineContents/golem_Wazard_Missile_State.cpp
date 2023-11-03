@@ -73,53 +73,6 @@ void gloem_Wazard_Missile::AttackUpdate(float _Time)
 
 
 
-	/*if (GameEngineColor::MAGENTA == GetColor({ Left_Stone_Pos }, { 255,0,0,255 }, "Tutorial_Map_Pixel.png"))
-	{
-		ChangeState(golem_Wazard_missile_State::Finish);
-		return;
-	}
-	else if (GameEngineColor::MAGENTA == GetColor({ Right_Stone_Pos }, { 255,0,0,255 }, "Tutorial_Map_Pixel.png"))
-	{
-		ChangeState(golem_Wazard_missile_State::Finish);
-		return;
-	}
-	else if (GameEngineColor::MAGENTA == GetColor({ Up_Stone_Pos }, { 255, 0, 0, 255 }, "Tutorial_Map_Pixel.png"))
-	{
-		ChangeState(golem_Wazard_missile_State::Finish);
-		return;
-	}
-	else if (GameEngineColor::MAGENTA == GetColor({ Down_Stone_Pos }, { 255, 0, 0, 255 }, "Tutorial_Map_Pixel.png"))
-	{
-		ChangeState(golem_Wazard_missile_State::Finish);
-		return;
-	}
-
-    else if (GameEngineColor::BLUE == GetColor({ Left_Stone_Pos }, { 0,0,255,255 }, "Tutorial_Map_Pixel.png"))
-	{
-		ChangeState(golem_Wazard_missile_State::Finish);
-		return;
-	}
-	else if (GameEngineColor::BLUE == GetColor({ Right_Stone_Pos }, { 0,0,255,255 }, "Tutorial_Map_Pixel.png"))
-	{		
-		ChangeState(golem_Wazard_missile_State::Finish);
-		return;
-	}
-	else if (GameEngineColor::BLUE == GetColor({ Up_Stone_Pos }, { 0, 0, 255, 255 }, "Tutorial_Map_Pixel.png"))
-	{		
-		ChangeState(golem_Wazard_missile_State::Finish);
-		return;
-	}
-	else if (GameEngineColor::BLUE == GetColor({ Down_Stone_Pos }, { 0, 0, 255, 255 }, "Tutorial_Map_Pixel.png"))
-	{		
-		ChangeState(golem_Wazard_missile_State::Finish);
-		return;
-	}*/
-
-
-
-
-
-
 }
 
 GameEngineColor gloem_Wazard_Missile::GetColor(float4 _Pos, GameEngineColor _DefaultColor, std::string_view _Name)

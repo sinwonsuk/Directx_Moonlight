@@ -51,7 +51,7 @@ void Monster_Place::Monsters(float4 _Pos)
 
 	//¹Ú²Þ
 	
-	for (size_t i = 0; i <= 6; i++)
+	for (size_t i = 0; i <= a; i++)
 	{
 		
 		
@@ -61,19 +61,22 @@ void Monster_Place::Monsters(float4 _Pos)
 
 		
 
-		switch (1)
+		switch (A)
 		{
 		case 0:
 		{
 			while (true)
 			{
-				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 24);
+				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 18);
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 
 					std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X* 40 ,  sd.Y + 360 - Monster_Pos.Y*32 });
+					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 40 ,  sd.Y + 360 - Monster_Pos.Y * 40 });
+					Object->Set_MapName(Name);
+					Object->Set_Dir({ sd.X - 640 ,sd.Y + 360 });
+
 					break;
 				}
 
@@ -89,13 +92,13 @@ void Monster_Place::Monsters(float4 _Pos)
 		{
 			while (true)
 			{
-				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 24);
+				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 18);
 				
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 					Solder = GetLevel()->CreateActor<golem_Solder>();
-					Solder->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 20 ,  sd.Y + 360 - Monster_Pos.Y * 20 });
+					Solder->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 40 ,  sd.Y + 360 - Monster_Pos.Y * 40 });
 					Solder->Set_MapName(Name);
 					Solder->Set_Dir({ sd.X - 640 ,sd.Y + 360 });
 					break;
@@ -112,12 +115,14 @@ void Monster_Place::Monsters(float4 _Pos)
 		{
 			while (true)
 			{
-				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
+				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 18);
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 					std::shared_ptr<golem_Wizard> Object = GetLevel()->CreateActor<golem_Wizard>();
-					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X ,  sd.Y + 360 - Monster_Pos.Y });
+					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 40 ,  sd.Y + 360 - Monster_Pos.Y * 40 });
+					Object->Set_MapName(Name);
+					Object->Set_Dir({ sd.X - 640 ,sd.Y + 360 });
 					break;
 				}
 
@@ -132,16 +137,15 @@ void Monster_Place::Monsters(float4 _Pos)
 		{
 			while (true)
 			{
-				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
+				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 18);
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 					std::shared_ptr<golem_Stone> Object = GetLevel()->CreateActor<golem_Stone>();
 
-					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X ,  sd.Y + 360 - Monster_Pos.Y });
-					Object->SetPos(sd);
-					Object->SetName(Name);
-					Object->Set_Basic_Pos({640,-360});
+					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 40 ,  sd.Y + 360 - Monster_Pos.Y * 40 });
+					Object->Set_MapName(Name);
+					Object->Set_Dir({ sd.X - 640 ,sd.Y + 360 });
 					break;
 				}
 
@@ -161,7 +165,9 @@ void Monster_Place::Monsters(float4 _Pos)
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 					std::shared_ptr<SlimeHermit> Object = GetLevel()->CreateActor<SlimeHermit>();
-					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X ,  sd.Y + 360 - Monster_Pos.Y });
+					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 40 ,  sd.Y + 360 - Monster_Pos.Y * 40 });
+					Object->Set_MapName(Name);
+					Object->Set_Dir({ sd.X - 640 ,sd.Y + 360 });
 					break;
 				}
 
@@ -181,7 +187,9 @@ void Monster_Place::Monsters(float4 _Pos)
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 					std::shared_ptr<MiniBoss> Object = GetLevel()->CreateActor<MiniBoss>();
-					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X ,  sd.Y + 360 - Monster_Pos.Y });
+					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 40 ,  sd.Y + 360 - Monster_Pos.Y * 40 });
+					Object->Set_MapName(Name);
+					Object->Set_Dir({ sd.X - 640 ,sd.Y + 360 });
 					break;
 				}
 

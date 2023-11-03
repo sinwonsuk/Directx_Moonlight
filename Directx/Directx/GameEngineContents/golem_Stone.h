@@ -1,6 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
-
+#include "Monster_Manager.h"
 
 enum class golem_Stone_State
 {
@@ -20,7 +20,7 @@ enum class golem_Stone_State
 	DownCollision,
 };
 
-class golem_Stone : public GameEngineActor
+class golem_Stone : public GameEngineActor , public Monster_Manager
 {
 public:
 	// constrcuter destructer
@@ -63,7 +63,7 @@ public:
 	void DownCollisionUpdate(float _Time);
 	void UpCollisionUpdate(float _Time);
 
-	void CollisionStop(float _Delta, std::string_view _Name = { "Tutorial_Map_Pixel.png" }, float4 _Transform = {} , float4 __Transform = {});
+	void CollisionStop(float _Delta, std::string_view _Name = { "Tutorial_Map_Pixel.png" }, float4 _Transform = {});
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 }, std::string_view _Name = {});
 	//void Move(float _Delta);
 	void MonsterPushUpdate(float _Delta);
@@ -75,14 +75,7 @@ public:
 	{
 		Name = _Name;
 	}
-	void SetPos(const float4&_Pos)
-	{
-		Pos = _Pos;
-	}
-	void Set_Basic_Pos(const float4& _Basic_Pos)
-	{
-		Basic_Pos = _Basic_Pos;
-	}
+	
 
 protected:
 
@@ -91,8 +84,7 @@ protected:
 
 private:
 	float4 Pos = {};
-	float4 Basic_Pos = {};
-
+	float4 MoveDir = {};
 	std::string Name = { "Tutorial_Map_Pixel.png" };
 	bool PlayerCheck = false;
 	float Speed = 500.0f;
@@ -107,7 +99,7 @@ private:
 
 
 
-	float4 Dir = {};
+	
 	golem_Stone_State StateValue = golem_Stone_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Stone;
@@ -116,6 +108,8 @@ private:
 
 	std::shared_ptr<GameEngineCollision> Col;
 	EventParameter Event;
+
+	std::shared_ptr<GameEngineCollision> Mini_Col;
 };
 
 

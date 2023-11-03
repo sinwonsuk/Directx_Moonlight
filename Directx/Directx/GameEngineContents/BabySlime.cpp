@@ -50,6 +50,11 @@ void BabySlime::Start()
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 
+	{
+		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
+		Mini_Col->Transform.SetLocalScale({ 20.0f,20.0f });
+		Mini_Col->SetCollisionType(ColType::AABBBOX2D);
+	}
 	
 	
 	{
@@ -59,9 +64,7 @@ void BabySlime::Start()
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		/*	GameEngineActor* Actor = col->GetActor();
-			Spear* ptr = dynamic_cast<Spear*>(Actor);*/
-
+		
 		if (Weapon_Collision_Check == false)
 		{
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
@@ -111,9 +114,13 @@ void BabySlime::Update(float _Delta)
 	if (Col->Collision(ContentsCollisionType::CameraCollision))
 	{
 		MonsterPushUpdate(_Delta);
-
+		Manager_Speed = Monster_Move(_Delta, Transform.GetWorldPosition(), MapName, Dir);
 		UpdateState(_Delta);
 	}
+
+	Monster_Collsision(_Delta);
+
+
 }
 
 void BabySlime::MonsterPushUpdate(float _Delta)
@@ -125,7 +132,7 @@ void BabySlime::MonsterPushUpdate(float _Delta)
 	}
 
 
-	if (Weapon_Collision_Check == true && PushTime_Check <= 0.15)
+	if (Weapon_Collision_Check == true && PushTime_Check <= 0.15 && ObjectCollision(_Delta, Transform.GetWorldPosition(), MapName, Dir) == true)
 	{
 
 

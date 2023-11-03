@@ -194,18 +194,6 @@ void MiniBoss::Dir_Attack_Check_Update(float _Time)
 
 void MiniBoss::LeftMoveUpdate(float _Time)
 {
-
-
-	if (Mini_Col->Collision(ContentsCollisionType::Monster))
-	{
-		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * _Time });
-		//MoveDir
-	}
-
-
-	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-	MoveDir.Normalize();
-	
 	if (Time > 1.0f)
 	{
 		if (degree >= 0)
@@ -252,14 +240,13 @@ void MiniBoss::LeftMoveUpdate(float _Time)
 		
 		if (Weapon_Collision_Check == false)
 		{
-			Transform.AddLocalPosition(MoveDir * Speed * _Time);
+			Transform.AddLocalPosition(Manager_Speed);
 		}
 		
 
 
 		if (Col->Collision(ContentsCollisionType::Player))
 		{
-			
 			ChangeState(MiniBoss_State::LeftAttack);
 			return;
 		}
@@ -269,17 +256,6 @@ void MiniBoss::LeftMoveUpdate(float _Time)
 void MiniBoss::RightMoveUpdate(float _Time)
 {
 	
-	if (Mini_Col->Collision(ContentsCollisionType::Monster))
-	{
-		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * _Time });
-		//MoveDir
-	}
-
-
-	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-	MoveDir.Normalize();
-
-
 	if (Time > 1.0f)
 	{
 		if (degree >= 0)
@@ -325,7 +301,7 @@ void MiniBoss::RightMoveUpdate(float _Time)
 		}
 		if (Weapon_Collision_Check == false)
 		{
-			Transform.AddLocalPosition(MoveDir * Speed * _Time);
+			Transform.AddLocalPosition(Manager_Speed);
 		}
 
 
@@ -339,17 +315,6 @@ void MiniBoss::RightMoveUpdate(float _Time)
 
 void MiniBoss::UpMoveUpdate(float _Time)
 {
-
-	if (Mini_Col->Collision(ContentsCollisionType::Monster))
-	{
-		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * _Time });
-		//MoveDir
-	}
-
-	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-	MoveDir.Normalize();
-
-
 	if (Time > 1.0f)
 	{
 
@@ -397,7 +362,7 @@ void MiniBoss::UpMoveUpdate(float _Time)
 
 		if (Weapon_Collision_Check == false)
 		{
-			Transform.AddLocalPosition(MoveDir * Speed * _Time);
+			Transform.AddLocalPosition(Manager_Speed);
 		}
 
 
@@ -413,18 +378,6 @@ void MiniBoss::UpMoveUpdate(float _Time)
 
 void MiniBoss::DownMoveUpdate(float _Time)
 {
-	if (Mini_Col->Collision(ContentsCollisionType::Monster))
-	{
-		Transform.AddLocalPosition({ -MoveDir.NormalizeReturn() * Speed * _Time });
-		//MoveDir
-	}
-
-
-
-	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-	MoveDir.Normalize();
-
-
 	if (Time > 1.0f)
 	{
 		if (degree >= 0)
@@ -471,7 +424,7 @@ void MiniBoss::DownMoveUpdate(float _Time)
 
 		if (Weapon_Collision_Check == false)
 		{
-			Transform.AddLocalPosition(MoveDir * Speed * _Time);
+			Transform.AddLocalPosition(Manager_Speed);
 		}
 
 
@@ -541,9 +494,6 @@ void MiniBoss::DownAttackUpdate(float _Time)
 
 		ChangeState(MiniBoss_State::AttackCheck);
 		return;
-
-
-
 	}
 
 }

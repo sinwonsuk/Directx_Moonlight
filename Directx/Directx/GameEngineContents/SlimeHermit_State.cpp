@@ -206,8 +206,6 @@ void SlimeHermit::LeftMoveUpdate(float _Time)
 	
 
 
-	MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
-	MoveDir.Normalize();
 	
 	if (Time > 1.0f)
 	{
@@ -259,7 +257,7 @@ void SlimeHermit::LeftMoveUpdate(float _Time)
 		
 		if (Weapon_Collision_Check == false)
 		{
-			Transform.AddLocalPosition(MoveDir * Speed * _Time);
+			Transform.AddLocalPosition(Manager_Speed);
 		}
 		
 
@@ -331,7 +329,7 @@ void SlimeHermit::RightMoveUpdate(float _Time)
 		}
 		if (Weapon_Collision_Check == false)
 		{
-			Transform.AddLocalPosition(MoveDir * Speed * _Time);
+			Transform.AddLocalPosition(Manager_Speed);
 		}
 
 
@@ -402,7 +400,7 @@ void SlimeHermit::UpMoveUpdate(float _Time)
 
 		if (Weapon_Collision_Check == false)
 		{
-			Transform.AddLocalPosition(MoveDir * Speed * _Time);
+			Transform.AddLocalPosition(Manager_Speed);
 		}
 
 
@@ -475,7 +473,7 @@ void SlimeHermit::DownMoveUpdate(float _Time)
 
 		if (Weapon_Collision_Check == false)
 		{
-			Transform.AddLocalPosition(MoveDir * Speed * _Time);
+			Transform.AddLocalPosition(Manager_Speed);
 		}
 
 
