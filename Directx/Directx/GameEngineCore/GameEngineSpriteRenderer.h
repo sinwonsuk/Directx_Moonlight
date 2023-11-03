@@ -30,6 +30,8 @@ public:
 
 	void Reset();
 
+	std::function<void(const SpriteData& CurSprite, int _SpriteIndex)> FrameChangeFunction;
+
 	std::map<int, std::function<void(GameEngineSpriteRenderer*)>> FrameEventFunction;
 
 	std::function<void(GameEngineSpriteRenderer*)> EndEvent;
@@ -177,6 +179,8 @@ public:
 	void SetEndEvent(std::string_view _AnimationName, std::function<void(GameEngineSpriteRenderer*)> _Function);
 	void SetFrameEvent(std::string_view _AnimationName, int _Frame, std::function<void(GameEngineSpriteRenderer*)> _Function);
 
+	void SetFrameChangeFunction(std::string_view _AnimationName, std::function<void(const SpriteData& CurSprite, int _SpriteIndex)> _Function);
+
 	// "EngineBaseWRAPSampler"
 	void SetSampler(std::string_view _Name);
 
@@ -226,6 +230,8 @@ public:
 	void SetMaskTexture(std::string_view _Texture, MaskMode _Mask = MaskMode::StaticMask);
 
 	void SetText(const std::string& _Font, const std::string& _Text, float _Scale = 20.0f, float4 Color = float4::RED, FW1_TEXT_FLAG Flag = FW1_LEFT);
+	void SetTextColor(const float4& _Color = float4::RED, unsigned int _Index = 0);
+	void SetTextAlpha(float _AlphaValue = 1.0f, unsigned int _Index = 0);
 
 protected:
 	void Start() override;

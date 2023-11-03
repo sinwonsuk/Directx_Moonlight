@@ -73,8 +73,11 @@
     <Filter Include="Resources\Font">
       <UniqueIdentifier>{5fcbd217-5b6d-4f9c-98a5-23e02cb4266d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PathFont">
-      <UniqueIdentifier>{d1b80867-fed7-4d40-870c-1492b664c779}</UniqueIdentifier>
+    <Filter Include="PathFind">
+      <UniqueIdentifier>{89a24fbe-f28a-4c0b-9fec-98423ad17cc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\PostEffect">
+      <UniqueIdentifier>{ba4bc84f-3cba-48de-878a-2302a9a08b46}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -236,7 +239,10 @@
       <Filter>ThirdParty\inc</Filter>
     </ClInclude>
     <ClInclude Include="AStartPathFinder.h">
-      <Filter>PathFont</Filter>
+      <Filter>PathFind</Filter>
+    </ClInclude>
+    <ClInclude Include="FadePostEffect.h">
+      <Filter>Rendering\PostEffect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -386,7 +392,10 @@
       <Filter>Resources\Font</Filter>
     </ClCompile>
     <ClCompile Include="AStartPathFinder.cpp">
-      <Filter>PathFont</Filter>
+      <Filter>PathFind</Filter>
+    </ClCompile>
+    <ClCompile Include="FadePostEffect.cpp">
+      <Filter>Rendering\PostEffect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

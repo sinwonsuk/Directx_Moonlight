@@ -45,6 +45,13 @@ SpriteData GameEngineFrameAnimation::Update(float _DeltaTime)
 	{
 		CurTime -= Inter[CurIndex];
 		++CurIndex;
+
+		if (nullptr != FrameChangeFunction)
+		{
+			SpriteData Data = Sprite->GetSpriteData(Index[CurIndex]);
+			FrameChangeFunction(Data, CurIndex);
+		}
+
 		EventCheck = true;
 
 		if (CurIndex > InterIndex)
@@ -313,6 +320,22 @@ void GameEngineSpriteRenderer::SetFrameEvent(std::string_view _AnimationName, in
 	Animation->FrameEventFunction[_Frame] = _Function;
 }
 
+void GameEngineSpriteRenderer::SetFrameChangeFunction(std::string_view _AnimationName, std::function<void(const SpriteData& CurSprite, int _SpriteIndex)> _Function)
+{
+	std::string UpperName = GameEngineString::ToUpperReturn(_AnimationName);
+
+	std::map<std::string, std::shared_ptr<GameEngineFrameAnimation>>::iterator FindIter = FrameAnimations.find(UpperName);
+
+	std::shared_ptr<GameEngineFrameAnimation> Animation = FindIter->second;
+
+	if (nullptr == Animation)
+	{
+		MsgBoxAssert("존재하지 않는 애니메이션에 이벤트를 만들려고 했습니다.");
+	}
+
+	Animation->FrameChangeFunction = _Function;
+}
+
 void GameEngineSpriteRenderer::SetStartEvent(std::string_view _AnimationName, std::function<void(GameEngineSpriteRenderer*)> _Function)
 {
 	std::string UpperName = GameEngineString::ToUpperReturn(_AnimationName);
@@ -437,6 +460,18 @@ void GameEngineSpriteRenderer::SetText(const std::string& _Font, const std::stri
 {
 	std::shared_ptr<GameEngineRenderUnit> Unit = CreateAndFindRenderUnit(0);
 	Unit->SetText(_Font, _Text, _Scale, Color, Flag);
+}
+
+void GameEngineSpriteRenderer::SetTextColor(const float4& _Color /*= float4::RED*/, unsigned int _Index /*= 0*/)
+{
+	std::weak_ptr<GameEngineRenderUnit> Unit = CreateAndFindRenderUnit(_Index);
+	Unit.lock()->SetTextColor(_Color);
+}
+
+void GameEngineSpriteRenderer::SetTextAlpha(float _AlphaValue /*= 1.0f*/, unsigned int _Index /*= 0*/)
+{
+	std::weak_ptr<GameEngineRenderUnit> Unit = CreateAndFindRenderUnit(_Index);
+	Unit.lock()->SetTextAlpha(_AlphaValue);
 }
 
 void GameEngineSpriteRenderer::SetSampler(std::string_view _Name)
