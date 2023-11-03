@@ -16,7 +16,9 @@ public:
 	void MonsterCollision(float _Delta, std::string_view _Name);
 	float4 Monster_Move(float _Delta, float4 _GetWorldTransform, std::string_view _Name, float4 _distance_fixation);
 	static int Map_Check;
-	
+	bool ObjectCollision(float _Delta, float4 _GetWorldTransform, std::string_view _Name, float4 _distance_fixation);
+
+	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 }, std::string_view _Name = {});
 	void Set_MapName(std::string_view _Name)
 	{
 		MapName = _Name; 
@@ -36,6 +38,7 @@ protected:
 	float4 Dir = {};
 	float4 Manager_Speed = {};
 	float4 distance_fixation = {};
+	bool MoveCheck = false;
 private:
 	bool Door_Collison_Check = false;
 

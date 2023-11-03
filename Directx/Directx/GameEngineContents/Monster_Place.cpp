@@ -49,9 +49,9 @@ void Monster_Place::Monsters(float4 _Pos)
 	int a = Random3->RandomInt(3, 7);
 
 
+	//¹Ú²Þ
 	
-	
-	for (size_t i = 0; i <= a; i++)
+	for (size_t i = 0; i <= 6; i++)
 	{
 		
 		
@@ -95,7 +95,7 @@ void Monster_Place::Monsters(float4 _Pos)
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 					Solder = GetLevel()->CreateActor<golem_Solder>();
-					Solder->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 40 ,  sd.Y + 360 - Monster_Pos.Y * 32 });
+					Solder->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 20 ,  sd.Y + 360 - Monster_Pos.Y * 20 });
 					Solder->Set_MapName(Name);
 					Solder->Set_Dir({ sd.X - 640 ,sd.Y + 360 });
 					break;
