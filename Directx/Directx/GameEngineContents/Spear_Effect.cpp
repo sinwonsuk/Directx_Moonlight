@@ -16,62 +16,163 @@ void Spear_Effect::Start()
 	Efffet->AutoSpriteSizeOn();
 	Efffet->SetAutoScaleRatio(1.5f);
 	Efffet->ChangeAnimation("spearHitEffect_3");
-
+	Efffet->Off(); 
 
 }
 
 void Spear_Effect::Update(float _Delta)
 {
-
-
-
-
-
-	if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01)
+	switch (state)
 	{
-		Transform.SetLocalRotation({ 0.0f,0.0f,270.0f }); 
-	}
-	if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_02)
+	case Effect_State::Monster:
 	{
-		Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
+		}
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_02)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
+		}
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_03)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
+		}
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_01)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
+		}
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_02)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
+		}
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_03)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
+		}
+
+
+
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_01)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
+		}
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_02)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
+		}
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_03)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
+		}
+
 	}
-	if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_03)
+		break;
+	case Effect_State::Boss:
 	{
-		Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X, Player::this_Player->Transform.GetWorldPosition().Y + 100.0f });
+		}
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_02)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X, Player::this_Player->Transform.GetWorldPosition().Y + 100.0f });
+		}
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_03)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X, Player::this_Player->Transform.GetWorldPosition().Y + 100.0f });
+		}
+
+
+
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_01)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 100, Player::this_Player->Transform.GetWorldPosition().Y });
+		}
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_02)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 100, Player::this_Player->Transform.GetWorldPosition().Y });
+		}
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_03)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 100, Player::this_Player->Transform.GetWorldPosition().Y });
+		}
+
+
+
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_01)
+		{
+			Efffet->On();
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X, Player::this_Player->Transform.GetWorldPosition().Y + 100 });
+			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
+		}
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_02)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X, Player::this_Player->Transform.GetWorldPosition().Y +100});
+		}
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_03)
+		{
+			Efffet->On();
+			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X, Player::this_Player->Transform.GetWorldPosition().Y +100});
+		}
+
+
+
+
+	    if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_01)
+		{
+			Efffet->On();
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 100, Player::this_Player->Transform.GetWorldPosition().Y });
+		}
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_02)
+		{
+			Efffet->On();
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X +100, Player::this_Player->Transform.GetWorldPosition().Y });
+		}
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_03)
+		{
+			Efffet->On();
+			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 100, Player::this_Player->Transform.GetWorldPosition().Y });
+		}
+
 	}
 
 
 
-	if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_01)
-	{
-		Transform.SetLocalRotation({ 0.0f,0.0f,180.0f});
-	}
-	if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_02)
-	{
-		Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
-	}
-	if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_03)
-	{
-		Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
-	}
 
-
-	if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_01)
-	{
-		Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
-	}
-	if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_02)
-	{
-		Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
-	}
-	if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_03)
-	{
-		Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
+		break;
+	default:
+		break;
 	}
 
 
 
 
+	
 
 
 	if (Efffet->IsCurAnimationEnd())

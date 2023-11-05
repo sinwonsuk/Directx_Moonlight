@@ -184,6 +184,8 @@ std::list<float4> TileMap::GetPath(const float4& Start, const float4& End, std::
 
 std::list<float4> TileMap::GetPath(int _StartX, int _StartY, int _EndX, int _EndY, std::string_view _Name)
 {
+	//Map;
+
 	PathFind.IsBlockCallBack = [=](PathPoint _Point, std::string_view _Name)
 		{
 			return IsBlock(_Point.X, _Point.Y,_Name);
@@ -192,7 +194,7 @@ std::list<float4> TileMap::GetPath(int _StartX, int _StartY, int _EndX, int _End
 	PathFind.SizeOver = [=](PathPoint _Point)
 		{
 			return test(_Point.X, _Point.Y);
-		};
+	    };
 
 
 

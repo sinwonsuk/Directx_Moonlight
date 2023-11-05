@@ -19,6 +19,10 @@ void Boss_Rock_Shadow::Start()
 }
 void Boss_Rock_Shadow::Update(float _Delta)
 {
-
+	Time += _Delta; 
+	if (Time > 5.0f)
+	{
+		this->Death(); 
+	}
 
 }

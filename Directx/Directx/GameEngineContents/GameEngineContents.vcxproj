@@ -172,8 +172,12 @@
     <ClCompile Include="Boss_Map.cpp" />
     <ClCompile Include="Boss_Monster.cpp" />
     <ClCompile Include="Boss_Monster_State.cpp" />
+    <ClCompile Include="Boss_Monster_UI.cpp" />
     <ClCompile Include="Boss_Rock.cpp" />
     <ClCompile Include="Boss_Rock_Shadow.cpp" />
+    <ClCompile Include="Boss_Wave.cpp" />
+    <ClCompile Include="Boss_Wirst.cpp" />
+    <ClCompile Include="Boss_Wirst_state.cpp" />
     <ClCompile Include="CameraCollision.cpp" />
     <ClCompile Include="ContentsControlWindow.cpp" />
     <ClCompile Include="Dungeon_Map_00.cpp" />
@@ -209,6 +213,7 @@
     <ClCompile Include="Path_Finder_Level.cpp" />
     <ClCompile Include="Player_UI.cpp" />
     <ClCompile Include="Random_Room.cpp" />
+    <ClCompile Include="Rock_Particle.cpp" />
     <ClCompile Include="ShopLevel.cpp" />
     <ClCompile Include="Shop_House.cpp" />
     <ClCompile Include="SlimeHermit.cpp" />
@@ -269,8 +274,11 @@
     <ClInclude Include="Boss_Brick.h" />
     <ClInclude Include="Boss_Map.h" />
     <ClInclude Include="Boss_Monster.h" />
+    <ClInclude Include="Boss_Monster_UI.h" />
     <ClInclude Include="Boss_Rock.h" />
     <ClInclude Include="Boss_Rock_Shadow.h" />
+    <ClInclude Include="Boss_Wave.h" />
+    <ClInclude Include="Boss_Wirst.h" />
     <ClInclude Include="CameraCollision.h" />
     <ClInclude Include="ContentsControlWindow.h" />
     <ClInclude Include="Dungeon_Map_00.h" />
@@ -300,6 +308,7 @@
     <ClInclude Include="Path_Finder_Level.h" />
     <ClInclude Include="Player_UI.h" />
     <ClInclude Include="Random_Room.h" />
+    <ClInclude Include="Rock_Particle.h" />
     <ClInclude Include="ShopLevel.h" />
     <ClInclude Include="Shop_House.h" />
     <ClInclude Include="SlimeHermit.h" />

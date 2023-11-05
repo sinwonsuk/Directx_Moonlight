@@ -18,7 +18,7 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-	int Number = 0;
+	float Time = 0;
 
 
 

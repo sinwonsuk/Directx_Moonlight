@@ -1,6 +1,11 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class Effect_State
+{
+  Monster,
+  Boss
+};
 
 
 class Spear_Effect : public GameEngineActor
@@ -16,30 +21,22 @@ public:
 	Spear_Effect& operator=(const Spear_Effect& _Other) = delete;
 	Spear_Effect& operator=(Spear_Effect&& _Other) noexcept = delete;
 
-	//void TestEvent(GameEngineRenderer* _Renderer);
-
-
-
-
-
-
-	
-	//void Move(float _Delta);
-
+	void Set_state(const Effect_State& _state)
+	{
+		state = _state; 
+	}
 
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 private:
+	Effect_State state = Effect_State::Monster; 
 	bool CollisionCheck = false;
-	float StartSpeed = 20.0f;
-	float Speed = 300.0f;
-	float Time = 0.0f;
-	//BabySlime_State StateValue = BabySlime_State::Walk;
-	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
-	std::shared_ptr<class GameEngineSpriteRenderer> babySlime;
+
+
+	
 	std::shared_ptr<class GameEngineSpriteRenderer> Efffet;
-	std::shared_ptr<GameEngineCollision> Col;
+
 
 };

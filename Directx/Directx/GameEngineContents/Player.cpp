@@ -116,7 +116,12 @@ void Player::Start()
 		Top_Col->Transform.SetLocalScale({ 30.0f, 5.0f, 1.0f });
 	}
 
-
+	{
+		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Rock_Check_Col);
+		Mini_Col->SetCollisionType(ColType::AABBBOX2D);
+		
+		Mini_Col->Transform.SetLocalScale({ 10.0f, 10.0f, 1.0f });
+	}
 
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();

@@ -204,6 +204,11 @@
     <ClCompile Include="MonsterTest.cpp" />
     <ClCompile Include="Boss_Rock_Shadow.cpp" />
     <ClCompile Include="Boss_Rock.cpp" />
+    <ClCompile Include="Rock_Particle.cpp" />
+    <ClCompile Include="Boss_Wirst.cpp" />
+    <ClCompile Include="Boss_Wirst_state.cpp" />
+    <ClCompile Include="Boss_Monster_UI.cpp" />
+    <ClCompile Include="Boss_Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -375,6 +380,10 @@
     <ClInclude Include="MonsterTest.h" />
     <ClInclude Include="Boss_Rock_Shadow.h" />
     <ClInclude Include="Boss_Rock.h" />
+    <ClInclude Include="Rock_Particle.h" />
+    <ClInclude Include="Boss_Wirst.h" />
+    <ClInclude Include="Boss_Monster_UI.h" />
+    <ClInclude Include="Boss_Wave.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

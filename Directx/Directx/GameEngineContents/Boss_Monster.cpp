@@ -1,6 +1,9 @@
 #include "PreCompile.h"
 #include "Boss_Monster.h"
 #include "Player.h"
+#include "Spear_Effect.h"
+#include "Boss_Monster_UI.h"
+#include "Boss_Wave.h"
 Boss_Monster::Boss_Monster()
 {
 }
@@ -11,23 +14,35 @@ Boss_Monster::~Boss_Monster()
 
 void Boss_Monster::Start()
 {
-	Boss = CreateComponent<GameEngineSpriteRenderer>(100);
+	Boss = CreateComponent<GameEngineSpriteRenderer>(-49);
 	Boss->CreateAnimation("Wake_Up", "Wake_Up", 0.1f, -1, -1, false);
 	Boss->CreateAnimation("Idle", "Idle", 0.1f, -1, -1, true);
-	Boss->CreateAnimation("Death", "Death", 0.1f, -1, -1, true);	
+	Boss->CreateAnimation("Death", "Death", 0.1f, -1, -1, true);
 	Boss->CreateAnimation("Boss1_LaunchArm", "Boss1_LaunchArm", 0.1f, -1, -1, false);
 	Boss->CreateAnimation("Boss1_IdleNoArm", "Boss1_IdleNoArm", 0.1f, -1, -1, true);
 	Boss->CreateAnimation("Boss1_RecoverArm", "Boss1_RecoverArm", 0.1f, -1, -1, false);
 	Boss->CreateAnimation("Boss1_Rocks_Spawn_Attack", "Boss1_Rocks_Spawn_Attack", 0.1f, -1, -1, false);
+	Boss->CreateAnimation("Boss1_StickyArm_Aim2Cycle", "Boss1_StickyArm_Aim2Cycle", 0.1f, -1, -1, true);
+	Boss->CreateAnimation("Boss1_StickyArm_End", "Boss1_StickyArm_End", 0.1f, -1, -1, false);
+	Boss->CreateAnimation("Boss1_StickyArm_Start", "Boss1_StickyArm_Start", 0.1f, -1, -1, false);
 	Boss->AutoSpriteSizeOn();
 	Boss->SetAutoScaleRatio(2.0f);
 	Boss->ChangeAnimation("Wake_Up");
-	Boss->AnimationPauseOn(); 
+	Boss->AnimationPauseOn();
 
 
-	Col = CreateComponent<GameEngineCollision>();
+
+	Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Boss_Distance);
 	Col->Transform.SetLocalScale({ 1000.0f,1000.0f });
 	Col->SetCollisionType(ColType::AABBBOX2D); 
+
+	BodyCol = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
+	BodyCol->Transform.SetLocalScale({ 450.0f,300.0f });
+	BodyCol->SetCollisionType(ColType::AABBBOX2D);
+
+	MoveCol = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+	MoveCol->Transform.SetLocalScale({ 480.0f,330.0f });
+	MoveCol->SetCollisionType(ColType::AABBBOX2D);
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
@@ -51,15 +66,54 @@ void Boss_Monster::Start()
 
 
 	};
+
+
+	BodyEvent.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		
+			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
+			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
+			Object->Set_state(Effect_State::Boss); 
+
+			UI->Monster_HpBar->Transform.AddLocalScale({ -0.05f,0.0f });
+			//Weapon_Collision_Check = true;
+			Hp -= 10.0f;
+		
+	};
+
+	BodyEvent.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+
+	};
+
+
+	BodyEvent.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		//Weapon_Collision_Check = false;
+	};
+
 }
 
 void Boss_Monster::Update(float _Delta)
 {
 	Time = _Delta; 
+	Wave_Time += _Delta; 
+	
 
 
 	Col->CollisionEvent(ContentsCollisionType::Player, Event);
+	BodyCol->CollisionEvent(ContentsCollisionType::Spear, BodyEvent);
 	UpdateState(_Delta);
+
+
+	if (Wave_Time > 5 )
+	{
+		std::shared_ptr<Boss_Wave> Object = GetLevel()->CreateActor<Boss_Wave>();
+		Object->Transform.SetWorldPosition({Transform.GetWorldPosition()});
+		Wave_Time = 0; 
+		
+	}
+
 
 }
 

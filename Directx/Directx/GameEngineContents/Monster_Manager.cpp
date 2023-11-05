@@ -37,12 +37,11 @@ float4 Monster_Manager::Monster_Move(float _Delta,float4 _GetWorldTransform, std
 		MoveCheck = false;
 	}*/
 	
-	if (test ==30)
-	{
+	
 		PathPos = TileMap::Map->GetPath(_GetWorldTransform - _distance_fixation, Player::this_Player->Transform.GetWorldPosition() - _distance_fixation, _Name);
 		thisPos = _GetWorldTransform;
 		test = 0;
-	}
+	
 		
 	test++;
 

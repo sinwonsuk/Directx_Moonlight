@@ -6,6 +6,7 @@
 #include "CameraCollision.h"
 #include "TileMap.h"
 #include "MonsterTest.h"
+#include "Boss_Rock.h"
 Path_Finder_Level::Path_Finder_Level()
 {
 }
@@ -23,11 +24,12 @@ void Path_Finder_Level::Start()
 
 
 	
+	std::shared_ptr<Boss_Rock> Object = CreateActor<Boss_Rock>();
+	Object->Set_BossPos({0,0 });
 
-	
-	
 
-	{
+
+	/*{
 		std::shared_ptr<MonsterTest> Object =CreateActor<MonsterTest>();
 		Object->Transform.SetLocalPosition({ 840.0f,-440.0f });
 	}
@@ -72,7 +74,7 @@ void Path_Finder_Level::Start()
 
 	{
 		std::shared_ptr<Dungeon_Map_10> Object = CreateActor<Dungeon_Map_10>();
-	}
+	}*/
 
 	{
 		std::shared_ptr<TileMap> Object = CreateActor<TileMap>();
@@ -88,7 +90,7 @@ void Path_Finder_Level::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	{
 		std::shared_ptr<Player> Object = CreateActor<Player>(-100);
-		Object->Transform.AddLocalPosition({ -500.0f,0.0f });
+		Object->Transform.AddLocalPosition({ 0.0f,0.0f });
 	}
 
 

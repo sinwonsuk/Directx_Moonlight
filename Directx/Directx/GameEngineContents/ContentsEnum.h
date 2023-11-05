@@ -62,4 +62,8 @@ enum class ContentsCollisionType
 	CameraCollision,
 	MiniCol,
 	BossDoor,
+	Boss_Wave, 
+	Boss_Distance,
+	Rock,
+	Rock_Check_Col,
 };

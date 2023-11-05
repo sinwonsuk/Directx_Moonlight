@@ -110,6 +110,7 @@ public:
 	float Speed = 300.0f;
 	float Roll_Speed = 400.0f;
 	std::shared_ptr<GameEngineCollision> Col;
+	
 	bool Not_Move = true; 
 	bool LeftMove = true;
 	bool RightMove = true;
@@ -127,7 +128,7 @@ private:
 	
 	
 	
-	
+	std::shared_ptr<GameEngineCollision> Mini_Col;
 
 	EventParameter Left_Event;
 	EventParameter Right_Event;

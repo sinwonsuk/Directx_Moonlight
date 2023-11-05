@@ -13,14 +13,37 @@ public:
 	Boss_Rock& operator=(Boss_Rock&& _Other) noexcept = delete;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> Rock;
+	void Set_BossPos(const float4& _Pos)
+	{
+		BossPos = _Pos;
+	}
+	void Set_Seed(const int _Pos)
+	{
+		Seed = _Pos;
+	}
+
+	GameEngineRandom Random;
+
+
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 private:
-	int Number = 0; 
-
-	
-
-
+	EventParameter Event;
+	float Time = 0.0f;
+	float Time2 = 0.0f;
+	bool Check = false;
+	bool RockCheck = false;
+	std::shared_ptr<GameEngineCollision> Col;
+	std::shared_ptr<GameEngineCollision> Rock_Col;
+	int Seed = 0; 
+	float4 BossPos = {};
+	int Particle = 0;
+	float Particle_X = 0; 
+	float Particle_Y = 10;
+	float Speed = 320;
+	float tet = 0;
+	float4 Pos = {}; 
 };
