@@ -108,6 +108,7 @@ void Boss_Monster::UpdateState(float _Time)
 
 void Boss_Monster::IdleUpdate(float _Time)
 {
+	//dsaadsadadas
 	 float4 AD = random.RandomInt(1, 1);
 
 	if (Time > 0 && Boss->IsCurAnimationEnd())
