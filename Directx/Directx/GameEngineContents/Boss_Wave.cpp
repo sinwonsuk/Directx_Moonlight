@@ -14,9 +14,9 @@ void Boss_Wave::Start()
 	Wave = CreateComponent<GameEngineSpriteRenderer>(100);
 	Wave->CreateAnimation("Boss_Wave", "Boss_Wave", 0.05f, -1, -1, false);
 	Wave->AutoSpriteSizeOn();
-	Wave->SetAutoScaleRatio(2.0f);
+	Wave->SetAutoScaleRatio(1.3f);
 	Wave->ChangeAnimation("Boss_Wave");
-	Wave->Transform.AddLocalPosition({ 0.0f,-50.0f });
+	Wave->Transform.AddLocalPosition({ -20.0f,-130.0f });
 	//Wave->AnimationPauseOn();
 
 	Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Boss_Wave);

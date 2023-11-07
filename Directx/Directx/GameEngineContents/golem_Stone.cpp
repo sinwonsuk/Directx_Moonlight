@@ -49,7 +49,11 @@ void golem_Stone::Start()
 		Monster_HpBar->Off();
 	}
 
-
+	{
+		Monster_Weapon = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
+		Monster_Weapon->Transform.SetLocalScale({ 50.0f,50.0f });
+		Monster_Weapon->SetCollisionType(ColType::AABBBOX2D);
+	}
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 		/*	GameEngineActor* Actor = col->GetActor();
@@ -114,8 +118,20 @@ void golem_Stone::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
-		this->Death(); 
+		Number -= _Delta * 1;
+		Stone->GetColorData().MulColor = { 1,1,1,Number };
+		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
+		if (Number < 0.1)
+		{
+			this->Death();
+		}
+		return;
 	}
+
+
+	Monster_Damage(Stone, _Delta);
+
+
 	if (Col->Collision(ContentsCollisionType::CameraCollision))
 	{
 		MonsterDir();

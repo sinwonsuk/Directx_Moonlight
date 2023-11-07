@@ -89,8 +89,12 @@ void Player::ChangeState(PlayerState _State)
 	case PlayerState::Spear_Up_Attack_03:
 		AnimationCheck("Spear_Up_Attack_03");
 		break;
-
-
+	case PlayerState::Death:
+		AnimationCheck("Player_Death");
+		break;
+	case PlayerState::Bed:
+		AnimationCheck("Bed");
+		break;
 	}
 
 }
@@ -178,7 +182,12 @@ void Player::UpdateState(float _Time)
 	case PlayerState::Spear_Up_Attack_03:
 		Spear_Up_AttackUpdate_03(_Time);
 		break;
-
+	case PlayerState::Death:
+		DeathUpdate(_Time);
+		break;
+	case PlayerState::Bed:
+		BedUpdate(_Time);
+		break;
 	default:
 		break;
 	}
@@ -667,6 +676,28 @@ void Player::Spear_Up_AttackUpdate_03(float _Time)
 
 }
 
+void Player::DeathUpdate(float _Time)
+{
+	if (player->IsCurAnimationEnd())
+	{
+
+		Player::LevelType = Leveltype::Dungeon_Death;
+		GameEngineCore::ChangeLevel("ShopLevel");
+	}
+
+}
+
+void Player::BedUpdate(float _Time)
+{
+
+	if (player->IsCurAnimationEnd())
+	{
+		Transform.AddLocalPosition({ 0.0f,-50.0f });
+		ChangeState(PlayerState::DownIdle);
+		return; 
+	}
+}
+
 void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerState _playstate)
 {
 	
@@ -897,7 +928,6 @@ void Player::Move(float _Delta)
 		
 	
 }
-
 
 
 

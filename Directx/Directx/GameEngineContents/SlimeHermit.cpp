@@ -16,7 +16,7 @@ SlimeHermit::~SlimeHermit()
 
 void SlimeHermit::Start()
 {
-
+	Transform.AddLocalPosition({ 0.0f,50.0f }); 
 	Slime_Hermit = CreateComponent<GameEngineSpriteRenderer>(100);
 	Slime_Hermit->CreateAnimation("SlimeHermit_Attack_Down", "SlimeHermit_Attack_Down", 0.1f, -1, -1, false);
 	Slime_Hermit->CreateAnimation("SlimeHermit_Move_Down", "SlimeHermit_Move_Down", 0.1f, -1, -1, true);
@@ -55,13 +55,22 @@ void SlimeHermit::Start()
 
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 
 	{
-		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::GolemSolder);
-		Col->Transform.SetLocalScale({ 100.0f,100.0f }); 
+		Monster_Weapon = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
+		Monster_Weapon->Transform.SetLocalScale({ 100.0f,100.0f });
+		Monster_Weapon->SetCollisionType(ColType::AABBBOX2D);
+		Monster_Weapon->On();
 	}
 
+	{
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
+		Col->Transform.SetLocalScale({ 100.0f,100.0f }); 
+		Col->SetCollisionType(ColType::AABBBOX2D);
+	}
+	
 	
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
@@ -73,6 +82,7 @@ void SlimeHermit::Start()
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 			Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
 			Weapon_Collision_Check = true;
+			ColorCheck = true;
 			Hp -= 10.0f;
 		}
 
@@ -101,7 +111,7 @@ void SlimeHermit::Start()
 		Mini_Col->Transform.SetLocalScale({ 20.0f,20.0f });
 		Mini_Col->SetCollisionType(ColType::AABBBOX2D);
 	}
-
+	
 }
 
 void SlimeHermit::Update(float _Delta)
@@ -109,10 +119,21 @@ void SlimeHermit::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
-		this->Off();
+		Number -= _Delta * 1;
+		Slime_Hermit->GetColorData().MulColor = { 1,1,1,Number };
+		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
+		if (Number < 0.1)
+		{
+			this->Death();
+		}
+
+
 		return;
 	}
+
+	Monster_Damage(Slime_Hermit, _Delta);
 	
+
 	if (Col->Collision(ContentsCollisionType::CameraCollision))
 	{
 		Time += _Delta;

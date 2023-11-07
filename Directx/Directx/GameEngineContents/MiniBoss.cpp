@@ -17,6 +17,7 @@ MiniBoss::~MiniBoss()
 void MiniBoss::Start()
 {
 
+	Transform.AddLocalPosition({ 0.0f,60.0f });
 	Mini_Boss = CreateComponent<GameEngineSpriteRenderer>(99);
 	Mini_Boss->CreateAnimation("Mini_Boss_Attack_Down", "Mini_Boss_Attack_Down", 0.1f, -1, -1, false);
 	Mini_Boss->CreateAnimation("Mini_Boss_Move_Down", "Mini_Boss_Move_Down", 0.1f, -1, -1, true);
@@ -31,7 +32,7 @@ void MiniBoss::Start()
 		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(99);
 		Monster_BaseBar->SetSprite("MonsterUI", 0);
 		Monster_BaseBar->SetPivotType(PivotType::Left);
-		Monster_BaseBar->Transform.AddLocalPosition({ -30.0f,60.0f });
+		Monster_BaseBar->Transform.AddLocalPosition({ -30.0f,90.0f });
 		Monster_BaseBar->Off(); 
 	}
 
@@ -39,7 +40,7 @@ void MiniBoss::Start()
 		Monster_HpBar = CreateComponent<GameEngineSpriteRenderer>(99);
 		Monster_HpBar->SetSprite("MonsterUI", 1);
 		Monster_HpBar->SetPivotType(PivotType::Left);
-		Monster_HpBar->Transform.AddLocalPosition({ -30.0f,60.0f });
+		Monster_HpBar->Transform.AddLocalPosition({ -30.0f,90.0f });
 		Monster_HpBar->Off();
 	}
 
@@ -48,7 +49,7 @@ void MiniBoss::Start()
 	Mini_Boss->AutoSpriteSizeOn();
 	Mini_Boss->SetAutoScaleRatio(2.0f);
 	Mini_Boss->ChangeAnimation("Mini_Boss_Move_Down");
-	Mini_Boss->Transform.AddLocalPosition({ 0.0f,40.0f });
+	//Mini_Boss->Transform.AddLocalPosition({ 0.0f,40.0f });
 
 
 
@@ -64,7 +65,13 @@ void MiniBoss::Start()
 		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::MiniCol);
 		Mini_Col->Transform.SetLocalScale({ 20.0f,20.0f });
 		Mini_Col->SetCollisionType(ColType::AABBBOX2D);
+	}
 
+	{
+		Monster_Weapon = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
+		Monster_Weapon->Transform.SetLocalScale({ 100.0f,100.0f });
+		Monster_Weapon->SetCollisionType(ColType::AABBBOX2D);
+		Monster_Weapon->Off(); 
 	}
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
@@ -77,6 +84,7 @@ void MiniBoss::Start()
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 			Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
 			Weapon_Collision_Check = true;
+			ColorCheck = true;
 			Hp -= 10.0f;
 		}
 
@@ -106,14 +114,23 @@ void MiniBoss::Update(float _Delta)
 {
 	
 
+	Monster_Damage(Mini_Boss, _Delta);
 
 
 
 
-
+	
 	if (Hp <= 0)
 	{
-		this->Off();
+		Number -= _Delta * 1;
+		Mini_Boss->GetColorData().MulColor = { 1,1,1,Number };
+		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
+		if (Number < 0.1)
+		{
+			this->Death();
+		}
+
+
 		return;
 	}
 	if (Col->Collision(ContentsCollisionType::CameraCollision))

@@ -13,6 +13,7 @@
 #include "golem_Solder.h"
 #include "Boss_Monster.h"
 #include "Boss_Map.h"
+#include "Inventory.h"
 PlayLevel::PlayLevel() 
 {
 
@@ -39,6 +40,9 @@ void PlayLevel::Start()
 	}
 
 	{
+		std::shared_ptr<Inventory> Object = CreateActor<Inventory>();
+	}
+	{
 		//std::shared_ptr<MiniBoss> Object = CreateActor<MiniBoss>(ContentsObjectType::Player);
 	}
 	
@@ -55,10 +59,10 @@ void PlayLevel::Start()
 
 
 	//std::shared_ptr<Monster_Place> Object = CreateActor<Monster_Place>();
-	{
+	/*{
 		std::shared_ptr<Player_UI> Object = CreateActor<Player_UI>(ContentsObjectType::Player);
 	}
-	
+	*/
 
 	
 

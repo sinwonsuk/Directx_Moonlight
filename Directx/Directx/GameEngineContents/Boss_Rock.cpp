@@ -15,7 +15,7 @@ void Boss_Rock::Start()
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, 800 });
 
-	Rock = CreateComponent<GameEngineSpriteRenderer>();
+	Rock = CreateComponent<GameEngineSpriteRenderer>(-50);
 	Rock->SetSprite("Boos1_Rock", 0);
 	Rock->AutoSpriteSizeOn(); 
 	Rock->SetAutoScaleRatio(2.0f); 

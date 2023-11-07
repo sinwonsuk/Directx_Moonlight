@@ -43,7 +43,7 @@ private:
 	int Particle = 0;
 	float Particle_X = 0; 
 	float Particle_Y = 10;
-	float Speed = 320;
+	float Speed = 200;
 	float tet = 0;
 	float4 Pos = {}; 
 };

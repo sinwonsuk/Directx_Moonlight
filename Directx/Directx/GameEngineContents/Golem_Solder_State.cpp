@@ -227,7 +227,7 @@ void golem_Solder::LeftMoveUpdate(float _Time)
 
 	if (Col->Collision(ContentsCollisionType::Player))
 	{
-
+		Monster_Weapon->Transform.AddLocalPosition({-50.0f,0.0f });
 		ChangeState(golem_Solder_State::LeftAttack);
 		return;
 	}
@@ -309,6 +309,7 @@ void golem_Solder::RightMoveUpdate(float _Time)
 
 	if (Col->Collision(ContentsCollisionType::Player))
 	{
+		Monster_Weapon->Transform.AddLocalPosition({ 50.0f,0.0f });
 		ChangeState(golem_Solder_State::RightAttack);
 		return;
 	}
@@ -385,6 +386,7 @@ void golem_Solder::UpMoveUpdate(float _Time)
 
 	if (Col->Collision(ContentsCollisionType::Player))
 	{
+		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,50.0f });
 		ChangeState(golem_Solder_State::UpAttack);
 		return;
 	}
@@ -446,7 +448,12 @@ void golem_Solder::DownMoveUpdate(float _Time)
 
 
 	
-
+	if (Col->Collision(ContentsCollisionType::Player))
+	{
+		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,-50.0f });
+		ChangeState(golem_Solder_State::DownAttack);
+		return;
+	}
 
 	if (Weapon_Collision_Check == false)
 	{
@@ -514,14 +521,20 @@ void golem_Solder::DownMoveUpdate(float _Time)
 
 void golem_Solder::LeftAttackUpdate(float _Time)
 {
+	if (Solder->GetCurIndex() > 6)
+	{
+		Monster_Weapon->On();
+	}
 	
+
+	
+
 
 
 	if (Solder->IsCurAnimationEnd())
-	{
-	
-		Time = 0.0f;
-	
+	{	
+		Monster_Weapon->Off();
+		Monster_Weapon->Transform.AddLocalPosition({ 50.0f,0.0f });
 		ChangeState(golem_Solder_State::AttackCheck);
 		return;
 	}
@@ -529,49 +542,61 @@ void golem_Solder::LeftAttackUpdate(float _Time)
 }
 
 void golem_Solder::RightAttackUpdate(float _Time)
-{
-
+{	
+	if (Solder->GetCurIndex() > 6)
+	{
+		Monster_Weapon->On();
+	}
 	
+
+
+
+
 	if (Solder->IsCurAnimationEnd())
 	{
-	
+		Monster_Weapon->Transform.AddLocalPosition({ -50.0f,0.0f });
 		Time = 0.0f;
-	
+		Monster_Weapon->Off();
 		ChangeState(golem_Solder_State::AttackCheck);
 		return;
-
-
 	}
-
 }
 
 void golem_Solder::UpAttackUpdate(float _Time)
 {
+	if (Solder->GetCurIndex() > 6)
+	{
+		Monster_Weapon->On();
+	}
 
+
+	
 
 	if (Solder->IsCurAnimationEnd())
 	{
-		
-
 		Time = 0.0f;
-
-
+		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,-50.0f });
+		Monster_Weapon->Off();
 		ChangeState(golem_Solder_State::AttackCheck);
 		return;
-
-
 	}
 
 }
 
 void golem_Solder::DownAttackUpdate(float _Time)
 {
+	if (Solder->GetCurIndex() > 6)
+	{
+		Monster_Weapon->On();
+	}
 
 
+	
 
 	if (Solder->IsCurAnimationEnd())
 	{
-	
+		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,50.0f });
+		Monster_Weapon->Off();
 		Time = 0.0f;
 
 		ChangeState(golem_Solder_State::AttackCheck);

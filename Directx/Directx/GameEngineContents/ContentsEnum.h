@@ -33,6 +33,7 @@ enum class Leveltype
 	None,
 	Town,
 	Dungeon_Entrance,
+	Dungeon_Death,
 };
 
 
@@ -66,4 +67,6 @@ enum class ContentsCollisionType
 	Boss_Distance,
 	Rock,
 	Rock_Check_Col,
+	Monster_Weapon,
+	Boss_Monster,
 };

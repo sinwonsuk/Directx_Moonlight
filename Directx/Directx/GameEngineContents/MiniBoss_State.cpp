@@ -247,6 +247,7 @@ void MiniBoss::LeftMoveUpdate(float _Time)
 
 		if (Col->Collision(ContentsCollisionType::Player))
 		{
+			Monster_Weapon->Transform.AddLocalPosition({ -100.0f,0.0f });
 			ChangeState(MiniBoss_State::LeftAttack);
 			return;
 		}
@@ -307,6 +308,7 @@ void MiniBoss::RightMoveUpdate(float _Time)
 
 		if (Col->Collision(ContentsCollisionType::Player))
 		{
+			Monster_Weapon->Transform.AddLocalPosition({ 100.0f,0.0f });
 			ChangeState(MiniBoss_State::RightAttack);
 			return;
 		}
@@ -370,6 +372,7 @@ void MiniBoss::UpMoveUpdate(float _Time)
 
 		if (Col->Collision(ContentsCollisionType::Player))
 		{
+			Monster_Weapon->Transform.AddLocalPosition({ 0.0f,100.0f });
 			ChangeState(MiniBoss_State::UpAttack);
 			return;
 		}
@@ -432,7 +435,7 @@ void MiniBoss::DownMoveUpdate(float _Time)
 
 		if (Col->Collision(ContentsCollisionType::Player))
 		{
-			
+			Monster_Weapon->Transform.AddLocalPosition({ 0.0f,-100.0f });
 			ChangeState(MiniBoss_State::DownAttack);
 			return;
 		}
@@ -442,13 +445,24 @@ void MiniBoss::DownMoveUpdate(float _Time)
 
 void MiniBoss::LeftAttackUpdate(float _Time)
 {
+	if (Mini_Boss->GetCurIndex() > 4)
+	{
+		if (Mini_Boss->GetCurIndex() < 8)
+		{
+			Monster_Weapon->On();
+		}
+	}
+	else
+	{
+		Monster_Weapon->Off();
+	}
 	
-
 
 	if (Mini_Boss->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
-	
+		Monster_Weapon->Off();
+		Monster_Weapon->Transform.AddLocalPosition({ 100.0f,0.0f });
 		ChangeState(MiniBoss_State::AttackCheck);
 		return;
 	}
@@ -457,41 +471,77 @@ void MiniBoss::LeftAttackUpdate(float _Time)
 
 void MiniBoss::RightAttackUpdate(float _Time)
 {
+	
+	if (Mini_Boss->GetCurIndex() > 4)
+	{
+		if (Mini_Boss->GetCurIndex() < 8)
+		{
+			Monster_Weapon->On();
+		}
+	}
+
+	else
+	{
+		Monster_Weapon->Off();
+	}
+
 	if (Mini_Boss->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
-	
+		Monster_Weapon->Off();
+		Monster_Weapon->Transform.AddLocalPosition({ -100.0f,0.0f });
 		ChangeState(MiniBoss_State::AttackCheck);
 		return;
-
-
 	}
 
 }
 
 void MiniBoss::UpAttackUpdate(float _Time)
 {
+	
+	if (Mini_Boss->GetCurIndex() > 4)
+	{
+		if (Mini_Boss->GetCurIndex() < 8)
+		{
+			Monster_Weapon->On();
+		}
+	}
+	else
+	{
+		Monster_Weapon->Off();
+	}
+
 	if (Mini_Boss->IsCurAnimationEnd())
 	{
-
-
 		Time = 0.0f;
-
-
+		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,-100.0f });
+		Monster_Weapon->Off();
 		ChangeState(MiniBoss_State::AttackCheck);
 		return;
-
-
 	}
 
 }
 
 void MiniBoss::DownAttackUpdate(float _Time)
 {
+	
+	if (Mini_Boss->GetCurIndex() > 4)
+	{
+		if (Mini_Boss->GetCurIndex() < 8)
+		{
+			Monster_Weapon->On();
+		}
+	}
+	else
+	{
+		Monster_Weapon->Off();
+	}
+
 	if (Mini_Boss->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
-
+		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,100.0f });
+		Monster_Weapon->Off();
 		ChangeState(MiniBoss_State::AttackCheck);
 		return;
 	}

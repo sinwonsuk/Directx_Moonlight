@@ -16,6 +16,7 @@ golem_Solder::~golem_Solder()
 
 void golem_Solder::Start()
 {
+	Transform.AddLocalPosition({ 0.0f,30.0f });
 
 	Solder = CreateComponent<GameEngineSpriteRenderer>(130);
 	Solder->CreateAnimation("GolemSolder_Attack_Down", "GolemSolder_Attack_Down", 0.1f, -1, -1, false);
@@ -27,7 +28,7 @@ void golem_Solder::Start()
 	Solder->CreateAnimation("GolemSolder_Attack_Up", "GolemSolder_Attack_Up", 0.1f, -1, -1, false);
 	Solder->CreateAnimation("GolemSoldier_Move_Up", "GolemSoldier_Move_Up", 0.1f, -1, -1, true);
 
-	Solder->Transform.AddLocalPosition({ 0.0f,30.0f });
+
 	{
 		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(130);
 		Monster_BaseBar->SetSprite("MonsterUI", 0);
@@ -67,6 +68,12 @@ void golem_Solder::Start()
 		Mini_Col->Transform.SetLocalScale({ 20.0f,20.0f });
 		Mini_Col->SetCollisionType(ColType::AABBBOX2D);
 	}
+	{
+		Monster_Weapon = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
+		Monster_Weapon->Transform.SetLocalScale({ 50.0f,50.0f });
+		Monster_Weapon->SetCollisionType(ColType::AABBBOX2D);
+		Monster_Weapon->Off(); 
+	}
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
@@ -76,9 +83,11 @@ void golem_Solder::Start()
 		{
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
-			Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
+			
+			Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
 			Weapon_Collision_Check = true;
-			Hp -= 10.0f;
+			Hp -= 20.0f;
+			ColorCheck = true;
 		}
 
 		Monster_BaseBar->On();
@@ -120,6 +129,7 @@ void golem_Solder::Start()
 	};
 
 
+
 	Mini_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 		
@@ -129,15 +139,28 @@ void golem_Solder::Start()
 void golem_Solder::Update(float _Delta)
 {
 	
-
+	Monster_Damage(Solder, _Delta);
 
 	DeltaTime = _Delta; 
 
+
+	
+
+
 	if (Hp <= 0)
 	{
-		this->Off();
+		Number -= _Delta * 1;
+		Solder->GetColorData().MulColor = { 1,1,1,Number };
+		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
+		if (Number < 0.1)
+		{
+			this->Death();
+		}
+
+
 		return;
 	}
+
 
 	
 

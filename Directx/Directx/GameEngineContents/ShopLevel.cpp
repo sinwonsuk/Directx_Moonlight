@@ -42,9 +42,22 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	
 
+	
+
+
+	if (Player::LevelType == Leveltype::Dungeon_Death)
 	{
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
+		Object->ChangeState(PlayerState::Bed);
+		Object->Transform.SetWorldPosition({ 795.0f,-140.0f });
+		GetMainCamera()->Transform.AddWorldPosition({ 0.0f,300.0f }); 
+	}
+	else
+	{
+		
+		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
 		Object->Transform.AddLocalPosition({ 55.0f,-200.0f });
+		
 	}
 
 	//Player::this_Player->CameraCheck = true;

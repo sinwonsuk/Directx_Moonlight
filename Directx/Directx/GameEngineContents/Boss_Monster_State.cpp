@@ -51,6 +51,9 @@ void Boss_Monster::ChangeState(Boss_Monster_State _State)
 	case Boss_Monster_State::StickyArm_End:
 		AnimationCheck("Boss1_StickyArm_End");
 		break;
+	case Boss_Monster_State::Death:
+		AnimationCheck("Death");
+		break;
 	}
 	
 }
@@ -101,6 +104,10 @@ void Boss_Monster::UpdateState(float _Time)
 	case Boss_Monster_State::StickyArm_End:
 		StickyArm_End_Update(_Time);
 		break;
+	case Boss_Monster_State::Death:
+		DeathUpdate(_Time);
+		break;
+
 	default:
 		break;
 	}
@@ -108,8 +115,9 @@ void Boss_Monster::UpdateState(float _Time)
 
 void Boss_Monster::IdleUpdate(float _Time)
 {
-	//dsaadsadadas
-	 float4 AD = random.RandomInt(1, 1);
+	WaveCheck = true; 
+
+	 float4 AD = random.RandomInt(0, 1);
 
 	if (Time > 0 && Boss->IsCurAnimationEnd())
 	{
@@ -139,7 +147,7 @@ void Boss_Monster::StartUpdate(float _Time)
 	{
 		if (BossUI == false)
 		{
-			UI = GetLevel()->CreateActor<Boss_Monster_UI>();
+			Boss_UI = GetLevel()->CreateActor<Boss_Monster_UI>();
 			BossUI = true;
 		}
 
@@ -378,5 +386,14 @@ void Boss_Monster::StickyArm_End_Update(float _Time)
 	}
 }
 
+void Boss_Monster::DeathUpdate(float _Time)
+{
+
+	if (Boss->IsCurAnimationEnd())
+	{
+		Boss->AnimationPauseOn(); 
+	}
+
+}
 
 

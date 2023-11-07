@@ -62,6 +62,11 @@ void BabySlime::Start()
 		Col->Transform.SetLocalScale({ 15.0f,15.0f });
 	}
 
+	{	
+		Monster_Weapon = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
+		Monster_Weapon->Transform.SetLocalScale({ 15.0f,15.0f });
+
+	}
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 		
@@ -70,6 +75,7 @@ void BabySlime::Start()
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 			Monster_HpBar->Transform.AddLocalScale({ -0.5f,0.0f });
+			ColorCheck = true;
 			Weapon_Collision_Check = true;
 			Hp -= 10.0f;
 		}
@@ -79,16 +85,12 @@ void BabySlime::Start()
 		Monster_BaseBar->On();
 		Monster_HpBar->On();
 
-		/*GameEngineActor* Actor = col->GetActor();
-		Spear* ptr = dynamic_cast<Spear*>(Actor);
-		ptr->Col->Off();*/
+	
 	};
 
 	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-	/*	Monster_BaseBar->On();
-		Monster_HpBar->On();*/
-		//Collision_Check = true;
+	
 	};
 
 
@@ -103,13 +105,32 @@ void BabySlime::Start()
 
 void BabySlime::Update(float _Delta)
 {
-	Col->CollisionEvent(ContentsCollisionType::Spear, Event);
-
-
 	if (Hp <= 0)
 	{
-		this->Off();
+		Number -= _Delta * 1;
+		babySlime->GetColorData().MulColor = { 1,1,1,Number };
+		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
+		if (Number < 0.1)
+		{
+			this->Death();
+		}
+
+
+		return;
 	}
+
+	
+	
+
+	Monster_Damage(babySlime, _Delta);
+
+
+
+
+
+
+	Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+
 
 	if (Col->Collision(ContentsCollisionType::CameraCollision))
 	{

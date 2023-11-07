@@ -21,7 +21,7 @@ public:
 
 	//void Move(float _Delta);
 
-
+	std::shared_ptr<class GameEngineUIRenderer> Hp_Bar;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -47,7 +47,7 @@ private:
 
 	std::shared_ptr<class GameEngineUIRenderer> Mini_Will;
 	std::shared_ptr<class GameEngineUIRenderer> Heart;
-	std::shared_ptr<class GameEngineUIRenderer> Hp_Bar;
+	
 	std::shared_ptr<class GameEngineUIRenderer> Bag;
 	std::shared_ptr<class GameEngineUIRenderer> Pocket;
 

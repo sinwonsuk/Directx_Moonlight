@@ -13,7 +13,7 @@ Boss_Brick::~Boss_Brick()
 
 void Boss_Brick::Start()
 {
-	Brick = CreateComponent<GameEngineSpriteRenderer>();
+	Brick = CreateComponent<GameEngineSpriteRenderer>(-50);
 	Brick->SetSprite("Brick", 0); 
 	Brick->AutoSpriteSizeOn();
 	Brick->SetAutoScaleRatio(2.0f);

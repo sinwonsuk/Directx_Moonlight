@@ -209,6 +209,7 @@
     <ClCompile Include="Boss_Wirst_state.cpp" />
     <ClCompile Include="Boss_Monster_UI.cpp" />
     <ClCompile Include="Boss_Wave.cpp" />
+    <ClCompile Include="Inventory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -384,6 +385,7 @@
     <ClInclude Include="Boss_Wirst.h" />
     <ClInclude Include="Boss_Monster_UI.h" />
     <ClInclude Include="Boss_Wave.h" />
+    <ClInclude Include="Inventory.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

@@ -264,7 +264,7 @@ void SlimeHermit::LeftMoveUpdate(float _Time)
 
 		if (Col->Collision(ContentsCollisionType::Player))
 		{
-			
+			Monster_Weapon->Transform.AddLocalPosition({ -120.0f,0.0f });
 			ChangeState(SlimeHermit_State::LeftAttack);
 			return;
 		}
@@ -335,6 +335,7 @@ void SlimeHermit::RightMoveUpdate(float _Time)
 
 		if (Col->Collision(ContentsCollisionType::Player))
 		{
+			Monster_Weapon->Transform.AddLocalPosition({ 120.0f,0.0f });
 			ChangeState(SlimeHermit_State::RightAttack);
 			return;
 		}
@@ -408,6 +409,7 @@ void SlimeHermit::UpMoveUpdate(float _Time)
 
 		if (Col->Collision(ContentsCollisionType::Player))
 		{
+			Monster_Weapon->Transform.AddLocalPosition({ 0.0f,120.0f });
 			ChangeState(SlimeHermit_State::UpAttack);
 			return;
 		}
@@ -481,7 +483,7 @@ void SlimeHermit::DownMoveUpdate(float _Time)
 
 		if (Col->Collision(ContentsCollisionType::Player))
 		{
-			
+			Monster_Weapon->Transform.AddLocalPosition({ 0.0f,-120.0f });
 			ChangeState(SlimeHermit_State::DownAttack);
 			return;
 		}
@@ -491,12 +493,28 @@ void SlimeHermit::DownMoveUpdate(float _Time)
 
 void SlimeHermit::LeftAttackUpdate(float _Time)
 {
+	if (Slime_Hermit->GetCurIndex() > 5)
+	{
+		if (Slime_Hermit->GetCurIndex() < 9)
+		{
+			Monster_Weapon->On();
+		}
+	}
+
+	else
+	{
+		Monster_Weapon->Off();
+	}
+
+
 	Slime_Hermit->Transform.SetLocalRotation({ 0.0f,0.0f });
 
 
 	if (Slime_Hermit->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
+		Monster_Weapon->Off();
+		Monster_Weapon->Transform.AddLocalPosition({ 120.0f,0.0f });
 		Slime_Hermit->Transform.SetLocalRotation({ 0.0f,0.0f });
 		ChangeState(SlimeHermit_State::AttackCheck);
 		return;
@@ -506,11 +524,27 @@ void SlimeHermit::LeftAttackUpdate(float _Time)
 
 void SlimeHermit::RightAttackUpdate(float _Time)
 {
+	if (Slime_Hermit->GetCurIndex() > 5)
+	{
+		if (Slime_Hermit->GetCurIndex() < 9)
+		{
+			Monster_Weapon->On();
+		}
+	}
+
+	else
+	{
+		Monster_Weapon->Off();
+	}
+
+
 	Slime_Hermit->Transform.SetLocalRotation({ 0.0f,180.0f });
 
 	if (Slime_Hermit->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
+		Monster_Weapon->Off();
+		Monster_Weapon->Transform.AddLocalPosition({ -120.0f,0.0f });
 		Slime_Hermit->Transform.SetLocalRotation({ 0.0f,0.0f });
 		ChangeState(SlimeHermit_State::AttackCheck);
 		return;
@@ -522,13 +556,29 @@ void SlimeHermit::RightAttackUpdate(float _Time)
 
 void SlimeHermit::UpAttackUpdate(float _Time)
 {
+
+	if (Slime_Hermit->GetCurIndex() > 5)
+	{
+		if (Slime_Hermit->GetCurIndex() < 9)
+		{
+			Monster_Weapon->On();
+		}
+	}
+
+	else
+	{
+		Monster_Weapon->Off();
+	}
+
+
 	Slime_Hermit->Transform.SetLocalRotation({ 0.0f,0.0f });
 	if (Slime_Hermit->IsCurAnimationEnd())
 	{
 
 
 		Time = 0.0f;
-
+		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,-120.0f });
+		Monster_Weapon->Off();
 		Slime_Hermit->Transform.SetLocalRotation({ 0.0f,0.0f });
 		ChangeState(SlimeHermit_State::AttackCheck);
 		return;
@@ -540,11 +590,28 @@ void SlimeHermit::UpAttackUpdate(float _Time)
 
 void SlimeHermit::DownAttackUpdate(float _Time)
 {
+
+	if (Slime_Hermit->GetCurIndex() > 5)
+	{
+		if (Slime_Hermit->GetCurIndex() < 9)
+		{
+			Monster_Weapon->On();
+		}
+	}
+	else
+	{
+		Monster_Weapon->Off();
+	}
+	
+
 	Slime_Hermit->Transform.SetLocalRotation({ 0.0f,0.0f,0.0f });
 
 	if (Slime_Hermit->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
+
+		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,120.0f });
+		Monster_Weapon->Off();
 		Slime_Hermit->Transform.SetLocalRotation({ 0.0f,0.0f });
 		ChangeState(SlimeHermit_State::AttackCheck);
 		return;

@@ -7,9 +7,11 @@
 #include "TownMap.h"
 #include "Monster.h"
 #include "ContentsEnum.h"
-
+#include "Player_UI.h"
 Player* Player::this_Player; 
 Leveltype Player::LevelType = Leveltype::Town;
+
+
 Player::Player() 
 {
 	
@@ -26,6 +28,8 @@ void Player::AnimationCheck(const std::string_view& _AnimationName)
 
 void Player::Start()
 {
+	Boss_UI = GetLevel()->CreateActor<Player_UI>(ContentsObjectType::Player);
+
 	this_Player = this;
 	GameEngineInput::AddInputObject(this);
 
@@ -67,8 +71,8 @@ void Player::Start()
 		player->CreateAnimation("Spear_Up_Attack_01", "Spear_Up_Attack_01", 0.1f, -1, -1, false);
 		player->CreateAnimation("Spear_Up_Attack_02", "Spear_Up_Attack_02", 0.1f, -1, -1, false);
 		player->CreateAnimation("Spear_Up_Attack_03", "Spear_Up_Attack_03", 0.1f, -1, -1, false);
-
-		
+		player->CreateAnimation("Player_Death", "Player_Death", 0.1f, -1, -1, false);
+		player->CreateAnimation("Bed", "Bed", 0.1f, -1, -1, false);
 
 		player->AutoSpriteSizeOn();
 		player->SetAutoScaleRatio(2.0f);
@@ -193,6 +197,26 @@ void Player::Start()
 		UpMove = true;
 	};
 
+
+
+	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		Monster_Attack_Check = true; 
+		UICheck++; 
+	};
+
+	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		
+	};
+
+
+	Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+			
+	};
+
+
 	Test_Move = Transform.GetWorldPosition(); 
 }
 
@@ -202,93 +226,110 @@ void Player::TestEvent(GameEngineRenderer* _Renderer)
 }
 
 
+void Player::HitUpdate(float _Delta)
+{
+	if (Monster_Attack_Check == true)
+	{
+		Color_Time += _Delta;
+
+
+		if (Color_Time < 0.05)
+		{
+			player->GetColorData().PlusColor = { 0.0f,-1.0f,-1.0f,0.0f };
+		}
+
+		if (Color_Time <= 0.1)
+		{
+			if (Color_Time > 0.05)
+			{
+				player->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
+			}
+		}
+
+
+		if (Color_Time > 0.1)
+		{
+			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+			Color_Time = 0;
+			afterimage_Check = true;
+		}
+	}
+
+	if (afterimage_Check == true)
+	{
+		Color_Time += _Delta;
+
+		if (Color_Time < 0.1)
+		{
+			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,-1.0f };
+		}
+
+		if (Color_Time > 0.1)
+		{
+			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+			Color_Time = 0;
+			++Hit_Check;
+		}
+
+	}
+
+	if (Hit_Check == 5)
+	{
+		player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+		afterimage_Check = false;
+		Monster_Attack_Check = false;
+		Hit_Check = 0;
+		Hp -= Hp_Bar_reduce;
+		Hp_Bar_reduce = 0;
+
+
+	}
+}
 
 
 
 void Player::Update(float _Delta)
 {
-	
-	
-	//MainSpriteRenderer->AddImageScale(float4{-10.0f, 0.0f, 0.0f} *_Delta);
-
-	// 몬스터가 몬스터랑 충돌하고 싶으면?
-	// 내 미래의 위치
-
-	/*TransformData date = Transform.GetConstTransformDataRef();
-	float4 asdads = Player::this_Player->Transform.GetLocalPosition();
-	Col->Collision(ContentsCollisionType::Door, { 300.0f, 0.0f, 0.0f }, [](std::vector<std::shared_ptr<GameEngineCollision>>& _Collision){});*/
-
-	//this_Player->Transform.AddLocalPosition({ 0.5,0.0f });
-	//if (xxxx 상황이 되면)
-	//{
-	//	MainSpriteRenderer->Death();
-	//	MainSpriteRenderer = nullptr;
-	//}
-
-	// 충돌했냐 안했냐만 보면
-
-	//std::list<std::shared_ptr<Monster>> MonsterList = 
-	//	GetLevel()->GetObjectGroupConvert<Monster>(ContentsObjectType::Monster);
-
-	//for (std::shared_ptr<Monster> MonsterPtr : MonsterList)
-	//{
-	//	// 랜더러로 하는 이유 => 액터로도 할수있는데
-	//	// 보통 액터는 위치와 기준을 잡아주는 용도로 사용됩니다.
-	//	// MainSpriteRenderer->Transform.Collision(MonsterPtr->Renderer->Transform);
-
-	//	GameEngineTransform& Left = TestCollision->Transform;
-	//	GameEngineTransform& Right = MonsterPtr->Renderer->Transform;
-	//	Right.AddLocalRotation({ 0.0f, 0.0f, 360.0f * _Delta });
-
-	//	// 콜리전 파라미터를 사용한 이유가. 
-	//	if (GameEngineTransform::Collision({ Left , Right, ColType::OBBBOX2D }))
-	//	{
-	//		MonsterPtr->Death();
-	//		int a = 0;
-	//		// 충돌했다.
-	//	}
-	//}
+	//float4 awdd = Transform.GetWorldPosition();
 
 
-	float Speed = 100.0f;
-
-	
-
-
-	float4 awdd = Transform.GetWorldPosition();
-
-	
-	OutputDebugStringA(awdd.ToString("\n").c_str());
-
-
+	//OutputDebugStringA(awdd.ToString("\n").c_str());
 	
 	
 
-	
-
-
-
-	if (GameEngineInput::IsPress('A', this))
+	if (Hp <= 0.05)
 	{
-		Test_Move += {float4::LEFT* _Delta* Speed};		
+		ChangeState(PlayerState::Death);
+	
 	}
 
-	if (GameEngineInput::IsPress('D', this))
+	if (Hp > 0.05)
 	{
-		Test_Move += {float4::RIGHT* _Delta* Speed};
+		HitUpdate(_Delta);
+
+		Col->CollisionEvent(ContentsCollisionType::Monster_Weapon, Event);
+
+		if (Monster_Attack_Check == true)
+		{
+			if (Hp_Bar_reduce < 0.05)
+			{
+				Hp_Bar_reduce += _Delta / 3;
+				Boss_UI->Hp_Bar->Transform.AddLocalScale({ -_Delta / 3,0.0f });
+				Boss_UI->Hp_Bar->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
+
+			}
+		}
+
+		if (Monster_Attack_Check == false)
+		{
+			Boss_UI->Hp_Bar->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+		}
+
 	}
+	
+	
 
-	if (GameEngineInput::IsPress('W', this))
-	{
-		Test_Move += {float4::UP* _Delta* Speed};	
-	}
-
-	if (GameEngineInput::IsPress('S', this))
-	{
-		Test_Move += {float4::DOWN* _Delta* Speed};
-	}
-
-
+	
 
 
 
@@ -298,8 +339,8 @@ void Player::Update(float _Delta)
 	Bottom_Col->CollisionEvent(ContentsCollisionType::Object, Bottom_Event);
 	Top_Col->CollisionEvent(ContentsCollisionType::Object, Top_Event);
 
+	
 	UpdateState(_Delta);
-
 	
 	if (Col->Collision(ContentsCollisionType::ShopDoor))
 	{

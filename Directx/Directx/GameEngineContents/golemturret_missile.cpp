@@ -19,6 +19,11 @@ void golemturret_missile::Start()
 	Missile->SetAutoScaleRatio(2.0f);
 	Missile->ChangeAnimation("golemturret_Attack");
 
+	{
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
+		Col->Transform.SetLocalScale({ 20.0f,20.0f });
+	}
+
 }
 
 void golemturret_missile::AnimationCheck(const std::string_view& _AnimationName)

@@ -37,10 +37,13 @@ float4 Monster_Manager::Monster_Move(float _Delta,float4 _GetWorldTransform, std
 		MoveCheck = false;
 	}*/
 	
-	
+	if (test == 30)
+	{
 		PathPos = TileMap::Map->GetPath(_GetWorldTransform - _distance_fixation, Player::this_Player->Transform.GetWorldPosition() - _distance_fixation, _Name);
 		thisPos = _GetWorldTransform;
 		test = 0;
+	}
+		
 	
 		
 	test++;
@@ -325,5 +328,36 @@ void Monster_Manager::Monster_Collsision(float4 _Delta)
 
 			_This->GetActor()->Transform.AddLocalPosition(Dir * _Delta);
 	} });
+
+}
+
+void Monster_Manager::Monster_Damage(std::shared_ptr<GameEngineSpriteRenderer> _Object, float _Delta)
+{
+	if (ColorCheck == true)
+	{
+		Color_Time += _Delta;
+
+		if (Color_Time < 0.05)
+		{
+			_Object->GetColorData().PlusColor = { 0.0f,-1.0f,-1.0f,0.0f };
+		}
+
+		if (Color_Time <= 0.1)
+		{
+			if (Color_Time > 0.05)
+			{
+				_Object->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
+			}
+		}
+
+		if (Color_Time > 0.1)
+		{
+			_Object->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+			Color_Time = 0;
+			ColorCheck = false;
+		}
+
+	}
+
 
 }

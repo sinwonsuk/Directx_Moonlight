@@ -59,6 +59,7 @@ void golem_Wizard::Start()
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 			Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
 			Weapon_Collision_Check = true;
+			ColorCheck = true; 
 			Hp -= 10.0f;
 		}
 
@@ -110,9 +111,21 @@ void golem_Wizard::Update(float _Delta)
 {
 	if (Hp <= 0)
 	{
-		this->Off();
+		Number -= _Delta * 1;
+		Wizard->GetColorData().MulColor = { 1,1,1,Number };
+		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
+		if (Number < 0.1)
+		{
+			this->Death(); 
+		}
+
+
 		return; 
 	}
+
+	Monster_Damage(Wizard, _Delta);
+
+
 
 	if (Col->Collision(ContentsCollisionType::CameraCollision))
 	{

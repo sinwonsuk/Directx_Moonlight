@@ -28,6 +28,7 @@ public:
 		Dir = _Dir;
 	}
 	void Monster_Collsision(float4 _Delta);
+	void Monster_Damage(std::shared_ptr<GameEngineSpriteRenderer> _Object, float _Delta);
 
 protected:
 	float PathTime = 0.0f;
@@ -38,11 +39,16 @@ protected:
 	std::list<float4> PathPos;
 	int test = 0;
 	float4 Dir = {};
-
+	bool ColorCheck = false;
+	float Number = 1.0f;
+	int UICheck = 0;
+	float Hp_Bar_reduce = 0.0f;
+	float Color_Time = 0.0f;
 	float4 Manager_Speed = {};
 	float4 distance_fixation = {};
 	bool MoveCheck = false;
 	std::shared_ptr<GameEngineCollision> Mini_Col;
+	std::shared_ptr<GameEngineCollision> Monster_Weapon;
 private:
 	bool Door_Collison_Check = false;
 

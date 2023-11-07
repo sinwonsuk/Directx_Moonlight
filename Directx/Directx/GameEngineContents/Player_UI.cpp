@@ -42,7 +42,8 @@ void Player_UI::Start()
 	Hp_Bar->SetSprite("Hp_Bar.png");
 	Hp_Bar->AutoSpriteSizeOn();
 	Hp_Bar->SetAutoScaleRatio(2.0f);
-	Hp_Bar->Transform.AddLocalPosition({ -399.0f,320.0f });
+	Hp_Bar->SetPivotType(PivotType::Left);
+	Hp_Bar->Transform.AddLocalPosition({ -472.0f,320.0f });
 
 
 	Bag_Circle = CreateComponent<GameEngineUIRenderer>(10);

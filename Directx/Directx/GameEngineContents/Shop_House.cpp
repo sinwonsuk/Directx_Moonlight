@@ -264,10 +264,10 @@ void Shop_House::Start()
 		Room_Stove->SetAutoScaleRatio(2.0f);
 		Room_Stove->Transform.SetLocalPosition({ 200,127.0f });
 
-		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
+		/*std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
 		Col->Transform.SetLocalScale({ Room_Stove->GetCurSprite().Texture->GetScale() * 2.0f });
 		Col->Transform.SetWorldPosition(Room_Stove->Transform.GetWorldPosition());
-		Col->SetCollisionType(ColType::AABBBOX2D);
+		Col->SetCollisionType(ColType::AABBBOX2D);*/
 
 
 		///Shop->Transform.AddLocalPosition({ 0.01f,0.0f,1-150 });

@@ -57,7 +57,21 @@ void Spear_Effect::Update(float _Delta)
 			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 		}
 
-
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_01)
+		{
+			Efffet->On();
+			
+		}
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_02)
+		{
+			Efffet->On();
+			
+		}
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_03)
+		{
+			Efffet->On();
+			
+		}
 
 		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_01)
 		{
@@ -74,9 +88,9 @@ void Spear_Effect::Update(float _Delta)
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
 		}
-
-	}
 		break;
+	}
+	
 	case Effect_State::Boss:
 	{
 		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01)
@@ -158,7 +172,7 @@ void Spear_Effect::Update(float _Delta)
 			Efffet->On();
 			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 100, Player::this_Player->Transform.GetWorldPosition().Y });
 		}
-
+		break;
 	}
 
 

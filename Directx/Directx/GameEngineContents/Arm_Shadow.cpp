@@ -15,10 +15,11 @@ void Arm_Shadow::Start()
 {
    
 	Arm_shadow = CreateComponent<GameEngineSpriteRenderer>(100);
+
 	Arm_shadow->SetSprite("Boss1_Punch_Shadow", 0);
 	Arm_shadow->AutoSpriteSizeOn();
 	Arm_shadow->SetAutoScaleRatio(0.1f);
-
+	//Arm_shadow->Transform.AddLocalPosition({ 0.0f,-20.0f });
 
 }
 
@@ -48,6 +49,8 @@ void Arm_Shadow::Update(float _Delta)
 		break;
 	case Shadow_Size::Small:
 	{
+		Transform.SetWorldPosition({ Prev_Pos });
+
 		if (ArmScale <= 0.1f)
 		{
 			this->Death();

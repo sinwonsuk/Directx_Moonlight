@@ -94,6 +94,7 @@ void Monster_Place::Monsters(float4 _Pos)
 			{
 				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 18);
 				
+				
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
@@ -137,8 +138,31 @@ void Monster_Place::Monsters(float4 _Pos)
 		{
 			while (true)
 			{
+
+
 				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 18);
 
+				if (Name == "Dungeon_Map_Pixel_01.png")
+				{
+					--i;
+					break;
+				}
+				if (Name == "Dungeon_Map_Pixel_03.png")
+				{
+					--i;
+					break;
+				}
+
+				if (Name == "Dungeon_Map_Pixel_04.png")
+				{
+					--i;
+					break;
+				}
+				if (Name == "Dungeon_Map_Pixel_010.png")
+				{
+					--i;
+					break;
+				}
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 					std::shared_ptr<golem_Stone> Object = GetLevel()->CreateActor<golem_Stone>();
@@ -162,6 +186,29 @@ void Monster_Place::Monsters(float4 _Pos)
 			{
 				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
 
+				if (Name == "Dungeon_Map_Pixel_01.png")
+				{
+					--i;
+					break;
+				}
+				if (Name == "Dungeon_Map_Pixel_03.png")
+				{
+					--i;
+					break;
+				}
+
+				if (Name == "Dungeon_Map_Pixel_04.png")
+				{
+					--i;
+					break;
+				}
+			
+				if (Name == "Dungeon_Map_Pixel_010.png")
+				{
+					--i;
+					break;
+				}
+
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
 					std::shared_ptr<SlimeHermit> Object = GetLevel()->CreateActor<SlimeHermit>();
@@ -182,6 +229,35 @@ void Monster_Place::Monsters(float4 _Pos)
 		{
 			while (true)
 			{
+
+				if (Name == "Dungeon_Map_Pixel_01.png")
+				{
+					--i;
+					break;
+				}
+				if (Name == "Dungeon_Map_Pixel_03.png")
+				{
+					--i;
+					break;
+				}
+
+				if (Name == "Dungeon_Map_Pixel_04.png")
+				{
+					--i;
+					break;
+				}
+				if (Name == "Dungeon_Map_Pixel_09.png")
+				{
+					--i;
+					break;
+				}
+
+				if (Name == "Dungeon_Map_Pixel_010.png")
+				{
+					--i;
+					break;
+				}
+
 				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)

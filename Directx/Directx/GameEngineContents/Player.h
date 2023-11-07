@@ -33,8 +33,8 @@ enum class PlayerState
 	Spear_Right_Attack_01,
 	Spear_Right_Attack_02,
 	Spear_Right_Attack_03,
-
-	
+	Death,
+	Bed,
 
 };
 // ¼³¸í :
@@ -94,7 +94,8 @@ public:
 	void Spear_Up_AttackUpdate_01(float _Time);
 	void Spear_Up_AttackUpdate_02(float _Time);
 	void Spear_Up_AttackUpdate_03(float _Time);
-
+	void DeathUpdate(float _Time);
+	void BedUpdate(float _Time);
 	void WeaponManager(Spear_State _SpearState, PlayerState state, PlayerState _playstate);
 
 	
@@ -104,7 +105,7 @@ public:
 	}
 
 	void Move(float _Delta);
-
+	void HitUpdate(float _Delta);
 
 	// ¾ðÁ¨°£ ¹Ù²Û´Ù 
 	float Speed = 300.0f;
@@ -118,6 +119,7 @@ public:
 	bool UpMove = true;
 	CameraType Camera = CameraType::None;
 	//Leveltype LevelType = Leveltype::None;
+	float Hp = 1;
 
 	float4 Test_Move = {};
 protected:
@@ -125,7 +127,7 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-	
+
 	
 	
 	std::shared_ptr<GameEngineCollision> Mini_Col;
@@ -134,20 +136,24 @@ private:
 	EventParameter Right_Event;
 	EventParameter Bottom_Event;
 	EventParameter Top_Event;
-
+	EventParameter Event;
 	std::shared_ptr<GameEngineCollision> Left_Col;
 	std::shared_ptr<GameEngineCollision> Right_Col;
 	std::shared_ptr<GameEngineCollision> Bottom_Col;
 	std::shared_ptr<GameEngineCollision> Top_Col;
 	bool AttackCheck = false;
-
+	bool Monster_Attack_Check = false;
+	bool afterimage_Check = false;
 	float StartSpeed = 20.0f;
-	
+	float Color_Time = 0.0f;
+	int Hit_Check = 0;
 	PlayerState StateValue = PlayerState::LeftIdle;
 	//std::shared_ptr<Spear> spear;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;
 	float4 GrivityForce = {0.0f, 0.0f, 0.0f, 1.0f};
-
+	int UICheck = 0;
+	std::shared_ptr< class Player_UI> Boss_UI;
+	float Hp_Bar_reduce = 0.0f;
 	//std::shared_ptr<GameEngineCollision> Col;
 };
 

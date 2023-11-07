@@ -4,6 +4,7 @@
 #include "Spear_Effect.h"
 #include "Boss_Monster_UI.h"
 #include "Boss_Wave.h"
+#include "Boss_Wirst.h"
 Boss_Monster::Boss_Monster()
 {
 }
@@ -17,7 +18,7 @@ void Boss_Monster::Start()
 	Boss = CreateComponent<GameEngineSpriteRenderer>(-49);
 	Boss->CreateAnimation("Wake_Up", "Wake_Up", 0.1f, -1, -1, false);
 	Boss->CreateAnimation("Idle", "Idle", 0.1f, -1, -1, true);
-	Boss->CreateAnimation("Death", "Death", 0.1f, -1, -1, true);
+	Boss->CreateAnimation("Death", "Death", 0.1f, -1, -1, false);
 	Boss->CreateAnimation("Boss1_LaunchArm", "Boss1_LaunchArm", 0.1f, -1, -1, false);
 	Boss->CreateAnimation("Boss1_IdleNoArm", "Boss1_IdleNoArm", 0.1f, -1, -1, true);
 	Boss->CreateAnimation("Boss1_RecoverArm", "Boss1_RecoverArm", 0.1f, -1, -1, false);
@@ -25,6 +26,8 @@ void Boss_Monster::Start()
 	Boss->CreateAnimation("Boss1_StickyArm_Aim2Cycle", "Boss1_StickyArm_Aim2Cycle", 0.1f, -1, -1, true);
 	Boss->CreateAnimation("Boss1_StickyArm_End", "Boss1_StickyArm_End", 0.1f, -1, -1, false);
 	Boss->CreateAnimation("Boss1_StickyArm_Start", "Boss1_StickyArm_Start", 0.1f, -1, -1, false);
+	
+	//Boss->GetColorData().PlusColor = { -1.0f,-1.0f,-1.0f,0.0f };
 	Boss->AutoSpriteSizeOn();
 	Boss->SetAutoScaleRatio(2.0f);
 	Boss->ChangeAnimation("Wake_Up");
@@ -36,7 +39,7 @@ void Boss_Monster::Start()
 	Col->Transform.SetLocalScale({ 1000.0f,1000.0f });
 	Col->SetCollisionType(ColType::AABBBOX2D); 
 
-	BodyCol = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
+	BodyCol = CreateComponent<GameEngineCollision>(ContentsCollisionType::Boss_Monster);
 	BodyCol->Transform.SetLocalScale({ 450.0f,300.0f });
 	BodyCol->SetCollisionType(ColType::AABBBOX2D);
 
@@ -70,20 +73,20 @@ void Boss_Monster::Start()
 
 	BodyEvent.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		
+
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
-			Object->Set_state(Effect_State::Boss); 
+			Object->Set_state(Effect_State::Boss);
+			Boss_UI->Monster_HpBar->Transform.AddLocalScale({ -0.05f,0.0f });
+			++UICheck;
+			ColorCheck = true;
+			
 
-			UI->Monster_HpBar->Transform.AddLocalScale({ -0.05f,0.0f });
-			//Weapon_Collision_Check = true;
-			Hp -= 10.0f;
-		
 	};
 
 	BodyEvent.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-
+			
 	};
 
 
@@ -97,8 +100,80 @@ void Boss_Monster::Start()
 void Boss_Monster::Update(float _Delta)
 {
 	Time = _Delta; 
-	Wave_Time += _Delta; 
+
+
+
+
+
+
+
+	if (WaveCheck == true)
+	{
+		if (Hp >= 0.5)
+		{
+			if (Bosswirst != nullptr)
+			{
+				Bosswirst->Death();		
+			}
+			Boss_UI->Death();
+			ChangeState(Boss_Monster_State::Death);
+			return;
+		}
+			
+
+
+		Wave_Time += _Delta;
+
+		if (UICheck <= 0)
+		{
+			Boss_UI->Monster_HpBar->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+		}
+
+	}
+
+	if (ColorCheck == true)
+	{
+		Color_Time += _Delta;
+
+		if (Color_Time < 0.05)
+		{
+			Boss->GetColorData().PlusColor = { 0.0f,-1.0f,-1.0f,0.0f };
+		}
+
+		if (Color_Time <= 0.1)
+		{
+			if (Color_Time > 0.05)
+			{
+				Boss->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
+			}
+		}
+		
+		if (Color_Time > 0.1)
+		{
+			Boss->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+			Color_Time = 0; 
+			ColorCheck = false;
+		}
+
+	}
+
+	if (UICheck > 0)
+	{
+		Hp_Bar_reduce += _Delta/3;
+		Boss_UI->Monster_HpBar->Transform.AddLocalScale({ -_Delta/3,0.0f });
+		Boss_UI->Monster_HpBar->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
+		if (Hp_Bar_reduce > 0.05)
+		{
+			Hp += Hp_Bar_reduce;
+			Hp_Bar_reduce = 0;
+			UICheck--;
+		}
+	}
 	
+
+
+
+
 
 
 	Col->CollisionEvent(ContentsCollisionType::Player, Event);

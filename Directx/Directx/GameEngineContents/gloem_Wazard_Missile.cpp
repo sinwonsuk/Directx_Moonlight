@@ -23,7 +23,7 @@ void gloem_Wazard_Missile::Start()
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 
 	{
-		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::GolemStone);
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
 		Col->Transform.SetLocalScale({ 20.0f,20.0f });
 	}
 }

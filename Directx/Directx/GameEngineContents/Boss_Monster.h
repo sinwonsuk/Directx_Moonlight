@@ -16,7 +16,7 @@ enum class Boss_Monster_State
 	StickyArm_End,
 	StickyArm, 
 	StickyArm_Aim2Cycle,
-
+	Death,
 };
 
 class Boss_Monster : public GameEngineActor
@@ -55,7 +55,7 @@ public:
 	void StickyArm_Start_Update(float _Time);
 	void StickyArm_End_Update(float _Time); 
 	void StickyArm_Aim2Cycle_Update(float _Time);
-
+	void DeathUpdate(float _Time);
 	//void RecoveryArmUpdate(float _Time);
 	Boss_Monster_State GetBossStateValue()
 	{
@@ -86,13 +86,16 @@ private:
 	int Shadow_Pos_Up = 0;
 	bool AD = true;
 	bool Weapon_Collision_Check = false;
-	float Hp = 20.0f;
+	bool WaveCheck = false;
+
+	float Hp = 0.0f;
 	float Rocks_Number = 0.0f;
 	float Rocks_Check = 0.0f;
 	float Rock_Width = 350.0f;
 	float Rock_Hight = 300.0f;
 	float Rock_Seed = 0;
 	float Rock_Shadow_Pos = {}; 
+
 	float Time = 0.0f;
 	float Wave_Time = 0.0f;
 	float Speed = 600.0f;
@@ -101,8 +104,12 @@ private:
 	float Rock_Degree_control = 10.0f;
 
 	bool test = false;
+	bool ColorCheck = false;
+	int UICheck = 0;
+	float Hp_Bar_reduce = 0.0f;
 	//bool Weapon_Collision_Check = false;
 	float TimeTest = 0.0f;
+	float Color_Time = 0.0f;
 	int ArmCheck = 0; 
 	GameEngineRandom Random;
 	Boss_Monster_State StateValue = Boss_Monster_State::Start;
@@ -110,7 +117,7 @@ private:
 	std::shared_ptr<class Boss_Wirst> Bosswirst;
 	std::shared_ptr<class GameEngineSpriteRenderer> Boss;
 	
-	std::shared_ptr<class Boss_Monster_UI> UI;
+	std::shared_ptr<class Boss_Monster_UI> Boss_UI;
 	GameEngineRandom random;
 	std::shared_ptr<GameEngineCollision> Col;
 	std::shared_ptr<GameEngineCollision> BodyCol;

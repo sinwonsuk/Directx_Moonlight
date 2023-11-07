@@ -204,6 +204,7 @@
     <ClCompile Include="golem_Stone_State.cpp" />
     <ClCompile Include="golem_Wazard_Missile_State.cpp" />
     <ClCompile Include="golem_Wizard.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Map_Manager.cpp" />
     <ClCompile Include="MiniBoss.cpp" />
     <ClCompile Include="MiniBoss_State.cpp" />
@@ -300,6 +301,7 @@
     <ClInclude Include="golem_Solder.h" />
     <ClInclude Include="golem_Stone.h" />
     <ClInclude Include="golem_Wizard.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Map_Manager.h" />
     <ClInclude Include="MiniBoss.h" />
     <ClInclude Include="MonsterTest.h" />
