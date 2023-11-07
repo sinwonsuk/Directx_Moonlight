@@ -362,8 +362,8 @@ void Random_Room::Start()
 		{
 			if (Rooms[y][x].RoomCheck == true)
 			{
-				std::shared_ptr<Boss_Map> Object = GetLevel()->CreateActor<Boss_Map>(ContentsObjectType::Monster);
-				Object->Transform.SetLocalPosition({ Rooms[y][x].Pos.X, Rooms[y][x].Pos.Y+1143 });
+				Boss = GetLevel()->CreateActor<Boss_Map>(ContentsObjectType::Monster);
+				Boss->Transform.SetLocalPosition({ Rooms[y][x].Pos.X, Rooms[y][x].Pos.Y+1143 });
 				//Player::this_Player->Transform({ Rooms[y][x].Pos.X, Rooms[y][x].Pos.Y + 1143 });
 			/*	Player::this_Player->Transform.SetLocalPosition({ Rooms[y][x].Pos.X, Rooms[y][x].Pos.Y + 200 });
 				Player::this_Player->Camera = CameraType::BossMap;

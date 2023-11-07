@@ -316,6 +316,14 @@ GameEngineColor Monster_Manager::GetColor(float4 _Pos, GameEngineColor _DefaultC
 	return Tex->GetColor(_Pos, _DefaultColor);
 }
 
+void Monster_Manager::MonsterDeath(std::shared_ptr<GameEngineActor> _Object)
+{
+	if (Player::this_Player->MonsterDeath == true)
+	{
+		_Object->Death();
+	}
+}
+
 void Monster_Manager::Monster_Collsision(float4 _Delta)
 {
 	Mini_Col->CollisionEvent(ContentsCollisionType::Monster, { .Stay = [&](class GameEngineCollision* _This,class GameEngineCollision* _collisions)

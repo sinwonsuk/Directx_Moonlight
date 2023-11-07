@@ -20,7 +20,7 @@ public:
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 });
 
 	void PixelCollision(float _Delta);
-
+	std::shared_ptr<class Black_Out> black_Out;
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -32,6 +32,7 @@ private:
 
 	EventParameter Up_Event;
 	EventParameter Down_Event;
+	EventParameter Event;
 	std::shared_ptr<class GameEngineSpriteRenderer> Shop;
 	std::shared_ptr<class GameEngineSpriteRenderer> Shop_02;
 	std::shared_ptr<class GameEngineSpriteRenderer> Shop_Table;
@@ -56,6 +57,8 @@ private:
 
 	std::shared_ptr<GameEngineCollision> Col;
 	std::shared_ptr<GameEngineCollision> Change_Town;
+
+	
 	bool CameraMove = false;
 
 	bool Up_CameraMove = false;

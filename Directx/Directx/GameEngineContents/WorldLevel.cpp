@@ -3,7 +3,7 @@
 #include "Player.h"
 #include "TownMap.h"
 #include "Shop_House.h"
-
+#include "Black.h"
 WorldLevel::WorldLevel()
 {
 }
@@ -29,24 +29,10 @@ void WorldLevel::Start()
 
 
 
-	{
-		std::shared_ptr<TownMap> Object = CreateActor<TownMap>(ContentsObjectType::BackGround);
-	}
+	Map = CreateActor<TownMap>(ContentsObjectType::BackGround);
 	
-	/*GetMainCamera()->Transform.SetLocalPosition({ 0.0f,0.0f, -500.0f });
-	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);*/
-
 	
-	/*{
-		std::shared_ptr<Shop_House> Object = CreateActor<Shop_House>();
-		Object->Transform.SetLocalPosition({ -5000.0f,-5000.0f,0.0f });
-
-	}*/
-
-	/*{
-		std::shared_ptr<Player> Object = CreateActor<Player>();
-		Object->Transform.SetLocalPosition({ 0.0f,0.0f,-200.0f });
-	}*/
+	
 
 	
 
@@ -60,13 +46,14 @@ void WorldLevel::Update(float _Delta)
 
 void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	std::shared_ptr<Black> Object = CreateActor<Black>(ContentsObjectType::Player);
 
 	{
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);	
 	}
 
 	Player::this_Player->Camera = CameraType::Town;
-
+	Player::this_Player->ChangeState(PlayerState::DownIdle); 
 
 
 
@@ -88,14 +75,14 @@ void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 
 
-	//TransformData Date = GetMainCamera()->Transform.GetConstTransformDataRef(); 
+	
 	int a = 0;
 }
 
 void WorldLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-
-
+	
+	Map->Death(); 
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;
 }

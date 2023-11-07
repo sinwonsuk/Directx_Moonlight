@@ -18,6 +18,7 @@ public:
 	TownMap& operator=(TownMap&& _Other) noexcept = delete;
 
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = {255, 255, 255, 255});
+	std::shared_ptr<class Black_Out> black_Out;
 
 protected:
 	void Start() override;
@@ -26,6 +27,7 @@ protected:
 private:
 
 	EventParameter Event;
+	EventParameter Event_Black;
 	bool check = false;
 	// ¸Ê 
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;

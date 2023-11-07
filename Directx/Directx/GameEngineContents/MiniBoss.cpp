@@ -113,6 +113,10 @@ void MiniBoss::Start()
 void MiniBoss::Update(float _Delta)
 {
 	
+	if (Player::this_Player->MonsterDeath == true)
+	{
+		this->Death();
+	}
 
 	Monster_Damage(Mini_Boss, _Delta);
 

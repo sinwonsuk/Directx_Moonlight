@@ -202,7 +202,12 @@ void Monster_Place::Monsters(float4 _Pos)
 					--i;
 					break;
 				}
-			
+				if (Name == "Dungeon_Map_Pixel_09.png")
+				{
+					--i;
+					break;
+				}
+
 				if (Name == "Dungeon_Map_Pixel_010.png")
 				{
 					--i;

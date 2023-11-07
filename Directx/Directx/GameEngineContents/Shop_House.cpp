@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Shop_House.h"
 #include "Player.h"
+#include "Black_Out.h"
 Shop_House::Shop_House()
 {
 }
@@ -237,7 +238,7 @@ void Shop_House::Start()
 		shop_Bed = CreateComponent<GameEngineSpriteRenderer>(-49);
 		shop_Bed->SetSprite("Shop_Bed", 0);
 		shop_Bed->AutoSpriteSizeOn();
-		shop_Bed->SetAutoScaleRatio(2.0f);
+		shop_Bed->SetAutoScaleRatio(2.5f);
 		shop_Bed->Transform.SetLocalPosition({ 149.0f,216.0f });
 
 		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
@@ -392,6 +393,24 @@ void Shop_House::Start()
 		
 	};
 
+	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		black_Out = GetLevel()->CreateActor<Black_Out>();
+
+	};
+
+	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		if (black_Out->GetCheck() == true)
+		{
+			GameEngineCore::ChangeLevel("WorldLevel");
+		}
+	};
+
+	Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+
+	};
 
 
 }
@@ -410,14 +429,8 @@ void Shop_House::Update(float _DeltaTime)
 		test = true;
 	}
 
-	if (Change_Town->Collision(ContentsCollisionType::Player))
-	{
-		if (GameEngineInput::IsDown('J', this))
-		{
-			GameEngineCore::ChangeLevel("WorldLevel");
-		}
-	}
-
+	
+	Change_Town->CollisionEvent(ContentsCollisionType::Player, Event);
 
 	PixelCollision(_DeltaTime);
 

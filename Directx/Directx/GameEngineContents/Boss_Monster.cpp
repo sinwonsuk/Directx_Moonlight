@@ -15,6 +15,8 @@ Boss_Monster::~Boss_Monster()
 
 void Boss_Monster::Start()
 {
+	Boss_UI = GetLevel()->CreateActor<Boss_Monster_UI>();
+	Boss_UI->Off(); 
 	Boss = CreateComponent<GameEngineSpriteRenderer>(-49);
 	Boss->CreateAnimation("Wake_Up", "Wake_Up", 0.1f, -1, -1, false);
 	Boss->CreateAnimation("Idle", "Idle", 0.1f, -1, -1, true);

@@ -45,16 +45,16 @@ public:
 
 	std::vector<Room_State> Room_state;
 	std::vector<std::shared_ptr<class Dungeon_Map_01>> Maps;
-
+	std::shared_ptr<class Dungeon_Map_01> Map;
 	void Monsers();
-
+	std::shared_ptr<class Boss_Map> Boss;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 private:
 
-	std::shared_ptr<class Dungeon_Map_01> Map;
+	//std::shared_ptr<class Dungeon_Map_01> Map;
 	float4 BossRoom_Check = {};
 	int Monser_Seed = 0; 
 	int Number = 0;

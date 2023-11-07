@@ -1,17 +1,25 @@
 #include "PreCompile.h"
-#include "FadePostEffect.h"
+#include "PlayerEffect.h"
+#include <GameEngineCore/GameEngineCore.h>
 
-FadePostEffect::FadePostEffect() 
-{
-	// EffectUnit.SetMesh("fullrect");
-}
-
-FadePostEffect::~FadePostEffect() 
+PlayerEffect::PlayerEffect() 
 {
 }
 
-void FadePostEffect::Start()
+PlayerEffect::~PlayerEffect() 
 {
+}
+
+void PlayerEffect::Start()
+{
+
+
+
+
+
+
+
+
 	EffectUnit.SetMesh("fullrect");
 	EffectUnit.SetMaterial("FadePostEffect");
 	EffectUnit.ShaderResHelper.SetConstantBufferLink("RenderBaseInfo", RenderBaseInfoValue);
@@ -21,20 +29,15 @@ void FadePostEffect::Start()
 	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
 	ResultTarget = GameEngineRenderTarget::Create();
 	ResultTarget->AddNewTexture(DXGI_FORMAT_R32G32B32A32_FLOAT, WindowScale, float4::ZERONULL);
+
+
 }
-void FadePostEffect::EffectProcess(float _DeltaTime)
+
+void PlayerEffect::EffectProcess(float _DeltaTime)
 {
-	TIme += _DeltaTime;
 	ResultTarget->Setting();
 	EffectUnit.Render();
 	EffectUnit.ShaderResHelper.AllShaderResourcesReset();
 
 	EffectTarget->Copy(0, ResultTarget, 0);
-
-	if (TIme > 2)
-	{
-		this->Death(); 
-	}
-
-
 }

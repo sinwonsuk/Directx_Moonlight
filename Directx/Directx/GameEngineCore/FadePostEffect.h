@@ -18,6 +18,7 @@ public:
 protected:
 
 private:
+	float TIme = 0;
 	void Start() override;
 	void EffectProcess(float _DeltaTime) override;
 };

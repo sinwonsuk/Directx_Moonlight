@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "TownMap.h"
 #include "Player.h"
-
+#include "Black_Out.h"
 
 TownMap::TownMap()
 {
@@ -1396,9 +1396,21 @@ void TownMap::Start()
 	{
 		int a = 0;
 	};
-	
 
-	//Transform.AddLocalScale({ 0.1f,0.1f });
+	Event_Black.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+		black_Out = GetLevel()->CreateActor<Black_Out>();
+	};
+
+	Event_Black.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+			
+	};
+
+	Event_Black.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	{
+			
+	};
 
 
 
@@ -1412,8 +1424,9 @@ void TownMap::Update(float _DeltaTime)
 		int a = 0;
 
 
-		if (GameEngineInput::IsDown('J', this))
+		if (GameEngineInput::IsDown(VK_SPACE, this))
 		{	
+
 			GameEngineCore::ChangeLevel("ShopLevel");
 		}
 	}
@@ -1422,10 +1435,9 @@ void TownMap::Update(float _DeltaTime)
 		int a = 0;
 
 
-		if (GameEngineInput::IsDown('J', this))
-		{
-			GameEngineCore::ChangeLevel("Dungeon_Entrance_Level");
-		}
+		
+		GameEngineCore::ChangeLevel("Dungeon_Entrance_Level");
+		
 	}
 
 

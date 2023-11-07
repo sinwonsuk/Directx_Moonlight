@@ -138,7 +138,11 @@ void golem_Solder::Start()
 
 void golem_Solder::Update(float _Delta)
 {
-	
+	if (Player::this_Player->MonsterDeath == true)
+	{
+		this->Death();
+	}
+
 	Monster_Damage(Solder, _Delta);
 
 	DeltaTime = _Delta; 

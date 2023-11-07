@@ -201,13 +201,16 @@ void Player::Start()
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		Monster_Attack_Check = true; 
-		UICheck++; 
+			Monster_Attack_Check = true;
+			UICheck++;
+	
 	};
 
 	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		
+			
+			
+			
 	};
 
 
@@ -251,38 +254,40 @@ void Player::HitUpdate(float _Delta)
 		{
 			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 			Color_Time = 0;
+			Monster_Attack_Check = false;
 			afterimage_Check = true;
 		}
 	}
 
-	if (afterimage_Check == true)
+	 if (afterimage_Check == true)
 	{
-		Color_Time += _Delta;
+		afterimage_Time += _Delta;
 
-		if (Color_Time < 0.1)
+		if (afterimage_Time < 0.15)
 		{
 			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,-1.0f };
 		}
 
-		if (Color_Time > 0.1)
+		if (afterimage_Time > 0.15)
 		{
 			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
-			Color_Time = 0;
+			afterimage_Time = 0;
 			++Hit_Check;
 		}
 
 	}
 
-	if (Hit_Check == 5)
+	if (Hit_Check >= 5)
 	{
 		player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 		afterimage_Check = false;
 		Monster_Attack_Check = false;
 		Hit_Check = 0;
+		afterimage_Time = 0;
 		Hp -= Hp_Bar_reduce;
 		Hp_Bar_reduce = 0;
 
-
+		
 	}
 }
 
@@ -297,17 +302,22 @@ void Player::Update(float _Delta)
 	
 	
 
-	if (Hp <= 0.05)
+	if (Hp <= 0.05 && DieCheck ==false)
 	{
 		ChangeState(PlayerState::Death);
+		DieCheck = true;
 	
 	}
 
 	if (Hp > 0.05)
 	{
-		HitUpdate(_Delta);
+		
 
 		Col->CollisionEvent(ContentsCollisionType::Monster_Weapon, Event);
+
+
+		HitUpdate(_Delta);
+
 
 		if (Monster_Attack_Check == true)
 		{

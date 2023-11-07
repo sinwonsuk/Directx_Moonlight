@@ -14,6 +14,8 @@
 #include "Boss_Monster.h"
 #include "Boss_Map.h"
 #include "Inventory.h"
+#include <GameEngineCore/FadePostEffect.h>
+#include "Black_Out.h"
 PlayLevel::PlayLevel() 
 {
 
@@ -42,6 +44,7 @@ void PlayLevel::Start()
 	{
 		std::shared_ptr<Inventory> Object = CreateActor<Inventory>();
 	}
+	
 	{
 		//std::shared_ptr<MiniBoss> Object = CreateActor<MiniBoss>(ContentsObjectType::Player);
 	}
@@ -92,33 +95,54 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	{
 		Map = CreateActor<Random_Room>();
 	}
-
+	
 
 	int a = 0;
 }
 
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
+	Player::this_Player->Death();
+	Player::this_Player = nullptr;
 
-	/*player->Death(); 
 
+	player->Death();
+	player->Black->Death(); 
 	Map->Rooms.clear();
-	Map->Maps.clear();
+	
+	Map->Map->Death(); 
+
+	Map->Boss->Monster->Death(); 
+	Map->Boss->Death(); 
 
 	for (size_t i = 0; i < Map->Maps.size(); i++)
 	{
 		Map->Maps[i]->Death();
+		Map->Maps[i] = nullptr;
 	}
 
+	Map->Maps.clear();
+
+
+
+
+
+	Map->Death(); 
+	Map = nullptr;
 
 	
 
-	*/
+	
 
 
 
 	//Map->Death(); 
-	Player::this_Player->Death();
-	Player::this_Player = nullptr;
+
+	
+
+
+	
+
+
 
 }

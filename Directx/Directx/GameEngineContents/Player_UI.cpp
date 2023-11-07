@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Player_UI.h"
 #include <GameEngineCore/GameEngineUIRenderer.h>
+#include <GameEngineCore/FadePostEffect.h>
 Player_UI::Player_UI()
 {
 
@@ -41,9 +42,9 @@ void Player_UI::Start()
 	Hp_Bar = CreateComponent<GameEngineUIRenderer>(10);
 	Hp_Bar->SetSprite("Hp_Bar.png");
 	Hp_Bar->AutoSpriteSizeOn();
-	Hp_Bar->SetAutoScaleRatio(2.0f);
+	Hp_Bar->SetAutoScaleRatio(1.9f);
 	Hp_Bar->SetPivotType(PivotType::Left);
-	Hp_Bar->Transform.AddLocalPosition({ -472.0f,320.0f });
+	Hp_Bar->Transform.AddLocalPosition({ -468.0f,320.0f });
 
 
 	Bag_Circle = CreateComponent<GameEngineUIRenderer>(10);
@@ -118,6 +119,6 @@ void Player_UI::Start()
 
 void Player_UI::Update(float _Delta)
 {
-
+	//GetLevel()->GetMainCamera()->GetCameraAllRenderTarget()->CreateEffect<FadePostEffect>();
 	Button_E->GetSprite()->GetSpriteData(0).Texture = nullptr;
 }

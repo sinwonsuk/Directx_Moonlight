@@ -35,6 +35,7 @@ enum class PlayerState
 	Spear_Right_Attack_03,
 	Death,
 	Bed,
+	Scale,
 
 };
 // Ό³Έν :
@@ -96,6 +97,7 @@ public:
 	void Spear_Up_AttackUpdate_03(float _Time);
 	void DeathUpdate(float _Time);
 	void BedUpdate(float _Time);
+	void ScaleUpdate(float _Time);
 	void WeaponManager(Spear_State _SpearState, PlayerState state, PlayerState _playstate);
 
 	
@@ -117,11 +119,15 @@ public:
 	bool RightMove = true;
 	bool DownMove = true;
 	bool UpMove = true;
+	bool MonsterDeath = false;
 	CameraType Camera = CameraType::None;
+	
 	//Leveltype LevelType = Leveltype::None;
 	float Hp = 1;
-
+	float Scale_Time = 0.0f;
 	float4 Test_Move = {};
+	std::shared_ptr<class Black_Out> Black;
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -141,15 +147,20 @@ private:
 	std::shared_ptr<GameEngineCollision> Right_Col;
 	std::shared_ptr<GameEngineCollision> Bottom_Col;
 	std::shared_ptr<GameEngineCollision> Top_Col;
+	
 	bool AttackCheck = false;
 	bool Monster_Attack_Check = false;
 	bool afterimage_Check = false;
+	bool DieCheck = false;
+
 	float StartSpeed = 20.0f;
 	float Color_Time = 0.0f;
+	float afterimage_Time = 0.0f;
 	int Hit_Check = 0;
 	PlayerState StateValue = PlayerState::LeftIdle;
 	//std::shared_ptr<Spear> spear;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;
+
 	float4 GrivityForce = {0.0f, 0.0f, 0.0f, 1.0f};
 	int UICheck = 0;
 	std::shared_ptr< class Player_UI> Boss_UI;

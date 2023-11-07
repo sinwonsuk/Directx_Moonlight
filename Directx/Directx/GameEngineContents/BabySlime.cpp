@@ -105,6 +105,12 @@ void BabySlime::Start()
 
 void BabySlime::Update(float _Delta)
 {
+	if (Player::this_Player->MonsterDeath == true)
+	{
+		this->Death();
+	}
+
+
 	if (Hp <= 0)
 	{
 		Number -= _Delta * 1;
@@ -114,8 +120,6 @@ void BabySlime::Update(float _Delta)
 		{
 			this->Death();
 		}
-
-
 		return;
 	}
 

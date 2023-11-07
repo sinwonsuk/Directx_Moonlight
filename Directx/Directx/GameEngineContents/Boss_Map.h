@@ -16,7 +16,7 @@ public:
 	Boss_Map& operator=(Boss_Map&& _Other) noexcept = delete;
 
 
-
+	std::shared_ptr<class Boss_Monster> Monster;
 
 protected:
 	void Start() override;
@@ -24,6 +24,7 @@ protected:
 
 private:
 	float Map_Number = 0.0f;
+	
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;
 	bool BossCheck = false;
 

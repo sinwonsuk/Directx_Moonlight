@@ -109,6 +109,12 @@ void golem_Wizard::Start()
 
 void golem_Wizard::Update(float _Delta)
 {
+
+	if (Player::this_Player->MonsterDeath == true)
+	{
+		this->Death();
+	}
+
 	if (Hp <= 0)
 	{
 		Number -= _Delta * 1;

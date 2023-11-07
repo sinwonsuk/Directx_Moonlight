@@ -147,7 +147,8 @@ void Boss_Monster::StartUpdate(float _Time)
 	{
 		if (BossUI == false)
 		{
-			Boss_UI = GetLevel()->CreateActor<Boss_Monster_UI>();
+			
+			Boss_UI->On(); 
 			BossUI = true;
 		}
 

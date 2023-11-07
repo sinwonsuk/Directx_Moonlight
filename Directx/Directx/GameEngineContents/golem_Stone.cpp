@@ -114,7 +114,10 @@ void golem_Stone::Update(float _Delta)
 {
 	Time += _Delta;
 
-	
+	if (Player::this_Player->MonsterDeath == true)
+	{
+		this->Death();
+	}
 
 	if (Hp <= 0)
 	{

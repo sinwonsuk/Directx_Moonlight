@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "Spear.h"
 #include "TileMap.h"
-
+#include "Black_Out.h"
 void Player::ChangeState(PlayerState _State)
 {
 	PlayerState NextState = _State;
@@ -95,6 +95,10 @@ void Player::ChangeState(PlayerState _State)
 	case PlayerState::Bed:
 		AnimationCheck("Bed");
 		break;
+	case PlayerState::Scale:
+		int a = 0;
+		break;
+
 	}
 
 }
@@ -187,6 +191,9 @@ void Player::UpdateState(float _Time)
 		break;
 	case PlayerState::Bed:
 		BedUpdate(_Time);
+		break;
+	case PlayerState::Scale:
+		ScaleUpdate(_Time);
 		break;
 	default:
 		break;
@@ -680,9 +687,12 @@ void Player::DeathUpdate(float _Time)
 {
 	if (player->IsCurAnimationEnd())
 	{
+		Black = GetLevel()->CreateActor<Black_Out>();
 
-		Player::LevelType = Leveltype::Dungeon_Death;
-		GameEngineCore::ChangeLevel("ShopLevel");
+		Black->Transform.SetWorldPosition({ Transform.GetWorldPosition()}); 
+		ChangeState(PlayerState::Scale);
+		return;
+		
 	}
 
 }
@@ -692,10 +702,26 @@ void Player::BedUpdate(float _Time)
 
 	if (player->IsCurAnimationEnd())
 	{
-		Transform.AddLocalPosition({ 0.0f,-50.0f });
+		Transform.AddLocalPosition({ 0.0f,-70.0f });
 		ChangeState(PlayerState::DownIdle);
 		return; 
 	}
+}
+
+void Player::ScaleUpdate(float _Time)
+{
+	Scale_Time += _Time;
+
+	if (Scale_Time > 1)
+	{
+		MonsterDeath = true; 
+	}
+	if (Scale_Time > 2)
+	{
+		Player::LevelType = Leveltype::Dungeon_Death;
+		GameEngineCore::ChangeLevel("ShopLevel");
+	}
+
 }
 
 void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerState _playstate)

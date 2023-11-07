@@ -210,6 +210,9 @@
     <ClCompile Include="Boss_Monster_UI.cpp" />
     <ClCompile Include="Boss_Wave.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="PlayerEffect.cpp" />
+    <ClCompile Include="Black.cpp" />
+    <ClCompile Include="Black_Out.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -386,6 +389,9 @@
     <ClInclude Include="Boss_Monster_UI.h" />
     <ClInclude Include="Boss_Wave.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="PlayerEffect.h" />
+    <ClInclude Include="Black.h" />
+    <ClInclude Include="Black_Out.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

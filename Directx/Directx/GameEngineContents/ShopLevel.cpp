@@ -2,6 +2,8 @@
 #include "ShopLevel.h"
 #include "Shop_House.h"
 #include "Player.h"
+#include "Black.h"
+#include "Black_Out.h"
 ShopLevel::ShopLevel()
 {
 }
@@ -17,10 +19,7 @@ void ShopLevel::Start()
 	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
-	{
-		std::shared_ptr<Shop_House> Object = CreateActor<Shop_House>();
-	}
-
+	
 
 
 }
@@ -41,7 +40,7 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
 	
-
+	std::shared_ptr<Black> Object = CreateActor<Black>(ContentsObjectType::Player);
 	
 
 
@@ -56,15 +55,23 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	{
 		
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
-		Object->Transform.AddLocalPosition({ 55.0f,-200.0f });
-		
+		Object->Transform.AddLocalPosition({ 55.0f,-200.0f });		
 	}
 
+	{
+		House = CreateActor<Shop_House>();
+	}
+
+	
+	//Object->Transform.AddLocalPosition({ 55.0f,-200.0f });
 	//Player::this_Player->CameraCheck = true;
 }
 
 void ShopLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
+	House->black_Out->Death(); 
+	House->Death(); 
+
 	Player::LevelType = Leveltype::Town;
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;

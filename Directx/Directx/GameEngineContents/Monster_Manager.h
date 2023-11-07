@@ -27,6 +27,7 @@ public:
 	{
 		Dir = _Dir;
 	}
+	void MonsterDeath(std::shared_ptr<GameEngineActor> _Object);
 	void Monster_Collsision(float4 _Delta);
 	void Monster_Damage(std::shared_ptr<GameEngineSpriteRenderer> _Object, float _Delta);
 
