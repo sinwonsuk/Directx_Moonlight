@@ -147,17 +147,17 @@ void Map_Manager::ObjectCollision(float _Delta, std::string_view _Name, float4 _
 	}
 	else if (GameEngineColor::YELLOW == GetColor({ (Right_Player_Pos - _Transform + Ad) / 40 }, { 0,0,255,255 }, _Name))
 	{
-		Player::this_Player->Speed = 100.0f;
+		Player::this_Player->Speed = 200.0f;
 	
 	}
 	else if (GameEngineColor::YELLOW == GetColor({ (Up_Player_Pos - _Transform + Ad) / 40 }, { 0,0,255,255 }, _Name))
 	{
-		Player::this_Player->Speed = 100.0f;
+		Player::this_Player->Speed = 200.0f;
 
 	}
 	else if (GameEngineColor::YELLOW == GetColor({ (Down_Player_Pos - _Transform + Ad) / 40 }, { 0,0,255,255 }, _Name))
 	{
-		Player::this_Player->Speed = 100.0f;
+		Player::this_Player->Speed = 200.0f;
 	
 	}
 	

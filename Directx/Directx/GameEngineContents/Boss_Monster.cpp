@@ -79,7 +79,7 @@ void Boss_Monster::Start()
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 			Object->Set_state(Effect_State::Boss);
-			Boss_UI->Monster_HpBar->Transform.AddLocalScale({ -0.05f,0.0f });
+			//Boss_UI->Monster_HpBar->Transform.AddLocalScale({ -0.05f,0.0f });
 			++UICheck;
 			ColorCheck = true;
 			
@@ -111,8 +111,10 @@ void Boss_Monster::Update(float _Delta)
 
 	if (WaveCheck == true)
 	{
-		if (Hp >= 0.5)
+		if (Hp >= 1.0)
 		{
+			Boss->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+
 			if (Bosswirst != nullptr)
 			{
 				Bosswirst->Death();		
@@ -162,11 +164,12 @@ void Boss_Monster::Update(float _Delta)
 	if (UICheck > 0)
 	{
 		Hp_Bar_reduce += _Delta/3;
+		Hp += _Delta / 3;
 		Boss_UI->Monster_HpBar->Transform.AddLocalScale({ -_Delta/3,0.0f });
 		Boss_UI->Monster_HpBar->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
-		if (Hp_Bar_reduce > 0.05)
+		if (Hp_Bar_reduce > 0.04)
 		{
-			Hp += Hp_Bar_reduce;
+			//Hp += Hp_Bar_reduce;
 			Hp_Bar_reduce = 0;
 			UICheck--;
 		}

@@ -114,6 +114,9 @@ void golem_Stone::Update(float _Delta)
 {
 	Time += _Delta;
 
+	//if(Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });)
+
+
 	if (Player::this_Player->MonsterDeath == true)
 	{
 		this->Death();
@@ -121,6 +124,7 @@ void golem_Stone::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
+		Monster_HpBar->Off(); 
 		Monster_Weapon->Off();
 		Number -= _Delta * 1;
 		Stone->GetColorData().MulColor = { 1,1,1,Number };
