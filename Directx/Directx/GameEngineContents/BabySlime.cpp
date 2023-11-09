@@ -101,28 +101,28 @@ void BabySlime::Start()
 	};
 
 
-	Mini_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
-		{
+	//Mini_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	//	{
 
-		};
+	//	};
 
-	Mini_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
-		{
-			float4 Monster = Col->GetActor()->Transform.GetLocalPosition();
-			Monster.Normalize();
+	//Mini_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	//	{
+	//		float4 Monster = Col->GetActor()->Transform.GetLocalPosition();
+	//		Monster.Normalize();
 
-			float4 Other_Monster = col->GetActor()->Transform.GetLocalPosition();
-			Other_Monster.Normalize();
+	//		float4 Other_Monster = col->GetActor()->Transform.GetLocalPosition();
+	//		Other_Monster.Normalize();
 
-			Col->GetActor()->Transform.AddLocalPosition(Other_Monster - Monster * DeltaTime);
-		};
+	//		Col->GetActor()->Transform.AddLocalPosition(Other_Monster - Monster * DeltaTime);
+	//	};
 
 
 
-	Mini_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
-		{
+	//Mini_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	//	{
 
-		};
+	//	};
 
 }
 
@@ -140,13 +140,14 @@ void BabySlime::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
+
 		Monster_Weapon->Off(); 
 		Number -= _Delta * 1;
 		babySlime->GetColorData().MulColor = { 1,1,1,Number };
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
-			this->Death();
+			this->Off();
 		}
 		return;
 	}
@@ -161,8 +162,13 @@ void BabySlime::Update(float _Delta)
 	}
 	
 	
-	Monster_Collsision(_Delta);
+	//Monster_Collsision(_Delta);
 
+
+	if (Number < -0.5)
+	{
+		this->Death(); 
+	}
 
 }
 

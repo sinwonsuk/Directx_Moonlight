@@ -3,6 +3,12 @@
 #include "Player.h"
 #include <GameEngineCore/GameEngineLevel.h>
 #include "Spear_Effect.h"
+#include "Items.h"
+
+
+
+
+
 golem_Solder::golem_Solder()
 {
 
@@ -148,18 +154,42 @@ void golem_Solder::Update(float _Delta)
 	DeltaTime = _Delta; 
 
 
-	
+
 
 
 	if (Hp <= 0)
 	{
+		
+		
+
+
 		Monster_Weapon->Off();
 		Number -= _Delta * 1;
 		Solder->GetColorData().MulColor = { 1,1,1,Number };
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
-			this->Death();
+			for (size_t i = 0; i < 4; i++)
+			{
+			
+				
+				int Itemss = Random.RandomInt(0, 4);
+				Random.SetSeed(Player::RandomSeed++);
+
+				std::shared_ptr<Items> Object = GetLevel()->CreateActor<Items>();
+				Object->Transform.SetWorldPosition({ Transform.GetWorldPosition() });
+				Object->Set_Monster_Pos({ Transform.GetWorldPosition() });
+				Object->Dir = Dir;
+
+
+
+				Object->Set_item_Select(static_cast<Item>(Itemss));
+
+
+			}
+		
+
+			this->Off();
 		}
 
 
@@ -186,6 +216,10 @@ void golem_Solder::Update(float _Delta)
 
 	Monster_Collsision(_Delta);
 
+	if (Number < -0.5)
+	{
+		this->Death(); 
+	}
 	
 }
 

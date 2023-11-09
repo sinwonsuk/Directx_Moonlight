@@ -121,7 +121,7 @@ public:
 	bool UpMove = true;
 	bool MonsterDeath = false;
 	CameraType Camera = CameraType::None;
-	
+	static int RandomSeed;
 	//Leveltype LevelType = Leveltype::None;
 	float Hp = 1;
 	float Scale_Time = 0.0f;
@@ -129,6 +129,7 @@ public:
 	std::shared_ptr<class Black_Out> Black;
 	std::shared_ptr< class Player_UI> Boss_UI;
 	bool RolCheck = false;
+	std::list<std::shared_ptr<Spear>> spears;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -148,6 +149,7 @@ private:
 	std::shared_ptr<GameEngineCollision> Right_Col;
 	std::shared_ptr<GameEngineCollision> Bottom_Col;
 	std::shared_ptr<GameEngineCollision> Top_Col;
+	
 	
 	bool AttackCheck = false;
 	bool Monster_Attack_Check = false;

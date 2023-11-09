@@ -78,7 +78,7 @@ private:
 	float Speed = 300.0f;
 	float Roll_Speed = 300.0f;
 	Spear_State StateValue = Spear_State::Spear_Down_01;
-	
+	float Time = 0;
 
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 

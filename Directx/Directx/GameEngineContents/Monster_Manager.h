@@ -48,6 +48,7 @@ protected:
 	float4 Manager_Speed = {};
 	float4 distance_fixation = {};
 	bool MoveCheck = false;
+	//float DeathTime = 0;
 	std::shared_ptr<GameEngineCollision> Mini_Col;
 	std::shared_ptr<GameEngineCollision> Monster_Weapon;
 private:

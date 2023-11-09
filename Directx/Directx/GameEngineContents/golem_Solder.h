@@ -87,7 +87,7 @@ private:
 	float degree = 0.0f;
 	float Hp = 100.0f;
 	float DeltaTime = 0;
-
+	GameEngineRandom Random;
 
 	float4 MoveDir = {}; 
 	float4 AD = {}; 
@@ -106,5 +106,5 @@ private:
 	std::shared_ptr<GameEngineCollision> Col;
 	//std::shared_ptr<GameEngineCollision> Weapon_Col;
 	//std::shared_ptr<GameEngineCollision> Mini_Col;
-	GameEngineRandom Random; 
+	
 };

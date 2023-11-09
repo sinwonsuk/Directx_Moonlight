@@ -131,7 +131,7 @@ void MiniBoss::Update(float _Delta)
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
-			this->Death();
+			this->Off();
 		}
 
 
@@ -144,12 +144,17 @@ void MiniBoss::Update(float _Delta)
 		MonsterPushUpdate(_Delta);
 		UpdateState(_Delta);
 		Manager_Speed = Monster_Move(_Delta, Transform.GetWorldPosition(), MapName, Dir);
-		Monster_Collsision(_Delta);
+		
 		Col->CollisionEvent(ContentsCollisionType::Spear, Event);
 	}
 	
+	Monster_Collsision(_Delta);
 
-	
+
+	if (Number < -0.5)
+	{
+		this->Death();
+	}
 }
 
 

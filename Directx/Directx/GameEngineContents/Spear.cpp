@@ -62,7 +62,7 @@ void Spear::Start()
 
 void Spear::Update(float _Delta)
 {
-	
+
 	
 	Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X , Player::this_Player->Transform.GetWorldPosition().Y });
 

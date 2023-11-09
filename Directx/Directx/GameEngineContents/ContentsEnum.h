@@ -70,4 +70,6 @@ enum class ContentsCollisionType
 	Monster_Weapon,
 	Boss_Monster,
 	Dungeon_Door,
+	Item,
+	Bag,
 };

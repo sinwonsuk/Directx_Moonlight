@@ -122,7 +122,7 @@ void golem_Wizard::Update(float _Delta)
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
-			this->Death(); 
+			this->Off(); 
 		}
 
 
@@ -147,7 +147,16 @@ void golem_Wizard::Update(float _Delta)
 
 		Body->CollisionEvent(ContentsCollisionType::Spear, Event);
 	}
+
+
 	Monster_Collsision(_Delta);
+
+
+	if (Number < -0.5)
+	{
+		this->Death();
+	}
+
 }
 void golem_Wizard::MonsterPushUpdate(float _Delta)
 {

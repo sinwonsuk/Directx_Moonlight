@@ -233,8 +233,11 @@ void Player::RightIdleUpdate(float _Time)
 
 	if (GameEngineInput::IsDown('J', this))
 	{
+		
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>(-100);
+		
 		Object->ChangeState(Spear_State::Spear_Right_01);
+		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Right_Attack_01);
 		return;
 	}
@@ -277,6 +280,7 @@ void Player::LeftIdleUpdate(float _Time)
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Left_01);
+		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Left_Attack_01);
 		return;
 	}
@@ -317,6 +321,7 @@ void Player::DownIdleUpdate(float _Time)
 	if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
+		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Down_Attack_01);
 		return;
 	}
@@ -357,6 +362,7 @@ void Player::UpIdleUpdate(float _Time)
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Up_01);
+		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Up_Attack_01);
 		return;
 	}
@@ -398,6 +404,7 @@ void Player::RightMoveUpdate(float _Time)
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Right_01);
+		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Right_Attack_01);
 		return;
 	}
@@ -441,6 +448,7 @@ void Player::LeftMoveUpdate(float _Time)
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Left_01);
+		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Left_Attack_01);
 		return;
 	}
@@ -480,6 +488,7 @@ void Player::DownMoveUpdate(float _Time)
 	if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
+		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Down_Attack_01);
 		return;
 	}
@@ -520,6 +529,7 @@ void Player::UpMoveUpdate(float _Time)
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Up_01);
+		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Up_Attack_01);
 		return;
 	}
@@ -937,6 +947,7 @@ void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerSt
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(_SpearState);
 		AttackCheck = false;
+		spears.push_back(Object);
 		ChangeState(state);
 		return;
 	}

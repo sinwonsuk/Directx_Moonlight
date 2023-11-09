@@ -10,7 +10,7 @@
 #include "Player_UI.h"
 Player* Player::this_Player; 
 Leveltype Player::LevelType = Leveltype::Town;
-
+int Player::RandomSeed = 0;
 
 Player::Player() 
 {

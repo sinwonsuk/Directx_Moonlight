@@ -51,7 +51,7 @@ void Monster_Place::Monsters(float4 _Pos)
 
 	//¹Ú²Þ
 	
-	for (size_t i = 0; i <= a; i++)
+	for (size_t i = 0; i <= 0; i++)
 	{
 		
 		
@@ -61,7 +61,7 @@ void Monster_Place::Monsters(float4 _Pos)
 
 		
 
-		switch (A)
+		switch (1)
 		{
 		case 0:
 		{

@@ -10,6 +10,7 @@
 #include <GameEngineCore/FadePostEffect.h>
 #include "Black_Out.h"
 #include "Dungeon_Scrol.h"
+#include "Spear.h"
 PlayLevel::PlayLevel() 
 {
 
@@ -98,6 +99,9 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
+	
+	Player::this_Player->spears.clear(); 
+
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;
 

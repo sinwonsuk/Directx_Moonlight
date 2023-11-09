@@ -131,7 +131,7 @@ void golem_Stone::Update(float _Delta)
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
-			this->Death();
+			this->Off(); 
 		}
 		return;
 	}
@@ -156,7 +156,15 @@ void golem_Stone::Update(float _Delta)
 		UpdateState(_Delta);
 	}
 
-//	Monster_Collsision(_Delta);
+
+	//Monster_Collsision(_Delta);
+
+	if (Number < -0.5)
+	{
+		this->Death();
+	}
+
+
 }
 void golem_Stone::AnimationCheck(const std::string_view& _AnimationName)
 {

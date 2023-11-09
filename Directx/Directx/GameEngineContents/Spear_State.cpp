@@ -111,8 +111,9 @@ void Spear::Down_Attack_Update_01(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
-		this->Death();
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
 
 	if (spear->GetCurIndex() <= 0)
@@ -138,9 +139,11 @@ void Spear::Down_Attack_Update_02(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
-		this->Death();
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 
 	if (spear->GetCurIndex() <= 1)
 	{
@@ -162,9 +165,11 @@ void Spear::Down_Attack_Update_03(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
-		
-		this->Death();
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 
 
 	if (spear->GetCurIndex() <= 1)
@@ -180,6 +185,7 @@ void Spear::Down_Attack_Update_03(float _Time)
 	if (spear->GetCurIndex() > 4)
 	{
 		Col->Off();
+		Col->Off();
 	}
 	
 }
@@ -189,9 +195,11 @@ void Spear::Left_Attack_Update_01(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
-		this->Death();
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 
 	if (spear->GetCurIndex() <= 0)
 	{
@@ -209,9 +217,11 @@ void Spear::Left_Attack_Update_02(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
-		this->Death();
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 
 	if (spear->GetCurIndex() <= 1)
 	{
@@ -232,8 +242,11 @@ void Spear::Left_Attack_Update_03(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
-		this->Death();
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 
 	if (spear->GetCurIndex() <= 1)
 	{
@@ -249,6 +262,7 @@ void Spear::Left_Attack_Update_03(float _Time)
 	if (spear->GetCurIndex() > 4)
 	{
 		Col->Off();
+
 	}
 
 }
@@ -258,10 +272,11 @@ void Spear::Right_Attack_Update_01(float _Time)
 
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
-		this->Death();
-
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 	if (spear->GetCurIndex() <= 0)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
@@ -279,9 +294,11 @@ void Spear::Right_Attack_Update_02(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
-		this->Death();
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 
 	if (spear->GetCurIndex() <= 1)
 	{
@@ -300,10 +317,11 @@ void Spear::Right_Attack_Update_03(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
-		
-		this->Death();
-
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
@@ -317,6 +335,7 @@ void Spear::Right_Attack_Update_03(float _Time)
 	if (spear->GetCurIndex() > 4)
 	{
 		Col->Off();
+
 	}
 }
 
@@ -324,10 +343,11 @@ void Spear::Up_Attack_Update_01(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
-		this->Death();
-
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 	if (spear->GetCurIndex() <= 0)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 2.0f, Player::this_Player->Transform.GetWorldPosition().Y + 20.0f });
@@ -345,10 +365,11 @@ void Spear::Up_Attack_Update_02(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
-		Col = nullptr;
-		this->Death();
-
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 2.0f, Player::this_Player->Transform.GetWorldPosition().Y + 20.0f });
@@ -366,10 +387,11 @@ void Spear::Up_Attack_Update_03(float _Time)
 {
 	if (spear->IsCurAnimationEnd())
 	{
-		
-		this->Death();
-
+		tests = true;
+		spear->Off();
+		Col->Off();
 	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 2.0f, Player::this_Player->Transform.GetWorldPosition().Y + 20.0f });

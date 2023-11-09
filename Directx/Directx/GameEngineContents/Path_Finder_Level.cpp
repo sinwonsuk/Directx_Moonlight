@@ -7,6 +7,7 @@
 #include "TileMap.h"
 #include "MonsterTest.h"
 #include "Boss_Rock.h"
+#include "BabySlime.h"
 Path_Finder_Level::Path_Finder_Level()
 {
 }
@@ -17,15 +18,19 @@ Path_Finder_Level::~Path_Finder_Level()
 
 void Path_Finder_Level::Start()
 {
-	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	//float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 
-	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
-	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
+	//GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
+	//GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
+
+	//{
+	//	std::shared_ptr<CameraCollision> object = CreateActor<CameraCollision>();
+	//}
 
 
-	
-	std::shared_ptr<Boss_Rock> Object = CreateActor<Boss_Rock>();
-	Object->Set_BossPos({0,0 });
+	//
+	//std::shared_ptr<BabySlime> Object = CreateActor<BabySlime>();
+	////Object->Set_BossPos({0,0 });
 
 
 
@@ -75,7 +80,7 @@ void Path_Finder_Level::Start()
 	{
 		std::shared_ptr<Dungeon_Map_10> Object = CreateActor<Dungeon_Map_10>();
 	}*/
-
+	
 	{
 		std::shared_ptr<TileMap> Object = CreateActor<TileMap>();
 	}
