@@ -1,32 +1,32 @@
 #include "PreCompile.h"
-#include "FadePostEffect.h"
+#include "BlurPostEffect.h"
 
-FadePostEffect::FadePostEffect() 
+BlurPostEffect::BlurPostEffect() 
 {
-	// EffectUnit.SetMesh("fullrect");
+	RenderBaseInfoValue.ScreenSize = GameEngineCore::MainWindow.GetScale();
 }
 
-FadePostEffect::~FadePostEffect() 
+BlurPostEffect::~BlurPostEffect() 
 {
 }
 
-void FadePostEffect::Start()
+void BlurPostEffect::Start()
 {
 	EffectUnit.SetMesh("fullrect");
-	EffectUnit.SetMaterial("FadePostEffect");
+	EffectUnit.SetMaterial("BlurPostEffect");
+
 	EffectUnit.ShaderResHelper.SetConstantBufferLink("RenderBaseInfo", RenderBaseInfoValue);
-	EffectUnit.ShaderResHelper.SetSampler("DiffuseTexSampler", "POINT");
 	EffectUnit.ShaderResHelper.SetTexture("DiffuseTex", EffectTarget->GetTexture(0));
+	EffectUnit.ShaderResHelper.SetSampler("DiffuseTexSampler", "LINEAR");
 
 	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
 	ResultTarget = GameEngineRenderTarget::Create();
 	ResultTarget->AddNewTexture(DXGI_FORMAT_R32G32B32A32_FLOAT, WindowScale, float4::ZERONULL);
 }
-void FadePostEffect::EffectProcess(float _DeltaTime)
+void BlurPostEffect::EffectProcess(float _DeltaTime)
 {
 	ResultTarget->Setting();
 	EffectUnit.Render();
 	EffectUnit.ShaderResHelper.AllShaderResourcesReset();
-
 	EffectTarget->Copy(0, ResultTarget, 0);
 }
