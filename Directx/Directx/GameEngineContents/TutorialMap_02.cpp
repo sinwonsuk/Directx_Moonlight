@@ -69,7 +69,11 @@ void TutorialMap_02::Update(float _Delta)
 	{
 		return;
 	}
-	
+	if (Map_Check == 1)
+	{
+		ObjectCollision(_Delta, "Tutirial_Pixel_Map_02.png");
+	}
+
 	
 	DoorCollision(_Delta, Map_Number);
 

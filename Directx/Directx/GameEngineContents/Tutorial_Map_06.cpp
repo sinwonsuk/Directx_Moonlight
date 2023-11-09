@@ -82,7 +82,7 @@ void TutorialMap_06::Update(float _Delta)
 	TimeCheck += _Delta; 
 
 
-	GameEngineRandom Random;
+	
 
     int Time = Random.RandomInt(1, 5);
 
@@ -92,9 +92,12 @@ void TutorialMap_06::Update(float _Delta)
 	int MonsterMove = Random.RandomInt(0, 1);
 
 
+	//Random.SetSeed()
 
-
-
+	if (Map_Check == 5)
+	{
+		ObjectCollision(_Delta, "Tutirial_Pixel_Map_06.png");
+	}
 
 	if (Player::this_Player->Transform.GetWorldPosition().X > 6500 && PlayerCheck ==false)
 	{
@@ -121,6 +124,8 @@ void TutorialMap_06::Update(float _Delta)
 				{
 					std::shared_ptr<golem_Wizard> object = GetLevel()->CreateActor<golem_Wizard>();
 					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 250.0f });
+					object->Set_MapName("Tutirial_Pixel_Map_06.png");
+					object->Set_Dir({ 1280 * Map_Number,0.0f });
 
 					TimeCheck = 0; 
 				}
@@ -128,7 +133,8 @@ void TutorialMap_06::Update(float _Delta)
 				{
 					std::shared_ptr<golem_Wizard> object = GetLevel()->CreateActor<golem_Wizard>();
 					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 250.0f });
-
+					object->Set_MapName("Tutirial_Pixel_Map_06.png");
+					object->Set_Dir({ 1280 * Map_Number,0.0f });
 					TimeCheck = 0;
 				}
 			}
@@ -138,14 +144,16 @@ void TutorialMap_06::Update(float _Delta)
 				{
 					std::shared_ptr<golem_Solder> object = GetLevel()->CreateActor<golem_Solder>();
 					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 250.0f });
-
+					object->Set_MapName("Tutirial_Pixel_Map_06.png");
+					object->Set_Dir({ 1280 * Map_Number,0.0f });
 					TimeCheck = 0;
 				}
 				if (MonsterMove == 1)
 				{
 					std::shared_ptr<golem_Solder> object = GetLevel()->CreateActor<golem_Solder>();
 					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 250.0f });
-
+					object->Set_MapName("Tutirial_Pixel_Map_06.png");
+					object->Set_Dir({ 1280 * Map_Number,0.0f });
 					TimeCheck = 0;
 				}
 			}
@@ -155,13 +163,16 @@ void TutorialMap_06::Update(float _Delta)
 				{
 					std::shared_ptr<golem_Stone> object = GetLevel()->CreateActor<golem_Stone>();
 					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 200.0f });
-
+					object->Set_MapName("Tutirial_Pixel_Map_06.png");
+					object->Set_Dir({ 1280 * Map_Number,0.0f });
 					TimeCheck = 0;
 				}
 				if (MonsterMove == 1)
 				{
 					std::shared_ptr<golem_Stone> object = GetLevel()->CreateActor<golem_Stone>();
 					object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 200.0f });
+					object->Set_MapName("Tutirial_Pixel_Map_06.png");
+					object->Set_Dir({ 1280 * Map_Number,0.0f });
 
 					TimeCheck = 0;
 				}

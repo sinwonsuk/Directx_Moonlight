@@ -153,6 +153,7 @@ void golem_Solder::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
+		Monster_Weapon->Off();
 		Number -= _Delta * 1;
 		Solder->GetColorData().MulColor = { 1,1,1,Number };
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
@@ -175,6 +176,7 @@ void golem_Solder::Update(float _Delta)
 	   MonsterPushUpdate(_Delta);
 	   UpdateState(_Delta);
 	   Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+	
 	   Manager_Speed = Monster_Move(_Delta, Transform.GetWorldPosition(), MapName,Dir);
 	}
 		
@@ -209,7 +211,7 @@ void golem_Solder::MonsterPushUpdate(float _Delta)
 	}
 
 
-	if (Weapon_Collision_Check == true && PushTime_Check <= 0.15 &&ObjectCollision(_Delta, Transform.GetWorldPosition(), MapName, Dir) ==true)
+	if (Weapon_Collision_Check == true && PushTime_Check <= 0.15 && ObjectCollision(_Delta, Transform.GetWorldPosition(), MapName, Dir) ==true)
 	{
 		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01)
 		{

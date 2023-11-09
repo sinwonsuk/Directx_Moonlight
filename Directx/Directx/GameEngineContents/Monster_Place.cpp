@@ -208,11 +208,7 @@ void Monster_Place::Monsters(float4 _Pos)
 					break;
 				}
 
-				if (Name == "Dungeon_Map_Pixel_010.png")
-				{
-					--i;
-					break;
-				}
+				
 
 				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
 				{
@@ -245,7 +241,11 @@ void Monster_Place::Monsters(float4 _Pos)
 					--i;
 					break;
 				}
-
+				if (Name == "Dungeon_Map_Pixel_06.png")
+				{
+					--i;
+					break;
+				}
 				if (Name == "Dungeon_Map_Pixel_04.png")
 				{
 					--i;
@@ -257,11 +257,7 @@ void Monster_Place::Monsters(float4 _Pos)
 					break;
 				}
 
-				if (Name == "Dungeon_Map_Pixel_010.png")
-				{
-					--i;
-					break;
-				}
+			
 
 				Monster_Pos = Random->RandomVectorBox2D(0, 1280, 0, 720);
 

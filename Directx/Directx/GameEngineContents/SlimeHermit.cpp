@@ -124,6 +124,7 @@ void SlimeHermit::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
+		Monster_Weapon->Off();
 		Number -= _Delta * 1;
 		Slime_Hermit->GetColorData().MulColor = { 1,1,1,Number };
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };

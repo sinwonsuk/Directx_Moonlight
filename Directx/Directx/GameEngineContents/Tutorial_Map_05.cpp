@@ -87,42 +87,54 @@ void TutorialMap_05::Start()
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 	Transform.AddLocalPosition({ 1280 * Map_Number ,0.0f });
 
-	
+	//sd.X - 640 + Monster_Pos.X * 40, sd.Y + 360 - Monster_Pos.Y * 40
 
 	{
 		
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X+300.0f,Transform.GetWorldPosition().Y+100.0f});	
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png"); 
+		Object->Set_Dir({ 1280 * Map_Number,0.0f });
 		Slimes.push_back(Object);
 	}
 
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 250.0f,Transform.GetWorldPosition().Y + 70.0f });
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
+		Object->Set_Dir({ 1280 * Map_Number,0.0f });
 		Slimes.push_back(Object);
 	}
 
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 320.0f,Transform.GetWorldPosition().Y -30.0f });
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
+		Object->Set_Dir({ 1280 * Map_Number,0.0f });
 		Slimes.push_back(Object);
 	}
 
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 280.0f,Transform.GetWorldPosition().Y +200.0f });
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
+		Object->Set_Dir({ 1280 * Map_Number,0.0f });
 		Slimes.push_back(Object);
 	}
 
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 320.0f,Transform.GetWorldPosition().Y - 100.0f });
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
+		Object->Set_Dir({ 1280 * Map_Number,0.0f });
 		Slimes.push_back(Object);
 	}
 
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 300.0f,Transform.GetWorldPosition().Y - 70.0f });
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
+		Object->Set_Dir({ 1280 * Map_Number,0.0f });
 		Slimes.push_back(Object);
 	
 	}
@@ -131,6 +143,8 @@ void TutorialMap_05::Start()
 	{
 		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 340.0f,Transform.GetWorldPosition().Y - 200.0f });
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
+		Object->Set_Dir({ 1280 * Map_Number,0.0f });
 		Slimes.push_back(Object);
 	}
 
@@ -178,12 +192,12 @@ void TutorialMap_05::Update(float _Delta)
 	{
 		return;
 	}
-	
-	/*for (size_t i = 0; i < Slime.size(); i++)
+
+	if (Map_Check == 4)
 	{
-		Slime[i]->SetMove(true);
+		ObjectCollision(_Delta, "Tutirial_Pixel_Map_01.png");
 	}
-*/
+	
 
 	DoorCollision(_Delta, Map_Number);
 }

@@ -16,13 +16,14 @@ public:
 
 	void ObjectCollision(float _Delta, std::string_view _Name);
 	void DoorCollision(float _Delta,float _MapNumber);
+	
 	static int Map_Check;
 protected:
 	float Map_Number = 0.0f;
 
 private:
 	bool Door_Collison_Check = false;
-	
+	EventParameter Event;
 
 };
 

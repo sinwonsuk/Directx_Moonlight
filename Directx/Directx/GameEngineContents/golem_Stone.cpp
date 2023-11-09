@@ -121,6 +121,7 @@ void golem_Stone::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
+		Monster_Weapon->Off();
 		Number -= _Delta * 1;
 		Stone->GetColorData().MulColor = { 1,1,1,Number };
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };

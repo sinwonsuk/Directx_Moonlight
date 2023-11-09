@@ -3,7 +3,7 @@
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
 #include <GameEngineCore/GameEngineCollision.h>
-
+#include "Black_Out.h"
 Title::Title()
 {
 
@@ -16,6 +16,8 @@ Title::~Title()
 
 void Title::Start()
 {
+	GameEngineInput::AddInputObject(this);
+	
 	{
 		Title_BG_Back = CreateComponent<GameEngineSpriteRenderer>(-100);
 		Title_BG_Back->CreateAnimation("Title", "Title", 0.1f, -1, -1);
@@ -72,7 +74,24 @@ void Title::Start()
 void Title::Update(float _Delta)
 {
 	
+		if (GameEngineInput::IsDown('P', this) && Black_Check == false)
+		{
+			black_Out = GetLevel()->CreateActor<Black_Out>();
+			Black_Check = true;
+		}
+	
 
+
+	if (Black_Check == true)
+	{
+		if (black_Out->GetCheck() == true)
+		{
+			GameEngineCore::ChangeLevel("TutorialLevel");
+		}
+
+	}
+
+	
 
 
 

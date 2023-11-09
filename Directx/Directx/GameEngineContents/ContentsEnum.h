@@ -69,4 +69,5 @@ enum class ContentsCollisionType
 	Rock_Check_Col,
 	Monster_Weapon,
 	Boss_Monster,
+	Dungeon_Door,
 };

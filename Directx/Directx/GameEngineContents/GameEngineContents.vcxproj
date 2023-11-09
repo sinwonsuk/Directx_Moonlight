@@ -195,6 +195,7 @@
     <ClCompile Include="Dungeon_Map_08.cpp" />
     <ClCompile Include="Dungeon_Map_09.cpp" />
     <ClCompile Include="Dungeon_Map_10.cpp" />
+    <ClCompile Include="Dungeon_Scrol.cpp" />
     <ClCompile Include="gloem_Wazard_Missile.cpp" />
     <ClCompile Include="golemturret.cpp" />
     <ClCompile Include="golemturret_missile.cpp" />
@@ -300,6 +301,7 @@
     <ClInclude Include="Dungeon_Map_08.h" />
     <ClInclude Include="Dungeon_Map_09.h" />
     <ClInclude Include="Dungeon_Map_10.h" />
+    <ClInclude Include="Dungeon_Scrol.h" />
     <ClInclude Include="gloem_Wazard_Missile.h" />
     <ClInclude Include="golemturret.h" />
     <ClInclude Include="golemturret_missile.h" />

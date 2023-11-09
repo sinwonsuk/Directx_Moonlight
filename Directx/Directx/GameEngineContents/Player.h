@@ -127,7 +127,8 @@ public:
 	float Scale_Time = 0.0f;
 	float4 Test_Move = {};
 	std::shared_ptr<class Black_Out> Black;
-
+	std::shared_ptr< class Player_UI> Boss_UI;
+	bool RolCheck = false;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -163,7 +164,7 @@ private:
 
 	float4 GrivityForce = {0.0f, 0.0f, 0.0f, 1.0f};
 	int UICheck = 0;
-	std::shared_ptr< class Player_UI> Boss_UI;
+	
 	float Hp_Bar_reduce = 0.0f;
 	//std::shared_ptr<GameEngineCollision> Col;
 };

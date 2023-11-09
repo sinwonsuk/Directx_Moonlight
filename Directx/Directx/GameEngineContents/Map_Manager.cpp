@@ -37,13 +37,19 @@ void Map_Manager::ObjectCollision(float _Delta, std::string_view _Name, float4 _
 	if (GameEngineColor::MAGENTA == GetColor({ (Left_Player_Pos - _Transform+ Ad)/40 }, { 255,0,0,255 }, _Name))
 	{
 		Player::this_Player->LeftMove = false;
+		Player::this_Player->RolCheck = true;
 	}
 	
 	else if (GameEngineColor::BLUE == GetColor({ (Left_Player_Pos - _Transform + Ad)/40 }, { 255,0,0,255 }, _Name))
 	{
 		Player::this_Player->LeftMove = false;
+		Player::this_Player->RolCheck = true;
 	}
-
+	else if (GameEngineColor::GREEN == GetColor({ (Left_Player_Pos - _Transform + Ad) / 40 }, { 255,0,0,255 }, _Name))
+	{
+		Player::this_Player->LeftMove = false;
+		Player::this_Player->RolCheck = true;
+	}
 	else
 	{
 		Player::this_Player->LeftMove = true;
@@ -66,6 +72,11 @@ void Map_Manager::ObjectCollision(float _Delta, std::string_view _Name, float4 _
 	{
 		Player::this_Player->RightMove = false;
 	}
+	else if (GameEngineColor::GREEN == GetColor({ (Right_Player_Pos - _Transform + Ad) / 40 }, { 255,0,0,255 }, _Name))
+	{
+		Player::this_Player->RightMove = false;
+		Player::this_Player->RolCheck = true;
+	}
 	else
 	{
 		Player::this_Player->RightMove = true;
@@ -84,6 +95,11 @@ void Map_Manager::ObjectCollision(float _Delta, std::string_view _Name, float4 _
 	{
 		Player::this_Player->UpMove = false;
 	}
+	else if (GameEngineColor::GREEN == GetColor({ (Up_Player_Pos - _Transform + Ad) / 40 }, { 255, 0, 0, 255 }, _Name))
+	{
+		Player::this_Player->RolCheck = true;
+		Player::this_Player->UpMove = false;
+	}
 	else
 	{
 		Player::this_Player->UpMove = true;
@@ -100,7 +116,11 @@ void Map_Manager::ObjectCollision(float _Delta, std::string_view _Name, float4 _
 	{
 		Player::this_Player->DownMove = false;
 	}
-
+	else if (GameEngineColor::GREEN == GetColor({ (Down_Player_Pos - _Transform + Ad) / 40 }, { 255, 0, 0, 255 }, _Name))
+	{
+		Player::this_Player->RolCheck = true;
+		Player::this_Player->DownMove = false;
+	}
 	else
 	{
 		Player::this_Player->DownMove = true;
@@ -120,29 +140,29 @@ void Map_Manager::ObjectCollision(float _Delta, std::string_view _Name, float4 _
 
 
 
-	if (GameEngineColor::GREEN == GetColor({ (Left_Player_Pos - _Transform + Ad)/40 }, { 0,0,255,255 }, _Name))
+	if (GameEngineColor::YELLOW == GetColor({ (Left_Player_Pos - _Transform + Ad)/40 }, { 0,0,255,255 }, _Name))
 	{
-		Player::this_Player->Speed = 0.0f;
-		Player::this_Player->Transform.AddLocalPosition(float4::RIGHT * 20.0f * _Delta);
+		Player::this_Player->Speed = 100.0f;
+	
 	}
-	else if (GameEngineColor::GREEN == GetColor({ (Right_Player_Pos - _Transform + Ad)/40 }, { 0,0,255,255 }, _Name))
+	else if (GameEngineColor::YELLOW == GetColor({ (Right_Player_Pos - _Transform + Ad) / 40 }, { 0,0,255,255 }, _Name))
 	{
-		Player::this_Player->Speed = 0.0f;
-		Player::this_Player->Transform.AddLocalPosition(float4::LEFT * 20.0f * _Delta);
+		Player::this_Player->Speed = 100.0f;
+	
 	}
-	else if (GameEngineColor::GREEN == GetColor({ (Up_Player_Pos - _Transform + Ad)/40 }, { 0, 0, 255, 255 }, _Name))
+	else if (GameEngineColor::YELLOW == GetColor({ (Up_Player_Pos - _Transform + Ad) / 40 }, { 0,0,255,255 }, _Name))
 	{
-		Player::this_Player->Speed = 0.0f;
-		Player::this_Player->Transform.AddLocalPosition(float4::DOWN * 20.0f * _Delta);
+		Player::this_Player->Speed = 100.0f;
+
 	}
-	else if (GameEngineColor::GREEN == GetColor({ (Down_Player_Pos - _Transform + Ad)/40 }, { 0, 0, 255, 255 }, _Name))
+	else if (GameEngineColor::YELLOW == GetColor({ (Down_Player_Pos - _Transform + Ad) / 40 }, { 0,0,255,255 }, _Name))
 	{
-		Player::this_Player->Speed = 0.0f;
-		Player::this_Player->Transform.AddLocalPosition(float4::UP * 20.0f * _Delta);
+		Player::this_Player->Speed = 100.0f;
+	
 	}
+	
 	else
 	{
-		Player::this_Player->Roll_Speed = 400.0f;
 		Player::this_Player->Speed = 300.0f;
 	}
 

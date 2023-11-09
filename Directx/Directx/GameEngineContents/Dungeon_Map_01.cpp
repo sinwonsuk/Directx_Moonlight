@@ -33,7 +33,6 @@ void Dungeon_Map_01::Start()
 	{
 		Map_floor = CreateComponent<GameEngineSpriteRenderer>(-100);
 		Map_floor->SetSprite("Floor_01", 0);
-
 	}
 
 	/*{
@@ -64,7 +63,7 @@ void Dungeon_Map_01::Start()
 	}*/
 
 	{
-		LeftDoor = CreateComponent<GameEngineSpriteRenderer>(100);
+		LeftDoor = CreateComponent<GameEngineSpriteRenderer>();
 		LeftDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
 		LeftDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
 		LeftDoor->AutoSpriteSizeOn();
@@ -76,7 +75,7 @@ void Dungeon_Map_01::Start()
 	}
 
 	{
-		RightDoor = CreateComponent<GameEngineSpriteRenderer>(100);
+		RightDoor = CreateComponent<GameEngineSpriteRenderer>();
 		RightDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
 		RightDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
 		RightDoor->AutoSpriteSizeOn();
@@ -89,7 +88,7 @@ void Dungeon_Map_01::Start()
 	}
 	{
 
-		UpDoor = CreateComponent<GameEngineSpriteRenderer>(100);
+		UpDoor = CreateComponent<GameEngineSpriteRenderer>();
 		UpDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
 		UpDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
 		UpDoor->AutoSpriteSizeOn();
@@ -100,7 +99,7 @@ void Dungeon_Map_01::Start()
 	}
 
 	{
-		DownDoor = CreateComponent<GameEngineSpriteRenderer>(100);
+		DownDoor = CreateComponent<GameEngineSpriteRenderer>();
 		DownDoor->CreateAnimation("Open_Door", "Open_Door", 0.1f, -1, -1, false);
 		DownDoor->CreateAnimation("Close_Door", "Close_Door", 0.1f, -1, -1, false);
 		DownDoor->AutoSpriteSizeOn();
@@ -112,7 +111,7 @@ void Dungeon_Map_01::Start()
 
 	}
 	{
-		Boss_Door = CreateComponent<GameEngineSpriteRenderer>(130);
+		Boss_Door = CreateComponent<GameEngineSpriteRenderer>(10);
 		Boss_Door->CreateAnimation("Boss_Door_Open", "Boss_Door_Open", 0.1f, -1, -1, false);
 		Boss_Door->CreateAnimation("Boss_Door_Close", "Boss_Door_Close", 0.1f, -1, -1, false);
 		Boss_Door->AutoSpriteSizeOn();
@@ -280,6 +279,7 @@ void Dungeon_Map_01::Update(float _Delta)
 
 	if (Boss_Collison_Door->Collision(ContentsCollisionType::Player) && Boss_Door_Check == false)
 	{
+		//Player::this_Player->Camera = CameraType::BossMap;
 		CameraCollision::CameraCol->Col->Off(); 
 		Player::this_Player->Transform.AddLocalPosition({ 0.0f, 300.0f });
 		Boss_Door_Check = true;

@@ -31,7 +31,7 @@ void TutorialMap::Start()
 		std::shared_ptr<Object_jar> Object = GetLevel()->CreateActor<Object_jar>();
 	}*/
 
-	Transform.SetLocalPosition({ 0.0f,0.0f,-5.0f });
+	//Transform.SetLocalPosition({ 0.0f,0.0f,-5.0f });
 
 	{
 
@@ -49,8 +49,8 @@ void TutorialMap::Start()
 	{
 
 	    BackGround = CreateComponent<GameEngineSpriteRenderer>(-100);
-	    BackGround->SetSprite("Tutorial_BackGround", 1);
-	    BackGround->SetImageScale({ 1380.0f,750.0f });
+	    BackGround->SetSprite("BackGround", 1);
+	    BackGround->SetImageScale({ 1380.0f,740.0f });
 
 	}
 
@@ -132,10 +132,7 @@ void TutorialMap::Start()
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y});
-	/*{
-		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
-		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
-	}*/
+	
 	/*{
 		std::shared_ptr<golem_Wizard> Object = GetLevel()->CreateActor<golem_Wizard>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
@@ -147,18 +144,22 @@ void TutorialMap::Start()
 	//}
 	
 
-	{
+	/*{
 		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X-200.0f,Transform.GetWorldPosition().Y });
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
 	}
 
 	{
 		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
-	}
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
+	}*/
 	Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
 	Collision_Door->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
 	Collision_Door->Transform.SetLocalScale({90.0f,120.0f,0.0f });
+
+	Map_Number = 0;
 }
 
 void TutorialMap::Update(float _Delta)
@@ -170,27 +171,20 @@ void TutorialMap::Update(float _Delta)
 		Scroll->AnimationPauseOff();
 	}
 
-	if (GameEngineInput::IsDown('2', this) && check == false)
-	{
-		Pixel->On();
-		check = true;
-	}
-	else if (GameEngineInput::IsDown('2', this) && check == true)
-	{
-		Pixel->Off();
-		check = false;
-	}
 
 
-
-	ObjectCollision(_Delta, "Tutorial_Map_Pixel.png");
+	
 
 	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number))
 	{
 		return;
 	}
 
+	if (Map_Number == 0 && Map_Check == 0)
+	{
+		ObjectCollision(_Delta, "Tutirial_Pixel_Map_01.png");
+		
+	}
 
 	DoorCollision(_Delta, Map_Number);
-	
 }

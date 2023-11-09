@@ -25,6 +25,6 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 	bool check = false;
 private:
-
+	std::shared_ptr<class Dungeon_Entrance_Map> Entrance_Map; 
 };
 

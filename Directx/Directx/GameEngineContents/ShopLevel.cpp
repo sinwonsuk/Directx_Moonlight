@@ -56,6 +56,7 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);
 		Object->Transform.AddLocalPosition({ 55.0f,-200.0f });		
+		Player::this_Player->ChangeState(PlayerState::UpIdle);
 	}
 
 	{
@@ -69,7 +70,11 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 void ShopLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-	House->black_Out->Death(); 
+	if (House->black_Out != nullptr)
+	{
+		House->black_Out->Death();
+	}
+	
 	House->Death(); 
 
 	Player::LevelType = Leveltype::Town;

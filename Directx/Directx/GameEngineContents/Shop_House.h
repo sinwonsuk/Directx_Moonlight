@@ -27,7 +27,7 @@ protected:
 
 private:
 	bool check = false;
-
+	bool Black_Check = false;
 	bool test = false;
 
 	EventParameter Up_Event;
@@ -57,7 +57,7 @@ private:
 
 	std::shared_ptr<GameEngineCollision> Col;
 	std::shared_ptr<GameEngineCollision> Change_Town;
-
+	bool Camera_Check = false;
 	
 	bool CameraMove = false;
 

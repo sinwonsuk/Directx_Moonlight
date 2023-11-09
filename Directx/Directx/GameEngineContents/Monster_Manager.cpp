@@ -20,6 +20,36 @@ float4 Monster_Manager::Monster_Move(float _Delta,float4 _GetWorldTransform, std
 
 	PathTime = _Delta;
 
+	if (_Name == "Tutorial_Map_Pixel.png")
+	{
+		float4 MoveDir = Player::this_Player->Transform.GetWorldPosition() - _GetWorldTransform;
+
+		if ((GameEngineColor::MAGENTA == GetColor(_GetWorldTransform, { 0,0,0,0 }, _Name)))
+		{
+			float4 CollisionMoveDir = { 0,-1 };
+			 return CollisionMoveDir.NormalizeReturn() + MoveDir.NormalizeReturn();
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		return MoveDir.NormalizeReturn(); 
+	}
 	/*if ( MoveCheck ==false)
 	{
 		if (ObjectCollision(_Delta, _GetWorldTransform, _Name, _distance_fixation) == false)

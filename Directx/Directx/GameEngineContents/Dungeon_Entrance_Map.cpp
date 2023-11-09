@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Dungeon_Entrance_Map.h"
 #include "Player.h"
+#include "Black_Out.h"
 Dungeon_Entrance_Map::Dungeon_Entrance_Map()
 {
 }
@@ -143,7 +144,7 @@ void Dungeon_Entrance_Map::Start()
 	}
 
 	{
-		Dungeon_Open = CreateComponent<GameEngineSpriteRenderer>(0);
+		Dungeon_Open = CreateComponent<GameEngineSpriteRenderer>(-60);
 		Dungeon_Open->CreateAnimation("Dungeon_Open", "Dungeon_Open", 0.1f, -1, -1, false);
 		Dungeon_Open->CreateAnimation("Dungeon_Close", "Dungeon_Close", 0.1f, -1, -1, false);
 		Dungeon_Open->Off(); 
@@ -180,6 +181,17 @@ void Dungeon_Entrance_Map::Start()
 	Dungeon_Near->SetCollisionType(ColType::AABBBOX2D);
 
 
+	Dungeon_Door_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Dungeon_Door);
+	Dungeon_Door_Col->Transform.SetLocalScale({ 200.0f,200.0f });
+	Dungeon_Door_Col->Transform.SetWorldPosition({ 699.0f,-892.0f });
+	Dungeon_Door_Col->SetCollisionType(ColType::AABBBOX2D);
+
+
+	black_Out = GetLevel()->CreateActor<Black_Out>();
+	black_Out->Off();
+
+	black_Out_02 = GetLevel()->CreateActor<Black_Out>();
+	black_Out_02->Off();
 
 }
 
@@ -211,94 +223,57 @@ void Dungeon_Entrance_Map::Update(float _DeltaTime)
 
 	}
 
-
-
+	
 	PixelCollision(_DeltaTime);
-	//std::shared_ptr<class GameEngineSpriteRenderer> AD  = Dungeon_Door;
+	
+
+	
 
 	if (Change_Town->Collision(ContentsCollisionType::Player))
 	{
 		int a = 0;
-	
-	
-		if (GameEngineInput::IsDown('J',this))
+
+		
+		Black_Check_02 = true;
+		black_Out_02->On();
+		black_Out_02->On();
+		Player::this_Player->Not_Move = false;
+	}
+
+
+	if (Black_Check_02 == true)
+	{
+		if (black_Out_02->GetCheck() == true)
 		{
+			Player::LevelType = Leveltype::Dungeon_Entrance;
 			GameEngineCore::ChangeLevel("WorldLevel");
+			return;
+		}
+
+
+	}
+
+
+
+	if (Dungeon_Door_Col->Collision(ContentsCollisionType::Player))
+	{
+		if (GameEngineInput::IsDown(VK_RETURN, this))
+		{
+			Black_Check = true;
+			black_Out->On();
+			Player::this_Player->Not_Move = false;
 		}
 	}
+
+	if (Black_Check == true)
+	{
+		if (black_Out->GetCheck() == true)
+		{
+			Player::LevelType = Leveltype::None;
+			GameEngineCore::ChangeLevel("PlayLevel");
+			return;
+		}
+
+	}
 	
-	
-	//if (GameEngineInput::IsDown('1') && check == false)
-	//{
-	//	check = true;
-	//}
-	//else if (GameEngineInput::IsDown('1') && check == true)
-	//{
-	//	check = false;
-	//}
-
-
-	//if (check == true)
-	//{
-	//	if (GameEngineInput::IsPress('A'))
-	//	{
-	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition({ 5.0f,0.0f });
-	//	}
-
-	//	if (GameEngineInput::IsPress('D'))
-	//	{
-	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition({ -5.0f,0.0f });
-	//		return;
-	//	}
-
-	//	if (GameEngineInput::IsPress('W'))
-	//	{
-	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition(float4::UP *5);
-	//		return;
-	//	}
-
-	//	if (GameEngineInput::IsPress('S'))
-	//	{
-	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition(float4::DOWN* 5);
-	//		return;
-	//	}
-	//}
-	//if (check == false)
-	//{
-
-
-	//	if (GameEngineInput::IsPress('A'))
-	//	{
-	//		AD->Transform.AddWorldPosition({ 1.0f,0.0f });
-	//	}
-
-	//	if (GameEngineInput::IsPress('D'))
-	//	{
-	//		AD->Transform.AddWorldPosition({ -1.0f,0.0f });
-	//		return;
-	//	}
-
-	//	if (GameEngineInput::IsPress('W'))
-	//	{
-	//		AD->Transform.AddWorldPosition(float4::UP);
-	//		return;
-	//	}
-
-	//	if (GameEngineInput::IsPress('S'))
-	//	{
-	//		AD->Transform.AddWorldPosition(float4::DOWN);
-	//		return;
-	//	}
-	//}
-
-	//
-	//TransformData date = AD->Transform.GetConstTransformDataRef();
-
-	///*date.LocalPosition
-
-	//float4 WorldMousePos*/
-
-	//float4 WorldMousePos = date.WorldPosition;
-	//OutputDebugStringA(WorldMousePos.ToString("\n").c_str());
-
 }

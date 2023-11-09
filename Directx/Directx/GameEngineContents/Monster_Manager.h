@@ -36,7 +36,7 @@ protected:
 	//std::shared_ptr<class GameEngineCollision> Monster;
 	float4 thisPos = {};
 	float4 Brick_Size = 0.0f;
-	std::string_view MapName = {}; 
+	std::string_view MapName = "Tutorial_Map_Pixel.png";
 	std::list<float4> PathPos;
 	int test = 0;
 	float4 Dir = {};

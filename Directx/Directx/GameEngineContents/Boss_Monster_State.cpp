@@ -6,6 +6,7 @@
 #include "Boss_Rock.h"
 #include "Boss_Wirst.h"
 #include "Boss_Monster_UI.h"
+#include "Dungeon_Scrol.h"
 void Boss_Monster::ChangeState(Boss_Monster_State _State)
 {
 	Boss_Monster_State NextState = _State;
@@ -160,6 +161,9 @@ void Boss_Monster::StartUpdate(float _Time)
 
 	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y >= Transform.GetWorldPosition().Y)
 	{
+		
+		std::shared_ptr<Dungeon_Scrol> Object =  GetLevel()->CreateActor<Dungeon_Scrol>();
+		
 		ChangeState(Boss_Monster_State::WakeUp);
 		return;
 	}
@@ -172,6 +176,7 @@ void Boss_Monster::Start2Update(float _Time)
 	if (CameraCheck == true)
 	{
 		Player::this_Player->Not_Move = false;
+		Player::this_Player->Camera = CameraType::BossMap;
 		float4 AD = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
 		AD.Normalize();
 		GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ AD * Time * Speed });

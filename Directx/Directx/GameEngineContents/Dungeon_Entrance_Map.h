@@ -20,7 +20,8 @@ public:
 	
 	void PixelCollision(float _Delta);
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor = { 255, 255, 255, 255 });
-
+	std::shared_ptr<class Black_Out> black_Out;
+	std::shared_ptr<class Black_Out> black_Out_02;
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -48,7 +49,7 @@ private:
 	std::shared_ptr<GameEngineCollision> Dungeon_Near;
 
 
-
-
-
+	std::shared_ptr<GameEngineCollision> Dungeon_Door_Col;
+	bool Black_Check_02 = false;
+	bool Black_Check = false;
 };

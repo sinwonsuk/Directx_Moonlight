@@ -4,6 +4,7 @@
 #include "TownMap.h"
 #include "Shop_House.h"
 #include "Black.h"
+#include "Black_Out.h"
 WorldLevel::WorldLevel()
 {
 }
@@ -28,8 +29,8 @@ void WorldLevel::Start()
 
 
 
-
-	Map = CreateActor<TownMap>(ContentsObjectType::BackGround);
+	
+	
 	
 	
 	
@@ -46,7 +47,11 @@ void WorldLevel::Update(float _Delta)
 
 void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+
+
 	std::shared_ptr<Black> Object = CreateActor<Black>(ContentsObjectType::Player);
+
+	
 
 	{
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);	
@@ -69,7 +74,7 @@ void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		GetMainCamera()->Transform.SetWorldPosition({ 1040.0f,40.0f });
 	}
 
-
+	Map = CreateActor<TownMap>(ContentsObjectType::BackGround);
 	
 	
 
@@ -81,7 +86,8 @@ void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 void WorldLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-	
+	Map->black_Out->Death(); 
+	Map->black_Out_02->Death();
 	Map->Death(); 
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;

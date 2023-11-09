@@ -1,21 +1,15 @@
 #include "PreCompile.h"
 #include "PlayLevel.h"
 #include "Player.h"
-#include "TownMap.h"
-#include "Monster.h"
 #include "Random_Room.h"
 #include "Dungeon_Map_01.h"
-#include "SlimeHermit.h"
-#include "MiniBoss.h"
-#include "Player_UI.h"
-#include "Monster_place.h"
 #include "CameraCollision.h"
-#include "golem_Solder.h"
 #include "Boss_Monster.h"
 #include "Boss_Map.h"
 #include "Inventory.h"
 #include <GameEngineCore/FadePostEffect.h>
 #include "Black_Out.h"
+#include "Dungeon_Scrol.h"
 PlayLevel::PlayLevel() 
 {
 
@@ -89,13 +83,15 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	{
 		player = CreateActor<Player>(ContentsObjectType::Player);
-		//player->Camera = CameraType::BossMap;
+		player->ChangeState(PlayerState::UpIdle);
 	}
 	
 	{
 		Map = CreateActor<Random_Room>();
 	}
-	
+	{
+		std::shared_ptr<Dungeon_Scrol> Object = CreateActor<Dungeon_Scrol>();
+	}
 
 	int a = 0;
 }
@@ -107,7 +103,12 @@ void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 
 
 	player->Death();
-	player->Black->Death(); 
+
+	if (player->Black != nullptr)
+	{
+		player->Black->Death();
+	}
+	
 	Map->Rooms.clear();
 	
 	Map->Map->Death(); 

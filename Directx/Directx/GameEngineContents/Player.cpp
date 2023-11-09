@@ -133,6 +133,7 @@ void Player::Start()
 
 	Left_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{	
+		RolCheck = false;
 		LeftMove = false;
 	};
 
@@ -201,9 +202,11 @@ void Player::Start()
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
+		if (Monster_Attack_Check == false)
+		{
 			Monster_Attack_Check = true;
 			UICheck++;
-	
+		}
 	};
 
 	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
@@ -254,7 +257,7 @@ void Player::HitUpdate(float _Delta)
 		{
 			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 			Color_Time = 0;
-			Monster_Attack_Check = false;
+			//Monster_Attack_Check = false;
 			afterimage_Check = true;
 		}
 	}
@@ -295,6 +298,16 @@ void Player::HitUpdate(float _Delta)
 
 void Player::Update(float _Delta)
 {
+
+	if (GameEngineInput::IsDown('1', this))
+	{
+		Hp = 0;
+	}
+
+	if (GameEngineInput::IsDown('2', this))
+	{
+		Hp = 100;
+	}
 	//float4 awdd = Transform.GetWorldPosition();
 
 

@@ -20,8 +20,9 @@ void golemturret_missile::Start()
 	Missile->ChangeAnimation("golemturret_Attack");
 
 	{
-		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
 		Col->Transform.SetLocalScale({ 20.0f,20.0f });
+
 	}
 
 }

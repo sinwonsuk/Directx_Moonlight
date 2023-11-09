@@ -56,9 +56,9 @@ void TutorialLevel::Start()
 		std::shared_ptr<TutorialMap_06> Object = CreateActor<TutorialMap_06>();
 	}
 
-	{
+	/*{
 		std::shared_ptr<Player_UI> Object = CreateActor<Player_UI>();
-	}
+	}*/
 	/*{
 		std::shared_ptr<TileMap> Object = CreateActor<TileMap>();
 	}*/
@@ -70,12 +70,12 @@ void TutorialLevel::Start()
 
 void TutorialLevel::Update(float _Delta)
 {
-	if (GameEngineInput::IsPress('1', this))
+	/*if (GameEngineInput::IsPress('1', this))
 	{
 		GameEngineCore::ChangeLevel("WorldLevel");
 	}
 
-	
+	*/
 	
 
 	
@@ -90,11 +90,13 @@ void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	{
 		std::shared_ptr<Player> Object = CreateActor<Player>();
+		Object->ChangeState(PlayerState::Start);
 	}
 }
 
 void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
+	Player::this_Player->Boss_UI->Death(); 
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;
 	

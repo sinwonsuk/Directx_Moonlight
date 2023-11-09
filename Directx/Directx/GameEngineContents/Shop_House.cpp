@@ -238,7 +238,7 @@ void Shop_House::Start()
 		shop_Bed = CreateComponent<GameEngineSpriteRenderer>(-49);
 		shop_Bed->SetSprite("Shop_Bed", 0);
 		shop_Bed->AutoSpriteSizeOn();
-		shop_Bed->SetAutoScaleRatio(2.5f);
+		shop_Bed->SetAutoScaleRatio(3.0f);
 		shop_Bed->Transform.SetLocalPosition({ 149.0f,216.0f });
 
 		std::shared_ptr<GameEngineCollision> Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
@@ -357,10 +357,14 @@ void Shop_House::Start()
 
 	Down_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		if (Up_CameraMove == false)
-		{
-			CameraMove = true;
-		}
+			if (Up_CameraMove == true)
+			{
+				CameraMove = false;
+			}
+			if (Up_CameraMove == false)
+			{
+				CameraMove = true;
+			}
 		
 	};
 
@@ -371,16 +375,21 @@ void Shop_House::Start()
 
 	Down_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		
+			Up_CameraMove = false;
 	};
 
 
 	Up_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		if (CameraMove == false)
-		{
-			Up_CameraMove = true;
-		}
+			if (CameraMove == true)
+			{
+				Up_CameraMove = false;
+			}
+			if (CameraMove == false)
+			{
+				Up_CameraMove = true;
+			}
+			
 	};
 
 	Up_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
@@ -390,27 +399,24 @@ void Shop_House::Start()
 
 	Up_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		
+			CameraMove = false;
 	};
 
-	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+	/*Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		black_Out = GetLevel()->CreateActor<Black_Out>();
+		
 
 	};
 
 	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
-	{
-		if (black_Out->GetCheck() == true)
-		{
-			GameEngineCore::ChangeLevel("WorldLevel");
-		}
+	{		
+		
 	};
 
 	Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
 
-	};
+	};*/
 
 
 }
@@ -435,66 +441,68 @@ void Shop_House::Update(float _DeltaTime)
 	PixelCollision(_DeltaTime);
 
 
-	std::shared_ptr<class GameEngineCollision> AD = Change_Town;
-
 	
-	/*if (Col->Collision(ContentsCollisionType::Player))
+	if (Col->Collision(ContentsCollisionType::ShopDoor))
 	{
-		Shop_02->On();
-		Shop->Off(); 
+		if (GameEngineInput::IsDown(VK_RETURN, this) && Black_Check == false)
+		{
+			black_Out = GetLevel()->CreateActor<Black_Out>();
+			Black_Check = true;
+		}
+	}
+	
+
+	if (Black_Check == true)
+	{
+		if (black_Out->GetCheck() == true)
+		{
+			GameEngineCore::ChangeLevel("WorldLevel");
+		}
+
 	}
 
-	if (Col->Collision(ContentsCollisionType::Player) == false)
-	{
-		Shop_02->Off();
-		Shop->On();
-	}*/
+	
 
 
 
-	float4 Camera_Move = float4::LerpClamp(0, 300, _DeltaTime);
+	float4 Camera_Move = float4::LerpClamp(0, 600, _DeltaTime);
 
-	//
+	
 
 	Down_Col->CollisionEvent(ContentsCollisionType::Player, Down_Event);
 	Up_Col->CollisionEvent(ContentsCollisionType::Player, Up_Event);
 
 
-	/*if (Down_Col->Collision(ContentsCollisionType::Player) && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -5150)
+	
+	/*if (Camera_Check == true)
 	{
-		CameraMove = true; 
-		Down_CameraMove = false;
-	}
-
-	if (Up_Col->Collision(ContentsCollisionType::Player) && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -4793)
-	{
-		Down_CameraMove = true;
-		CameraMove = false;
+		CameraMove = true;
 	}*/
 
 	
 
-	
-
-	if (CameraMove == true && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y < -118 && Up_CameraMove ==false)
+	if (CameraMove == true && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y < -118 )
 	{
 	     GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ 0.0f,Camera_Move.X });
 	}
-	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -118)
+	/*else
 	{
 		CameraMove = false;
-	}
+	}*/
 
 
 	if (Up_CameraMove == true && GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y > -500 )
 	{
 		GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ 0.0f,-Camera_Move.X });
 	}
-
-	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y < -500)
+	/*else
 	{
 		Up_CameraMove = false;
-	}
+	}*/
+	/*if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().Y < -500)
+	{
+		Up_CameraMove = false;
+	}*/
 
 
 

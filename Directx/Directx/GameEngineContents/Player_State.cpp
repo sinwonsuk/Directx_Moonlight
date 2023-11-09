@@ -533,13 +533,59 @@ void Player::UpMoveUpdate(float _Time)
 
 void Player::Roll_RightUpdate(float _Time)
 {
-	if (RightMove == true)
-	{
-		Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
-	}
 	
+
+
+	switch (Camera)
+	{
+	case CameraType::None:
+	{
+		Col->Off();
+		if (RightMove == true || RolCheck == true)
+		{
+			Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
+		}
+	}
+	break;
+	case CameraType::Town:
+	{
+		if (RightMove == true || RolCheck == true)
+		{
+			if (Transform.GetLocalPosition().X <= 1280 && Transform.GetLocalPosition().X >= 0)
+			{
+				GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
+			}
+		
+			Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
+		}
+	}
+	break;
+	case CameraType::Dungeon_Entrance:
+	{
+		if (RightMove == true || RolCheck == true)
+		{
+			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
+			Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
+		}
+	}
+	break;
+	case CameraType::BossMap:
+	{
+		if (RightMove == true || RolCheck == true)
+		{
+			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
+			Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
+		}
+	}
+	break;
+	default:
+		break;
+	}
+
 	if (player->IsCurAnimationEnd())
 	{
+		Col->On();
+		RolCheck = false;
 		ChangeState(PlayerState::RightIdle);
 		return; 
 	}
@@ -548,14 +594,61 @@ void Player::Roll_RightUpdate(float _Time)
 
 void Player::Roll_LeftUpdate(float _Time)
 {
-	if (LeftMove == true)
+	
+
+	switch (Camera)
 	{
-		Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+	case CameraType::None:
+	{
+		Col->Off();
+		if (LeftMove == true || RolCheck == true)
+		{
+			Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+		}
 	}
+		break;
+	case CameraType::Town:
+	{
+		if (LeftMove == true || RolCheck == true)
+		{
+			if (Transform.GetLocalPosition().X >= 0 && Transform.GetLocalPosition().X <= 1280)
+			{
+				GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+			}
+
+			Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+		}
+	}
+		break;
+	case CameraType::Dungeon_Entrance:
+	{
+		if (LeftMove == true || RolCheck == true)
+		{
+			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+			Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+		}
+	}
+		break;
+	case CameraType::BossMap:
+	{
+		if (LeftMove == true || RolCheck == true)
+		{
+			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+			Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
+		}
+	}
+		break;
+	default:
+		break;
+	}
+
+	
 	
 
 	if (player->IsCurAnimationEnd())
 	{
+		Col->On();
+		RolCheck = false;
 		ChangeState(PlayerState::LeftIdle);
 		return;
 	}
@@ -563,14 +656,66 @@ void Player::Roll_LeftUpdate(float _Time)
 
 void Player::Roll_DownUpdate(float _Time)
 {
-	if (DownMove == true)
+
+
+
+
+	switch (Camera)
 	{
-		Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+	case CameraType::None:
+	{
+		Col->Off();
+		if (DownMove == true || RolCheck == true)
+		{
+			Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+		}
 	}
+	break;
+	case CameraType::Town:
+	{
+		if (DownMove == true || RolCheck == true)
+		{
+			if (Transform.GetLocalPosition().Y >= -1043 && Transform.GetLocalPosition().Y <= 330)
+			{
+				GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+			}
+			Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+		}
+	}
+	break;
+	case CameraType::Dungeon_Entrance:
+	{
+		if (DownMove == true || RolCheck == true)
+		{
+			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+			Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+		}
+	}
+	break;
+	case CameraType::BossMap:
+	{
+		if (DownMove == true || RolCheck == true)
+		{
+			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+			Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
+		}
+	}
+	break;
+	default:
+		break;
+	}
+
+
+
+
+
+	
 	
 
 	if (player->IsCurAnimationEnd())
 	{
+		Col->On(); 
+		RolCheck = false;
 		ChangeState(PlayerState::DownIdle);
 		return;
 	}
@@ -578,16 +723,65 @@ void Player::Roll_DownUpdate(float _Time)
 
 void Player::Roll_UpUpdate(float _Time)
 {
-	if (UpMove == true)
+
+
+
+
+
+
+
+	switch (Camera)
 	{
-		Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+	case CameraType::None:
+	{
+		Col->Off();
+		if (UpMove == true || RolCheck == true)
+		{
+			Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+		}
 	}
-	
+	break;
+	case CameraType::Town:
+	{
+		if (UpMove == true || RolCheck == true)
+		{
+			if (Transform.GetLocalPosition().Y <= 330 && Transform.GetLocalPosition().Y >= -1043)
+			{
+				GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+			}
+			Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+		}
+	}
+	break;
+	case CameraType::Dungeon_Entrance:
+	{
+		if (UpMove == true || RolCheck == true)
+		{
+			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+			Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+		}
+	}
+	break;
+	case CameraType::BossMap:
+	{
+		if (UpMove == true || RolCheck == true)
+		{
+			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+			Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
+		}
+	}
+	break;
+	default:
+		break;
+	}
+
 	
 	
 
 	if (player->IsCurAnimationEnd())
 	{
+		Col->On();
+		RolCheck = false;
 		ChangeState(PlayerState::UpIdle);
 		return;
 	}

@@ -16,7 +16,7 @@ public:
 	Title& operator=(Title&& _Other) noexcept = delete;
 
 	
-
+	std::shared_ptr<class Black_Out> black_Out;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -30,5 +30,6 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Title_Select_Effect_Right;
 	std::shared_ptr<class GameEngineSpriteRenderer> Title_Logo;
 
-	std::shared_ptr<class GameEngineSpriteRenderer> sdsd;
+	bool Black_Check = false;
+	
 };

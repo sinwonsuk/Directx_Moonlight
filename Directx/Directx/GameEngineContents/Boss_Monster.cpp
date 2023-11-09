@@ -179,7 +179,12 @@ void Boss_Monster::Update(float _Delta)
 
 
 	Col->CollisionEvent(ContentsCollisionType::Player, Event);
-	BodyCol->CollisionEvent(ContentsCollisionType::Spear, BodyEvent);
+
+	if (CameraCheck == true)
+	{
+		BodyCol->CollisionEvent(ContentsCollisionType::Spear, BodyEvent);
+	}
+	
 	UpdateState(_Delta);
 
 

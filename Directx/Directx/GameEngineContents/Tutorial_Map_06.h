@@ -28,5 +28,6 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> RightDoor;
 	std::shared_ptr<GameEngineCollision> Collision_Door;
 	float TimeCheck = 0.0f;
+	GameEngineRandom Random;
 
 };

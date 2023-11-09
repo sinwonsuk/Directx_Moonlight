@@ -19,7 +19,7 @@ BabySlime::~BabySlime()
 
 void BabySlime::Start()
 {
-	babySlime = CreateComponent<GameEngineSpriteRenderer>(100);
+	babySlime = CreateComponent<GameEngineSpriteRenderer>(-51);
 
 	
 
@@ -52,7 +52,7 @@ void BabySlime::Start()
 
 	{
 		Mini_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
-		Mini_Col->Transform.SetLocalScale({ 20.0f,20.0f });
+		Mini_Col->Transform.SetLocalScale({ 30.0f,30.0f });
 		Mini_Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 	
@@ -100,6 +100,30 @@ void BabySlime::Start()
 		Monster_HpBar->Off();*/
 	};
 
+
+	Mini_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
+		{
+
+		};
+
+	Mini_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
+		{
+			float4 Monster = Col->GetActor()->Transform.GetLocalPosition();
+			Monster.Normalize();
+
+			float4 Other_Monster = col->GetActor()->Transform.GetLocalPosition();
+			Other_Monster.Normalize();
+
+			Col->GetActor()->Transform.AddLocalPosition(Other_Monster - Monster * DeltaTime);
+		};
+
+
+
+	Mini_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
+		{
+
+		};
+
 }
 
 
@@ -110,9 +134,13 @@ void BabySlime::Update(float _Delta)
 		this->Death();
 	}
 
+	Monster_Damage(babySlime, _Delta);
+
+	DeltaTime = _Delta;
 
 	if (Hp <= 0)
 	{
+		Monster_Weapon->Off(); 
 		Number -= _Delta * 1;
 		babySlime->GetColorData().MulColor = { 1,1,1,Number };
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
@@ -124,25 +152,15 @@ void BabySlime::Update(float _Delta)
 	}
 
 	
-	
-
-	Monster_Damage(babySlime, _Delta);
-
-
-
-
-
-
-	Col->CollisionEvent(ContentsCollisionType::Spear, Event);
-
-
 	if (Col->Collision(ContentsCollisionType::CameraCollision))
 	{
 		MonsterPushUpdate(_Delta);
-		Manager_Speed = Monster_Move(_Delta, Transform.GetWorldPosition(), MapName, Dir);
 		UpdateState(_Delta);
+		Col->CollisionEvent(ContentsCollisionType::Spear, Event);
+		Manager_Speed = Monster_Move(_Delta, Transform.GetWorldPosition(), MapName, Dir);
 	}
-
+	
+	
 	Monster_Collsision(_Delta);
 
 
