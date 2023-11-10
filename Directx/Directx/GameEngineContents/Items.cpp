@@ -25,13 +25,7 @@ void Items::Start()
 		//Col->SetCollisionType(ColType::AABBBOX2D); 
 	}
 
-	{
-		Bag_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Bag);
-		Bag_Col->Transform.SetLocalScale({ 30.0f,30.0f });
-		//Bag_Col->SetCollisionType(ColType::AABBBOX2D);
 	
-	}
-
 
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
@@ -58,14 +52,14 @@ void Items::Start()
 
 		{
 			Inventory::This_Inventory->Item_Start = true;
-			Inventory::This_Inventory->Item_Sprite_Number = static_cast<int>(item_Select);
+			Inventory::This_Inventory->Item_Sprite_Number = static_cast<int>(item_Select)+1;
+			Inventory::This_Inventory->Set_Custom_Pos(Custom_Pos);	
 			this->Death();
 		};
 
 	Event_Item.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 		{
-
-
+		
 
 		};
 
@@ -97,16 +91,16 @@ void Items::Update(float _Delta)
 
 		Pos_X = Random.RandomFloat(-1, 1);
 		Pos_Y = Random.RandomFloat(-1, 1);
-		Height = Random.RandomFloat(3, 12);
+		Height = Random.RandomFloat(7, 12);
 
 		switch (item_Select)
 		{
-		case Item::book_item:
+		case Item::BrokenSword:
 		{
 			item->SetSprite("Items", 0);
 		}
 		break;
-		case Item::BrokenSword:
+		case Item::Ancient_Pot:
 		{
 			item->SetSprite("Items", 1);
 		}
@@ -165,12 +159,12 @@ void Items::Update(float _Delta)
 	if (Item_Move == true)
 	{
 		float4 AD = float4{ Dir.X + 600+640, Dir.Y + 160-360 } - Transform.GetWorldPosition();
-
+		Custom_Pos = { Dir.X + 640 ,Dir.Y - 360 };
 		Transform.AddWorldPosition({ AD.NormalizeReturn() * _Delta * Speed });
 
 		//Bag_Col->Transform.SetWorldPosition({ Dir.X + 600 + 640, Dir.Y + 160 - 360 });
 		
-		Bag_Col->CollisionEvent(ContentsCollisionType::Item,Event_Item);
+		Col->CollisionEvent(ContentsCollisionType::Bag,Event_Item);
 		
 	};
 		

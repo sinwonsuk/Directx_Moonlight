@@ -28,6 +28,10 @@ void Player::AnimationCheck(const std::string_view& _AnimationName)
 
 void Player::Start()
 {
+
+
+	
+
 	Boss_UI = GetLevel()->CreateActor<Player_UI>(ContentsObjectType::Player);
 
 	this_Player = this;

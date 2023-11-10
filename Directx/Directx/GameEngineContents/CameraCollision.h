@@ -16,7 +16,7 @@ public:
 
 	bool test = true;
 	std::shared_ptr<GameEngineCollision> Col;
-
+	std::shared_ptr<GameEngineCollision> Bag_Col;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;

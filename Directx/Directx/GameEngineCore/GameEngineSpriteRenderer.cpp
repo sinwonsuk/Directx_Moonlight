@@ -361,7 +361,7 @@ void GameEngineSpriteRenderer::SetEndEvent(std::string_view _AnimationName, std:
 	std::string UpperName = GameEngineString::ToUpperReturn(_AnimationName);
 
 	std::map<std::string, std::shared_ptr<GameEngineFrameAnimation>>::iterator FindIter = FrameAnimations.find(UpperName);
-
+	
 	std::shared_ptr<GameEngineFrameAnimation> Animation = FindIter->second;
 
 	if (nullptr == Animation)

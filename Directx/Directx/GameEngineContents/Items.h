@@ -2,8 +2,8 @@
 #include <GameEngineCore/GameEngineActor.h>
 enum class Item
 {
-	book_item,
 	BrokenSword,
+	Ancient_Pot,
 	FireJelly,
 	crystal,
 	Red_crystal,
@@ -39,10 +39,10 @@ protected:
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> item;
 	std::shared_ptr<GameEngineCollision> Col;
-	std::shared_ptr<GameEngineCollision> Bag_Col;
+	//std::shared_ptr<GameEngineCollision> Bag_Col;
 	EventParameter Event;
 	EventParameter Event_Item;
-	Item item_Select = Item::book_item;
+	Item item_Select = Item::BrokenSword;
 	bool gravity = true;
 
 	GameEngineRandom Random;
@@ -55,6 +55,7 @@ private:
 	float Speed = 700.0f;
 	float4 Gravity_Power = {};
 	float4 Monster_Pos = {};
+	float4 Custom_Pos = {};
 	float Number = 1;
 	float Time = 0.0f;
 	float4 PrevPos = {};

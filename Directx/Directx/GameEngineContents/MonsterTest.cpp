@@ -17,15 +17,13 @@ MonsterTest::~MonsterTest()
 
 void MonsterTest::Start()
 {
-	GameEngineInput::AddInputObject(this); 
-	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
-
-	Monster = CreateComponent<GameEngineSpriteRenderer>(); 
-	Monster->SetSprite("Boss1_Punch_1", 0);
-	Monster->Transform.AddLocalPosition({ 20.0f,30.0f });
 	
-
+	{
+		std::shared_ptr<GameEngineSpriteRenderer> FontRender = CreateComponent<GameEngineSpriteRenderer>(500);
+		FontRender->SetText("µ¸¿ò", "¾È³çÇÏ¼¼¿ä", 50.0f, float4::BLUE, FW1_CENTER);
+		//FontRender->Transform.SetLocalScale({ 400,400 });
+	
+	}
 }
 
 void MonsterTest::Update(float _Delta)

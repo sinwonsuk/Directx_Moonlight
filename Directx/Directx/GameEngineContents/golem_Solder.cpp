@@ -216,10 +216,10 @@ void golem_Solder::Update(float _Delta)
 
 	Monster_Collsision(_Delta);
 
-	if (Number < -0.5)
+	/*if (Number < -0.5)
 	{
 		this->Death(); 
-	}
+	}*/
 	
 }
 
