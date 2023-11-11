@@ -70,6 +70,9 @@ protected:
 
 private:
 	bool Inventory_Start = false;
+	bool Item_Move = false;
+
+	int Item_Renders_Order = 0;
 
 	float Plus_Pos_X = -395.0f;
 	float Plus_Pos_Y = 163.0f;
@@ -128,8 +131,9 @@ private:
 	int FontNumber_05 = 1;
 	int Item_Plus_X = 0;
 	int Item_Plus_Y = 0;
-	int test_02 = 0;
+	int Item_Type_Order = 0;
 	
+	int Transform_2_1 = 0;
 	std::vector<int> remove_Order;
 
 	bool dasd = false;
