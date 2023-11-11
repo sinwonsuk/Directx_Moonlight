@@ -98,103 +98,229 @@ void Inventory::Start()
 	
 	
 	Item_Renders.reserve(10);
-	Item_type.reserve(10);
+	Item_type.reserve(20);
+	//Item_type.resize(20);
+
+	
+
+	for (size_t i = 0; i < 20; i++)
+	{
+		std::shared_ptr<ItemType> InforMation = std::make_shared<ItemType>();
+		InforMation->Item_Oreder = 0;
+
+		Item_type.push_back(InforMation);
+	}
+
 }
 
 void Inventory::Update(float _DeltaTime)
 {
 	if (Item_Start == true)
 	{
+		// ¾Öµµ ³Ö´Â°Å Á¤ÇØÁà¾ß ÇÏ³× 
 
-		item = CreateComponent<GameEngineUIRenderer>(100);
-		item->SetSprite("Items", Item_Sprite_Number-1);
-		item->AutoSpriteSizeOn();
-		item->SetAutoScaleRatio(2.0f);
-		//object->Transform.SetWorldPosition({ Inventroy_informations[0][0]->Move });
-		item->Off();
+		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
 
- 		Item_Renders.push_back(item);
+	
+		{
+			InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+			InforMation->item->SetSprite("Items", Item_Sprite_Number - 1);
+			InforMation->item->AutoSpriteSizeOn();
+			InforMation->item->SetAutoScaleRatio(2.0f);
+			InforMation->Item_Select = Item_Sprite_Number;
 
-		Item_type.push_back(Item_Sprite_Number);
+			InforMation->item->Off();
 
+			if (remove_Order.size() == 0)
+			{
+				Item_Renders.push_back(InforMation);
+			}
+			else if (remove_Order.size() > 0)
+			{
+				Item_Renders.insert(Item_Renders.begin() + remove_Order[0], InforMation);
+			}
+		}
+		
 
 		
 
-			for (size_t i = 0; i < Item_type.size()-1; i++)
-			{
 
-				if (Item_type[i] == Item_Sprite_Number)
+		
+		for (size_t i = 0; i < Item_type.size(); i++)
+		{
+
+		if (Item_type[i]->Item_Oreder == 0)
+		 {
+				Item_Check = 1;
+				Font_Check = i;
+				//Font_Check += test_02;
+
+				break;
+		}
+
+			if (Item_type[i]->Item_Oreder == Item_Sprite_Number)
+			{
+				Font_Check = i;
+				Item_Check = 100;
+				//Font_Check += test_02;
+				break;
+			}
+		}
+		
+			for (size_t i = 0; i < Item_type.size(); i++)
+			{
+				if (Item_type[i]->Item_Oreder == 0)
 				{
-					Item_Check++;
+
+					Item_type[i]->Item_Oreder = Item_Sprite_Number;
+				//	Font_Check = i-1;
+					Number = i;
+
+					break;
 				}
 			}
+		
 
-			if (Item_Check == 0)
+		
+
+
+
+
+
+
+			if (Item_Check == 1)
 			{
+				for (size_t i = 0; i < Item_type.size(); i++)
 				{
+					if (Item_type[i]->Item_Oreder == 0)
+					{
+						Item_Plus_X = Number;
+
+						if (Item_Plus_X < 5)
+						{
+							Item_pos_Y = 0;
+						}
+				
+						else if (Item_Plus_X >= 5)
+						{
+							Item_Plus_X = Number % 5;			
+							Item_pos_Y =1;				
+						}
+
+				
+
+
+						if (Item_Plus_X > 0)
+						{
+							InforMation->item->Transform.SetWorldPosition({ Inventroy_informations[Item_pos_X + Item_Plus_X][Item_pos_Y + Item_Plus_Y]->Move });
+							InforMation->Move = { Inventroy_informations[Item_pos_X + Item_Plus_X][Item_pos_Y + Item_Plus_Y]->Move };
+							Item_type[Number]->Move = { Inventroy_informations[Item_pos_X + Item_Plus_X][Item_pos_Y + Item_Plus_Y]->Move };
+						}
+
+						else
+						{
+							Item_Plus_X = 0;
+							InforMation->item->Transform.SetWorldPosition({ Inventroy_informations[Item_pos_X][Item_pos_Y+ Item_Plus_Y]->Move });
+							InforMation->Move = { Inventroy_informations[Item_pos_X][Item_pos_Y+ Item_Plus_Y]->Move };
+							Item_type[Number]->Move = { Inventroy_informations[Item_pos_X + Item_Plus_X][Item_pos_Y + Item_Plus_Y]->Move };
+						}
+					
+						break;
+					}
+				}
+
+				{
+					std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>();
+
 					std::string numberStr = std::to_string(1);
-					std::shared_ptr<GameEngineUIRenderer> FontRender = CreateComponent<GameEngineUIRenderer>(101);
-					FontRender->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
-					FontRender->Transform.SetWorldPosition({ Inventroy_informations[Item_pos_X][Item_pos_Y]->Move.X+20,Inventroy_informations[Item_pos_X][Item_pos_Y]->Move.Y -5});
-					FontRender->Off(); 
-					Font_Renders.insert(std::make_pair(Item_Sprite_Number, FontRender));
-				}
 
-				Item_overlap.insert(std::make_pair(Item_Sprite_Number, float4{ Inventroy_informations[Item_pos_X][Item_pos_Y]->Move }));
-				item->Transform.SetWorldPosition({ Inventroy_informations[Item_pos_X++][Item_pos_Y]->Move });
-				
-				
 
-			}
-			else if (Item_Check != 0)
-			{
-				
-				if (Item_overlap.end() != Item_overlap.find(Item_Sprite_Number))
-				{
+
+
+					
+					{
+						Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
+						Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+						Font_inforMation->Font->Transform.SetWorldPosition({ Inventroy_informations[Item_pos_X + Item_Plus_X][Item_pos_Y + Item_Plus_Y]->Move.X + 20,Inventroy_informations[Item_pos_X][Item_pos_Y + Item_Plus_Y]->Move.Y - 5 });
+						Font_inforMation->Font->Off();
+						Font_inforMation->Item_Select = Item_Sprite_Number;
+						Font_inforMation->Move = { Inventroy_informations[Item_pos_X + Item_Plus_X][Item_pos_Y+ Item_Plus_Y]->Move };
+						if (remove_Order.size() == 0)
+						{
+							Font_Renders.push_back(Font_inforMation);
+						}
+						else if (remove_Order.size() > 0)
+						{
+							Font_Renders.insert(Font_Renders.begin() + remove_Order[0], Font_inforMation);
+							remove_Order.erase(remove_Order.begin());
+						}
+					}
 					
 
-					if (Item_Sprite_Number == 1)
-					{
-						std::string numberStr = std::to_string(++FontNumber);
-						Font_Renders[Item_Sprite_Number]->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
-					}
-					else if (Item_Sprite_Number == 2)
-					{
-						std::string numberStr = std::to_string(++FontNumber_02);
-						Font_Renders[Item_Sprite_Number]->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
-					}
-					else if (Item_Sprite_Number == 3)
-					{
-						std::string numberStr = std::to_string(++FontNumber_03);
-						Font_Renders[Item_Sprite_Number]->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
-					}
-					else if (Item_Sprite_Number == 4)
-					{
-						std::string numberStr = std::to_string(++FontNumber_04);
-						Font_Renders[Item_Sprite_Number]->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
-					}
-					else if (Item_Sprite_Number == 5)
-					{
-						std::string numberStr = std::to_string(++FontNumber_05);
-						Font_Renders[Item_Sprite_Number]->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
-					}
-					item->Death();
 					
-
 				}
-
-				Item_type.pop_back();
-				Item_Renders.pop_back();
-				//float4 Ad = Item_overlap[Item_Sprite_Number];
+				
+				Item_overlap.insert(std::make_pair(Item_Sprite_Number, float4{ Inventroy_informations[Item_pos_X + Item_Plus_X][Item_pos_Y+ Item_Plus_Y]->Move }));
 				Item_Check = 0;
-			}
 
-			else
+			}
+			else if (Item_Check == 100)
 			{
-				Item_Check = 0;
-			}
+				
+
+					if (Font_Renders[Font_Check]->Item_Select == 1)
+					{
+						std::string numberStr = std::to_string(Font_Renders[Font_Check]->FontNumber+=1);
+						Font_Renders[Font_Check ]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+					}
+					else if (Font_Renders[Font_Check ]->Item_Select == 2)
+					{
+						std::string numberStr = std::to_string(Font_Renders[Font_Check]->FontNumber += 1);
+						Font_Renders[Font_Check ]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+
+					}
+					else if (Font_Renders[Font_Check]->Item_Select == 3)
+					{
+						std::string numberStr = std::to_string(Font_Renders[Font_Check]->FontNumber += 1);
+						Font_Renders[Font_Check ]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+
+					}
+					else if (Font_Renders[Font_Check ]->Item_Select == 4)
+					{
+						std::string numberStr = std::to_string(Font_Renders[Font_Check]->FontNumber += 1);
+						Font_Renders[Font_Check ]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 		
+					}
+					else if (Font_Renders[Font_Check ]->Item_Select == 5)
+					{
+						std::string numberStr = std::to_string(Font_Renders[Font_Check]->FontNumber += 1);
+						Font_Renders[Font_Check ]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 			
+					}
+
+					for (size_t i = 0; i < Item_type.size(); i++)
+					{
+						
+						if (Item_type[Number]->Item_Oreder == Item_type[i]->Item_Oreder)
+						{
+							Item_type[Number]->Item_Oreder = 0;
+							Item_type[Number]->Move = float4::ZERO;
+						}
+
+					}
+
+			
+
+				//Item_type[Number] = 0; 
+				Item_Renders.pop_back();
+				//Font_Renders.pop_back();
+
+				Item_Check = 0;
+			}
+
+			dasd = false;
+		//	remove_Order.clear();
+		Font_Check = 0;
 		Item_Start = false;
 	}
 
@@ -203,15 +329,12 @@ void Inventory::Update(float _DeltaTime)
 	{
 		for (size_t i = 0; i < Item_Renders.size(); i++)
 		{
-			Item_Renders[i]->On();
+			Item_Renders[i]->item->On(); 
 		}
 
-		std::map<int, std::shared_ptr<class GameEngineUIRenderer>>::iterator Start = Font_Renders.begin();
-		std::map<int, std::shared_ptr<class GameEngineUIRenderer>>::iterator End = Font_Renders.end();
-
-		for (Start; Start != End; Start++)
+		for (size_t i = 0; i < Font_Renders.size(); i++)
 		{
-			Start->second->On(); 
+			Font_Renders[i]->Font->On();
 		}
 
 		
@@ -225,15 +348,12 @@ void Inventory::Update(float _DeltaTime)
 	{
 		for (size_t i = 0; i < Item_Renders.size(); i++)
 		{
-			Item_Renders[i]->Off();
+			Item_Renders[i]->item->Off();
 		}
 
-		std::map<int, std::shared_ptr<class GameEngineUIRenderer>>::iterator Start = Font_Renders.begin();
-		std::map<int, std::shared_ptr<class GameEngineUIRenderer>>::iterator End = Font_Renders.end();
-
-		for (Start; Start != End; Start++)
+		for (size_t i = 0; i < Font_Renders.size(); i++)
 		{
-			Start->second->Off();
+			Font_Renders[i]->Font->Off();
 		}
 
 		Inventroy_Screen->Off();
@@ -251,10 +371,7 @@ void Inventory::Update(float _DeltaTime)
 		Inventory_pos_X += 1;
 
 
-		/*if (Inventory_pos_X > 6 && Inventory_pos_Y == 0)
-		{
-			Inventory_pos_X = 6;
-		}*/
+		
 
 
 		if (Inventory_pos_X > 6 )
@@ -292,10 +409,7 @@ void Inventory::Update(float _DeltaTime)
 	{
 		Inventory_pos_Y += 1;
 
-		/*if (Inventory_pos_X > 4)
-		{
-			Inventory_pos_Y -= 1;
-		}*/
+		
 
 
 		if (Inventory_pos_Y > 3)
@@ -312,8 +426,54 @@ void Inventory::Update(float _DeltaTime)
 
 
 
+	if (GameEngineInput::IsDown('J', this) && Inventory_Start == true)
+	{
+
+		for (size_t i = 0; i < Item_Renders.size(); i++)
+		{
+			if (Item_Renders[i]->Move == Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move)
+			{
 
 
+				std::shared_ptr<Item_InforMation> InforMation = Item_Renders[i];
+
+				//Item_type[] = 0;
+
+				Item_Renders[i]->item->Death();
+				Item_Renders.erase(Item_Renders.begin() + i);
+				Item_overlap.erase(Item_type[i]->Item_Oreder);
+				Font_Renders[i]->Font->Death();
+				Font_Renders.erase(Font_Renders.begin() + i);
+
+				
+
+
+				
+				
+				
+
+				break;
+			}
+					
+		}
+
+		for (size_t i = 0; i < Item_type.size(); i++)
+		{
+			if (Item_type[i]->Move == Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move)
+			{
+				test_02 = i;
+
+				remove_Order.push_back(test_02);
+				sort(remove_Order.begin(), remove_Order.end());
+				Item_type[i]->Item_Oreder = 0;
+				Item_type[i]->Move = float4::ZERO;
+				
+				break;
+			}
+		}
+
+
+	}
 	//std::shared_ptr<class GameEngineUIRenderer> AD = item;
 
 

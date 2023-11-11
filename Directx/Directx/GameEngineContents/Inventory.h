@@ -8,15 +8,32 @@ public:
 	float4 Move = {395,163};
 
 };
+
 class Item_InforMation
 {
 public:
 
 	int Item_Select = 0;
-	float4 Move = {};
-
+	std::shared_ptr<class GameEngineUIRenderer> item;
+	float4 Move = {}; 
 };
 
+class Font_InforMation
+{
+public:
+	int FontNumber = 1;
+	int Item_Select = 0;
+	std::shared_ptr<class GameEngineUIRenderer> Font;
+	float4 Move = {};
+};
+
+class ItemType
+{
+public:
+	
+	int Item_Oreder = 0;
+	float4 Move = {};
+};
 
 
 // 설명 :
@@ -67,12 +84,11 @@ private:
 	int Number = 0;
 
 
-	std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
-
+	
 	bool check = false;
 
 	// 아이템 타입 저장 
-	std::vector<int> Item_type;
+	std::vector<std::shared_ptr<ItemType>> Item_type;
 
 	// 인벤토리 구현 
 	std::vector<std::vector<std::shared_ptr<Inventory_Move>>> Inventroy_informations;
@@ -80,10 +96,10 @@ private:
 
 
 	// 아이템 정렬 
-	std::map<int, float4> Item_overlap;
+	std::multimap<int, float4> Item_overlap;
 
 	// 아이템 이미지 저장 
-	std::vector<std::shared_ptr<class GameEngineUIRenderer>> Item_Renders;
+	std::vector<std::shared_ptr<class Item_InforMation>> Item_Renders;
 
 	int Item_Check = 0;
 	int Item_Sort = 0;
@@ -93,21 +109,29 @@ private:
 	std::shared_ptr<class GameEngineUIRenderer> Inventroy_Select;
 
 	// 아이템 UI 이미지
-	std::shared_ptr<class GameEngineUIRenderer> item;
+	//std::shared_ptr<class GameEngineUIRenderer> item;
 
 
 
 	std::shared_ptr<GameEngineCollision> Col;
 
 	// 폰트 이미지 
-	std::shared_ptr<class GameEngineUIRenderer> Font;
+	//std::shared_ptr<class GameEngineUIRenderer> Font;
 
 	// 폰트 이미지 저장 
-	std::map<int ,std::shared_ptr<class GameEngineUIRenderer>> Font_Renders;
-
+	std::vector<std::shared_ptr<class Font_InforMation>> Font_Renders;
+	int Font_Check = 0;
 	int FontNumber = 1;
 	int FontNumber_02 = 1;
 	int FontNumber_03 = 1;
 	int FontNumber_04 = 1;
 	int FontNumber_05 = 1;
+	int Item_Plus_X = 0;
+	int Item_Plus_Y = 0;
+	int test_02 = 0;
+	
+	std::vector<int> remove_Order;
+
+	bool dasd = false;
+//	int FontNumber_05 = 1;
 };

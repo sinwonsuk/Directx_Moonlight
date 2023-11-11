@@ -169,7 +169,7 @@ void golem_Solder::Update(float _Delta)
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
-			for (size_t i = 0; i < 4; i++)
+			for (size_t i = 0; i < 10; i++)
 			{
 			
 				

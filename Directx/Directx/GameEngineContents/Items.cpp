@@ -91,7 +91,7 @@ void Items::Update(float _Delta)
 
 		Pos_X = Random.RandomFloat(-1, 1);
 		Pos_Y = Random.RandomFloat(-1, 1);
-		Height = Random.RandomFloat(7, 12);
+		Height = Random.RandomFloat(1, 5);
 
 		switch (item_Select)
 		{
