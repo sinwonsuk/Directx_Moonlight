@@ -137,5 +137,8 @@ private:
 	std::vector<int> remove_Order;
 
 	bool dasd = false;
+
+	bool Item_Renders_Death_Check = false;
+	int Order = 0;
 //	int FontNumber_05 = 1;
 };

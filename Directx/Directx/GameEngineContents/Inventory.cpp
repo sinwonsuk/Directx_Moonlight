@@ -217,7 +217,7 @@ void Inventory::Update(float _DeltaTime)
 							}
 							else if (remove_Order.size() > 0)
 							{
-								Item_Renders[remove_Order[0]] = InforMation;		
+								Item_Renders[Number] = InforMation;
 							}
 
 							break;
@@ -238,7 +238,7 @@ void Inventory::Update(float _DeltaTime)
 							}
 							else if (remove_Order.size() > 0)
 							{
-								Item_Renders[remove_Order[0]] = InforMation;
+								Item_Renders[Number] = InforMation;
 							}
 
 							break;
@@ -276,9 +276,9 @@ void Inventory::Update(float _DeltaTime)
 						}
 						else if (remove_Order.size() > 0)
 						{
-							Font_Renders[remove_Order[0]] = Font_inforMation; 
+							Font_Renders[Number] = Font_inforMation;
 							
-							remove_Order.erase(remove_Order.begin());
+							//remove_Order.erase(remove_Order.begin());
 						}
 					}
 					
@@ -512,42 +512,121 @@ void Inventory::Update(float _DeltaTime)
 	{
 		Item_Move = false;
 
+
+
+		
+		
+
 		Transform_2_1 = Inventory_pos_Y * 5 + Inventory_pos_X;
+
+		if (Item_Renders[Transform_2_1] != nullptr && Item_Renders[Item_Renders_Order] != nullptr)
+		{
+			Item_Renders_Death_Check = true; 
+			if (Item_Renders[Item_Renders_Order]->Move == Item_Renders[Transform_2_1]->Move)
+			{
+				if (Item_Renders[Item_Renders_Order]->Item_Select == Item_Renders[Transform_2_1]->Item_Select)
+				{
+					Font_Renders[Transform_2_1]->FontNumber += Font_Renders[Item_Renders_Order]->FontNumber;
+
+					std::string numberStr = std::to_string(Font_Renders[Transform_2_1]->FontNumber);
+
+					Font_Renders[Transform_2_1]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+
+					Item_Renders[Item_Renders_Order]->item->Death(); 
+					Item_Renders[Item_Renders_Order] = nullptr;
+					Item_overlap.erase(Item_type[Item_Renders_Order]->Item_Oreder);
+					//Font_Renders[Item_Renders_Order]->Font->Death();
+
+					Font_Renders[Item_Renders_Order]->Font->Death();
+					Font_Renders[Item_Renders_Order] = nullptr;
+				}
+				else
+				{
+					Item_Move = true;
+					return; 
+				}
+
+
+			}	
+		
+		}
 
 		
 
-		Font_Renders[Transform_2_1] = Font_Renders[Item_Renders_Order];
-		Item_Renders[Transform_2_1] = Item_Renders[Item_Renders_Order];
+		else if(Item_Renders[Item_Renders_Order] != nullptr)
+		{
+			Item_Renders_Death_Check = true;
+
+			Font_Renders[Transform_2_1] = Font_Renders[Item_Renders_Order];
+			Item_Renders[Transform_2_1] = Item_Renders[Item_Renders_Order];
 
 
-		//Item_Renders[Item_Renders_Order]->item->Death();
-		Item_Renders[Item_Renders_Order] = nullptr;
-		Item_overlap.erase(Item_type[Item_Renders_Order]->Item_Oreder);
-		//Font_Renders[Item_Renders_Order]->Font->Death();
-		Font_Renders[Item_Renders_Order] = nullptr;
+			//Item_Renders[Item_Renders_Order]->item->Death();
+			Item_Renders[Item_Renders_Order] = nullptr;
+			Item_overlap.erase(Item_type[Item_Renders_Order]->Item_Oreder);
+			Font_Renders[Item_Renders_Order]->Font->On(); 
+			//Font_Renders[Item_Renders_Order]->Font->Death();
+			Font_Renders[Item_Renders_Order] = nullptr;
+
+
+		}
+	
 
 
 
 		
 			
+		/*if (Item_type[Item_Renders_Order]->Item_Oreder == 0 && Item_Renders[Transform_2_1] != nullptr)
+		{
 
+			Item_type[Transform_2_1]->Item_Oreder = Item_Renders[Transform_2_1]->Item_Select;
+			Item_type[Transform_2_1]->Move = Item_Renders[Transform_2_1]->Move;
+
+			remove_Order.push_back(Item_Renders_Order);
+
+
+			sort(remove_Order.begin(), remove_Order.end());
+
+			for (size_t i = 0; i < remove_Order.size() - 1; i++)
+			{
+				if (remove_Order[i] == remove_Order[i + 1])
+				{
+					remove_Order.erase(remove_Order.begin() + i);
+				}
+			}
+
+			Item_type[Item_Renders_Order]->Item_Oreder = 0;
+			Item_type[Item_Renders_Order]->Move = float4::ZERO;
+
+		}*/
+		//else if (Item_Renders[Transform_2_1] != nullptr)
+
+		if(Item_Renders_Death_Check ==true)
+		{
+			Item_type[Transform_2_1]->Item_Oreder = Item_Renders[Transform_2_1]->Item_Select;
+			Item_type[Transform_2_1]->Move = Item_Renders[Transform_2_1]->Move;
+
+			remove_Order.push_back(Item_Renders_Order);
+
+
+			sort(remove_Order.begin(), remove_Order.end());
+
+			/*for (size_t i = 0; i < Item_type.size() - 1; i++)
+			{
+				if (Item_type[i] == nullptr)
+				{
+					Order = i;
+					break;
+				}
+			}*/
+
+			Item_type[Item_Renders_Order]->Item_Oreder = 0;
+			Item_type[Item_Renders_Order]->Move = float4::ZERO;
+			Item_Renders_Death_Check = false;
+		}
 				
 
-				if (Item_type[Item_Renders_Order]->Item_Oreder == 0)
-				{
-
-					Item_type[Transform_2_1]->Item_Oreder = Item_Renders[Transform_2_1]->Item_Select;
-					Item_type[Transform_2_1]->Move = Item_Renders[Transform_2_1]->Move;
-				}
-				else
-				{
-					remove_Order.push_back(Item_Renders_Order);
-					sort(remove_Order.begin(), remove_Order.end());
-
-					Item_type[Item_Renders_Order]->Item_Oreder = 0;
-					Item_type[Item_Renders_Order]->Move = float4::ZERO;
-
-				}
+		
 			
 		
 
@@ -556,13 +635,18 @@ void Inventory::Update(float _DeltaTime)
 
 	if (Item_Move == true)
 	{
+		if (Item_Renders[Item_Renders_Order] != nullptr)
+		{
+			Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
+			Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+
+			Font_Renders[Item_Renders_Order]->Font->Off(); 
+			Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
+			Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 };
+		}
+
 		
 
-		Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
-		Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
-		
-		Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
-		Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 };
 
 	}
 
@@ -578,8 +662,8 @@ void Inventory::Update(float _DeltaTime)
 	//	check = true;
 	//}
 	//else if (GameEngineInput::IsDown('1',this) && check == true)
-	//{
 	//	check = false;
+	//{
 	//}
 
 
