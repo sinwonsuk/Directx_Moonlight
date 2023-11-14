@@ -127,7 +127,7 @@ public:
 	float Scale_Time = 0.0f;
 	float4 Test_Move = {};
 	std::shared_ptr<class Black_Out> Black;
-	std::shared_ptr< class Player_UI> Boss_UI;
+	std::shared_ptr<class Player_UI> player_UI;
 	bool RolCheck = false;
 	std::list<std::shared_ptr<Spear>> spears;
 protected:

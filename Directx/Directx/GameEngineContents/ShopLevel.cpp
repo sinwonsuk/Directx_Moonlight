@@ -4,6 +4,8 @@
 #include "Player.h"
 #include "Black.h"
 #include "Black_Out.h"
+#include "Inventory.h"
+#include "Shop_UI.h"
 ShopLevel::ShopLevel()
 {
 }
@@ -20,7 +22,14 @@ void ShopLevel::Start()
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
 	
+	//{
+	//	ad = CreateActor<Inventory>();
+	//	//ad->This_Inventory = AD;
 
+
+
+
+	//}
 
 }
 
@@ -43,6 +52,18 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	std::shared_ptr<Black> Object = CreateActor<Black>(ContentsObjectType::Player);
 	
 
+	{
+		ad = CreateActor<Inventory>();
+		//ad->This_Inventory = AD;
+	}
+	{
+		std::shared_ptr<Shop_UI> Object = CreateActor<Shop_UI>();
+		//ad->This_Inventory = AD;
+	}
+
+	//AD = Inventory::This_Inventory;
+
+	
 
 	if (Player::LevelType == Leveltype::Dungeon_Death)
 	{
@@ -64,6 +85,7 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	}
 
 	
+	//ad->This_Inventory = Inventory::This_Inventory;
 	//Object->Transform.AddLocalPosition({ 55.0f,-200.0f });
 	//Player::this_Player->CameraCheck = true;
 }
@@ -74,9 +96,11 @@ void ShopLevel::LevelEnd(GameEngineLevel* _NextLevel)
 	{
 		House->black_Out->Death();
 	}
-	
-	House->Death(); 
 
+	Inventory::This_Inventory->Death();
+	Inventory::This_Inventory = nullptr;
+	House->Death(); 
+	ad->Death();
 	Player::LevelType = Leveltype::Town;
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;

@@ -215,6 +215,7 @@
     <ClCompile Include="Black_Out.cpp" />
     <ClCompile Include="Dungeon_Scrol.cpp" />
     <ClCompile Include="Items.cpp" />
+    <ClCompile Include="Shop_UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -396,6 +397,7 @@
     <ClInclude Include="Black_Out.h" />
     <ClInclude Include="Dungeon_Scrol.h" />
     <ClInclude Include="Items.h" />
+    <ClInclude Include="Shop_UI.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

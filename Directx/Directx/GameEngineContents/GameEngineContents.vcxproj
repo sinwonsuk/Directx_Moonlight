@@ -222,6 +222,7 @@
     <ClCompile Include="Rock_Particle.cpp" />
     <ClCompile Include="ShopLevel.cpp" />
     <ClCompile Include="Shop_House.cpp" />
+    <ClCompile Include="Shop_UI.cpp" />
     <ClCompile Include="SlimeHermit.cpp" />
     <ClCompile Include="SlimeHermit_State.cpp" />
     <ClCompile Include="Slime_Potal.cpp" />
@@ -323,6 +324,7 @@
     <ClInclude Include="Rock_Particle.h" />
     <ClInclude Include="ShopLevel.h" />
     <ClInclude Include="Shop_House.h" />
+    <ClInclude Include="Shop_UI.h" />
     <ClInclude Include="SlimeHermit.h" />
     <ClInclude Include="Slime_Potal.h" />
     <ClInclude Include="Spear.h" />

@@ -96,7 +96,7 @@ void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-	Player::this_Player->Boss_UI->Death(); 
+	Player::this_Player->player_UI->Death(); 
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;
 	

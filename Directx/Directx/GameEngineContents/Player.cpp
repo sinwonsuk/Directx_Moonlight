@@ -32,7 +32,7 @@ void Player::Start()
 
 	
 
-	Boss_UI = GetLevel()->CreateActor<Player_UI>(ContentsObjectType::Player);
+	player_UI = GetLevel()->CreateActor<Player_UI>(ContentsObjectType::Player);
 
 	this_Player = this;
 	GameEngineInput::AddInputObject(this);
@@ -341,15 +341,15 @@ void Player::Update(float _Delta)
 			if (Hp_Bar_reduce < 0.05)
 			{
 				Hp_Bar_reduce += _Delta / 3;
-				Boss_UI->Hp_Bar->Transform.AddLocalScale({ -_Delta / 3,0.0f });
-				Boss_UI->Hp_Bar->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
+				player_UI->Hp_Bar->Transform.AddLocalScale({ -_Delta / 3,0.0f });
+				player_UI->Hp_Bar->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
 
 			}
 		}
 
 		if (Monster_Attack_Check == false)
 		{
-			Boss_UI->Hp_Bar->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+			player_UI->Hp_Bar->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 		}
 
 	}

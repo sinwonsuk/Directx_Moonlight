@@ -36,9 +36,7 @@ void PlayLevel::Start()
 		std::shared_ptr<CameraCollision> Object = CreateActor<CameraCollision>();
 	}
 
-	{
-		std::shared_ptr<Inventory> Object = CreateActor<Inventory>();
-	}
+	
 	
 	{
 		//std::shared_ptr<MiniBoss> Object = CreateActor<MiniBoss>(ContentsObjectType::Player);
@@ -82,6 +80,10 @@ void PlayLevel::Update(float _Delta)
 
 void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	{
+		adad = CreateActor<Inventory>();
+	}
+
 	{
 		player = CreateActor<Player>(ContentsObjectType::Player);
 		player->ChangeState(PlayerState::UpIdle);
@@ -129,13 +131,16 @@ void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 	Map->Maps.clear();
 
 
+	Inventory::This_Inventory->Death();
+	Inventory::This_Inventory = nullptr;
 
+	adad->Death();
 
 
 	Map->Death(); 
 	Map = nullptr;
 
-	
+	//adad->Death();
 
 	
 

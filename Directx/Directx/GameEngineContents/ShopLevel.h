@@ -1,6 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
-
+#include "Inventory.h"
 // Ό³Έν :
 class ShopLevel : public GameEngineLevel
 {
@@ -27,5 +27,7 @@ protected:
 private:
 	std::shared_ptr<class PlayMap> Map;
 	std::shared_ptr<class Shop_House> House;
-};
+	std::shared_ptr<class Inventory> ad;
+	Inventory* AD;
+}; 
 

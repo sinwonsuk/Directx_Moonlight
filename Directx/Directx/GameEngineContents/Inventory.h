@@ -63,82 +63,99 @@ public:
 		Custom_Pos = _Custom_Pos;
 	}
 
-
+	static std::vector<std::shared_ptr<class Item_InforMation>> Item_Renders;
+	static std::vector<std::shared_ptr<class Font_InforMation>> Font_Renders;
+	static std::map<int, float4> Item_overlap;
+	static std::vector<std::shared_ptr<ItemType>> Item_type;
+	static std::vector<int> remove_Order;
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
 private:
-	bool Inventory_Start = false;
-	bool Item_Move = false;
+	static bool start;
+	static bool Inventory_Start;
+	static bool Item_Move;
+	static bool check;
+	static bool dasd;
 
-	int Item_Renders_Order = 0;
+	static bool Item_Renders_Death_Check;
 
-	float Plus_Pos_X = -395.0f;
-	float Plus_Pos_Y = 163.0f;
-	float4 Custom_Pos = {};
 
-	int Inventory_pos_X = 0;
-	int Inventory_pos_Y = 0;
-
-	int Item_pos_X = 0;
-	int Item_pos_Y = 0;
-
-	int Number = 0;
 
 
 	
-	bool check = false;
+
+	static float Plus_Pos_X;
+	static float Plus_Pos_Y;
+	
+
+	static int Inventory_pos_X;
+	static int Inventory_pos_Y;
+
+	static int Item_pos_X;
+	static int Item_pos_Y;
+
+	static int Number;
+	static int Item_Renders_Order;
+
+	static int Item_Check;
+
+
+	static int Font_Check;
+	static int FontNumber;
+	static int FontNumber_02;
+	static int FontNumber_03;
+	static int FontNumber_04;
+	static int FontNumber_05;
+	static int Item_Plus_X;
+	static int Item_Plus_Y;
+	static int Item_Type_Order;
+	static int Order;
+	static int Transform_2_1;
+
+	static float4 Custom_Pos;
+	
 
 	// 아이템 타입 저장 
-	std::vector<std::shared_ptr<ItemType>> Item_type;
+
 
 	// 인벤토리 구현 
-	std::vector<std::vector<std::shared_ptr<Inventory_Move>>> Inventroy_informations;
-	std::vector<std::shared_ptr<Inventory_Move>> Inventroy_information; 
+	static std::vector<std::vector<std::shared_ptr<Inventory_Move>>> Inventroy_informations;
+	static std::vector<std::shared_ptr<Inventory_Move>> Inventroy_information;
 
 
 	// 아이템 정렬 
-	std::multimap<int, float4> Item_overlap;
+
 
 	// 아이템 이미지 저장 
-	std::vector<std::shared_ptr<class Item_InforMation>> Item_Renders;
 
-	int Item_Check = 0;
-	int Item_Sort = 0;
+
+	
 
 	// 인벤토리 이미지들 
-	std::shared_ptr<class GameEngineUIRenderer> Inventroy_Screen;
-	std::shared_ptr<class GameEngineUIRenderer> Inventroy_Select;
+	static std::shared_ptr<class GameEngineUIRenderer> Inventroy_Screen;
+	static std::shared_ptr<class GameEngineUIRenderer> Inventroy_Select;
+
 
 	// 아이템 UI 이미지
 	//std::shared_ptr<class GameEngineUIRenderer> item;
 
+	
 
-
-	std::shared_ptr<GameEngineCollision> Col;
+	static std::shared_ptr<GameEngineCollision> Col;
 
 	// 폰트 이미지 
 	//std::shared_ptr<class GameEngineUIRenderer> Font;
 
 	// 폰트 이미지 저장 
-	std::vector<std::shared_ptr<class Font_InforMation>> Font_Renders;
-	int Font_Check = 0;
-	int FontNumber = 1;
-	int FontNumber_02 = 1;
-	int FontNumber_03 = 1;
-	int FontNumber_04 = 1;
-	int FontNumber_05 = 1;
-	int Item_Plus_X = 0;
-	int Item_Plus_Y = 0;
-	int Item_Type_Order = 0;
 	
-	int Transform_2_1 = 0;
-	std::vector<int> remove_Order;
+	
+	
 
-	bool dasd = false;
-
-	bool Item_Renders_Death_Check = false;
-	int Order = 0;
+	std::shared_ptr<class GameEngineUIRenderer> Shop_UI_01;
+	std::shared_ptr<class GameEngineUIRenderer> Shop_UI_02;
+	std::shared_ptr<class GameEngineUIRenderer> Shop_UI_03;
+	std::shared_ptr<class GameEngineUIRenderer> Shop_UI_04;
 //	int FontNumber_05 = 1;
 };

@@ -51,6 +51,7 @@ void Items::Start()
 	Event_Item.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 
 		{
+
 			Inventory::This_Inventory->Item_Start = true;
 			Inventory::This_Inventory->Item_Sprite_Number = static_cast<int>(item_Select)+1;
 			Inventory::This_Inventory->Set_Custom_Pos(Custom_Pos);	
