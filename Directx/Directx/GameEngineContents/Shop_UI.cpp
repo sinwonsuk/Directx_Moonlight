@@ -62,21 +62,22 @@ void Shop_UI::Start()
 
 	Inventroy_informations[5][0]->Move = { 144, 171 };
 	Inventroy_informations[6][0]->Move = { 388, 171 };
-	Inventroy_informations[5][1]->Move = { 144, -55 };
-	Inventroy_informations[6][1]->Move = { 386, -55 };
+
+	Inventroy_informations[5][1]->Move = { 145,  82 };
+	Inventroy_informations[6][1]->Move = { 387,  82 };
+
+	Inventroy_informations[5][2]->Move = { 144, -55 };
+	Inventroy_informations[6][2]->Move = { 386, -55 };
 	
+	Inventroy_informations[5][3]->Move = { 145, -145 };
+	Inventroy_informations[6][3]->Move = { 387, -145 };
 
 
+	/*Inventroy_informations[5][2]->Move = { 144, -55 };
+	Inventroy_informations[6][2]->Move = { 386, -55 };
 
-
-
-
-
-
-
-
-
-
+	Inventroy_informations[5][3]->Move = { 144, -55 };
+	Inventroy_informations[6][3]->Move = { 386, -55 };*/
 
 	Item_Renders.reserve(30);
 	Font_Renders.reserve(30);
@@ -141,25 +142,9 @@ void Shop_UI::Start()
 
 
 
-	if (GetLevel()->GetName() == "PlayLevel")
-	{
-		Inventroy_Screen = CreateComponent<GameEngineUIRenderer>();
-		Inventroy_Screen->SetSprite("Inventory", 0);
-		Inventroy_Screen->AutoSpriteSizeOn();
-		Inventroy_Screen->SetAutoScaleRatio(2.0f);
-		Inventroy_Screen->Off();
+	
 
-		Inventroy_Select = CreateComponent<GameEngineUIRenderer>();
-		Inventroy_Select->SetSprite("Inventory", 1);
-		Inventroy_Select->AutoSpriteSizeOn();
-		Inventroy_Select->SetAutoScaleRatio(2.3f);
-		Inventroy_Select->Off();
-		Inventroy_Select->Transform.SetWorldPosition({ -395,163 });
-
-	}
-
-
-	else if (GetLevel()->GetName() == "ShopLevel")
+	if (GetLevel()->GetName() == "ShopLevel")
 	{
 		Inventroy_Screen = CreateComponent<GameEngineUIRenderer>();
 		Inventroy_Screen->SetSprite("ShopUI", 0);
@@ -204,6 +189,7 @@ void Shop_UI::Start()
 		Inventroy_Select->SetSprite("Inventory", 1);
 		Inventroy_Select->AutoSpriteSizeOn();
 		Inventroy_Select->SetAutoScaleRatio(2.3f);
+		//Inventroy_Select->Transform.SetWorldScale({ 6.8,3.4});
 		Inventroy_Select->Off();
 		Inventroy_Select->Transform.SetWorldPosition({ -395,163 });
 
@@ -282,6 +268,23 @@ void Shop_UI::Update(float _DeltaTime)
 			}
 		}
 
+
+		for (size_t i = 0; i < Shop_Item_Renders.size(); i++)
+		{
+			if (Shop_Item_Renders[i] != nullptr)
+			{
+				Shop_Item_Renders[i]->item->Off();
+			}
+		}
+
+		for (size_t i = 0; i < Shop_Font_Renders.size(); i++)
+		{
+			if (Shop_Font_Renders[i] != nullptr)
+			{
+				Shop_Font_Renders[i]->Font->Off();
+			}
+		}
+
 		Shop_UI_02->Off();
 		Shop_UI_01->Off();
 		Shop_UI_03->Off();
@@ -300,16 +303,16 @@ void Shop_UI::Update(float _DeltaTime)
 	{
 		Inventory_pos_X += 1;
 
-		if (Inventory_pos_X > 4)
-		{
-			Inventory_pos_Y = 0;
-		}
-
-
 		if (Inventory_pos_X > 6)
 		{
 			Inventory_pos_X = 6;
 		}
+
+		if (Inventory_pos_Y > 1)
+		{
+			Inventory_pos_Y = 0;
+		}
+
 	}
 
 	if (GameEngineInput::IsDown('A', this) && Inventory_Start == true)
@@ -344,8 +347,31 @@ void Shop_UI::Update(float _DeltaTime)
 		}
 	}
 
+	if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
+	{
+		Inventroy_Select->Transform.SetWorldScale({ 3.0,1.45});
+	}
+	else if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
+	{
+		Inventroy_Select->Transform.SetWorldScale({ 3.0,1.45 });
+	}
+	else if (Inventory_pos_X == 5 && Inventory_pos_Y == 3)
+	{
+		Inventroy_Select->Transform.SetWorldScale({ 3.0,1.45 });
+	}
+	else if (Inventory_pos_X == 6 && Inventory_pos_Y == 3)
+	{
+		Inventroy_Select->Transform.SetWorldScale({ 3.0,1.45 });
+	}
+	else
+	{
+		Inventroy_Select->Transform.SetWorldScale({ 1,1 });
+	}
+	if (Item_Move == false)
+	{
+		Inventroy_Select->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move });
+	}
 
-	Inventroy_Select->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move });
 
 
 
@@ -424,26 +450,26 @@ void Shop_UI::Update(float _DeltaTime)
 			Shop_Item_Renders_Order = 3;
 		}
 
-		if (Shop_Item_Renders_Order != 100 && Item_Renders[Item_Renders_Order] != nullptr)
+		if (Item_Renders[Item_Renders_Order] != nullptr && Item_Renders[Transform_2_1] != nullptr)
 		{
 			//Item_Renders_Death_Check = true;
 			Death_Check = true;
 			ADADADA = true;
-			if (Shop_Item_Renders[Shop_Item_Renders_Order]->Move == Item_Renders[Transform_2_1]->Move)
+			if (Item_Renders[Item_Renders_Order]->Move == Item_Renders[Transform_2_1]->Move)
 			{
-				if (Shop_Item_Renders[Shop_Item_Renders_Order]->Item_Select == Item_Renders[Transform_2_1]->Item_Select)
+				if (Item_Renders[Item_Renders_Order]->Item_Select == Item_Renders[Transform_2_1]->Item_Select)
 				{
-					Shop_Font_Renders[Shop_Item_Renders_Order]->FontNumber += Font_Renders[Item_Renders_Order]->FontNumber;
+					Font_Renders[Transform_2_1]->FontNumber += Font_Renders[Item_Renders_Order]->FontNumber;
 
-					std::string numberStr = std::to_string(Shop_Font_Renders[Shop_Item_Renders_Order]->FontNumber);
+					std::string numberStr = std::to_string(Font_Renders[Transform_2_1]->FontNumber);
 
-					Shop_Font_Renders[Shop_Item_Renders_Order]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+					Font_Renders[Transform_2_1]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 
 
-					Item_Renders[Transform_2_1]->item->Death();
+				//	Item_Renders[Transform_2_1]->item->Death();
 					//Item_Renders[Transform_2_1] = nullptr;
 
-					Font_Renders[Transform_2_1]->Font->Death();
+				//	Font_Renders[Transform_2_1]->Font->Death();
 				//	Font_Renders[Transform_2_1] = nullptr;
 
 
@@ -496,12 +522,12 @@ void Shop_UI::Update(float _DeltaTime)
 
 					Font_Renders[Transform_2_1]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 
-					Item_Renders[Item_Renders_Order]->item->Death();
+					//Item_Renders[Item_Renders_Order]->item->Death();
 					Item_Renders[Item_Renders_Order] = nullptr;
 				
 
 
-					Font_Renders[Item_Renders_Order]->Font->Death();
+					//Font_Renders[Item_Renders_Order]->Font->Death();
 					Font_Renders[Item_Renders_Order] = nullptr;
 
 
@@ -513,12 +539,12 @@ void Shop_UI::Update(float _DeltaTime)
 
 					Inventory::This_Inventory->Font_Renders[Transform_2_1]->Font->SetText("µ¸¿ò", InvenTory_numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 
-					Inventory::This_Inventory->Item_Renders[Item_Renders_Order]->item->Death();
+					//Inventory::This_Inventory->Item_Renders[Item_Renders_Order]->item->Death();
 					Inventory::This_Inventory->Item_Renders[Item_Renders_Order] = nullptr;
 
 
 
-					Inventory::This_Inventory->Font_Renders[Item_Renders_Order]->Font->Death();
+					//Inventory::This_Inventory->Font_Renders[Item_Renders_Order]->Font->Death();
 					Inventory::This_Inventory->Font_Renders[Item_Renders_Order] = nullptr;
 
 
@@ -568,7 +594,7 @@ void Shop_UI::Update(float _DeltaTime)
 
 			Inventory::This_Inventory->Item_overlap.erase(Inventory::This_Inventory->Item_type[Item_Renders_Order]->Item_Oreder);
 
-			if (Item_Renders_Order <= 20)
+			if (Item_Renders_Order <= 20 && Inventory::This_Inventory->Item_Renders[Item_Renders_Order] != nullptr)
 			{
 				Inventory::This_Inventory->Item_Renders[Item_Renders_Order] = nullptr;
 				Inventory::This_Inventory->Font_Renders[Item_Renders_Order]->Font->On();
@@ -594,10 +620,10 @@ void Shop_UI::Update(float _DeltaTime)
 			//Font_Renders[Item_Renders_Order]->Font->Death();
 			Font_Renders[Item_Renders_Order] = nullptr;
 
-
 			
-			Inventory::This_Inventory->Font_Renders[Transform_2_1] = Font_Renders[Transform_2_1];
-			Inventory::This_Inventory->Item_Renders[Transform_2_1] = Item_Renders[Transform_2_1];
+		
+			Inventory::This_Inventory->Font_Renders[Transform_2_1] = Inventory::This_Inventory->Font_Renders[Item_Renders_Order];
+			Inventory::This_Inventory->Item_Renders[Transform_2_1] = Inventory::This_Inventory->Item_Renders[Item_Renders_Order];
 
 			Inventory::This_Inventory->Item_overlap.erase(Inventory::This_Inventory->Item_type[Item_Renders_Order]->Item_Oreder);
 			if (Item_Renders_Order <= 20 && Inventory::This_Inventory->Font_Renders[Item_Renders_Order] != nullptr)
@@ -610,89 +636,87 @@ void Shop_UI::Update(float _DeltaTime)
 
 		}
 
-		if (Transform_2_1 > 20  && ADADADA == false)
-		{
+		//if (Transform_2_1 > 20  && ADADADA == false)
+		//{
 
 
-			std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>(100);
+		//	std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>(100);
 
-			{
-				InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
-				InforMation->item->SetSprite("Items",Item_Renders[Transform_2_1]->Item_Select - 1);
-				InforMation->item->AutoSpriteSizeOn();
-				InforMation->item->SetAutoScaleRatio(2.0f);
-				InforMation->item->Transform.AddLocalPosition(Item_Renders[Transform_2_1]->Move);
-				InforMation->Move = { Item_Renders[Transform_2_1]->Move };
-				InforMation->Item_Select = { Item_Renders[Transform_2_1]->Item_Select };
-				if (Transform_2_1 == 21)
-				{
-					Shop_Item_Renders[0] = InforMation;
-				}
+		//	{
+		//		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+		//		InforMation->item->SetSprite("Items",Item_Renders[Transform_2_1]->Item_Select - 1);
+		//		InforMation->item->AutoSpriteSizeOn();
+		//		InforMation->item->SetAutoScaleRatio(2.0f);
+		//		InforMation->item->Transform.AddLocalPosition(Item_Renders[Transform_2_1]->Move);
+		//		InforMation->Move = { Item_Renders[Transform_2_1]->Move };
+		//		InforMation->Item_Select = { Item_Renders[Transform_2_1]->Item_Select };
+		//		if (Transform_2_1 == 21)
+		//		{
+		//			Shop_Item_Renders[0] = InforMation;
+		//		}
 
-				if (Transform_2_1 == 22)
-				{
-					Shop_Item_Renders[1] = InforMation;
-				}
-				if (Transform_2_1 == 23)
-				{
-					Shop_Item_Renders[2] = InforMation;
-				}
-				if (Transform_2_1 == 24)
-				{
-					Shop_Item_Renders[3] = InforMation;
-				}
-				
-			}
+		//		if (Transform_2_1 == 22)
+		//		{
+		//			Shop_Item_Renders[1] = InforMation;
+		//		}
+		//		if (Transform_2_1 == 23)
+		//		{
+		//			Shop_Item_Renders[2] = InforMation;
+		//		}
+		//		if (Transform_2_1 == 24)
+		//		{
+		//			Shop_Item_Renders[3] = InforMation;
+		//		}
+		//		
+		//	}
 
 
 
-		
-			{
-				std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>(100);
+		//
+		//	{
+		//		std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>(100);
 
-				std::string numberStr = std::to_string(Font_Renders[Transform_2_1]->FontNumber);
+		//		std::string numberStr = std::to_string(Font_Renders[Transform_2_1]->FontNumber);
 
-				Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
-				Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
-				Font_inforMation->Font->Transform.SetWorldPosition({ Font_Renders[Transform_2_1]->Move.X + 20,Font_Renders[Transform_2_1]->Move.Y - 5 });
-				Font_inforMation->Move = {Font_Renders[Transform_2_1]->Move };
-				//Font_inforMation->Font->Off();
-				Font_inforMation->FontNumber = Font_Renders[Transform_2_1]->FontNumber;
-				
-				if (Transform_2_1 == 21)
-				{
-					Shop_Font_Renders[0] = Font_inforMation;
-				}
+		//		Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
+		//		Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		//		Font_inforMation->Font->Transform.SetWorldPosition({ Font_Renders[Transform_2_1]->Move.X + 20,Font_Renders[Transform_2_1]->Move.Y - 5 });
+		//		Font_inforMation->Move = {Font_Renders[Transform_2_1]->Move };
+		//		//Font_inforMation->Font->Off();
+		//		Font_inforMation->FontNumber = Font_Renders[Transform_2_1]->FontNumber;
+		//		
+		//		if (Transform_2_1 == 21)
+		//		{
+		//			Shop_Font_Renders[0] = Font_inforMation;
+		//		}
 
-				if (Transform_2_1 == 22)
-				{
-					Shop_Font_Renders[1] = Font_inforMation;
-				}
-				if (Transform_2_1 == 23)
-				{
-					Shop_Font_Renders[2] = Font_inforMation;
-				}
-				if (Transform_2_1 == 24)
-				{
-					Shop_Font_Renders[3] = Font_inforMation;
-				}
-				
-			}
+		//		if (Transform_2_1 == 22)
+		//		{
+		//			Shop_Font_Renders[1] = Font_inforMation;
+		//		}
+		//		if (Transform_2_1 == 23)
+		//		{
+		//			Shop_Font_Renders[2] = Font_inforMation;
+		//		}
+		//		if (Transform_2_1 == 24)
+		//		{
+		//			Shop_Font_Renders[3] = Font_inforMation;
+		//		}
+		//		
+		//	}
 
-			
-		}
+		//	
+		//}
 
 
 		
 
 		if (Item_Renders_Death_Check == true)
 		{
-			if (Transform_2_1 <= 20)
+			if (Transform_2_1 <= 20 && Inventory::This_Inventory->Item_Renders[Transform_2_1] != nullptr)
 			{
 				Inventory::This_Inventory->Item_type[Transform_2_1]->Item_Oreder = Inventory::This_Inventory->Item_Renders[Transform_2_1]->Item_Select;
 				Inventory::This_Inventory->Item_type[Transform_2_1]->Move = Inventory::This_Inventory->Item_Renders[Transform_2_1]->Move;
-
-
 			}
 		
 			Inventory::This_Inventory->remove_Order.push_back(Item_Renders_Order);
@@ -716,30 +740,129 @@ void Shop_UI::Update(float _DeltaTime)
 				Inventory::This_Inventory->Item_type[Transform_2_1]->Item_Oreder = 0;
 				Inventory::This_Inventory->Item_type[Transform_2_1]->Move = {};
 				Inventory::This_Inventory->Font_Renders[Transform_2_1]->Font->Death();
+
+				Font_Renders[Transform_2_1]->Font->On(); 
+
 				Inventory::This_Inventory->Font_Renders[Transform_2_1] = nullptr;
 				Inventory::This_Inventory->Item_Renders[Transform_2_1]->item->Death();
 				Inventory::This_Inventory->Item_Renders[Transform_2_1] = nullptr;
+
+				Item_Renders[Transform_2_1]->item->On();
 
 			}
 		}
 		Death_Check = false;
 
 		ADADADA = false;
-		Shop_Item_Renders_Order = 100;
+		//Shop_Item_Renders_Order = 100;
 	}
 
 	if (Item_Move == true)
 	{
 		if (Item_Renders[Item_Renders_Order] != nullptr)
 		{
+			
+
+
 			Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
 			Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
-
 			Font_Renders[Item_Renders_Order]->Font->Off();
 			Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
 			Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
 
-			if (Item_Renders_Order < 21)
+
+
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 0)
+			{
+				if (GameEngineInput::IsDown('W', this))
+				{
+					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[5][0]->Move);
+					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][0]->Move };
+					Font_Renders[Item_Renders_Order]->Font->Off();
+					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[5][0]->Move.X + 20,Inventroy_informations[5][0]->Move.Y - 5 });
+					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][0]->Move.X,Inventroy_informations[5][0]->Move.Y };
+				}
+
+				if (GameEngineInput::IsDown('S', this))
+				{
+					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y+1]->Move);
+					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+					Font_Renders[Item_Renders_Order]->Font->Off();
+					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y+1]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
+					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+
+				}
+			}
+
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
+			{
+				if (GameEngineInput::IsDown('W', this))
+				{
+					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[5][0]->Move);
+					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][0]->Move };
+					Font_Renders[Item_Renders_Order]->Font->Off();
+					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[5][0]->Move.X + 20,Inventroy_informations[5][0]->Move.Y - 5 });
+					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][0]->Move.X,Inventroy_informations[5][0]->Move.Y };
+				}
+				if (GameEngineInput::IsDown('S', this))
+				{
+					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y + 1]->Move);
+					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+					Font_Renders[Item_Renders_Order]->Font->Off();
+					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y + 1]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
+					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+
+				}
+			}
+
+
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 2)
+			{
+				if (GameEngineInput::IsDown('W', this))
+				{
+					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y - 1]->Move);
+					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+					Font_Renders[Item_Renders_Order]->Font->Off();
+					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y - 1]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
+					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+				}
+
+				if (GameEngineInput::IsDown('S', this))
+				{
+					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[5][2]->Move);
+					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][2]->Move };
+					Font_Renders[Item_Renders_Order]->Font->Off();
+					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[5][2]->Move.X + 20,Inventroy_informations[5][2]->Move.Y - 5 });
+					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][2]->Move.X,Inventroy_informations[5][2]->Move.Y };
+				}
+			}
+			if (Inventory_pos_X == 6 && Inventory_pos_Y == 2)
+			{
+				if (GameEngineInput::IsDown('W', this))
+				{
+					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y - 1]->Move);
+					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+					Font_Renders[Item_Renders_Order]->Font->Off();
+					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y - 1]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
+					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+
+				}
+				if (GameEngineInput::IsDown('S', this))
+				{
+					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[6][2]->Move);
+					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[6][2]->Move };
+					Font_Renders[Item_Renders_Order]->Font->Off();
+					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[6][2]->Move.X + 20,Inventroy_informations[6][2]->Move.Y - 5 });
+					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[6][2]->Move.X,Inventroy_informations[6][2]->Move.Y };
+				}
+
+
+
+
+			}
+
+
+			if (Item_Renders_Order < 21 && Inventory::This_Inventory->Item_Renders[Item_Renders_Order] != nullptr)
 			{
 				Inventory::This_Inventory->Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
 				Inventory::This_Inventory->Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
@@ -751,12 +874,49 @@ void Shop_UI::Update(float _DeltaTime)
 
 			}
 				
+		}
 
-			
-		
+		/*if (Item_Renders_Order == 21)
+		{
+			Shop_Item_Renders[0]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
+			Shop_Item_Renders[0]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
 
+			Shop_Font_Renders[0]->Font->Off();
+			Shop_Font_Renders[0]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
+			Shop_Font_Renders[0]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
 
 		}
+
+		if (Item_Renders_Order == 22)
+		{
+			Shop_Item_Renders[1]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
+			Shop_Item_Renders[1]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+
+			Shop_Font_Renders[1]->Font->Off();
+			Shop_Font_Renders[1]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
+			Shop_Font_Renders[1]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+
+		}
+		if (Item_Renders_Order == 23)
+		{
+			Shop_Item_Renders[2]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
+			Shop_Item_Renders[2]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+
+			Shop_Font_Renders[2]->Font->Off();
+			Shop_Font_Renders[2]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
+			Shop_Font_Renders[2]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+
+		}
+		if (Item_Renders_Order == 24)
+		{
+			Shop_Item_Renders[3]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
+			Shop_Item_Renders[3]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+
+			Shop_Font_Renders[3]->Font->Off();
+			Shop_Font_Renders[3]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
+			Shop_Font_Renders[3]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+
+		}*/
 	}
 
 

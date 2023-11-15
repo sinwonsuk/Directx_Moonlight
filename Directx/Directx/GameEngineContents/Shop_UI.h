@@ -59,7 +59,7 @@ private:
 	std::vector<std::shared_ptr<class Font_InforMation>> Shop_Font_Renders;
 	float Plus_Pos_X = -395.0f;
 	float Plus_Pos_Y = 163.0f;
-	int Shop_Item_Renders_Order = 100;
+	int Shop_Item_Renders_Order = 0;
 	bool Item_Move = false;
 	bool check = false;
 	bool Death_Check = false;
