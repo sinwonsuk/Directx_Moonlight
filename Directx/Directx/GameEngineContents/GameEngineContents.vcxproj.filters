@@ -216,6 +216,15 @@
     <ClCompile Include="Dungeon_Scrol.cpp" />
     <ClCompile Include="Items.cpp" />
     <ClCompile Include="Shop_UI.cpp" />
+    <ClCompile Include="Shop_Item.cpp" />
+    <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="NPC_State.cpp" />
+    <ClCompile Include="Npc_State_02.cpp" />
+    <ClCompile Include="Npc_State_03.cpp" />
+    <ClCompile Include="Npc_State_04.cpp" />
+    <ClCompile Include="Emoticon.cpp" />
+    <ClCompile Include="Emoticon_State.cpp" />
+    <ClCompile Include="Npc_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -398,6 +407,10 @@
     <ClInclude Include="Dungeon_Scrol.h" />
     <ClInclude Include="Items.h" />
     <ClInclude Include="Shop_UI.h" />
+    <ClInclude Include="Shop_Item.h" />
+    <ClInclude Include="NPC.h" />
+    <ClInclude Include="Emoticon.h" />
+    <ClInclude Include="Npc_Manager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

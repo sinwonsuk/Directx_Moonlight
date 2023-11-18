@@ -312,10 +312,10 @@ void Player::Update(float _Delta)
 	{
 		Hp = 100;
 	}
-	//float4 awdd = Transform.GetWorldPosition();
+	float4 awdd = Transform.GetWorldPosition();
 
 
-	//OutputDebugStringA(awdd.ToString("\n").c_str());
+	OutputDebugStringA(awdd.ToString("\n").c_str());
 	
 	
 

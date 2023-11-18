@@ -72,4 +72,6 @@ enum class ContentsCollisionType
 	Dungeon_Door,
 	Item,
 	Bag,
+	Table_UI,
+	Open_Col,
 };

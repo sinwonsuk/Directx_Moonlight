@@ -2,6 +2,9 @@
 #include "Shop_House.h"
 #include "Player.h"
 #include "Black_Out.h"
+#include "NPC.h"
+#include "Shop_UI.h"
+#include "Shop_Item.h"
 Shop_House::Shop_House()
 {
 }
@@ -153,9 +156,7 @@ void Shop_House::Start()
 		Col->Transform.SetWorldPosition(Shop_Table->Transform.GetWorldPosition());
 		Col->SetCollisionType(ColType::AABBBOX2D);
 
-
-
-
+		
 
 		///Shop->Transform.AddLocalPosition({ 0.01f,0.0f,-150 });
 	}
@@ -276,12 +277,26 @@ void Shop_House::Start()
 
 	{
 		Shop_door = CreateComponent<GameEngineSpriteRenderer>(-49);
-		Shop_door->SetSprite("Shop_door", 0);
+		Shop_door->CreateAnimation("Shop_door", "Shop_door", 0.1f, -1, -1, false);
+		Shop_door->CreateAnimation("Shop_door_Closed", "Shop_door_Closed", 0.1f, -1, -1, false);
 		Shop_door->AutoSpriteSizeOn();
 		Shop_door->SetAutoScaleRatio(2.0f);
-		Shop_door->Transform.SetLocalPosition({ 54,-331.0f });
-
+		Shop_door->Transform.SetLocalPosition({ 62,-331.0f });
+		Shop_door->ChangeAnimation("Shop_door");
+		Shop_door->AnimationPauseOn(); 
+		Shop_door->DownFlip();
 	}
+
+	/*{
+		Shop_door_Closed = CreateComponent<GameEngineSpriteRenderer>(-49);
+		Shop_door_Closed->CreateAnimation("Shop_door_Closed", "Shop_door_Closed", 1.0f, -1, -1, false);
+		Shop_door_Closed->AutoSpriteSizeOn();
+		Shop_door_Closed->SetAutoScaleRatio(2.0f);
+		Shop_door_Closed->Transform.SetLocalPosition({ 92,-311.0f });
+		Shop_door_Closed->ChangeAnimation("Shop_door_Closed");
+		Shop_door_Closed->Off(); 
+	}*/
+
 	{
 		Room_Stove_Fire = CreateComponent<GameEngineSpriteRenderer>(-49);
 		Room_Stove_Fire->CreateAnimation("Room_Stove_Fire", "Room_Stove_Fire", 0.1f, -1, -1, true);
@@ -353,6 +368,13 @@ void Shop_House::Start()
 	Change_Town->SetCollisionType(ColType::AABBBOX2D);
 
 
+
+	Open_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Open_Col);
+	Open_Col->Transform.SetLocalScale({ 50.0f,50.0f });
+	Open_Col->Transform.SetLocalPosition({ 54.0f,-286.0f });
+	Open_Col->SetCollisionType(ColType::AABBBOX2D);
+
+	
 	
 
 	Down_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
@@ -402,21 +424,7 @@ void Shop_House::Start()
 			CameraMove = false;
 	};
 
-	/*Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
-	{
-		
-
-	};
-
-	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
-	{		
-		
-	};
-
-	Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
-	{
-
-	};*/
+	
 
 
 }
@@ -450,7 +458,69 @@ void Shop_House::Update(float _DeltaTime)
 			Black_Check = true;
 		}
 	}
+
+	if (Open_Col->Collision(ContentsCollisionType::Player))
+	{
+		if (GameEngineInput::IsDown('E', this) && Open_Col_Check ==false)
+		{		
+			Shop_door->AnimationPauseOff(); 
+			Open_Col_Check = true; 
+		}
+
+		else if (GameEngineInput::IsDown('E', this) && Open_Col_Check == true)
+		{
+			Shop_door->AnimationPauseOff();
+			Open_Col_Check = false;
+		}
+	}
+
+
+
+	if (Open_Col_Check == true)
+	{
+		if (Shop_door->GetCurIndex() > 0)
+		{
+			if (Shop_door->GetCurIndex() < 4)
+			{
+				Shop_door->Transform.SetLocalPosition({ 92,-311.0f });
+			}
+		}	
+	}
 	
+	if (Shop_door->IsCurAnimationEnd() && Open_Col_Check == false)
+	{
+		Shop_door->ChangeAnimation("Shop_door_Closed"); 
+				
+		Close_Col_Check = true;	
+	}
+
+	if (Close_Col_Check == true)
+	{
+		if (Shop_door->GetCurIndex() > 1)
+		{
+
+
+			if (Shop_door->GetCurIndex() == 2)
+			{
+				Shop_door->Transform.SetLocalPosition({ 72,-321.0f });
+			}
+			else if (Shop_door->GetCurIndex() < 4)
+			{
+				Shop_door->Transform.SetLocalPosition({ 62,-331.0f });
+			}
+
+		}
+		if (Shop_door->IsCurAnimationEnd())
+		{
+			Shop_door->ChangeAnimation("Shop_door");
+			Shop_door->On();
+			Shop_door->AnimationPauseOn();
+			Close_Col_Check = false;
+		}
+
+	}
+	
+
 
 	if (Black_Check == true)
 	{
@@ -458,10 +528,77 @@ void Shop_House::Update(float _DeltaTime)
 		{
 			GameEngineCore::ChangeLevel("WorldLevel");
 		}
-
 	}
 
-	
+	if (Open_Col_Check == true)
+	{
+		Time += _DeltaTime; 
+
+		if (Time > 3)
+		{
+			if (Shop_UI::this_Shop_UI->Shop_Item_01->IsUpdate() == true && Shop_Item_01 == false)
+			{
+				std::shared_ptr<Npc> Object = GetLevel()->CreateActor<Npc>();
+				Object->Transform.SetWorldPosition({ 687,-635 });
+
+
+				std::shared_ptr<Shop_Item> Object2 = GetLevel()->CreateActor<Shop_Item>();
+				Object2->Transform.SetWorldPosition({ 687,-635 });
+
+				//Object2->Set_MoveValue(Npc_Move::Down_Right);
+				Shop_Item_01 = true;
+
+				int a = 0;
+			}
+
+			if (Shop_UI::this_Shop_UI->Shop_Item_02->IsUpdate() == true && Shop_Item_02 == false)
+			{
+				std::shared_ptr<Npc> Object = GetLevel()->CreateActor<Npc>();
+				Object->Transform.SetWorldPosition({ 687,-635 });
+				Object->Set_MoveValue(Npc_Move::Down_Left);
+				Shop_Item_02 = true;
+				int a = 0;
+			}
+
+			if (Shop_UI::this_Shop_UI->Shop_Item_03->IsUpdate() == true && Shop_Item_03 == false)
+			{
+				std::shared_ptr<Npc> Object = GetLevel()->CreateActor<Npc>();
+				Object->Transform.SetWorldPosition({ 687,-635 });
+				Object->Set_MoveValue(Npc_Move::Up_Right);
+				Shop_Item_03 = true;
+				int a = 0;
+			}
+
+			if (Shop_UI::this_Shop_UI->Shop_Item_04->IsUpdate() == true && Shop_Item_04 == false)
+			{
+				std::shared_ptr<Npc> Object = GetLevel()->CreateActor<Npc>();
+				Object->Transform.SetWorldPosition({ 687,-635 });
+				Object->Set_MoveValue(Npc_Move::Up_Left);
+				Shop_Item_04 = true;
+				int a = 0;
+			}
+			Time = 0;
+		}
+
+		if (Shop_UI::this_Shop_UI->Shop_Item_01->IsUpdate() == false)
+		{
+			Shop_Item_01 = false;
+		}
+		if (Shop_UI::this_Shop_UI->Shop_Item_02->IsUpdate() == false)
+		{
+			Shop_Item_02 = false;
+		}
+		if (Shop_UI::this_Shop_UI->Shop_Item_03->IsUpdate() == false)
+		{
+			Shop_Item_03 = false;
+		}
+		if (Shop_UI::this_Shop_UI->Shop_Item_04->IsUpdate() == false)
+		{
+			Shop_Item_04 = false;
+		}
+
+
+	}
 
 
 

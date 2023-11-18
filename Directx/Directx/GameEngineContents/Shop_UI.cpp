@@ -1,7 +1,9 @@
 #include "PreCompile.h"
 #include "Shop_UI.h"
 #include "Inventory.h"
-
+#include "Shop_Item.h"
+#include "Npc.h"
+Shop_UI* Shop_UI::this_Shop_UI;
 Shop_UI::Shop_UI()
 {
 }
@@ -12,6 +14,8 @@ Shop_UI::~Shop_UI()
 
 void Shop_UI::Start()
 {
+	this_Shop_UI = this;
+
 	GameEngineInput::AddInputObject(this);
 
 
@@ -89,49 +93,7 @@ void Shop_UI::Start()
 
 	Shop_Font_Renders.resize(4);
 	Shop_Item_Renders.resize(4);
-			for (size_t i = 0; i < Inventory::This_Inventory->Item_Renders.size(); i++)
-			{
-				if (Inventory::This_Inventory->Item_Renders[i] != nullptr)
-				{
-					std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
-
-
-					{	
-						InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
-						InforMation->item->SetSprite("Items", Inventory::This_Inventory->Item_Renders[i]->Item_Select - 1);
-						InforMation->item->AutoSpriteSizeOn();
-						InforMation->item->SetAutoScaleRatio(2.0f);
-						InforMation->item->Transform.AddLocalPosition(Inventory::This_Inventory->Item_Renders[i]->Move);
-						InforMation->item->Off();
-						InforMation->Item_Select = { Inventory::This_Inventory->Item_Renders[i]->Item_Select };
-						InforMation->Move = { Inventory::This_Inventory->Item_Renders[i]->Move };
-						//Item_Renders[i]->Item_Select = 5;
-						Item_Renders[i] = InforMation;
-
-
-					}
-				}
-
-			}
-
-			for (size_t i = 0; i < Inventory::This_Inventory->Font_Renders.size(); i++)
-			{
-
-				if (Inventory::This_Inventory->Font_Renders[i] != nullptr)
-				{
-					std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>();
-
-					std::string numberStr = std::to_string(Inventory::This_Inventory->Font_Renders[i]->FontNumber);
-
-					Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
-					Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
-					Font_inforMation->Font->Transform.SetWorldPosition({ Inventory::This_Inventory->Font_Renders[i]->Move.X + 20,Inventory::This_Inventory->Font_Renders[i]->Move.Y - 5 });
-					Font_inforMation->Move = { Inventory::This_Inventory->Font_Renders[i]->Move };
-					Font_inforMation->Font->Off();
-					Font_inforMation->FontNumber = Inventory::This_Inventory->Font_Renders[i]->FontNumber;
-					Font_Renders[i] = Font_inforMation;
-				}
-			}
+			
 
 
 
@@ -168,9 +130,7 @@ void Shop_UI::Start()
 		Shop_UI_02->SetAutoScaleRatio(2.0f);
 		Shop_UI_02->Off();
 
-
 	
-
 		Shop_UI_03 = CreateComponent<GameEngineUIRenderer>();
 		Shop_UI_03->SetSprite("ShopUI", 1);
 		Shop_UI_03->AutoSpriteSizeOn();
@@ -193,6 +153,84 @@ void Shop_UI::Start()
 		Inventroy_Select->Off();
 		Inventroy_Select->Transform.SetWorldPosition({ -395,163 });
 
+		
+
+		std::string numberStr = std::to_string(0);
+
+		Money_Font_01 = CreateComponent<GameEngineUIRenderer>(101);
+		Money_Font_01->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Money_Font_01->Transform.SetWorldPosition({211,107});
+		Money_Font_01->Off(); 
+
+		Money_Font_02 = CreateComponent<GameEngineUIRenderer>(101);
+		Money_Font_02->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Money_Font_02->Transform.SetWorldPosition({ 459,107 });
+		Money_Font_02->Off();
+
+		Money_Font_03 = CreateComponent<GameEngineUIRenderer>(101);
+		Money_Font_03->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Money_Font_03->Transform.SetWorldPosition({ 211,-122 });
+		Money_Font_03->Off();
+
+		Money_Font_04 = CreateComponent<GameEngineUIRenderer>(101);
+		Money_Font_04->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Money_Font_04->Transform.SetWorldPosition({ 459,-122 });
+		Money_Font_04->Off();
+	
+	
+
+
+
+		Money_Font_bout_01 = CreateComponent<GameEngineUIRenderer>(101);
+		Money_Font_bout_01->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Money_Font_bout_01->Transform.SetWorldPosition({ 211,60 });
+		Money_Font_bout_01->Off();
+
+		Money_Font_bout_02 = CreateComponent<GameEngineUIRenderer>(101);
+		Money_Font_bout_02->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Money_Font_bout_02->Transform.SetWorldPosition({ 459,60 });
+		Money_Font_bout_02->Off();
+
+		Money_Font_bout_03 = CreateComponent<GameEngineUIRenderer>(101);
+		Money_Font_bout_03->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Money_Font_bout_03->Transform.SetWorldPosition({ 211,-169 });
+		Money_Font_bout_03->Off();
+
+		Money_Font_bout_04 = CreateComponent<GameEngineUIRenderer>(101);
+		Money_Font_bout_04->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Money_Font_bout_04->Transform.SetWorldPosition({ 459,-169 });
+		Money_Font_bout_04->Off();
+
+
+
+
+
+
+
+		Shop_Item_01 = GetLevel()->CreateActor<Shop_Item>();
+		Shop_Item_01->Transform.SetWorldPosition({ -152 ,-129 }); 
+		Shop_Item_01->Off(); 
+
+		Shop_Item_02 = GetLevel()->CreateActor<Shop_Item>();
+		Shop_Item_02->Transform.SetWorldPosition({ -107 ,-129});
+		Shop_Item_02->Off(); 
+
+		Shop_Item_03 = GetLevel()->CreateActor<Shop_Item>();
+		Shop_Item_03->Transform.SetWorldPosition({ -152 ,-175 });
+		Shop_Item_03->Off();
+
+		Shop_Item_04 = GetLevel()->CreateActor<Shop_Item>();
+		Shop_Item_04->Transform.SetWorldPosition({ -107 ,-175 });
+		Shop_Item_04->Off(); 
+
+
+		
+
+		UI_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Table_UI);
+		UI_Col->Transform.SetLocalScale({ 148, 165 });
+		UI_Col->Transform.SetWorldPosition({ 510,-527 });
+		UI_Col->SetCollisionType(ColType::AABBBOX2D);
+
 
 
 	}
@@ -201,105 +239,174 @@ void Shop_UI::Start()
 
 void Shop_UI::Update(float _DeltaTime)
 {
-
-	if (GameEngineInput::IsDown('E', this) && Inventory_Start == false)
+	if (Inven_sync == false)
 	{
-		for (size_t i = 0; i < Item_Renders.size(); i++)
+		for (size_t i = 0; i < Inventory::This_Inventory->Item_Renders.size(); i++)
 		{
-			if (Item_Renders[i] != nullptr)
+			if (Inventory::This_Inventory->Item_Renders[i] != nullptr)
 			{
-				Item_Renders[i]->item->On();
+				std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+
+
+				{
+					InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+					InforMation->item->SetSprite("Items", Inventory::This_Inventory->Item_Renders[i]->Item_Select - 1);
+					InforMation->item->AutoSpriteSizeOn();
+					InforMation->item->SetAutoScaleRatio(2.0f);
+					InforMation->item->Transform.AddLocalPosition(Inventory::This_Inventory->Item_Renders[i]->Move);
+					InforMation->item->Off();
+					InforMation->Item_Select = { Inventory::This_Inventory->Item_Renders[i]->Item_Select };
+					InforMation->Move = { Inventory::This_Inventory->Item_Renders[i]->Move };
+					//Item_Renders[i]->Item_Select = 5;
+					Item_Renders[i] = InforMation;
+
+
+				}
 			}
 
 		}
 
-		for (size_t i = 0; i < Font_Renders.size(); i++)
+		for (size_t i = 0; i < Inventory::This_Inventory->Font_Renders.size(); i++)
 		{
-			if (Font_Renders[i] != nullptr)
+
+			if (Inventory::This_Inventory->Font_Renders[i] != nullptr)
 			{
-				Font_Renders[i]->Font->On();
-			}
+				std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>();
 
-		}
+				std::string numberStr = std::to_string(Inventory::This_Inventory->Font_Renders[i]->FontNumber);
 
-
-		for (size_t i = 0; i < Shop_Item_Renders.size(); i++)
-		{
-			if (Shop_Item_Renders[i] != nullptr)
-			{
-				Shop_Item_Renders[i]->item->On();
-			}
-		}
-
-		for (size_t i = 0; i < Shop_Font_Renders.size(); i++)
-		{
-			if (Shop_Font_Renders[i] != nullptr)
-			{
-				Shop_Font_Renders[i]->Font->On();
-			}
-
-		}
-		Shop_UI_02->On();
-		Shop_UI_01->On();
-		Shop_UI_03->On();
-		Shop_UI_04->On();
-
-
-		Inventroy_Screen->On();
-		Inventroy_Select->On();
-		Inventory_Start = true;
-		GameEngineCore::MainTime.SetAllTimeScale(0);
-	}
-	else if (GameEngineInput::IsDown('E', this) && Inventory_Start == true)
-	{
-		for (size_t i = 0; i < Item_Renders.size(); i++)
-		{
-			if (Item_Renders[i] != nullptr)
-			{
-				Item_Renders[i]->item->Off();
+				Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
+				Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+				Font_inforMation->Font->Transform.SetWorldPosition({ Inventory::This_Inventory->Font_Renders[i]->Move.X + 20,Inventory::This_Inventory->Font_Renders[i]->Move.Y - 5 });
+				Font_inforMation->Move = { Inventory::This_Inventory->Font_Renders[i]->Move };
+				Font_inforMation->Font->Off();
+				Font_inforMation->FontNumber = Inventory::This_Inventory->Font_Renders[i]->FontNumber;
+				Font_Renders[i] = Font_inforMation;
 			}
 		}
-
-		for (size_t i = 0; i < Font_Renders.size(); i++)
-		{
-			if (Font_Renders[i] != nullptr)
-			{
-				Font_Renders[i]->Font->Off();
-			}
-		}
-
-
-		for (size_t i = 0; i < Shop_Item_Renders.size(); i++)
-		{
-			if (Shop_Item_Renders[i] != nullptr)
-			{
-				Shop_Item_Renders[i]->item->Off();
-			}
-		}
-
-		for (size_t i = 0; i < Shop_Font_Renders.size(); i++)
-		{
-			if (Shop_Font_Renders[i] != nullptr)
-			{
-				Shop_Font_Renders[i]->Font->Off();
-			}
-		}
-
-		Shop_UI_02->Off();
-		Shop_UI_01->Off();
-		Shop_UI_03->Off();
-		Shop_UI_04->Off();
-
-		Inventroy_Screen->Off();
-		Inventroy_Select->Off();
-
-		Inventory_Start = false;
-		GameEngineCore::MainTime.SetAllTimeScale(1);
+		Inven_sync = true; 
 	}
 
 
 
-	if (GameEngineInput::IsDown('D', this) && Inventory_Start == true)
+
+	if (UI_Col->Collision(ContentsCollisionType::Player))
+	{
+		if (GameEngineInput::IsDown('E', this) && Inventory_Start == false)
+		{
+			for (size_t i = 0; i < Item_Renders.size(); i++)
+			{
+				if (Item_Renders[i] != nullptr)
+				{
+					Item_Renders[i]->item->On();
+				}
+
+			}
+
+			for (size_t i = 0; i < Font_Renders.size(); i++)
+			{
+				if (Font_Renders[i] != nullptr)
+				{
+					Font_Renders[i]->Font->On();
+				}
+
+			}
+
+
+			for (size_t i = 0; i < Shop_Item_Renders.size(); i++)
+			{
+				if (Shop_Item_Renders[i] != nullptr)
+				{
+					Shop_Item_Renders[i]->item->On();
+				}
+			}
+
+			for (size_t i = 0; i < Shop_Font_Renders.size(); i++)
+			{
+				if (Shop_Font_Renders[i] != nullptr)
+				{
+					Shop_Font_Renders[i]->Font->On();
+				}
+
+			}
+			Shop_UI_02->On();
+			Shop_UI_01->On();
+			Shop_UI_03->On();
+			Shop_UI_04->On();
+
+
+			Inventroy_Screen->On();
+			Inventroy_Select->On();
+			Inventory_Start = true;
+			GameEngineCore::MainTime.SetAllTimeScale(0);
+		}
+
+		else if (GameEngineInput::IsDown('E', this) && Inventory_Start == true)
+		{
+			for (size_t i = 0; i < Item_Renders.size(); i++)
+			{
+				if (Item_Renders[i] != nullptr)
+				{
+					Item_Renders[i]->item->Off();
+				}
+			}
+
+			for (size_t i = 0; i < Font_Renders.size(); i++)
+			{
+				if (Font_Renders[i] != nullptr)
+				{
+					Font_Renders[i]->Font->Off();
+				}
+			}
+
+
+			for (size_t i = 0; i < Shop_Item_Renders.size(); i++)
+			{
+				if (Shop_Item_Renders[i] != nullptr)
+				{
+					Shop_Item_Renders[i]->item->Off();
+				}
+			}
+
+			for (size_t i = 0; i < Shop_Font_Renders.size(); i++)
+			{
+				if (Shop_Font_Renders[i] != nullptr)
+				{
+					Shop_Font_Renders[i]->Font->Off();
+				}
+			}
+
+			Shop_UI_02->Off();
+			Shop_UI_01->Off();
+			Shop_UI_03->Off();
+			Shop_UI_04->Off();
+
+			Money_Font_01->Off();
+			Money_Font_bout_01->Off();
+
+
+			Money_Font_02->Off();
+			Money_Font_bout_02->Off();
+			Money_Font_03->Off();
+			Money_Font_bout_03->Off();
+			Money_Font_04->Off();
+			Money_Font_bout_04->Off();
+
+			Inventroy_Screen->Off();
+			Inventroy_Select->Off();
+
+			Inventory_Start = false;
+			GameEngineCore::MainTime.SetAllTimeScale(1);
+		}
+	}
+
+
+	
+
+	
+
+
+	if (GameEngineInput::IsDown('D', this) && Inventory_Start == true && Select_Stop ==false)
 	{
 		Inventory_pos_X += 1;
 
@@ -315,7 +422,7 @@ void Shop_UI::Update(float _DeltaTime)
 
 	}
 
-	if (GameEngineInput::IsDown('A', this) && Inventory_Start == true)
+	if (GameEngineInput::IsDown('A', this) && Inventory_Start == true && Select_Stop == false)
 	{
 		Inventory_pos_X -= 1;
 
@@ -326,9 +433,28 @@ void Shop_UI::Update(float _DeltaTime)
 	}
 
 
-	if (GameEngineInput::IsDown('W', this) && Inventory_Start == true)
+	if (GameEngineInput::IsDown('W', this) && Inventory_Start == true && Select_Stop == false)
 	{
 		Inventory_pos_Y -= 1;
+
+		if (Item_Move == true)
+		{
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
+			{
+				Inventory_pos_Y -= 1;
+			}
+			else if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
+			{
+				Inventory_pos_Y -= 1;
+			}
+			
+		}
+
+
+
+
+
+
 
 		if (Inventory_pos_Y < 0)
 		{
@@ -337,9 +463,30 @@ void Shop_UI::Update(float _DeltaTime)
 	}
 
 
-	if (GameEngineInput::IsDown('S', this) && Inventory_Start == true)
+	if (GameEngineInput::IsDown('S', this) && Inventory_Start == true && Select_Stop == false)
 	{
 		Inventory_pos_Y += 1;
+
+		if (Item_Move == true)
+		{
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
+			{
+				Inventory_pos_Y += 1;
+			}
+			else if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
+			{
+				Inventory_pos_Y += 1;
+			}
+			else if (Inventory_pos_X == 5 && Inventory_pos_Y == 3)
+			{
+				Inventory_pos_Y = 2;
+			}
+			else if (Inventory_pos_X == 6 && Inventory_pos_Y == 3)
+			{
+				Inventory_pos_Y = 2;
+			}
+		}
+
 
 		if (Inventory_pos_Y > 3)
 		{
@@ -367,12 +514,12 @@ void Shop_UI::Update(float _DeltaTime)
 	{
 		Inventroy_Select->Transform.SetWorldScale({ 1,1 });
 	}
-	if (Item_Move == false)
+
+	if (Select_Stop == false)
 	{
 		Inventroy_Select->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move });
 	}
-
-
+	
 
 
 
@@ -424,13 +571,13 @@ void Shop_UI::Update(float _DeltaTime)
 			}
 			if (Inventory_pos_X == 5)
 			{
-				Inventory_pos_X = 1;
+				test_02 = 1;
 			}
 			if (Inventory_pos_X == 6)
 			{
-				Inventory_pos_X = 2;
+				test_02 = 2;
 			}
-			Transform_2_1 = 20 + (Inventory_pos_X)+(test) * 2;
+			Transform_2_1 = 20 + (test_02)+(test) * 2;
 		}
 
 		if (Transform_2_1 == 21)
@@ -466,12 +613,7 @@ void Shop_UI::Update(float _DeltaTime)
 					Font_Renders[Transform_2_1]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 
 
-				//	Item_Renders[Transform_2_1]->item->Death();
-					//Item_Renders[Transform_2_1] = nullptr;
-
-				//	Font_Renders[Transform_2_1]->Font->Death();
-				//	Font_Renders[Transform_2_1] = nullptr;
-
+		
 
 					Item_Renders[Item_Renders_Order]->item->Death();
 					Item_Renders[Item_Renders_Order] = nullptr;
@@ -622,8 +764,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 			
 		
-			Inventory::This_Inventory->Font_Renders[Transform_2_1] = Inventory::This_Inventory->Font_Renders[Item_Renders_Order];
-			Inventory::This_Inventory->Item_Renders[Transform_2_1] = Inventory::This_Inventory->Item_Renders[Item_Renders_Order];
+			Inventory::This_Inventory->Font_Renders[Transform_2_1] = Font_Renders[Transform_2_1];
+			Inventory::This_Inventory->Item_Renders[Transform_2_1] = Item_Renders[Transform_2_1];
 
 			Inventory::This_Inventory->Item_overlap.erase(Inventory::This_Inventory->Item_type[Item_Renders_Order]->Item_Oreder);
 			if (Item_Renders_Order <= 20 && Inventory::This_Inventory->Font_Renders[Item_Renders_Order] != nullptr)
@@ -636,80 +778,6 @@ void Shop_UI::Update(float _DeltaTime)
 
 		}
 
-		//if (Transform_2_1 > 20  && ADADADA == false)
-		//{
-
-
-		//	std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>(100);
-
-		//	{
-		//		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
-		//		InforMation->item->SetSprite("Items",Item_Renders[Transform_2_1]->Item_Select - 1);
-		//		InforMation->item->AutoSpriteSizeOn();
-		//		InforMation->item->SetAutoScaleRatio(2.0f);
-		//		InforMation->item->Transform.AddLocalPosition(Item_Renders[Transform_2_1]->Move);
-		//		InforMation->Move = { Item_Renders[Transform_2_1]->Move };
-		//		InforMation->Item_Select = { Item_Renders[Transform_2_1]->Item_Select };
-		//		if (Transform_2_1 == 21)
-		//		{
-		//			Shop_Item_Renders[0] = InforMation;
-		//		}
-
-		//		if (Transform_2_1 == 22)
-		//		{
-		//			Shop_Item_Renders[1] = InforMation;
-		//		}
-		//		if (Transform_2_1 == 23)
-		//		{
-		//			Shop_Item_Renders[2] = InforMation;
-		//		}
-		//		if (Transform_2_1 == 24)
-		//		{
-		//			Shop_Item_Renders[3] = InforMation;
-		//		}
-		//		
-		//	}
-
-
-
-		//
-		//	{
-		//		std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>(100);
-
-		//		std::string numberStr = std::to_string(Font_Renders[Transform_2_1]->FontNumber);
-
-		//		Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
-		//		Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
-		//		Font_inforMation->Font->Transform.SetWorldPosition({ Font_Renders[Transform_2_1]->Move.X + 20,Font_Renders[Transform_2_1]->Move.Y - 5 });
-		//		Font_inforMation->Move = {Font_Renders[Transform_2_1]->Move };
-		//		//Font_inforMation->Font->Off();
-		//		Font_inforMation->FontNumber = Font_Renders[Transform_2_1]->FontNumber;
-		//		
-		//		if (Transform_2_1 == 21)
-		//		{
-		//			Shop_Font_Renders[0] = Font_inforMation;
-		//		}
-
-		//		if (Transform_2_1 == 22)
-		//		{
-		//			Shop_Font_Renders[1] = Font_inforMation;
-		//		}
-		//		if (Transform_2_1 == 23)
-		//		{
-		//			Shop_Font_Renders[2] = Font_inforMation;
-		//		}
-		//		if (Transform_2_1 == 24)
-		//		{
-		//			Shop_Font_Renders[3] = Font_inforMation;
-		//		}
-		//		
-		//	}
-
-		//	
-		//}
-
-
-		
 
 		if (Item_Renders_Death_Check == true)
 		{
@@ -761,7 +829,8 @@ void Shop_UI::Update(float _DeltaTime)
 	{
 		if (Item_Renders[Item_Renders_Order] != nullptr)
 		{
-			
+
+
 
 
 			Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
@@ -772,94 +841,7 @@ void Shop_UI::Update(float _DeltaTime)
 
 
 
-			if (Inventory_pos_X == 5 && Inventory_pos_Y == 0)
-			{
-				if (GameEngineInput::IsDown('W', this))
-				{
-					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[5][0]->Move);
-					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][0]->Move };
-					Font_Renders[Item_Renders_Order]->Font->Off();
-					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[5][0]->Move.X + 20,Inventroy_informations[5][0]->Move.Y - 5 });
-					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][0]->Move.X,Inventroy_informations[5][0]->Move.Y };
-				}
 
-				if (GameEngineInput::IsDown('S', this))
-				{
-					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y+1]->Move);
-					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
-					Font_Renders[Item_Renders_Order]->Font->Off();
-					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y+1]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
-					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
-
-				}
-			}
-
-			if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
-			{
-				if (GameEngineInput::IsDown('W', this))
-				{
-					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[5][0]->Move);
-					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][0]->Move };
-					Font_Renders[Item_Renders_Order]->Font->Off();
-					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[5][0]->Move.X + 20,Inventroy_informations[5][0]->Move.Y - 5 });
-					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][0]->Move.X,Inventroy_informations[5][0]->Move.Y };
-				}
-				if (GameEngineInput::IsDown('S', this))
-				{
-					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y + 1]->Move);
-					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
-					Font_Renders[Item_Renders_Order]->Font->Off();
-					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y + 1]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
-					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
-
-				}
-			}
-
-
-			if (Inventory_pos_X == 5 && Inventory_pos_Y == 2)
-			{
-				if (GameEngineInput::IsDown('W', this))
-				{
-					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y - 1]->Move);
-					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
-					Font_Renders[Item_Renders_Order]->Font->Off();
-					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y - 1]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
-					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
-				}
-
-				if (GameEngineInput::IsDown('S', this))
-				{
-					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[5][2]->Move);
-					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][2]->Move };
-					Font_Renders[Item_Renders_Order]->Font->Off();
-					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[5][2]->Move.X + 20,Inventroy_informations[5][2]->Move.Y - 5 });
-					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[5][2]->Move.X,Inventroy_informations[5][2]->Move.Y };
-				}
-			}
-			if (Inventory_pos_X == 6 && Inventory_pos_Y == 2)
-			{
-				if (GameEngineInput::IsDown('W', this))
-				{
-					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y - 1]->Move);
-					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
-					Font_Renders[Item_Renders_Order]->Font->Off();
-					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y - 1]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
-					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
-
-				}
-				if (GameEngineInput::IsDown('S', this))
-				{
-					Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[6][2]->Move);
-					Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[6][2]->Move };
-					Font_Renders[Item_Renders_Order]->Font->Off();
-					Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[6][2]->Move.X + 20,Inventroy_informations[6][2]->Move.Y - 5 });
-					Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[6][2]->Move.X,Inventroy_informations[6][2]->Move.Y };
-				}
-
-
-
-
-			}
 
 
 			if (Item_Renders_Order < 21 && Inventory::This_Inventory->Item_Renders[Item_Renders_Order] != nullptr)
@@ -876,52 +858,397 @@ void Shop_UI::Update(float _DeltaTime)
 				
 		}
 
-		/*if (Item_Renders_Order == 21)
-		{
-			Shop_Item_Renders[0]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
-			Shop_Item_Renders[0]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+	}
 
-			Shop_Font_Renders[0]->Font->Off();
-			Shop_Font_Renders[0]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
-			Shop_Font_Renders[0]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+
+	if (Item_Renders[21] != nullptr)
+	{
+		
+		if (GameEngineInput::IsDown('J', this) && Select_Stop ==false)
+		{
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 0)
+			{
+				Money_Font_01->On();
+				Money_Font_bout_01->On();
+				Shop_Item_01->Off(); 
+				test_03++;
+			}
+			
+			else if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
+			{
+				Money_Font_01->On();
+				Money_Font_bout_01->On();
+				Select_Stop = true;
+			}
+
+			if (test_03 == 1)
+			{
+				
+
+
+			}
+
+			if (test_03 == 2)
+			{
+			
+				
+				Money_01 = 0;
+				test_03 = 0;
+
+				std::string Money = std::to_string(Money_01);
+
+				Money_Font_01->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+				Money_Font_01->Off();
+
+				Money_Font_bout_01->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+				Money_Font_bout_01->Off(); 
+
+			
+
+			}
+
+			
+		}
+		else if (GameEngineInput::IsDown('J', this) && Select_Stop == true)
+		{
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
+			{
+			
+				Shop_Item_01->On();
+				Shop_Item_01->Set_item_Select(static_cast<Shop_Items>(Item_Renders[21]->Item_Select - 1));
+				Shop_Item_01->Set_Prev_Pos({ -152 ,-129 });
+				Shop_Item_01->Set_Money(Money_01* Font_Renders[21]->FontNumber);
+
+				Select_Stop = false;
+				
+			}
+			
+		}
+
+		if (GameEngineInput::IsDown('W', this) && Select_Stop == true)
+		{
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
+			{
+				Money_01 += 10;
+
+				std::string Money = std::to_string(Money_01);
+				std::string Money_Bout = std::to_string(Money_01 * Font_Renders[21]->FontNumber);
+
+				Money_Font_01->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+
+				Money_Font_bout_01->SetText("µ¸¿ò", Money_Bout, 20.0f, float4::WHITE, FW1_CENTER);
+			}
+		}
+
+		if (GameEngineInput::IsDown('S', this) && Select_Stop == true)
+		{
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
+			{
+				Money_01 -= 10;
+
+				if (Money_01 <= 0)
+				{
+					Money_01 = 0;
+				}
+				std::string Money = std::to_string(Money_01);
+
+				std::string Money_Bout = std::to_string(Money_01 * Font_Renders[21]->FontNumber);
+
+				Money_Font_01->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+
+				Money_Font_bout_01->SetText("µ¸¿ò", Money_Bout, 20.0f, float4::WHITE, FW1_CENTER);
+			}
+		}
+
+
+	}
+	
+
+	if (Item_Renders[22] != nullptr)
+	{
+
+		if (GameEngineInput::IsDown('J', this) && Select_Stop == false)
+		{
+			if (Inventory_pos_X == 6 && Inventory_pos_Y == 0)
+			{
+				Money_Font_02->On();
+				Money_Font_bout_02->On();
+				Shop_Item_02->Off();
+				test_04++;
+			}
+
+			else if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
+			{
+				Select_Stop = true;
+			}
+
+			if (test_04 == 1)
+			{
+
+
+
+			}
+
+			if (test_04 == 2)
+			{
+
+
+				Money_02 = 0;
+				test_04 = 0;
+
+				std::string Money = std::to_string(Money_02);
+
+				Money_Font_02->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+				Money_Font_02->Off();
+
+				Money_Font_bout_02->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+				Money_Font_bout_02->Off();
+
+
+
+			}
+
+
+		}
+		else if (GameEngineInput::IsDown('J', this) && Select_Stop == true)
+		{
+			if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
+			{
+
+				Shop_Item_02->On();
+				Shop_Item_02->Set_item_Select(static_cast<Shop_Items>(Item_Renders[22]->Item_Select - 1));
+				Shop_Item_02->Set_Money(Money_02 * Font_Renders[22]->FontNumber);
+				Shop_Item_02->Set_Prev_Pos({ -107 ,-129 });
+				Select_Stop = false;
+
+			}
 
 		}
 
-		if (Item_Renders_Order == 22)
+		if (GameEngineInput::IsDown('W', this) && Select_Stop == true)
 		{
-			Shop_Item_Renders[1]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
-			Shop_Item_Renders[1]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+			if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
+			{
+				Money_02 += 10;
 
-			Shop_Font_Renders[1]->Font->Off();
-			Shop_Font_Renders[1]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
-			Shop_Font_Renders[1]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+				std::string Money = std::to_string(Money_02);
+				std::string Money_Bout = std::to_string(Money_02 * Font_Renders[22]->FontNumber);
+
+				Money_Font_02->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+
+				Money_Font_bout_02->SetText("µ¸¿ò", Money_Bout, 20.0f, float4::WHITE, FW1_CENTER);
+			}
+		}
+
+		if (GameEngineInput::IsDown('S', this) && Select_Stop == true)
+		{
+			if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
+			{
+				Money_02 -= 10;
+
+				if (Money_02 <= 0)
+				{
+					Money_02 = 0;
+				}
+				std::string Money = std::to_string(Money_02);
+
+				std::string Money_Bout = std::to_string(Money_02 * Font_Renders[22]->FontNumber);
+
+				Money_Font_02->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+
+				Money_Font_bout_02->SetText("µ¸¿ò", Money_Bout, 20.0f, float4::WHITE, FW1_CENTER);
+			}
+		}
+	}
+
+	if (Item_Renders[23] != nullptr)
+	{
+
+		if (GameEngineInput::IsDown('J', this) && Select_Stop == false)
+		{
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 2)
+			{
+				Money_Font_03->On();
+				Money_Font_bout_03->On();
+				Shop_Item_03->Off();
+				test_05++;
+			}
+
+			else if (Inventory_pos_X == 5 && Inventory_pos_Y == 3)
+			{
+				Select_Stop = true;
+			}
+
+			if (test_05 == 1)
+			{
+
+
+
+			}
+
+			if (test_05 == 2)
+			{
+
+
+				Money_03 = 0;
+				test_05 = 0;
+
+				std::string Money = std::to_string(Money_03);
+
+				Money_Font_03->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+				Money_Font_03->Off();
+
+				Money_Font_bout_03->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+				Money_Font_bout_03->Off();
+			}
+		}
+
+		else if (GameEngineInput::IsDown('J', this) && Select_Stop == true)
+		{
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 3)
+			{
+
+				Shop_Item_03->On();
+				Shop_Item_03->Set_item_Select(static_cast<Shop_Items>(Item_Renders[23]->Item_Select - 1));
+				Shop_Item_03->Set_Money(Money_03 * Font_Renders[23]->FontNumber);
+				Shop_Item_03->Set_Prev_Pos({ -152 ,-175 });
+				Select_Stop = false;
+
+			}
 
 		}
-		if (Item_Renders_Order == 23)
-		{
-			Shop_Item_Renders[2]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
-			Shop_Item_Renders[2]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
 
-			Shop_Font_Renders[2]->Font->Off();
-			Shop_Font_Renders[2]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
-			Shop_Font_Renders[2]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+		if (GameEngineInput::IsDown('W', this) && Select_Stop == true)
+		{
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 3)
+			{
+				Money_03 += 10;
+
+				std::string Money = std::to_string(Money_03);
+				std::string Money_Bout = std::to_string(Money_03 * Font_Renders[23]->FontNumber);
+
+				Money_Font_03->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+
+				Money_Font_bout_03->SetText("µ¸¿ò", Money_Bout, 20.0f, float4::WHITE, FW1_CENTER);
+			}
+		}
+
+		if (GameEngineInput::IsDown('S', this) && Select_Stop == true)
+		{
+			if (Inventory_pos_X == 5 && Inventory_pos_Y == 3)
+			{
+				Money_03 -= 10;
+
+				if (Money_03 <= 0)
+				{
+					Money_03 = 0;
+				}
+				std::string Money = std::to_string(Money_03);
+
+				std::string Money_Bout = std::to_string(Money_03 * Font_Renders[23]->FontNumber);
+
+				Money_Font_03->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+
+				Money_Font_bout_03->SetText("µ¸¿ò", Money_Bout, 20.0f, float4::WHITE, FW1_CENTER);
+			}
+		}
+	}
+
+	if (Item_Renders[24] != nullptr)
+	{
+
+		if (GameEngineInput::IsDown('J', this) && Select_Stop == false)
+		{
+			if (Inventory_pos_X == 6 && Inventory_pos_Y == 2)
+			{
+				Money_Font_04->On();
+				Money_Font_bout_04->On();
+				Shop_Item_04->Off();
+				test_06++;
+			}
+
+			else if (Inventory_pos_X == 6 && Inventory_pos_Y == 3)
+			{
+				Select_Stop = true;
+			}
+
+			if (test_06 == 1)
+			{
+
+
+
+			}
+
+			if (test_06 == 2)
+			{
+
+
+				Money_04 = 0;
+				test_06 = 0;
+
+				std::string Money = std::to_string(Money_04);
+
+				Money_Font_04->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+				Money_Font_04->Off();
+
+				Money_Font_bout_04->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+				Money_Font_bout_04->Off();
+			}
+		}
+
+		else if (GameEngineInput::IsDown('J', this) && Select_Stop == true)
+		{
+			if (Inventory_pos_X == 6 && Inventory_pos_Y == 3)
+			{
+
+				Shop_Item_04->On();
+				Shop_Item_04->Set_item_Select(static_cast<Shop_Items>(Item_Renders[24]->Item_Select - 1));
+				Shop_Item_04->Set_Money(Money_04 * Font_Renders[24]->FontNumber);
+				Shop_Item_04->Set_Prev_Pos({ -107 ,-175 });
+				Select_Stop = false;
+			}
 
 		}
-		if (Item_Renders_Order == 24)
+
+		if (GameEngineInput::IsDown('W', this) && Select_Stop == true)
 		{
-			Shop_Item_Renders[3]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
-			Shop_Item_Renders[3]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+			if (Inventory_pos_X == 6 && Inventory_pos_Y == 3)
+			{
+				Money_04 += 10;
 
-			Shop_Font_Renders[3]->Font->Off();
-			Shop_Font_Renders[3]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
-			Shop_Font_Renders[3]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
+				std::string Money = std::to_string(Money_04);
+				std::string Money_Bout = std::to_string(Money_04 * Font_Renders[24]->FontNumber);
 
-		}*/
+				Money_Font_04->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+
+				Money_Font_bout_04->SetText("µ¸¿ò", Money_Bout, 20.0f, float4::WHITE, FW1_CENTER);
+			}
+		}
+
+		if (GameEngineInput::IsDown('S', this) && Select_Stop == true)
+		{
+			if (Inventory_pos_X == 6 && Inventory_pos_Y == 3)
+			{
+				Money_04 -= 10;
+
+				if (Money_04 <= 0)
+				{
+					Money_04 = 0;
+				}
+				std::string Money = std::to_string(Money_04);
+
+				std::string Money_Bout = std::to_string(Money_04 * Font_Renders[24]->FontNumber);
+
+				Money_Font_04->SetText("µ¸¿ò", Money, 20.0f, float4::WHITE, FW1_CENTER);
+
+				Money_Font_bout_04->SetText("µ¸¿ò", Money_Bout, 20.0f, float4::WHITE, FW1_CENTER);
+			}
+		}
 	}
 
 
 
-	//std::shared_ptr<class GameEngineUIRenderer> AD = Inventroy_Select;
+	//std::shared_ptr<class Shop_Item> AD = Shop_Item_01;
 
 
 

@@ -26,9 +26,17 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	bool Open_Col_Check = false;
 	bool check = false;
 	bool Black_Check = false;
 	bool test = false;
+	bool Close_Col_Check = false;
+	float Time = 0; 
+
+	bool Shop_Item_01 = false;
+	bool Shop_Item_02 = false;
+	bool Shop_Item_03 = false;
+	bool Shop_Item_04 = false;
 
 	EventParameter Up_Event;
 	EventParameter Down_Event;
@@ -50,10 +58,13 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Shop_door;
 	std::shared_ptr<class GameEngineSpriteRenderer> Pixel;
 	std::shared_ptr<class GameEngineSpriteRenderer> Black;
-
+	std::shared_ptr<class GameEngineSpriteRenderer> Shop_door_Closed;
 
 	std::shared_ptr<GameEngineCollision> Down_Col;
 	std::shared_ptr<GameEngineCollision> Up_Col;
+
+	
+	std::shared_ptr<GameEngineCollision> Open_Col;
 
 	std::shared_ptr<GameEngineCollision> Col;
 	std::shared_ptr<GameEngineCollision> Change_Town;
