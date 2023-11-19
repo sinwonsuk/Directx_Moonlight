@@ -12,6 +12,7 @@ Npc::~Npc()
 
 void Npc::Start()
 {
+	GameEngineInput::AddInputObject(this);
 
 	npc = CreateComponent<GameEngineSpriteRenderer>(-48);
 	npc->Transform.AddLocalPosition({ 0.0f,0.0f,50.0f });
@@ -28,32 +29,62 @@ void Npc::Start()
 	npc->ChangeAnimation("Npc_Up_Move");
 
 
+	Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::NPC);
+	Col->Transform.SetLocalScale({ 50.0f,50.0f });
+	Col->SetCollisionType(ColType::AABBBOX2D);
 
 
+	Col_Deal = CreateComponent<GameEngineCollision>(ContentsCollisionType::NPC_Deal);
+	Col_Deal->Transform.SetLocalScale({ 50.0f,100.0f });
+	Col_Deal->Transform.AddLocalPosition({ 0.0f,50.0f }); 
+	Col_Deal->SetCollisionType(ColType::AABBBOX2D);
+	Col_Deal->Off();
 
 	ChangeState(Npc_State::LeftMove);
+
 }
 
 void Npc::Update(float _Delta)
 {
-	//Shop_UI::this_Shop_UI->Shop_Item_01->Transform.SetWorldPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y + 100.0f });
+	
 
-	switch (MoveValue)
+	//Col->CollisionEvent(ContentsCollisionType::NPC, { .Enter = [&](class GameEngineCollision* _This,class GameEngineCollision* _collisions)
+	//{
+	//		//float4 ad = _This->GetActor()->Transform.GetLocalPosition();
+
+	//		//test = true;
+
+	//		Npc* npc2 = dynamic_cast<Npc*>(_collisions->GetActor());
+
+	//		npc2->test = true;
+
+	//		Npc* npc = dynamic_cast<Npc*>(_This->GetActor());
+
+	//		npc->test = false;
+
+	//} });
+
+	if (test == true)
 	{
-	case Npc_Move::Up_Left:
-		UpdateState(_Delta);
-		break;
-	case Npc_Move::Up_Right:
-		UpdateState_03(_Delta);
-		break;
-	case Npc_Move::Down_Left:
-		UpdateState_02(_Delta);
-		break;
-	case Npc_Move::Down_Right:
-		UpdateState_04(_Delta);
-		break;
-	default:
-		break;
+
+
+		switch (MoveValue)
+		{
+		case Npc_Move::Down_Right:
+			UpdateState(_Delta);
+			break;
+		case Npc_Move::Up_Right:
+			UpdateState_03(_Delta);
+			break;
+		case Npc_Move::Down_Left:
+			UpdateState_02(_Delta);
+			break;
+		case Npc_Move::Up_Left:
+			UpdateState_04(_Delta);
+			break;
+		default:
+			break;
+		}
 	}
 	
 	

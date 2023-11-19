@@ -28,7 +28,8 @@ public:
 	std::shared_ptr<class Shop_Item> Shop_Item_04;
 
 	
-
+	std::vector<std::shared_ptr<class Item_InforMation>> Item_Renders;
+	std::vector<std::shared_ptr<class Font_InforMation>> Font_Renders;
 
 protected:
 	void Start() override;
@@ -57,8 +58,7 @@ private:
 
 
 
-	std::vector<std::shared_ptr<class Item_InforMation>> Item_Renders;
-	std::vector<std::shared_ptr<class Font_InforMation>> Font_Renders;
+	
 
 	std::shared_ptr<class GameEngineUIRenderer> Shop_UI_01;
 	std::shared_ptr<class GameEngineUIRenderer> Shop_UI_02;

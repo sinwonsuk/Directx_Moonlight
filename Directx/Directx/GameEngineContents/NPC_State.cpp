@@ -3,6 +3,9 @@
 #include "Emoticon.h"
 #include "Shop_UI.h"
 #include "Shop_Item.h"
+#include "Player.h"
+#include "Player_UI.h"
+#include "Inventory.h"
 void Npc::ChangeState(Npc_State _State)
 {
 	Npc_State NextState = _State;
@@ -108,7 +111,12 @@ void Npc::LeftIdleUpdate_01(float _Time)
 
 	if (Time > 4.5)
 	{
-		
+		Shop_UI::this_Shop_UI->Shop_Item_04->Off();
+		Shop_UI::this_Shop_UI->Item_Renders[24]->item->Death(); 
+		Shop_UI::this_Shop_UI->Font_Renders[24]->Font->Death();
+
+		Shop_UI::this_Shop_UI->Item_Renders[24] = nullptr;
+		Shop_UI::this_Shop_UI->Font_Renders[24] = nullptr;
 
 		Time = 0;
 		ChangeState(Npc_State::RightMove);
@@ -119,26 +127,77 @@ void Npc::LeftIdleUpdate_01(float _Time)
 
 void Npc::DownIdleUpdate_01(float _Time)
 {
+	if (Col->Collision(ContentsCollisionType::Open_Col))
+	{
 
+		Number -= _Time * 2;
+
+		npc->GetColorData().MulColor = { 1,1,1,Number };
+
+		int a = 0;
+
+		if (Number <= 0.2)
+		{
+			this->Death();
+		}
+
+	}
 
 }
 
 void Npc::UpIdleUpdate_01(float _Time)
 {
-	Time += _Time;
+
+	Col_Deal->On();
+
+	if (Col_Deal->Collision(ContentsCollisionType::Player))
+	{
+		if (GameEngineInput::IsDown('E', this))
+		{
+			Col_Deal->Off();
+
+			Player_UI::gold += Shop_UI::this_Shop_UI->Shop_Item_04->Get_Money();
+			ChangeState(Npc_State::DownMove);
+			return;
+		}
+	}
+
+	/*if (GameEngineInput::IsDown('E', this))
+	{
+		Col_Deal->Off();
+		Player::this_Player->player_UI->SetGold(Shop_UI::this_Shop_UI->Shop_Item_01->Get_Money());
+		ChangeState(Npc_State::DownIdle);
+		return;
+	}*/
+	/*Time += _Time;
 
 	if (Time > 1)
 	{
 		Time = 0;
 		ChangeState(Npc_State::DownMove);
 		return;
-	}
+	}*/
 
 }
 
 void Npc::RightMoveUpdate_01(float _Time)
 {
-	
+
+	//Col->CollisionEvent(ContentsCollisionType::NPC, { .Enter = [&](class GameEngineCollision* _This,class GameEngineCollision* _collisions)
+	//{
+	//		//float4 ad = _This->GetActor()->Transform.GetLocalPosition();
+
+	//		//test = true;
+
+	//		Npc* npc2 = dynamic_cast<Npc*>(_collisions->GetActor());
+	//		npc2->test = true;
+
+	//		Npc* npc = dynamic_cast<Npc*>(_This->GetActor());
+
+	//		npc->test = false;
+
+	//} });
+
 	Transform.AddLocalPosition({ float4::RIGHT * _Time * Speed });
 
 	if (Transform.GetWorldPosition().X > 686)

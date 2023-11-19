@@ -11,6 +11,8 @@
 #include "Black_Out.h"
 #include "Dungeon_Scrol.h"
 #include "Spear.h"
+#include "Player_UI.h"
+
 PlayLevel::PlayLevel() 
 {
 

@@ -6,7 +6,7 @@
 class Player_UI : public GameEngineActor
 {
 public:
-
+	static int gold;
 	Player_UI();
 	~Player_UI();
 
@@ -21,6 +21,11 @@ public:
 
 	//void Move(float _Delta);
 
+	/*void SetGold(float _gold)
+	{
+		gold += _gold;
+	}*/
+
 	std::shared_ptr<class GameEngineUIRenderer> Hp_Bar;
 protected:
 	void Start() override;
@@ -33,7 +38,7 @@ private:
 	float Time = 0.0f;
 	//BabySlime_State StateValue = BabySlime_State::Walk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
-	
+	//int gold = 0;
 	std::shared_ptr<class GameEngineUIRenderer> Button_J;
 	std::shared_ptr<class GameEngineUIRenderer> Button_E;
 	std::shared_ptr<class GameEngineUIRenderer> Button_I;
@@ -50,6 +55,6 @@ private:
 	
 	std::shared_ptr<class GameEngineUIRenderer> Bag;
 	std::shared_ptr<class GameEngineUIRenderer> Pocket;
-
+	std::shared_ptr<class GameEngineUIRenderer> Gold_UI;
 
 };

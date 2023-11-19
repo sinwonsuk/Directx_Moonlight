@@ -103,7 +103,7 @@ public:
 	{
 		MoveValue = _MoveValue; 
 	}
-
+	bool test = true;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -111,20 +111,17 @@ protected:
 private:
 	float Speed = 50.0f;
 	float Time = 0.0f;
-
+	float Number = 1.0f; 
 	int Check = 0;
 
-	std::shared_ptr<GameEngineCollision> Mini_Col;
-
-	std::shared_ptr<GameEngineCollision> Left_Col;
-	std::shared_ptr<GameEngineCollision> Right_Col;
-	std::shared_ptr<GameEngineCollision> Bottom_Col;
-	std::shared_ptr<GameEngineCollision> Top_Col;
+	std::shared_ptr<GameEngineCollision> Col;
+	std::shared_ptr<GameEngineCollision> Col_Deal;
+	
 
 
 
 	Npc_State StateValue = Npc_State::LeftMove;
-	Npc_Move MoveValue = Npc_Move::Up_Left;
+	Npc_Move MoveValue = Npc_Move::Down_Right;
 	std::shared_ptr<class GameEngineSpriteRenderer> npc;
 
 	

@@ -15,19 +15,19 @@ Shop_Item::~Shop_Item()
 
 void Shop_Item::Start()
 {
-	item = CreateComponent<GameEngineSpriteRenderer>(100);
+	item = CreateComponent<GameEngineUIRenderer>(100);
 	item->SetSprite("Items", 0);
 	item->AutoSpriteSizeOn();
 	item->SetAutoScaleRatio(2.0f);
 
-	item_border = CreateComponent<GameEngineSpriteRenderer>(100);
+	item_border = CreateComponent<GameEngineUIRenderer>(100);
 	item_border->SetSprite("Card1_Price_Tag", 0);
 	item_border->AutoSpriteSizeOn();
 	item_border->SetAutoScaleRatio(1.5f);
 	item_border->Transform.AddLocalPosition({ 0.0f,25.0f }); 
 	std::string numberStr = std::to_string(0);
 
-	Font = CreateComponent<GameEngineSpriteRenderer>(100);
+	Font = CreateComponent<GameEngineUIRenderer>(100);
 	Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 	Font->Transform.AddLocalPosition({ 0.0f,40.0f });
 	
@@ -39,9 +39,7 @@ void Shop_Item::Update(float _Delta)
 {
 	GetLevel()->GetMainCamera()->SetYSort(-1); 
 
-	if (Item_Check == false)
-	{
-
+	
 		
 		switch (item_Select)
 		{
@@ -75,11 +73,8 @@ void Shop_Item::Update(float _Delta)
 		}
 		Item_Check = true;
 
-		
 
 	
-	
-	}
 	std::string numberStr = std::to_string(Money);
 	Font->SetText("µ¸¿ò", numberStr, 17.0f, float4::WHITE, FW1_CENTER);
 

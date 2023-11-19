@@ -2,6 +2,12 @@
 #include "NPC.h"
 #include "Npc_Manager.h"
 
+#include "Emoticon.h"
+#include "Shop_UI.h"
+#include "Shop_Item.h"
+#include "Player.h"
+#include "Player_UI.h"
+#include "Inventory.h"
 
 void Npc::UpdateState_04(float _Time)
 {
@@ -76,32 +82,79 @@ void Npc::LeftIdleUpdate_04(float _Time)
 
 void Npc::DownIdleUpdate_04(float _Time)
 {
+
 	Time += _Time;
 
-	if (Time > 1)
+	if (Time > 4.5)
 	{
+		Shop_UI::this_Shop_UI->Shop_Item_01->Off();
+
+		Shop_UI::this_Shop_UI->Item_Renders[21]->item->Death();
+		Shop_UI::this_Shop_UI->Font_Renders[21]->Font->Death();
+
+		Shop_UI::this_Shop_UI->Item_Renders[21] = nullptr;
+		Shop_UI::this_Shop_UI->Font_Renders[21] = nullptr;
 		Time = 0;
 		ChangeState(Npc_State::RightMove);
 		return;
 	}
 
+
+	if (Col->Collision(ContentsCollisionType::Open_Col))
+	{
+
+		Number -= _Time * 2;
+
+		npc->GetColorData().MulColor = { 1,1,1,Number };
+
+		int a = 0;
+
+		if (Number <= 0.2)
+		{
+			this->Death();
+		}
+
+	}
+
+
 }
 
 void Npc::UpIdleUpdate_04(float _Time)
 {
-	Time += _Time;
+	Col_Deal->On();
 
-	if (Time > 1)
+	if (Col_Deal->Collision(ContentsCollisionType::Player))
 	{
-		Time = 0;
-		ChangeState(Npc_State::DownMove);
-		return;
+		if (GameEngineInput::IsDown('E', this))
+		{
+			Col_Deal->Off();
+			Player_UI::gold += Shop_UI::this_Shop_UI->Shop_Item_01->Get_Money();
+
+			
+			ChangeState(Npc_State::DownMove);
+			return;
+		}
 	}
+
 
 }
 
 void Npc::RightMoveUpdate_04(float _Time)
 {
+	/*Col->CollisionEvent(ContentsCollisionType::NPC, { .Enter = [&](class GameEngineCollision* _This,class GameEngineCollision* _collisions)
+		{
+			Npc* npc2 = dynamic_cast<Npc*>(_collisions->GetActor());
+			npc2->test = true;
+
+			Npc* npc = dynamic_cast<Npc*>(_This->GetActor());
+
+			npc->test = false;
+
+	} });*/
+
+
+
+
 	if (Transform.GetWorldPosition().X < 576)
 	{
 		Transform.AddLocalPosition({ float4::RIGHT * _Time * Speed });
@@ -130,29 +183,7 @@ void Npc::RightMoveUpdate_04(float _Time)
 		return;
 	}
 
-	/*{
-		float4 Dir = { 585.9,-485 };
-		float4 Dir2 = { 624,-561 };
-		float4 Dir3 = Dir2 - Dir;
-		Dir3.Normalize();
-
-		if (Transform.GetWorldPosition().X < 615)
-		{
-			Transform.AddLocalPosition({ Dir3 * _Time * Speed });
-		}
-
-
-		if (Transform.GetWorldPosition().X > 615)
-		{
-			Transform.AddLocalPosition({ float4::RIGHT * _Time * Speed });
-		}
-
-		if (Transform.GetWorldPosition().X > 684)
-		{
-			ChangeState(Npc_State::UpIdle);
-			return;
-		}
-	}*/
+	
 }
 
 void Npc::LeftMoveUpdate_04(float _Time)
@@ -185,6 +216,9 @@ void Npc::LeftMoveUpdate_04(float _Time)
 
 		if (Transform.GetWorldPosition().X < 480)
 		{
+			std::shared_ptr<Emoticon> Object = GetLevel()->CreateActor<Emoticon>();
+			Object->Transform.SetWorldPosition({ Transform.GetWorldPosition().X + 30,Transform.GetWorldPosition().Y + 40.0f });
+
 			ChangeState(Npc_State::DownIdle);
 			return;
 		}

@@ -74,4 +74,6 @@ enum class ContentsCollisionType
 	Bag,
 	Table_UI,
 	Open_Col,
+	NPC,
+	NPC_Deal
 };
