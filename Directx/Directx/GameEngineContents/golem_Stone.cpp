@@ -2,6 +2,7 @@
 #include "golem_Stone.h"
 #include "Player.h"
 #include "Spear_Effect.h"
+#include "Inventory.h"
 golem_Stone::golem_Stone()
 {
 }
@@ -63,13 +64,27 @@ void golem_Stone::Start()
 		{
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
-			Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
-			Hp -= 30.0f;
+
+
+
+			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
+				Hp -= 20.0f;
+			}
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.4f,0.0f });
+				Hp -= 40.0f;
+			}
+
 			Weapon_Collision_Check = true;
+			ColorCheck = true;
 		}
 
 		Monster_BaseBar->On();
 		Monster_HpBar->On();
+
 		//Hp -= 10.0f;
 
 
@@ -124,6 +139,8 @@ void golem_Stone::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
+		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
+
 		Monster_HpBar->Off(); 
 		Monster_Weapon->Off();
 		Number -= _Delta * 1;

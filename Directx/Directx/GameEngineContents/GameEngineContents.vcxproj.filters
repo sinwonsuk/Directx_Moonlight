@@ -225,6 +225,8 @@
     <ClCompile Include="Emoticon.cpp" />
     <ClCompile Include="Emoticon_State.cpp" />
     <ClCompile Include="Npc_Manager.cpp" />
+    <ClCompile Include="Big_Sword.cpp" />
+    <ClCompile Include="Big_Sword_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -411,6 +413,7 @@
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Emoticon.h" />
     <ClInclude Include="Npc_Manager.h" />
+    <ClInclude Include="Big_Sword.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

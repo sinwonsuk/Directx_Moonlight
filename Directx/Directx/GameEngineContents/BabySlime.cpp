@@ -3,6 +3,7 @@
 #include "Spear.h"
 #include "Spear_Effect.h"
 #include "Player.h"
+#include "Inventory.h"
 BabySlime::BabySlime()
 {
 
@@ -74,16 +75,27 @@ void BabySlime::Start()
 		{
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
-			Monster_HpBar->Transform.AddLocalScale({ -0.5f,0.0f });
-			ColorCheck = true;
-			Weapon_Collision_Check = true;
-			Hp -= 10.0f;
-		}
-		
 
+
+
+			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
+				Hp -= 20.0f;
+			}
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.4f,0.0f });
+				Hp -= 40.0f;
+			}
+
+			Weapon_Collision_Check = true;
+			ColorCheck = true;
+		}
 
 		Monster_BaseBar->On();
 		Monster_HpBar->On();
+
 
 	
 	};

@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 #include "Spear.h"
+#include "Big_Sword.h"
 enum class PlayerState
 {
 	Start,
@@ -33,9 +34,26 @@ enum class PlayerState
 	Spear_Right_Attack_01,
 	Spear_Right_Attack_02,
 	Spear_Right_Attack_03,
+
 	Death,
 	Bed,
 	Scale,
+
+	Sword_Left_Attack_01,
+	Sword_Left_Attack_02,
+	Sword_Left_Attack_03,
+
+	Sword_Right_Attack_01,
+	Sword_Right_Attack_02,
+	Sword_Right_Attack_03,
+
+	Sword_Down_Attack_01,
+	Sword_Down_Attack_02,
+	Sword_Down_Attack_03,
+
+	Sword_Up_Attack_01,
+	Sword_Up_Attack_02,
+	Sword_Up_Attack_03,
 
 };
 // Ό³Έν :
@@ -95,11 +113,30 @@ public:
 	void Spear_Up_AttackUpdate_01(float _Time);
 	void Spear_Up_AttackUpdate_02(float _Time);
 	void Spear_Up_AttackUpdate_03(float _Time);
+
 	void DeathUpdate(float _Time);
 	void BedUpdate(float _Time);
 	void ScaleUpdate(float _Time);
 	void WeaponManager(Spear_State _SpearState, PlayerState state, PlayerState _playstate);
+	void Sword_Weapon_Manager(Big_Sword_State _SpearState, PlayerState state, PlayerState _playstate);
+	void Attack(Spear_State Spear_Weapon , Big_Sword_State Sword_Weapon, PlayerState Spearstate, PlayerState _Swordstate);
 
+
+	void Sword_Left_AttackUpdate_01(float _Time);
+	void Sword_Left_AttackUpdate_02(float _Time);
+	void Sword_Left_AttackUpdate_03(float _Time);
+
+	void Sword_Right_AttackUpdate_01(float _Time);
+	void Sword_Right_AttackUpdate_02(float _Time);
+	void Sword_Right_AttackUpdate_03(float _Time);
+
+	void Sword_Up_AttackUpdate_01(float _Time);
+	void Sword_Up_AttackUpdate_02(float _Time);
+	void Sword_Up_AttackUpdate_03(float _Time);
+
+	void Sword_Down_AttackUpdate_01(float _Time);
+	void Sword_Down_AttackUpdate_02(float _Time);
+	void Sword_Down_AttackUpdate_03(float _Time);
 	
 	PlayerState GetPlayerStateValue()
 	{

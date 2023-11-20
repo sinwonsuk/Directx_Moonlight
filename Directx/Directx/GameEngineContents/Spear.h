@@ -1,5 +1,5 @@
 #pragma once
-#pragma once
+
 #include <GameEngineCore/GameEngineActor.h>
 enum class Spear_State
 {
@@ -23,9 +23,7 @@ enum class Spear_State
 class Spear : public GameEngineActor
 {
 public:
-	// constrcuter destructer
-
-	//static Big_Sword* this_Player;
+	
 	Spear();
 	~Spear();
 

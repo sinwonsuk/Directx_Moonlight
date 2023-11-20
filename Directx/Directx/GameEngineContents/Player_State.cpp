@@ -3,6 +3,8 @@
 #include "Spear.h"
 #include "TileMap.h"
 #include "Black_Out.h"
+#include "Big_Sword.h"
+#include "Inventory.h"
 void Player::ChangeState(PlayerState _State)
 {
 	PlayerState NextState = _State;
@@ -95,6 +97,43 @@ void Player::ChangeState(PlayerState _State)
 	case PlayerState::Bed:
 		AnimationCheck("Bed");
 		break;
+	case PlayerState::Sword_Left_Attack_01:
+		AnimationCheck("Big_Sword_Left_Attack_01");
+		break;
+	case PlayerState::Sword_Left_Attack_02:
+		AnimationCheck("Big_Sword_Left_Attack_02");
+		break;
+	case PlayerState::Sword_Left_Attack_03:
+		AnimationCheck("Big_Sword_Left_Attack_03");
+		break;
+	case PlayerState::Sword_Right_Attack_01:
+		AnimationCheck("Big_Sword_Right_Attack_01");
+		break;
+	case PlayerState::Sword_Right_Attack_02:
+		AnimationCheck("Big_Sword_Right_Attack_02");
+		break;
+	case PlayerState::Sword_Right_Attack_03:
+		AnimationCheck("Big_Sword_Right_Attack_03");
+		break;
+	case PlayerState::Sword_Up_Attack_01:
+		AnimationCheck("Big_Sword_Up_Attack_01");
+		break;
+	case PlayerState::Sword_Up_Attack_02:
+		AnimationCheck("Big_Sword_Up_Attack_02");
+		break;
+	case PlayerState::Sword_Up_Attack_03:
+		AnimationCheck("Big_Sword_Up_Attack_03");
+		break;
+	case PlayerState::Sword_Down_Attack_01:
+		AnimationCheck("Big_Sword_Down_Attack_01");
+		break;
+	case PlayerState::Sword_Down_Attack_02:
+		AnimationCheck("Big_Sword_Down_Attack_02");
+		break;
+	case PlayerState::Sword_Down_Attack_03:
+		AnimationCheck("Big_Sword_Down_Attack_03");
+		break;
+
 	case PlayerState::Scale:
 		int a = 0;
 		break;
@@ -186,6 +225,45 @@ void Player::UpdateState(float _Time)
 	case PlayerState::Spear_Up_Attack_03:
 		Spear_Up_AttackUpdate_03(_Time);
 		break;
+	case PlayerState::Sword_Left_Attack_01:
+		Sword_Left_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Sword_Left_Attack_02:
+		Sword_Left_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Sword_Left_Attack_03:
+		Sword_Left_AttackUpdate_03(_Time);
+		break;
+
+	case PlayerState::Sword_Right_Attack_01:
+		Sword_Right_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Sword_Right_Attack_02:
+		Sword_Right_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Sword_Right_Attack_03:
+		Sword_Right_AttackUpdate_03(_Time);
+		break;
+
+	case PlayerState::Sword_Down_Attack_01:
+		Sword_Down_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Sword_Down_Attack_02:
+		Sword_Down_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Sword_Down_Attack_03:
+		Sword_Down_AttackUpdate_03(_Time);
+		break;
+	case PlayerState::Sword_Up_Attack_01:
+		Sword_Up_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Sword_Up_Attack_02:
+		Sword_Up_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Sword_Up_Attack_03:
+		Sword_Up_AttackUpdate_03(_Time);
+		break;
+
 	case PlayerState::Death:
 		DeathUpdate(_Time);
 		break;
@@ -230,8 +308,8 @@ void Player::RightIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-
-	if (GameEngineInput::IsDown('J', this))
+	Attack(Spear_State::Spear_Right_01, Big_Sword_State::Big_Sword_Right_01,PlayerState::Spear_Right_Attack_01, PlayerState::Sword_Left_Attack_01);
+	/*if (GameEngineInput::IsDown('J', this))
 	{
 		
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>(-100);
@@ -240,7 +318,7 @@ void Player::RightIdleUpdate(float _Time)
 		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Right_Attack_01);
 		return;
-	}
+	}*/
 
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
@@ -276,14 +354,8 @@ void Player::LeftIdleUpdate(float _Time)
 		return;
 	}
 
-	if (GameEngineInput::IsDown('J', this))
-	{
-		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
-		Object->ChangeState(Spear_State::Spear_Left_01);
-		spears.push_back(Object);
-		ChangeState(PlayerState::Spear_Left_Attack_01);
-		return;
-	}
+	Attack(Spear_State::Spear_Left_01,Big_Sword_State::Big_Sword_Left_01,PlayerState::Spear_Left_Attack_01, PlayerState::Sword_Left_Attack_01);
+	
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollLeft);
@@ -317,14 +389,14 @@ void Player::DownIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-
-	if (GameEngineInput::IsDown('J', this))
+	Attack(Spear_State::Spear_Down_01, Big_Sword_State::Big_Sword_Down_01, PlayerState::Spear_Down_Attack_01, PlayerState::Sword_Down_Attack_01);
+	/*if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Down_Attack_01);
 		return;
-	}
+	}*/
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollDown);
@@ -358,14 +430,17 @@ void Player::UpIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-	if (GameEngineInput::IsDown('J', this))
+
+	Attack(Spear_State::Spear_Up_01, Big_Sword_State::Big_Sword_Up_01, PlayerState::Spear_Up_Attack_01, PlayerState::Sword_Up_Attack_01);
+
+	/*if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Up_01);
 		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Up_Attack_01);
 		return;
-	}
+	}*/
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollUp);
@@ -400,14 +475,17 @@ void Player::RightMoveUpdate(float _Time)
 		return;
 	}
 
-	if (GameEngineInput::IsDown('J', this))
+	Attack(Spear_State::Spear_Right_01, Big_Sword_State::Big_Sword_Right_01, PlayerState::Spear_Right_Attack_01, PlayerState::Sword_Right_Attack_01);
+
+
+	/*if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Right_01);
 		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Right_Attack_01);
 		return;
-	}
+	}*/
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollRight);
@@ -444,14 +522,17 @@ void Player::LeftMoveUpdate(float _Time)
 		return;
 	}
 
-	if (GameEngineInput::IsDown('J', this))
-	{
-		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
-		Object->ChangeState(Spear_State::Spear_Left_01);
-		spears.push_back(Object);
-		ChangeState(PlayerState::Spear_Left_Attack_01);
-		return;
-	}
+	Attack(Spear_State::Spear_Left_01, Big_Sword_State::Big_Sword_Left_01, PlayerState::Spear_Left_Attack_01, PlayerState::Sword_Left_Attack_01);
+
+
+	//if (GameEngineInput::IsDown('J', this))
+	//{
+	//	std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
+	//	Object->ChangeState(Spear_State::Spear_Left_01);
+	//	spears.push_back(Object);
+	//	ChangeState(PlayerState::Spear_Left_Attack_01);
+	//	return;
+	//}
 
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
@@ -484,14 +565,15 @@ void Player::DownMoveUpdate(float _Time)
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
+	Attack(Spear_State::Spear_Down_01, Big_Sword_State::Big_Sword_Down_01, PlayerState::Spear_Down_Attack_01, PlayerState::Sword_Down_Attack_01);
 
-	if (GameEngineInput::IsDown('J', this))
+	/*if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Down_Attack_01);
 		return;
-	}
+	}*/
 
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
@@ -524,15 +606,16 @@ void Player::UpMoveUpdate(float _Time)
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
+	Attack(Spear_State::Spear_Up_01, Big_Sword_State::Big_Sword_Up_01, PlayerState::Spear_Up_Attack_01, PlayerState::Sword_Up_Attack_01);
 
-	if (GameEngineInput::IsDown('J', this))
+	/*if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(Spear_State::Spear_Up_01);
 		spears.push_back(Object);
 		ChangeState(PlayerState::Spear_Up_Attack_01);
 		return;
-	}
+	}*/
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		ChangeState(PlayerState::RollUp);
@@ -957,8 +1040,143 @@ void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerSt
 		ChangeState(_playstate);
 		return;
 	}
+}
+
+void Player::Sword_Weapon_Manager(Big_Sword_State _SpearState, PlayerState state, PlayerState _playstate)
+{
 
 
+
+	if (player->GetCurIndex() > 1)
+	{
+		if (GameEngineInput::IsDown('J', this))
+		{
+			AttackCheck = true;
+		}
+	}
+
+
+	if (AttackCheck == true && player->IsCurAnimationEnd())
+	{
+		std::shared_ptr<Big_Sword> Object = GetLevel()->CreateActor<Big_Sword>();
+		Object->ChangeState(_SpearState);
+		AttackCheck = false;
+		//spears.push_back(Object);
+		ChangeState(state);
+		return;
+	}
+
+	else if (player->IsCurAnimationEnd())
+	{
+		ChangeState(_playstate);
+		return;
+	}
+}
+
+void Player::Attack(Spear_State Spear_Weapon, Big_Sword_State Sword_Weapon, PlayerState Spearstate, PlayerState _Swordstate)
+{
+	if (GameEngineInput::IsDown('J', this))
+	{
+		if (Inventory::Item_Renders[26] == nullptr)
+		{
+			return;
+		}
+
+		if (Inventory::Item_Renders[26]->Item_Select == 6)
+		{
+			std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
+			Object->ChangeState(Spear_Weapon);
+			spears.push_back(Object);
+			ChangeState(Spearstate);
+			return;
+		}
+
+		else if (Inventory::Item_Renders[26]->Item_Select == 7)
+		{
+			std::shared_ptr<Big_Sword> Object = GetLevel()->CreateActor<Big_Sword>();
+			Object->ChangeState(Sword_Weapon);
+			ChangeState(_Swordstate);
+			return;
+		}
+	}
+}
+
+
+void Player::Sword_Left_AttackUpdate_01(float _Time)
+{
+	Sword_Weapon_Manager(Big_Sword_State::Big_Sword_Left_02, PlayerState::Sword_Left_Attack_02, PlayerState::LeftIdle);
+}
+
+void Player::Sword_Left_AttackUpdate_02(float _Time)
+{
+	Sword_Weapon_Manager(Big_Sword_State::Big_Sword_Left_03, PlayerState::Sword_Left_Attack_03, PlayerState::LeftIdle);
+}
+
+void Player::Sword_Left_AttackUpdate_03(float _Time)
+{
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::LeftIdle);
+		return;
+	}
+}
+
+void Player::Sword_Right_AttackUpdate_01(float _Time)
+{
+	Sword_Weapon_Manager(Big_Sword_State::Big_Sword_Right_02, PlayerState::Sword_Right_Attack_02, PlayerState::RightIdle);
+}
+
+void Player::Sword_Right_AttackUpdate_02(float _Time)
+{
+	Sword_Weapon_Manager(Big_Sword_State::Big_Sword_Right_03, PlayerState::Sword_Right_Attack_03, PlayerState::RightIdle);
+}
+
+void Player::Sword_Right_AttackUpdate_03(float _Time)
+{
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::RightIdle);
+		return;
+	}
+}
+
+void Player::Sword_Up_AttackUpdate_01(float _Time)
+{
+	Sword_Weapon_Manager(Big_Sword_State::Big_Sword_Up_02, PlayerState::Sword_Up_Attack_02, PlayerState::UpIdle);
+}
+
+void Player::Sword_Up_AttackUpdate_02(float _Time)
+{
+	Sword_Weapon_Manager(Big_Sword_State::Big_Sword_Up_03, PlayerState::Sword_Up_Attack_03, PlayerState::UpIdle);
+}
+
+void Player::Sword_Up_AttackUpdate_03(float _Time)
+{
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::UpIdle);
+		return;
+	}
+
+}
+
+void Player::Sword_Down_AttackUpdate_01(float _Time)
+{
+	Sword_Weapon_Manager(Big_Sword_State::Big_Sword_Down_02, PlayerState::Sword_Down_Attack_02, PlayerState::DownIdle);
+}
+
+void Player::Sword_Down_AttackUpdate_02(float _Time)
+{
+	Sword_Weapon_Manager(Big_Sword_State::Big_Sword_Down_03, PlayerState::Sword_Down_Attack_03, PlayerState::DownIdle);
+}
+
+void Player::Sword_Down_AttackUpdate_03(float _Time)
+{
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::DownIdle);
+		return;
+	}
 }
 
 

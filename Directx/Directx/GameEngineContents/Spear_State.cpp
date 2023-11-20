@@ -1,10 +1,7 @@
 #include "PreCompile.h"
 #include "Spear.h"
 #include "Player.h"
-void Spear::TestEvent(GameEngineRenderer* _Renderer)
-{
 
-}
 void Spear::ChangeState(Spear_State _State)
 {
 	Spear_State NextState = _State;

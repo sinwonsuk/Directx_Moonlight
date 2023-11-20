@@ -2,7 +2,7 @@
 #include "golem_Wizard.h"
 #include "Player.h"
 #include "Spear_Effect.h"
-
+#include "Inventory.h"
 golem_Wizard::golem_Wizard()
 {
 }
@@ -57,15 +57,24 @@ void golem_Wizard::Start()
 		{
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
-			Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
+
+			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
+				Hp -= 20.0f;
+			}
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.4f,0.0f });
+				Hp -= 40.0f;
+			}
+
 			Weapon_Collision_Check = true;
-			ColorCheck = true; 
-			Hp -= 10.0f;
+			ColorCheck = true;
 		}
 
-		//Hp -= 10.0f;
-		Monster_BaseBar->On(); 
-		Monster_HpBar->On(); 
+		Monster_BaseBar->On();
+		Monster_HpBar->On();
 
 
 		/*GameEngineActor* Actor = col->GetActor();
@@ -117,6 +126,8 @@ void golem_Wizard::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
+		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
+
 		Number -= _Delta * 1;
 		Wizard->GetColorData().MulColor = { 1,1,1,Number };
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
@@ -160,74 +171,149 @@ void golem_Wizard::Update(float _Delta)
 }
 void golem_Wizard::MonsterPushUpdate(float _Delta)
 {
-	if (Weapon_Collision_Check == true)
+	if (Inventory::This_Inventory->Item_Renders[26] != nullptr)
 	{
-		PushTime_Check += _Delta;
-	}
+		if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
+		{
+			if (Weapon_Collision_Check == true)
+			{
+				PushTime_Check += _Delta;
+			}
 
 
-	if (Weapon_Collision_Check == true && PushTime_Check <= 0.15 && ObjectCollision(_Delta, Transform.GetWorldPosition(), MapName, Dir) == true)
-	{
+			if (Weapon_Collision_Check == true && PushTime_Check <= 0.15 && ObjectCollision(_Delta, Transform.GetWorldPosition(), MapName, Dir) == true)
+			{
+				if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01)
+				{
+					Transform.AddLocalPosition({ float4::DOWN * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_02)
+				{
+					Transform.AddLocalPosition({ float4::DOWN * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_03)
+				{
+					Transform.AddLocalPosition({ float4::DOWN * PushSpeed * _Delta });
+				}
+
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_01)
+				{
+					Transform.AddLocalPosition({ float4::LEFT * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_02)
+				{
+					Transform.AddLocalPosition({ float4::LEFT * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_03)
+				{
+					Transform.AddLocalPosition({ float4::LEFT * PushSpeed * _Delta });
+				}
 
 
-		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01)
-		{
-			Transform.AddLocalPosition({ float4::DOWN * PushSpeed * _Delta });
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_01)
+				{
+					Transform.AddLocalPosition({ float4::UP * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_02)
+				{
+					Transform.AddLocalPosition({ float4::UP * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_03)
+				{
+					Transform.AddLocalPosition({ float4::UP * PushSpeed * _Delta });
+				}
+
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_01)
+				{
+					Transform.AddLocalPosition({ float4::RIGHT * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_02)
+				{
+					Transform.AddLocalPosition({ float4::RIGHT * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_03)
+				{
+					Transform.AddLocalPosition({ float4::RIGHT * PushSpeed * _Delta });
+				}
+			}
+
+			if (PushTime_Check > 0.55)
+			{
+				PushTime_Check = 0;
+				Weapon_Collision_Check = false;
+			}
 		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_02)
+		else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
 		{
-			Transform.AddLocalPosition({ float4::DOWN * PushSpeed * _Delta });
-		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_03)
-		{
-			Transform.AddLocalPosition({ float4::DOWN * PushSpeed * _Delta });
+			if (Weapon_Collision_Check == true)
+			{
+				PushTime_Check += _Delta;
+			}
+
+
+			if (Weapon_Collision_Check == true && PushTime_Check <= 0.15 && ObjectCollision(_Delta, Transform.GetWorldPosition(), MapName, Dir) == true)
+			{
+				if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Down_Attack_01)
+				{
+					Transform.AddLocalPosition({ float4::DOWN * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Down_Attack_02)
+				{
+					Transform.AddLocalPosition({ float4::DOWN * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Down_Attack_03)
+				{
+					Transform.AddLocalPosition({ float4::DOWN * PushSpeed * _Delta });
+				}
+
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Left_Attack_01)
+				{
+					Transform.AddLocalPosition({ float4::LEFT * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Left_Attack_02)
+				{
+					Transform.AddLocalPosition({ float4::LEFT * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Left_Attack_03)
+				{
+					Transform.AddLocalPosition({ float4::LEFT * PushSpeed * _Delta });
+				}
+
+
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Up_Attack_01)
+				{
+					Transform.AddLocalPosition({ float4::UP * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Up_Attack_02)
+				{
+					Transform.AddLocalPosition({ float4::UP * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Up_Attack_03)
+				{
+					Transform.AddLocalPosition({ float4::UP * PushSpeed * _Delta });
+				}
+
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Right_Attack_01)
+				{
+					Transform.AddLocalPosition({ float4::RIGHT * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Right_Attack_02)
+				{
+					Transform.AddLocalPosition({ float4::RIGHT * PushSpeed * _Delta });
+				}
+				else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Right_Attack_03)
+				{
+					Transform.AddLocalPosition({ float4::RIGHT * PushSpeed * _Delta });
+				}
+			}
+
+			if (PushTime_Check > 0.55)
+			{
+				PushTime_Check = 0;
+				Weapon_Collision_Check = false;
+			}
 		}
 
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_01)
-		{
-			Transform.AddLocalPosition({ float4::LEFT * PushSpeed * _Delta });
-		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_02)
-		{
-			Transform.AddLocalPosition({ float4::LEFT * PushSpeed * _Delta });
-		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_03)
-		{
-			Transform.AddLocalPosition({ float4::LEFT * PushSpeed * _Delta });
-		}
-
-
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_01)
-		{
-			Transform.AddLocalPosition({ float4::UP * PushSpeed * _Delta });
-		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_02)
-		{
-			Transform.AddLocalPosition({ float4::UP * PushSpeed * _Delta });
-		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_03)
-		{
-			Transform.AddLocalPosition({ float4::UP * PushSpeed * _Delta });
-		}
-
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_01)
-		{
-			Transform.AddLocalPosition({ float4::RIGHT * PushSpeed * _Delta });
-		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_02)
-		{
-			Transform.AddLocalPosition({ float4::RIGHT * PushSpeed * _Delta });
-		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_03)
-		{
-			Transform.AddLocalPosition({ float4::RIGHT * PushSpeed * _Delta });
-		}
-	}
-
-	if (PushTime_Check > 0.55)
-	{
-		PushTime_Check = 0;
-		Weapon_Collision_Check = false;
 	}
 }
 

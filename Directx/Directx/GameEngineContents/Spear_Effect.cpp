@@ -26,64 +26,63 @@ void Spear_Effect::Update(float _Delta)
 	{
 	case Effect_State::Monster:
 	{
-		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01)
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Down_Attack_01)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
 		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_02)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_02 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Down_Attack_02)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
 		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_03)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_03 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Down_Attack_03)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
 		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_01)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_01 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Left_Attack_01)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_02)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_02 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Left_Attack_02)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_03)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_03 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Left_Attack_03)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 		}
 
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_01)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_01 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Right_Attack_01)
 		{
 			Efffet->On();
 			
 		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_02)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_02 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Right_Attack_02)
 		{
 			Efffet->On();
 			
 		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_03)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_03 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Right_Attack_03)
 		{
-			Efffet->On();
-			
+			Efffet->On();	
 		}
 
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_01)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_01 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Up_Attack_01)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
 		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_02)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_02 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Up_Attack_02)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
 		}
-		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_03)
+		else if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_03 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Up_Attack_03)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
@@ -93,19 +92,19 @@ void Spear_Effect::Update(float _Delta)
 	
 	case Effect_State::Boss:
 	{
-		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01)
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_01 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Down_Attack_01)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
 			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X, Player::this_Player->Transform.GetWorldPosition().Y + 100.0f });
 		}
-		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_02)
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_02 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Down_Attack_02)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
 			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X, Player::this_Player->Transform.GetWorldPosition().Y + 100.0f });
 		}
-		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_03)
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Down_Attack_03 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Down_Attack_03)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,270.0f });
@@ -114,19 +113,19 @@ void Spear_Effect::Update(float _Delta)
 
 
 
-		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_01)
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_01 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Left_Attack_01)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 100, Player::this_Player->Transform.GetWorldPosition().Y });
 		}
-		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_02)
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_02 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Left_Attack_02)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 100, Player::this_Player->Transform.GetWorldPosition().Y });
 		}
-		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_03)
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Left_Attack_03 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Left_Attack_03)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
@@ -135,19 +134,19 @@ void Spear_Effect::Update(float _Delta)
 
 
 
-		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_01)
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_01 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Up_Attack_01)
 		{
 			Efffet->On();
 			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X, Player::this_Player->Transform.GetWorldPosition().Y + 100 });
 			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
 		}
-		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_02)
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_02 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Up_Attack_02)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
 			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X, Player::this_Player->Transform.GetWorldPosition().Y +100});
 		}
-		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_03)
+		 if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Up_Attack_03 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Up_Attack_03)
 		{
 			Efffet->On();
 			Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
@@ -157,17 +156,17 @@ void Spear_Effect::Update(float _Delta)
 
 
 
-	    if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_01)
+	    if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_01 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Right_Attack_01)
 		{
 			Efffet->On();
 			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 100, Player::this_Player->Transform.GetWorldPosition().Y });
 		}
-		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_02)
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_02 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Right_Attack_02)
 		{
 			Efffet->On();
 			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X +100, Player::this_Player->Transform.GetWorldPosition().Y });
 		}
-		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_03)
+		if (Player::this_Player->GetPlayerStateValue() == PlayerState::Spear_Right_Attack_03 || Player::this_Player->GetPlayerStateValue() == PlayerState::Sword_Right_Attack_03)
 		{
 			Efffet->On();
 			Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 100, Player::this_Player->Transform.GetWorldPosition().Y });

@@ -30,8 +30,13 @@ public:
 	void MonsterDeath(std::shared_ptr<GameEngineActor> _Object);
 	void Monster_Collsision(float4 _Delta);
 	void Monster_Damage(std::shared_ptr<GameEngineSpriteRenderer> _Object, float _Delta);
+	void MonsterPushUpdate(float4 _Delta);
 
 protected:
+	float PushSpeed = 300.0f;
+	bool Collision_Check = false;
+	float PushTime_Check = 0.0f;
+
 	float PathTime = 0.0f;
 	//std::shared_ptr<class GameEngineCollision> Monster;
 	float4 thisPos = {};

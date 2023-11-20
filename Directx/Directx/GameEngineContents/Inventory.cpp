@@ -219,8 +219,7 @@ void Inventory::Start()
 
 
 
-	if (GetLevel()->GetName() == "PlayLevel")
-	{
+	
 		Inventroy_Screen = CreateComponent<GameEngineUIRenderer>();
 		Inventroy_Screen->SetSprite("Inventory", 0);
 		Inventroy_Screen->AutoSpriteSizeOn();
@@ -234,10 +233,10 @@ void Inventory::Start()
 		Inventroy_Select->Off();
 		Inventroy_Select->Transform.SetWorldPosition({ -395,163 });
 
-	}
+	
 
 
-	else if (GetLevel()->GetName() == "ShopLevel")
+	/*else if (GetLevel()->GetName() == "ShopLevel")
 	{
 		Inventroy_Screen = CreateComponent<GameEngineUIRenderer>();
 		Inventroy_Screen->SetSprite("ShopUI", 0);
@@ -278,7 +277,41 @@ void Inventory::Start()
 		Shop_UI_04->SetAutoScaleRatio(2.0f);
 		Shop_UI_04->Off();
 		
+	}*/
+
+
+
+
+
+
+	{
+		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+
+		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+		InforMation->item->SetSprite("Training_Spear.png");
+		InforMation->item->AutoSpriteSizeOn();
+		InforMation->item->SetAutoScaleRatio(2.0f);
+		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[6][0]->Move);
+		InforMation->Item_Select = 6;
+		InforMation->Move = Inventroy_informations[6][0]->Move;
+		InforMation->item->Off();
+		Item_Renders[26] = InforMation;
 	}
+	//dadsad
+	{
+		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+
+		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+		InforMation->item->SetSprite("Items",6);
+		InforMation->item->AutoSpriteSizeOn();
+		InforMation->item->SetAutoScaleRatio(1.5f);
+		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[3][3]->Move);
+		InforMation->Item_Select = 7;
+		InforMation->Move = Inventroy_informations[3][3]->Move;
+		InforMation->item->Off();
+		Item_Renders[18] = InforMation;
+	}
+	
 
 }
 
@@ -660,11 +693,20 @@ void Inventory::Update(float _DeltaTime)
 		Item_Move = false;
 
 
+		if (Inventory_pos_Y == 0 && Inventory_pos_X == 6)
+		{
+			Transform_2_1 = 26;
+		}
+		else if (Inventory_pos_Y == 0 && Inventory_pos_X == 5)
+		{
+			Transform_2_1 = 25;
+		}
+		else
+		{
+			Transform_2_1 = Inventory_pos_Y * 5 + Inventory_pos_X;
+		}
 
 		
-		
-
-		Transform_2_1 = Inventory_pos_Y * 5 + Inventory_pos_X;
 
 
 		if (Item_Renders[Transform_2_1] != nullptr && Item_Renders[Item_Renders_Order] != nullptr)
@@ -714,9 +756,15 @@ void Inventory::Update(float _DeltaTime)
 			//Item_Renders[Item_Renders_Order]->item->Death();
 			Item_Renders[Item_Renders_Order] = nullptr;
 			Item_overlap.erase(Item_type[Item_Renders_Order]->Item_Oreder);
-			Font_Renders[Item_Renders_Order]->Font->On(); 
+
+			if (Font_Renders[Item_Renders_Order] != nullptr)
+			{
+				Font_Renders[Item_Renders_Order]->Font->On();
+				Font_Renders[Item_Renders_Order] = nullptr;
+			}
+			
 			//Font_Renders[Item_Renders_Order]->Font->Death();
-			Font_Renders[Item_Renders_Order] = nullptr;
+			
 
 
 		}
@@ -788,9 +836,12 @@ void Inventory::Update(float _DeltaTime)
 		if (Item_Renders[Item_Renders_Order] != nullptr)
 		{
 			Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
-			Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+			Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };		
+		}
 
-			Font_Renders[Item_Renders_Order]->Font->Off(); 
+		if (Font_Renders[Item_Renders_Order] != nullptr)
+		{
+			Font_Renders[Item_Renders_Order]->Font->Off();
 			Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
 			Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
 		}

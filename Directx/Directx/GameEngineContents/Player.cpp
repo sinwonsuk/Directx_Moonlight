@@ -8,6 +8,7 @@
 #include "Monster.h"
 #include "ContentsEnum.h"
 #include "Player_UI.h"
+
 Player* Player::this_Player; 
 Leveltype Player::LevelType = Leveltype::Town;
 int Player::RandomSeed = 0;
@@ -75,6 +76,25 @@ void Player::Start()
 		player->CreateAnimation("Spear_Up_Attack_01", "Spear_Up_Attack_01", 0.1f, -1, -1, false);
 		player->CreateAnimation("Spear_Up_Attack_02", "Spear_Up_Attack_02", 0.1f, -1, -1, false);
 		player->CreateAnimation("Spear_Up_Attack_03", "Spear_Up_Attack_03", 0.1f, -1, -1, false);
+
+		player->CreateAnimation("Big_Sword_Left_Attack_01", "Big_Sword_Left_Attack_01", 0.1f, -1, -1, false);
+		player->CreateAnimation("Big_Sword_Left_Attack_02", "Big_Sword_Left_Attack_02", 0.1f, -1, -1, false);
+		player->CreateAnimation("Big_Sword_Left_Attack_03", "Big_Sword_Left_Attack_03", 0.1f, -1, -1, false);
+
+
+		player->CreateAnimation("Big_Sword_Right_Attack_01", "Big_Sword_Right_Attack_01", 0.1f, -1, -1, false);
+		player->CreateAnimation("Big_Sword_Right_Attack_02", "Big_Sword_Right_Attack_02", 0.1f, -1, -1, false);
+		player->CreateAnimation("Big_Sword_Right_Attack_03", "Big_Sword_Right_Attack_03", 0.1f, -1, -1, false);
+
+		player->CreateAnimation("Big_Sword_Up_Attack_01", "Big_Sword_Up_Attack_01", 0.1f, -1, -1, false);
+		player->CreateAnimation("Big_Sword_Up_Attack_02", "Big_Sword_Up_Attack_02", 0.1f, -1, -1, false);
+		player->CreateAnimation("Big_Sword_Up_Attack_03", "Big_Sword_Up_Attack_03", 0.1f, -1, -1, false);
+
+		player->CreateAnimation("Big_Sword_Down_Attack_01", "Big_Sword_Down_Attack_01", 0.1f, -1, -1, false);
+		player->CreateAnimation("Big_Sword_Down_Attack_02", "Big_Sword_Down_Attack_02", 0.1f, -1, -1, false);
+		player->CreateAnimation("Big_Sword_Down_Attack_03", "Big_Sword_Down_Attack_03", 0.1f, -1, -1, false);
+
+
 		player->CreateAnimation("Player_Death", "Player_Death", 0.1f, -1, -1, false);
 		player->CreateAnimation("Bed", "Bed", 0.1f, -1, -1, false);
 
@@ -302,6 +322,11 @@ void Player::HitUpdate(float _Delta)
 
 void Player::Update(float _Delta)
 {
+	if (_Delta == 0)
+	{
+		return;
+	}
+
 
 	if (GameEngineInput::IsDown('1', this))
 	{

@@ -48,7 +48,7 @@ void Spear::Start()
 	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-	Transform.SetLocalPosition({ HalfWindowScale.X+10000.0f, -HalfWindowScale.Y, -500.0f });
+	Transform.SetLocalPosition({ HalfWindowScale.X+100000.0f, -HalfWindowScale.Y, -500.0f });
 
 	/*{
 		ad = CreateComponent<GameEngineSpriteRenderer>(99);

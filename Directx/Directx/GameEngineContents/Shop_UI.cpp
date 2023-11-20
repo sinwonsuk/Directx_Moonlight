@@ -241,7 +241,7 @@ void Shop_UI::Update(float _DeltaTime)
 {
 	if (Inven_sync == false)
 	{
-		for (size_t i = 0; i < Inventory::This_Inventory->Item_Renders.size(); i++)
+		for (size_t i = 0; i < Inventory::This_Inventory->Item_Renders.size()-10; i++)
 		{
 			if (Inventory::This_Inventory->Item_Renders[i] != nullptr)
 			{
@@ -259,14 +259,12 @@ void Shop_UI::Update(float _DeltaTime)
 					InforMation->Move = { Inventory::This_Inventory->Item_Renders[i]->Move };
 					//Item_Renders[i]->Item_Select = 5;
 					Item_Renders[i] = InforMation;
-
-
 				}
 			}
 
 		}
 
-		for (size_t i = 0; i < Inventory::This_Inventory->Font_Renders.size(); i++)
+		for (size_t i = 0; i < Inventory::This_Inventory->Font_Renders.size()-10; i++)
 		{
 
 			if (Inventory::This_Inventory->Font_Renders[i] != nullptr)
@@ -814,6 +812,7 @@ void Shop_UI::Update(float _DeltaTime)
 				Inventory::This_Inventory->Font_Renders[Transform_2_1] = nullptr;
 				Inventory::This_Inventory->Item_Renders[Transform_2_1]->item->Death();
 				Inventory::This_Inventory->Item_Renders[Transform_2_1] = nullptr;
+
 
 				Item_Renders[Transform_2_1]->item->On();
 
