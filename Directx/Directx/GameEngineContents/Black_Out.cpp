@@ -31,7 +31,7 @@ void Black_Out::Update(float _Delta)
 		black->GetColorData().PlusColor = {0, 0, 0, Number };
 	}
 
-	if (Number > 0.99)
+	if (Number > 0.91)
 	{
 		Check = true;
 	}

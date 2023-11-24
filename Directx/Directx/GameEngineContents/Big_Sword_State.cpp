@@ -2,14 +2,6 @@
 #include "Big_Sword.h"
 #include "Player.h"
 
-Big_Sword::Big_Sword()
-{
-}
-
-Big_Sword::~Big_Sword()
-{
-}
-
 void Big_Sword::ChangeState(Big_Sword_State _State)
 {
 	Big_Sword_State NextState = _State;

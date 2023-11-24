@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include "Spear.h"
 #include "Big_Sword.h"
+#include "Gloves.h"
 enum class PlayerState
 {
 	Start,
@@ -54,6 +55,25 @@ enum class PlayerState
 	Sword_Up_Attack_01,
 	Sword_Up_Attack_02,
 	Sword_Up_Attack_03,
+
+
+	Gloves_Left_Attack_01,
+	Gloves_Left_Attack_02,
+	Gloves_Left_Attack_03,
+
+	Gloves_Right_Attack_01,
+	Gloves_Right_Attack_02,
+	Gloves_Right_Attack_03,
+
+	Gloves_Down_Attack_01,
+	Gloves_Down_Attack_02,
+	Gloves_Down_Attack_03,
+
+	Gloves_Up_Attack_01,
+	Gloves_Up_Attack_02,
+	Gloves_Up_Attack_03,
+
+
 
 };
 // Ό³Έν :
@@ -119,7 +139,9 @@ public:
 	void ScaleUpdate(float _Time);
 	void WeaponManager(Spear_State _SpearState, PlayerState state, PlayerState _playstate);
 	void Sword_Weapon_Manager(Big_Sword_State _SpearState, PlayerState state, PlayerState _playstate);
-	void Attack(Spear_State Spear_Weapon , Big_Sword_State Sword_Weapon, PlayerState Spearstate, PlayerState _Swordstate);
+	void Gloves_Weapon_Manager(Gloves_State _SpearState, PlayerState state, PlayerState _playstate);
+
+	void Attack(Spear_State Spear_Weapon , Big_Sword_State Sword_Weapon, Gloves_State Gloves_Weapon ,PlayerState Spearstate, PlayerState _Swordstate,PlayerState _Glovestate);
 
 
 	void Sword_Left_AttackUpdate_01(float _Time);
@@ -138,6 +160,23 @@ public:
 	void Sword_Down_AttackUpdate_02(float _Time);
 	void Sword_Down_AttackUpdate_03(float _Time);
 	
+
+	void Gloves_Left_AttackUpdate_01(float _Time);
+	void Gloves_Left_AttackUpdate_02(float _Time);
+	void Gloves_Left_AttackUpdate_03(float _Time);
+
+	void Gloves_Right_AttackUpdate_01(float _Time);
+	void Gloves_Right_AttackUpdate_02(float _Time);
+	void Gloves_Right_AttackUpdate_03(float _Time);
+
+	void Gloves_Up_AttackUpdate_01(float _Time);
+	void Gloves_Up_AttackUpdate_02(float _Time);
+	void Gloves_Up_AttackUpdate_03(float _Time);
+
+	void Gloves_Down_AttackUpdate_01(float _Time);
+	void Gloves_Down_AttackUpdate_02(float _Time);
+	void Gloves_Down_AttackUpdate_03(float _Time);
+
 	PlayerState GetPlayerStateValue()
 	{
 		return StateValue;

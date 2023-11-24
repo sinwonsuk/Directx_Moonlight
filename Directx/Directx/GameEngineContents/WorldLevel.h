@@ -26,5 +26,7 @@ protected:
 	bool check = false;
 private:
 	std::shared_ptr<class TownMap> Map;
+	std::shared_ptr<class Inventory> inventory;
+	std::shared_ptr<class Black_Smith> Black_smith;
 };
 

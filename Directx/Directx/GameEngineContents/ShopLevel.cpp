@@ -54,14 +54,13 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	{
 		ad = CreateActor<Inventory>();
-		//ad->This_Inventory = AD;
 	}
 	{
 		std::shared_ptr<Shop_UI> Object = CreateActor<Shop_UI>();
-		//ad->This_Inventory = AD;
+	
 	}
 
-	//AD = Inventory::This_Inventory;
+	
 
 	
 

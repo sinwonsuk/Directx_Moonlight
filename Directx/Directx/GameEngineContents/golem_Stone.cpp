@@ -69,13 +69,18 @@ void golem_Stone::Start()
 
 			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
-				Hp -= 20.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
+				Hp -= 30.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
 			{
 				Monster_HpBar->Transform.AddLocalScale({ -0.4f,0.0f });
 				Hp -= 40.0f;
+			}
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 8)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
+				Hp -= 20.0f;
 			}
 
 			Weapon_Collision_Check = true;

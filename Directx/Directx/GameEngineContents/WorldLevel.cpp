@@ -5,6 +5,8 @@
 #include "Shop_House.h"
 #include "Black.h"
 #include "Black_Out.h"
+#include "Inventory.h"
+#include "Black_Smith.h"
 WorldLevel::WorldLevel()
 {
 }
@@ -51,7 +53,9 @@ void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	std::shared_ptr<Black> Object = CreateActor<Black>(ContentsObjectType::Player);
 
-	
+	{
+		inventory = CreateActor<Inventory>();
+	}
 
 	{
 		std::shared_ptr<Player> Object = CreateActor<Player>(ContentsObjectType::Player);	
@@ -78,7 +82,7 @@ void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	
 	
 
-
+	Black_smith = CreateActor<Black_Smith>(ContentsObjectType::BackGround);
 
 	
 	int a = 0;
@@ -86,6 +90,9 @@ void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 void WorldLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
+
+	Black_smith->Death(); 
+	inventory->Death();
 	Map->black_Out->Death(); 
 	Map->black_Out_02->Death();
 	Map->Death(); 

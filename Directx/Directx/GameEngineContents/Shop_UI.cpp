@@ -834,6 +834,26 @@ void Shop_UI::Update(float _DeltaTime)
 
 			Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
 			Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+			
+
+
+
+
+
+			if (Item_Renders_Order < 21 && Inventory::This_Inventory->Item_Renders[Item_Renders_Order] != nullptr)
+			{
+				Inventory::This_Inventory->Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
+				Inventory::This_Inventory->Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
+			}
+				
+		}
+		
+		if (Font_Renders[Item_Renders_Order] != nullptr)
+		{
+
+
+
+
 			Font_Renders[Item_Renders_Order]->Font->Off();
 			Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
 			Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
@@ -844,18 +864,14 @@ void Shop_UI::Update(float _DeltaTime)
 
 
 			if (Item_Renders_Order < 21 && Inventory::This_Inventory->Item_Renders[Item_Renders_Order] != nullptr)
-			{
-				Inventory::This_Inventory->Item_Renders[Item_Renders_Order]->item->Transform.SetWorldPosition(Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move);
-				Inventory::This_Inventory->Item_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move };
-
+			{		
 				Inventory::This_Inventory->Font_Renders[Item_Renders_Order]->Font->Off();
 				Inventory::This_Inventory->Font_Renders[Item_Renders_Order]->Font->Transform.SetWorldPosition({ Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X + 20,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y - 5 });
 				Inventory::This_Inventory->Font_Renders[Item_Renders_Order]->Move = { Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.X,Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move.Y };
-
-
 			}
-				
+
 		}
+
 
 	}
 

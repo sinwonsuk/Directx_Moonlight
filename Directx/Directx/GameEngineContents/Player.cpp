@@ -81,7 +81,6 @@ void Player::Start()
 		player->CreateAnimation("Big_Sword_Left_Attack_02", "Big_Sword_Left_Attack_02", 0.1f, -1, -1, false);
 		player->CreateAnimation("Big_Sword_Left_Attack_03", "Big_Sword_Left_Attack_03", 0.1f, -1, -1, false);
 
-
 		player->CreateAnimation("Big_Sword_Right_Attack_01", "Big_Sword_Right_Attack_01", 0.1f, -1, -1, false);
 		player->CreateAnimation("Big_Sword_Right_Attack_02", "Big_Sword_Right_Attack_02", 0.1f, -1, -1, false);
 		player->CreateAnimation("Big_Sword_Right_Attack_03", "Big_Sword_Right_Attack_03", 0.1f, -1, -1, false);
@@ -93,6 +92,23 @@ void Player::Start()
 		player->CreateAnimation("Big_Sword_Down_Attack_01", "Big_Sword_Down_Attack_01", 0.1f, -1, -1, false);
 		player->CreateAnimation("Big_Sword_Down_Attack_02", "Big_Sword_Down_Attack_02", 0.1f, -1, -1, false);
 		player->CreateAnimation("Big_Sword_Down_Attack_03", "Big_Sword_Down_Attack_03", 0.1f, -1, -1, false);
+
+
+		player->CreateAnimation("Gloves_Left_Attack_01", "Gloves_Left_Attack_01", 0.08f, -1, -1, false);
+		player->CreateAnimation("Gloves_Left_Attack_02", "Gloves_Left_Attack_02", 0.08f, -1, -1, false);
+		player->CreateAnimation("Gloves_Left_Attack_03", "Gloves_Left_Attack_03", 0.08f, -1, -1, false);
+
+		player->CreateAnimation("Gloves_Right_Attack_01", "Gloves_Right_Attack_01", 0.08f, -1, -1, false);
+		player->CreateAnimation("Gloves_Right_Attack_02", "Gloves_Right_Attack_02", 0.08f, -1, -1, false);
+		player->CreateAnimation("Gloves_Right_Attack_03", "Gloves_Right_Attack_03", 0.08f, -1, -1, false);
+
+		player->CreateAnimation("Gloves_Up_Attack_01", "Gloves_Up_Attack_01", 0.08f, -1, -1, false);
+		player->CreateAnimation("Gloves_Up_Attack_02", "Gloves_Up_Attack_02", 0.08f, -1, -1, false);
+		player->CreateAnimation("Gloves_Up_Attack_03", "Gloves_Up_Attack_03", 0.08f, -1, -1, false);
+
+		player->CreateAnimation("Gloves_Down_Attack_01", "Gloves_Down_Attack_01", 0.08f, -1, -1, false);
+		player->CreateAnimation("Gloves_Down_Attack_02", "Gloves_Down_Attack_02", 0.08f, -1, -1, false);
+		player->CreateAnimation("Gloves_Down_Attack_03", "Gloves_Down_Attack_03", 0.08f, -1, -1, false);
 
 
 		player->CreateAnimation("Player_Death", "Player_Death", 0.1f, -1, -1, false);
@@ -324,6 +340,7 @@ void Player::Update(float _Delta)
 {
 	if (_Delta == 0)
 	{
+
 		return;
 	}
 

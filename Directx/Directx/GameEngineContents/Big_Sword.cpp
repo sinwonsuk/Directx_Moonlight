@@ -2,6 +2,16 @@
 #include "Big_Sword.h"
 #include "Player.h"
 
+Big_Sword::Big_Sword()
+{
+
+}
+
+Big_Sword::~Big_Sword()
+{
+
+}
+
 
 void Big_Sword::Start()
 {

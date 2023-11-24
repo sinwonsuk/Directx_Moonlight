@@ -198,9 +198,8 @@ void Inventory::Start()
 
 				Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
 				Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+				Font_inforMation->FontNumber = Font_Renders[i]->FontNumber;
 				Font_inforMation->Font->Transform.SetWorldPosition({ Font_Renders[i]->Move.X+20,Font_Renders[i]->Move.Y - 5 });
-				//Font_inforMation->Item_Select = Font_Renders[i]->Item_Select;
-				//Font_inforMation->Move = { Font_Renders[i]->Move.X,Font_Renders[i]->Move.Y};
 				Font_inforMation->Font->Off();
 			
 
@@ -311,7 +310,19 @@ void Inventory::Start()
 		InforMation->item->Off();
 		Item_Renders[18] = InforMation;
 	}
-	
+	{
+		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+
+		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+		InforMation->item->SetSprite("Items", 7);
+		InforMation->item->AutoSpriteSizeOn();
+		InforMation->item->SetAutoScaleRatio(1.5f);
+		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[2][3]->Move);
+		InforMation->Item_Select = 8;
+		InforMation->Move = Inventroy_informations[2][3]->Move;
+		InforMation->item->Off();
+		Item_Renders[17] = InforMation;
+	}
 
 }
 
@@ -467,6 +478,7 @@ void Inventory::Update(float _DeltaTime)
 					{
 						Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
 						Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+						Font_inforMation->FontNumber = 1;
 						Font_inforMation->Font->Transform.SetWorldPosition({ Inventroy_informations[Item_pos_X + Item_Plus_X][Item_pos_Y + Item_Plus_Y]->Move.X + 20,Inventroy_informations[Item_pos_X][Item_pos_Y + Item_Plus_Y]->Move.Y - 5 });
 						Font_inforMation->Font->Off();
 						Font_inforMation->Item_Select = Item_Sprite_Number;
@@ -500,29 +512,34 @@ void Inventory::Update(float _DeltaTime)
 					if (Font_Renders[Font_Check]->Item_Select == 1)
 					{
 						std::string numberStr = std::to_string(Font_Renders[Font_Check]->FontNumber+=1);
+						Font_Renders[Font_Check]->FontNumber = Font_Renders[Font_Check]->FontNumber;
 						Font_Renders[Font_Check ]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 					}
 					else if (Font_Renders[Font_Check ]->Item_Select == 2)
 					{
 						std::string numberStr = std::to_string(Font_Renders[Font_Check]->FontNumber += 1);
+						Font_Renders[Font_Check]->FontNumber = Font_Renders[Font_Check]->FontNumber;
 						Font_Renders[Font_Check ]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 
 					}
 					else if (Font_Renders[Font_Check]->Item_Select == 3)
 					{
 						std::string numberStr = std::to_string(Font_Renders[Font_Check]->FontNumber += 1);
+						Font_Renders[Font_Check]->FontNumber = Font_Renders[Font_Check]->FontNumber;
 						Font_Renders[Font_Check ]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 
 					}
 					else if (Font_Renders[Font_Check ]->Item_Select == 4)
 					{
 						std::string numberStr = std::to_string(Font_Renders[Font_Check]->FontNumber += 1);
+						Font_Renders[Font_Check]->FontNumber = Font_Renders[Font_Check]->FontNumber;
 						Font_Renders[Font_Check ]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 		
 					}
 					else if (Font_Renders[Font_Check ]->Item_Select == 5)
 					{
 						std::string numberStr = std::to_string(Font_Renders[Font_Check]->FontNumber += 1);
+						Font_Renders[Font_Check]->FontNumber = Font_Renders[Font_Check]->FontNumber;
 						Font_Renders[Font_Check ]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 			
 					}
@@ -721,7 +738,7 @@ void Inventory::Update(float _DeltaTime)
 					Font_Renders[Transform_2_1]->FontNumber += Font_Renders[Item_Renders_Order]->FontNumber;
 
 					std::string numberStr = std::to_string(Font_Renders[Transform_2_1]->FontNumber);
-
+					Font_Renders[Transform_2_1]->FontNumber = Font_Renders[Transform_2_1]->FontNumber;
 					Font_Renders[Transform_2_1]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 
 					Item_Renders[Item_Renders_Order]->item->Death(); 

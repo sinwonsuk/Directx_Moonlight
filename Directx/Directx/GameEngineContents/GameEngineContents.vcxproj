@@ -170,6 +170,8 @@
     <ClCompile Include="Big_Sword_State.cpp" />
     <ClCompile Include="Black.cpp" />
     <ClCompile Include="Black_Out.cpp" />
+    <ClCompile Include="Black_Smith.cpp" />
+    <ClCompile Include="Black_Smith_State.cpp" />
     <ClCompile Include="Boss_Arm.cpp" />
     <ClCompile Include="Boss_Arm_State.cpp" />
     <ClCompile Include="Boss_Brick.cpp" />
@@ -201,6 +203,8 @@
     <ClCompile Include="Emoticon.cpp" />
     <ClCompile Include="Emoticon_State.cpp" />
     <ClCompile Include="gloem_Wazard_Missile.cpp" />
+    <ClCompile Include="Gloves.cpp" />
+    <ClCompile Include="Gloves_State.cpp" />
     <ClCompile Include="golemturret.cpp" />
     <ClCompile Include="golemturret_missile.cpp" />
     <ClCompile Include="golemturret_missile_State.cpp" />
@@ -291,6 +295,7 @@
     <ClInclude Include="Big_Sword.h" />
     <ClInclude Include="Black.h" />
     <ClInclude Include="Black_Out.h" />
+    <ClInclude Include="Black_Smith.h" />
     <ClInclude Include="Boss_Arm.h" />
     <ClInclude Include="Boss_Brick.h" />
     <ClInclude Include="Boss_Map.h" />
@@ -318,6 +323,7 @@
     <ClInclude Include="Dungeon_Scrol.h" />
     <ClInclude Include="Emoticon.h" />
     <ClInclude Include="gloem_Wazard_Missile.h" />
+    <ClInclude Include="Gloves.h" />
     <ClInclude Include="golemturret.h" />
     <ClInclude Include="golemturret_missile.h" />
     <ClInclude Include="golem_Solder.h" />

@@ -62,7 +62,7 @@ public:
 	{
 		Custom_Pos = _Custom_Pos;
 	}
-
+	static std::vector<std::vector<std::shared_ptr<Inventory_Move>>> Inventroy_informations;
 	static std::vector<std::shared_ptr<class Item_InforMation>> Item_Renders;
 	static std::vector<std::shared_ptr<class Font_InforMation>> Font_Renders;
 	static std::map<int, float4> Item_overlap;
@@ -121,7 +121,7 @@ private:
 
 
 	// 인벤토리 구현 
-	static std::vector<std::vector<std::shared_ptr<Inventory_Move>>> Inventroy_informations;
+	
 	static std::vector<std::shared_ptr<Inventory_Move>> Inventroy_information;
 
 

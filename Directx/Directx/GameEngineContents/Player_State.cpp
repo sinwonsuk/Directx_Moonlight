@@ -5,6 +5,7 @@
 #include "Black_Out.h"
 #include "Big_Sword.h"
 #include "Inventory.h"
+#include "Gloves.h"
 void Player::ChangeState(PlayerState _State)
 {
 	PlayerState NextState = _State;
@@ -134,6 +135,42 @@ void Player::ChangeState(PlayerState _State)
 		AnimationCheck("Big_Sword_Down_Attack_03");
 		break;
 
+	case PlayerState::Gloves_Left_Attack_01:
+		AnimationCheck("Gloves_Left_Attack_01");
+		break;
+	case PlayerState::Gloves_Left_Attack_02:
+		AnimationCheck("Gloves_Left_Attack_02");
+		break;
+	case PlayerState::Gloves_Left_Attack_03:
+		AnimationCheck("Gloves_Left_Attack_03");
+		break;
+	case PlayerState::Gloves_Right_Attack_01:
+		AnimationCheck("Gloves_Right_Attack_01");
+		break;
+	case PlayerState::Gloves_Right_Attack_02:
+		AnimationCheck("Gloves_Right_Attack_02");
+		break;
+	case PlayerState::Gloves_Right_Attack_03:
+		AnimationCheck("Gloves_Right_Attack_03");
+		break;
+	case PlayerState::Gloves_Up_Attack_01:
+		AnimationCheck("Gloves_Up_Attack_01");
+		break;
+	case PlayerState::Gloves_Up_Attack_02:
+		AnimationCheck("Gloves_Up_Attack_02");
+		break;
+	case PlayerState::Gloves_Up_Attack_03:
+		AnimationCheck("Gloves_Up_Attack_03");
+		break;
+	case PlayerState::Gloves_Down_Attack_01:
+		AnimationCheck("Gloves_Down_Attack_01");
+		break;
+	case PlayerState::Gloves_Down_Attack_02:
+		AnimationCheck("Gloves_Down_Attack_02");
+		break;
+	case PlayerState::Gloves_Down_Attack_03:
+		AnimationCheck("Gloves_Down_Attack_03");
+		break;
 	case PlayerState::Scale:
 		int a = 0;
 		break;
@@ -264,6 +301,44 @@ void Player::UpdateState(float _Time)
 		Sword_Up_AttackUpdate_03(_Time);
 		break;
 
+	case PlayerState::Gloves_Left_Attack_01:
+		Gloves_Left_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Gloves_Left_Attack_02:
+		Gloves_Left_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Gloves_Left_Attack_03:
+		Gloves_Left_AttackUpdate_03(_Time);
+		break;
+
+	case PlayerState::Gloves_Right_Attack_01:
+		Gloves_Right_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Gloves_Right_Attack_02:
+		Gloves_Right_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Gloves_Right_Attack_03:
+		Gloves_Right_AttackUpdate_03(_Time);
+		break;
+
+	case PlayerState::Gloves_Down_Attack_01:
+		Gloves_Down_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Gloves_Down_Attack_02:
+		Gloves_Down_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Gloves_Down_Attack_03:
+		Gloves_Down_AttackUpdate_03(_Time);
+		break;
+	case PlayerState::Gloves_Up_Attack_01:
+		Gloves_Up_AttackUpdate_01(_Time);
+		break;
+	case PlayerState::Gloves_Up_Attack_02:
+		Gloves_Up_AttackUpdate_02(_Time);
+		break;
+	case PlayerState::Gloves_Up_Attack_03:
+		Gloves_Up_AttackUpdate_03(_Time);
+		break;
 	case PlayerState::Death:
 		DeathUpdate(_Time);
 		break;
@@ -308,7 +383,7 @@ void Player::RightIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-	Attack(Spear_State::Spear_Right_01, Big_Sword_State::Big_Sword_Right_01,PlayerState::Spear_Right_Attack_01, PlayerState::Sword_Left_Attack_01);
+	Attack(Spear_State::Spear_Right_01, Big_Sword_State::Big_Sword_Right_01, Gloves_State::Gloves_Right_01, PlayerState::Spear_Right_Attack_01, PlayerState::Sword_Right_Attack_01, PlayerState::Gloves_Right_Attack_01);
 	/*if (GameEngineInput::IsDown('J', this))
 	{
 		
@@ -354,7 +429,7 @@ void Player::LeftIdleUpdate(float _Time)
 		return;
 	}
 
-	Attack(Spear_State::Spear_Left_01,Big_Sword_State::Big_Sword_Left_01,PlayerState::Spear_Left_Attack_01, PlayerState::Sword_Left_Attack_01);
+	Attack(Spear_State::Spear_Left_01,Big_Sword_State::Big_Sword_Left_01, Gloves_State::Gloves_Left_01, PlayerState::Spear_Left_Attack_01, PlayerState::Sword_Left_Attack_01, PlayerState::Gloves_Left_Attack_01);
 	
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
@@ -389,7 +464,7 @@ void Player::DownIdleUpdate(float _Time)
 		ChangeState(PlayerState::DownMove);
 		return;
 	}
-	Attack(Spear_State::Spear_Down_01, Big_Sword_State::Big_Sword_Down_01, PlayerState::Spear_Down_Attack_01, PlayerState::Sword_Down_Attack_01);
+	Attack(Spear_State::Spear_Down_01, Big_Sword_State::Big_Sword_Down_01, Gloves_State::Gloves_Down_01, PlayerState::Spear_Down_Attack_01, PlayerState::Sword_Down_Attack_01, PlayerState::Gloves_Down_Attack_01);
 	/*if (GameEngineInput::IsDown('J', this))
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
@@ -431,7 +506,7 @@ void Player::UpIdleUpdate(float _Time)
 		return;
 	}
 
-	Attack(Spear_State::Spear_Up_01, Big_Sword_State::Big_Sword_Up_01, PlayerState::Spear_Up_Attack_01, PlayerState::Sword_Up_Attack_01);
+	Attack(Spear_State::Spear_Up_01, Big_Sword_State::Big_Sword_Up_01, Gloves_State::Gloves_Up_01, PlayerState::Spear_Up_Attack_01, PlayerState::Sword_Up_Attack_01, PlayerState::Gloves_Up_Attack_01);
 
 	/*if (GameEngineInput::IsDown('J', this))
 	{
@@ -475,7 +550,7 @@ void Player::RightMoveUpdate(float _Time)
 		return;
 	}
 
-	Attack(Spear_State::Spear_Right_01, Big_Sword_State::Big_Sword_Right_01, PlayerState::Spear_Right_Attack_01, PlayerState::Sword_Right_Attack_01);
+	Attack(Spear_State::Spear_Right_01, Big_Sword_State::Big_Sword_Right_01, Gloves_State::Gloves_Right_01, PlayerState::Spear_Right_Attack_01, PlayerState::Sword_Right_Attack_01, PlayerState::Gloves_Right_Attack_01);
 
 
 	/*if (GameEngineInput::IsDown('J', this))
@@ -522,7 +597,7 @@ void Player::LeftMoveUpdate(float _Time)
 		return;
 	}
 
-	Attack(Spear_State::Spear_Left_01, Big_Sword_State::Big_Sword_Left_01, PlayerState::Spear_Left_Attack_01, PlayerState::Sword_Left_Attack_01);
+	Attack(Spear_State::Spear_Left_01, Big_Sword_State::Big_Sword_Left_01, Gloves_State::Gloves_Left_01, PlayerState::Spear_Left_Attack_01, PlayerState::Sword_Left_Attack_01, PlayerState::Gloves_Left_Attack_01);
 
 
 	//if (GameEngineInput::IsDown('J', this))
@@ -565,7 +640,7 @@ void Player::DownMoveUpdate(float _Time)
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
-	Attack(Spear_State::Spear_Down_01, Big_Sword_State::Big_Sword_Down_01, PlayerState::Spear_Down_Attack_01, PlayerState::Sword_Down_Attack_01);
+	Attack(Spear_State::Spear_Down_01, Big_Sword_State::Big_Sword_Down_01, Gloves_State::Gloves_Down_01, PlayerState::Spear_Down_Attack_01, PlayerState::Sword_Down_Attack_01, PlayerState::Gloves_Down_Attack_01);
 
 	/*if (GameEngineInput::IsDown('J', this))
 	{
@@ -606,7 +681,7 @@ void Player::UpMoveUpdate(float _Time)
 		ChangeState(PlayerState::LeftMove);
 		return;
 	}
-	Attack(Spear_State::Spear_Up_01, Big_Sword_State::Big_Sword_Up_01, PlayerState::Spear_Up_Attack_01, PlayerState::Sword_Up_Attack_01);
+	Attack(Spear_State::Spear_Up_01, Big_Sword_State::Big_Sword_Up_01, Gloves_State::Gloves_Up_01, PlayerState::Spear_Up_Attack_01, PlayerState::Sword_Up_Attack_01 , PlayerState::Gloves_Up_Attack_01);
 
 	/*if (GameEngineInput::IsDown('J', this))
 	{
@@ -1073,7 +1148,35 @@ void Player::Sword_Weapon_Manager(Big_Sword_State _SpearState, PlayerState state
 	}
 }
 
-void Player::Attack(Spear_State Spear_Weapon, Big_Sword_State Sword_Weapon, PlayerState Spearstate, PlayerState _Swordstate)
+void Player::Gloves_Weapon_Manager(Gloves_State _GlovesState, PlayerState state, PlayerState _playstate)
+{
+	if (player->GetCurIndex() > 1)
+	{
+		if (GameEngineInput::IsDown('J', this))
+		{
+			AttackCheck = true;
+		}
+	}
+
+	if (AttackCheck == true && player->IsCurAnimationEnd())
+	{
+		std::shared_ptr<Gloves> Object = GetLevel()->CreateActor<Gloves>();
+		Object->ChangeState(_GlovesState);
+		AttackCheck = false;
+		//spears.push_back(Object);
+		ChangeState(state);
+		return;
+	}
+
+	else if (player->IsCurAnimationEnd())
+	{
+		ChangeState(_playstate);
+		return;
+	}
+
+}
+
+void Player::Attack(Spear_State Spear_Weapon, Big_Sword_State Sword_Weapon, Gloves_State Gloves_Weapon, PlayerState Spearstate, PlayerState _Swordstate , PlayerState _Glovestate)
 {
 	if (GameEngineInput::IsDown('J', this))
 	{
@@ -1098,6 +1201,14 @@ void Player::Attack(Spear_State Spear_Weapon, Big_Sword_State Sword_Weapon, Play
 			ChangeState(_Swordstate);
 			return;
 		}
+		else if (Inventory::Item_Renders[26]->Item_Select == 8)
+		{
+			std::shared_ptr<Gloves> Object = GetLevel()->CreateActor<Gloves>();
+			Object->ChangeState(Gloves_Weapon);
+			ChangeState(_Glovestate);
+			return;
+		}
+
 	}
 }
 
@@ -1171,6 +1282,82 @@ void Player::Sword_Down_AttackUpdate_02(float _Time)
 }
 
 void Player::Sword_Down_AttackUpdate_03(float _Time)
+{
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::DownIdle);
+		return;
+	}
+}
+
+void Player::Gloves_Left_AttackUpdate_01(float _Time)
+{
+	Gloves_Weapon_Manager(Gloves_State::Gloves_Left_02, PlayerState::Gloves_Left_Attack_02, PlayerState::LeftIdle);
+}
+
+void Player::Gloves_Left_AttackUpdate_02(float _Time)
+{
+	Gloves_Weapon_Manager(Gloves_State::Gloves_Left_03, PlayerState::Gloves_Left_Attack_03, PlayerState::LeftIdle);
+}
+
+void Player::Gloves_Left_AttackUpdate_03(float _Time)
+{
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::LeftIdle);
+		return;
+	}
+}
+
+void Player::Gloves_Right_AttackUpdate_01(float _Time)
+{
+	Gloves_Weapon_Manager(Gloves_State::Gloves_Right_02, PlayerState::Gloves_Right_Attack_02, PlayerState::RightIdle);
+}
+
+void Player::Gloves_Right_AttackUpdate_02(float _Time)
+{
+	Gloves_Weapon_Manager(Gloves_State::Gloves_Right_03, PlayerState::Gloves_Right_Attack_03, PlayerState::RightIdle);
+}
+
+void Player::Gloves_Right_AttackUpdate_03(float _Time)
+{
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::RightIdle);
+		return;
+	}
+}
+
+void Player::Gloves_Up_AttackUpdate_01(float _Time)
+{
+	Gloves_Weapon_Manager(Gloves_State::Gloves_Up_02, PlayerState::Gloves_Up_Attack_02, PlayerState::UpIdle);
+}
+
+void Player::Gloves_Up_AttackUpdate_02(float _Time)
+{
+	Gloves_Weapon_Manager(Gloves_State::Gloves_Up_03, PlayerState::Gloves_Up_Attack_03, PlayerState::UpIdle);
+}
+
+void Player::Gloves_Up_AttackUpdate_03(float _Time)
+{
+	if (player->IsCurAnimationEnd())
+	{
+		ChangeState(PlayerState::UpIdle);
+		return;
+	}
+}
+
+void Player::Gloves_Down_AttackUpdate_01(float _Time)
+{
+	Gloves_Weapon_Manager(Gloves_State::Gloves_Down_02, PlayerState::Gloves_Down_Attack_02, PlayerState::DownIdle);
+}
+
+void Player::Gloves_Down_AttackUpdate_02(float _Time)
+{
+	Gloves_Weapon_Manager(Gloves_State::Gloves_Down_03, PlayerState::Gloves_Down_Attack_03, PlayerState::DownIdle);
+}
+
+void Player::Gloves_Down_AttackUpdate_03(float _Time)
 {
 	if (player->IsCurAnimationEnd())
 	{
