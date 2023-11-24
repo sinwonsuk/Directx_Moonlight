@@ -286,6 +286,8 @@
     <ClCompile Include="Tutorial_Map_05.cpp" />
     <ClCompile Include="Tutorial_Map_06.cpp" />
     <ClCompile Include="Tutorial_Map_Manager.cpp" />
+    <ClCompile Include="Upgrade_Spear.cpp" />
+    <ClCompile Include="Upgrade_Spear_State.cpp" />
     <ClCompile Include="Wizard_State.cpp" />
     <ClCompile Include="WorldLevel.cpp" />
   </ItemGroup>
@@ -388,6 +390,7 @@
     <ClInclude Include="Tutorial_Map_05.h" />
     <ClInclude Include="Tutorial_Map_06.h" />
     <ClInclude Include="Tutorial_Map_Manager.h" />
+    <ClInclude Include="Upgrade_Spear.h" />
     <ClInclude Include="WorldLevel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

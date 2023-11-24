@@ -92,7 +92,7 @@ void golem_Solder::Start()
 
 
 
-			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
+			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6 || Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
 			{
 				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
 				Hp -= 30.0f;
@@ -257,7 +257,7 @@ void golem_Solder::MonsterPushUpdate(float _Delta)
 {
 	if (Inventory::This_Inventory->Item_Renders[26] != nullptr)
 	{
-		if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
+		if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6 || Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
 		{
 			if (Weapon_Collision_Check == true)
 			{

@@ -324,6 +324,19 @@ void Inventory::Start()
 		Item_Renders[17] = InforMation;
 	}
 
+	{
+		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+
+		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+		InforMation->item->SetSprite("Items", 8);
+		InforMation->item->AutoSpriteSizeOn();
+		InforMation->item->SetAutoScaleRatio(1.5f);
+		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[1][3]->Move);
+		InforMation->Item_Select = 9;
+		InforMation->Move = Inventroy_informations[1][3]->Move;
+		InforMation->item->Off();
+		Item_Renders[16] = InforMation;
+	}
 }
 
 void Inventory::Update(float _DeltaTime)

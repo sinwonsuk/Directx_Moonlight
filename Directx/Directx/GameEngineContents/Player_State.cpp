@@ -6,6 +6,7 @@
 #include "Big_Sword.h"
 #include "Inventory.h"
 #include "Gloves.h"
+#include "Upgrade_Spear.h"
 void Player::ChangeState(PlayerState _State)
 {
 	PlayerState NextState = _State;
@@ -1098,9 +1099,20 @@ void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerSt
 			AttackCheck = true;
 		}
 	}
+	if (Inventory::Item_Renders[26]->Item_Select == 9 && AttackCheck == true && player->IsCurAnimationEnd())
+	{
+		std::shared_ptr<UpGrade_Spear> Object = GetLevel()->CreateActor<UpGrade_Spear>();
+		Object->ChangeState(static_cast<UpGrade_Spear_State>(_SpearState));
+		AttackCheck = false;
+		//spears.push_back(Object);
+		ChangeState(state);
+		return;
 
 
-	if (AttackCheck == true && player->IsCurAnimationEnd())
+
+	}
+
+	else if (AttackCheck == true && player->IsCurAnimationEnd())
 	{
 		std::shared_ptr<Spear> Object = GetLevel()->CreateActor<Spear>();
 		Object->ChangeState(_SpearState);
@@ -1109,6 +1121,9 @@ void Player::WeaponManager(Spear_State _SpearState, PlayerState state , PlayerSt
 		ChangeState(state);
 		return;
 	}
+
+
+
 
 	else if (player->IsCurAnimationEnd())
 	{
@@ -1208,7 +1223,13 @@ void Player::Attack(Spear_State Spear_Weapon, Big_Sword_State Sword_Weapon, Glov
 			ChangeState(_Glovestate);
 			return;
 		}
-
+		else if (Inventory::Item_Renders[26]->Item_Select == 9)
+		{
+			std::shared_ptr<UpGrade_Spear> Object = GetLevel()->CreateActor<UpGrade_Spear>();
+			Object->ChangeState(static_cast<UpGrade_Spear_State>(Spear_Weapon));
+			ChangeState(Spearstate);
+			return;
+		}
 	}
 }
 

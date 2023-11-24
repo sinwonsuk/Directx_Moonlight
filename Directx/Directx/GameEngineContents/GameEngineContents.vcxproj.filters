@@ -231,6 +231,8 @@
     <ClCompile Include="Black_Smith_State.cpp" />
     <ClCompile Include="Gloves.cpp" />
     <ClCompile Include="Gloves_State.cpp" />
+    <ClCompile Include="Upgrade_Spear.cpp" />
+    <ClCompile Include="Upgrade_Spear_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -420,6 +422,7 @@
     <ClInclude Include="Big_Sword.h" />
     <ClInclude Include="Black_Smith.h" />
     <ClInclude Include="Gloves.h" />
+    <ClInclude Include="Upgrade_Spear.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

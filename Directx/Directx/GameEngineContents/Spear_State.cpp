@@ -106,13 +106,26 @@ void Spear::Down_Attack_Update_01(float _Time)
 {
 	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
-	if (spear->IsCurAnimationEnd())
+	if (spear->GetCurIndex() <= 1)
 	{
-		tests = true;
-		spear->Off();
 		Col->Off();
 	}
 
+	if (spear->GetCurIndex() >= 2)
+	{
+		if (spear->GetCurIndex() <= 4)
+		{
+			Col->On();
+		}
+	}
+
+
+	if (spear->GetCurIndex() >= 5)
+	{
+		Col->Off();
+	}
+
+	
 	if (spear->GetCurIndex() <= 0)
 	{
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X+2.0f, Player::this_Player->Transform.GetWorldPosition().Y-20.0f});
@@ -125,7 +138,13 @@ void Spear::Down_Attack_Update_01(float _Time)
 
 	
 
-	
+	if (spear->IsCurAnimationEnd())
+	{
+		tests = true;
+		spear->Off();
+		Col->Off();
+	}
+
 	
 	
 }
@@ -134,13 +153,26 @@ void Spear::Down_Attack_Update_02(float _Time)
 {
 	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
-	if (spear->IsCurAnimationEnd())
+	if (spear->GetCurIndex() <= 1)
 	{
-		tests = true;
-		spear->Off();
 		Col->Off();
 	}
 
+	if (spear->GetCurIndex() >= 2)
+	{
+		if (spear->GetCurIndex() <= 4)
+		{
+			Col->On();
+		}
+	}
+
+
+	if (spear->GetCurIndex() >= 5)
+	{
+		Col->Off();
+	}
+
+	
 
 	if (spear->GetCurIndex() <= 1)
 	{
@@ -152,6 +184,12 @@ void Spear::Down_Attack_Update_02(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 2.0f, Player::this_Player->Transform.GetWorldPosition().Y - 60.0f });
 	}
 
+	if (spear->IsCurAnimationEnd())
+	{
+		tests = true;
+		spear->Off();
+		Col->Off();
+	}
 
 
 }
@@ -160,12 +198,26 @@ void Spear::Down_Attack_Update_03(float _Time)
 {
 	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
-	if (spear->IsCurAnimationEnd())
+	if (spear->GetCurIndex() <= 2)
 	{
-		tests = true;
-		spear->Off();
 		Col->Off();
 	}
+
+	if (spear->GetCurIndex() >= 3)
+	{
+		if (spear->GetCurIndex() <= 5)
+		{
+			Col->On();
+		}
+	}
+	if (spear->GetCurIndex() > 5)
+	{
+
+		{
+			Col->Off();
+		}
+	}
+	
 
 
 
@@ -179,39 +231,92 @@ void Spear::Down_Attack_Update_03(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 2.0f, Player::this_Player->Transform.GetWorldPosition().Y - 70.0f });
 	}
 
-	if (spear->GetCurIndex() > 4)
+	
+
+	if (spear->IsCurAnimationEnd())
 	{
-		Col->Off();
+		tests = true;
+		spear->Off();
 		Col->Off();
 	}
-	
 }
 
 void Spear::Left_Attack_Update_01(float _Time)
 {
 
-	if (spear->IsCurAnimationEnd())
+
+	
+	if (spear->GetCurIndex() <= 1)
 	{
-		tests = true;
-		spear->Off();
 		Col->Off();
 	}
+
+	if (spear->GetCurIndex() >= 2)
+	{
+		if (spear->GetCurIndex() <= 4)
+		{
+			Col->On();
+		}
+	}
+
+
+	if (spear->GetCurIndex() >= 5)
+	{
+		Col->Off();
+	}
+
+
 
 
 	if (spear->GetCurIndex() <= 0)
 	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -20.0f, Player::this_Player->Transform.GetWorldPosition().Y-5.0f });
 	}
 
 	else if (spear->GetCurIndex() > 0)
 	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 60.0f, Player::this_Player->Transform.GetWorldPosition().Y });
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 60.0f, Player::this_Player->Transform.GetWorldPosition().Y -5.0f });
 	}
 
+	if (spear->IsCurAnimationEnd())
+	{
+		tests = true;
+		spear->Off();
+		Col->Off();
+	}
 }
 
 void Spear::Left_Attack_Update_02(float _Time)
 {
+	if (spear->GetCurIndex() <= 1)
+	{
+		Col->Off();
+	}
+
+	if (spear->GetCurIndex() >= 2)
+	{
+		if (spear->GetCurIndex() <= 4)
+		{
+			Col->On();
+		}
+	}
+
+
+	if (spear->GetCurIndex() >= 5)
+	{
+		Col->Off();
+	}
+
+	if (spear->GetCurIndex() <= 1)
+	{
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -20.0f, Player::this_Player->Transform.GetWorldPosition().Y - 5.0f });
+	}
+
+	else if (spear->GetCurIndex() > 1)
+	{
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -60.0f, Player::this_Player->Transform.GetWorldPosition().Y - 5.0f });
+	}
+
 	if (spear->IsCurAnimationEnd())
 	{
 		tests = true;
@@ -219,22 +324,43 @@ void Spear::Left_Attack_Update_02(float _Time)
 		Col->Off();
 	}
 
-
-	if (spear->GetCurIndex() <= 1)
-	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
-	}
-
-	else if (spear->GetCurIndex() > 1)
-	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -60.0f, Player::this_Player->Transform.GetWorldPosition().Y });
-	}
 
 	
 }
 
 void Spear::Left_Attack_Update_03(float _Time)
 {
+	if (spear->GetCurIndex() <= 2)
+	{
+		Col->Off();
+	}
+
+	if (spear->GetCurIndex() >= 3)
+	{
+		if (spear->GetCurIndex() <= 5)
+		{
+			Col->On();
+		}
+	}
+	if (spear->GetCurIndex() > 5)
+	{
+
+		{
+			Col->Off();
+		}
+	}
+	
+
+
+	if (spear->GetCurIndex() <= 1)
+	{
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -20.0f, Player::this_Player->Transform.GetWorldPosition().Y - 5.0f });
+	}
+
+	else if (spear->GetCurIndex() > 1)
+	{
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -70.0f, Player::this_Player->Transform.GetWorldPosition().Y - 5.0f });
+	}
 
 
 	if (spear->IsCurAnimationEnd())
@@ -242,76 +368,128 @@ void Spear::Left_Attack_Update_03(float _Time)
 		tests = true;
 		spear->Off();
 		Col->Off();
-	}
-
-
-	if (spear->GetCurIndex() <= 1)
-	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
-	}
-
-	else if (spear->GetCurIndex() > 1)
-	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X -70.0f, Player::this_Player->Transform.GetWorldPosition().Y  });
-	}
-
-
-	if (spear->GetCurIndex() > 4)
-	{
-		Col->Off();
-
 	}
 
 }
 
 void Spear::Right_Attack_Update_01(float _Time)
 {
-
-	if (spear->IsCurAnimationEnd())
+	if (spear->GetCurIndex() <= 1)
 	{
-		tests = true;
-		spear->Off();
+		Col->Off();
+	}
+
+	if (spear->GetCurIndex() >= 2)
+	{
+		if (spear->GetCurIndex() <= 4)
+		{
+			Col->On();
+		}
+	}
+
+
+	if (spear->GetCurIndex() >= 5)
+	{
 		Col->Off();
 	}
 
 	if (spear->GetCurIndex() <= 0)
 	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y - 5.0f });
 	}
 
 	else if (spear->GetCurIndex() > 0)
 	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 60.0f, Player::this_Player->Transform.GetWorldPosition().Y });
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 60.0f, Player::this_Player->Transform.GetWorldPosition().Y - 5.0f });
 	}
 
+
+	if (spear->IsCurAnimationEnd())
+	{
+		tests = true;
+		spear->Off();
+		Col->Off();
+	}
 
 }
 
 void Spear::Right_Attack_Update_02(float _Time)
 {
+	if (spear->GetCurIndex() <= 1)
+	{
+		Col->Off();
+	}
+
+	if (spear->GetCurIndex() >= 2)
+	{
+		if (spear->GetCurIndex() <= 4)
+		{
+			Col->On();
+		}
+	}
+
+
+	if (spear->GetCurIndex() >= 5)
+	{
+		Col->Off();
+	}
+
+	
+
+
+	if (spear->GetCurIndex() <= 1)
+	{
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y - 5.0f });
+	}
+
+	else if (spear->GetCurIndex() > 1)
+	{
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 60.0f, Player::this_Player->Transform.GetWorldPosition().Y - 5.0f });
+	}
+
 	if (spear->IsCurAnimationEnd())
 	{
 		tests = true;
 		spear->Off();
 		Col->Off();
 	}
-
-
-	if (spear->GetCurIndex() <= 1)
-	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
-	}
-
-	else if (spear->GetCurIndex() > 1)
-	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 60.0f, Player::this_Player->Transform.GetWorldPosition().Y });
-	}
-
 
 }
 
 void Spear::Right_Attack_Update_03(float _Time)
 {
+	if (spear->GetCurIndex() <= 2)
+	{
+		Col->Off();
+	}
+
+	if (spear->GetCurIndex() >= 3)
+	{
+		if (spear->GetCurIndex() <= 5)
+		{
+			Col->On();
+		}
+	}
+	if (spear->GetCurIndex() > 5)
+	{
+
+		{
+			Col->Off();
+		}
+	}
+
+
+	if (spear->GetCurIndex() <= 1)
+	{
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y - 5.0f });
+	}
+
+	else if (spear->GetCurIndex() > 1)
+	{
+		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 70.0f, Player::this_Player->Transform.GetWorldPosition().Y - 5.0f });
+	}
+
+
 	if (spear->IsCurAnimationEnd())
 	{
 		tests = true;
@@ -319,25 +497,30 @@ void Spear::Right_Attack_Update_03(float _Time)
 		Col->Off();
 	}
 
-	if (spear->GetCurIndex() <= 1)
-	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 20.0f, Player::this_Player->Transform.GetWorldPosition().Y });
-	}
-
-	else if (spear->GetCurIndex() > 1)
-	{
-		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X + 70.0f, Player::this_Player->Transform.GetWorldPosition().Y });
-	}
-
-	if (spear->GetCurIndex() > 4)
-	{
-		Col->Off();
-
-	}
 }
 
 void Spear::Up_Attack_Update_01(float _Time)
 {
+
+	if (spear->GetCurIndex() <= 1)
+	{
+		Col->Off();
+	}
+
+	if (spear->GetCurIndex() >= 2)
+	{
+		if (spear->GetCurIndex() <= 4)
+		{
+			Col->On();
+		}
+	}
+
+
+	if (spear->GetCurIndex() >= 5)
+	{
+		Col->Off();
+	}
+
 	if (spear->IsCurAnimationEnd())
 	{
 		tests = true;
@@ -360,6 +543,26 @@ void Spear::Up_Attack_Update_01(float _Time)
 
 void Spear::Up_Attack_Update_02(float _Time)
 {
+	if (spear->GetCurIndex() <= 1)
+	{
+		Col->Off();
+	}
+
+	if (spear->GetCurIndex() >= 2)
+	{
+		if (spear->GetCurIndex() <= 4)
+		{
+			Col->On();
+		}
+	}
+
+
+	if (spear->GetCurIndex() >= 5)
+	{
+		Col->Off();
+	}
+
+
 	if (spear->IsCurAnimationEnd())
 	{
 		tests = true;
@@ -382,12 +585,26 @@ void Spear::Up_Attack_Update_02(float _Time)
 
 void Spear::Up_Attack_Update_03(float _Time)
 {
-	if (spear->IsCurAnimationEnd())
+	if (spear->GetCurIndex() <= 2)
 	{
-		tests = true;
-		spear->Off();
 		Col->Off();
 	}
+
+	if (spear->GetCurIndex() >= 3)
+	{
+		if (spear->GetCurIndex() <= 5)
+		{
+			Col->On();
+		}
+	}
+	if (spear->GetCurIndex() > 5)
+	{
+
+		{
+			Col->Off();
+		}
+	}
+	
 
 	if (spear->GetCurIndex() <= 1)
 	{
@@ -399,8 +616,10 @@ void Spear::Up_Attack_Update_03(float _Time)
 		Transform.SetLocalPosition({ Player::this_Player->Transform.GetWorldPosition().X - 2.0f, Player::this_Player->Transform.GetWorldPosition().Y + 70.0f });
 	}
 	
-	if (spear->GetCurIndex() > 4)
+	if (spear->IsCurAnimationEnd())
 	{
+		tests = true;
+		spear->Off();
 		Col->Off();
 	}
 
