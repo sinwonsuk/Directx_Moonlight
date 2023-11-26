@@ -25,6 +25,7 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 	bool check = false;
 private:
+	std::shared_ptr<class Shop_UI> Shop_Ui;
 	std::shared_ptr<class PlayMap> Map;
 	std::shared_ptr<class Shop_House> House;
 	std::shared_ptr<class Inventory> ad;

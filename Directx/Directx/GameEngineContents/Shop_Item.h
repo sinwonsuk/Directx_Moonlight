@@ -45,9 +45,9 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-	std::shared_ptr<class GameEngineUIRenderer> item;
-	std::shared_ptr<class GameEngineUIRenderer> item_border;
-	std::shared_ptr<class GameEngineUIRenderer> Font;
+	std::shared_ptr<class GameEngineSpriteRenderer> item;
+	std::shared_ptr<class GameEngineSpriteRenderer> item_border;
+	std::shared_ptr<class GameEngineSpriteRenderer> Font;
 	std::shared_ptr<GameEngineCollision> Col;
 	EventParameter Event;
 	EventParameter Event_Item;

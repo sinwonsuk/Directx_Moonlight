@@ -60,7 +60,7 @@ void MiniBoss::Start()
 
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
-		Col->Transform.SetLocalScale({ 100.0f,100.0f }); 
+		Col->Transform.SetLocalScale({ 130.0f,130.0f }); 
 	}
 
 	{
@@ -71,7 +71,7 @@ void MiniBoss::Start()
 
 	{
 		Monster_Weapon = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
-		Monster_Weapon->Transform.SetLocalScale({ 100.0f,100.0f });
+		Monster_Weapon->Transform.SetLocalScale({ 120.0f,120.0f });
 		Monster_Weapon->SetCollisionType(ColType::AABBBOX2D);
 		Monster_Weapon->Off(); 
 	}

@@ -205,22 +205,22 @@ void Shop_UI::Start()
 
 
 
-
+		//488.000000 Y : -490
 
 		Shop_Item_01 = GetLevel()->CreateActor<Shop_Item>();
-		Shop_Item_01->Transform.SetWorldPosition({ -152 ,-129 }); 
+		Shop_Item_01->Transform.SetWorldPosition({ 488 ,-490 });
 		Shop_Item_01->Off(); 
 
 		Shop_Item_02 = GetLevel()->CreateActor<Shop_Item>();
-		Shop_Item_02->Transform.SetWorldPosition({ -107 ,-129});
+		Shop_Item_02->Transform.SetWorldPosition({ 533 ,-490 });
 		Shop_Item_02->Off(); 
 
 		Shop_Item_03 = GetLevel()->CreateActor<Shop_Item>();
-		Shop_Item_03->Transform.SetWorldPosition({ -152 ,-175 });
+		Shop_Item_03->Transform.SetWorldPosition({ 488 ,-537 });
 		Shop_Item_03->Off();
 
 		Shop_Item_04 = GetLevel()->CreateActor<Shop_Item>();
-		Shop_Item_04->Transform.SetWorldPosition({ -107 ,-175 });
+		Shop_Item_04->Transform.SetWorldPosition({ 533, -537 });
 		Shop_Item_04->Off(); 
 
 
@@ -332,11 +332,27 @@ void Shop_UI::Update(float _DeltaTime)
 			Shop_UI_03->On();
 			Shop_UI_04->On();
 
+			/*Money_Font_01->On(); 
+			Money_Font_02->On();
+			Money_Font_03->On();
+			Money_Font_04->On();
+
+			Money_Font_bout_01->On(); 
+			Money_Font_bout_02->On();
+			Money_Font_bout_03->On();
+			Money_Font_bout_04->On();*/
+
+
 
 			Inventroy_Screen->On();
 			Inventroy_Select->On();
 			Inventory_Start = true;
 			GameEngineCore::MainTime.SetAllTimeScale(0);
+
+
+
+
+
 		}
 
 		else if (GameEngineInput::IsDown('E', this) && Inventory_Start == true)
@@ -931,7 +947,7 @@ void Shop_UI::Update(float _DeltaTime)
 			
 				Shop_Item_01->On();
 				Shop_Item_01->Set_item_Select(static_cast<Shop_Items>(Item_Renders[21]->Item_Select - 1));
-				Shop_Item_01->Set_Prev_Pos({ -152 ,-129 });
+				Shop_Item_01->Set_Prev_Pos({ 488 ,-490 });
 				Shop_Item_01->Set_Money(Money_01* Font_Renders[21]->FontNumber);
 
 				Select_Stop = false;
@@ -1033,7 +1049,7 @@ void Shop_UI::Update(float _DeltaTime)
 				Shop_Item_02->On();
 				Shop_Item_02->Set_item_Select(static_cast<Shop_Items>(Item_Renders[22]->Item_Select - 1));
 				Shop_Item_02->Set_Money(Money_02 * Font_Renders[22]->FontNumber);
-				Shop_Item_02->Set_Prev_Pos({ -107 ,-129 });
+				Shop_Item_02->Set_Prev_Pos({ 533 ,-490 });
 				Select_Stop = false;
 
 			}
@@ -1126,7 +1142,7 @@ void Shop_UI::Update(float _DeltaTime)
 				Shop_Item_03->On();
 				Shop_Item_03->Set_item_Select(static_cast<Shop_Items>(Item_Renders[23]->Item_Select - 1));
 				Shop_Item_03->Set_Money(Money_03 * Font_Renders[23]->FontNumber);
-				Shop_Item_03->Set_Prev_Pos({ -152 ,-175 });
+				Shop_Item_03->Set_Prev_Pos({ 488 ,-537 });
 				Select_Stop = false;
 
 			}
@@ -1219,7 +1235,7 @@ void Shop_UI::Update(float _DeltaTime)
 				Shop_Item_04->On();
 				Shop_Item_04->Set_item_Select(static_cast<Shop_Items>(Item_Renders[24]->Item_Select - 1));
 				Shop_Item_04->Set_Money(Money_04 * Font_Renders[24]->FontNumber);
-				Shop_Item_04->Set_Prev_Pos({ -107 ,-175 });
+				Shop_Item_04->Set_Prev_Pos({ 533, -537 });
 				Select_Stop = false;
 			}
 

@@ -387,18 +387,21 @@ void Player::Heal(float _Delta)
 
 	if (Hp_Bar_Heal >= 0.1 && Inventory::This_Inventory->Item_Renders[27]->Item_Select == 10)
 	{
+		Hp += Hp_Bar_Heal;
 		player_UI->Hp_Bar->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 		HealCheck = false;
 		Hp_Bar_Heal = 0;
 	}
 	else if (Hp_Bar_Heal >= 0.3 && Inventory::This_Inventory->Item_Renders[27]->Item_Select == 11)
 	{
+		Hp += Hp_Bar_Heal;
 		player_UI->Hp_Bar->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 		HealCheck = false;
 		Hp_Bar_Heal = 0;
 	}
 	else if (Hp_Bar_Heal >= 0.5 && Inventory::This_Inventory->Item_Renders[27]->Item_Select == 12)
 	{
+		Hp += Hp_Bar_Heal;
 		player_UI->Hp_Bar->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 		HealCheck = false;
 		Hp_Bar_Heal = 0;

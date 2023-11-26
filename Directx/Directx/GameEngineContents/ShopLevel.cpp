@@ -56,7 +56,7 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		ad = CreateActor<Inventory>();
 	}
 	{
-		std::shared_ptr<Shop_UI> Object = CreateActor<Shop_UI>();
+		Shop_Ui = CreateActor<Shop_UI>();
 	
 	}
 
@@ -91,6 +91,8 @@ void ShopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 void ShopLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
+	Shop_Ui->Death();
+
 	if (House->black_Out != nullptr)
 	{
 		House->black_Out->Death();
