@@ -127,7 +127,7 @@ void Npc::UpIdleUpdate_03(float _Time)
 void Npc::RightMoveUpdate_03(float _Time)
 {
 
-	float4 Dir = { 585.9,-485 };
+	float4 Dir = { 585.9f,-485.0f };
 	float4 Dir2 = { 624,-561 };
 	float4 Dir3 = Dir2 - Dir;
 	Dir3.Normalize();

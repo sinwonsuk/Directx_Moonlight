@@ -4,6 +4,7 @@
 #include "Spear_Effect.h"
 #include "Player.h"
 #include "Inventory.h"
+#include "Items.h"
 BabySlime::BabySlime()
 {
 
@@ -20,7 +21,7 @@ BabySlime::~BabySlime()
 
 void BabySlime::Start()
 {
-	babySlime = CreateComponent<GameEngineSpriteRenderer>(-51);
+	babySlime = CreateComponent<GameEngineSpriteRenderer>(130);
 
 	
 
@@ -32,7 +33,7 @@ void BabySlime::Start()
 
 	
 	{
-		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(101);
+		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(130);
 		Monster_BaseBar->SetSprite("MonsterUI", 0);
 		Monster_BaseBar->SetPivotType(PivotType::Left);
 		Monster_BaseBar->Transform.AddLocalPosition({ -30.0f,60.0f });
@@ -40,7 +41,7 @@ void BabySlime::Start()
 	}
 
 	{
-		Monster_HpBar = CreateComponent<GameEngineSpriteRenderer>(101);
+		Monster_HpBar = CreateComponent<GameEngineSpriteRenderer>(130);
 		Monster_HpBar->SetSprite("MonsterUI", 1);
 		Monster_HpBar->SetPivotType(PivotType::Left);
 		Monster_HpBar->Transform.AddLocalPosition({ -30.0f,60.0f });
@@ -80,20 +81,27 @@ void BabySlime::Start()
 
 			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
-				Hp -= 30.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.5f,0.0f });
+				Hp -= 50.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.4f,0.0f });
-				Hp -= 40.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -1.0f,0.0f });
+				Hp -= 100.0f;
 			}
 
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 8)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
-				Hp -= 20.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.6f,0.0f });
+				Hp -= 60.0f;
 			}
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.8f,0.0f });
+				Hp -= 80.0f;
+			}
+
+
 			Weapon_Collision_Check = true;
 			ColorCheck = true;
 		}
@@ -113,33 +121,11 @@ void BabySlime::Start()
 
 	Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-	/*	Monster_BaseBar->Off();
-		Monster_HpBar->Off();*/
+	
 	};
 
 
-	//Mini_Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
-	//	{
-
-	//	};
-
-	//Mini_Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
-	//	{
-	//		float4 Monster = Col->GetActor()->Transform.GetLocalPosition();
-	//		Monster.Normalize();
-
-	//		float4 Other_Monster = col->GetActor()->Transform.GetLocalPosition();
-	//		Other_Monster.Normalize();
-
-	//		Col->GetActor()->Transform.AddLocalPosition(Other_Monster - Monster * DeltaTime);
-	//	};
-
-
-
-	//Mini_Event.Exit = [this](GameEngineCollision* Col, GameEngineCollision* col)
-	//	{
-
-	//	};
+	
 
 }
 
@@ -157,13 +143,34 @@ void BabySlime::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
+		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
 
 		Monster_Weapon->Off(); 
 		Number -= _Delta * 1;
 		babySlime->GetColorData().MulColor = { 1,1,1,Number };
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
+
+
 		if (Number < 0.1)
 		{
+			for (size_t i = 0; i < 4; i++)
+			{
+					
+				int Itemss = Random.RandomInt(0, 4);
+				Random.SetSeed(Player::RandomSeed++);
+
+				std::shared_ptr<Items> Object = GetLevel()->CreateActor<Items>();
+				Object->Transform.SetWorldPosition({ Transform.GetWorldPosition() });
+				Object->Set_Monster_Pos({ Transform.GetWorldPosition() });
+				Object->Dir = Dir;
+
+
+
+				Object->Set_item_Select(static_cast<Item>(Itemss));
+
+
+			}
+		
 			this->Off();
 		}
 		return;
@@ -194,7 +201,7 @@ void BabySlime::MonsterPushUpdate(float _Delta)
 
 	if (Inventory::This_Inventory->Item_Renders[26] != nullptr)
 	{
-		if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
+		if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6 || Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
 		{
 			if (Weapon_Collision_Check == true)
 			{

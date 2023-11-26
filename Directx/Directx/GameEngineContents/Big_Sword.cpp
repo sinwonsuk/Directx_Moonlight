@@ -46,7 +46,7 @@ void Big_Sword::Start()
 
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Spear);
-		Col->Transform.SetWorldScale({ 110.0f,30.0f });
+		Col->Transform.SetWorldScale({ 130.0f,50.0f });
 	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();

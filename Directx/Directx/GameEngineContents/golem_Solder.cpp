@@ -92,10 +92,10 @@ void golem_Solder::Start()
 
 
 
-			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6 || Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
+			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6 )
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
-				Hp -= 30.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
+				Hp -= 10.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
 			{
@@ -107,6 +107,13 @@ void golem_Solder::Start()
 				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
 				Hp -= 20.0f;
 			}
+
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.4f,0.0f });
+				Hp -= 40.0f;
+			}
+
 
 			Weapon_Collision_Check = true;
 			ColorCheck = true;

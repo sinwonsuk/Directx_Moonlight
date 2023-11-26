@@ -24,6 +24,7 @@ void Boss_Rock::Start()
 	Col->Transform.SetWorldScale({ 70.0f,70.0f });
 	Col->SetCollisionType(ColType::AABBBOX2D);
 
+
 	Rock_Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Object);
 	Rock_Col->Transform.SetWorldScale({ 70.0f,70.0f });
 	Rock_Col->SetCollisionType(ColType::AABBBOX2D);
@@ -31,6 +32,7 @@ void Boss_Rock::Start()
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
+
 		Check = true; 
 		Time2 = 0; 
 	};
@@ -123,7 +125,7 @@ void Boss_Rock::Update(float _Delta)
 	}
 
 
-	float4 AD = float4::LerpClamp(0, -3000, 0.01);
+	float4 AD = float4::LerpClamp(0, -3000.0f, 0.01f);
 	
 	if (Transform.GetWorldPosition().Y >= BossPos.Y-800.0f )
 	{
@@ -180,7 +182,7 @@ void Boss_Rock::Update(float _Delta)
 		}
 
 
-		this->Death(); 
+		this->Off(); 
 	}
 
 

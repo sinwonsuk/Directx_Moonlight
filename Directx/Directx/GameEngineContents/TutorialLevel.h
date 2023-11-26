@@ -30,5 +30,8 @@ private:
 	float Speed = 500.0f;
 	std::vector<std::vector<bool>> test;
 	std::vector<bool> testbool;
+	std::shared_ptr<class Inventory> Inven; 
+
+
 };
 

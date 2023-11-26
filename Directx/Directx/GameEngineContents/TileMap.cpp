@@ -143,8 +143,8 @@ bool TileMap::test(int X, int Y)
 bool TileMap::IsBlock(int X, int Y, std::string_view _Name)
 {
 	float4 Index;
-	Index.X = X;
-	Index.Y = Y;
+	Index.X = static_cast<float>(X);
+	Index.Y = static_cast<float>(Y);
 
 
 	if (Y < 0)

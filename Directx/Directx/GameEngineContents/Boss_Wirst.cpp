@@ -31,7 +31,11 @@ void Boss_Wirst::Start()
 	Arm->SetPivotType(PivotType::Bottom);
 	
 
+	{
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
+		Col->SetCollisionType(ColType::AABBBOX2D);
 
+	}
 
 
 }
@@ -40,7 +44,9 @@ void Boss_Wirst::Update(float _Delta)
 {
 	Time += _Delta; 
 
-	
+	Col->Transform.SetLocalScale({ Arm->Transform.GetLocalScale().X,Arm->Transform.GetLocalScale().Y*2 });
+	Col->Transform.SetLocalPosition(Arm->Transform.GetLocalPosition());
+	Col->Transform.SetLocalRotation(Arm->Transform.GetLocalRotationEuler());
 	/*
 	if (Time > 3)
 	{

@@ -164,7 +164,7 @@ void Npc::RightMoveUpdate_04(float _Time)
 	{
 		if (Transform.GetWorldPosition().X <= 615)
 		{
-			float4 Dir = { 585.9,-485 };
+			float4 Dir = { 585.9f,-485.0f };
 			float4 Dir2 = { 624,-561 };
 			float4 Dir3 = Dir2 - Dir;
 			Dir3.Normalize();

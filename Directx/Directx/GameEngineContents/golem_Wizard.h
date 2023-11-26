@@ -74,6 +74,7 @@ private:
 	float PushTime_Check = 0.0f;
 	float Hp = 100.0f;
 	bool Weapon_Collision_Check = false;
+	GameEngineRandom Random;
 
 	golem_Wizard_State StateValue = golem_Wizard_State::LeftWalk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };

@@ -45,7 +45,7 @@ void Gloves::Start()
 
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Spear);
-		Col->Transform.SetWorldScale({ 50.0f,50.0f });
+		Col->Transform.SetWorldScale({ 70.0f,70.0f });
 	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();

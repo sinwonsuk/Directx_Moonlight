@@ -40,7 +40,7 @@ void UpGrade_Spear::Start()
 
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Spear);
-		Col->Transform.SetWorldScale({ 100.0f,20.0f });
+		Col->Transform.SetWorldScale({ 120.0f,40.0f });
 	}
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();

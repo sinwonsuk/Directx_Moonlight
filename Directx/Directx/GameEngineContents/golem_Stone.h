@@ -83,6 +83,7 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	GameEngineRandom Random;
 	float4 Pos = {};
 	float4 MoveDir = {};
 	std::string Name = { "Tutorial_Map_Pixel.png" };

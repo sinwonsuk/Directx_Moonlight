@@ -79,7 +79,7 @@ private:
 	float degree = 0.0f;
 	float Hp = 100.0f;
 	float4 MoveDir = {}; 
-
+	GameEngineRandom Random;
 	bool Weapon_Collision_Check = false;
 	
 	SlimeHermit_State StateValue = SlimeHermit_State::LeftWalk;

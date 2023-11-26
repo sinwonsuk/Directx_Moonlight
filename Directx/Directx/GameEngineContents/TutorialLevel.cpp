@@ -10,6 +10,7 @@
 #include "Player_UI.h"
 #include "TileMap.h"
 #include "CameraCollision.h"
+#include "Inventory.h"
 TutorialLevel::TutorialLevel()
 {
 
@@ -29,6 +30,9 @@ void TutorialLevel::Start()
 
 	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
+	{
+		Inven = CreateActor<Inventory>();
+	}
 
 	{
 		std::shared_ptr<CameraCollision> object = CreateActor<CameraCollision>();
@@ -64,21 +68,12 @@ void TutorialLevel::Start()
 	}*/
 
 
-
+	
 
 }
 
 void TutorialLevel::Update(float _Delta)
 {
-	/*if (GameEngineInput::IsPress('1', this))
-	{
-		GameEngineCore::ChangeLevel("WorldLevel");
-	}
-
-	*/
-	
-
-	
 
 
 
@@ -96,6 +91,7 @@ void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
+	Inven->Death(); 
 	Player::this_Player->player_UI->Death(); 
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;

@@ -106,7 +106,7 @@ private:
 	int Item_Number_Check_02 = 0;
 	int Item_Number_Check_03 = 0;
 
-	int Move_X = 0;
-	int Move_Y = 0;
+	size_t Move_X = 0;
+	size_t Move_Y = 0;
 
 };

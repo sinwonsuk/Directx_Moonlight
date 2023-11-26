@@ -203,9 +203,13 @@
     <ClCompile Include="Dungeon_Scrol.cpp" />
     <ClCompile Include="Emoticon.cpp" />
     <ClCompile Include="Emoticon_State.cpp" />
+    <ClCompile Include="flyinggolem.cpp" />
+    <ClCompile Include="flyinggolem_State.cpp" />
     <ClCompile Include="gloem_Wazard_Missile.cpp" />
     <ClCompile Include="Gloves.cpp" />
     <ClCompile Include="Gloves_State.cpp" />
+    <ClCompile Include="golemkamikaze.cpp" />
+    <ClCompile Include="golemkamikaze_State.cpp" />
     <ClCompile Include="golemturret.cpp" />
     <ClCompile Include="golemturret_missile.cpp" />
     <ClCompile Include="golemturret_missile_State.cpp" />
@@ -329,8 +333,10 @@
     <ClInclude Include="Dungeon_Map_10.h" />
     <ClInclude Include="Dungeon_Scrol.h" />
     <ClInclude Include="Emoticon.h" />
+    <ClInclude Include="flyinggolem.h" />
     <ClInclude Include="gloem_Wazard_Missile.h" />
     <ClInclude Include="Gloves.h" />
+    <ClInclude Include="golemkamikaze.h" />
     <ClInclude Include="golemturret.h" />
     <ClInclude Include="golemturret_missile.h" />
     <ClInclude Include="golem_Solder.h" />

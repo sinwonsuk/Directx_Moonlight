@@ -494,19 +494,19 @@ void Shop_UI::Update(float _DeltaTime)
 
 	if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
 	{
-		Inventroy_Select->Transform.SetWorldScale({ 3.0,1.45});
+		Inventroy_Select->Transform.SetWorldScale({ 3.0f,1.45f});
 	}
 	else if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
 	{
-		Inventroy_Select->Transform.SetWorldScale({ 3.0,1.45 });
+		Inventroy_Select->Transform.SetWorldScale({ 3.0f,1.45f });
 	}
 	else if (Inventory_pos_X == 5 && Inventory_pos_Y == 3)
 	{
-		Inventroy_Select->Transform.SetWorldScale({ 3.0,1.45 });
+		Inventroy_Select->Transform.SetWorldScale({ 3.0f,1.45f });
 	}
 	else if (Inventory_pos_X == 6 && Inventory_pos_Y == 3)
 	{
-		Inventroy_Select->Transform.SetWorldScale({ 3.0,1.45 });
+		Inventroy_Select->Transform.SetWorldScale({ 3.0f,1.45f });
 	}
 	else
 	{
@@ -533,7 +533,7 @@ void Shop_UI::Update(float _DeltaTime)
 			{
 				if (Item_Renders[i]->Move == Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move)
 				{
-					Item_Renders_Order = i;
+					Item_Renders_Order = static_cast<int>(i);
 					break;
 				}
 			}

@@ -74,6 +74,7 @@ private:
 	float Speed = 200.0f;
 	float PushSpeed = 300.0f;
 
+	GameEngineRandom Random;
 	float Time = 1.0f;
 	float PushTime_Check = 0.0f;
 	float degree = 0.0f;

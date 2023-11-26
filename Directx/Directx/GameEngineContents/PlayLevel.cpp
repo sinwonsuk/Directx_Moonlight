@@ -33,11 +33,7 @@ void PlayLevel::Start()
 	
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
-
-	{
-		std::shared_ptr<CameraCollision> Object = CreateActor<CameraCollision>();
-	}
-
+	GetMainCamera()->SetYSort(130);
 	
 	
 	{
@@ -83,6 +79,12 @@ void PlayLevel::Update(float _Delta)
 void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	{
+		Camera = CreateActor<CameraCollision>();
+	}
+
+
+
+	{
 		adad = CreateActor<Inventory>();
 	}
 
@@ -104,13 +106,7 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	
-	Player::this_Player->spears.clear(); 
-	Player::this_Player->player_UI->Death();
-	Player::this_Player->Death();
-	Player::this_Player = nullptr;
-
-
-	player->Death();
+	
 
 	if (player->Black != nullptr)
 	{
@@ -152,7 +148,14 @@ void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 
 	
 
+	Player::this_Player->spears.clear();
+	Player::this_Player->player_UI->Death();
+	Player::this_Player->Death();
+	Player::this_Player = nullptr;
 
+
+	Camera->Death();
+	player->Death();
 	
 
 

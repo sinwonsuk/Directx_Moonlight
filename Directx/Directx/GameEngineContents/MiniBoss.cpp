@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include "Spear_Effect.h"
 #include "Inventory.h"
+#include "Items.h"
 MiniBoss::MiniBoss()
 {
 
@@ -19,7 +20,7 @@ void MiniBoss::Start()
 {
 
 	Transform.AddLocalPosition({ 0.0f,60.0f });
-	Mini_Boss = CreateComponent<GameEngineSpriteRenderer>(99);
+	Mini_Boss = CreateComponent<GameEngineSpriteRenderer>(130);
 	Mini_Boss->CreateAnimation("Mini_Boss_Attack_Down", "Mini_Boss_Attack_Down", 0.1f, -1, -1, false);
 	Mini_Boss->CreateAnimation("Mini_Boss_Move_Down", "Mini_Boss_Move_Down", 0.1f, -1, -1, true);
 	Mini_Boss->CreateAnimation("Mini_Boss_Attack_Left", "Mini_Boss_Attack_Left", 0.1f, -1, -1, false);
@@ -86,20 +87,24 @@ void MiniBoss::Start()
 
 			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
-				Hp -= 30.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.05f,0.0f });
+				Hp -= 5.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.4f,0.0f });
-				Hp -= 40.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
+				Hp -= 30.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 8)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
+				Hp -= 10.0f;
+			}
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
 			{
 				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
 				Hp -= 20.0f;
 			}
-
 			Weapon_Collision_Check = true;
 			ColorCheck = true;
 		}
@@ -148,6 +153,24 @@ void MiniBoss::Update(float _Delta)
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
+			for (size_t i = 0; i < 20; i++)
+			{
+
+
+				int Itemss = Random.RandomInt(0, 4);
+				Random.SetSeed(Player::RandomSeed++);
+
+				std::shared_ptr<Items> Object = GetLevel()->CreateActor<Items>();
+				Object->Transform.SetWorldPosition({ Transform.GetWorldPosition() });
+				Object->Set_Monster_Pos({ Transform.GetWorldPosition() });
+				Object->Dir = Dir;
+
+
+
+				Object->Set_item_Select(static_cast<Item>(Itemss));
+
+
+			}
 			this->Off();
 		}
 
@@ -190,7 +213,7 @@ void MiniBoss::MonsterPushUpdate(float _Delta)
 {
 	if (Inventory::This_Inventory->Item_Renders[26] != nullptr)
 	{
-		if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
+		if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6 || Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
 		{
 			if (Weapon_Collision_Check == true)
 			{

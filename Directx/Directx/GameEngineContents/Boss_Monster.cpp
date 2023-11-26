@@ -5,6 +5,7 @@
 #include "Boss_Monster_UI.h"
 #include "Boss_Wave.h"
 #include "Boss_Wirst.h"
+#include "Inventory.h"
 Boss_Monster::Boss_Monster()
 {
 }
@@ -79,10 +80,33 @@ void Boss_Monster::Start()
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 			Object->Set_state(Effect_State::Boss);
-			//Boss_UI->Monster_HpBar->Transform.AddLocalScale({ -0.05f,0.0f });
-			++UICheck;
-			ColorCheck = true;
 			
+
+			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
+			{
+				Damage = 0.01;
+				++UICheck;
+				ColorCheck = true;
+			}
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
+			{		
+				Damage = 0.05;
+				++UICheck;
+				ColorCheck = true;
+			}
+
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 8)
+			{
+				Damage = 0.03;
+				++UICheck;
+				ColorCheck = true;
+			}
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
+			{
+				Damage = 0.04;
+				++UICheck;
+				ColorCheck = true;
+			}
 
 	};
 
@@ -167,7 +191,7 @@ void Boss_Monster::Update(float _Delta)
 		Hp += _Delta / 3;
 		Boss_UI->Monster_HpBar->Transform.AddLocalScale({ -_Delta/3,0.0f });
 		Boss_UI->Monster_HpBar->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
-		if (Hp_Bar_reduce > 0.04)
+		if (Hp_Bar_reduce > Damage)
 		{
 			//Hp += Hp_Bar_reduce;
 			Hp_Bar_reduce = 0;

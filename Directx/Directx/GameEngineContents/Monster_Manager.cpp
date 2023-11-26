@@ -29,25 +29,6 @@ float4 Monster_Manager::Monster_Move(float _Delta,float4 _GetWorldTransform, std
 			float4 CollisionMoveDir = { 0,-1 };
 			 return CollisionMoveDir.NormalizeReturn() + MoveDir.NormalizeReturn();
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		return MoveDir.NormalizeReturn(); 
 	}
 	/*if ( MoveCheck ==false)
@@ -98,7 +79,9 @@ float4 Monster_Manager::Monster_Move(float _Delta,float4 _GetWorldTransform, std
 		std::list<float4>::iterator begin_iter = PathPos.begin();
 		std::list<float4>::iterator end_iter = PathPos.end();
 
-		*begin_iter++;
+		float4 value = *begin_iter;
+
+		++begin_iter;
 
 		/*if (PathPos.size() == 1)
 		{

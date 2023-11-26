@@ -38,7 +38,7 @@ void BabySlime::WalkUpdate(float _Time)
 
 
 	
-		Transform.AddLocalPosition({ Manager_Speed });
+	Transform.AddLocalPosition({ Manager_Speed });
 	
 
 	

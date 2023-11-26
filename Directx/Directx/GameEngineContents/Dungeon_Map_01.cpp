@@ -156,20 +156,25 @@ void Dungeon_Map_01::Start()
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		DownDoor->ChangeAnimation("Close_Door");
-		UpDoor->ChangeAnimation("Close_Door");
-		RightDoor->ChangeAnimation("Close_Door");
-		LeftDoor->ChangeAnimation("Close_Door");
-		Boss_Door->ChangeAnimation("Boss_Door_Close");
+		
+			DownDoor->ChangeAnimation("Close_Door");
+			UpDoor->ChangeAnimation("Close_Door");
+			RightDoor->ChangeAnimation("Close_Door");
+			LeftDoor->ChangeAnimation("Close_Door");
+			Boss_Door->ChangeAnimation("Boss_Door_Close");
+		
+		
 	};
 
 	Event.Stay = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		DownDoor->ChangeAnimation("Close_Door");
-		UpDoor->ChangeAnimation("Close_Door");
-		RightDoor->ChangeAnimation("Close_Door");
-		LeftDoor->ChangeAnimation("Close_Door");
-		Boss_Door->ChangeAnimation("Boss_Door_Close");
+		
+			DownDoor->ChangeAnimation("Close_Door");
+			UpDoor->ChangeAnimation("Close_Door");
+			RightDoor->ChangeAnimation("Close_Door");
+			LeftDoor->ChangeAnimation("Close_Door");
+			Boss_Door->ChangeAnimation("Boss_Door_Close");
+		
 	};
 
 
@@ -248,9 +253,10 @@ void Dungeon_Map_01::Update(float _Delta)
 			}
 		}
 	}
-
-	CameraCollision::CameraCol->Col->CollisionEvent(ContentsCollisionType::Monster, Event);
-
+	if (Player::this_Player->MonsterDeath == false)
+	{
+		CameraCollision::CameraCol->Col->CollisionEvent(ContentsCollisionType::Monster, Event);
+	}
 	if (ReturnCheck == true)
 	{
 		Boss_Door->Off();

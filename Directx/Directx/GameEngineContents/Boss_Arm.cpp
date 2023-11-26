@@ -31,10 +31,12 @@ void Boss_Arm::Start()
 	Boss_arm_Texture->Off(); 
 	Boss_arm_Texture->Transform.AddLocalPosition({ 0.0f,20.0f });
 
-	//Arm_Shadow = CreateComponent<GameEngineSpriteRenderer>(100);
-	//Arm_Shadow->SetSprite("Boss1_Punch_Shadow", 0);
-	//Arm_Shadow->AutoSpriteSizeOn();
-	//Arm_Shadow->SetAutoScaleRatio(0.1f);
+	{
+		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
+		Col->SetCollisionType(ColType::AABBBOX2D);
+		Col->Transform.SetLocalScale({ 50.0f,50.0f });
+	}
+
 
 }
 

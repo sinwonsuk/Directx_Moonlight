@@ -742,6 +742,7 @@ void Player::Roll_RightUpdate(float _Time)
 	{
 		if (RightMove == true || RolCheck == true)
 		{
+			Col->Off();
 			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
 			Transform.AddLocalPosition({ float4::RIGHT * Roll_Speed * _Time });
 		}
@@ -802,6 +803,7 @@ void Player::Roll_LeftUpdate(float _Time)
 	{
 		if (LeftMove == true || RolCheck == true)
 		{
+			Col->Off();
 			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
 			Transform.AddLocalPosition({ float4::LEFT * Roll_Speed * _Time });
 		}
@@ -865,6 +867,7 @@ void Player::Roll_DownUpdate(float _Time)
 	{
 		if (DownMove == true || RolCheck == true)
 		{
+			Col->Off();
 			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
 			Transform.AddLocalPosition({ float4::DOWN * Roll_Speed * _Time });
 		}
@@ -935,6 +938,7 @@ void Player::Roll_UpUpdate(float _Time)
 	{
 		if (UpMove == true || RolCheck == true)
 		{
+			Col->Off();
 			GetLevel()->GetMainCamera()->Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
 			Transform.AddLocalPosition({ float4::UP * Roll_Speed * _Time });
 		}

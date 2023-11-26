@@ -81,8 +81,8 @@ private:
 	bool BossUI = false;
 
 
-	int Shadow_Pos_Left = 0;
-	int Shadow_Pos_Down = 0;
+	float Shadow_Pos_Left = 0;
+	float Shadow_Pos_Down = 0;
 	int Shadow_Pos_Up = 0;
 	bool AD = true;
 	bool Weapon_Collision_Check = false;
@@ -107,6 +107,8 @@ private:
 	bool ColorCheck = false;
 	int UICheck = 0;
 	float Hp_Bar_reduce = 0.0f;
+	float Damage = 0.04f;
+
 	//bool Weapon_Collision_Check = false;
 	float TimeTest = 0.0f;
 	float Color_Time = 0.0f;

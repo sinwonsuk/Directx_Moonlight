@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Spear_Effect.h"
 #include "Inventory.h"
+#include "Items.h"
 golem_Stone::golem_Stone()
 {
 }
@@ -13,7 +14,7 @@ golem_Stone::~golem_Stone()
 
 void golem_Stone::Start()
 {
-	Stone = CreateComponent<GameEngineSpriteRenderer>(100);
+	Stone = CreateComponent<GameEngineSpriteRenderer>(130);
 	Stone->CreateAnimation("golemhead_cycle_down", "golemhead_cycle_down", 0.1f, -1, -1, true);
 	Stone->CreateAnimation("golemhead_cycle_left", "golemhead_cycle_left", 0.1f, -1, -1, true);
 	Stone->CreateAnimation("golemhead_cycle_right", "golemhead_cycle_right", 0.1f, -1, -1, true);
@@ -35,7 +36,7 @@ void golem_Stone::Start()
 	Stone->ChangeAnimation("golemhead_prepare_up");
 
 	{
-		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(101);
+		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(130);
 		Monster_BaseBar->SetSprite("MonsterUI", 0);
 		Monster_BaseBar->SetPivotType(PivotType::Left);
 		Monster_BaseBar->Transform.AddLocalPosition({ -30.0f,60.0f });
@@ -43,7 +44,7 @@ void golem_Stone::Start()
 	}
 
 	{
-		Monster_HpBar = CreateComponent<GameEngineSpriteRenderer>(101);
+		Monster_HpBar = CreateComponent<GameEngineSpriteRenderer>(130);
 		Monster_HpBar->SetSprite("MonsterUI", 1);
 		Monster_HpBar->SetPivotType(PivotType::Left);
 		Monster_HpBar->Transform.AddLocalPosition({ -30.0f,60.0f });
@@ -69,8 +70,8 @@ void golem_Stone::Start()
 
 			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
-				Hp -= 30.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
+				Hp -= 10.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
 			{
@@ -82,7 +83,11 @@ void golem_Stone::Start()
 				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
 				Hp -= 20.0f;
 			}
-
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
+				Hp -= 30.0f;
+			}
 			Weapon_Collision_Check = true;
 			ColorCheck = true;
 		}
@@ -153,6 +158,26 @@ void golem_Stone::Update(float _Delta)
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
+			for (size_t i = 0; i < 5; i++)
+			{
+
+
+				int Itemss = Random.RandomInt(0, 4);
+				Random.SetSeed(Player::RandomSeed++);
+
+				std::shared_ptr<Items> Object = GetLevel()->CreateActor<Items>();
+				Object->Transform.SetWorldPosition({ Transform.GetWorldPosition() });
+				Object->Set_Monster_Pos({ Transform.GetWorldPosition() });
+				Object->Dir = Dir;
+
+
+
+				Object->Set_item_Select(static_cast<Item>(Itemss));
+
+
+			}
+
+
 			this->Off(); 
 		}
 		return;

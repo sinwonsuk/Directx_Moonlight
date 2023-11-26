@@ -7,6 +7,8 @@
 #include "golem_Wizard.h"
 #include "SlimeHermit.h"
 #include "MiniBoss.h"
+#include "flyinggolem.h"
+#include "golemkamikaze.h"
 Monster_Place::Monster_Place()
 {
 
@@ -51,17 +53,17 @@ void Monster_Place::Monsters(float4 _Pos)
 
 	//¹Ú²Þ
 	
-	for (size_t i = 0; i <= 0; i++)
+	for (size_t i = 0; i <= a; i++)
 	{
 		
 		
 
-		int A = Random2->RandomInt(0, 5); 
+		int A = Random2->RandomInt(0, 6); 
 		
 
 		
 
-		switch (1)
+		switch (A)
 		{
 		case 0:
 		{
@@ -277,14 +279,54 @@ void Monster_Place::Monsters(float4 _Pos)
 			}
 			break;
 		}
+		case 6:
+		{
+			while (true)
+			{
+				Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 18);
+
+				if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
+				{
+					std::shared_ptr<golemkamikaze> Object = GetLevel()->CreateActor<golemkamikaze>();
+					Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 40 ,  sd.Y + 360 - Monster_Pos.Y * 40 });
+					Object->Set_MapName(Name);
+					Object->Set_Dir({ sd.X - 640 ,sd.Y + 360 });
+					break;
+				}
+
+				else
+				{
+					continue;
+				}
+			}
+			break;
+		}
 		default:
 			break;
 		}
 	}
 	
-	
-	
-	//Random_A += 5;
+	for (size_t i = 0; i <= 3; i++)
+	{
+		while (true)
+		{
+			Monster_Pos = Random->RandomVectorBox2D(0, 32, 0, 18);
+
+			if (ObjectCollision(Name.c_str(), Monster_Pos) == true)
+			{
+				std::shared_ptr<flyinggolem> Object = GetLevel()->CreateActor<flyinggolem>();
+				Object->Transform.SetLocalPosition({ sd.X - 640 + Monster_Pos.X * 40 ,  sd.Y + 360 - Monster_Pos.Y * 40 });
+				Object->Set_Dir({ sd.X - 640 ,sd.Y + 360 });
+				break;
+			}
+
+			else
+			{
+				continue;
+			}
+		}
+	}
+
 
 	
 }

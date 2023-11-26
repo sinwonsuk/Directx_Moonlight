@@ -24,7 +24,7 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 private:
-
+	std::shared_ptr<class CameraCollision> Camera;
 	std::shared_ptr<GameEngineCollision> Col;
 	std::shared_ptr<class Random_Room> Map;
 	std::shared_ptr<class Player> player;

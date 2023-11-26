@@ -11,7 +11,7 @@ Spear_Effect::~Spear_Effect()
 
 void Spear_Effect::Start()
 {
-	Efffet = CreateComponent<GameEngineSpriteRenderer>(101);
+	Efffet = CreateComponent<GameEngineSpriteRenderer>(150);
 	Efffet->CreateAnimation("spearHitEffect_3", "spearHitEffect_3.png", 0.1f, -1, -1, false);
 	Efffet->AutoSpriteSizeOn();
 	Efffet->SetAutoScaleRatio(1.5f);

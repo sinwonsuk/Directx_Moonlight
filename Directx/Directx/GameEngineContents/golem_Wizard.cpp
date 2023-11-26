@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Spear_Effect.h"
 #include "Inventory.h"
+#include "Items.h"
 golem_Wizard::golem_Wizard()
 {
 }
@@ -13,7 +14,7 @@ golem_Wizard::~golem_Wizard()
 
 void golem_Wizard::Start()
 {
-	Wizard = CreateComponent<GameEngineSpriteRenderer>(100);
+	Wizard = CreateComponent<GameEngineSpriteRenderer>(130);
 	Wizard->CreateAnimation("golem_Wizard_Down_Attack", "golem_Wizard_Down_Attack", 0.1f, -1, -1, true);
 	Wizard->CreateAnimation("golem_Wizard_Down_Move", "golem_Wizard_Down_Move", 0.1f, -1, -1, true);
 	Wizard->CreateAnimation("golem_Wizard_Left_Attack", "golem_Wizard_Left_Attack", 0.1f, -1, -1, true);
@@ -60,8 +61,8 @@ void golem_Wizard::Start()
 
 			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
-				Hp -= 30.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
+				Hp -= 10.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
 			{
@@ -72,6 +73,11 @@ void golem_Wizard::Start()
 			{
 				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
 				Hp -= 20.0f;
+			}
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
+				Hp -= 30.0f;
 			}
 
 			Weapon_Collision_Check = true;
@@ -138,6 +144,25 @@ void golem_Wizard::Update(float _Delta)
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
+			for (size_t i = 0; i < 10; i++)
+			{
+
+
+				int Itemss = Random.RandomInt(0, 4);
+				Random.SetSeed(Player::RandomSeed++);
+
+				std::shared_ptr<Items> Object = GetLevel()->CreateActor<Items>();
+				Object->Transform.SetWorldPosition({ Transform.GetWorldPosition() });
+				Object->Set_Monster_Pos({ Transform.GetWorldPosition() });
+				Object->Dir = Dir;
+
+
+
+				Object->Set_item_Select(static_cast<Item>(Itemss));
+
+
+			}
+
 			this->Off(); 
 		}
 
@@ -168,17 +193,13 @@ void golem_Wizard::Update(float _Delta)
 	Monster_Collsision(_Delta);
 
 
-	if (Number < -0.5)
-	{
-		this->Death();
-	}
 
 }
 void golem_Wizard::MonsterPushUpdate(float _Delta)
 {
 	if (Inventory::This_Inventory->Item_Renders[26] != nullptr)
 	{
-		if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
+		if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6 || Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
 		{
 			if (Weapon_Collision_Check == true)
 			{

@@ -60,12 +60,12 @@ private:
 	EventParameter Mini_Event;
 	bool CollisionCheck = false;
 	float Speed = 300.0f;
-	float Hp = 20.0f;
+	float Hp = 100.0f;
 	float DeltaTime = 0;
 	float PushTime_Check = 0.0f;
 	float PushSpeed = 300.0f;
 	bool Weapon_Collision_Check = false;
-
+	GameEngineRandom Random;
 	BabySlime_State StateValue = BabySlime_State::Walk;
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_BaseBar;

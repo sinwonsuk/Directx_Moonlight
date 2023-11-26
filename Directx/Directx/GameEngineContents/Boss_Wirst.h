@@ -45,6 +45,9 @@ private:
 
 	std::shared_ptr<class GameEngineSpriteRenderer> Wirst;
 	std::shared_ptr<class GameEngineSpriteRenderer> Arm;
+	std::shared_ptr<class GameEngineCollision> Col;
+
+
 	float Time = 0.0f;
 	float Rotation_Speed = 150.0f;
 	float Speed = 1500.0f;

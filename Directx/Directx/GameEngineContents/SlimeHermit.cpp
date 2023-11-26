@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include "Spear_Effect.h"
 #include "Inventory.h"
+#include "Items.h"
 SlimeHermit::SlimeHermit()
 {
 
@@ -18,7 +19,7 @@ SlimeHermit::~SlimeHermit()
 void SlimeHermit::Start()
 {
 	Transform.AddLocalPosition({ 0.0f,50.0f }); 
-	Slime_Hermit = CreateComponent<GameEngineSpriteRenderer>(100);
+	Slime_Hermit = CreateComponent<GameEngineSpriteRenderer>(130);
 	Slime_Hermit->CreateAnimation("SlimeHermit_Attack_Down", "SlimeHermit_Attack_Down", 0.1f, -1, -1, false);
 	Slime_Hermit->CreateAnimation("SlimeHermit_Move_Down", "SlimeHermit_Move_Down", 0.1f, -1, -1, true);
 	Slime_Hermit->CreateAnimation("SlimeHermit_Attack_Left", "SlimeHermit_Attack_Left", 0.1f, -1, -1, false);
@@ -84,8 +85,8 @@ void SlimeHermit::Start()
 
 			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
-				Hp -= 30.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
+				Hp -= 10.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
 			{
@@ -97,7 +98,11 @@ void SlimeHermit::Start()
 				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
 				Hp -= 20.0f;
 			}
-
+			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
+			{
+				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
+				Hp -= 30.0f;
+			}
 			Weapon_Collision_Check = true;
 			ColorCheck = true;
 		}
@@ -147,6 +152,24 @@ void SlimeHermit::Update(float _Delta)
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
+			for (size_t i = 0; i < 10; i++)
+			{
+
+
+				int Itemss = Random.RandomInt(0, 4);
+				Random.SetSeed(Player::RandomSeed++);
+
+				std::shared_ptr<Items> Object = GetLevel()->CreateActor<Items>();
+				Object->Transform.SetWorldPosition({ Transform.GetWorldPosition() });
+				Object->Set_Monster_Pos({ Transform.GetWorldPosition() });
+				Object->Dir = Dir;
+
+
+
+				Object->Set_item_Select(static_cast<Item>(Itemss));
+
+
+			}
 			this->Off();
 		}
 

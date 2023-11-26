@@ -26,11 +26,11 @@ int Inventory::Item_Renders_Order = 0;
 int Inventory::Item_Check = 0;
 
 int Inventory::Font_Check = 0;
-int Inventory::FontNumber = 1.0f;
-int Inventory::FontNumber_02 = 1.0f;
-int Inventory::FontNumber_03 = 1.0f;
-int Inventory::FontNumber_04 = 1.0f;
-int Inventory::FontNumber_05 = 1.0f;
+int Inventory::FontNumber = 1;
+int Inventory::FontNumber_02 = 1;
+int Inventory::FontNumber_03 = 1;
+int Inventory::FontNumber_04 = 1;
+int Inventory::FontNumber_05 = 1;
 
 int Inventory::Item_Plus_X = 0;
 int Inventory::Item_Plus_Y = 0;
@@ -323,6 +323,83 @@ void Inventory::Start()
 
 
 		start = true;
+
+
+
+
+
+		{
+			std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+
+			InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+			InforMation->item->SetSprite("Training_Spear.png");
+			InforMation->item->AutoSpriteSizeOn();
+			InforMation->item->SetAutoScaleRatio(2.0f);
+			InforMation->item->Transform.AddLocalPosition(Inventroy_informations[6][0]->Move);
+			InforMation->Item_Select = 6;
+			InforMation->Move = Inventroy_informations[6][0]->Move;
+			InforMation->item->Off();
+			Item_Renders[26] = InforMation;
+
+			Item_type[26]->Item_Oreder = 6;
+			Item_type[26]->Move = Inventroy_informations[6][0]->Move;
+		}
+		//dadsad
+		{
+			std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+
+			InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+			InforMation->item->SetSprite("Items", 6);
+			InforMation->item->AutoSpriteSizeOn();
+			InforMation->item->SetAutoScaleRatio(1.5f);
+			InforMation->item->Transform.AddLocalPosition(Inventroy_informations[3][3]->Move);
+			InforMation->Item_Select = 7;
+			InforMation->Move = Inventroy_informations[3][3]->Move;
+			InforMation->item->Off();
+			Item_Renders[18] = InforMation;
+
+
+			Item_type[18]->Item_Oreder = 7;
+			Item_type[18]->Move = Inventroy_informations[3][3]->Move;
+		}
+		{
+			std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+
+			InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+			InforMation->item->SetSprite("Items", 7);
+			InforMation->item->AutoSpriteSizeOn();
+			InforMation->item->SetAutoScaleRatio(1.5f);
+			InforMation->item->Transform.AddLocalPosition(Inventroy_informations[2][3]->Move);
+			InforMation->Item_Select = 8;
+			InforMation->Move = Inventroy_informations[2][3]->Move;
+			InforMation->item->Off();
+			Item_Renders[17] = InforMation;
+
+			Item_type[17]->Item_Oreder = 8;
+			Item_type[17]->Move = Inventroy_informations[2][3]->Move;
+
+		}
+
+		{
+			std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+
+			InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+			InforMation->item->SetSprite("Items", 8);
+			InforMation->item->AutoSpriteSizeOn();
+			InforMation->item->SetAutoScaleRatio(1.5f);
+			InforMation->item->Transform.AddLocalPosition(Inventroy_informations[1][3]->Move);
+			InforMation->Item_Select = 9;
+			InforMation->Move = Inventroy_informations[1][3]->Move;
+			InforMation->item->Off();
+			Item_Renders[16] = InforMation;
+
+
+			Item_type[16]->Item_Oreder = 9;
+			Item_type[16]->Move = Inventroy_informations[1][3]->Move;
+
+		}
+
+
 	}
 
 	else if (start == true)
@@ -445,60 +522,7 @@ void Inventory::Start()
 
 
 
-	{
-		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
-
-		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
-		InforMation->item->SetSprite("Training_Spear.png");
-		InforMation->item->AutoSpriteSizeOn();
-		InforMation->item->SetAutoScaleRatio(2.0f);
-		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[6][0]->Move);
-		InforMation->Item_Select = 6;
-		InforMation->Move = Inventroy_informations[6][0]->Move;
-		InforMation->item->Off();
-		Item_Renders[26] = InforMation;
-	}
-	//dadsad
-	{
-		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
-
-		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
-		InforMation->item->SetSprite("Items",6);
-		InforMation->item->AutoSpriteSizeOn();
-		InforMation->item->SetAutoScaleRatio(1.5f);
-		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[3][3]->Move);
-		InforMation->Item_Select = 7;
-		InforMation->Move = Inventroy_informations[3][3]->Move;
-		InforMation->item->Off();
-		Item_Renders[18] = InforMation;
-	}
-	{
-		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
-
-		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
-		InforMation->item->SetSprite("Items", 7);
-		InforMation->item->AutoSpriteSizeOn();
-		InforMation->item->SetAutoScaleRatio(1.5f);
-		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[2][3]->Move);
-		InforMation->Item_Select = 8;
-		InforMation->Move = Inventroy_informations[2][3]->Move;
-		InforMation->item->Off();
-		Item_Renders[17] = InforMation;
-	}
-
-	{
-		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
-		
-		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
-		InforMation->item->SetSprite("Items", 8);
-		InforMation->item->AutoSpriteSizeOn();
-		InforMation->item->SetAutoScaleRatio(1.5f);
-		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[1][3]->Move);
-		InforMation->Item_Select = 9;
-		InforMation->Move = Inventroy_informations[1][3]->Move;
-		InforMation->item->Off();
-		Item_Renders[16] = InforMation;
-	}
+	
 }
 
 void Inventory::Update(float _DeltaTime)
@@ -598,7 +622,7 @@ void Inventory::Update(float _DeltaTime)
 		if (Item_type[i]->Item_Oreder == 0)
 		 {
 				Item_Check = 1;
-				Font_Check = i;
+				Font_Check = static_cast<int>(i);
 				//Font_Check += test_02;
 
 				break;
@@ -606,7 +630,7 @@ void Inventory::Update(float _DeltaTime)
 
 			if (Item_type[i]->Item_Oreder == Item_Sprite_Number)
 			{
-				Font_Check = i;
+				Font_Check = static_cast<int>(i);
 				Item_Check = 100;
 				//Font_Check += test_02;
 				break;
@@ -620,7 +644,7 @@ void Inventory::Update(float _DeltaTime)
 
 					Item_type[i]->Item_Oreder = Item_Sprite_Number;
 			
-					Number = i;
+					Number = static_cast<int>(i);
 
 					break;
 				}
@@ -927,7 +951,7 @@ void Inventory::Update(float _DeltaTime)
 
 
 
-					Item_Renders_Order = i;
+					Item_Renders_Order = static_cast<int>(i);
 
 
 
@@ -987,7 +1011,6 @@ void Inventory::Update(float _DeltaTime)
 					Item_Renders[Item_Renders_Order]->item->Death(); 
 					Item_Renders[Item_Renders_Order] = nullptr;
 					Item_overlap.erase(Item_type[Item_Renders_Order]->Item_Oreder);
-					//Font_Renders[Item_Renders_Order]->Font->Death();
 
 					Font_Renders[Item_Renders_Order]->Font->Death();
 					Font_Renders[Item_Renders_Order] = nullptr;

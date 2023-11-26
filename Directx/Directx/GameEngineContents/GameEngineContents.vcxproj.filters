@@ -237,6 +237,10 @@
     <ClCompile Include="Potion_NPC.cpp" />
     <ClCompile Include="Potion_NPC_State.cpp" />
     <ClCompile Include="Potion_Effect.cpp" />
+    <ClCompile Include="flyinggolem.cpp" />
+    <ClCompile Include="flyinggolem_State.cpp" />
+    <ClCompile Include="golemkamikaze.cpp" />
+    <ClCompile Include="golemkamikaze_State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -430,6 +434,8 @@
     <ClInclude Include="Black_Smith_Effect.h" />
     <ClInclude Include="Potion_NPC.h" />
     <ClInclude Include="Potion_Effect.h" />
+    <ClInclude Include="flyinggolem.h" />
+    <ClInclude Include="golemkamikaze.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

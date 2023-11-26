@@ -321,7 +321,7 @@ void Player::HitUpdate(float _Delta)
 
 	}
 
-	if (Hit_Check >= 5)
+	if (Hit_Check >= 3)
 	{
 		player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 		afterimage_Check = false;
@@ -330,8 +330,6 @@ void Player::HitUpdate(float _Delta)
 		afterimage_Time = 0;
 		Hp -= Hp_Bar_reduce;
 		Hp_Bar_reduce = 0;
-
-		
 	}
 }
 
@@ -456,7 +454,7 @@ void Player::Update(float _Delta)
 
 		if (Monster_Attack_Check == true)
 		{
-			if (Hp_Bar_reduce < 0.1)
+			if (Hp_Bar_reduce < 0.05)
 			{
 				Hp_Bar_reduce += _Delta / 3;
 				player_UI->Hp_Bar->Transform.AddLocalScale({ -_Delta / 3,0.0f });

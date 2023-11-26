@@ -77,4 +77,5 @@ enum class ContentsCollisionType
 	NPC,
 	NPC_Deal,
 	Black_Smith,
+	Monster_Boom,
 };

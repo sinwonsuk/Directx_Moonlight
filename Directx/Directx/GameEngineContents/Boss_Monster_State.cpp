@@ -117,8 +117,8 @@ void Boss_Monster::UpdateState(float _Time)
 void Boss_Monster::IdleUpdate(float _Time)
 {
 	WaveCheck = true; 
-
-	 float4 AD = random.RandomInt(0, 1);
+	//dasdasdas
+	 int AD = random.RandomInt(1, 1);
 
 	if (Time > 0 && Boss->IsCurAnimationEnd())
 	{
@@ -323,8 +323,8 @@ void Boss_Monster::Rock_Down_Update(float _Time)
 		std::shared_ptr<Boss_Rock> Object = GetLevel()->CreateActor<Boss_Rock>(50);
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + Shadow_Pos_Left,Transform.GetWorldPosition().Y + Shadow_Pos_Down + 800 });
 		Object->Set_BossPos({ Transform.GetWorldPosition().X + Shadow_Pos_Left,Transform.GetWorldPosition().Y + Shadow_Pos_Down + 800 });
-		Object->Random.SetSeed(Acsc.X++);
-		Object->Set_Seed(Acsc.X);
+		Object->Random.SetSeed(static_cast<long long>(Acsc.X++));
+		Object->Set_Seed(static_cast<const int>(Acsc.X));
 		Rock_Degree -= Rock_Degree_control;
 
 		if (abs(Rock_Degree) > 180)
@@ -356,8 +356,8 @@ void Boss_Monster::Rock_Down_Update(float _Time)
 		ChangeState(Boss_Monster_State::StickyArm_Start);
 		return; 
 	}
-
-	Random.SetSeed(Time++);
+	
+	Random.SetSeed(static_cast<long long>(Time++));
 }
 
 void Boss_Monster::StickyArm_Start_Update(float _Time)
