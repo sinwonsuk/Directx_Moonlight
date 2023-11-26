@@ -75,5 +75,6 @@ enum class ContentsCollisionType
 	Table_UI,
 	Open_Col,
 	NPC,
-	NPC_Deal
+	NPC_Deal,
+	Black_Smith,
 };

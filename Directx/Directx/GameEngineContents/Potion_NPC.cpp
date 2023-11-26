@@ -1,28 +1,23 @@
 #include "PreCompile.h"
-#include "Black_Smith.h"
-#include "Inventory.h"
-#include "Player.h"
-#include "Player_UI.h"
-#include "Inventory.h"
-#include "Black_Smith_Effect.h"
-Black_Smith::Black_Smith()
-{
+#include "Potion_NPC.h"
 
-}
-
-
-Black_Smith::~Black_Smith()
+Potion_NPC::Potion_NPC()
 {
 
 
 }
 
-
-
-
-void Black_Smith::Start()
+Potion_NPC::~Potion_NPC()
 {
-	GameEngineInput::AddInputObject(this); 
+
+
+}
+
+void Potion_NPC::Start()
+{
+	GameEngineInput::AddInputObject(this);
+
+	
 
 	{
 		black = CreateComponent<GameEngineUIRenderer>(-100);
@@ -31,19 +26,20 @@ void Black_Smith::Start()
 		black->GetColorData().MulColor = { 1,1,1,0.5 };
 	}
 	{
-		blacksmith_figure = CreateComponent<GameEngineUIRenderer>(-100);
-		blacksmith_figure->SetSprite("Black_Smith", 0);
-		blacksmith_figure->AutoSpriteSizeOn();
-		blacksmith_figure->SetAutoScaleRatio(2.0f);
-		blacksmith_figure->Transform.SetWorldPosition({ -385,-30 });
+		Witch_figure = CreateComponent<GameEngineUIRenderer>(-100);
+		Witch_figure->SetSprite("Witch", 0);
+		Witch_figure->AutoSpriteSizeOn();
+		Witch_figure->SetAutoScaleRatio(2.0f);
+		Witch_figure->Transform.SetWorldPosition({ -385,-30 });
 
 	}
+
 	{
-		blacksmith_workbench = CreateComponent<GameEngineUIRenderer>(-100);
-		blacksmith_workbench->SetSprite("Black_Smith", 1);
-		blacksmith_workbench->AutoSpriteSizeOn();
-		blacksmith_workbench->SetAutoScaleRatio(2.0f);
-		blacksmith_workbench->Transform.SetWorldPosition({ 23,-221 });
+		Witch_Jar = CreateComponent<GameEngineUIRenderer>(-100);
+		Witch_Jar->SetSprite("Witch", 1);
+		Witch_Jar->AutoSpriteSizeOn();
+		Witch_Jar->SetAutoScaleRatio(2.0f);
+		Witch_Jar->Transform.SetWorldPosition({ 23,-181 });
 	}
 
 	{
@@ -74,7 +70,7 @@ void Black_Smith::Start()
 		Item_Window_01->AutoSpriteSizeOn();
 		Item_Window_01->SetAutoScaleRatio(1.0f);
 		Item_Window_01->Transform.SetWorldPosition({ -121.0f,164.0f });
-		Item_Window_01->Off(); 
+		Item_Window_01->Off();
 	}
 
 	{
@@ -83,7 +79,7 @@ void Black_Smith::Start()
 		Item_Window_02->AutoSpriteSizeOn();
 		Item_Window_02->SetAutoScaleRatio(1.0f);
 		Item_Window_02->Transform.SetWorldPosition({ -12.0f,164.0f });
-		Item_Window_02->Off(); 
+		Item_Window_02->Off();
 	}
 
 	{
@@ -92,7 +88,7 @@ void Black_Smith::Start()
 		Item_Window_03->AutoSpriteSizeOn();
 		Item_Window_03->SetAutoScaleRatio(1.0f);
 		Item_Window_03->Transform.SetWorldPosition({ 97.0f,164.0f });
-		Item_Window_03->Off(); 
+		Item_Window_03->Off();
 	}
 
 	{
@@ -111,9 +107,9 @@ void Black_Smith::Start()
 		Item_Select->Off();
 		Item_Select->Transform.SetWorldPosition({ -121.0f,164.0f });
 	}
-	
 
-	
+
+
 
 	{
 		BrokenSword = CreateComponent<GameEngineUIRenderer>(101);
@@ -171,29 +167,29 @@ void Black_Smith::Start()
 	}
 
 	{
-		Item_Weapon_01 = CreateComponent<GameEngineUIRenderer>(101);
-		Item_Weapon_01->SetSprite("Items", 8);
-		Item_Weapon_01->AutoSpriteSizeOn();
-		Item_Weapon_01->SetAutoScaleRatio(2.3f);
-		Item_Weapon_01->Off();
-		Item_Weapon_01->Transform.SetWorldPosition({ -121.0f,164.0f });
+		Item_Potion_01 = CreateComponent<GameEngineUIRenderer>(101);
+		Item_Potion_01->SetSprite("Items", 9);
+		Item_Potion_01->AutoSpriteSizeOn();
+		Item_Potion_01->SetAutoScaleRatio(2.3f);
+		Item_Potion_01->Off();
+		Item_Potion_01->Transform.SetWorldPosition({ -121.0f,164.0f });
 	}
 	{
-		Item_Weapon_02 = CreateComponent<GameEngineUIRenderer>(101);
-		Item_Weapon_02->SetSprite("Items", 6);
-		Item_Weapon_02->AutoSpriteSizeOn();
-		Item_Weapon_02->SetAutoScaleRatio(2.3f);
-		Item_Weapon_02->Off();
-		Item_Weapon_02->Transform.SetWorldPosition({ -12.0f,164.0f });
+		Item_Potion_02 = CreateComponent<GameEngineUIRenderer>(101);
+		Item_Potion_02->SetSprite("Items", 10);
+		Item_Potion_02->AutoSpriteSizeOn();
+		Item_Potion_02->SetAutoScaleRatio(2.3f);
+		Item_Potion_02->Off();
+		Item_Potion_02->Transform.SetWorldPosition({ -12.0f,164.0f });
 	}
 
 	{
-		Item_Weapon_03 = CreateComponent<GameEngineUIRenderer>(101);
-		Item_Weapon_03->SetSprite("Items", 7);
-		Item_Weapon_03->AutoSpriteSizeOn();
-		Item_Weapon_03->SetAutoScaleRatio(2.3f);
-		Item_Weapon_03->Off();
-		Item_Weapon_03->Transform.SetWorldPosition({ 97.0f,164.0f });
+		Item_Potion_03 = CreateComponent<GameEngineUIRenderer>(101);
+		Item_Potion_03->SetSprite("Items", 11);
+		Item_Potion_03->AutoSpriteSizeOn();
+		Item_Potion_03->SetAutoScaleRatio(2.3f);
+		Item_Potion_03->Off();
+		Item_Potion_03->Transform.SetWorldPosition({ 97.0f,164.0f });
 	}
 
 	{
@@ -202,7 +198,7 @@ void Black_Smith::Start()
 		blacksmith_OX_Enough_01->AutoSpriteSizeOn();
 		blacksmith_OX_Enough_01->SetAutoScaleRatio(2.0f);
 		blacksmith_OX_Enough_01->Off();
-		blacksmith_OX_Enough_01->Transform.SetWorldPosition({ 542,-97});
+		blacksmith_OX_Enough_01->Transform.SetWorldPosition({ 542,-97 });
 	}
 
 	{
@@ -219,13 +215,13 @@ void Black_Smith::Start()
 		blacksmith_OX_Enough_03->AutoSpriteSizeOn();
 		blacksmith_OX_Enough_03->SetAutoScaleRatio(2.0f);
 		blacksmith_OX_Enough_03->Off();
-		blacksmith_OX_Enough_03->Transform.SetWorldPosition({ 542,-234});
+		blacksmith_OX_Enough_03->Transform.SetWorldPosition({ 542,-234 });
 	}
 
 	{
 		Npc = CreateComponent<GameEngineSpriteRenderer>(101);
 		Npc->CreateAnimation("Black_Smith_Npc", "Black_Smith_Npc", 0.1f, -1, -1, true);
-	
+
 		Npc->AutoSpriteSizeOn();
 		Npc->SetAutoScaleRatio(2.0f);
 		Npc->On();
@@ -239,22 +235,22 @@ void Black_Smith::Start()
 		Enought_Item_Number_01 = CreateComponent<GameEngineUIRenderer>(101);
 		Enought_Item_Number_01->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 		Enought_Item_Number_01->Transform.SetWorldPosition({ 475 ,-68 });
-		Enought_Item_Number_01->Off(); 
+		Enought_Item_Number_01->Off();
 	}
-	
+
 	{
 		std::string numberStr = std::to_string(0);
 		Enought_Item_Number_02 = CreateComponent<GameEngineUIRenderer>(101);
 		Enought_Item_Number_02->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 		Enought_Item_Number_02->Transform.SetWorldPosition({ 475 ,-137 });
-		Enought_Item_Number_02->Off(); 
+		Enought_Item_Number_02->Off();
 	}
 	{
 		std::string numberStr = std::to_string(0);
 		Enought_Item_Number_03 = CreateComponent<GameEngineUIRenderer>(101);
 		Enought_Item_Number_03->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 		Enought_Item_Number_03->Transform.SetWorldPosition({ 475 ,-205 });
-		Enought_Item_Number_03->Off(); 
+		Enought_Item_Number_03->Off();
 	}
 	{
 		std::string numberStr = std::to_string(0);
@@ -284,29 +280,16 @@ void Black_Smith::Start()
 		Money = CreateComponent<GameEngineUIRenderer>(101);
 		Money->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 		Money->Transform.SetWorldPosition({ 517 ,11 });
-		Money->Off(); 
+		Money->Off();
 	}
 
-	
 
 
-
-	//Item_Number_01
-
-
-	//Font->Transform.SetWorldPosition({ Font_Renders[i]->Move.X + 20,Font_Renders[i]->Move.Y - 5 });
-	//Font_inforMation->Item_Select = Font_Renders[i]->Item_Select;
-	//Font_inforMation->Move = { Font_Renders[i]->Move.X,Font_Renders[i]->Move.Y};
-	//Font->Off();
-
-
-
-	
 
 
 	black->Off();
-	blacksmith_figure->Off();
-	blacksmith_workbench->Off();
+	Witch_figure->Off();
+	Witch_Jar->Off();
 	Item_Sort->Off();
 	Store_name->Off();
 	Item_Information->Off();
@@ -317,22 +300,15 @@ void Black_Smith::Start()
 		Col->Transform.SetWorldPosition({ 1439, -265.0f });
 		Col->Transform.SetLocalScale({ 100.0f, 200.0f });
 	}
-	
-}
 
-void Black_Smith::Black_Smith_effect(int _Sprite)
-{
-	std::shared_ptr<Black_Smith_Effect> Object = GetLevel()->CreateActor<Black_Smith_Effect>();
-	Object->Set_Prev_Pos({ 23, -201 });
-	Object->Transform.SetWorldPosition({ 23, -201 });
-	Object->Set_Sprite(_Sprite);
+
 
 }
 
-void Black_Smith::Update(float _Delta)
+void Potion_NPC::Update(float _Delta)
 {
-	Black_Smith_Open_Close();
-	Black_Smith_Move();
+	Potion_Open_Close();
+	Potion_Move();
 
 	if (Item_Select->Transform.GetWorldPosition().X == -121)
 	{
@@ -350,100 +326,5 @@ void Black_Smith::Update(float _Delta)
 		Item_InforMation_03();
 		Item_Buy_03();
 	}
-
-
-
-	
-
-	//std::shared_ptr<class GameEngineSpriteRenderer> AD = Npc;
-
-
-
-	//if (GameEngineInput::IsDown('1',this) && check == false)
-	//{
-	//	check = true;
-	//}
-	//else if (GameEngineInput::IsDown('1',this) && check == true)
-	//	check = false;
-	//{
-	//}
-
-
-	//if (check == true)
-	//{
-	//	if (GameEngineInput::IsPress('A', this))
-	//	{
-	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition({ 5.0f,0.0f });
-	//	}
-
-	//	if (GameEngineInput::IsPress('D', this))
-	//	{
-	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition({ -5.0f,0.0f });
-	//		return;
-	//	}
-
-	//	if (GameEngineInput::IsPress('W', this))
-	//	{
-	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition(float4::UP *5);
-	//		return;
-	//	}
-
-	//	if (GameEngineInput::IsPress('S', this))
-	//	{
-	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition(float4::DOWN* 5);
-	//		return;
-	//	}
-	//}
-	//if (check == false)
-	//{
-
-
-	//	if (GameEngineInput::IsPress('A', this))
-	//	{
-	//		AD->Transform.AddWorldPosition({ 1.0f,0.0f });
-	//	}
-
-	//	if (GameEngineInput::IsPress('D', this))
-	//	{
-	//		AD->Transform.AddWorldPosition({ -1.0f,0.0f });
-	//		return;
-	//	}
-
-	//	if (GameEngineInput::IsPress('W', this))
-	//	{
-	//		AD->Transform.AddWorldPosition(float4::UP);
-	//		return;
-	//	}
-
-	//	if (GameEngineInput::IsPress('S', this))
-	//	{
-	//		AD->Transform.AddWorldPosition(float4::DOWN);
-	//		return;
-	//	}
-	//}
-
-	//if (GameEngineInput::IsPress('Q', this))
-	//{
-	//	AD->Transform.AddWorldRotation({0.0f,1.0f* _Delta,0.0f});
-	//	return;
-	//}
-	//if (GameEngineInput::IsPress('E', this))
-	//{
-	//	AD->Transform.AddWorldRotation({ 0.0f,-1.0f* _Delta,0.0f });
-	//	return;
-	//}
-	////-4946.0f, -5275.0f
-
-
-	//TransformData date = AD->Transform.GetConstTransformDataRef();
-
-	////date.LocalPosition;
-
-	////float4 WorldMousePos;
-
-	//float4 WorldMousePos = { date.LocalPosition.X,date.LocalPosition.Y };
-	//OutputDebugStringA(WorldMousePos.ToString("\n").c_str());
-
-
 
 }

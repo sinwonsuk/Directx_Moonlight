@@ -184,7 +184,8 @@ public:
 
 	void Move(float _Delta);
 	void HitUpdate(float _Delta);
-
+	void Heal(float _Delta);
+	void ChangeWeapon(); 
 	// ¾ðÁ¨°£ ¹Ù²Û´Ù 
 	float Speed = 300.0f;
 	float Roll_Speed = 400.0f;
@@ -244,6 +245,8 @@ private:
 	int UICheck = 0;
 	
 	float Hp_Bar_reduce = 0.0f;
+	float Hp_Bar_Heal = 0.0f;
 	//std::shared_ptr<GameEngineCollision> Col;
+	bool HealCheck = false;
 };
 

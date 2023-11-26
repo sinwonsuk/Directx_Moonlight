@@ -7,6 +7,8 @@
 #include "Black_Out.h"
 #include "Inventory.h"
 #include "Black_Smith.h"
+#include "Potion_NPC.h"
+#include "Player_UI.h"
 WorldLevel::WorldLevel()
 {
 }
@@ -84,18 +86,21 @@ void WorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	Black_smith = CreateActor<Black_Smith>(ContentsObjectType::BackGround);
 
-	
+	Poition = CreateActor<Potion_NPC>(ContentsObjectType::BackGround);
+
 	int a = 0;
 }
 
 void WorldLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 
+	Poition->Death();
 	Black_smith->Death(); 
 	inventory->Death();
 	Map->black_Out->Death(); 
 	Map->black_Out_02->Death();
 	Map->Death(); 
+	Player::this_Player->player_UI->Death(); 
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;
 }

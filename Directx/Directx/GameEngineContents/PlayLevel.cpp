@@ -105,7 +105,7 @@ void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	
 	Player::this_Player->spears.clear(); 
-
+	Player::this_Player->player_UI->Death();
 	Player::this_Player->Death();
 	Player::this_Player = nullptr;
 

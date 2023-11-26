@@ -8,6 +8,7 @@
 #include "Monster.h"
 #include "ContentsEnum.h"
 #include "Player_UI.h"
+#include "Inventory.h"
 
 Player* Player::this_Player; 
 Leveltype Player::LevelType = Leveltype::Town;
@@ -279,14 +280,14 @@ void Player::HitUpdate(float _Delta)
 		Color_Time += _Delta;
 
 
-		if (Color_Time < 0.05)
+		if (Color_Time < 0.1)
 		{
 			player->GetColorData().PlusColor = { 0.0f,-1.0f,-1.0f,0.0f };
 		}
 
 		if (Color_Time <= 0.1)
 		{
-			if (Color_Time > 0.05)
+			if (Color_Time > 0.1)
 			{
 				player->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
 			}
@@ -306,12 +307,12 @@ void Player::HitUpdate(float _Delta)
 	{
 		afterimage_Time += _Delta;
 
-		if (afterimage_Time < 0.15)
+		if (afterimage_Time < 0.2)
 		{
 			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,-1.0f };
 		}
 
-		if (afterimage_Time > 0.15)
+		if (afterimage_Time > 0.2)
 		{
 			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 			afterimage_Time = 0;
@@ -334,6 +335,84 @@ void Player::HitUpdate(float _Delta)
 	}
 }
 
+void Player::Heal(float _Delta)
+{
+
+	if (Inventory::This_Inventory->Item_Renders[27] != nullptr)
+	{
+		if (Inventory::This_Inventory->Item_Renders[27]->Item_Select == 10 || Inventory::This_Inventory->Item_Renders[27]->Item_Select == 11 || Inventory::This_Inventory->Item_Renders[27]->Item_Select == 12)
+		{
+
+			if (GameEngineInput::IsDown('K', this) && player_UI->Hp_Bar->Transform.GetLocalScale().X < 1)
+			{
+
+				Inventory::This_Inventory->Font_Renders[27]->FontNumber -= 1;
+				std::string numberStr = std::to_string(Inventory::This_Inventory->Font_Renders[27]->FontNumber);
+				Inventory::This_Inventory->Font_Renders[27]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+				HealCheck = true;
+			}
+
+
+
+			if (Inventory::This_Inventory->Font_Renders[27]->FontNumber == 0)
+			{
+				Inventory::This_Inventory->Font_Renders[27]->Font->Death();
+				Inventory::This_Inventory->Font_Renders[27]->FontNumber = 0;
+				Inventory::This_Inventory->Font_Renders[27] = nullptr;
+
+				Inventory::This_Inventory->Item_Renders[27]->item->Death();
+				Inventory::This_Inventory->Item_Renders[27] = nullptr;
+
+				Inventory::This_Inventory->Item_type[27]->Item_Oreder = 0;
+				Inventory::This_Inventory->Item_type[27]->Move = float4::ZERO;
+			}
+		}
+	}
+
+
+
+
+
+	if (HealCheck == true)
+	{
+		Hp_Bar_Heal += _Delta / 3;
+		player_UI->Hp_Bar->Transform.AddLocalScale({ _Delta / 3,0.0f });
+		player_UI->Hp_Bar->GetColorData().PlusColor = { 1.0f,1.0f,1.0f,0.0f };
+	}
+
+	if (player_UI->Hp_Bar->Transform.GetLocalScale().X >= 1.0)
+	{
+		HealCheck = false;
+		Hp_Bar_Heal = 0;
+	}
+
+
+	if (Hp_Bar_Heal >= 0.1 && Inventory::This_Inventory->Item_Renders[27]->Item_Select == 10)
+	{
+		player_UI->Hp_Bar->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+		HealCheck = false;
+		Hp_Bar_Heal = 0;
+	}
+	else if (Hp_Bar_Heal >= 0.3 && Inventory::This_Inventory->Item_Renders[27]->Item_Select == 11)
+	{
+		player_UI->Hp_Bar->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+		HealCheck = false;
+		Hp_Bar_Heal = 0;
+	}
+	else if (Hp_Bar_Heal >= 0.5 && Inventory::This_Inventory->Item_Renders[27]->Item_Select == 12)
+	{
+		player_UI->Hp_Bar->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
+		HealCheck = false;
+		Hp_Bar_Heal = 0;
+	}
+
+}
+
+void Player::ChangeWeapon()
+{
+	
+}
+
 
 
 void Player::Update(float _Delta)
@@ -354,21 +433,18 @@ void Player::Update(float _Delta)
 	{
 		Hp = 100;
 	}
-	float4 awdd = Transform.GetWorldPosition();
-
-
-	OutputDebugStringA(awdd.ToString("\n").c_str());
+	
 	
 	
 
-	if (Hp <= 0.05 && DieCheck ==false)
+	if (Hp <= 0.0 && DieCheck ==false)
 	{
 		ChangeState(PlayerState::Death);
 		DieCheck = true;
 	
 	}
 
-	if (Hp > 0.05)
+	if (Hp > 0.0)
 	{
 		
 
@@ -380,7 +456,7 @@ void Player::Update(float _Delta)
 
 		if (Monster_Attack_Check == true)
 		{
-			if (Hp_Bar_reduce < 0.05)
+			if (Hp_Bar_reduce < 0.1)
 			{
 				Hp_Bar_reduce += _Delta / 3;
 				player_UI->Hp_Bar->Transform.AddLocalScale({ -_Delta / 3,0.0f });
@@ -395,13 +471,10 @@ void Player::Update(float _Delta)
 		}
 
 	}
-	
-	
 
 	
-
-
-
+	Heal(_Delta);
+	ChangeWeapon();
 
 	Left_Col->CollisionEvent(ContentsCollisionType::Object, Left_Event);
 	Right_Col->CollisionEvent(ContentsCollisionType::Object, Right_Event);
@@ -420,4 +493,8 @@ void Player::Update(float _Delta)
 	{
 		player->On();
 	}
+
+
+	/*float4 awdd = Transform.GetWorldPosition();
+	OutputDebugStringA(awdd.ToString("\n").c_str());*/
 }

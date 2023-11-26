@@ -171,6 +171,7 @@
     <ClCompile Include="Black.cpp" />
     <ClCompile Include="Black_Out.cpp" />
     <ClCompile Include="Black_Smith.cpp" />
+    <ClCompile Include="Black_Smith_Effect.cpp" />
     <ClCompile Include="Black_Smith_State.cpp" />
     <ClCompile Include="Boss_Arm.cpp" />
     <ClCompile Include="Boss_Arm_State.cpp" />
@@ -232,6 +233,8 @@
     <ClCompile Include="Path_Finder_Level.cpp" />
     <ClCompile Include="PlayerEffect.cpp" />
     <ClCompile Include="Player_UI.cpp" />
+    <ClCompile Include="Potion_NPC.cpp" />
+    <ClCompile Include="Potion_NPC_State.cpp" />
     <ClCompile Include="Random_Room.cpp" />
     <ClCompile Include="Rock_Particle.cpp" />
     <ClCompile Include="ShopLevel.cpp" />
@@ -298,6 +301,7 @@
     <ClInclude Include="Black.h" />
     <ClInclude Include="Black_Out.h" />
     <ClInclude Include="Black_Smith.h" />
+    <ClInclude Include="Black_Smith_Effect.h" />
     <ClInclude Include="Boss_Arm.h" />
     <ClInclude Include="Boss_Brick.h" />
     <ClInclude Include="Boss_Map.h" />
@@ -343,6 +347,7 @@
     <ClInclude Include="Path_Finder_Level.h" />
     <ClInclude Include="PlayerEffect.h" />
     <ClInclude Include="Player_UI.h" />
+    <ClInclude Include="Potion_NPC.h" />
     <ClInclude Include="Random_Room.h" />
     <ClInclude Include="Rock_Particle.h" />
     <ClInclude Include="ShopLevel.h" />

@@ -65,7 +65,7 @@ void golem_Solder::Start()
 
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
-		Col->Transform.SetLocalScale({ 50.0f,50.0f }); 
+		Col->Transform.SetLocalScale({ 70.0f,70.0f }); 
 		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 
@@ -76,7 +76,7 @@ void golem_Solder::Start()
 	}
 	{
 		Monster_Weapon = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster_Weapon);
-		Monster_Weapon->Transform.SetLocalScale({ 50.0f,50.0f });
+		Monster_Weapon->Transform.SetLocalScale({ 70.0f,70.0f });
 		Monster_Weapon->SetCollisionType(ColType::AABBBOX2D);
 		Monster_Weapon->Off(); 
 	}

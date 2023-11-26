@@ -73,6 +73,168 @@ Inventory::~Inventory()
 
 }
 
+void Inventory::ItemDebuge()
+{
+	{
+		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+		InforMation->item->SetSprite("Items", 0);
+		InforMation->item->AutoSpriteSizeOn();
+		InforMation->item->SetAutoScaleRatio(1.5f);
+		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[0][0]->Move);
+		InforMation->Item_Select = 1;
+		InforMation->Move = Inventroy_informations[0][0]->Move;
+		InforMation->item->Off();
+		Item_Renders[0] = InforMation;
+	}
+
+	{
+		std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>();
+
+		std::string numberStr = std::to_string(99);
+
+		Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
+		Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Font_inforMation->FontNumber = 99;
+		Font_inforMation->Font->Transform.SetWorldPosition({ Inventroy_informations[0][0]->Move.X+20,Inventroy_informations[0][0]->Move.Y -5 });
+		Font_inforMation->Font->Off();
+		Font_inforMation->Move = Inventroy_informations[0][0]->Move;
+		Font_Renders[0] = Font_inforMation;
+
+		Item_type[0]->Item_Oreder = 1;
+		Item_type[0]->Move = Inventroy_informations[0][0]->Move;
+
+	}
+
+	{
+		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+		InforMation->item->SetSprite("Items", 1);
+		InforMation->item->AutoSpriteSizeOn();
+		InforMation->item->SetAutoScaleRatio(1.5f);
+		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[1][0]->Move);
+		InforMation->Item_Select = 2;
+		InforMation->Move = Inventroy_informations[1][0]->Move;
+		InforMation->item->Off();
+		Item_Renders[1] = InforMation;
+	}
+
+	{
+		std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>();
+
+		std::string numberStr = std::to_string(99);
+
+		Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
+		Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Font_inforMation->FontNumber = 99;
+		Font_inforMation->Font->Transform.SetWorldPosition({ Inventroy_informations[1][0]->Move.X + 20,Inventroy_informations[1][0]->Move.Y - 5 });
+		Font_inforMation->Font->Off();
+		Font_inforMation->Move = Inventroy_informations[1][0]->Move;
+		Font_Renders[1] = Font_inforMation;
+
+		Item_type[1]->Item_Oreder = 2;
+		Item_type[1]->Move = Inventroy_informations[1][0]->Move;
+
+	}
+
+	{
+		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+		InforMation->item->SetSprite("Items", 2);
+		InforMation->item->AutoSpriteSizeOn();
+		InforMation->item->SetAutoScaleRatio(1.5f);
+		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[2][0]->Move);
+		InforMation->Item_Select = 3;
+		InforMation->Move = Inventroy_informations[2][0]->Move;
+		InforMation->item->Off();
+		Item_Renders[2] = InforMation;
+	}
+
+	{
+		std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>();
+
+		std::string numberStr = std::to_string(99);
+
+		Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
+		Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Font_inforMation->FontNumber = 99;
+		Font_inforMation->Font->Transform.SetWorldPosition({ Inventroy_informations[2][0]->Move.X + 20,Inventroy_informations[2][0]->Move.Y - 5 });
+		Font_inforMation->Font->Off();
+		Font_inforMation->Move = Inventroy_informations[2][0]->Move;
+		Font_Renders[2] = Font_inforMation;
+
+		Item_type[2]->Item_Oreder = 3;
+		Item_type[2]->Move = Inventroy_informations[2][0]->Move;
+
+	}
+
+	{
+		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+		InforMation->item->SetSprite("Items", 3);
+		InforMation->item->AutoSpriteSizeOn();
+		InforMation->item->SetAutoScaleRatio(1.5f);
+		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[3][0]->Move);
+		InforMation->Item_Select = 4;
+
+		InforMation->Move = Inventroy_informations[3][0]->Move;
+		InforMation->item->Off();
+		Item_Renders[3] = InforMation;
+	}
+
+	{
+		std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>();
+
+		std::string numberStr = std::to_string(99);
+
+		Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
+		Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Font_inforMation->FontNumber = 99;
+		Font_inforMation->Font->Transform.SetWorldPosition({ Inventroy_informations[3][0]->Move.X + 20,Inventroy_informations[3][0]->Move.Y - 5 });
+		Font_inforMation->Font->Off();
+		Font_inforMation->Move = Inventroy_informations[3][0]->Move;
+		Font_Renders[3] = Font_inforMation;
+
+		Item_type[3]->Item_Oreder = 4;
+		Item_type[3]->Move = Inventroy_informations[3][0]->Move;
+
+	}
+
+	{
+		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
+		InforMation->item->SetSprite("Items", 4);
+		InforMation->item->AutoSpriteSizeOn();
+		InforMation->item->SetAutoScaleRatio(1.5f);
+		InforMation->item->Transform.AddLocalPosition(Inventroy_informations[4][0]->Move);
+		InforMation->Item_Select = 5;
+		InforMation->Move = Inventroy_informations[4][0]->Move;
+		InforMation->item->Off();
+		Item_Renders[4] = InforMation;
+	}
+
+	{
+		std::shared_ptr<Font_InforMation> Font_inforMation = std::make_shared<Font_InforMation>();
+
+		std::string numberStr = std::to_string(99);
+
+		Font_inforMation->Font = CreateComponent<GameEngineUIRenderer>(101);
+		Font_inforMation->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Font_inforMation->FontNumber = 99;
+		Font_inforMation->Font->Transform.SetWorldPosition({ Inventroy_informations[4][0]->Move.X + 20,Inventroy_informations[4][0]->Move.Y - 5 });
+		Font_inforMation->Font->Off();
+		Font_inforMation->Move = Inventroy_informations[4][0]->Move;
+		Font_Renders[4]  = Font_inforMation;
+
+		Item_type[4]->Item_Oreder = 5;
+		Item_type[4]->Move = Inventroy_informations[4][0]->Move;
+
+	}
+
+
+
+}
+
 void Inventory::Start()
 {
 	GameEngineInput::AddInputObject(this);
@@ -326,7 +488,7 @@ void Inventory::Start()
 
 	{
 		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
-
+		
 		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
 		InforMation->item->SetSprite("Items", 8);
 		InforMation->item->AutoSpriteSizeOn();
@@ -341,9 +503,71 @@ void Inventory::Start()
 
 void Inventory::Update(float _DeltaTime)
 {
-
+	if (GameEngineInput::IsDown('9', this))
+	{
+		ItemDebuge();
+	}
 	
-	GetLevel();
+	if (Inventory::This_Inventory->Item_Renders[26] != nullptr)
+	{
+		if (Inventory::This_Inventory->Item_Renders[25] != nullptr)
+		{
+			if (GameEngineInput::IsDown('Z', this))
+			{
+				{
+					std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
+
+					InforMation->item = CreateComponent<GameEngineUIRenderer>(103);
+					InforMation->item->SetSprite("Items", Inventory::This_Inventory->Item_Renders[26]->Item_Select - 1);
+					InforMation->item->Transform.SetWorldPosition({ Inventory::This_Inventory->Item_Renders[25]->Move });
+					InforMation->item->AutoSpriteSizeOn();
+					InforMation->item->SetAutoScaleRatio(2.0f);
+					InforMation->Item_Select = Inventory::This_Inventory->Item_Renders[26]->Item_Select;
+					InforMation->Move = Inventory::This_Inventory->Item_Renders[25]->Move;
+					InforMation->item->Off();
+
+
+
+
+					std::shared_ptr<Item_InforMation> InforMation2 = std::make_shared<Item_InforMation>();
+
+					InforMation2->item = CreateComponent<GameEngineUIRenderer>(103);
+					InforMation2->item->SetSprite("Items", Inventory::This_Inventory->Item_Renders[25]->Item_Select - 1);
+					InforMation2->item->Transform.SetWorldPosition({ Inventory::This_Inventory->Item_Renders[26]->Move });
+					InforMation2->item->AutoSpriteSizeOn();
+					InforMation2->item->SetAutoScaleRatio(2.0f);
+
+					InforMation2->Item_Select = Inventory::This_Inventory->Item_Renders[25]->Item_Select;
+					InforMation2->Move = Inventory::This_Inventory->Item_Renders[26]->Move;
+					InforMation2->item->Off();
+
+
+					Inventory::This_Inventory->Item_Renders[26]->item->Death();
+					Inventory::This_Inventory->Item_Renders[26] = nullptr;
+
+					Inventory::This_Inventory->Item_Renders[25]->item->Death();
+					Inventory::This_Inventory->Item_Renders[25] = nullptr;
+
+					Inventory::This_Inventory->Item_Renders[26] = InforMation2;
+					Inventory::This_Inventory->Item_Renders[25] = InforMation;
+
+
+
+
+					Inventory::This_Inventory->Item_type[26]->Item_Oreder = Inventory::This_Inventory->Item_Renders[26]->Item_Select;
+					Inventory::This_Inventory->Item_type[26]->Move = Inventory::This_Inventory->Item_Renders[26]->Move;
+
+					Inventory::This_Inventory->Item_type[25]->Item_Oreder = Inventory::This_Inventory->Item_Renders[25]->Item_Select;
+					Inventory::This_Inventory->Item_type[25]->Move = Inventory::This_Inventory->Item_Renders[25]->Move;
+
+				}
+
+
+			}
+		}
+	}
+
+
 	if (Item_Start == true)
 	{
 		
@@ -731,6 +955,12 @@ void Inventory::Update(float _DeltaTime)
 		{
 			Transform_2_1 = 25;
 		}
+		else if (Inventory_pos_Y == 1 && Inventory_pos_X == 5)
+		{
+			Transform_2_1 = 27;
+		}
+
+
 		else
 		{
 			Transform_2_1 = Inventory_pos_Y * 5 + Inventory_pos_X;

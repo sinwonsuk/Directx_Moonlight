@@ -48,26 +48,6 @@ void Npc::Update(float _Delta)
 {
 	
 
-	//Col->CollisionEvent(ContentsCollisionType::NPC, { .Enter = [&](class GameEngineCollision* _This,class GameEngineCollision* _collisions)
-	//{
-	//		//float4 ad = _This->GetActor()->Transform.GetLocalPosition();
-
-	//		//test = true;
-
-	//		Npc* npc2 = dynamic_cast<Npc*>(_collisions->GetActor());
-
-	//		npc2->test = true;
-
-	//		Npc* npc = dynamic_cast<Npc*>(_This->GetActor());
-
-	//		npc->test = false;
-
-	//} });
-
-	if (test == true)
-	{
-
-
 		switch (MoveValue)
 		{
 		case Npc_Move::Down_Right:
@@ -85,7 +65,7 @@ void Npc::Update(float _Delta)
 		default:
 			break;
 		}
-	}
+	
 	
 	
 	

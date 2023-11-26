@@ -2,6 +2,7 @@
 #include "Player_UI.h"
 #include <GameEngineCore/GameEngineUIRenderer.h>
 #include <GameEngineCore/FadePostEffect.h>
+#include "Inventory.h"
 int Player_UI::gold = 0;
 Player_UI::Player_UI()
 {
@@ -90,6 +91,8 @@ void Player_UI::Start()
 	Weapon_Spear->SetAutoScaleRatio(2.0f);
 	Weapon_Spear->Transform.AddLocalPosition({ 590.0f,260.0f });
 
+
+
 	Button_J = CreateComponent<GameEngineUIRenderer>(10);
 	Button_J->SetSprite("Button_J.png");
 	Button_J->AutoSpriteSizeOn();
@@ -134,5 +137,11 @@ void Player_UI::Update(float _Delta)
 
 	std::string numberStr = std::to_string(gold);
 	Gold_UI->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+
+	if (Inventory::This_Inventory->Item_Renders[26] != nullptr)
+	{
+		Weapon_Spear->SetSprite("Items", Inventory::This_Inventory->Item_Renders[26]->Item_Select - 1); 
+	}
+	
 
 }

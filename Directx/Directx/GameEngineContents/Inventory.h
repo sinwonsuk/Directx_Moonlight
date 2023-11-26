@@ -56,7 +56,7 @@ public:
 	bool Item_Start = false;
 	
 	int Item_Sprite_Number = 0;
-
+	void ItemDebuge(); 
 
 	void Set_Custom_Pos(const float4& _Custom_Pos)
 	{
