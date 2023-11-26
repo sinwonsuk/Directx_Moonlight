@@ -63,6 +63,7 @@ private:
 	std::shared_ptr<GameEngineCollision> Down_Col;
 	std::shared_ptr<GameEngineCollision> Up_Col;
 
+	GameEngineRandom random;
 	
 	std::shared_ptr<GameEngineCollision> Open_Col;
 

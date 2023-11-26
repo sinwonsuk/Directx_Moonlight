@@ -233,6 +233,7 @@
     <ClCompile Include="Path_Finder_Level.cpp" />
     <ClCompile Include="PlayerEffect.cpp" />
     <ClCompile Include="Player_UI.cpp" />
+    <ClCompile Include="Potion_Effect.cpp" />
     <ClCompile Include="Potion_NPC.cpp" />
     <ClCompile Include="Potion_NPC_State.cpp" />
     <ClCompile Include="Random_Room.cpp" />
@@ -347,6 +348,7 @@
     <ClInclude Include="Path_Finder_Level.h" />
     <ClInclude Include="PlayerEffect.h" />
     <ClInclude Include="Player_UI.h" />
+    <ClInclude Include="Potion_Effect.h" />
     <ClInclude Include="Potion_NPC.h" />
     <ClInclude Include="Random_Room.h" />
     <ClInclude Include="Rock_Particle.h" />

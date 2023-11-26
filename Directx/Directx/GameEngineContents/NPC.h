@@ -10,6 +10,17 @@ enum class Npc_Move
 	Down_Right,
 };
 
+enum class Npc_Name
+{
+	Npc_01,
+	Npc_02,
+	Npc_03,
+	Npc_04,
+};
+
+
+
+
 enum class Npc_State
 {
 	Start,
@@ -50,7 +61,7 @@ public:
 	void UpdateState_04(float _Time);
 
 
-	void AnimationCheck(const std::string_view& _AnimationName);
+	void AnimationCheck(std::string _AnimationName);
 
 	void StartUpdate_01(float _Time);
 	void StartUpdate_02(float _Time);
@@ -103,12 +114,21 @@ public:
 	{
 		MoveValue = _MoveValue; 
 	}
+	void Set_Npc_name(Npc_Name _Npc_name)
+	{
+		Npc_name = _Npc_name; 
+	}
+
+
 	bool test = true;
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 private:
+
+	std::string Name;
+
 	float Speed = 50.0f;
 	float Time = 0.0f;
 	float Number = 1.0f; 
@@ -117,7 +137,7 @@ private:
 	std::shared_ptr<GameEngineCollision> Col;
 	std::shared_ptr<GameEngineCollision> Col_Deal;
 	
-
+	Npc_Name Npc_name = Npc_Name::Npc_01;
 
 
 	Npc_State StateValue = Npc_State::LeftMove;

@@ -534,47 +534,56 @@ void Shop_House::Update(float _DeltaTime)
 	{
 		Time += _DeltaTime; 
 
+		int Npc_Number = random.RandomInt(0, 3);
+
 		if (Time > 2)
 		{
 			if (Shop_UI::this_Shop_UI->Shop_Item_01->IsUpdate() == true && Shop_Item_01 == false)
 			{
 				std::shared_ptr<Npc> Object = GetLevel()->CreateActor<Npc>();
-
+				Object->Set_Npc_name(static_cast<Npc_Name>(Npc_Number));
 				Object->Transform.SetWorldPosition({ 687,-635 });
+				Object->ChangeState(Npc_State::LeftMove);
 				Object->Set_MoveValue(Npc_Move::Up_Left);
 				Shop_Item_01 = true;
 				Time = 0;
-				int a = 0;
+				
 			}
 
 			else if (Shop_UI::this_Shop_UI->Shop_Item_02->IsUpdate() == true && Shop_Item_02 == false)
 			{
 				std::shared_ptr<Npc> Object = GetLevel()->CreateActor<Npc>();
+				Object->Set_Npc_name(static_cast<Npc_Name>(Npc_Number));
 				Object->Transform.SetWorldPosition({ 687,-635 });
+				Object->ChangeState(Npc_State::LeftMove);
 				Object->Set_MoveValue(Npc_Move::Up_Right);
 				Shop_Item_02 = true;
 				Time = 0;
-				int a = 0;
+			
 			}
 
 			else if (Shop_UI::this_Shop_UI->Shop_Item_03->IsUpdate() == true && Shop_Item_03 == false)
 			{
 				std::shared_ptr<Npc> Object = GetLevel()->CreateActor<Npc>();
+				Object->Set_Npc_name(static_cast<Npc_Name>(Npc_Number));
 				Object->Transform.SetWorldPosition({ 687,-635 });
+				Object->ChangeState(Npc_State::LeftMove);
 				Object->Set_MoveValue(Npc_Move::Down_Left);
 				Shop_Item_03 = true;
 				Time = 0;
-				int a = 0;
+			
 			}
 
 			else if (Shop_UI::this_Shop_UI->Shop_Item_04->IsUpdate() == true && Shop_Item_04 == false)
 			{
 				std::shared_ptr<Npc> Object = GetLevel()->CreateActor<Npc>();
+				Object->Set_Npc_name(static_cast<Npc_Name>(Npc_Number));
 				Object->Transform.SetWorldPosition({ 687,-635 });
+				Object->ChangeState(Npc_State::LeftMove);
 				Object->Set_MoveValue(Npc_Move::Down_Right);
 				Shop_Item_04 = true;
 				Time = 0;
-				int a = 0;
+			
 			}
 		}
 

@@ -3,10 +3,10 @@
 #include "Inventory.h"
 #include "Player.h"
 #include "Player_UI.h"
-
+#include "Potion_Effect.h"
 void Potion_NPC::Potion_Open_Close()
 {
-	if (GameEngineInput::IsDown('E', this) && Black_Smith_Start == false /*&& Col->Collision(ContentsCollisionType::Player*/)
+	if (GameEngineInput::IsDown('E', this) && Black_Smith_Start == false && Col->Collision(ContentsCollisionType::Player))
 	{
 		BrokenSword_Item_Number = 0;
 		AncientPot_Item_Number = 0;
@@ -459,7 +459,7 @@ void Potion_NPC::Item_Buy_01()
 							FireJelly_Item_Number -= Enough_Item_01;
 							AncientPot_Item_Number -= Enough_Item_02;
 							EmpoweredCrystal_Item_Number -= Enough_Item_03;
-
+							Potion_Npc_effect(InforMation->Item_Select - 1);
 							Player_UI::gold -= Itme_Money;
 	
 							break;
@@ -489,7 +489,7 @@ void Potion_NPC::Item_Buy_01()
 								AncientPot_Item_Number -= Enough_Item_02;
 								EmpoweredCrystal_Item_Number -= Enough_Item_03;
 								Player_UI::gold -= Itme_Money;
-
+								Potion_Npc_effect(Inventory::This_Inventory->Item_Renders[i]->Item_Select - 1);
 								break;
 							}
 						}
@@ -829,7 +829,7 @@ void Potion_NPC::Item_Buy_02()
 							FireJelly_Item_Number -= Enough_Item_01;
 							AncientPot_Item_Number -= Enough_Item_02;
 							crystals4elect_Item_Number -= Enough_Item_03;
-
+							Potion_Npc_effect(InforMation->Item_Select - 1);
 							Player_UI::gold -= Itme_Money;
 
 							break;
@@ -859,7 +859,7 @@ void Potion_NPC::Item_Buy_02()
 								AncientPot_Item_Number -= Enough_Item_02;
 								crystals4elect_Item_Number -= Enough_Item_03;
 								Player_UI::gold -= Itme_Money;
-
+								Potion_Npc_effect(Inventory::This_Inventory->Item_Renders[i]->Item_Select - 1);
 								break;
 							}
 						}
@@ -1199,7 +1199,7 @@ void Potion_NPC::Item_Buy_03()
 							AncientPot_Item_Number -= Enough_Item_03;
 
 							Player_UI::gold -= Itme_Money;
-
+							Potion_Npc_effect(InforMation->Item_Select-1);
 							break;
 						}
 
@@ -1228,7 +1228,7 @@ void Potion_NPC::Item_Buy_03()
 								AncientPot_Item_Number -= Enough_Item_03;
 
 								Player_UI::gold -= Itme_Money;
-
+								Potion_Npc_effect(Inventory::This_Inventory->Item_Renders[i]->Item_Select - 1);
 								break;
 							}
 						}
@@ -1240,3 +1240,4 @@ void Potion_NPC::Item_Buy_03()
 		}
 	}
 }
+

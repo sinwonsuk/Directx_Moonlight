@@ -90,9 +90,9 @@ void Items::Update(float _Delta)
 		
 		int A = Random.RandomInt(0, 3);
 
-		Pos_X = Random.RandomFloat(-1, 1);
-		Pos_Y = Random.RandomFloat(-1, 1);
-		Height = Random.RandomFloat(1, 5);
+		Pos_X = Random.RandomFloat(-0.5f, 0.5f);
+		Pos_Y = Random.RandomFloat(-1.0f, 1.0f);
+		Height = Random.RandomFloat(1.5f, 1.7f);
 
 		switch (item_Select)
 		{

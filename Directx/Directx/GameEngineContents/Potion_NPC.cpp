@@ -1,6 +1,6 @@
 #include "PreCompile.h"
 #include "Potion_NPC.h"
-
+#include "Potion_Effect.h"
 Potion_NPC::Potion_NPC()
 {
 
@@ -51,7 +51,7 @@ void Potion_NPC::Start()
 	}
 	{
 		Store_name = CreateComponent<GameEngineUIRenderer>(-100);
-		Store_name->SetSprite("Black_Smith", 5);
+		Store_name->SetSprite("Witch", 2);
 		Store_name->AutoSpriteSizeOn();
 		Store_name->Transform.SetWorldPosition({ 31,310 });
 	}
@@ -220,13 +220,12 @@ void Potion_NPC::Start()
 
 	{
 		Npc = CreateComponent<GameEngineSpriteRenderer>(101);
-		Npc->CreateAnimation("Black_Smith_Npc", "Black_Smith_Npc", 0.1f, -1, -1, true);
-
+		Npc->CreateAnimation("Witch_Npc", "Witch_Npc", 0.1f, -1, -1, true);
 		Npc->AutoSpriteSizeOn();
 		Npc->SetAutoScaleRatio(2.0f);
 		Npc->On();
-		Npc->Transform.SetWorldPosition({ 1454,-185 });
-		Npc->ChangeAnimation("Black_Smith_Npc");
+		Npc->Transform.SetWorldPosition({ -320,-980 });
+		Npc->ChangeAnimation("Witch_Npc");
 	}
 
 
@@ -297,7 +296,7 @@ void Potion_NPC::Start()
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Black_Smith);
 		Col->SetCollisionType(ColType::AABBBOX2D);
-		Col->Transform.SetWorldPosition({ 1439, -265.0f });
+		Col->Transform.SetWorldPosition({ -320,-1040 });
 		Col->Transform.SetLocalScale({ 100.0f, 200.0f });
 	}
 
@@ -326,5 +325,16 @@ void Potion_NPC::Update(float _Delta)
 		Item_InforMation_03();
 		Item_Buy_03();
 	}
+
+
+	
+}
+
+void Potion_NPC::Potion_Npc_effect(int _Sprite)
+{
+	std::shared_ptr<Potion_Effect> Object = GetLevel()->CreateActor<Potion_Effect>();
+	Object->Set_Prev_Pos({ 23, -151 });
+	Object->Transform.SetWorldPosition({ 23,-151 });
+	Object->Set_Sprite(_Sprite);
 
 }

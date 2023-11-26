@@ -26,7 +26,7 @@ public:
 
 	void Item_Buy_03();
 
-	//void Black_Smith_effect(int _Sprite);
+	void Potion_Npc_effect(int _Sprite);
 
 
 protected:

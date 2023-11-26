@@ -236,6 +236,7 @@
     <ClCompile Include="Black_Smith_Effect.cpp" />
     <ClCompile Include="Potion_NPC.cpp" />
     <ClCompile Include="Potion_NPC_State.cpp" />
+    <ClCompile Include="Potion_Effect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -428,6 +429,7 @@
     <ClInclude Include="Upgrade_Spear.h" />
     <ClInclude Include="Black_Smith_Effect.h" />
     <ClInclude Include="Potion_NPC.h" />
+    <ClInclude Include="Potion_Effect.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
