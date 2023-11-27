@@ -49,6 +49,7 @@ private:
 	std::shared_ptr<class GameEngineUIRenderer> Bag_Circle;
 	std::shared_ptr<class GameEngineUIRenderer> Weapon_Circle;
 	std::shared_ptr<class GameEngineUIRenderer> Weapon_Spear;
+	std::shared_ptr<class GameEngineUIRenderer> Gold_Render;
 
 	std::shared_ptr<class GameEngineUIRenderer> Mini_Will;
 	std::shared_ptr<class GameEngineUIRenderer> Heart;
@@ -56,5 +57,11 @@ private:
 	std::shared_ptr<class GameEngineUIRenderer> Bag;
 	std::shared_ptr<class GameEngineUIRenderer> Pocket;
 	std::shared_ptr<class GameEngineUIRenderer> Gold_UI;
+
+	std::shared_ptr<class GameEngineUIRenderer> Potion_01;
+	std::shared_ptr<class GameEngineUIRenderer> Potion_Font;
+
+
+	bool check = false;
 
 };

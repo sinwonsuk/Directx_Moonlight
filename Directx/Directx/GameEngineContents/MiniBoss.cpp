@@ -34,7 +34,7 @@ void MiniBoss::Start()
 		Monster_BaseBar = CreateComponent<GameEngineSpriteRenderer>(99);
 		Monster_BaseBar->SetSprite("MonsterUI", 0);
 		Monster_BaseBar->SetPivotType(PivotType::Left);
-		Monster_BaseBar->Transform.AddLocalPosition({ -30.0f,90.0f });
+		Monster_BaseBar->Transform.AddLocalPosition({ -30.0f,120.0f });
 		Monster_BaseBar->Off(); 
 	}
 
@@ -42,7 +42,7 @@ void MiniBoss::Start()
 		Monster_HpBar = CreateComponent<GameEngineSpriteRenderer>(99);
 		Monster_HpBar->SetSprite("MonsterUI", 1);
 		Monster_HpBar->SetPivotType(PivotType::Left);
-		Monster_HpBar->Transform.AddLocalPosition({ -30.0f,90.0f });
+		Monster_HpBar->Transform.AddLocalPosition({ -30.0f,120.0f });
 		Monster_HpBar->Off();
 	}
 

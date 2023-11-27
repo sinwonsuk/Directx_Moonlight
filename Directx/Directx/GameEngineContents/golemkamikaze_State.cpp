@@ -87,6 +87,13 @@ void golemkamikaze::StopUpdate(float _Time)
 
 void golemkamikaze::JumpUpdate(float _Time)
 {
+	if (Monster->GetCurIndex() >17)
+	{
+		Hp = 0;
+		Col->Off();
+		this->Off();
+	}
+
 	if (Monster->GetCurIndex() > 8)
 	{
 		if (Monster->GetCurIndex() < 17)
@@ -122,9 +129,6 @@ void golemkamikaze::JumpUpdate(float _Time)
 		}
 	}
 	
-	if (Monster->IsCurAnimationEnd())
-	{
-		this->Off(); 
-	}
+	
 
 }

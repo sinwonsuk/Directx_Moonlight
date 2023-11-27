@@ -380,6 +380,7 @@ void Player::Heal(float _Delta)
 
 	if (player_UI->Hp_Bar->Transform.GetLocalScale().X >= 1.0)
 	{
+		Hp += Hp_Bar_Heal;
 		HealCheck = false;
 		Hp_Bar_Heal = 0;
 	}

@@ -18,7 +18,7 @@ Player_UI::~Player_UI()
 
 void Player_UI::Start()
 {
-
+	GameEngineInput::AddInputObject(this);
 
 	Pocket = CreateComponent<GameEngineUIRenderer>();
 	Pocket->SetSprite("Pocket.png");
@@ -32,13 +32,18 @@ void Player_UI::Start()
 	Gold_UI->Transform.AddLocalPosition({ -580.0f,270.0f });
 
 
+
 	Heart = CreateComponent<GameEngineUIRenderer>();
 	Heart->SetSprite("Heart.png");
 	Heart->AutoSpriteSizeOn();
 	Heart->SetAutoScaleRatio(2.0f);
 	Heart->Transform.AddLocalPosition({ -490.0f,320.0f });
 
-
+	Gold_Render = CreateComponent<GameEngineUIRenderer>();
+	Gold_Render->SetSprite("Gold",0);
+	Gold_Render->AutoSpriteSizeOn();
+	Gold_Render->SetAutoScaleRatio(1.0f);
+	Gold_Render->Transform.AddLocalPosition({ -616.0f,256.0f });
 
 	HealthBar_Base = CreateComponent<GameEngineUIRenderer>();
 	HealthBar_Base->SetSprite("HealthBar_Base.png");
@@ -126,6 +131,23 @@ void Player_UI::Start()
 	Mini_Will->Transform.AddLocalPosition({ 520.0f,320.0f });
 
 
+	Potion_01 = CreateComponent<GameEngineUIRenderer>(10);
+	Potion_01->SetSprite("Items",10);
+	Potion_01->AutoSpriteSizeOn();
+	Potion_01->SetAutoScaleRatio(1.5f);
+	Potion_01->Transform.AddLocalPosition({ 587, 312 });
+	Potion_01->Off(); 
+
+	{
+		Potion_Font = CreateComponent<GameEngineUIRenderer>(10);
+		std::string numberStr = std::to_string(10);
+		Potion_Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+		Potion_Font->Transform.AddLocalPosition({ 607, 317 });
+		Potion_Font->Off();
+	}
+	
+
+
 
 }
 
@@ -138,10 +160,161 @@ void Player_UI::Update(float _Delta)
 	std::string numberStr = std::to_string(gold);
 	Gold_UI->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 
-	if (Inventory::This_Inventory->Item_Renders[26] != nullptr)
+
+
+
+	if (Inventory::This_Inventory->Item_Renders[27] == nullptr)
 	{
-		Weapon_Spear->SetSprite("Items", Inventory::This_Inventory->Item_Renders[26]->Item_Select - 1); 
+		Potion_01->Off(); 
+		Potion_Font->Off(); 
+	}
+	if (Inventory::This_Inventory->Item_Renders[27] != nullptr && Inventory::This_Inventory->Font_Renders[27] != nullptr)
+	{
+
+		if (Inventory::This_Inventory->Item_Renders[27]->Item_Select == 10)
+		{
+			Potion_01->SetSprite("Items", 9);
+
+			std::string Number = std::to_string(Inventory::This_Inventory->Font_Renders[27]->FontNumber);
+
+
+			Potion_Font->SetText("µ¸¿ò", Number, 20.0f, float4::WHITE, FW1_CENTER);
+		}
+
+		if (Inventory::This_Inventory->Item_Renders[27]->Item_Select == 11)
+		{
+			std::string Number = std::to_string(Inventory::This_Inventory->Font_Renders[27]->FontNumber);
+
+
+			Potion_Font->SetText("µ¸¿ò", Number, 20.0f, float4::WHITE, FW1_CENTER);
+
+			Potion_01->SetSprite("Items", 10);
+		}
+
+
+		if (Inventory::This_Inventory->Item_Renders[27]->Item_Select == 12)
+		{
+			std::string Number = std::to_string(Inventory::This_Inventory->Font_Renders[27]->FontNumber);
+
+
+			Potion_Font->SetText("µ¸¿ò", Number, 20.0f, float4::WHITE, FW1_CENTER);
+
+			Potion_01->SetSprite("Items", 11);
+		}
+
+		Potion_01->On();
+		Potion_Font->On();
+
+
+	}
+
+
+
+
+
+	if (Inventory::This_Inventory->Item_Renders[26] != nullptr )
+	{
+		if(Inventory::This_Inventory->Item_Renders[26]->Item_Select==6  || Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7 || Inventory::This_Inventory->Item_Renders[26]->Item_Select == 8|| Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
+
+
+		Weapon_Spear->SetSprite("Items", Inventory::This_Inventory->Item_Renders[26]->Item_Select - 1);
+
 	}
 	
+
+
+
+
+
+
+	//std::shared_ptr<class GameEngineUIRenderer> AD = Potion_Font;
+
+
+
+	//if (GameEngineInput::IsDown('1', this) && check == false)
+	//{
+	//	check = true;
+	//}
+	//else if (GameEngineInput::IsDown('1', this) && check == true)
+	//	check = false;
+	//{
+	//}
+
+
+	//if (check == true)
+	//{
+	//	if (GameEngineInput::IsPress('A', this))
+	//	{
+	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition({ 5.0f,0.0f });
+	//	}
+
+	//	if (GameEngineInput::IsPress('D', this))
+	//	{
+	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition({ -5.0f,0.0f });
+	//		return;
+	//	}
+
+	//	if (GameEngineInput::IsPress('W', this))
+	//	{
+	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition(float4::UP * 5);
+	//		return;
+	//	}
+
+	//	if (GameEngineInput::IsPress('S', this))
+	//	{
+	//		GetLevel()->GetMainCamera()->Transform.AddWorldPosition(float4::DOWN * 5);
+	//		return;
+	//	}
+	//}
+	//if (check == false)
+	//{
+
+
+	//	if (GameEngineInput::IsPress('A', this))
+	//	{
+	//		AD->Transform.AddWorldPosition({ 1.0f,0.0f });
+	//	}
+
+	//	if (GameEngineInput::IsPress('D', this))
+	//	{
+	//		AD->Transform.AddWorldPosition({ -1.0f,0.0f });
+	//		return;
+	//	}
+
+	//	if (GameEngineInput::IsPress('W', this))
+	//	{
+	//		AD->Transform.AddWorldPosition(float4::UP);
+	//		return;
+	//	}
+
+	//	if (GameEngineInput::IsPress('S', this))
+	//	{
+	//		AD->Transform.AddWorldPosition(float4::DOWN);
+	//		return;
+	//	}
+	//}
+
+	//if (GameEngineInput::IsPress('Q', this))
+	//{
+	//	AD->Transform.AddWorldRotation({ 0.0f,1.0f * _Delta,0.0f });
+	//	return;
+	//}
+	//if (GameEngineInput::IsPress('E', this))
+	//{
+	//	AD->Transform.AddWorldRotation({ 0.0f,-1.0f * _Delta,0.0f });
+	//	return;
+	//}
+	////-4946.0f, -5275.0f
+
+
+	//TransformData date = AD->Transform.GetConstTransformDataRef();
+
+	////date.LocalPosition;
+
+	////float4 WorldMousePos;
+
+	//float4 WorldMousePos = { date.LocalPosition.X,date.LocalPosition.Y };
+	//OutputDebugStringA(WorldMousePos.ToString("\n").c_str());
+
 
 }

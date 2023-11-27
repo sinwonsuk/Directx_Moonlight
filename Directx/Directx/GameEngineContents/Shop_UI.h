@@ -55,10 +55,16 @@ private:
 	std::shared_ptr<class GameEngineUIRenderer> Money_Font_04;
 
 	
+	std::shared_ptr<class GameEngineUIRenderer> Font_Price_01;
+	std::shared_ptr<class GameEngineUIRenderer> Font_Price_02;
+	std::shared_ptr<class GameEngineUIRenderer> Font_Price_03;
+	std::shared_ptr<class GameEngineUIRenderer> Font_Price_04;
 
+	std::shared_ptr<class GameEngineUIRenderer> Font_Price_total_01;
+	std::shared_ptr<class GameEngineUIRenderer> Font_Price_total_02;
+	std::shared_ptr<class GameEngineUIRenderer> Font_Price_total_03;
+	std::shared_ptr<class GameEngineUIRenderer> Font_Price_total_04;
 
-
-	
 
 	std::shared_ptr<class GameEngineUIRenderer> Shop_UI_01;
 	std::shared_ptr<class GameEngineUIRenderer> Shop_UI_02;

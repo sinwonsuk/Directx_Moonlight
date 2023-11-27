@@ -202,6 +202,48 @@ void Shop_UI::Start()
 		Money_Font_bout_04->Off();
 
 
+		Font_Price_01 = CreateComponent<GameEngineUIRenderer>(101);
+		Font_Price_01->SetText("µ¸¿ò", "°¡°Ý :", 20.0f, float4::WHITE, FW1_CENTER);
+		Font_Price_01->Transform.SetWorldPosition({ 71,100 });
+		Font_Price_01->Off();
+
+		Font_Price_02 = CreateComponent<GameEngineUIRenderer>(101);
+		Font_Price_02->SetText("µ¸¿ò", "°¡°Ý :", 20.0f, float4::WHITE, FW1_CENTER);
+		Font_Price_02->Transform.SetWorldPosition({ 319,100 });
+		Font_Price_02->Off();
+
+		Font_Price_03 = CreateComponent<GameEngineUIRenderer>(101);
+		Font_Price_03->SetText("µ¸¿ò", "°¡°Ý :", 20.0f, float4::WHITE, FW1_CENTER);
+		Font_Price_03->Transform.SetWorldPosition({ 71,-129 });
+		Font_Price_03->Off();
+
+		Font_Price_04 = CreateComponent<GameEngineUIRenderer>(101);
+		Font_Price_04->SetText("µ¸¿ò", "°¡°Ý :", 20.0f, float4::WHITE, FW1_CENTER);
+		Font_Price_04->Transform.SetWorldPosition({ 319,-129 });
+		Font_Price_04->Off();
+
+
+
+
+		Font_Price_total_01 = CreateComponent<GameEngineUIRenderer>(101);
+		Font_Price_total_01->SetText("µ¸¿ò", "ÃÑÇÕ :", 20.0f, float4::WHITE, FW1_CENTER);
+		Font_Price_total_01->Transform.SetWorldPosition({ 71,60 });
+		Font_Price_total_01->Off();
+
+		Font_Price_total_02 = CreateComponent<GameEngineUIRenderer>(101);
+		Font_Price_total_02->SetText("µ¸¿ò", "ÃÑÇÕ :", 20.0f, float4::WHITE, FW1_CENTER);
+		Font_Price_total_02->Transform.SetWorldPosition({ 319,60 });
+		Font_Price_total_02->Off();
+
+		Font_Price_total_03 = CreateComponent<GameEngineUIRenderer>(101);
+		Font_Price_total_03->SetText("µ¸¿ò", "ÃÑÇÕ :", 20.0f, float4::WHITE, FW1_CENTER);
+		Font_Price_total_03->Transform.SetWorldPosition({ 71,-169 });
+		Font_Price_total_03->Off();
+
+		Font_Price_total_04 = CreateComponent<GameEngineUIRenderer>(101);
+		Font_Price_total_04->SetText("µ¸¿ò", "ÃÑÇÕ :", 20.0f, float4::WHITE, FW1_CENTER);
+		Font_Price_total_04->Transform.SetWorldPosition({ 319,-169 });
+		Font_Price_total_04->Off();
 
 
 
@@ -342,6 +384,15 @@ void Shop_UI::Update(float _DeltaTime)
 			Money_Font_bout_03->On();
 			Money_Font_bout_04->On();*/
 
+			Font_Price_total_01->On();
+			Font_Price_total_02->On();
+			Font_Price_total_03->On();
+			Font_Price_total_04->On();
+
+			Font_Price_01->On();
+			Font_Price_02->On();
+			Font_Price_03->On();
+			Font_Price_04->On();
 
 
 			Inventroy_Screen->On();
@@ -389,6 +440,16 @@ void Shop_UI::Update(float _DeltaTime)
 					Shop_Font_Renders[i]->Font->Off();
 				}
 			}
+
+			Font_Price_total_01->Off();
+			Font_Price_total_02->Off();
+			Font_Price_total_03->Off();
+			Font_Price_total_04->Off();
+
+			Font_Price_01->Off();
+			Font_Price_02->Off();
+			Font_Price_03->Off();
+			Font_Price_04->Off();
 
 			Shop_UI_02->Off();
 			Shop_UI_01->Off();

@@ -366,10 +366,10 @@ void golemkamikaze::Update(float _Delta)
 	{
 		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
 
-		Monster_Weapon->Off();
+		//Monster_Weapon->Off();
 		Number -= _Delta * 1;
-		Monster->GetColorData().MulColor = { 1,1,1,Number };
-		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
+		//Monster->GetColorData().MulColor = { 1,1,1,Number };
+		//Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 
 
 		if (Number < 0.1)
@@ -381,7 +381,7 @@ void golemkamikaze::Update(float _Delta)
 				Random.SetSeed(Player::RandomSeed++);
 
 				std::shared_ptr<Items> Object = GetLevel()->CreateActor<Items>();
-				Object->Transform.SetWorldPosition({ Transform.GetWorldPosition() });
+				Object->Transform.SetWorldPosition({ Transform.GetWorldPosition()});
 				Object->Set_Monster_Pos({ Transform.GetWorldPosition() });
 				Object->Dir = Dir;
 
@@ -391,7 +391,6 @@ void golemkamikaze::Update(float _Delta)
 
 
 			}
-
 			this->Off();
 		}
 		return;

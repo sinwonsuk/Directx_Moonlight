@@ -144,7 +144,7 @@ void Black_Smith::Item_InforMation_01()
 	{
 		//sadadadasd
 		{
-			Itme_Money = 0;
+			Itme_Money = 200;
 			std::string numberStr = std::to_string(Itme_Money);
 			Money->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 		}
@@ -465,7 +465,7 @@ void Black_Smith::Item_InforMation_02()
 	if (Item_Select->Transform.GetWorldPosition().X == -12 && Black_Smith_Start == true)
 	{
 		{
-			Itme_Money = 0;
+			Itme_Money = 300;
 			std::string numberStr = std::to_string(Itme_Money);
 			Money->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 		}
@@ -790,7 +790,7 @@ void Black_Smith::Item_InforMation_03()
 	if (Item_Select->Transform.GetWorldPosition().X == 97 && Black_Smith_Start == true)
 	{
 		{
-			Itme_Money = 0;
+			Itme_Money = 400;
 			std::string numberStr = std::to_string(Itme_Money);
 			Money->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 		}

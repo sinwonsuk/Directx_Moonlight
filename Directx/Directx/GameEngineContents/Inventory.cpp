@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Inventory.h"
 #include "Items.h"
+#include "Player_UI.h"
 Inventory* Inventory::This_Inventory;
 
 
@@ -75,6 +76,7 @@ Inventory::~Inventory()
 
 void Inventory::ItemDebuge()
 {
+	Player_UI::gold = 9999;
 	{
 		std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
 		InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
@@ -1084,6 +1086,9 @@ void Inventory::Update(float _DeltaTime)
 
 		if(Item_Renders_Death_Check ==true)
 		{
+
+
+
 			Item_type[Transform_2_1]->Item_Oreder = Item_Renders[Transform_2_1]->Item_Select;
 			Item_type[Transform_2_1]->Move = Item_Renders[Transform_2_1]->Move;
 
