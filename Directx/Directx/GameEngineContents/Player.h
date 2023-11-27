@@ -213,8 +213,11 @@ protected:
 
 private:
 
-	
-	
+	GameEngineSoundPlayer Sound; 
+	bool Sound_Check = false;
+
+	float Sound_Time = 0.0;
+
 	std::shared_ptr<GameEngineCollision> Mini_Col;
 
 	EventParameter Left_Event;

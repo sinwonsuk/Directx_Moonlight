@@ -2,6 +2,7 @@
 #include "TitleLevel.h"
 #include "Title.h"
 #include <GameEnginePlatform/GameEngineSound.h>
+
 TitleLevel::TitleLevel() 
 {
 }
@@ -90,7 +91,11 @@ void TitleLevel::Start()
 	NewDir.MoveChild("ContentsResources");
 	NewDir.MoveChild("Sound");
 
-	GameEngineSound::SoundLoad(NewDir.PlusFilePath("cuphead-opening-theme.mp3"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("main_menu_screen.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_step_golem_dungeon.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("tutorial_scroll.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_floor.wav"));
+
 
 
 	/*GameEngineSound::Load(NewDir.GetPlusFileName("cuphead-opening-theme.mp3").GetFullPath());
@@ -165,6 +170,9 @@ void TitleLevel::Start()
 	GameEngineSound::Load(NewDir.GetPlusFileName("sfx_player_weapon_peashoot_ex_impact_02.wav").GetFullPath());
 
 	GameEngineSound::Load(NewDir.GetPlusFileName("MUS_GoodEnding.wav").GetFullPath());*/
+
+
+
 }
 
 
@@ -172,16 +180,19 @@ void TitleLevel::Start()
 
 void TitleLevel::Update(float _Delta)
 {
-	GameEngineSound::SoundPlay("cuphead-opening-theme.mp3");
+	
 }
  
 
 void TitleLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-	int a = 0;
+	sound = GameEngineSound::SoundPlay("main_menu_screen.wav");
+
+	
 }
 
 void TitleLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
+	sound.Stop();
 	int a = 0;
 }

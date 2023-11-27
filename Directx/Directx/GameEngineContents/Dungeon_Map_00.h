@@ -23,7 +23,7 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-
+	
 
 	float Map_Number = 0.0f;
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;

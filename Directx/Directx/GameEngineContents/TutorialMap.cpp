@@ -168,6 +168,12 @@ void TutorialMap::Update(float _Delta)
 
 	if (Player::this_Player->GetPlayerStateValue() != PlayerState::Start)
 	{
+		if (Sound_Check == false)
+		{
+			Scroll_Sound = GameEngineSound::SoundPlay("tutorial_scroll.wav");
+			Bgm_Sound = GameEngineSound::SoundPlay("golem_dungeon_floor.wav");
+			Sound_Check = true;
+		}
 		Scroll->AnimationPauseOff();
 	}
 

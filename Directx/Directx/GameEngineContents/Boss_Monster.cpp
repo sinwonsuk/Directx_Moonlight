@@ -84,26 +84,26 @@ void Boss_Monster::Start()
 
 			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 			{
-				Damage = 0.01;
+				Damage = 0.01f;
 				++UICheck;
 				ColorCheck = true;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
 			{		
-				Damage = 0.05;
+				Damage = 0.05f;
 				++UICheck;
 				ColorCheck = true;
 			}
 
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 8)
 			{
-				Damage = 0.03;
+				Damage = 0.03f;
 				++UICheck;
 				ColorCheck = true;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
 			{
-				Damage = 0.04;
+				Damage = 0.04f;
 				++UICheck;
 				ColorCheck = true;
 			}

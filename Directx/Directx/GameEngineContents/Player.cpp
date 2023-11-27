@@ -419,6 +419,7 @@ void Player::ChangeWeapon()
 
 void Player::Update(float _Delta)
 {
+	Sound_Time += _Delta; 
 	if (_Delta == 0)
 	{
 

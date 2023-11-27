@@ -355,6 +355,21 @@ void Player::UpdateState(float _Time)
 }
 void Player::StartUpdate(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Sound = GameEngineSound::SoundPlay("will_step_golem_dungeon.wav");
+		Sound.SetVolume(0.6f);
+		Sound_Check = true;
+		Sound_Time = 0;
+	}
+
+	if (Sound_Time > 0.7)
+	{
+		Sound_Check = false;
+		Sound_Time = 0;
+	}
+
+
 
 	Transform.AddLocalPosition(float4::RIGHT * _Time * StartSpeed);
 }
@@ -1397,6 +1412,22 @@ void Player::Gloves_Down_AttackUpdate_03(float _Time)
 
 void Player::Move(float _Delta)
 {
+	if (Sound_Check == false)
+	{
+		Sound = GameEngineSound::SoundPlay("will_step_golem_dungeon.wav");
+		Sound.SetVolume(0.6f);
+		Sound_Check = true; 
+		Sound_Time = 0;
+	}
+	
+	if (Sound_Time > 0.3)
+	{
+		Sound_Check = false;
+		Sound_Time = 0;
+	}
+	
+
+
 	if (Not_Move == true)
 	{
 		switch (Camera)

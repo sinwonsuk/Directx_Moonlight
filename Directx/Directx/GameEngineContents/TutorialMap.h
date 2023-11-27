@@ -23,6 +23,8 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	GameEngineSoundPlayer Scroll_Sound;
+	GameEngineSoundPlayer Bgm_Sound;
 	float Map_Number = 200.0f; 
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;
 	std::shared_ptr<class GameEngineSpriteRenderer> Map_floor_01;
@@ -32,4 +34,5 @@ private:
 	std::shared_ptr<GameEngineCollision> Collision_Door;
 	std::shared_ptr<GameEngineSpriteRenderer> Pixel;
 	bool check = false;
+	bool Sound_Check = false;
 };
