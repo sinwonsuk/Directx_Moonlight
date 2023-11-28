@@ -168,6 +168,11 @@ void TutorialMap_05::Update(float _Delta)
 
 	if (Player::this_Player->Transform.GetWorldPosition().X > 5550 )
 	{
+		if (Close_Sound_Check == false)
+		{
+			Close_Sound = GameEngineSound::SoundPlay("golem_dungeon_normal_door_closing.wav");
+			Close_Sound_Check = true; 
+		}
 		CloseDoor->On(); 
 	}
 	for (size_t i = 0; i < Slimes.size(); i++)
@@ -183,6 +188,14 @@ void TutorialMap_05::Update(float _Delta)
 		OpenDoor->On();
 		CloseDoor->Off(); 
 		Collision_Door->On(); 
+
+
+		if (Open_Sound_Check == false)
+		{
+			Close_Sound = GameEngineSound::SoundPlay("golem_dungeon_normal_door_opening.wav");
+			Open_Sound_Check = true;
+		}
+
 	}
 
 	Slime_Check = 0; 

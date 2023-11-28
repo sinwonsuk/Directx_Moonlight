@@ -34,6 +34,8 @@ private:
 	float Number = 1.0f;
 	bool gravity = false;
 	float4 Prev_Pos = {};
+
+	GameEngineSoundPlayer Sound;
 	std::shared_ptr<class GameEngineUIRenderer> Effect;
 	std::shared_ptr<class GameEngineUIRenderer> Items;
 };

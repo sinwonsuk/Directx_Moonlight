@@ -66,27 +66,27 @@ void golem_Stone::Start()
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 
-
+			Hit_Sound = GameEngineSound::SoundPlay("golem_dungeon_golem_hit.wav");
 
 			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.1f,0.0f });
-				Hp -= 10.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
+				Hp -= 30.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 7)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.4f,0.0f });
-				Hp -= 40.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -1.0f,0.0f });
+				Hp -= 100.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 8)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.2f,0.0f });
-				Hp -= 20.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.5f,0.0f });
+				Hp -= 50.0f;
 			}
 			else if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 9)
 			{
-				Monster_HpBar->Transform.AddLocalScale({ -0.3f,0.0f });
-				Hp -= 30.0f;
+				Monster_HpBar->Transform.AddLocalScale({ -0.5f,0.0f });
+				Hp -= 50.0f;
 			}
 			Weapon_Collision_Check = true;
 			ColorCheck = true;
@@ -151,6 +151,13 @@ void golem_Stone::Update(float _Delta)
 	{
 		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
 
+		if (Death_Sound_Check == false)
+		{
+			Death_Sound = GameEngineSound::SoundPlay("enemy_death.wav");
+			Death_Sound.SetVolume(2.5f);
+			Death_Sound_Check = true;
+		}
+
 		Monster_HpBar->Off(); 
 		Monster_Weapon->Off();
 		Number -= _Delta * 1;
@@ -189,6 +196,9 @@ void golem_Stone::Update(float _Delta)
 
 	if (Col->Collision(ContentsCollisionType::CameraCollision))
 	{
+		
+		
+		
 		MonsterDir();
 
 		MonsterPushUpdate(_Delta);
@@ -229,6 +239,9 @@ void golem_Stone::CollisionStop(float _Delta, std::string_view _Name, float4 _di
 	if (GameEngineColor::MAGENTA == GetColor({ (Left_Stone_Pos - _distance_fixation) / 40 }, { 255,0,0,255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::RIGHT * _Delta * 10.0f });
+
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::LeftCollision);
 		return;
 	}
@@ -236,12 +249,16 @@ void golem_Stone::CollisionStop(float _Delta, std::string_view _Name, float4 _di
 	else if (GameEngineColor::BLUE == GetColor({ (Left_Stone_Pos - _distance_fixation) / 40 }, { 255,0,0,255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::RIGHT * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::LeftCollision);
 		return;
 	}
 	else if (GameEngineColor::GREEN == GetColor({ (Left_Stone_Pos - _distance_fixation) / 40 }, { 0,0,255,255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::RIGHT * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::LeftCollision);
 		return;
 	}
@@ -251,6 +268,8 @@ void golem_Stone::CollisionStop(float _Delta, std::string_view _Name, float4 _di
 	else if (GameEngineColor::MAGENTA == GetColor({ (Right_Stone_Pos - _distance_fixation) / 40 }, { 255,0,0,255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::LEFT * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::RightCollision);
 		return;
 	}
@@ -258,12 +277,16 @@ void golem_Stone::CollisionStop(float _Delta, std::string_view _Name, float4 _di
 	else if (GameEngineColor::BLUE == GetColor({ (Right_Stone_Pos - _distance_fixation) / 40 }, { 255,0,0,255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::LEFT * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::RightCollision);
 		return;
 	}
 	else if (GameEngineColor::GREEN == GetColor({ (Right_Stone_Pos - _distance_fixation) / 40 }, { 0,0,255,255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::LEFT * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::RightCollision);
 		return;
 	}
@@ -272,6 +295,8 @@ void golem_Stone::CollisionStop(float _Delta, std::string_view _Name, float4 _di
 	else if (GameEngineColor::MAGENTA == GetColor({ (Up_Stone_Pos - _distance_fixation) / 40 }, { 255, 0, 0, 255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::DOWN * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::UpCollision);
 		return;
 	}
@@ -279,12 +304,16 @@ void golem_Stone::CollisionStop(float _Delta, std::string_view _Name, float4 _di
 	else if (GameEngineColor::BLUE == GetColor({ (Up_Stone_Pos - _distance_fixation) / 40 }, { 255, 0, 0, 255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::DOWN * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::UpCollision);
 		return;
 	}
 	else if (GameEngineColor::GREEN == GetColor({ (Up_Stone_Pos - _distance_fixation) / 40 }, { 0, 0, 255, 255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::DOWN * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::UpCollision);
 		return;
 
@@ -294,6 +323,8 @@ void golem_Stone::CollisionStop(float _Delta, std::string_view _Name, float4 _di
 	else if (GameEngineColor::MAGENTA == GetColor({ (Down_Stone_Pos - _distance_fixation) / 40 }, { 255, 0, 0, 255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::UP * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::DownCollision);
 		return;
 	}
@@ -301,12 +332,16 @@ void golem_Stone::CollisionStop(float _Delta, std::string_view _Name, float4 _di
 	else if (GameEngineColor::BLUE == GetColor({ (Down_Stone_Pos - _distance_fixation) / 40 }, { 255, 0, 0, 255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::UP * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::DownCollision);
 		return;
 	}
 	else if (GameEngineColor::GREEN == GetColor({ (Down_Stone_Pos - _distance_fixation) / 40 }, { 0, 0, 255, 255 }, _Name))
 	{
 		Transform.AddLocalPosition({ float4::UP * _Delta * 10.0f });
+		Attack_Sound_Check = false;
+		Roll_Sound.Stop();
 		ChangeState(golem_Stone_State::DownCollision);
 		return;
 	}

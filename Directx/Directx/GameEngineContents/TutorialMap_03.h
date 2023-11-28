@@ -21,6 +21,9 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	GameEngineSoundPlayer Sound;
+	float Sound_Time = 0;
+	bool Sound_Check = false;
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;
 	std::shared_ptr<class GameEngineSpriteRenderer> Map_floor_01;
 	std::shared_ptr<class GameEngineSpriteRenderer> LeftDoor;

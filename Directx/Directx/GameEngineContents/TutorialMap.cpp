@@ -88,47 +88,7 @@ void TutorialMap::Start()
 	}
 
 
-	/*{
-		
-
-	}
-
-	{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 250.0f,Transform.GetWorldPosition().Y + 70.0f });
-
-	}
-
-	{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 320.0f,Transform.GetWorldPosition().Y - 30.0f });
-
-	}
-
-	{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 280.0f,Transform.GetWorldPosition().Y + 200.0f });
-
-	}
-
-	{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 320.0f,Transform.GetWorldPosition().Y - 100.0f });
-
-	}
-
-	{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 300.0f,Transform.GetWorldPosition().Y - 70.0f });
-
-	}
-
-
-	{
-		std::shared_ptr<BabySlime> Object = GetLevel()->CreateActor<BabySlime>();
-		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 340.0f,Transform.GetWorldPosition().Y - 200.0f });
-
-	}*/
+	
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y});
@@ -136,25 +96,28 @@ void TutorialMap::Start()
 	/*{
 		std::shared_ptr<golem_Wizard> Object = GetLevel()->CreateActor<golem_Wizard>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
+	}
+	*/
+	/*{
+		std::shared_ptr<golem_Stone> Object = GetLevel()->CreateActor<golem_Stone>();
+		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
+		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
 	}*/
 	
-	//{
-	//	std::shared_ptr<golem_Stone> Object = GetLevel()->CreateActor<golem_Stone>();
-	//	Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
-	//}
-	
 
-	/*{
+   /* {
 		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X-200.0f,Transform.GetWorldPosition().Y });
 		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
-	}
+	}*/
 
-	{
+	/*{
 		std::shared_ptr<golem_Solder> Object = GetLevel()->CreateActor<golem_Solder>();
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y });
 		Object->Set_MapName("Tutirial_Pixel_Map_01.png");
 	}*/
+
 	Collision_Door = CreateComponent<GameEngineCollision>(ContentsCollisionType::Door);
 	Collision_Door->Transform.AddLocalPosition({ 550.0f,20.0f,0.0f });
 	Collision_Door->Transform.SetLocalScale({90.0f,120.0f,0.0f });
@@ -164,6 +127,10 @@ void TutorialMap::Start()
 
 void TutorialMap::Update(float _Delta)
 {
+	if (Player::this_Player->MonsterDeath == true)
+	{
+		Bgm_Sound.Stop();
+	}
 
 
 	if (Player::this_Player->GetPlayerStateValue() != PlayerState::Start)
@@ -172,6 +139,7 @@ void TutorialMap::Update(float _Delta)
 		{
 			Scroll_Sound = GameEngineSound::SoundPlay("tutorial_scroll.wav");
 			Bgm_Sound = GameEngineSound::SoundPlay("golem_dungeon_floor.wav");
+			Bgm_Sound.SetVolume(0.5f);
 			Sound_Check = true;
 		}
 		Scroll->AnimationPauseOff();

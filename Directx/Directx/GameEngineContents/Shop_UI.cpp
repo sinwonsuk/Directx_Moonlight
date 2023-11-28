@@ -483,6 +483,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown('D', this) && Inventory_Start == true && Select_Stop ==false)
 	{
+		Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav"); 
+
 		Inventory_pos_X += 1;
 
 		if (Inventory_pos_X > 6)
@@ -499,6 +501,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown('A', this) && Inventory_Start == true && Select_Stop == false)
 	{
+
+		Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
 		Inventory_pos_X -= 1;
 
 		if (Inventory_pos_X < 0)
@@ -510,6 +514,7 @@ void Shop_UI::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown('W', this) && Inventory_Start == true && Select_Stop == false)
 	{
+		Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
 		Inventory_pos_Y -= 1;
 
 		if (Item_Move == true)
@@ -540,6 +545,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown('S', this) && Inventory_Start == true && Select_Stop == false)
 	{
+		Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 		Inventory_pos_Y += 1;
 
 		if (Item_Move == true)
@@ -602,6 +609,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown('J', this) && Inventory_Start == true && Item_Move == false)
 	{
+		Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 		Item_Move = true;
 
 		for (size_t i = 0; i < Item_Renders.size(); i++)
@@ -623,6 +632,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 	else if (GameEngineInput::IsDown('J', this) && Inventory_Start == true && Item_Move == true)
 	{
+		Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 		Item_Move = false;
 
 		if (Inventory_pos_X <= 4)
@@ -958,6 +969,9 @@ void Shop_UI::Update(float _DeltaTime)
 		
 		if (GameEngineInput::IsDown('J', this) && Select_Stop ==false)
 		{
+
+			Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 			if (Inventory_pos_X == 5 && Inventory_pos_Y == 0)
 			{
 				Money_Font_01->On();
@@ -1003,6 +1017,8 @@ void Shop_UI::Update(float _DeltaTime)
 		}
 		else if (GameEngineInput::IsDown('J', this) && Select_Stop == true)
 		{
+			Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 			if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
 			{
 			
@@ -1019,6 +1035,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 		if (GameEngineInput::IsDown('W', this) && Select_Stop == true)
 		{
+			Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 			if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
 			{
 				Money_01 += 10;
@@ -1034,6 +1052,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 		if (GameEngineInput::IsDown('S', this) && Select_Stop == true)
 		{
+			Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 			if (Inventory_pos_X == 5 && Inventory_pos_Y == 1)
 			{
 				Money_01 -= 10;
@@ -1061,6 +1081,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 		if (GameEngineInput::IsDown('J', this) && Select_Stop == false)
 		{
+			Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 			if (Inventory_pos_X == 6 && Inventory_pos_Y == 0)
 			{
 				Money_Font_02->On();
@@ -1104,6 +1126,8 @@ void Shop_UI::Update(float _DeltaTime)
 		}
 		else if (GameEngineInput::IsDown('J', this) && Select_Stop == true)
 		{
+			Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 			if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
 			{
 
@@ -1119,8 +1143,11 @@ void Shop_UI::Update(float _DeltaTime)
 
 		if (GameEngineInput::IsDown('W', this) && Select_Stop == true)
 		{
+
 			if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
 			{
+				Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 				Money_02 += 10;
 
 				std::string Money = std::to_string(Money_02);
@@ -1136,6 +1163,8 @@ void Shop_UI::Update(float _DeltaTime)
 		{
 			if (Inventory_pos_X == 6 && Inventory_pos_Y == 1)
 			{
+				Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 				Money_02 -= 10;
 
 				if (Money_02 <= 0)
@@ -1158,6 +1187,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 		if (GameEngineInput::IsDown('J', this) && Select_Stop == false)
 		{
+			Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 			if (Inventory_pos_X == 5 && Inventory_pos_Y == 2)
 			{
 				Money_Font_03->On();
@@ -1197,6 +1228,9 @@ void Shop_UI::Update(float _DeltaTime)
 
 		else if (GameEngineInput::IsDown('J', this) && Select_Stop == true)
 		{
+
+			Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 			if (Inventory_pos_X == 5 && Inventory_pos_Y == 3)
 			{
 
@@ -1214,6 +1248,8 @@ void Shop_UI::Update(float _DeltaTime)
 		{
 			if (Inventory_pos_X == 5 && Inventory_pos_Y == 3)
 			{
+
+				Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
 				Money_03 += 10;
 
 				std::string Money = std::to_string(Money_03);
@@ -1229,6 +1265,8 @@ void Shop_UI::Update(float _DeltaTime)
 		{
 			if (Inventory_pos_X == 5 && Inventory_pos_Y == 3)
 			{
+				Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 				Money_03 -= 10;
 
 				if (Money_03 <= 0)
@@ -1251,6 +1289,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 		if (GameEngineInput::IsDown('J', this) && Select_Stop == false)
 		{
+			Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 			if (Inventory_pos_X == 6 && Inventory_pos_Y == 2)
 			{
 				Money_Font_04->On();
@@ -1290,6 +1330,8 @@ void Shop_UI::Update(float _DeltaTime)
 
 		else if (GameEngineInput::IsDown('J', this) && Select_Stop == true)
 		{
+			Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 			if (Inventory_pos_X == 6 && Inventory_pos_Y == 3)
 			{
 
@@ -1306,6 +1348,8 @@ void Shop_UI::Update(float _DeltaTime)
 		{
 			if (Inventory_pos_X == 6 && Inventory_pos_Y == 3)
 			{
+				Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 				Money_04 += 10;
 
 				std::string Money = std::to_string(Money_04);
@@ -1321,6 +1365,8 @@ void Shop_UI::Update(float _DeltaTime)
 		{
 			if (Inventory_pos_X == 6 && Inventory_pos_Y == 3)
 			{
+				Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 				Money_04 -= 10;
 
 				if (Money_04 <= 0)

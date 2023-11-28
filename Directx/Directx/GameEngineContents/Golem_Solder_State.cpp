@@ -521,6 +521,17 @@ void golem_Solder::DownMoveUpdate(float _Time)
 
 void golem_Solder::LeftAttackUpdate(float _Time)
 {
+	if (Solder->GetCurIndex() > 8)
+	{
+		if (Attack_Sound_Check == false)
+		{
+			Attack_Sound = GameEngineSound::SoundPlay("golem_dungeon_soldier_sword_crash.wav");
+			Attack_Sound_Check = true;
+		}
+	}
+	
+
+
 	if (Solder->GetCurIndex() > 6)
 	{
 		Monster_Weapon->On();
@@ -533,6 +544,7 @@ void golem_Solder::LeftAttackUpdate(float _Time)
 
 	if (Solder->IsCurAnimationEnd())
 	{	
+		Attack_Sound_Check = false;
 		Monster_Weapon->Off();
 		Monster_Weapon->Transform.AddLocalPosition({ 50.0f,0.0f });
 		ChangeState(golem_Solder_State::AttackCheck);
@@ -543,6 +555,16 @@ void golem_Solder::LeftAttackUpdate(float _Time)
 
 void golem_Solder::RightAttackUpdate(float _Time)
 {	
+
+	if (Solder->GetCurIndex() > 8)
+	{
+		if (Attack_Sound_Check == false)
+		{
+			Attack_Sound = GameEngineSound::SoundPlay("golem_dungeon_soldier_sword_crash.wav");
+			Attack_Sound_Check = true;
+		}
+	}
+
 	if (Solder->GetCurIndex() > 6)
 	{
 		Monster_Weapon->On();
@@ -554,6 +576,7 @@ void golem_Solder::RightAttackUpdate(float _Time)
 
 	if (Solder->IsCurAnimationEnd())
 	{
+		Attack_Sound_Check = false;
 		Monster_Weapon->Transform.AddLocalPosition({ -50.0f,0.0f });
 		Time = 0.0f;
 		Monster_Weapon->Off();
@@ -564,6 +587,16 @@ void golem_Solder::RightAttackUpdate(float _Time)
 
 void golem_Solder::UpAttackUpdate(float _Time)
 {
+	if (Solder->GetCurIndex() > 8)
+	{
+		if (Attack_Sound_Check == false)
+		{
+			Attack_Sound = GameEngineSound::SoundPlay("golem_dungeon_soldier_sword_crash.wav");
+			Attack_Sound_Check = true;
+		}
+	}
+	
+
 	if (Solder->GetCurIndex() > 6)
 	{
 		Monster_Weapon->On();
@@ -574,6 +607,7 @@ void golem_Solder::UpAttackUpdate(float _Time)
 
 	if (Solder->IsCurAnimationEnd())
 	{
+		Attack_Sound_Check = false;
 		Time = 0.0f;
 		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,-50.0f });
 		Monster_Weapon->Off();
@@ -585,6 +619,16 @@ void golem_Solder::UpAttackUpdate(float _Time)
 
 void golem_Solder::DownAttackUpdate(float _Time)
 {
+
+	if (Solder->GetCurIndex() > 8)
+	{
+		if (Attack_Sound_Check == false)
+		{
+			Attack_Sound = GameEngineSound::SoundPlay("golem_dungeon_soldier_sword_crash.wav");
+			Attack_Sound_Check = true;
+		}
+	}
+
 	if (Solder->GetCurIndex() > 6)
 	{
 		Monster_Weapon->On();
@@ -595,6 +639,7 @@ void golem_Solder::DownAttackUpdate(float _Time)
 
 	if (Solder->IsCurAnimationEnd())
 	{
+		Attack_Sound_Check = false;
 		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,50.0f });
 		Monster_Weapon->Off();
 		Time = 0.0f;

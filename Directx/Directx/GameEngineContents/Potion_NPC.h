@@ -34,6 +34,11 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+
+	GameEngineSoundPlayer Open;
+	GameEngineSoundPlayer Craft;
+	GameEngineSoundPlayer Select_Sound;
+
 	bool Black_Smith_Start = false;
 	float Number = 1.0f;
 	bool check = false;

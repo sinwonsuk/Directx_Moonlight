@@ -74,6 +74,7 @@ private:
 	float PushTime_Check = 0.0f;
 	float Hp = 100.0f;
 	bool Weapon_Collision_Check = false;
+	bool Death_Sound_Check = false;
 	GameEngineRandom Random;
 
 	golem_Wizard_State StateValue = golem_Wizard_State::LeftWalk;
@@ -85,5 +86,10 @@ private:
 	std::shared_ptr<GameEngineCollision> Col;
 	std::shared_ptr<GameEngineCollision> Body;
 	EventParameter Event;
+
+	GameEngineSoundPlayer Hit_Sound;
+	GameEngineSoundPlayer Death_Sound;
+	GameEngineSoundPlayer Attack_Sound;
+
 };
 

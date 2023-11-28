@@ -28,6 +28,7 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	GameEngineSoundPlayer Sound;
 	bool Animation_Finish = false;
 	int Check = 0;
 	int SetSprite = 0; 

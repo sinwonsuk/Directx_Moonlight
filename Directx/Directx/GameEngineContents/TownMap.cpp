@@ -1418,7 +1418,7 @@ void TownMap::Start()
 	black_Out_02 = GetLevel()->CreateActor<Black_Out>();
 	black_Out_02->Off();
 
-
+	Bgm = GameEngineSound::SoundPlay("rynoka_day_normal.wav");
 }
 
 void TownMap::Update(float _DeltaTime)
@@ -1441,6 +1441,7 @@ void TownMap::Update(float _DeltaTime)
 	{
 		if (black_Out_02->GetCheck() == true)
 		{
+			Bgm.Stop(); 
 			GameEngineCore::ChangeLevel("ShopLevel");
 			return;
 		}
@@ -1458,6 +1459,7 @@ void TownMap::Update(float _DeltaTime)
 		{
 			if (black_Out->GetCheck() == true)
 			{
+				Bgm.Stop();
 				GameEngineCore::ChangeLevel("Dungeon_Entrance_Level");
 				return;
 			}

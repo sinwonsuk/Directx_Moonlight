@@ -124,6 +124,7 @@ void Npc::UpIdleUpdate_02(float _Time)
 	{
 		if (GameEngineInput::IsDown('E', this))
 		{
+			Sound = GameEngineSound::SoundPlay("shop_item_sold.wav");
 			Col_Deal->Off();
 			Player_UI::gold += Shop_UI::this_Shop_UI->Shop_Item_03->Get_Money();
 

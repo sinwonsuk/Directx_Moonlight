@@ -116,7 +116,7 @@ void Npc::UpIdleUpdate_03(float _Time)
 			Col_Deal->Off();
 			Player_UI::gold += Shop_UI::this_Shop_UI->Shop_Item_02->Get_Money();
 
-			
+			Sound = GameEngineSound::SoundPlay("shop_item_sold.wav");
 			ChangeState(Npc_State::DownMove);
 			return;
 		}

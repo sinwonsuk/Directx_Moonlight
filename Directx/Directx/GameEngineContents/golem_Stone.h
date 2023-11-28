@@ -111,6 +111,13 @@ private:
 	EventParameter Event;
 
 	std::shared_ptr<GameEngineCollision> Mini_Col;
+
+	bool Attack_Sound_Check = false;
+	bool Death_Sound_Check = false;
+	GameEngineSoundPlayer Hit_Sound;
+	GameEngineSoundPlayer Death_Sound;
+	GameEngineSoundPlayer Roll_Sound;
+
 };
 
 

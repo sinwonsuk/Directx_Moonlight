@@ -425,8 +425,8 @@ void Shop_House::Start()
 	};
 
 	
-
-
+	Bgm = GameEngineSound::SoundPlay("shop_day_open.wav",100);
+	Bgm.SetVolume(0.5f);
 }
 
 void Shop_House::Update(float _DeltaTime)
@@ -463,12 +463,14 @@ void Shop_House::Update(float _DeltaTime)
 	{
 		if (GameEngineInput::IsDown('E', this) && Open_Col_Check ==false)
 		{		
+			Open = GameEngineSound::SoundPlay("shop_visitor_enters_shop_bell.wav");
 			Shop_door->AnimationPauseOff(); 
 			Open_Col_Check = true; 
 		}
 
 		else if (GameEngineInput::IsDown('E', this) && Open_Col_Check == true)
 		{
+			Close = GameEngineSound::SoundPlay("shop_door_closing.wav");
 			Shop_door->AnimationPauseOff();
 			Open_Col_Check = false;
 		}
@@ -490,7 +492,7 @@ void Shop_House::Update(float _DeltaTime)
 	if (Shop_door->IsCurAnimationEnd() && Open_Col_Check == false)
 	{
 		Shop_door->ChangeAnimation("Shop_door_Closed"); 
-				
+		Time = 0;
 		Close_Col_Check = true;	
 	}
 
@@ -526,6 +528,7 @@ void Shop_House::Update(float _DeltaTime)
 	{
 		if (black_Out->GetCheck() == true)
 		{
+			Bgm.Stop(); 
 			GameEngineCore::ChangeLevel("WorldLevel");
 		}
 	}

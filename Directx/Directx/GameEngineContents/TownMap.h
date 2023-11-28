@@ -25,7 +25,7 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-
+	GameEngineSoundPlayer Bgm;
 	EventParameter Event;
 	EventParameter Event_Black;
 	bool check = false;

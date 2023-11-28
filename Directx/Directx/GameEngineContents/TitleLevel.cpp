@@ -95,7 +95,43 @@ void TitleLevel::Start()
 	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_step_golem_dungeon.wav"));
 	GameEngineSound::SoundLoad(NewDir.PlusFilePath("tutorial_scroll.wav"));
 	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_floor.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_roll.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_turret_shot.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_babyslime_hit.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_slime_pop.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_damaged.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("gui_selector_pick.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("spear_main_attack_swing2.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("spear_main_attack_swing3.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("spear_main_attack_swing.wav"));
 
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_golem_roll.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_soldier_sword_crash.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_golem_hit.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("enemy_death.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_normal_door_closing.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_normal_door_opening.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_death.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_shop_bed_wake.wav"));
+
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("shop_day_open.wav"));
+
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("gui_selector_movement.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("gui_inventory_open.wav"));
+
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("gui_inventory_open.wav"));
+
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("shop_visitor_enters_shop_bell.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("shop_door_closing.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("shop_item_sold.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("visitor_talk_too_cheap.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("rynoka_day_normal.wav"));
+
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("blacksmith_open_gui.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("blacksmith_craft_weapon.wav"));
+
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("witch_open_gui.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("witch_craft_potion.wav"));
 
 
 	/*GameEngineSound::Load(NewDir.GetPlusFileName("cuphead-opening-theme.mp3").GetFullPath());

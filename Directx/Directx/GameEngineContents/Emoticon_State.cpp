@@ -57,6 +57,7 @@ void Emoticon::StopUpdate(float _Time)
 	{
 		Stop->Off(); 
 		Time = 0;
+		Sound = GameEngineSound::SoundPlay("visitor_talk_too_cheap.wav");
 		ChangeState(Emoticon_State::Smile);
 		return;
 	}
@@ -64,6 +65,9 @@ void Emoticon::StopUpdate(float _Time)
 
 void Emoticon::SmileUpdate(float _Time)
 {
+	
+
+
 	Smile->On();
 	Time += _Time;
 

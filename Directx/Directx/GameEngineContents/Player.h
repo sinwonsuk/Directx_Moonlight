@@ -93,7 +93,7 @@ public:
 	Player& operator=(Player&& _Other) noexcept = delete;
 
 	void TestEvent(GameEngineRenderer* _Renderer);
-	
+
 
 
 
@@ -141,7 +141,7 @@ public:
 	void Sword_Weapon_Manager(Big_Sword_State _SpearState, PlayerState state, PlayerState _playstate);
 	void Gloves_Weapon_Manager(Gloves_State _SpearState, PlayerState state, PlayerState _playstate);
 
-	void Attack(Spear_State Spear_Weapon , Big_Sword_State Sword_Weapon, Gloves_State Gloves_Weapon ,PlayerState Spearstate, PlayerState _Swordstate,PlayerState _Glovestate);
+	void Attack(Spear_State Spear_Weapon, Big_Sword_State Sword_Weapon, Gloves_State Gloves_Weapon, PlayerState Spearstate, PlayerState _Swordstate, PlayerState _Glovestate);
 
 
 	void Sword_Left_AttackUpdate_01(float _Time);
@@ -159,7 +159,7 @@ public:
 	void Sword_Down_AttackUpdate_01(float _Time);
 	void Sword_Down_AttackUpdate_02(float _Time);
 	void Sword_Down_AttackUpdate_03(float _Time);
-	
+
 
 	void Gloves_Left_AttackUpdate_01(float _Time);
 	void Gloves_Left_AttackUpdate_02(float _Time);
@@ -185,13 +185,13 @@ public:
 	void Move(float _Delta);
 	void HitUpdate(float _Delta);
 	void Heal(float _Delta);
-	void ChangeWeapon(); 
+	void ChangeWeapon();
 	// ¾ðÁ¨°£ ¹Ù²Û´Ù 
 	float Speed = 300.0f;
 	float Roll_Speed = 400.0f;
 	std::shared_ptr<GameEngineCollision> Col;
-	
-	bool Not_Move = true; 
+
+	bool Not_Move = true;
 	bool LeftMove = true;
 	bool RightMove = true;
 	bool DownMove = true;
@@ -213,9 +213,14 @@ protected:
 
 private:
 
-	GameEngineSoundPlayer Sound; 
+	GameEngineSoundPlayer Sound;
+	GameEngineSoundPlayer Roll_Sound;
+	GameEngineSoundPlayer Hit_Sound;
+	GameEngineSoundPlayer Death_Sound;
+	GameEngineSoundPlayer Bed_Sound;
+	bool Bed_Sound_Check = false;
 	bool Sound_Check = false;
-
+	bool Death_Sound_Check = false;
 	float Sound_Time = 0.0;
 
 	std::shared_ptr<GameEngineCollision> Mini_Col;
@@ -229,8 +234,8 @@ private:
 	std::shared_ptr<GameEngineCollision> Right_Col;
 	std::shared_ptr<GameEngineCollision> Bottom_Col;
 	std::shared_ptr<GameEngineCollision> Top_Col;
-	
-	
+
+
 	bool AttackCheck = false;
 	bool Monster_Attack_Check = false;
 	bool afterimage_Check = false;
@@ -244,12 +249,12 @@ private:
 	//std::shared_ptr<Spear> spear;
 	std::shared_ptr<class GameEngineSpriteRenderer> player;
 
-	float4 GrivityForce = {0.0f, 0.0f, 0.0f, 1.0f};
+	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 	int UICheck = 0;
-	
+
 	float Hp_Bar_reduce = 0.0f;
 	float Hp_Bar_Heal = 0.0f;
 	//std::shared_ptr<GameEngineCollision> Col;
 	bool HealCheck = false;
-};
 
+};

@@ -56,6 +56,8 @@ void golem_Wizard::Start()
 
 		if (Weapon_Collision_Check == false)
 		{
+			Hit_Sound = GameEngineSound::SoundPlay("golem_dungeon_golem_hit.wav");
+
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 
@@ -139,12 +141,20 @@ void golem_Wizard::Update(float _Delta)
 	{
 		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
 
+		if (Death_Sound_Check == false)
+		{
+			Death_Sound = GameEngineSound::SoundPlay("enemy_death.wav");
+			Death_Sound.SetVolume(2.5f);
+			Death_Sound_Check = true;
+		}
+
 		Number -= _Delta * 1;
 		Wizard->GetColorData().MulColor = { 1,1,1,Number };
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
-			for (size_t i = 0; i < 10; i++)
+
+			for (size_t i = 0; i < 4; i++)
 			{
 
 

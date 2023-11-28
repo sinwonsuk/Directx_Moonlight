@@ -83,7 +83,7 @@ void golem_Solder::Start()
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-	
+			hit_Sound = GameEngineSound::SoundPlay("golem_dungeon_golem_hit.wav"); 
 
 		if( Weapon_Collision_Check ==false)
 		{
@@ -184,7 +184,14 @@ void golem_Solder::Update(float _Delta)
 	{
 		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
 		
+		if (Death_Sound_Check == false)
+		{
+			Death_Sound = GameEngineSound::SoundPlay("enemy_death.wav");
+			Death_Sound.SetVolume(2.5f);
+			Death_Sound_Check = true; 
+		}
 
+		
 
 		Monster_Weapon->Off();
 		Number -= _Delta * 1;
@@ -192,7 +199,7 @@ void golem_Solder::Update(float _Delta)
 		Monster_BaseBar->GetColorData().MulColor = { 1,1,1,Number };
 		if (Number < 0.1)
 		{
-			for (size_t i = 0; i < 10; i++)
+			for (size_t i = 0; i < 4; i++)
 			{
 			
 				

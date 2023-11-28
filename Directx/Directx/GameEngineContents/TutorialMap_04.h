@@ -21,12 +21,13 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	GameEngineSoundPlayer Sound;
 	std::shared_ptr<class GameEngineSpriteRenderer> Scroll;
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;
 	std::shared_ptr<class GameEngineSpriteRenderer> Map_floor_01;
 	std::shared_ptr<class GameEngineSpriteRenderer> LeftDoor;
 	std::shared_ptr<class GameEngineSpriteRenderer> RightDoor;
 	std::shared_ptr<GameEngineCollision> Collision_Door;
-
+	bool Sound_Check = false;
 };
 

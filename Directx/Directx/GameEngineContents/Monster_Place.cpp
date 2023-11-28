@@ -48,7 +48,7 @@ void Monster_Place::Monsters(float4 _Pos)
 	Random2->SetSeed(Random_C);
 	Random->SetSeed(Random_A);
 
-	int a = Random3->RandomInt(3, 7);
+	int a = Random3->RandomInt(3, 6);
 
 
 	//¹Ú²Þ

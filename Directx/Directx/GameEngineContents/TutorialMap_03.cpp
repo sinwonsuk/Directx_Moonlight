@@ -58,10 +58,29 @@ void TutorialMap_03::Start()
 
 void TutorialMap_03::Update(float _Delta)
 {
-	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number))
+	Sound_Time += _Delta; 
+
+
+
+	if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number) + 50.0f)
 	{
+		Sound.Stop();
 		return;
 	}
+
+	else if (GetLevel()->GetMainCamera()->Transform.GetWorldPosition().X > 1280 * (1.5 + Map_Number))
+	{
+		if (Sound_Time > 0.5)
+		{
+			Sound = GameEngineSound::SoundPlay("golem_dungeon_turret_shot.wav");
+			Sound_Time = 0;
+		}
+		return;
+	}
+
+
+
+
 	if (Map_Check == 2)
 	{
 		ObjectCollision(_Delta, "Tutirial_Pixel_Map_03.png");

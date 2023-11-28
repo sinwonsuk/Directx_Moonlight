@@ -29,7 +29,7 @@ void Player_UI::Start()
 	Gold_UI = CreateComponent<GameEngineUIRenderer>(10);
 	std::string numberStr = std::to_string(gold);
 	Gold_UI->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
-	Gold_UI->Transform.AddLocalPosition({ -580.0f,270.0f });
+	Gold_UI->Transform.AddLocalPosition({ -570.0f,270.0f });
 
 
 

@@ -104,6 +104,14 @@ void Spear::UpdateState(float _Time)
 
 void Spear::Down_Attack_Update_01(float _Time)
 {
+	if(SoundCheck ==false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing.wav");
+		SoundCheck = true;
+	} 
+
+
+
 	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
 	if (spear->GetCurIndex() <= 1)
@@ -153,6 +161,12 @@ void Spear::Down_Attack_Update_02(float _Time)
 {
 	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing2.wav");
+		SoundCheck = true;
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -196,6 +210,12 @@ void Spear::Down_Attack_Update_02(float _Time)
 
 void Spear::Down_Attack_Update_03(float _Time)
 {
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing3.wav");
+		SoundCheck = true;
+	}
+
 	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
 	if (spear->GetCurIndex() <= 2)
@@ -243,7 +263,11 @@ void Spear::Down_Attack_Update_03(float _Time)
 
 void Spear::Left_Attack_Update_01(float _Time)
 {
-
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing.wav");
+		SoundCheck = true;
+	}
 
 	
 	if (spear->GetCurIndex() <= 1)
@@ -288,6 +312,12 @@ void Spear::Left_Attack_Update_01(float _Time)
 
 void Spear::Left_Attack_Update_02(float _Time)
 {
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing2.wav");
+		SoundCheck = true;
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -330,6 +360,12 @@ void Spear::Left_Attack_Update_02(float _Time)
 
 void Spear::Left_Attack_Update_03(float _Time)
 {
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing3.wav");
+		SoundCheck = true;
+	}
+
 	if (spear->GetCurIndex() <= 2)
 	{
 		Col->Off();
@@ -374,6 +410,12 @@ void Spear::Left_Attack_Update_03(float _Time)
 
 void Spear::Right_Attack_Update_01(float _Time)
 {
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing.wav");
+		SoundCheck = true;
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -415,6 +457,12 @@ void Spear::Right_Attack_Update_01(float _Time)
 
 void Spear::Right_Attack_Update_02(float _Time)
 {
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing2.wav");
+		SoundCheck = true;
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -458,6 +506,12 @@ void Spear::Right_Attack_Update_02(float _Time)
 
 void Spear::Right_Attack_Update_03(float _Time)
 {
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing3.wav");
+		SoundCheck = true;
+	}
+
 	if (spear->GetCurIndex() <= 2)
 	{
 		Col->Off();
@@ -501,6 +555,11 @@ void Spear::Right_Attack_Update_03(float _Time)
 
 void Spear::Up_Attack_Update_01(float _Time)
 {
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing.wav");
+		SoundCheck = true;
+	}
 
 	if (spear->GetCurIndex() <= 1)
 	{
@@ -543,6 +602,11 @@ void Spear::Up_Attack_Update_01(float _Time)
 
 void Spear::Up_Attack_Update_02(float _Time)
 {
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing2.wav");
+		SoundCheck = true;
+	}
 	if (spear->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -585,6 +649,12 @@ void Spear::Up_Attack_Update_02(float _Time)
 
 void Spear::Up_Attack_Update_03(float _Time)
 {
+	if (SoundCheck == false)
+	{
+		Sound_01 = GameEngineSound::SoundPlay("spear_main_attack_swing3.wav");
+		SoundCheck = true;
+	}
+
 	if (spear->GetCurIndex() <= 2)
 	{
 		Col->Off();

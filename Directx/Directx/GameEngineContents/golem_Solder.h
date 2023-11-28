@@ -93,7 +93,9 @@ private:
 	float4 AD = {}; 
 	bool Weapon_Collision_Check = false;
 	
-
+	GameEngineSoundPlayer hit_Sound;
+	GameEngineSoundPlayer Attack_Sound;
+	GameEngineSoundPlayer Death_Sound;
 
 
 	golem_Solder_State StateValue = golem_Solder_State::LeftWalk;
@@ -106,5 +108,6 @@ private:
 	std::shared_ptr<GameEngineCollision> Col;
 	//std::shared_ptr<GameEngineCollision> Weapon_Col;
 	//std::shared_ptr<GameEngineCollision> Mini_Col;
-	
+	bool Attack_Sound_Check = false;
+	bool Death_Sound_Check = false;
 };

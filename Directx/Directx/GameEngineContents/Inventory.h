@@ -73,6 +73,11 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+
+	GameEngineSoundPlayer Open;
+	GameEngineSoundPlayer Select;
+
+
 	static bool start;
 	static bool Inventory_Start;
 	static bool Item_Move;

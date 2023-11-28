@@ -39,7 +39,7 @@ void Potion_NPC::Potion_Open_Close()
 				}
 			}
 		}
-
+		Open = GameEngineSound::SoundPlay("witch_open_gui.wav");
 		Money->On();
 		blacksmith_OX_Enough_01->On();
 		blacksmith_OX_Enough_02->On();
@@ -114,24 +114,25 @@ void Potion_NPC::Potion_Open_Close()
 
 void Potion_NPC::Potion_Move()
 {
-	if (GameEngineInput::IsDown('A', this))
+	if (GameEngineInput::IsDown('A', this) && Black_Smith_Start == false)
 	{
 		if (Item_Select->Transform.GetWorldPosition().X == -121)
 		{
 			return;
 		}
 
-
+		Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
 		Item_Select->Transform.AddWorldPosition({ -109.0f,0.0f });
 	}
 
-	if (GameEngineInput::IsDown('D', this))
+	if (GameEngineInput::IsDown('D', this) && Black_Smith_Start == false)
 	{
 		if (Item_Select->Transform.GetWorldPosition().X == 206)
 		{
 			return;
 		}
 
+		Select_Sound = GameEngineSound::SoundPlay("gui_selector_movement.wav");
 		Item_Select->Transform.AddWorldPosition({ 109.0f,0.0f });
 	}
 

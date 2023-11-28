@@ -413,6 +413,7 @@ void Player::RightIdleUpdate(float _Time)
 
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
+		Roll_Sound = GameEngineSound::SoundPlay("will_roll.wav");
 		ChangeState(PlayerState::RollRight);
 		return;
 	}
@@ -449,6 +450,7 @@ void Player::LeftIdleUpdate(float _Time)
 	
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
+		Roll_Sound = GameEngineSound::SoundPlay("will_roll.wav");
 		ChangeState(PlayerState::RollLeft);
 		return;
 	}
@@ -490,6 +492,7 @@ void Player::DownIdleUpdate(float _Time)
 	}*/
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
+		Roll_Sound = GameEngineSound::SoundPlay("will_roll.wav");
 		ChangeState(PlayerState::RollDown);
 		return;
 	}
@@ -534,6 +537,7 @@ void Player::UpIdleUpdate(float _Time)
 	}*/
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
+		Roll_Sound = GameEngineSound::SoundPlay("will_roll.wav");
 		ChangeState(PlayerState::RollUp);
 		return;
 	}
@@ -579,6 +583,7 @@ void Player::RightMoveUpdate(float _Time)
 	}*/
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
+		Roll_Sound = GameEngineSound::SoundPlay("will_roll.wav");
 		ChangeState(PlayerState::RollRight);
 		return;
 	}
@@ -627,6 +632,7 @@ void Player::LeftMoveUpdate(float _Time)
 
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
+		Roll_Sound = GameEngineSound::SoundPlay("will_roll.wav");
 		ChangeState(PlayerState::RollLeft);
 		return;
 	}
@@ -668,6 +674,7 @@ void Player::DownMoveUpdate(float _Time)
 
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
+		Roll_Sound = GameEngineSound::SoundPlay("will_roll.wav");
 		ChangeState(PlayerState::RollDown);
 		return;
 	}
@@ -709,6 +716,7 @@ void Player::UpMoveUpdate(float _Time)
 	}*/
 	if (GameEngineInput::IsDown(VK_SPACE, this))
 	{
+		Roll_Sound = GameEngineSound::SoundPlay("will_roll.wav");
 		ChangeState(PlayerState::RollUp);
 		return;
 	}
@@ -1081,7 +1089,11 @@ void Player::DeathUpdate(float _Time)
 
 void Player::BedUpdate(float _Time)
 {
-
+	if (Bed_Sound_Check == false)
+	{
+		Bed_Sound = GameEngineSound::SoundPlay("will_shop_bed_wake.wav");
+		Bed_Sound_Check = true;
+	}
 	if (player->IsCurAnimationEnd())
 	{
 		Transform.AddLocalPosition({ 0.0f,-70.0f });
@@ -1415,7 +1427,7 @@ void Player::Move(float _Delta)
 	if (Sound_Check == false)
 	{
 		Sound = GameEngineSound::SoundPlay("will_step_golem_dungeon.wav");
-		Sound.SetVolume(0.6f);
+		Sound.SetVolume(0.8f);
 		Sound_Check = true; 
 		Sound_Time = 0;
 	}

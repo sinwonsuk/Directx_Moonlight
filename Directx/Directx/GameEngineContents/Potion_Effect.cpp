@@ -23,6 +23,9 @@ void Potion_Effect::Start()
 	Items->AutoSpriteSizeOn();
 	Items->SetAutoScaleRatio(3.0f);
 	Items->Off();
+
+	Sound = GameEngineSound::SoundPlay("witch_craft_potion.wav");
+
 }
 
 void Potion_Effect::Update(float _Delta)

@@ -193,6 +193,7 @@ void Dungeon_Entrance_Map::Start()
 	black_Out_02 = GetLevel()->CreateActor<Black_Out>();
 	black_Out_02->Off();
 
+	
 }
 
 

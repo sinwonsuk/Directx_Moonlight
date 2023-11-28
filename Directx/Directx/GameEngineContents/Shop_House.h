@@ -26,6 +26,9 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	GameEngineSoundPlayer Bgm;
+	GameEngineSoundPlayer Open;
+	GameEngineSoundPlayer Close;
 	bool Open_Col_Check = false;
 	bool check = false;
 	bool Black_Check = false;

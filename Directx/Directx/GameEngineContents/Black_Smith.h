@@ -37,6 +37,9 @@ private:
 	bool Black_Smith_Start = false;
 	float Number = 1.0f;
 	bool check = false;
+	GameEngineSoundPlayer Open;
+	GameEngineSoundPlayer Craft;
+	GameEngineSoundPlayer Select_Sound;
 
 	std::shared_ptr<GameEngineCollision> Col;
 

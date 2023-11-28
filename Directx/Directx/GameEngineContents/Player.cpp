@@ -246,6 +246,8 @@ void Player::Start()
 		if (Monster_Attack_Check == false)
 		{
 			Monster_Attack_Check = true;
+
+			Hit_Sound = GameEngineSound::SoundPlay("will_damaged.wav");
 			UICheck++;
 		}
 	};
@@ -307,12 +309,12 @@ void Player::HitUpdate(float _Delta)
 	{
 		afterimage_Time += _Delta;
 
-		if (afterimage_Time < 0.2)
+		if (afterimage_Time < 0.1)
 		{
 			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,-1.0f };
 		}
 
-		if (afterimage_Time > 0.2)
+		if (afterimage_Time > 0.1)
 		{
 			player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 			afterimage_Time = 0;
@@ -321,7 +323,7 @@ void Player::HitUpdate(float _Delta)
 
 	}
 
-	if (Hit_Check >= 3)
+	if (Hit_Check >= 2)
 	{
 		player->GetColorData().PlusColor = { 0.0f,0.0f,0.0f,0.0f };
 		afterimage_Check = false;
@@ -438,10 +440,17 @@ void Player::Update(float _Delta)
 	}
 	
 	
-	
+
 
 	if (Hp <= 0.0 && DieCheck ==false)
 	{
+		if (Death_Sound_Check == false)
+		{
+			Death_Sound = GameEngineSound::SoundPlay("will_death.wav");
+			Death_Sound_Check = true;
+		}
+		
+
 		ChangeState(PlayerState::Death);
 		DieCheck = true;
 	

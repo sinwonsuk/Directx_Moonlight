@@ -280,6 +280,13 @@ void golem_Stone::DownMoveUpdate(float _Time)
 
 void golem_Stone::LeftAttackUpdate(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Roll_Sound = GameEngineSound::SoundPlay("golem_dungeon_golem_roll.wav");
+		Attack_Sound_Check = true;
+	}
+	
+
 	if (PlayerCheck == false)
 	{
 		MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -291,6 +298,8 @@ void golem_Stone::LeftAttackUpdate(float _Time)
 
 	if (Stone->IsCurAnimationEnd())
 	{
+		Roll_Sound.Stop(); 
+		Attack_Sound_Check = false;
 		Time = 0.0f;
 		PlayerCheck = false; 
 		ChangeState(golem_Stone_State::AttackCheck);
@@ -302,6 +311,13 @@ void golem_Stone::LeftAttackUpdate(float _Time)
 void golem_Stone::RightAttackUpdate(float _Time)
 {
 
+	if (Attack_Sound_Check == false)
+	{
+		Roll_Sound = GameEngineSound::SoundPlay("golem_dungeon_golem_roll.wav");
+		Attack_Sound_Check = true;
+	}
+
+
 	if (PlayerCheck == false)
 	{
 		MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -314,6 +330,8 @@ void golem_Stone::RightAttackUpdate(float _Time)
 
 	if (Stone->IsCurAnimationEnd())
 	{
+		Roll_Sound.Stop();
+		Attack_Sound_Check = false;
 		Time = 0.0f;
 		PlayerCheck = false;
 		ChangeState(golem_Stone_State::AttackCheck);
@@ -325,6 +343,12 @@ void golem_Stone::RightAttackUpdate(float _Time)
 void golem_Stone::UpAttackUpdate(float _Time)
 {
 
+	if (Attack_Sound_Check == false)
+	{
+		Roll_Sound = GameEngineSound::SoundPlay("golem_dungeon_golem_roll.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (PlayerCheck == false)
 	{
 		MoveDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();
@@ -336,6 +360,8 @@ void golem_Stone::UpAttackUpdate(float _Time)
 
 	if (Stone->IsCurAnimationEnd())
 	{
+		Roll_Sound.Stop();
+		Attack_Sound_Check = false;
 		PlayerCheck = false;
 		Time = 0.0f;
 		ChangeState(golem_Stone_State::AttackCheck);
@@ -346,6 +372,11 @@ void golem_Stone::UpAttackUpdate(float _Time)
 
 void golem_Stone::DownAttackUpdate(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Roll_Sound = GameEngineSound::SoundPlay("golem_dungeon_golem_roll.wav");
+		Attack_Sound_Check = true;
+	}
 
 	if (PlayerCheck == false)
 	{
@@ -360,6 +391,8 @@ void golem_Stone::DownAttackUpdate(float _Time)
 
 	if (Stone->IsCurAnimationEnd())
 	{
+		Roll_Sound.Stop();
+		Attack_Sound_Check = false;
 		PlayerCheck = false;
 		Time = 0.0f;
 		ChangeState(golem_Stone_State::AttackCheck);

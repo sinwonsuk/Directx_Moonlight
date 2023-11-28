@@ -854,7 +854,7 @@ void Inventory::Update(float _DeltaTime)
 		
 		}
 
-		
+		Open = GameEngineSound::SoundPlay("gui_inventory_open.wav");
 
 		Inventroy_Screen->On(); 
 		Inventroy_Select->On();
@@ -863,6 +863,8 @@ void Inventory::Update(float _DeltaTime)
 	}
 	else if (GameEngineInput::IsDown('I', this) && Inventory_Start == true)
 	{
+		//Open = GameEngineSound::SoundPlay("gui_inventory_open.wav");
+
 		for (size_t i = 0; i < Item_Renders.size(); i++)
 		{
 			if (Item_Renders[i] != nullptr)
@@ -891,6 +893,8 @@ void Inventory::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown('D', this)&& Inventory_Start == true)
 	{
+		Select = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 		Inventory_pos_X += 1;
 
 		if (Inventory_pos_X > 6 )
@@ -901,6 +905,8 @@ void Inventory::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown('A', this) && Inventory_Start == true)
 	{
+		Select = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 		Inventory_pos_X -= 1;
 
 		if (Inventory_pos_X < 0)
@@ -912,6 +918,8 @@ void Inventory::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown('W', this) && Inventory_Start == true)
 	{
+		Select = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 		Inventory_pos_Y -= 1;
 
 		if (Inventory_pos_Y < 0)
@@ -923,6 +931,8 @@ void Inventory::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown('S', this) && Inventory_Start == true)
 	{
+		Select = GameEngineSound::SoundPlay("gui_selector_movement.wav");
+
 		Inventory_pos_Y += 1;
 
 		if (Inventory_pos_Y > 3)
@@ -949,7 +959,7 @@ void Inventory::Update(float _DeltaTime)
 			{
 				if (Item_Renders[i]->Move == Inventroy_informations[Inventory_pos_X][Inventory_pos_Y]->Move)
 				{
-
+					
 
 
 
@@ -1004,18 +1014,24 @@ void Inventory::Update(float _DeltaTime)
 			{
 				if (Item_Renders[Item_Renders_Order]->Item_Select == Item_Renders[Transform_2_1]->Item_Select)
 				{
-					Font_Renders[Transform_2_1]->FontNumber += Font_Renders[Item_Renders_Order]->FontNumber;
+					if (Font_Renders[Item_Renders_Order] != nullptr)
+					{
 
-					std::string numberStr = std::to_string(Font_Renders[Transform_2_1]->FontNumber);
-					Font_Renders[Transform_2_1]->FontNumber = Font_Renders[Transform_2_1]->FontNumber;
-					Font_Renders[Transform_2_1]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
 
-					Item_Renders[Item_Renders_Order]->item->Death(); 
-					Item_Renders[Item_Renders_Order] = nullptr;
-					Item_overlap.erase(Item_type[Item_Renders_Order]->Item_Oreder);
+						Font_Renders[Transform_2_1]->FontNumber += Font_Renders[Item_Renders_Order]->FontNumber;
 
-					Font_Renders[Item_Renders_Order]->Font->Death();
-					Font_Renders[Item_Renders_Order] = nullptr;
+						std::string numberStr = std::to_string(Font_Renders[Transform_2_1]->FontNumber);
+						Font_Renders[Transform_2_1]->FontNumber = Font_Renders[Transform_2_1]->FontNumber;
+						Font_Renders[Transform_2_1]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);
+
+						Item_Renders[Item_Renders_Order]->item->Death();
+						Item_Renders[Item_Renders_Order] = nullptr;
+						Item_overlap.erase(Item_type[Item_Renders_Order]->Item_Oreder);
+
+						Font_Renders[Item_Renders_Order]->Font->Death();
+						Font_Renders[Item_Renders_Order] = nullptr;
+					}
+					
 				}
 				else
 				{
@@ -1086,7 +1102,7 @@ void Inventory::Update(float _DeltaTime)
 
 		if(Item_Renders_Death_Check ==true)
 		{
-
+			
 
 
 			Item_type[Transform_2_1]->Item_Oreder = Item_Renders[Transform_2_1]->Item_Select;

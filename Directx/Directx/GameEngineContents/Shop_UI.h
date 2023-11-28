@@ -20,7 +20,7 @@ public:
 	Shop_UI& operator=(Shop_UI&& _Other) noexcept = delete;
 
 
-
+	GameEngineSoundPlayer Select_Sound;
 	
 	std::shared_ptr<class Shop_Item> Shop_Item_01;
 	std::shared_ptr<class Shop_Item> Shop_Item_02;

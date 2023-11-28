@@ -24,6 +24,7 @@ void Black_Smith_Effect::Start()
 	Items->SetAutoScaleRatio(2.5f);
 	Items->Off(); 
 
+	Sound = GameEngineSound::SoundPlay("blacksmith_craft_weapon.wav");
 }
 
 void Black_Smith_Effect::Update(float _Delta)

@@ -46,7 +46,7 @@ private:
 	bool gravity = true;
 
 	GameEngineRandom Random;
-	
+	GameEngineSoundPlayer Sound;
 
 	float Pos_X = 0;
 	float Pos_Y = 0;

@@ -30,6 +30,8 @@ void Items::Start()
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 		{
+			Sound = GameEngineSound::SoundPlay("gui_selector_pick.wav");
+
 			Item_Move = true;
 			PrevPos = Transform.GetWorldPosition();
 		};

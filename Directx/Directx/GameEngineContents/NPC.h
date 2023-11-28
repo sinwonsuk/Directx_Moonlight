@@ -133,7 +133,7 @@ private:
 	float Time = 0.0f;
 	float Number = 1.0f; 
 	int Check = 0;
-
+	GameEngineSoundPlayer Sound;
 	std::shared_ptr<GameEngineCollision> Col;
 	std::shared_ptr<GameEngineCollision> Col_Deal;
 	

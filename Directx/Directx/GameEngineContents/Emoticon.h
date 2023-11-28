@@ -44,7 +44,7 @@ private:
 
 	int Check = 0;
 
-	
+	GameEngineSoundPlayer Sound;
 
 	
 

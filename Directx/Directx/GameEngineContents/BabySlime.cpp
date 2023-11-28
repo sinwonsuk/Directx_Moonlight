@@ -78,6 +78,9 @@ void BabySlime::Start()
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 
 
+			Hit_Sound = GameEngineSound::SoundPlay("golem_dungeon_babyslime_hit.wav");
+
+
 
 			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 			{
@@ -143,6 +146,14 @@ void BabySlime::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
+		if (Pop_Sound_check == false)
+		{
+			Pop_Sound = GameEngineSound::SoundPlay("golem_dungeon_slime_pop.wav");
+			Pop_Sound_check = true;
+		}
+	
+
+
 		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
 
 		Monster_Weapon->Off(); 
@@ -153,7 +164,7 @@ void BabySlime::Update(float _Delta)
 
 		if (Number < 0.1)
 		{
-			for (size_t i = 0; i < 4; i++)
+			for (size_t i = 0; i < 2; i++)
 			{
 					
 				int Itemss = Random.RandomInt(0, 4);

@@ -39,6 +39,10 @@ private:
 
 	int Slime_Check = 0; 
 
+	GameEngineSoundPlayer Close_Sound; 
+	GameEngineSoundPlayer Open_Sound;
+	bool Close_Sound_Check = false;
+	bool Open_Sound_Check = false;
 	//std::vector<std::shared_ptr<class BabySlime>> Slime;
 
 };

@@ -93,6 +93,7 @@ void TutorialMap_04::Update(float _Delta)
 	{
 		return;
 	}
+
 	if (Map_Check == 3)
 	{
 		ObjectCollision(_Delta, "Tutirial_Pixel_Map_04.png");

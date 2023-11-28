@@ -59,6 +59,7 @@ private:
 	EventParameter Event;
 	EventParameter Mini_Event;
 	bool CollisionCheck = false;
+	bool Pop_Sound_check = false;
 	float Speed = 300.0f;
 	float Hp = 100.0f;
 	float DeltaTime = 0;
@@ -72,6 +73,10 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> babySlime; 
+
+	GameEngineSoundPlayer Hit_Sound;
+	GameEngineSoundPlayer Pop_Sound;
+
 	std::shared_ptr<GameEngineCollision> Col;
 };
 

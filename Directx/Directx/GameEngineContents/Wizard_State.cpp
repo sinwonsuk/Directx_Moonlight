@@ -464,12 +464,13 @@ void golem_Wizard::LeftAttackUpdate(float _Time)
 {
 	
 
+
+
+
+
 	if (Wizard->IsCurAnimationEnd())
 	{
-		/*std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
-		object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X-30.0f,Transform.GetWorldPosition().Y });
-		object->Transform.SetLocalRotation({0.0f,0.0f,-90.0f});
-		object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();*/
+		Attack_Sound = GameEngineSound::SoundPlay("golem_dungeon_turret_shot.wav");
 		Time = 0.0f;
 	
 		ChangeState(golem_Wizard_State::AttackCheck);
@@ -486,13 +487,9 @@ void golem_Wizard::RightAttackUpdate(float _Time)
 	if (Wizard->IsCurAnimationEnd() )
 	{
 		Time = 0.0f;
-
-		/*std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
-		object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + 30.0f,Transform.GetWorldPosition().Y });
-		object->Transform.SetLocalRotation({ 0.0f,0.0f,90.0f });
-		object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();*/
+		Attack_Sound = GameEngineSound::SoundPlay("golem_dungeon_turret_shot.wav");
 		ChangeState(golem_Wizard_State::AttackCheck);
-			return;
+		return;
 		
 
 	}
@@ -504,16 +501,14 @@ void golem_Wizard::UpAttackUpdate(float _Time)
 	if (Wizard->IsCurAnimationEnd() )
 	{
 
-		/*std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
-		object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y+30.0f });
-		object->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
-		object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();*/
+		Attack_Sound = GameEngineSound::SoundPlay("golem_dungeon_turret_shot.wav");
+
 		Time = 0.0f;
 
 
 		
 		ChangeState(golem_Wizard_State::AttackCheck);
-			return;
+		return;
 	
 	
 	}
@@ -525,9 +520,7 @@ void golem_Wizard::DownAttackUpdate(float _Time)
 	if (Wizard->IsCurAnimationEnd() )
 	{
 		Time = 0.0f;
-		/*std::shared_ptr<gloem_Wazard_Missile> object = GetLevel()->CreateActor<gloem_Wazard_Missile>();
-		object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X,Transform.GetWorldPosition().Y - 30.0f });
-		object->AttackDir = Player::this_Player->Transform.GetWorldPosition() - Transform.GetWorldPosition();*/
+		Attack_Sound = GameEngineSound::SoundPlay("golem_dungeon_turret_shot.wav");
 		
 		ChangeState(golem_Wizard_State::AttackCheck);
 		return;
