@@ -114,7 +114,7 @@ void Potion_NPC::Potion_Open_Close()
 
 void Potion_NPC::Potion_Move()
 {
-	if (GameEngineInput::IsDown('A', this) && Black_Smith_Start == false)
+	if (GameEngineInput::IsDown('A', this) && Black_Smith_Start == true)
 	{
 		if (Item_Select->Transform.GetWorldPosition().X == -121)
 		{
@@ -125,7 +125,7 @@ void Potion_NPC::Potion_Move()
 		Item_Select->Transform.AddWorldPosition({ -109.0f,0.0f });
 	}
 
-	if (GameEngineInput::IsDown('D', this) && Black_Smith_Start == false)
+	if (GameEngineInput::IsDown('D', this) && Black_Smith_Start == true)
 	{
 		if (Item_Select->Transform.GetWorldPosition().X == 206)
 		{

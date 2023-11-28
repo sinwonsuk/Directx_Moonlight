@@ -343,7 +343,7 @@ void Player::Heal(float _Delta)
 		if (Inventory::This_Inventory->Item_Renders[27]->Item_Select == 10 || Inventory::This_Inventory->Item_Renders[27]->Item_Select == 11 || Inventory::This_Inventory->Item_Renders[27]->Item_Select == 12)
 		{
 
-			if (GameEngineInput::IsDown('K', this) && player_UI->Hp_Bar->Transform.GetLocalScale().X < 1)
+			if (GameEngineInput::IsDown('E', this) && player_UI->Hp_Bar->Transform.GetLocalScale().X < 1)
 			{
 
 				Inventory::This_Inventory->Font_Renders[27]->FontNumber -= 1;
