@@ -48,6 +48,7 @@ private:
 	std::shared_ptr<GameEngineCollision> Change_Town;
 	std::shared_ptr<GameEngineCollision> Dungeon_Near;
 
+	GameEngineSoundPlayer Bgm; 
 
 	std::shared_ptr<GameEngineCollision> Dungeon_Door_Col;
 	bool Black_Check_02 = false;

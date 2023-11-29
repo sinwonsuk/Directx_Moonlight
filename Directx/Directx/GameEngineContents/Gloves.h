@@ -74,5 +74,8 @@ private:
 
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 
-	//std::shared_ptr<GameEngineCollision> Col;
+	GameEngineSoundPlayer Attack_Sound; 
+
+	bool Attack_Sound_Check = false;
+
 };

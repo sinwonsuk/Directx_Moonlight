@@ -38,7 +38,7 @@ private:
 	bool Boss_Door_Check = false;
 	bool test = false;
 	float4 Arr = {}; 
-	
+
 	std::shared_ptr<class GameEngineSpriteRenderer> BackGround;
 	
 	std::shared_ptr<class GameEngineSpriteRenderer> LeftDoor;
@@ -53,6 +53,10 @@ private:
 	std::shared_ptr<GameEngineCollision> Top_Collision_Door;
 	std::shared_ptr<GameEngineCollision> Bottom_Collision_Door;
 	std::shared_ptr<GameEngineCollision> Boss_Collison_Door;
+	GameEngineSoundPlayer Open_Door_Sound; 
+	GameEngineSoundPlayer Close_Door_Sound;
+	GameEngineSoundPlayer Boss_Close_Door_Sound;
 
+	bool Open_Door_Sound_Check = false;
 	EventParameter Event;
 };

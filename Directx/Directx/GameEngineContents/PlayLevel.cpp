@@ -78,6 +78,12 @@ void PlayLevel::Update(float _Delta)
 
 void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+
+	Bgm = GameEngineSound::SoundPlay("golem_dungeon_floor.wav", 100);
+	Bgm.SetVolume(0.5f);
+
+
+
 	{
 		Camera = CreateActor<CameraCollision>();
 	}
@@ -106,7 +112,7 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	
-	
+	Bgm.Stop(); 
 
 	if (player->Black != nullptr)
 	{

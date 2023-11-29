@@ -74,4 +74,8 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster;
 	std::shared_ptr<GameEngineCollision> Col;
 
+	GameEngineSoundPlayer hit_Sound;
+	GameEngineSoundPlayer Death_Sound;
+
+	bool Death_Sound_Check = false;
 };

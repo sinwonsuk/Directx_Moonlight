@@ -101,6 +101,12 @@ void Gloves::UpdateState(float _Time)
 
 void Gloves::Down_Attack_Update_01(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing.wav"); 
+		Attack_Sound_Check = true;
+	}
+	
 	if (Glove->GetCurIndex() <=  1)
 	{
 		Col->Off();
@@ -124,6 +130,12 @@ void Gloves::Down_Attack_Update_01(float _Time)
 
 void Gloves::Down_Attack_Update_02(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing2.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (Glove->GetCurIndex() <= 0)
 	{
 		Col->Off();
@@ -150,6 +162,12 @@ void Gloves::Down_Attack_Update_02(float _Time)
 
 void Gloves::Down_Attack_Update_03(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing3.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (Glove->GetCurIndex() <= 0)
 	{
 		Col->Off();
@@ -180,6 +198,12 @@ void Gloves::Down_Attack_Update_03(float _Time)
 
 void Gloves::Left_Attack_Update_01(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (Glove->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -203,6 +227,13 @@ void Gloves::Left_Attack_Update_01(float _Time)
 
 void Gloves::Left_Attack_Update_02(float _Time)
 {
+
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing2.wav");
+		Attack_Sound_Check = true;
+
+	}
 	if (Glove->GetCurIndex() <= 0)
 	{
 		Col->Off();
@@ -228,6 +259,13 @@ void Gloves::Left_Attack_Update_02(float _Time)
 
 void Gloves::Left_Attack_Update_03(float _Time)
 {
+
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing3.wav");
+		Attack_Sound_Check = true;
+
+	}
 	if (Glove->GetCurIndex() <= 0)
 	{
 		Col->Off();
@@ -257,6 +295,12 @@ void Gloves::Left_Attack_Update_03(float _Time)
 
 void Gloves::Right_Attack_Update_01(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing.wav");
+		Attack_Sound_Check = true;
+
+	}
 	if (Glove->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -280,6 +324,12 @@ void Gloves::Right_Attack_Update_01(float _Time)
 
 void Gloves::Right_Attack_Update_02(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing2.wav");
+		Attack_Sound_Check = true;
+
+	}
 	if (Glove->GetCurIndex() <= 0)
 	{
 		Col->Off();
@@ -303,6 +353,12 @@ void Gloves::Right_Attack_Update_02(float _Time)
 
 void Gloves::Right_Attack_Update_03(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing3.wav");
+		Attack_Sound_Check = true;
+
+	}
 	if (Glove->GetCurIndex() <= 0)
 	{
 		Col->Off();
@@ -332,6 +388,12 @@ void Gloves::Right_Attack_Update_03(float _Time)
 
 void Gloves::Up_Attack_Update_01(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing.wav");
+		Attack_Sound_Check = true;
+
+	}
 	if (Glove->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -355,6 +417,12 @@ void Gloves::Up_Attack_Update_01(float _Time)
 
 void Gloves::Up_Attack_Update_02(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing2.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (Glove->GetCurIndex() <= 0)
 	{
 		Col->Off();
@@ -378,6 +446,12 @@ void Gloves::Up_Attack_Update_02(float _Time)
 
 void Gloves::Up_Attack_Update_03(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("gloves_main_attack_swing3.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (Glove->GetCurIndex() <= 0)
 	{
 		Col->Off();

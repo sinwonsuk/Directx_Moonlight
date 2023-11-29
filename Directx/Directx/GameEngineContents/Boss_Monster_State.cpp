@@ -116,9 +116,17 @@ void Boss_Monster::UpdateState(float _Time)
 
 void Boss_Monster::IdleUpdate(float _Time)
 {
+	if (Bgm_Sound_Check == false)
+	{
+		Bgm = GameEngineSound::SoundPlay("golem_boss_track.wav",100); 
+		Bgm_Sound_Check = true;
+	}
+
+
+
 	WaveCheck = true; 
-	//dasdasdas
-	 int AD = random.RandomInt(1, 1);
+
+	 int AD = random.RandomInt(0, 1);
 
 	if (Time > 0 && Boss->IsCurAnimationEnd())
 	{
@@ -195,6 +203,17 @@ void Boss_Monster::Wake_Up_Update(float _Time)
 {
 	Boss->AnimationPauseOff();
 
+	if (Wake_Sound_Check == false)
+	{
+		Wake_Sound = GameEngineSound::SoundPlay("golem_dungeon_king_golem_awake.wav");
+		Wake_Sound_Check = true;
+	}
+
+
+
+
+
+
 	if (Boss->IsCurAnimationEnd())
 	{
 		ChangeState(Boss_Monster_State::Start2);
@@ -204,10 +223,19 @@ void Boss_Monster::Wake_Up_Update(float _Time)
 
 void Boss_Monster::LaunchArm_Update(float _Time)
 {
-	
+	if (Boss->GetCurIndex() > 18)
+	{
+		if (ArmPre_Sound_Check == false)
+		{
+			GameEngineSound::SoundPlay("golem_dungeon_king_golem_handcrash_prepare.wav");
+			ArmPre_Sound_Check = true; 
+		}
+	}
+
 	
 	if (Boss->IsCurAnimationEnd())
 	{	
+		ArmPre_Sound_Check = false;
 		Arm = GetLevel()->CreateActor<Boss_Arm>();
 		ChangeState(Boss_Monster_State::IdleNoArm);
 		return; 
@@ -245,13 +273,23 @@ void Boss_Monster::RecoveryArmUpdate(float _Time)
 
 void Boss_Monster::Rocks_Spawn_Attack_Update(float _Time)
 {
+	if (Boss->GetCurIndex() > 10)
+	{
+		if (Spawn_Sound_Check == false)
+		{
+			Spawn_Sound = GameEngineSound::SoundPlay("golem_dungeon_king_golem_avalanch_pre.wav");
+			Spawn_Sound_Check = true;
+		}
+	}
+
+
 	if (Boss->IsCurAnimationEnd())
 	{
 		
 
 		while (AD)
 		{
-		
+			Spawn_Sound_Check = false;
 			Rock_positioning(Rock_Width, Rock_Hight);
 
 			std::shared_ptr<Boss_Rock_Shadow> Object = GetLevel()->CreateActor<Boss_Rock_Shadow>(50);
@@ -321,6 +359,14 @@ void Boss_Monster::Rock_Down_Update(float _Time)
 		Rock_positioning(Rock_Width, Rock_Hight);
 
 		std::shared_ptr<Boss_Rock> Object = GetLevel()->CreateActor<Boss_Rock>(50);
+
+		if (Rock_Down_Sound_Check == false)
+		{
+			Rock_Down_Sound = GameEngineSound::SoundPlay("golem_dungeon_king_golem_avalanch_rock.wav");
+			Rock_Down_Sound_Check = true;
+		}
+
+
 		Object->Transform.SetLocalPosition({ Transform.GetWorldPosition().X + Shadow_Pos_Left,Transform.GetWorldPosition().Y + Shadow_Pos_Down + 800 });
 		Object->Set_BossPos({ Transform.GetWorldPosition().X + Shadow_Pos_Left,Transform.GetWorldPosition().Y + Shadow_Pos_Down + 800 });
 		Object->Random.SetSeed(static_cast<long long>(Acsc.X++));
@@ -339,13 +385,14 @@ void Boss_Monster::Rock_Down_Update(float _Time)
 
 		if (Rocks_Number == 1)
 		{
+			Rock_Down_Sound_Check = false;
 			Rocks_Number = 0;
 			AD = false;
 		}
 	}
 	if (Rocks_Check == 5)
 	{
-
+		Rock_Down_Sound_Check = false;
 		Rocks_Check = 0;
 		Rock_Width = 350.0f;
 		Rock_Hight = 300.0f;
@@ -363,9 +410,23 @@ void Boss_Monster::Rock_Down_Update(float _Time)
 void Boss_Monster::StickyArm_Start_Update(float _Time)
 {
 	AD = true;
+
+	if (Slime_pre_Sound_Check == false)
+	{
+		if (Boss->GetCurIndex() > 8)
+		{
+			Slime_pre_Sound = GameEngineSound::SoundPlay("golem_dungeon_king_golem_slimearm_prepare.wav");
+			Slime_pre_Sound_Check = true;
+		}	
+	}
+
+
+
 	if (Boss->IsCurAnimationEnd())
 	{
+		Slime_pre_Sound_Check = false;
 		Bosswirst = GetLevel()->CreateActor<Boss_Wirst>();
+
 		Bosswirst->Set_BossPos({ Transform.GetWorldPosition().X-140.0f ,Transform.GetWorldPosition().Y+110.0f });
 		Bosswirst->Transform.SetWorldPosition({ Transform.GetWorldPosition().X - 100.0f ,Transform.GetWorldPosition().Y-30.0f });
 		ChangeState(Boss_Monster_State::StickyArm_Aim2Cycle);
@@ -378,6 +439,7 @@ void Boss_Monster::StickyArm_Aim2Cycle_Update(float _Time)
 	if (Bosswirst->GetFinsih() == true)
 	{
 		Bosswirst->Death(); 
+		Spawn_Sound_End = GameEngineSound::SoundPlay("golem_dungeon_king_golem_slimearm_end.wav"); 
 		ChangeState(Boss_Monster_State::StickyArm_End);
 		return;
 	}
@@ -394,6 +456,7 @@ void Boss_Monster::StickyArm_End_Update(float _Time)
 
 void Boss_Monster::DeathUpdate(float _Time)
 {
+	Bgm.Stop();
 
 	if (Boss->IsCurAnimationEnd())
 	{

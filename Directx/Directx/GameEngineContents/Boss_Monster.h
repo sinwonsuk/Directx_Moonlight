@@ -124,5 +124,35 @@ private:
 	std::shared_ptr<GameEngineCollision> Col;
 	std::shared_ptr<GameEngineCollision> BodyCol;
 	std::shared_ptr<GameEngineCollision> MoveCol;
+
+	GameEngineSoundPlayer Wake_Sound;
+	bool Wake_Sound_Check = false;
+
+	GameEngineSoundPlayer Spawn_Sound;
+	bool Spawn_Sound_Check = false;
+
+	GameEngineSoundPlayer Rock_Down_Sound;
+	bool Rock_Down_Sound_Check = false;
+
+	GameEngineSoundPlayer Slime_pre_Sound;
+	bool Slime_pre_Sound_Check = false;
+
+	GameEngineSoundPlayer Spawn_Sound_End;
+
+	GameEngineSoundPlayer Sound_Hit;
+	
+	GameEngineSoundPlayer ArmPre_Sound;
+	bool ArmPre_Sound_Check = false;
+
+	GameEngineSoundPlayer Death_Sound;
+	bool Death_Sound_Check = false;
+
+
+	GameEngineSoundPlayer Bgm;
+	bool Bgm_Sound_Check = false;
+	std::shared_ptr<class Black_Out> black_Out;
+
+	bool Black_Check = false;
+
 };
 

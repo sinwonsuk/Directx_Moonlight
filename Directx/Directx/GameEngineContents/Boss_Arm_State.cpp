@@ -56,6 +56,7 @@ void Boss_Arm::Down_Prev_Update(float _Time)
 	{
 		Boss_arm_Texture->Off(); 
 		Boss_arm->On();
+		Crash_Sound = GameEngineSound::SoundPlay("golem_dungeon_king_golem_handcrash.wav"); 
 		ChangeState(Boss_Arm_State::Down);
 		return; 
 	}

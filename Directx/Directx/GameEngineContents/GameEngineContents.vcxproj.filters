@@ -241,6 +241,8 @@
     <ClCompile Include="flyinggolem_State.cpp" />
     <ClCompile Include="golemkamikaze.cpp" />
     <ClCompile Include="golemkamikaze_State.cpp" />
+    <ClCompile Include="EndLevel.cpp" />
+    <ClCompile Include="Ending.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h" />
@@ -436,6 +438,8 @@
     <ClInclude Include="Potion_Effect.h" />
     <ClInclude Include="flyinggolem.h" />
     <ClInclude Include="golemkamikaze.h" />
+    <ClInclude Include="EndLevel.h" />
+    <ClInclude Include="Ending.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

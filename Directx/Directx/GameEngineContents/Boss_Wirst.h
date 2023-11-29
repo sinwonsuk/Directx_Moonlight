@@ -47,7 +47,11 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Arm;
 	std::shared_ptr<class GameEngineCollision> Col;
 
+	GameEngineSoundPlayer Attack_Sound;
 
+	GameEngineSoundPlayer Rotation_Sound;
+	bool Rotation_sound_Check = false; 
+	float Rotation_sound_Time = 0.0f;
 	float Time = 0.0f;
 	float Rotation_Speed = 150.0f;
 	float Speed = 1500.0f;

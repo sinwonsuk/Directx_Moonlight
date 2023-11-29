@@ -289,7 +289,7 @@ void flyinggolem::Start()
 				std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 				Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 
-
+				Death_Sound = GameEngineSound::SoundPlay("golem_dungeon_golem_hit.wav");
 
 				if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 				{
@@ -353,6 +353,16 @@ void flyinggolem::Update(float _Delta)
 
 	if (Hp <= 0)
 	{
+
+		if (Death_Sound_Check == false)
+		{
+			Death_Sound = GameEngineSound::SoundPlay("enemy_death.wav");
+			Death_Sound.SetVolume(2.5f);
+			Death_Sound_Check = true;
+		}
+
+
+
 		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
 
 		Monster_Weapon->Off();

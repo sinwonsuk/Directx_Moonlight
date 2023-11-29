@@ -87,10 +87,11 @@ void golemkamikaze::StopUpdate(float _Time)
 
 void golemkamikaze::JumpUpdate(float _Time)
 {
-	if (Monster->GetCurIndex() >17)
+	
+	if (Monster->GetCurIndex() > 17)
 	{
-		Hp = 0;
 		Col->Off();
+		Hp = 0;
 		this->Off();
 	}
 
@@ -98,19 +99,24 @@ void golemkamikaze::JumpUpdate(float _Time)
 	{
 		if (Monster->GetCurIndex() < 17)
 		{
+			
+			if (Attack_Sound_Check == false)
+			{
+				Attack_Sound = GameEngineSound::SoundPlay("golem_dungeon_kamikaze_explosion.wav");
+				Attack_Sound.SetVolume(2.0f);
+				Attack_Sound_Check = true;
+			}
 			Col->On();
 		}
 	}
 
 
-	if (Monster->GetCurIndex() > 17)
-	{
-		Col->Off();
-	}
+
+	
 	
 
 
-
+	
 
 	if (Monster_Pos == false)
 	{

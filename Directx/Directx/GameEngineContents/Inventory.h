@@ -76,7 +76,7 @@ private:
 
 	GameEngineSoundPlayer Open;
 	GameEngineSoundPlayer Select;
-
+	GameEngineSoundPlayer Change;
 
 	static bool start;
 	static bool Inventory_Start;

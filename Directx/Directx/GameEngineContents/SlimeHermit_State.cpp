@@ -497,6 +497,13 @@ void SlimeHermit::LeftAttackUpdate(float _Time)
 	{
 		if (Slime_Hermit->GetCurIndex() < 9)
 		{
+			if (Attack_Sound_Check == false)
+			{
+				Attack_Sound = GameEngineSound::SoundPlay("bigslime_land.wav"); 
+				Attack_Sound_Check = true; 
+			}
+
+
 			Monster_Weapon->On();
 		}
 	}
@@ -512,6 +519,7 @@ void SlimeHermit::LeftAttackUpdate(float _Time)
 
 	if (Slime_Hermit->IsCurAnimationEnd())
 	{
+		Attack_Sound_Check = false;
 		Time = 0.0f;
 		Monster_Weapon->Off();
 		Monster_Weapon->Transform.AddLocalPosition({ 120.0f,0.0f });
@@ -528,6 +536,13 @@ void SlimeHermit::RightAttackUpdate(float _Time)
 	{
 		if (Slime_Hermit->GetCurIndex() < 9)
 		{
+			if (Attack_Sound_Check == false)
+			{
+				Attack_Sound = GameEngineSound::SoundPlay("bigslime_land.wav");
+				Attack_Sound_Check = true;
+			}
+
+
 			Monster_Weapon->On();
 		}
 	}
@@ -542,6 +557,7 @@ void SlimeHermit::RightAttackUpdate(float _Time)
 
 	if (Slime_Hermit->IsCurAnimationEnd())
 	{
+		Attack_Sound_Check = false;
 		Time = 0.0f;
 		Monster_Weapon->Off();
 		Monster_Weapon->Transform.AddLocalPosition({ -120.0f,0.0f });
@@ -561,6 +577,12 @@ void SlimeHermit::UpAttackUpdate(float _Time)
 	{
 		if (Slime_Hermit->GetCurIndex() < 9)
 		{
+			if (Attack_Sound_Check == false)
+			{
+				Attack_Sound = GameEngineSound::SoundPlay("bigslime_land.wav");
+				Attack_Sound_Check = true;
+			}
+
 			Monster_Weapon->On();
 		}
 	}
@@ -575,7 +597,7 @@ void SlimeHermit::UpAttackUpdate(float _Time)
 	if (Slime_Hermit->IsCurAnimationEnd())
 	{
 
-
+		Attack_Sound_Check = false;
 		Time = 0.0f;
 		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,-120.0f });
 		Monster_Weapon->Off();
@@ -595,6 +617,12 @@ void SlimeHermit::DownAttackUpdate(float _Time)
 	{
 		if (Slime_Hermit->GetCurIndex() < 9)
 		{
+			if (Attack_Sound_Check == false)
+			{
+				Attack_Sound = GameEngineSound::SoundPlay("bigslime_land.wav");
+				Attack_Sound_Check = true;
+			}
+
 			Monster_Weapon->On();
 		}
 	}
@@ -609,7 +637,7 @@ void SlimeHermit::DownAttackUpdate(float _Time)
 	if (Slime_Hermit->IsCurAnimationEnd())
 	{
 		Time = 0.0f;
-
+		Attack_Sound_Check = false;
 		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,120.0f });
 		Monster_Weapon->Off();
 		Slime_Hermit->Transform.SetLocalRotation({ 0.0f,0.0f });

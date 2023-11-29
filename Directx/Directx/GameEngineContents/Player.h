@@ -212,7 +212,7 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-
+	GameEngineSoundPlayer Heal_Sound;
 	GameEngineSoundPlayer Sound;
 	GameEngineSoundPlayer Roll_Sound;
 	GameEngineSoundPlayer Hit_Sound;

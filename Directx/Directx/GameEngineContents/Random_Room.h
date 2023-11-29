@@ -48,6 +48,7 @@ public:
 	std::shared_ptr<class Dungeon_Map_01> Map;
 	void Monsers();
 	std::shared_ptr<class Boss_Map> Boss;
+	
 protected:
 	void Start() override;
 	void Update(float _Delta) override;

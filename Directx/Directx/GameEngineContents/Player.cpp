@@ -243,6 +243,7 @@ void Player::Start()
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
+		
 		if (Monster_Attack_Check == false)
 		{
 			Monster_Attack_Check = true;
@@ -345,7 +346,7 @@ void Player::Heal(float _Delta)
 
 			if (GameEngineInput::IsDown('E', this) && player_UI->Hp_Bar->Transform.GetLocalScale().X < 1)
 			{
-
+				Heal_Sound = GameEngineSound::SoundPlay("will_potion_used.wav"); 
 				Inventory::This_Inventory->Font_Renders[27]->FontNumber -= 1;
 				std::string numberStr = std::to_string(Inventory::This_Inventory->Font_Renders[27]->FontNumber);
 				Inventory::This_Inventory->Font_Renders[27]->Font->SetText("µ¸¿ò", numberStr, 20.0f, float4::WHITE, FW1_CENTER);

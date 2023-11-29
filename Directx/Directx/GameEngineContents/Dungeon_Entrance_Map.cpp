@@ -193,7 +193,7 @@ void Dungeon_Entrance_Map::Start()
 	black_Out_02 = GetLevel()->CreateActor<Black_Out>();
 	black_Out_02->Off();
 
-	
+	Bgm = GameEngineSound::SoundPlay("dungeon_entrance_wind_ambient.wav"); 
 }
 
 
@@ -247,6 +247,7 @@ void Dungeon_Entrance_Map::Update(float _DeltaTime)
 		if (black_Out_02->GetCheck() == true)
 		{
 			Player::LevelType = Leveltype::Dungeon_Entrance;
+			Bgm.Stop(); 
 			GameEngineCore::ChangeLevel("WorldLevel");
 			return;
 		}
@@ -271,6 +272,7 @@ void Dungeon_Entrance_Map::Update(float _DeltaTime)
 		if (black_Out->GetCheck() == true)
 		{
 			Player::LevelType = Leveltype::None;
+			Bgm.Stop();
 			GameEngineCore::ChangeLevel("PlayLevel");
 			return;
 		}

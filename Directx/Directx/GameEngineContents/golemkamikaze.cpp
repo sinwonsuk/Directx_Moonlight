@@ -298,6 +298,8 @@ void golemkamikaze::Start()
 
 			if (Weapon_Collision_Check == false)
 			{
+				hit_Sound = GameEngineSound::SoundPlay("golem_dungeon_golem_hit.wav");
+
 				std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 				Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 
@@ -366,6 +368,15 @@ void golemkamikaze::Update(float _Delta)
 	{
 		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
 
+		if (Death_Sound_Check == false)
+		{
+			Death_Sound = GameEngineSound::SoundPlay("enemy_death.wav");
+			Death_Sound.SetVolume(2.5f);
+			Death_Sound_Check = true;
+		}
+
+
+		
 		//Monster_Weapon->Off();
 		Number -= _Delta * 1;
 		//Monster->GetColorData().MulColor = { 1,1,1,Number };

@@ -541,6 +541,9 @@ void Inventory::Update(float _DeltaTime)
 			if (GameEngineInput::IsDown('Z', this))
 			{
 				{
+					Change = GameEngineSound::SoundPlay("will_weapon_change.wav"); 
+
+
 					std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
 
 					InforMation->item = CreateComponent<GameEngineUIRenderer>(103);

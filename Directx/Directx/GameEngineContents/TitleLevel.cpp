@@ -133,6 +133,38 @@ void TitleLevel::Start()
 	GameEngineSound::SoundLoad(NewDir.PlusFilePath("witch_open_gui.wav"));
 	GameEngineSound::SoundLoad(NewDir.PlusFilePath("witch_craft_potion.wav"));
 
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("big_sword_main_attack_swing.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("big_sword_main_attack_swing2.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("big_sword_main_attack_swing3.wav"));
+	
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("gloves_main_attack_swing.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("gloves_main_attack_swing2.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("gloves_main_attack_swing3.wav"));
+
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_kamikaze_explosion.wav"));
+	 
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("bigslime_land.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("bigslime_hit.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("Miniboss_golemwarrior_sword.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_boss_door_closing.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("dungeon_entrance_wind_ambient.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_king_golem_awake.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_king_golem_avalanch_pre.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_king_golem_avalanch_rock.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_king_golem_slimearm_prepare.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_king_golem_slimearm.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_king_golem_slimearm_end.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_king_golem_handcrash_prepare.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_king_golem_handcrash.wav"));
+
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_king_golem_death.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_dungeon_king_golem_hit.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("golem_boss_track.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_weapon_change.wav"));
+
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_weapon_change.wav"));
+
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_potion_used.wav"));
 
 	/*GameEngineSound::Load(NewDir.GetPlusFileName("cuphead-opening-theme.mp3").GetFullPath());
 	GameEngineSound::Load(NewDir.GetPlusFileName("sfx_player_weapon_peashot_death_001.wav").GetFullPath());

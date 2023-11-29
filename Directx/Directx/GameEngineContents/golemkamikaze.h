@@ -57,6 +57,13 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+
+	GameEngineSoundPlayer hit_Sound;
+	GameEngineSoundPlayer Attack_Sound;
+	GameEngineSoundPlayer Death_Sound;
+
+	bool Attack_Sound_Check = false;
+	bool Death_Sound_Check = false;
 	EventParameter Event;
 	EventParameter Mini_Event;
 	bool CollisionCheck = false;

@@ -14,6 +14,7 @@ public:
 	PlayLevel(PlayLevel&& _Other) noexcept = delete;
 	PlayLevel& operator=(const PlayLevel& _Other) = delete;
 	PlayLevel& operator=(PlayLevel&& _Other) noexcept = delete;
+	GameEngineSoundPlayer Bgm;
 
 protected:
 	void Start() override;
@@ -24,6 +25,7 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 private:
+	
 	std::shared_ptr<class CameraCollision> Camera;
 	std::shared_ptr<GameEngineCollision> Col;
 	std::shared_ptr<class Random_Room> Map;

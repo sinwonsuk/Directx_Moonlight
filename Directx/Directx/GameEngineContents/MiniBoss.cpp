@@ -60,7 +60,7 @@ void MiniBoss::Start()
 
 	{
 		Col = CreateComponent<GameEngineCollision>(ContentsCollisionType::Monster);
-		Col->Transform.SetLocalScale({ 130.0f,130.0f }); 
+		Col->Transform.SetLocalScale({ 150.0f,150.0f }); 
 	}
 
 	{
@@ -82,6 +82,9 @@ void MiniBoss::Start()
 
 		if (Weapon_Collision_Check == false)
 		{
+			hit_Sound = GameEngineSound::SoundPlay("golem_dungeon_golem_hit.wav");
+
+
 			std::shared_ptr<Spear_Effect> Object = GetLevel()->CreateActor<Spear_Effect>();
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 
@@ -146,6 +149,13 @@ void MiniBoss::Update(float _Delta)
 	
 	if (Hp <= 0)
 	{
+		if (Death_Sound_Check == false)
+		{
+			Death_Sound = GameEngineSound::SoundPlay("enemy_death.wav");
+			Death_Sound.SetVolume(2.5f);
+			Death_Sound_Check = true;
+		}
+
 		Monster_HpBar->Transform.SetLocalScale({ 0.0f,0.0f });
 
 		Number -= _Delta * 1;

@@ -104,6 +104,13 @@ void UpGrade_Spear::UpdateState(float _Time)
 
 void UpGrade_Spear::Down_Attack_Update_01(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing.wav"); 
+		Attack_Sound_Check = true;
+	}
+
+
 	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
 
@@ -151,6 +158,11 @@ void UpGrade_Spear::Down_Attack_Update_02(float _Time)
 {
 	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing2.wav");
+		Attack_Sound_Check = true;
+	}
 
 	if (spear->GetCurIndex() <= 1)
 	{
@@ -189,6 +201,12 @@ void UpGrade_Spear::Down_Attack_Update_03(float _Time)
 {
 	Col->Transform.SetLocalRotation({ 0.0f,0.0f,180.0f });
 
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing3.wav");
+		Attack_Sound_Check = true;
+
+	}
 	if (spear->GetCurIndex() <= 2)
 	{
 		Col->Off();
@@ -227,6 +245,13 @@ void UpGrade_Spear::Down_Attack_Update_03(float _Time)
 
 void UpGrade_Spear::Left_Attack_Update_01(float _Time)
 {
+
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -264,6 +289,12 @@ void UpGrade_Spear::Left_Attack_Update_02(float _Time)
 		Col->Off();
 	}
 
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing2.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (spear->GetCurIndex() >= 2)
 	{
 		if (spear->GetCurIndex() <= 4)
@@ -293,6 +324,12 @@ void UpGrade_Spear::Left_Attack_Update_02(float _Time)
 void UpGrade_Spear::Left_Attack_Update_03(float _Time)
 {
 
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing3.wav");
+		Attack_Sound_Check = true;
+
+	}
 	if (spear->GetCurIndex() <= 2)
 	{
 		Col->Off();
@@ -329,6 +366,13 @@ void UpGrade_Spear::Left_Attack_Update_03(float _Time)
 
 void UpGrade_Spear::Right_Attack_Update_01(float _Time)
 {
+
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -363,6 +407,12 @@ void UpGrade_Spear::Right_Attack_Update_01(float _Time)
 
 void UpGrade_Spear::Right_Attack_Update_02(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing2.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (spear->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -395,7 +445,12 @@ void UpGrade_Spear::Right_Attack_Update_02(float _Time)
 
 void UpGrade_Spear::Right_Attack_Update_03(float _Time)
 {
-	
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing3.wav");
+		Attack_Sound_Check = true;
+	}
+
 	if (spear->GetCurIndex() <= 2)
 	{
 		Col->Off();
@@ -431,6 +486,12 @@ void UpGrade_Spear::Right_Attack_Update_03(float _Time)
 
 void UpGrade_Spear::Up_Attack_Update_01(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing.wav");
+		Attack_Sound_Check = true;
+
+	}
 	if (spear->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -465,7 +526,11 @@ void UpGrade_Spear::Up_Attack_Update_01(float _Time)
 
 void UpGrade_Spear::Up_Attack_Update_02(float _Time)
 {
-
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing2.wav");
+		Attack_Sound_Check = true;
+	}
 	if (spear->GetCurIndex() <= 1)
 	{
 		Col->Off();
@@ -500,6 +565,12 @@ void UpGrade_Spear::Up_Attack_Update_02(float _Time)
 
 void UpGrade_Spear::Up_Attack_Update_03(float _Time)
 {
+	if (Attack_Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("spear_main_attack_swing3.wav");
+		Attack_Sound_Check = true;
+
+	}
 	if (spear->GetCurIndex() <= 2)
 	{
 		Col->Off();

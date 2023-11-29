@@ -103,6 +103,13 @@ void Big_Sword::UpdateState(float _Time)
 
 void Big_Sword::Down_Attack_Update_01(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing.wav"); 
+		Sound_Check = true;
+	}
+
+
 	if (Sword->GetCurIndex() < 4)
 	{
 		Col->Off(); 
@@ -134,6 +141,11 @@ void Big_Sword::Down_Attack_Update_01(float _Time)
 
 void Big_Sword::Down_Attack_Update_02(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing2.wav");
+		Sound_Check = true;
+	}
 
 	if (Sword->GetCurIndex() < 5)
 	{
@@ -166,6 +178,11 @@ void Big_Sword::Down_Attack_Update_02(float _Time)
 
 void Big_Sword::Down_Attack_Update_03(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing3.wav");
+		Sound_Check = true;
+	}
 
 	if (Sword->GetCurIndex() < 4)
 	{
@@ -196,6 +213,12 @@ void Big_Sword::Down_Attack_Update_03(float _Time)
 
 void Big_Sword::Left_Attack_Update_01(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing.wav");
+		Sound_Check = true;
+	}
+
 	if (Sword->GetCurIndex() < 5)
 	{
 		Col->Off();
@@ -226,6 +249,12 @@ void Big_Sword::Left_Attack_Update_01(float _Time)
 
 void Big_Sword::Left_Attack_Update_02(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing2.wav");
+		Sound_Check = true;
+	}
+
 	if (Sword->GetCurIndex() < 5)
 	{
 		Col->Off();
@@ -257,6 +286,12 @@ void Big_Sword::Left_Attack_Update_02(float _Time)
 
 void Big_Sword::Left_Attack_Update_03(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing3.wav");
+		Sound_Check = true;
+	}
+
 	if (Sword->GetCurIndex() < 4)
 	{
 		Col->Off();
@@ -287,6 +322,12 @@ void Big_Sword::Left_Attack_Update_03(float _Time)
 
 void Big_Sword::Right_Attack_Update_01(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing.wav");
+		Sound_Check = true;
+	}
+
 	if (Sword->GetCurIndex() < 5)
 	{
 		Col->Off();
@@ -317,6 +358,12 @@ void Big_Sword::Right_Attack_Update_01(float _Time)
 
 void Big_Sword::Right_Attack_Update_02(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing2.wav");
+		Sound_Check = true;
+	}
+
 	if (Sword->GetCurIndex() < 5)
 	{
 		Col->Off();
@@ -347,6 +394,11 @@ void Big_Sword::Right_Attack_Update_02(float _Time)
 
 void Big_Sword::Right_Attack_Update_03(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing3.wav");
+		Sound_Check = true;
+	}
 
 	if (Sword->GetCurIndex() < 4)
 	{
@@ -377,6 +429,11 @@ void Big_Sword::Right_Attack_Update_03(float _Time)
 
 void Big_Sword::Up_Attack_Update_01(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing.wav");
+		Sound_Check = true;
+	}
 
 	if (Sword->GetCurIndex() < 4)
 	{
@@ -409,6 +466,11 @@ void Big_Sword::Up_Attack_Update_01(float _Time)
 
 void Big_Sword::Up_Attack_Update_02(float _Time)
 {
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing2.wav");
+		Sound_Check = true;
+	}
 
 	if (Sword->GetCurIndex() < 5)
 	{
@@ -439,7 +501,11 @@ void Big_Sword::Up_Attack_Update_02(float _Time)
 
 void Big_Sword::Up_Attack_Update_03(float _Time)
 {
-
+	if (Sound_Check == false)
+	{
+		Attack_Sound = GameEngineSound::SoundPlay("big_sword_main_attack_swing3.wav");
+		Sound_Check = true;
+	}
 	if (Sword->GetCurIndex() < 4)
 	{
 		Col->Off();

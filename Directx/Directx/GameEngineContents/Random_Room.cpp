@@ -39,7 +39,7 @@ void Random_Room::Start()
 
 	Room_State state;
 
-
+	
 	// 9x9 ∫§≈Õ ∏∏µÎ 
 	for (size_t x = 0; x < 9; x++)
 	{
@@ -376,14 +376,12 @@ void Random_Room::Start()
 
 	
 
-	
 }
 
 void Random_Room::Update(float _Delta)
 {
 	
 
-	
 	for (size_t i = 0; i < Maps.size(); i++)
 	{
 		if (Maps[i]->Door_Left_Collison_Check == true)

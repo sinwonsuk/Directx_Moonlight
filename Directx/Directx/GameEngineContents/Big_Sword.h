@@ -73,7 +73,10 @@ private:
 	float Time = 0;
 
 	float4 GrivityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
+	
+	GameEngineSoundPlayer Attack_Sound; 
 
+	bool Sound_Check = false;
 	//std::shared_ptr<GameEngineCollision> Col;
 };
 

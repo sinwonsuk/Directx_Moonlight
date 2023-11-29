@@ -89,5 +89,12 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Monster_HpBar;
 	EventParameter Event;
 	std::shared_ptr<GameEngineCollision> Col;
-	
+
+	GameEngineSoundPlayer hit_Sound;
+	GameEngineSoundPlayer Attack_Sound;
+	GameEngineSoundPlayer Death_Sound;
+
+	bool Attack_Sound_Check = false;
+	bool Death_Sound_Check = false;
+
 };

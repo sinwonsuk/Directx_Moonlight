@@ -449,6 +449,12 @@ void MiniBoss::LeftAttackUpdate(float _Time)
 	{
 		if (Mini_Boss->GetCurIndex() < 8)
 		{
+			if (Attack_Sound_Check == false)
+			{
+				Attack_Sound = GameEngineSound::SoundPlay("Miniboss_golemwarrior_sword.wav");
+				Attack_Sound_Check = true;
+			}
+
 			Monster_Weapon->On();
 		}
 	}
@@ -460,6 +466,7 @@ void MiniBoss::LeftAttackUpdate(float _Time)
 
 	if (Mini_Boss->IsCurAnimationEnd())
 	{
+		Attack_Sound_Check = false;
 		Time = 0.0f;
 		Monster_Weapon->Off();
 		Monster_Weapon->Transform.AddLocalPosition({ 100.0f,0.0f });
@@ -476,6 +483,11 @@ void MiniBoss::RightAttackUpdate(float _Time)
 	{
 		if (Mini_Boss->GetCurIndex() < 8)
 		{
+			if (Attack_Sound_Check == false)
+			{
+				Attack_Sound = GameEngineSound::SoundPlay("Miniboss_golemwarrior_sword.wav");
+				Attack_Sound_Check = true;
+			}
 			Monster_Weapon->On();
 		}
 	}
@@ -487,6 +499,7 @@ void MiniBoss::RightAttackUpdate(float _Time)
 
 	if (Mini_Boss->IsCurAnimationEnd())
 	{
+		Attack_Sound_Check = false;
 		Time = 0.0f;
 		Monster_Weapon->Off();
 		Monster_Weapon->Transform.AddLocalPosition({ -100.0f,0.0f });
@@ -503,6 +516,11 @@ void MiniBoss::UpAttackUpdate(float _Time)
 	{
 		if (Mini_Boss->GetCurIndex() < 8)
 		{
+			if (Attack_Sound_Check == false)
+			{
+				Attack_Sound = GameEngineSound::SoundPlay("Miniboss_golemwarrior_sword.wav");
+				Attack_Sound_Check = true;
+			}
 			Monster_Weapon->On();
 		}
 	}
@@ -513,6 +531,7 @@ void MiniBoss::UpAttackUpdate(float _Time)
 
 	if (Mini_Boss->IsCurAnimationEnd())
 	{
+		Attack_Sound_Check = false;
 		Time = 0.0f;
 		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,-100.0f });
 		Monster_Weapon->Off();
@@ -529,6 +548,11 @@ void MiniBoss::DownAttackUpdate(float _Time)
 	{
 		if (Mini_Boss->GetCurIndex() < 8)
 		{
+			if (Attack_Sound_Check == false)
+			{
+				Attack_Sound = GameEngineSound::SoundPlay("Miniboss_golemwarrior_sword.wav");
+				Attack_Sound_Check = true;
+			}
 			Monster_Weapon->On();
 		}
 	}
@@ -539,6 +563,7 @@ void MiniBoss::DownAttackUpdate(float _Time)
 
 	if (Mini_Boss->IsCurAnimationEnd())
 	{
+		Attack_Sound_Check = false;
 		Time = 0.0f;
 		Monster_Weapon->Transform.AddLocalPosition({ 0.0f,100.0f });
 		Monster_Weapon->Off();

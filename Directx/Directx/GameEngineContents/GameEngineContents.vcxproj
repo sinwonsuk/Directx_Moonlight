@@ -203,6 +203,8 @@
     <ClCompile Include="Dungeon_Scrol.cpp" />
     <ClCompile Include="Emoticon.cpp" />
     <ClCompile Include="Emoticon_State.cpp" />
+    <ClCompile Include="Ending.cpp" />
+    <ClCompile Include="EndLevel.cpp" />
     <ClCompile Include="flyinggolem.cpp" />
     <ClCompile Include="flyinggolem_State.cpp" />
     <ClCompile Include="gloem_Wazard_Missile.cpp" />
@@ -333,6 +335,8 @@
     <ClInclude Include="Dungeon_Map_10.h" />
     <ClInclude Include="Dungeon_Scrol.h" />
     <ClInclude Include="Emoticon.h" />
+    <ClInclude Include="Ending.h" />
+    <ClInclude Include="EndLevel.h" />
     <ClInclude Include="flyinggolem.h" />
     <ClInclude Include="gloem_Wazard_Missile.h" />
     <ClInclude Include="Gloves.h" />

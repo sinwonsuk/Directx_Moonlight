@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Random_Room.h"
 #include "CameraCollision.h"
+#include "PlayLevel.h"
 Dungeon_Map_01::Dungeon_Map_01()
 {
 }
@@ -19,8 +20,7 @@ void Dungeon_Map_01::Start()
 		std::shared_ptr<Object_jar> Object = GetLevel()->CreateActor<Object_jar>();
 	}*/
 
-	
-
+	//Dungeon_Map_01* Object = (Dungeon_Map_01)(GetLevel());
 	
 
     {
@@ -156,7 +156,8 @@ void Dungeon_Map_01::Start()
 
 	Event.Enter = [this](GameEngineCollision* Col, GameEngineCollision* col)
 	{
-		
+			Close_Door_Sound = GameEngineSound::SoundPlay("golem_dungeon_normal_door_closing.wav"); 
+			Close_Door_Sound.SetVolume(0.2f); 
 			DownDoor->ChangeAnimation("Close_Door");
 			UpDoor->ChangeAnimation("Close_Door");
 			RightDoor->ChangeAnimation("Close_Door");
@@ -199,7 +200,11 @@ void Dungeon_Map_01::Start()
 
 void Dungeon_Map_01::Update(float _Delta)
 {
+	/*	GameEngineActor* Actor = col->GetActor();
+		Spear* ptr = dynamic_cast<Spear*>(Actor);*/
+
 	
+
 
 	if (Check == false)
 	{
@@ -257,6 +262,7 @@ void Dungeon_Map_01::Update(float _Delta)
 	{
 		CameraCollision::CameraCol->Col->CollisionEvent(ContentsCollisionType::Monster, Event);
 	}
+
 	if (ReturnCheck == true)
 	{
 		Boss_Door->Off();
@@ -281,6 +287,16 @@ void Dungeon_Map_01::Update(float _Delta)
 		RightDoor->ChangeAnimation("Open_Door");
 		LeftDoor->ChangeAnimation("Open_Door");
 		Boss_Door->ChangeAnimation("Boss_Door_Open");
+
+
+		if (Open_Door_Sound_Check == false)
+		{
+			Open_Door_Sound = GameEngineSound::SoundPlay("golem_dungeon_normal_door_opening.wav");
+			Open_Door_Sound.SetVolume(0.2f);
+;			Open_Door_Sound_Check = true;
+		}
+
+
 	}
 
 	if (Boss_Collison_Door->Collision(ContentsCollisionType::Player) && Boss_Door_Check == false)
@@ -290,6 +306,13 @@ void Dungeon_Map_01::Update(float _Delta)
 		Player::this_Player->Transform.AddLocalPosition({ 0.0f, 300.0f });
 		Boss_Door_Check = true;
 		Boss_Door->ChangeAnimation("Boss_Door_Close");
+
+		PlayLevel* Actor = dynamic_cast<PlayLevel*>(GetLevel());
+		Actor->Bgm.Stop();
+
+		Boss_Close_Door_Sound = GameEngineSound::SoundPlay("golem_dungeon_boss_door_closing.wav");
+
+
 	}
 	
 

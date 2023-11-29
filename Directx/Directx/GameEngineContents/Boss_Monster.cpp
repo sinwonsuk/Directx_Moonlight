@@ -6,6 +6,7 @@
 #include "Boss_Wave.h"
 #include "Boss_Wirst.h"
 #include "Inventory.h"
+#include "Black_Out.h"
 Boss_Monster::Boss_Monster()
 {
 }
@@ -81,6 +82,7 @@ void Boss_Monster::Start()
 			Object->Transform.SetLocalPosition(Transform.GetWorldPosition());
 			Object->Set_state(Effect_State::Boss);
 			
+			Sound_Hit = GameEngineSound::SoundPlay("golem_dungeon_king_golem_hit.wav"); 
 
 			if (Inventory::This_Inventory->Item_Renders[26]->Item_Select == 6)
 			{
@@ -144,6 +146,31 @@ void Boss_Monster::Update(float _Delta)
 				Bosswirst->Death();		
 			}
 			Boss_UI->Death();
+			if (Death_Sound_Check == false)
+			{
+				Death_Sound = GameEngineSound::SoundPlay("golem_dungeon_king_golem_death.wav");
+				Death_Sound_Check = true; 
+			}
+		
+			if (Death_Sound.IsPlaying() == false)
+			{
+				Bgm.Stop(); 
+
+				if (Black_Check == false)
+				{
+					black_Out = GetLevel()->CreateActor<Black_Out>();
+					Black_Check = true;
+				}
+				
+				
+				if (black_Out->GetCheck() == true && Black_Check ==true)
+				{
+					GameEngineCore::ChangeLevel("EndLevel");
+				}
+
+			}
+
+
 			ChangeState(Boss_Monster_State::Death);
 			return;
 		}

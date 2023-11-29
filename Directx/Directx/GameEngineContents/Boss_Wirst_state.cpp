@@ -89,6 +89,7 @@ void Boss_Wirst::Start_Update(float _Time)
 
 	if (Time > 6)
 	{
+		Attack_Sound = GameEngineSound::SoundPlay("golem_dungeon_king_golem_slimearm.wav"); 
 		ChangeState(Boss_Wirst_State::Rotation);
 		return; 
 	}
@@ -96,6 +97,16 @@ void Boss_Wirst::Start_Update(float _Time)
 
 void Boss_Wirst::Rotation_Update(float _Time)
 {
+
+	Rotation_sound_Time += _Time;
+
+	if (Rotation_sound_Time > 2)
+	{
+		Rotation_Sound = GameEngineSound::SoundPlay("golem_dungeon_king_golem_slimearm.wav");
+		Rotation_sound_Time = 0;
+	}
+
+
 	if (abs(Arm->Transform.GetLocalScale().Y) < 1300)
 	{
 		Arm->Transform.AddLocalScale({ 0.0f ,-Speed* _Time });
@@ -135,6 +146,7 @@ void Boss_Wirst::Rotation_Update(float _Time)
 
 	if (Rotation_Number == 2)
 	{
+		Rotation_sound_Time = 0;
 		Wirst->Transform.SetWorldPosition({ BossPos.X - 1400.0f, BossPos.Y - 60.0f });
 		ChangeState(Boss_Wirst_State::End);
 		return; 

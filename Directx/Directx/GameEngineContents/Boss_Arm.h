@@ -72,7 +72,7 @@ private:
 	float Speed = 1000.0f;
 	float ArmScale = 0.0f;
 	float4 Prev_Player_Pos = {};
-	
+	GameEngineSoundPlayer Crash_Sound;
 
 	Boss_Arm_State StateValue = Boss_Arm_State::Start;
 
