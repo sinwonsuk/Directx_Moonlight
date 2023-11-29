@@ -1,5 +1,14 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+enum class End_State
+{
+	one,
+	two,
+	three,
+	four,
+	five,
+
+};
 
 // Ό³Έν :
 class Ending : public GameEngineActor
@@ -22,9 +31,10 @@ protected:
 	void Update(float _Delta) override;
 
 private:
+	End_State state = End_State::one;
 	std::shared_ptr<class GameEngineSpriteRenderer> End;
 	float Time = 0;
-
+	GameEngineSoundPlayer Sound;
 	bool Black_Check = false;
 
 };

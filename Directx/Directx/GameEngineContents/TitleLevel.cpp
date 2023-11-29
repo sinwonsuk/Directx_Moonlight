@@ -165,6 +165,7 @@ void TitleLevel::Start()
 	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_weapon_change.wav"));
 
 	GameEngineSound::SoundLoad(NewDir.PlusFilePath("will_potion_used.wav"));
+	GameEngineSound::SoundLoad(NewDir.PlusFilePath("intro.wav"));
 
 	/*GameEngineSound::Load(NewDir.GetPlusFileName("cuphead-opening-theme.mp3").GetFullPath());
 	GameEngineSound::Load(NewDir.GetPlusFileName("sfx_player_weapon_peashot_death_001.wav").GetFullPath());

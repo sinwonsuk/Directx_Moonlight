@@ -17,19 +17,20 @@ void Ending::Start()
 	End = CreateComponent<GameEngineSpriteRenderer>(-48);
 
 	//Transform.SetWorldScale({ 1280.0f,720.0f });
-	End->CreateAnimation("end", "end", 0.08f, -1, -1, false);
+	End->CreateAnimation("end", "end", 0.1f, -1, -1, false);
 	End->SetImageScale({ 1280,720.0f });
 	End->ChangeAnimation("end");
 	End->On(); 
 
 
 
+	Sound = GameEngineSound::SoundPlay("intro.wav", 100); 
 
 }
 
 void Ending::Update(float _Delta)
 {
-
+	
 
 
 
