@@ -1634,7 +1634,6 @@ void Player::Move(float _Delta)
 }
 
 
-
 void Player::StopUpdate(float _Time)
 {
 	if (player->IsCurAnimationEnd())

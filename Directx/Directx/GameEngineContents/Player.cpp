@@ -41,7 +41,7 @@ void Player::Start()
 
 	{
 		// 줄줄이 사탕 식으로 만들려고.
-		player = CreateComponent<GameEngineSpriteRenderer>(-48);
+		player = CreateComponent<GameEngineSpriteRenderer>(130);
 		player->Transform.AddLocalPosition({ 0.0f,0.0f,50.0f });
 		
 
@@ -423,6 +423,8 @@ void Player::ChangeWeapon()
 void Player::Update(float _Delta)
 {
 	Sound_Time += _Delta; 
+
+
 	if (_Delta == 0)
 	{
 
@@ -508,6 +510,5 @@ void Player::Update(float _Delta)
 	}
 
 
-	/*float4 awdd = Transform.GetWorldPosition();
-	OutputDebugStringA(awdd.ToString("\n").c_str());*/
+	
 }

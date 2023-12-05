@@ -31,9 +31,6 @@ void PlayLevel::Start()
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 
 	
-	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
-
-	GetMainCamera()->SetYSort(130);
 	
 	
 	{
@@ -78,6 +75,11 @@ void PlayLevel::Update(float _Delta)
 
 void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+
+	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
+
+	GetMainCamera()->SetYSort(130);
+
 
 	Bgm = GameEngineSound::SoundPlay("golem_dungeon_floor.wav", 100);
 	Bgm.SetVolume(0.5f);

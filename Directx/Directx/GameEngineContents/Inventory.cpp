@@ -347,7 +347,7 @@ void Inventory::Start()
 			Item_type[26]->Move = Inventroy_informations[6][0]->Move;
 		}
 		//dadsad
-		{
+		/*{
 			std::shared_ptr<Item_InforMation> InforMation = std::make_shared<Item_InforMation>();
 
 			InforMation->item = CreateComponent<GameEngineUIRenderer>(100);
@@ -399,7 +399,7 @@ void Inventory::Start()
 			Item_type[16]->Item_Oreder = 9;
 			Item_type[16]->Move = Inventroy_informations[1][3]->Move;
 
-		}
+		}*/
 
 
 	}

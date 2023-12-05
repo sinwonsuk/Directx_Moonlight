@@ -163,7 +163,7 @@ void Shop_House::Start()
 	
 
 	{
-		Shop_Counter = CreateComponent<GameEngineSpriteRenderer>(-49);
+		Shop_Counter = CreateComponent<GameEngineSpriteRenderer>(130);
 		Shop_Counter->SetSprite("Shop_Counter", 0);
 		Shop_Counter->AutoSpriteSizeOn();
 		Shop_Counter->SetAutoScaleRatio(1.0f);

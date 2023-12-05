@@ -28,7 +28,7 @@ void WorldLevel::Start()
 	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
-
+	//GetMainCamera()->SetYSort(130);
 
 
 

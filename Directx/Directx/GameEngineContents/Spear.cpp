@@ -69,9 +69,7 @@ void Spear::Update(float _Delta)
 
 	UpdateState(_Delta);
 	
-	
 
-	
 }
 
 void Spear::AnimationCheck(const std::string_view& _AnimationName)

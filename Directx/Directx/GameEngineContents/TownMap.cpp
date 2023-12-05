@@ -37,7 +37,7 @@ void TownMap::Start()
 	{
 		
 
-		Will_House = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Will_House = CreateComponent<GameEngineSpriteRenderer>(130);
 		Will_House->SetSprite("Village", 1);
 		Will_House->AutoSpriteSizeOn();
 		Will_House->SetAutoScaleRatio(2.0f);
@@ -51,7 +51,7 @@ void TownMap::Start()
 	}
 
 	{
-		Will_House_animation = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Will_House_animation = CreateComponent<GameEngineSpriteRenderer>(130);
 		Will_House_animation->CreateAnimation("Village_WillsHome_animation", "Village_WillsHome_animation", 0.1f, -1, -1, true);
 		Will_House_animation->AutoSpriteSizeOn();
 		Will_House_animation->SetAutoScaleRatio(2.0f);
@@ -68,7 +68,7 @@ void TownMap::Start()
 	}
 	
 	{
-		Will_House_Object = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Will_House_Object = CreateComponent<GameEngineSpriteRenderer>(130);
 		Will_House_Object->SetSprite("Village_Will_House_Object", 0);
 		Will_House_Object->AutoSpriteSizeOn();
 		Will_House_Object->SetAutoScaleRatio(1.0f);
@@ -83,7 +83,7 @@ void TownMap::Start()
 	}
 	{
 
-		Will_House_OilLamp = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Will_House_OilLamp = CreateComponent<GameEngineSpriteRenderer>(130);
 		Will_House_OilLamp->SetSprite("Village_Object", 1);
 		Will_House_OilLamp->AutoSpriteSizeOn();
 		Will_House_OilLamp->SetAutoScaleRatio(2.0f);
@@ -102,7 +102,7 @@ void TownMap::Start()
 
 	
 	{
-		Will_House_sign = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Will_House_sign = CreateComponent<GameEngineSpriteRenderer>(130);
 		Will_House_sign->SetSprite("Village_Will_House_Object", 1);
 		Will_House_sign->AutoSpriteSizeOn();
 		Will_House_sign->SetAutoScaleRatio(1.0f);
@@ -117,7 +117,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_Down_Rival_Fence = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Down_Rival_Fence = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Down_Rival_Fence->SetSprite("Village_Fance", 1);
 		Village_Down_Rival_Fence->AutoSpriteSizeOn();
 		Village_Down_Rival_Fence->SetAutoScaleRatio(2.0f);
@@ -129,7 +129,7 @@ void TownMap::Start()
 		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 	{
-		Village_Up_Rival_Fence = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Up_Rival_Fence = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Up_Rival_Fence->SetSprite("Village_Fance", 3);
 		Village_Up_Rival_Fence->AutoSpriteSizeOn();
 		Village_Up_Rival_Fence->SetAutoScaleRatio(2.0f);	
@@ -144,7 +144,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_Left_Rival_Fence = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Left_Rival_Fence = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Left_Rival_Fence->SetSprite("Village_Fance", 2);
 		Village_Left_Rival_Fence->AutoSpriteSizeOn();
 		Village_Left_Rival_Fence->SetAutoScaleRatio(2.0f);
@@ -159,7 +159,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_Right_Rival_Fence = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Right_Rival_Fence = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Right_Rival_Fence->SetSprite("Village_Fance", 2);
 		Village_Right_Rival_Fence->AutoSpriteSizeOn();
 		Village_Right_Rival_Fence->SetAutoScaleRatio(2.0f);
@@ -189,7 +189,7 @@ void TownMap::Start()
 	}*/
 
 	{
-		Will_House_Big_Tree = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Will_House_Big_Tree = CreateComponent<GameEngineSpriteRenderer>(130);
 		Will_House_Big_Tree->CreateAnimation("Village_BigTree_animation", "Village_BigTree_animation", 0.1f, -1, -1, true);
 		Will_House_Big_Tree->AutoSpriteSizeOn();
 		Will_House_Big_Tree->SetAutoScaleRatio(2.0f);
@@ -208,7 +208,7 @@ void TownMap::Start()
 
 	//////////////////
 	{
-		Will_House_Tree = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Will_House_Tree = CreateComponent<GameEngineSpriteRenderer>(130);
 		Will_House_Tree->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Will_House_Tree->AutoSpriteSizeOn();
 		Will_House_Tree->SetAutoScaleRatio(2.0f);
@@ -226,7 +226,7 @@ void TownMap::Start()
 
 	
 	{
-		Dungeon = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Dungeon = CreateComponent<GameEngineSpriteRenderer>(130);
 		Dungeon->CreateAnimation("Sign", "Sign", 0.1f, -1, -1, true);
 		Dungeon->AutoSpriteSizeOn();
 		Dungeon->SetAutoScaleRatio(2.0f);
@@ -241,7 +241,7 @@ void TownMap::Start()
 
 	}
 	{
-		tree_stump = CreateComponent<GameEngineSpriteRenderer>(-50);
+		tree_stump = CreateComponent<GameEngineSpriteRenderer>(130);
 		tree_stump->SetSprite("tree_stump", 0);
 		tree_stump->AutoSpriteSizeOn();
 		tree_stump->SetAutoScaleRatio(1.0f);
@@ -256,7 +256,7 @@ void TownMap::Start()
 	}
 
 	{
-		Wood_Box_Strong = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Wood_Box_Strong = CreateComponent<GameEngineSpriteRenderer>(130);
 		Wood_Box_Strong->SetSprite("Village_Object", 3);
 		Wood_Box_Strong->AutoSpriteSizeOn();
 		Wood_Box_Strong->SetAutoScaleRatio(2.0f);
@@ -272,7 +272,7 @@ void TownMap::Start()
 	}
 
 	{
-		House_04 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		House_04 = CreateComponent<GameEngineSpriteRenderer>(130);
 		House_04->SetSprite("House_04", 0);
 		House_04->AutoSpriteSizeOn();
 		House_04->SetAutoScaleRatio(1.0f);
@@ -289,7 +289,7 @@ void TownMap::Start()
 	}
 
 	{
-		House_04_Tent = CreateComponent<GameEngineSpriteRenderer>(-50);
+		House_04_Tent = CreateComponent<GameEngineSpriteRenderer>(130);
 		House_04_Tent->SetSprite("House_04", 1);
 		House_04_Tent->AutoSpriteSizeOn();
 		House_04_Tent->SetAutoScaleRatio(1.0f);
@@ -303,7 +303,7 @@ void TownMap::Start()
 	}
 
 	{
-		Park_Right_Up_Tree = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Park_Right_Up_Tree = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Right_Up_Tree->CreateAnimation("Village_Tree_02_animation", "Village_Tree_02_animation", 0.1f, -1, -1, true);
 		Park_Right_Up_Tree->AutoSpriteSizeOn();
 		Park_Right_Up_Tree->SetAutoScaleRatio(2.0f);
@@ -320,7 +320,7 @@ void TownMap::Start()
 
 
 	{
-		Park_Middle_Up_Bench = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Park_Middle_Up_Bench = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Middle_Up_Bench->SetSprite("Village_Bench", 0);
 		Park_Middle_Up_Bench->AutoSpriteSizeOn();
 		Park_Middle_Up_Bench->SetAutoScaleRatio(2.0f);
@@ -339,7 +339,7 @@ void TownMap::Start()
 
 
 	{
-		Park_Middle_Up_Tree = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Park_Middle_Up_Tree = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Middle_Up_Tree->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Park_Middle_Up_Tree->AutoSpriteSizeOn();
 		Park_Middle_Up_Tree->SetAutoScaleRatio(2.0f);
@@ -354,7 +354,7 @@ void TownMap::Start()
 	}
 
 	{
-		Park_Middle_Up_OilLamp = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Park_Middle_Up_OilLamp = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Middle_Up_OilLamp->SetSprite("Village_OilLamps", 0);
 		Park_Middle_Up_OilLamp->AutoSpriteSizeOn();
 		Park_Middle_Up_OilLamp->SetAutoScaleRatio(2.0f);
@@ -370,7 +370,7 @@ void TownMap::Start()
 
 
 	{
-		Park_Left_Up_Bench = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Park_Left_Up_Bench = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Left_Up_Bench->SetSprite("Village_Bench", 1);
 		Park_Left_Up_Bench->AutoSpriteSizeOn();
 		Park_Left_Up_Bench->SetAutoScaleRatio(2.0f);
@@ -387,7 +387,7 @@ void TownMap::Start()
 	}
 
 	{
-		Park_Left_Middle_Tree = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Park_Left_Middle_Tree = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Left_Middle_Tree->CreateAnimation("Village_Tree_02_animation", "Village_Tree_02_animation", 0.1f, -1, -1, true);
 		Park_Left_Middle_Tree->AutoSpriteSizeOn();
 		Park_Left_Middle_Tree->SetAutoScaleRatio(2.0f);
@@ -404,7 +404,7 @@ void TownMap::Start()
 	}
 
 	{
-		Park_Left_Bottom_Tree = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Park_Left_Bottom_Tree = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Left_Bottom_Tree->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Park_Left_Bottom_Tree->AutoSpriteSizeOn();
 		Park_Left_Bottom_Tree->SetAutoScaleRatio(2.0f);
@@ -421,7 +421,7 @@ void TownMap::Start()
 
 	}
 	{
-		Park_Middle_Left_Bench = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Park_Middle_Left_Bench = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Middle_Left_Bench->SetSprite("Village_Bench", 1);
 		Park_Middle_Left_Bench->AutoSpriteSizeOn();
 		Park_Middle_Left_Bench->SetAutoScaleRatio(2.0f);
@@ -437,7 +437,7 @@ void TownMap::Start()
 	}
 
 	{
-		Park_Left_Bottom_OilLamp = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Park_Left_Bottom_OilLamp = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Left_Bottom_OilLamp->SetSprite("Village_OilLamps", 0);
 		Park_Left_Bottom_OilLamp->AutoSpriteSizeOn();
 		Park_Left_Bottom_OilLamp->SetAutoScaleRatio(2.0f);
@@ -452,7 +452,7 @@ void TownMap::Start()
 	}
 
 	{
-		Park_Left_Bottom_Bench = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Park_Left_Bottom_Bench = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Left_Bottom_Bench->SetSprite("Village_Bench", 0);
 		Park_Left_Bottom_Bench->AutoSpriteSizeOn();
 		Park_Left_Bottom_Bench->SetAutoScaleRatio(2.0f);
@@ -467,7 +467,7 @@ void TownMap::Start()
 	}
 
 	{
-		Park_Middle_Bottom_Tree = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Park_Middle_Bottom_Tree = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Middle_Bottom_Tree->CreateAnimation("Village_Tree_02_animation", "Village_Tree_02_animation", 0.1f, -1, -1, true);
 		Park_Middle_Bottom_Tree->AutoSpriteSizeOn();
 		Park_Middle_Bottom_Tree->SetAutoScaleRatio(2.0f);
@@ -484,7 +484,7 @@ void TownMap::Start()
 	}
 
 	{
-		Park_Right_Bottom_Tree = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Park_Right_Bottom_Tree = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Right_Bottom_Tree->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Park_Right_Bottom_Tree->AutoSpriteSizeOn();
 		Park_Right_Bottom_Tree->SetAutoScaleRatio(2.0f);
@@ -502,7 +502,7 @@ void TownMap::Start()
 
 
 	{
-		Park_Barrel = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Park_Barrel = CreateComponent<GameEngineSpriteRenderer>(130);
 		Park_Barrel->SetSprite("Village_Object", 0);
 		Park_Barrel->AutoSpriteSizeOn();
 		Park_Barrel->SetAutoScaleRatio(2.0f);
@@ -516,7 +516,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Board = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Board = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Board->SetSprite("Village_Board", 0);
 		Village_Board->AutoSpriteSizeOn();
 		Village_Board->SetAutoScaleRatio(2.0f);
@@ -532,7 +532,7 @@ void TownMap::Start()
 	}
 
 	{
-		Boxs = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Boxs = CreateComponent<GameEngineSpriteRenderer>(130);
 		Boxs->SetSprite("Village_Boxs", 0);
 		Boxs->AutoSpriteSizeOn();
 		Boxs->SetAutoScaleRatio(1.0f);
@@ -547,7 +547,7 @@ void TownMap::Start()
 	}
 
 	{
-		Up_Tree_01 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Up_Tree_01 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Up_Tree_01->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Up_Tree_01->AutoSpriteSizeOn();
 		Up_Tree_01->SetAutoScaleRatio(2.0f);
@@ -563,7 +563,7 @@ void TownMap::Start()
 	}
 
 	{
-		Up_Tree_02 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Up_Tree_02 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Up_Tree_02->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Up_Tree_02->AutoSpriteSizeOn();
 		Up_Tree_02->SetAutoScaleRatio(2.0f);
@@ -579,7 +579,7 @@ void TownMap::Start()
 	}
 
 	{
-		Road_Up_Object = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Road_Up_Object = CreateComponent<GameEngineSpriteRenderer>(130);
 		Road_Up_Object->SetSprite("Village_Boxs", 1);
 		Road_Up_Object->AutoSpriteSizeOn();
 		Road_Up_Object->SetAutoScaleRatio(1.0f);
@@ -594,7 +594,7 @@ void TownMap::Start()
 	}
 
 	{
-		Up_Tree_03 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Up_Tree_03 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Up_Tree_03->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Up_Tree_03->AutoSpriteSizeOn();
 		Up_Tree_03->SetAutoScaleRatio(2.0f);
@@ -608,7 +608,7 @@ void TownMap::Start()
 	}
 
 	{
-		Up_Tree_04 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Up_Tree_04 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Up_Tree_04->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Up_Tree_04->AutoSpriteSizeOn();
 		Up_Tree_04->SetAutoScaleRatio(2.0f);
@@ -624,7 +624,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_Rival_House = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Rival_House = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Rival_House->SetSprite("Village_Rival_House", 1);
 		Village_Rival_House->AutoSpriteSizeOn();
 		Village_Rival_House->SetAutoScaleRatio(2.0f);
@@ -638,7 +638,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Rival_House_Roof = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Rival_House_Roof = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Rival_House_Roof->SetSprite("Village_Rival_House", 2);
 		Village_Rival_House_Roof->AutoSpriteSizeOn();
 		Village_Rival_House_Roof->SetAutoScaleRatio(2.0f);
@@ -652,7 +652,7 @@ void TownMap::Start()
 	}
 
 	{
-		Big_Up_Tree_01 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Big_Up_Tree_01 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Big_Up_Tree_01->CreateAnimation("Village_BigTree_animation", "Village_BigTree_animation", 0.1f, -1, -1, true);
 		Big_Up_Tree_01->AutoSpriteSizeOn();
 		Big_Up_Tree_01->SetAutoScaleRatio(2.0f);
@@ -669,7 +669,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Rival_Desk = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Rival_Desk = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Rival_Desk->SetSprite("Village_Rival_House", 0);
 		Village_Rival_Desk->AutoSpriteSizeOn();
 		Village_Rival_Desk->SetAutoScaleRatio(2.0f);
@@ -685,7 +685,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Rival_Flowerpot_01 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Rival_Flowerpot_01 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Rival_Flowerpot_01->SetSprite("Village_Rival_Flowerpots", 0);
 		Village_Rival_Flowerpot_01->AutoSpriteSizeOn();
 		Village_Rival_Flowerpot_01->SetAutoScaleRatio(2.0f);
@@ -699,7 +699,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Rival_OilLamp = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Rival_OilLamp = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Rival_OilLamp->SetSprite("Village_Object", 1);
 		Village_Rival_OilLamp->AutoSpriteSizeOn();
 		Village_Rival_OilLamp->SetAutoScaleRatio(2.0f);
@@ -714,7 +714,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Rival_Flowerpot_02 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Rival_Flowerpot_02 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Rival_Flowerpot_02->SetSprite("Village_Rival_Flowerpots", 1);
 		Village_Rival_Flowerpot_02->AutoSpriteSizeOn();
 		Village_Rival_Flowerpot_02->SetAutoScaleRatio(2.0f);
@@ -728,7 +728,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_Rival_Flowerpot_03 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Rival_Flowerpot_03 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Rival_Flowerpot_03->SetSprite("Village_Rival_Flowerpots", 1);
 		Village_Rival_Flowerpot_03->AutoSpriteSizeOn();
 		Village_Rival_Flowerpot_03->SetAutoScaleRatio(2.0f);
@@ -743,7 +743,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Rival_Fountain = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Rival_Fountain = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Rival_Fountain->CreateAnimation("Village_Rival_Fountain", "Village_Rival_Fountain", 0.1f, -1, -1, true);
 		Village_Rival_Fountain->AutoSpriteSizeOn();
 		Village_Rival_Fountain->SetAutoScaleRatio(2.0f);
@@ -760,7 +760,7 @@ void TownMap::Start()
 
 
 	{
-		Middle_Tree_01 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Middle_Tree_01 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Middle_Tree_01->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Middle_Tree_01->AutoSpriteSizeOn();
 		Middle_Tree_01->SetAutoScaleRatio(2.0f);
@@ -776,7 +776,7 @@ void TownMap::Start()
 	}
 
 	{
-		Middle_Tree_02 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Middle_Tree_02 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Middle_Tree_02->CreateAnimation("Village_Tree_02_animation", "Village_Tree_02_animation", 0.1f, -1, -1, true);
 		Middle_Tree_02->AutoSpriteSizeOn();
 		Middle_Tree_02->SetAutoScaleRatio(2.0f);
@@ -793,7 +793,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_BigStone = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_BigStone = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_BigStone->SetSprite("Village_BigStone", 0);
 		Village_BigStone->AutoSpriteSizeOn();
 		Village_BigStone->SetAutoScaleRatio(2.0f);
@@ -809,7 +809,7 @@ void TownMap::Start()
 	}
 
 	{
-		Middle_Box_01 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Middle_Box_01 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Middle_Box_01->SetSprite("Village_Object", 2);
 		Middle_Box_01->AutoSpriteSizeOn();
 		Middle_Box_01->SetAutoScaleRatio(2.0f);
@@ -823,7 +823,7 @@ void TownMap::Start()
 	}
 
 	{
-		Middle_Box_02 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Middle_Box_02 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Middle_Box_02->SetSprite("Village_Object", 3);
 		Middle_Box_02->AutoSpriteSizeOn();
 		Middle_Box_02->SetAutoScaleRatio(2.0f);
@@ -838,7 +838,7 @@ void TownMap::Start()
 	}
 
 	{
-		Middle_Box_03 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Middle_Box_03 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Middle_Box_03->SetSprite("Village_Object", 3);
 		Middle_Box_03->AutoSpriteSizeOn();
 		Middle_Box_03->SetAutoScaleRatio(2.0f);
@@ -853,7 +853,7 @@ void TownMap::Start()
 
 	
 	{
-		Big_Middle_Tree_01 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Big_Middle_Tree_01 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Big_Middle_Tree_01->CreateAnimation("Village_BigTree_animation", "Village_BigTree_animation", 0.1f, -1, -1, true);
 		Big_Middle_Tree_01->AutoSpriteSizeOn();
 		Big_Middle_Tree_01->SetAutoScaleRatio(2.0f);
@@ -870,7 +870,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_WitchHome = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_WitchHome = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_WitchHome->SetSprite("Village_WitchHome", 5);
 		Village_WitchHome->AutoSpriteSizeOn();
 		Village_WitchHome->SetAutoScaleRatio(1.0f);
@@ -887,7 +887,7 @@ void TownMap::Start()
 
 	
 	{
-		Village_Witch_Roof_old = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Witch_Roof_old = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Witch_Roof_old->SetSprite("Village_WitchHome", 2);
 		Village_Witch_Roof_old->AutoSpriteSizeOn();
 		Village_Witch_Roof_old->SetAutoScaleRatio(2.0f);
@@ -901,7 +901,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Witch_House_old = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Witch_House_old = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Witch_House_old->SetSprite("Village_WitchHome", 1);
 		Village_Witch_House_old->AutoSpriteSizeOn();
 		Village_Witch_House_old->SetAutoScaleRatio(2.0f);
@@ -912,7 +912,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_Witch_Table_old = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Witch_Table_old = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Witch_Table_old->SetSprite("Village_WitchHome", 4);
 		Village_Witch_Table_old->AutoSpriteSizeOn();
 		Village_Witch_Table_old->SetAutoScaleRatio(2.0f);
@@ -926,7 +926,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Witch_Storage_old = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Witch_Storage_old = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Witch_Storage_old->SetSprite("Village_WitchHome", 3);
 		Village_Witch_Storage_old->AutoSpriteSizeOn();
 		Village_Witch_Storage_old->SetAutoScaleRatio(2.0f);
@@ -938,7 +938,7 @@ void TownMap::Start()
 		Col->SetCollisionType(ColType::AABBBOX2D);
 	}
 	{
-		Village_Witch_OilLamp = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Witch_OilLamp = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Witch_OilLamp->SetSprite("Village_Object", 1);
 		Village_Witch_OilLamp->AutoSpriteSizeOn();
 		Village_Witch_OilLamp->SetAutoScaleRatio(2.0f);
@@ -954,7 +954,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Box_01 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Bottom_Box_01 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Box_01->SetSprite("Village_Object", 2);
 		Bottom_Box_01->AutoSpriteSizeOn();
 		Bottom_Box_01->SetAutoScaleRatio(2.0f);
@@ -968,7 +968,7 @@ void TownMap::Start()
 	}
 	
 	{
-		Bottom_Box_02 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Bottom_Box_02 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Box_02->SetSprite("Village_Object", 2);
 		Bottom_Box_02->AutoSpriteSizeOn();
 		Bottom_Box_02->SetAutoScaleRatio(2.0f);
@@ -982,7 +982,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Box_03 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Bottom_Box_03 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Box_03->SetSprite("Village_Object", 2);
 		Bottom_Box_03->AutoSpriteSizeOn();
 		Bottom_Box_03->SetAutoScaleRatio(2.0f);
@@ -997,7 +997,7 @@ void TownMap::Start()
 
 
 	{
-		Bottom_Tree_01 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Bottom_Tree_01 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Tree_01->CreateAnimation("Village_Tree_02_animation", "Village_Tree_02_animation", 0.1f, -1, -1, true);
 		Bottom_Tree_01->AutoSpriteSizeOn();
 		Bottom_Tree_01->SetAutoScaleRatio(2.0f);
@@ -1013,7 +1013,7 @@ void TownMap::Start()
 
 	}
 	{
-		Bottom_Tree_02 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Bottom_Tree_02 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Tree_02->CreateAnimation("Village_Tree_02_animation", "Village_Tree_02_animation", 0.1f, -1, -1, true);
 		Bottom_Tree_02->AutoSpriteSizeOn();
 		Bottom_Tree_02->SetAutoScaleRatio(2.0f);
@@ -1029,7 +1029,7 @@ void TownMap::Start()
 
 	}
 	{
-		Bottom_Tree_03 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Bottom_Tree_03 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Tree_03->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Bottom_Tree_03->AutoSpriteSizeOn();
 		Bottom_Tree_03->SetAutoScaleRatio(2.0f);
@@ -1045,7 +1045,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Tree_04 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Bottom_Tree_04 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Tree_04->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Bottom_Tree_04->AutoSpriteSizeOn();
 		Bottom_Tree_04->SetAutoScaleRatio(2.0f);
@@ -1059,7 +1059,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Tree_05 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Bottom_Tree_05 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Tree_05->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Bottom_Tree_05->AutoSpriteSizeOn();
 		Bottom_Tree_05->SetAutoScaleRatio(2.0f);
@@ -1074,7 +1074,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_House_05 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_House_05 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_House_05->CreateAnimation("Village_House_05_animation", "Village_House_05_animation", 0.1f, -1, -1, true);
 		Village_House_05->AutoSpriteSizeOn();
 		Village_House_05->SetAutoScaleRatio(2.0f);
@@ -1091,7 +1091,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_BigStone_02 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_BigStone_02 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_BigStone_02->SetSprite("Village_BigStone", 0);
 		Village_BigStone_02->AutoSpriteSizeOn();
 		Village_BigStone_02->SetAutoScaleRatio(2.0f);
@@ -1106,7 +1106,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_House_06 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_House_06 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_House_06->SetSprite("Village_House_06", 0);
 		Village_House_06->AutoSpriteSizeOn();
 		Village_House_06->SetAutoScaleRatio(2.0f);
@@ -1120,7 +1120,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_House_06_OilLamp = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_House_06_OilLamp = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_House_06_OilLamp->SetSprite("Village_Object", 1);
 		Village_House_06_OilLamp->AutoSpriteSizeOn();
 		Village_House_06_OilLamp->SetAutoScaleRatio(2.0f);
@@ -1140,7 +1140,7 @@ void TownMap::Start()
 
 
 	{
-		Bottom_Box_04 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Bottom_Box_04 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Box_04->SetSprite("Village_Object", 2);
 		Bottom_Box_04->AutoSpriteSizeOn();
 		Bottom_Box_04->SetAutoScaleRatio(2.0f);
@@ -1155,7 +1155,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Box_05 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Bottom_Box_05 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Box_05->SetSprite("Village_Object", 2);
 		Bottom_Box_05->AutoSpriteSizeOn();
 		Bottom_Box_05->SetAutoScaleRatio(2.0f);
@@ -1169,7 +1169,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Box_06 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Bottom_Box_06 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Box_06->SetSprite("Village_Object", 2);
 		Bottom_Box_06->AutoSpriteSizeOn();
 		Bottom_Box_06->SetAutoScaleRatio(2.0f);
@@ -1184,7 +1184,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Tree_06 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Bottom_Tree_06 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Tree_06->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Bottom_Tree_06->AutoSpriteSizeOn();
 		Bottom_Tree_06->SetAutoScaleRatio(2.0f);
@@ -1200,7 +1200,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Tree_07 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Bottom_Tree_07 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Tree_07->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Bottom_Tree_07->AutoSpriteSizeOn();
 		Bottom_Tree_07->SetAutoScaleRatio(2.0f);
@@ -1215,7 +1215,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Tree_08 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Bottom_Tree_08 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Tree_08->CreateAnimation("Village_Tree_animation", "Village_Tree_animation", 0.1f, -1, -1, true);
 		Bottom_Tree_08->AutoSpriteSizeOn();
 		Bottom_Tree_08->SetAutoScaleRatio(2.0f);
@@ -1232,7 +1232,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_Well_animation = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Well_animation = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Well_animation->CreateAnimation("Village_Well_animation", "Village_Well_animation", 0.1f, -1, -1, true);
 		Village_Well_animation->AutoSpriteSizeOn();
 		Village_Well_animation->SetAutoScaleRatio(2.0f);
@@ -1250,7 +1250,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Tree_09 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Bottom_Tree_09 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Tree_09->CreateAnimation("Village_Tree_02_animation", "Village_Tree_02_animation", 0.1f, -1, -1, true);
 		Bottom_Tree_09->AutoSpriteSizeOn();
 		Bottom_Tree_09->SetAutoScaleRatio(2.0f);
@@ -1267,7 +1267,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_House_04 = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_House_04 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_House_04->SetSprite("Village_House_04", 0);
 		Village_House_04->AutoSpriteSizeOn();
 		Village_House_04->SetAutoScaleRatio(2.0f);
@@ -1283,7 +1283,7 @@ void TownMap::Start()
 	}
 
 	{
-		Bottom_Tree_10 = CreateComponent<GameEngineSpriteRenderer>(-40);
+		Bottom_Tree_10 = CreateComponent<GameEngineSpriteRenderer>(130);
 		Bottom_Tree_10->CreateAnimation("Village_Tree_02_animation", "Village_Tree_02_animation", 0.1f, -1, -1, true);
 		Bottom_Tree_10->AutoSpriteSizeOn();
 		Bottom_Tree_10->SetAutoScaleRatio(2.0f);
@@ -1298,7 +1298,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Blacksmith_Fence = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Blacksmith_Fence = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Blacksmith_Fence->SetSprite("Village_Blacksmith", 0);
 		Village_Blacksmith_Fence->AutoSpriteSizeOn();
 		Village_Blacksmith_Fence->SetAutoScaleRatio(2.0f);
@@ -1309,7 +1309,7 @@ void TownMap::Start()
 
 	}
 	{
-		Village_Blacksmith_Stand2_old = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Blacksmith_Stand2_old = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Blacksmith_Stand2_old->SetSprite("Village_Blacksmith", 4);
 		Village_Blacksmith_Stand2_old->AutoSpriteSizeOn();
 		Village_Blacksmith_Stand2_old->SetAutoScaleRatio(2.0f);
@@ -1326,7 +1326,7 @@ void TownMap::Start()
 	}
 	
 	{
-		Village_Blacksmith_Stand1_old = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Blacksmith_Stand1_old = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Blacksmith_Stand1_old->SetSprite("Village_Blacksmith", 3);
 		Village_Blacksmith_Stand1_old->AutoSpriteSizeOn();
 		Village_Blacksmith_Stand1_old->SetAutoScaleRatio(2.0f);
@@ -1340,7 +1340,7 @@ void TownMap::Start()
 	}
 
 	{
-		Village_Blacksmith_House = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Blacksmith_House = CreateComponent<GameEngineSpriteRenderer>(129);
 		Village_Blacksmith_House->SetSprite("Village_Blacksmith", 1);
 		Village_Blacksmith_House->AutoSpriteSizeOn();
 		Village_Blacksmith_House->SetAutoScaleRatio(2.0f);
@@ -1356,7 +1356,7 @@ void TownMap::Start()
 
 
 	{
-		Village_Blacksmith_Roof_old = CreateComponent<GameEngineSpriteRenderer>(-50);
+		Village_Blacksmith_Roof_old = CreateComponent<GameEngineSpriteRenderer>(130);
 		Village_Blacksmith_Roof_old->SetSprite("Village_Blacksmith", 2);
 		Village_Blacksmith_Roof_old->AutoSpriteSizeOn();
 		Village_Blacksmith_Roof_old->SetAutoScaleRatio(2.0f);
@@ -1418,7 +1418,7 @@ void TownMap::Start()
 	black_Out_02 = GetLevel()->CreateActor<Black_Out>();
 	black_Out_02->Off();
 
-	Bgm = GameEngineSound::SoundPlay("rynoka_day_normal.wav");
+	Bgm = GameEngineSound::SoundPlay("rynoka_day_normal.wav",100);
 }
 
 void TownMap::Update(float _DeltaTime)
