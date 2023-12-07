@@ -14,7 +14,7 @@ void Npc::Start()
 {
 	GameEngineInput::AddInputObject(this);
 
-	npc = CreateComponent<GameEngineSpriteRenderer>(-48);
+	npc = CreateComponent<GameEngineSpriteRenderer>(140);
 	npc->Transform.AddLocalPosition({ 0.0f,0.0f,50.0f });
 	npc->CreateAnimation("Npc_Up_Move", "Npc_Up_Move", 0.15f, -1, -1, true);
 	npc->CreateAnimation("Npc_Down_Idle", "Npc_Down_Idle", 0.15f, -1, -1, true);
@@ -24,8 +24,6 @@ void Npc::Start()
 	npc->CreateAnimation("Npc_Right_Idle", "Npc_Right_Idle", 0.15f, -1, -1, true);
 	npc->CreateAnimation("Npc_Right_Move", "Npc_Right_Move", 0.15f, -1, -1, true);
 	npc->CreateAnimation("Npc_Up_Idle", "Npc_Up_Idle", 0.15f, -1, -1, true);
-
-
 
 	npc->CreateAnimation("Npc_Up_Move_02", "Npc_Up_Move_02", 0.15f, -1, -1, true);
 	npc->CreateAnimation("Npc_Down_Idle_02", "Npc_Down_Idle_02", 0.15f, -1, -1, true);
