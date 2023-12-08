@@ -402,7 +402,7 @@ void flyinggolem::Update(float _Delta)
 		MonsterPushUpdate(_Delta);
 		UpdateState(_Delta);
 		Col->CollisionEvent(ContentsCollisionType::Spear, Event);
-		Manager_Speed = Monster_Move(_Delta, Transform.GetWorldPosition(), MapName, Dir)*2.0f;
+		Manager_Speed = Monster_Move(_Delta, Transform.GetWorldPosition(), MapName, Dir);
 	}
 
 	if (Number < -0.5)

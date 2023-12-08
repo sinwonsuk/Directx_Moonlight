@@ -34,7 +34,7 @@ void flyinggolem::UpdateState(float _Time)
 void flyinggolem::WalkUpdate(float _Time)
 {
 
-	Transform.AddLocalPosition({ Manager_Speed });
+	Transform.AddLocalPosition({ Manager_Speed * 1.2f });
 
 }
 
