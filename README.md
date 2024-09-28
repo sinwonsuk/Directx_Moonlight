@@ -2,21 +2,22 @@
  
 # Moonlighter
 
-릴리즈 버전 테스트 영상 : https://youtu.be/Z_VltbQlJQ4
+유튜브 영상 : https://youtu.be/Z_VltbQlJQ4
 
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_05_27](https://github.com/user-attachments/assets/8ab27f0f-7aec-4e47-af28-26a8513bd991)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_05_32](https://github.com/user-attachments/assets/7787950f-cfd2-407f-b717-b9a8b6127780)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_05_37](https://github.com/user-attachments/assets/2361b173-b429-4fd4-8110-f25088262c7a)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_05_41](https://github.com/user-attachments/assets/8c61cf6b-2a85-468d-abba-9b3a8b867e86)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_05_45](https://github.com/user-attachments/assets/e2ed7fda-2eaa-4d43-9f51-da2b78541339)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_05_55](https://github.com/user-attachments/assets/42b12b22-aa8e-4858-87c3-4bcad3c2bed3)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_06_00](https://github.com/user-attachments/assets/d6c03358-8dc1-4ef2-a664-0ef366042e2c)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_06_05](https://github.com/user-attachments/assets/d0f45340-1d48-45c8-83c1-a356bc93735c)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_06_09](https://github.com/user-attachments/assets/98423a60-d8cd-43e7-b6d4-8ffa4b675a99)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_06_14](https://github.com/user-attachments/assets/2c29a13a-71ab-4a2b-a10b-9b5521310fe0)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_06_18](https://github.com/user-attachments/assets/1de09731-1f7c-4357-8f90-276367284deb)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_06_29](https://github.com/user-attachments/assets/6a659eb6-ea16-4a25-9059-8810665e6868)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_06_34](https://github.com/user-attachments/assets/4d36b7ca-a3bf-4ad4-a4a0-7096cc56ea28)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_06_38](https://github.com/user-attachments/assets/6aacc026-30ff-4665-87cd-e38d3d3d19ff)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_06_42](https://github.com/user-attachments/assets/2fead80b-56fb-4235-a5b6-03ac99e907a1)
-![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_06_45](https://github.com/user-attachments/assets/6cce87c4-2779-4e61-9d18-8d9bd0e4cceb)
+
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_25_47](https://github.com/user-attachments/assets/051c02a9-23f2-4124-be6c-1deb27665715)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_25_50](https://github.com/user-attachments/assets/864b220c-49df-41d0-8a10-ba59cfff6566)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_25_53](https://github.com/user-attachments/assets/9e8d1926-a098-4cfb-a389-2b5b41019ed0)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_25_56](https://github.com/user-attachments/assets/cf61d943-edd6-48c3-90a6-a8081e75832c)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_25_59](https://github.com/user-attachments/assets/412fbee4-3d2c-4639-b9bc-0341947bce37)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_02](https://github.com/user-attachments/assets/74c24bd5-4331-4344-9f81-cfc3f760619a)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_06](https://github.com/user-attachments/assets/1fe24bd4-6140-41e5-938c-08f2e3b374c1)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_09](https://github.com/user-attachments/assets/db696d42-7a03-4826-98dd-59e6e455ce0b)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_14](https://github.com/user-attachments/assets/9bb5300e-611a-4f24-8de4-03687b9772e5)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_18](https://github.com/user-attachments/assets/2aad53a1-a932-436a-a8e2-463fea6fca74)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_21](https://github.com/user-attachments/assets/cb4a9d5d-cae2-4fc8-806f-510475cc5dc5)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_25](https://github.com/user-attachments/assets/c0256f3d-cd3c-4151-baa1-74333d153c61)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_28](https://github.com/user-attachments/assets/51ca5566-16ee-48e3-8692-2cdbd58b9300)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_32](https://github.com/user-attachments/assets/dd5c1bd3-a206-43b5-b876-97ddb93eccc1)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_34](https://github.com/user-attachments/assets/56f1ba0f-9e58-4aba-8eea-107350b4958e)
+![PowerPoint 슬라이드 쇼  -  기소서 pptx 2024-09-28 오후 2_26_37](https://github.com/user-attachments/assets/120d74d8-d586-4aef-a115-0e63ad4f4540)
